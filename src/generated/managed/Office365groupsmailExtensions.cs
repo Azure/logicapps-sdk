@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateConversationResponse> __BuildCreateConversation(WorkflowExpression<string> groupId, WorkflowExpression<string> bodynewTopic, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
@@ -92,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Conversation> __BuildGetGroupConversation(WorkflowExpression<string> groupId, WorkflowExpression<string> conversationId)
         {
@@ -114,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListConversationThreadsResponse> __BuildListConversationThreads(WorkflowExpression<string> groupId, WorkflowExpression<string> conversationId)
         {
@@ -136,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewConversationThreadResponse> __BuildCreateConversationThread(WorkflowExpression<string> groupId, WorkflowExpression<string> conversationId, WorkflowExpression<string> bodynewTopic, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
@@ -211,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupThreadsResponse> __BuildListGroupThreads(WorkflowExpression<string> groupId)
         {
@@ -232,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewConversationThreadResponse> __BuildCreateGroupThread(WorkflowExpression<string> groupId, WorkflowExpression<string> bodynewTopic, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
@@ -306,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConversationThread> __BuildGetConversationThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId)
         {
@@ -328,7 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConversationThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId)
         {
@@ -350,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListThreadPostsResponse> __BuildListThreadPosts(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId)
         {
@@ -372,7 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Post> __BuildGetThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId)
         {
@@ -396,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAttachmentsResponse> __BuildGetAttachments(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId)
         {
@@ -419,7 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReplyToAThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
@@ -491,7 +479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReply(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
@@ -564,7 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
         {
@@ -609,7 +595,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildForward(WorkflowExpression<string> groupMail, WorkflowExpression<string> conversationId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId, WorkflowExpression<GetUsersGraphAction[]> bodyrecipients, WorkflowExpression<string> bodycomment = null)
         {

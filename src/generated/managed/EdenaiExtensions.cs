@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextToSpeechResponse> __BuildTextToSpeech(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyoption = null, WorkflowExpression<double> bodyrate = null, WorkflowExpression<double> bodypitch = null, WorkflowExpression<double> bodyvolume = null, WorkflowExpression<string> bodyaudioFormat = null, WorkflowExpression<double> bodysamplingRate = null)
         {
@@ -208,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExplicitContentDetectionResponse> __BuildExplicitContentDetection(WorkflowExpression<string> providers, WorkflowExpression<object> file)
         {
@@ -230,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextGenerationResponse> __BuildTextGeneration(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodymaxTokens = null)
         {
@@ -325,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatResponse> __BuildChat(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodychatGlobalAction = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodymaxTokens = null)
         {
@@ -427,7 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TopicExtractionResponse> __BuildTopicExtraction(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
         {
@@ -497,7 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeywordExtractionResponse> __BuildKeywordExtraction(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
         {
@@ -567,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NamedEntityRecognitionResponse> __BuildNamedEntityRecognition(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
         {
@@ -637,7 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnonymizationResponse> __BuildAnonymization(WorkflowExpression<string> providers, WorkflowExpression<object> file)
         {
@@ -659,7 +651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FaceDetectionResponse> __BuildFaceDetection(WorkflowExpression<string> providers, WorkflowExpression<object> file)
         {
@@ -681,7 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageGenerationResponse> __BuildImageGeneration(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyresolution = null, WorkflowExpression<double> bodynumImages = null)
         {
@@ -768,7 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TranslationResponse> __BuildTranslation(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodysourceLanguage = null, WorkflowExpression<string> bodytargetLanguage = null)
         {
@@ -855,7 +844,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextModerationResponse> __BuildTextModeration(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
         {
@@ -925,7 +913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SummarizationResponse> __BuildSummarization(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<double> bodyoutputSentences = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodylanguage = null)
         {
@@ -1020,7 +1007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageDetectionResponse> __BuildLanguageDetection(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null)
         {
@@ -1073,7 +1059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentimentAnalysisResponse> __BuildSentimentAnalysis(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
         {
@@ -1143,7 +1128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvoiceParserResponse> __BuildInvoiceParser(WorkflowExpression<string> providers, WorkflowExpression<string> language, WorkflowExpression<object> file)
         {
@@ -1166,7 +1150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResumeParserResponse> __BuildResumeParser(WorkflowExpression<string> providers, WorkflowExpression<object> file)
         {
@@ -1188,7 +1171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdentityParserResponse> __BuildIdentityParser(WorkflowExpression<string> providers, WorkflowExpression<object> file)
         {
@@ -1210,7 +1192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReceiptParserResponse> __BuildReceiptParser(WorkflowExpression<string> providers, WorkflowExpression<string> language, WorkflowExpression<object> file)
         {

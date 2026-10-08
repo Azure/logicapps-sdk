@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProductResponse> __BuildUpdateProduct(WorkflowExpression<string> id, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<string> bodycaption = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyimages = null, WorkflowExpression<bool> bodyshippable = null, WorkflowExpression<string> bodyuRL = null)
         {
@@ -91,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProductResponse> __BuildCreateProduct(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyid = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<string> bodycaption = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyimages = null, WorkflowExpression<bool> bodyshippable = null, WorkflowExpression<string> bodyuRL = null)
         {
@@ -170,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerResponse> __BuildGetCustomer(WorkflowExpression<string> id)
         {
@@ -191,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerResponse> __BuildUpdateCustomer(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null)
         {
@@ -233,7 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerResponse> __BuildCreateCustomer(WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null)
         {

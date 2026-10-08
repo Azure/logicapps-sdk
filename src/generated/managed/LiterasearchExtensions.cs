@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetMatterList(WorkflowExpression<string> request)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetMatterNarrative(WorkflowExpression<string> matterId)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetMatterDetail(WorkflowExpression<string> matterId)
         {

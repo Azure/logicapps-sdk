@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PagesGetResponseItem[]> __BuildPagesGet(WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PagePostResponse> __BuildPage(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodysubdomain = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodylogoUrl = null, WorkflowExpression<string> bodyfaviconUrl = null, WorkflowExpression<string> bodywebsiteUrl = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyuseLargeHeader = null, WorkflowExpression<string> bodybrandColor = null, WorkflowExpression<string> bodyokColor = null, WorkflowExpression<string> bodydisruptedColor = null, WorkflowExpression<string> bodydegradedColor = null, WorkflowExpression<string> bodydownColor = null, WorkflowExpression<string> bodynoticeColor = null, WorkflowExpression<string> bodyunknownColor = null, WorkflowExpression<string> bodygoogleAnalytics = null, WorkflowExpression<bool> bodysubscribeBySms = null, WorkflowExpression<string> bodysmsService = null, WorkflowExpression<string> bodytwilioSid = null, WorkflowExpression<string> bodytwilioToken = null, WorkflowExpression<string> bodytwilioSender = null, WorkflowExpression<string> bodyhtmlInMeta = null, WorkflowExpression<string> bodyhtmlAboveHeader = null, WorkflowExpression<string> bodyhtmlBelowHeader = null, WorkflowExpression<string> bodyhtmlAboveFooter = null, WorkflowExpression<string> bodyhtmlBelowFooter = null, WorkflowExpression<string> bodyhtmlBelowSummary = null, WorkflowExpression<string> bodycssGlobal = null, WorkflowExpression<string> bodylaunchDate = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<string> bodydateFormatShort = null, WorkflowExpression<string> bodytimeFormat = null)
         {
@@ -302,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageDeleteResponse> __BuildPageDelete(WorkflowExpression<string> pageId)
         {
@@ -323,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PagePutResponse> __BuildPagePut(WorkflowExpression<string> pageId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodysubdomain = null, WorkflowExpression<string> bodylogoUrl = null, WorkflowExpression<string> bodyfaviconUrl = null, WorkflowExpression<string> bodywebsiteUrl = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodypublicEmail = null, WorkflowExpression<bool> bodyuseLargeHeader = null, WorkflowExpression<string> bodybrandColor = null, WorkflowExpression<string> bodyokColor = null, WorkflowExpression<string> bodydisruptedColor = null, WorkflowExpression<string> bodydegradedColor = null, WorkflowExpression<string> bodydownColor = null, WorkflowExpression<string> bodynoticeColor = null, WorkflowExpression<string> bodyunknownColor = null, WorkflowExpression<string> bodygoogleAnalytics = null, WorkflowExpression<bool> bodysubscribeBySms = null, WorkflowExpression<string> bodysmsService = null, WorkflowExpression<string> bodytwilioSid = null, WorkflowExpression<string> bodytwilioToken = null, WorkflowExpression<string> bodytwilioSender = null, WorkflowExpression<string> bodyhtmlInMeta = null, WorkflowExpression<string> bodyhtmlAboveHeader = null, WorkflowExpression<string> bodyhtmlBelowHeader = null, WorkflowExpression<string> bodyhtmlAboveFooter = null, WorkflowExpression<string> bodyhtmlBelowFooter = null, WorkflowExpression<string> bodyhtmlBelowSummary = null, WorkflowExpression<string> bodycssGlobal = null, WorkflowExpression<string> bodylaunchDate = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<string> bodydateFormatShort = null, WorkflowExpression<string> bodytimeFormat = null, WorkflowExpression<bool> bodyprivate = null, WorkflowExpression<bool> bodyuseAllowList = null)
         {
@@ -603,7 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComponentsGetResponseItem[]> __BuildComponentsGet(WorkflowExpression<string> pageId, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -630,7 +625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComponentPostResponse> __BuildComponent(WorkflowExpression<string> pageId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<bool> bodyshowUptime = null, WorkflowExpression<bool> bodygrouped = null)
         {
@@ -700,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComponentGetResponse> __BuildComponentGet(WorkflowExpression<string> pageId, WorkflowExpression<string> componentId)
         {
@@ -722,7 +715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComponentDeleteResponse> __BuildComponentDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> componentId)
         {
@@ -744,7 +736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComponentPutResponse> __BuildComponentPut(WorkflowExpression<string> pageId, WorkflowExpression<string> componentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<bool> bodyshowUptime = null, WorkflowExpression<bool> bodygrouped = null)
         {
@@ -815,7 +806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentsGetResponseItem[]> __BuildIncidentsGet(WorkflowExpression<string> pageId, WorkflowExpression<string> status = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -845,7 +835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentPostResponse> __BuildIncident(WorkflowExpression<string> pageId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystarted = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -922,7 +911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentGetResponse> __BuildIncidentGet(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId)
         {
@@ -944,7 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentDeleteResponse> __BuildIncidentDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId)
         {
@@ -966,7 +953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentPutResponse> __BuildIncidentPut(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystarted = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1037,7 +1023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentTemplatePostResponse> __BuildIncidentTemplate(WorkflowExpression<string> pageId, WorkflowExpression<string> template)
         {
@@ -1059,7 +1044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentUpdateGetResponse> __BuildIncidentUpdateGet(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId, WorkflowExpression<string> incidentUpdateId)
         {
@@ -1082,7 +1066,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentUpdateDeleteResponse> __BuildIncidentUpdateDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId, WorkflowExpression<string> incidentUpdateId)
         {
@@ -1105,7 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentUpdatePutResponse> __BuildIncidentUpdatePut(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId, WorkflowExpression<string> incidentUpdateId, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystarted = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1177,7 +1159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentUpdatePostResponse> __BuildIncidentUpdate(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystarted = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1248,7 +1229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> __BuildIncidentUpdateTemplate(WorkflowExpression<string> pageId, WorkflowExpression<string> incidentId, WorkflowExpression<string> template)
         {
@@ -1271,7 +1251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenancesGetResponseItem[]> __BuildMaintenancesGet(WorkflowExpression<string> pageId, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -1298,7 +1277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenancePostResponse> __BuildMaintenance(WorkflowExpression<string> pageId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<int> bodyduration = null, WorkflowExpression<bool> bodynotifyStart = null, WorkflowExpression<bool> bodynotifyEnd = null, WorkflowExpression<bool> bodynotifyEarly = null, WorkflowExpression<int> bodynotifyMinutes = null, WorkflowExpression<bool> bodyautoStart = null, WorkflowExpression<bool> bodyautoEnd = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1431,7 +1409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenanceGetResponse> __BuildMaintenanceGet(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId)
         {
@@ -1453,7 +1430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenanceDeleteResponse> __BuildMaintenanceDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId)
         {
@@ -1475,7 +1451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenancePutResponse> __BuildMaintenancePut(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1560,7 +1535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenanceUpdateGetResponse> __BuildMaintenanceUpdateGet(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId, WorkflowExpression<string> maintenanceUpdateId)
         {
@@ -1583,7 +1557,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenanceUpdateDeleteResponse> __BuildMaintenanceUpdateDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId, WorkflowExpression<string> maintenanceUpdateId)
         {
@@ -1606,7 +1579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenanceUpdatePutResponse> __BuildMaintenanceUpdatePut(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId, WorkflowExpression<string> maintenanceUpdateId, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystarted = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1685,7 +1657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MaintenanceUpdatePostResponse> __BuildMaintenanceUpdate(WorkflowExpression<string> pageId, WorkflowExpression<string> maintenanceId, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string[]> bodycomponents = null, WorkflowExpression<string> bodystarted = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {
@@ -1763,7 +1734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageTemplatesGetResponseItem[]> __BuildPageTemplatesGet(WorkflowExpression<string> pageId, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -1790,7 +1760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplatePostResponse> __BuildTemplate(WorkflowExpression<string> pageId, WorkflowExpression<string> bodysubdomain = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodycomponentsInputItem[]> bodycomponents = null)
         {
@@ -1867,7 +1836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowExpression<string> pageId, WorkflowExpression<string> templateId)
         {
@@ -1889,7 +1857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateDeleteResponse> __BuildTemplateDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> templateId)
         {
@@ -1911,7 +1878,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplatePutResponse> __BuildTemplatePut(WorkflowExpression<string> pageId, WorkflowExpression<string> templateId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bodycomponentsInputItem[]> bodycomponents = null)
         {
@@ -1982,7 +1948,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TeammatesGetResponseItem[]> __BuildTeammatesGet(WorkflowExpression<string> pageId, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -2009,7 +1974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildTeamMember(WorkflowExpression<string> pageId, WorkflowExpression<string> bodyemail = null)
         {
@@ -2044,7 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildTeamMemberDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> memberId)
         {
@@ -2066,7 +2029,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscribersGetResponseItem[]> __BuildSubscribersGet(WorkflowExpression<string> pageId, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -2093,7 +2055,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberPostResponse> __BuildSubscriber(WorkflowExpression<string> pageId, WorkflowExpression<string> bodyemail = null, WorkflowExpression<bool> bodyall = null, WorkflowExpression<bool> bodyautoConfirm = null)
         {
@@ -2142,7 +2103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSubscriberDelete(WorkflowExpression<string> pageId, WorkflowExpression<string> subscriberId)
         {

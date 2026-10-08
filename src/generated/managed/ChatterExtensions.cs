@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePostInGroupResponse> __BuildCreatePostInGroup(WorkflowExpression<string> bodygroupID, WorkflowExpression<string> createPostInGroupText)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupMembersResponse> __BuildListGroupMembers(WorkflowExpression<string> groupId)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupMemberResponse> __BuildAddUserToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> bodysalesforceUserID)
         {
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserUserResponse> __BuildGetUser(WorkflowExpression<string> userId)
         {
@@ -123,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPostResponse> __BuildGet(WorkflowExpression<string> postId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateRecord(WorkflowExpression<string> tableId, WorkflowExpression<object> dynamicTableSchema = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetRecord(WorkflowExpression<string> tableId, WorkflowExpression<string> recordId)
         {
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateRecord(WorkflowExpression<string> tableId, WorkflowExpression<string> recordId, WorkflowExpression<object> dynamicTableSchema = null)
         {

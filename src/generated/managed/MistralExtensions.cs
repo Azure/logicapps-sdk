@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatCompletionResponse> __BuildCreateChatCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<bool> bodystream = null, WorkflowExpression<bool> bodysafePrompt = null, WorkflowExpression<int> bodyrandomSeed = null)
         {
@@ -133,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmbeddingResponse> __BuildCreateEmbedding(WorkflowExpression<string> bodymodel = null, WorkflowExpression<string[]> bodyinput = null, WorkflowExpression<bodyencodingFormatInput> bodyencodingFormat = null)
         {

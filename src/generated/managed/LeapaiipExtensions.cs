@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImagesGetResponseItem[]> __BuildImagesGet(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<bool> onlyFinished = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImagePostResponse> __BuildImage(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<string> bodyprompt, WorkflowExpression<string> bodynegativePrompt = null, WorkflowExpression<int> bodysteps = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<int> bodynumberOfImages = null, WorkflowExpression<int> bodypromptStrength = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<string> bodywebhookUrl = null)
         {
@@ -135,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<string> inferenceId)
         {
@@ -157,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildImageDelete(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<string> inferenceId)
         {
@@ -179,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelPostResponse> __BuildModel(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodysubjectKeyword = null, WorkflowExpression<string> bodysubjectType = null, WorkflowExpression<string> bodywebhookUrl = null, WorkflowExpression<string[]> bodyimageSampleUrls = null)
         {
@@ -250,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelGetResponse> __BuildModelGet(WorkflowExpression<modelIdInput> modelId)
         {
@@ -271,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelDeleteResponse> __BuildModelDelete(WorkflowExpression<modelIdInput> modelId)
         {
@@ -301,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MusicPostResponse> __BuildMusic(WorkflowExpression<string> bodyprompt, WorkflowExpression<bodymodeInput> bodymode, WorkflowExpression<int> bodyduration)
         {
@@ -337,7 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MusicGetResponse> __BuildMusicGet(WorkflowExpression<string> inferenceId)
         {

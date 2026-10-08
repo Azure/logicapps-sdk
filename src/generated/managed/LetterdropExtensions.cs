@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberPostResponse> __BuildSubscriber(WorkflowExpression<string> bodyemail, WorkflowExpression<bool> bodywelcomeEmail = null, WorkflowExpression<string> bodyadditionalDataname = null, WorkflowExpression<string> bodyadditionalDatalocation = null, WorkflowExpression<string> bodyadditionalDatatitle = null, WorkflowExpression<string> bodyadditionalDatacompany = null, WorkflowExpression<int> bodyadditionalDatacompanySize = null, WorkflowExpression<string> bodyadditionalDataindustry = null, WorkflowExpression<string> bodyadditionalDatatwitter = null, WorkflowExpression<int> bodyadditionalDatatwitterFollowers = null, WorkflowExpression<string> bodyadditionalDatalinkedin = null, WorkflowExpression<string> bodyadditionalDatagithub = null, WorkflowExpression<string> bodyadditionalDatafacebook = null)
         {
@@ -140,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberRemovePostResponse> __BuildSubscriberRemove(WorkflowExpression<string> email)
         {
@@ -162,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostsGetPostResponse> __BuildPostsGet(WorkflowExpression<string> bodyquery, WorkflowExpression<int> bodyoffset = null, WorkflowExpression<int> bodylimit = null)
         {
@@ -216,7 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostGetPostResponse> __BuildPostGet(WorkflowExpression<string> id)
         {
@@ -237,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostDraftPostResponse> __BuildPostDraft(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodysubtitle = null)
         {
@@ -277,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectGetPostResponse> __BuildProjectGet(WorkflowExpression<string> id)
         {
@@ -298,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdeaCreatePostResponse> __BuildIdeaCreate(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodysuggestedBy, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodykeyword = null, WorkflowExpression<string[]> bodylabels = null)
         {
@@ -352,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdeaAssignPostResponse> __BuildIdeaAssign(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyassignTo, WorkflowExpression<string> bodypublishOn, WorkflowExpression<string[]> bodyapprovers = null)
         {

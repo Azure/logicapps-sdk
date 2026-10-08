@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSignRequestResponse> __BuildSendSignRequest(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodygroupCode, WorkflowExpression<string> bodynotificationsharedLinkemail, WorkflowExpression<string> bodynotificationtext = null, WorkflowExpression<string> bodynotificationdetail = null, WorkflowExpression<string> bodynotificationsharedLinksubject = null, WorkflowExpression<string> bodydocumenttemplateCode = null, WorkflowExpression<string> bodycallbackMails = null)
         {
@@ -124,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSignRequestResponse> __BuildCreateSignRequest(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodygroupCode, WorkflowExpression<string> bodydocumenttemplateCode = null)
         {

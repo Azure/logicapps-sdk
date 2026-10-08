@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFtpFileContent(WorkflowExpression<string> filePath)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFtpFileContentV2(WorkflowExpression<string> filePath)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileMetadataOutput> __BuildGetFileMetadata(WorkflowExpression<string> filePath)
         {
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFileOutput> __BuildCreateFile(WorkflowExpression<string> filePath, WorkflowExpression<object> fileContent, WorkflowExpression<bool> getAllFileMetadata = null)
         {
@@ -128,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateFileOutput> __BuildUpdateFile(WorkflowExpression<string> filePath, WorkflowExpression<object> fileContent, WorkflowExpression<bool> getAllFileMetadata = null)
         {
@@ -161,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeleteFtpFile(WorkflowExpression<string> filePath, WorkflowExpression<bool> skipIfFileNotPresent = null)
         {
@@ -192,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFilesInFolderOutputItem[]> __BuildListFilesInFolder(WorkflowExpression<string> folderPath)
         {
@@ -217,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> __BuildExtractArchive(WorkflowExpression<string> folderPath, WorkflowExpression<string> filePath = null, WorkflowExpression<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, WorkflowExpression<object> fileContent = null)
         {

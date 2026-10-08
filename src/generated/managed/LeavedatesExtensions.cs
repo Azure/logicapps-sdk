@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDepartmentsResponseItem[]> __BuildGetDepartments(WorkflowExpression<string> company)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLeaveTypesResponseItem[]> __BuildGetLeaveTypes(WorkflowExpression<string> company)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllowanceSummaryResponse> __BuildGetAllowanceSummary(WorkflowExpression<string> company, WorkflowExpression<string> date, WorkflowExpression<int> page, WorkflowExpression<string> employee = null, WorkflowExpression<string> department = null, WorkflowExpression<string> allowanceType = null)
         {
@@ -105,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEmployeesResponseItem[]> __BuildGetEmployees(WorkflowExpression<string> company, WorkflowExpression<string> departmentId = null)
         {
@@ -130,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddEmploymentResponse> __BuildAddEmployment(WorkflowExpression<string> bodyfullName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodycompanyId, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodyapproverId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodyemployeeCode = null, WorkflowExpression<bool> bodyisAdmin = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyholidayLocation = null, WorkflowExpression<string> bodyallowanceUnitIsDays = null, WorkflowExpression<string> bodyminutesPerWorkingDay = null)
         {
@@ -254,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDetailsEmployeeResponse> __BuildGetDetailsEmployee(WorkflowExpression<string> id, WorkflowExpression<string> company)
         {
@@ -277,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteEmployment(WorkflowExpression<string> id, WorkflowExpression<string> bodycompanyId)
         {
@@ -309,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateEmploymentResponse> __BuildUpdateEmployment(WorkflowExpression<string> id, WorkflowExpression<string> bodyfullName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodycompanyId, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodyapproverId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodyemployeeCode = null, WorkflowExpression<bool> bodyisAdmin = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyholidayLocation = null, WorkflowExpression<string> bodyallowanceUnitIsDays = null, WorkflowExpression<string> bodyminutesPerWorkingDay = null)
         {
@@ -434,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLeaveDetailsResponse> __BuildGetLeaveDetails(WorkflowExpression<string> id, WorkflowExpression<string> company)
         {
@@ -457,7 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildUpdateLeave(WorkflowExpression<string> id, WorkflowExpression<string> bodycompanyId, WorkflowExpression<string> bodytypeId, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodyreason = null, WorkflowExpression<bodyleaveBreakdownsInputItem[]> bodyleaveBreakdowns = null)
         {
@@ -520,7 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildRequestLeave(WorkflowExpression<string> bodycompanyId, WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodytypeId, WorkflowExpression<string> bodyreason = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<bodyleaveBreakdownsInputItem2[]> bodyleaveBreakdowns = null)
         {
@@ -591,7 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildApproveLeave(WorkflowExpression<string> id, WorkflowExpression<string> company)
         {
@@ -614,7 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancelLeave(WorkflowExpression<string> id, WorkflowExpression<string> company)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateSwissQrBill(WorkflowExpression<bodycrAddressTypeInput> bodycrAddressType, WorkflowExpression<string> bodycrName, WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodyiban, WorkflowExpression<string> bodyamount = null, WorkflowExpression<string> bodyav1Parameters = null, WorkflowExpression<string> bodyav2Parameters = null, WorkflowExpression<string> bodybillingInfo = null, WorkflowExpression<string> bodycrCity = null, WorkflowExpression<string> bodycrPostalCode = null, WorkflowExpression<string> bodycrStreetOrAddressLine1 = null, WorkflowExpression<string> bodycrStreetOrAddressLine2 = null, WorkflowExpression<bodycurrencyInput> bodycurrency = null, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodylanguageTypeInput> bodylanguageType = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bodyreferenceTypeInput> bodyreferenceType = null, WorkflowExpression<bodyseperatorLineInput> bodyseperatorLine = null, WorkflowExpression<bodyudAddressTypeInput> bodyudAddressType = null, WorkflowExpression<string> bodyudCity = null, WorkflowExpression<string> bodyudName = null, WorkflowExpression<string> bodyudPostalCode = null, WorkflowExpression<string> bodyudStreetOrAddressLine1 = null, WorkflowExpression<string> bodyudStreetOrAddressLine2 = null, WorkflowExpression<string> bodyunstructuredMessage = null)
         {
@@ -262,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildReadSwissQrBill(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -307,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> __BuildSplitDocBySwissQrCode(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodysplitBarcodePageInput> bodysplitBarcodePage, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, WorkflowExpression<string> bodypdfRenderDpi = null)
         {

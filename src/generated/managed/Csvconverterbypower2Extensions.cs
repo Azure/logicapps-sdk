@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A000AV01CV01ConvertAllFormats> __BuildT01A000AV01CV01ConvertAllFormats(WorkflowExpression<string> dtoRequestT01A000AV01CV01ConvertAllFormatsinputData, WorkflowExpression<string> dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat = null, WorkflowExpression<string> dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A001AV01CV01ConvertCsvToJson> __BuildT01A001AV01CV01ConvertCsvToJson(WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator = null, WorkflowExpression<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders = null, WorkflowExpression<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectHeader = null, WorkflowExpression<int> dtoRequestT01A001AV01CV01ConvertCsvToJsonheaderRowIndex = null, WorkflowExpression<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsondetectionAccuracy = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonnullValue = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonrowsToSkip = null, WorkflowExpression<int> dtoRequestT01A001AV01CV01ConvertCsvToJsonstopAtRow = null, WorkflowExpression<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonquoteCharacter = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonescapeCharacter = null, WorkflowExpression<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns = null, WorkflowExpression<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns = null)
         {
@@ -244,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv> __BuildT01A002AV01CV01ConvertJsonToCsv(WorkflowExpression<string> dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON)
         {
@@ -274,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel> __BuildT01A003AV01CV01ConvertCsvToExcel(WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectHeader = null, WorkflowExpression<int> dtoRequestT01A003AV01CV01ConvertCsvToExcelheaderRowIndex = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExceldetectionAccuracy = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelnullValue = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelrowsToSkip = null, WorkflowExpression<int> dtoRequestT01A003AV01CV01ConvertCsvToExcelstopAtRow = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelquoteCharacter = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelescapeCharacter = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectWrappedLines = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelrenameColumns = null, WorkflowExpression<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelincludeColumns = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent = null, WorkflowExpression<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText = null, WorkflowExpression<int> dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth = null)
         {
@@ -497,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv> __BuildT01A004AV01CV01ConvertExcelToCsv(WorkflowExpression<string> dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile)
         {
@@ -527,7 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml> __BuildT01A005AV01CV01ConvertCsvToHtml(WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator = null, WorkflowExpression<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectHeader = null, WorkflowExpression<int> dtoRequestT01A005AV01CV01ConvertCsvToHtmlheaderRowIndex = null, WorkflowExpression<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmldetectionAccuracy = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlnullValue = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrowsToSkip = null, WorkflowExpression<int> dtoRequestT01A005AV01CV01ConvertCsvToHtmlstopAtRow = null, WorkflowExpression<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlquoteCharacter = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlescapeCharacter = null, WorkflowExpression<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns = null, WorkflowExpression<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns = null)
         {
@@ -709,7 +703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv> __BuildT01A006AV01CV01ConvertHtmlToCsv(WorkflowExpression<string> dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable)
         {
@@ -739,7 +732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A007AV01CV01ConvertCsvToXml> __BuildT01A007AV01CV01ConvertCsvToXml(WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator = null, WorkflowExpression<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectHeader = null, WorkflowExpression<int> dtoRequestT01A007AV01CV01ConvertCsvToXmlheaderRowIndex = null, WorkflowExpression<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmldetectionAccuracy = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlnullValue = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlrowsToSkip = null, WorkflowExpression<int> dtoRequestT01A007AV01CV01ConvertCsvToXmlstopAtRow = null, WorkflowExpression<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlquoteCharacter = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlescapeCharacter = null, WorkflowExpression<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns = null, WorkflowExpression<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns = null)
         {
@@ -921,7 +913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv> __BuildT01A008AV01CV01ConvertXmlToCsv(WorkflowExpression<string> dtoRequestT01A008AV01CV01ConvertXmlToCsvxML)
         {
@@ -951,7 +942,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml> __BuildT01A009AV01CV01ConvertCsvToYaml(WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator = null, WorkflowExpression<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectHeader = null, WorkflowExpression<int> dtoRequestT01A009AV01CV01ConvertCsvToYamlheaderRowIndex = null, WorkflowExpression<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamldetectionAccuracy = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlnullValue = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlrowsToSkip = null, WorkflowExpression<int> dtoRequestT01A009AV01CV01ConvertCsvToYamlstopAtRow = null, WorkflowExpression<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlquoteCharacter = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlescapeCharacter = null, WorkflowExpression<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns = null, WorkflowExpression<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns = null)
         {
@@ -1133,7 +1123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv> __BuildT01A010AV01CV01ConvertYamlToCsv(WorkflowExpression<string> dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML)
         {
@@ -1163,7 +1152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable> __BuildT01A011AV01CV01ConvertCsvToTextTable(WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator = null, WorkflowExpression<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders = null, WorkflowExpression<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectHeader = null, WorkflowExpression<int> dtoRequestT01A011AV01CV01ConvertCsvToTextTableheaderRowIndex = null, WorkflowExpression<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTabledetectionAccuracy = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablenullValue = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerowsToSkip = null, WorkflowExpression<int> dtoRequestT01A011AV01CV01ConvertCsvToTextTablestopAtRow = null, WorkflowExpression<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablequoteCharacter = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTableescapeCharacter = null, WorkflowExpression<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns = null, WorkflowExpression<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns = null)
         {

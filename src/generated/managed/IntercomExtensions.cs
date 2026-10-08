@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserResponse> __BuildCreateUser(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycompanyId = null)
         {
@@ -78,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadResponse> __BuildCreateLead(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodyavatarimageURL = null, WorkflowExpression<string> bodycompanyId = null)
         {
@@ -144,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserResponse> __BuildGetUser(WorkflowExpression<string> userId)
         {
@@ -165,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadResponse> __BuildGetLead(WorkflowExpression<string> contactId)
         {

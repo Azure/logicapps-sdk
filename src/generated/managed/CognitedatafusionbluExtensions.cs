@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTimeSeriesResponse> __BuildListTimeSeries(WorkflowExpression<string> project, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeMetadata = null, WorkflowExpression<string> cursor = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> assetIds = null, WorkflowExpression<string> rootAssetIds = null, WorkflowExpression<string> externalIdPrefix = null, WorkflowExpression<string> accept = null)
         {
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilterTimeSeriesResponse> __BuildFilterTimeSeries(WorkflowExpression<string> project, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyfiltername = null, WorkflowExpression<string> bodyfilterunit = null, WorkflowExpression<bool> bodyfilterisString = null, WorkflowExpression<bool> bodyfilterisStep = null, WorkflowExpression<int[]> bodyfilterassetIds = null, WorkflowExpression<string[]> bodyfilterassetExternalIds = null, WorkflowExpression<int[]> bodyfilterrootAssetIds = null, WorkflowExpression<bodyfilterassetSubtreeIdsInputItem[]> bodyfilterassetSubtreeIds = null, WorkflowExpression<bodyfilterdataSetIdsInputItem[]> bodyfilterdataSetIds = null, WorkflowExpression<string> bodyfilterexternalIdPrefix = null, WorkflowExpression<int> bodyfiltercreatedTimemax = null, WorkflowExpression<int> bodyfiltercreatedTimemin = null, WorkflowExpression<int> bodyfilterlastUpdatedTimemax = null, WorkflowExpression<int> bodyfilterlastUpdatedTimemin = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<string> bodycursor = null, WorkflowExpression<string> bodypartition = null, WorkflowExpression<bodysortInputItem[]> bodysort = null)
         {
@@ -278,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchTimeSeriesResponse> __BuildSearchTimeSeries(WorkflowExpression<string> project, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyfiltername = null, WorkflowExpression<string> bodyfilterunit = null, WorkflowExpression<bool> bodyfilterisString = null, WorkflowExpression<bool> bodyfilterisStep = null, WorkflowExpression<int[]> bodyfilterassetIds = null, WorkflowExpression<string[]> bodyfilterassetExternalIds = null, WorkflowExpression<int[]> bodyfilterrootAssetIds = null, WorkflowExpression<bodyfilterassetSubtreeIdsInputItem[]> bodyfilterassetSubtreeIds = null, WorkflowExpression<bodyfilterdataSetIdsInputItem[]> bodyfilterdataSetIds = null, WorkflowExpression<string> bodyfilterexternalIdPrefix = null, WorkflowExpression<int> bodyfiltercreatedTimemax = null, WorkflowExpression<int> bodyfiltercreatedTimemin = null, WorkflowExpression<int> bodyfilterlastUpdatedTimemax = null, WorkflowExpression<int> bodyfilterlastUpdatedTimemin = null, WorkflowExpression<string> bodysearchname = null, WorkflowExpression<string> bodysearchdescription = null, WorkflowExpression<string> bodysearchquery = null, WorkflowExpression<int> bodylimit = null)
         {
@@ -490,7 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildQueryGraphQL(WorkflowExpression<string> project, WorkflowExpression<string> space, WorkflowExpression<string> datamodel, WorkflowExpression<string> version, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyquery = null)
         {

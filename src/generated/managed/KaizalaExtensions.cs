@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> groupId, WorkflowExpression<string> requestmessage, WorkflowExpression<string> requestsubscribers = null, WorkflowExpression<sendToAllInput> sendToAll = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendActionResponse> __BuildSendActions(WorkflowExpression<string> groupId, WorkflowExpression<actionTypeInput> actionType = null, WorkflowExpression<string> id = null, WorkflowExpression<object> requestactionBody = null, WorkflowExpression<string> requestsubscribers = null, WorkflowExpression<sendToAllInput> sendToAll = null)
         {
@@ -110,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendActionResponse> __BuildSendActionReminder(WorkflowExpression<string> groupId, WorkflowExpression<actionTypeInput> actionType, WorkflowExpression<string> requestsubscribers = null, WorkflowExpression<object> requestactionId = null, WorkflowExpression<sendToAllInput> sendToAll = null)
         {
@@ -157,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostReactionResponse> __BuildPostReaction(WorkflowExpression<string> groupId, WorkflowExpression<string> requestsourceGroupId = null, WorkflowExpression<string> requestmessageId = null, WorkflowExpression<requestreactionTypeInput> requestreactionType = null, WorkflowExpression<string> requestcomment = null)
         {
@@ -213,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendReply(WorkflowExpression<string> groupId, WorkflowExpression<string> requestmessageId, WorkflowExpression<string> requestmessage)
         {
@@ -247,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestwelcomeMessage, WorkflowExpression<string> requestmembers = null, WorkflowExpression<requestgroupTypeInput> requestgroupType = null, WorkflowExpression<string> requestshortDescription = null, WorkflowExpression<string> requestlongDescription = null)
         {
@@ -308,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddGroupToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string[]> requestsubGroups)
         {
@@ -339,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateSubgroup(WorkflowExpression<string> groupId, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestwelcomeMessage, WorkflowExpression<string> requestmembers = null, WorkflowExpression<requestgroupTypeInput> requestgroupType = null, WorkflowExpression<string> requestshortDescription = null, WorkflowExpression<string> requestlongDescription = null)
         {
@@ -401,7 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveGroupFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> subGroupId)
         {
@@ -423,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddUserToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> requestmembers)
         {
@@ -454,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddSubscriberToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> requestsubscribers)
         {
@@ -485,7 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveUserFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> memberId)
         {
@@ -507,7 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaFileContent(WorkflowExpression<object> fileContent)
         {
@@ -528,7 +515,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaFromURL(WorkflowExpression<string> mediaUrlmediaUrl)
         {
@@ -582,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTrigger(WorkflowExpression<string> webhookId)
         {

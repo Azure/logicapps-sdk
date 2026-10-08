@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatPostResponse> __BuildChat(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodyn = null, WorkflowExpression<string> bodystop = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<double> bodyfrequencyPenalty = null, WorkflowExpression<string> bodyuser = null)
         {
@@ -116,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FineTuningPostResponse> __BuildFineTuning(WorkflowExpression<string> bodytrainingFile, WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyvalidationFile = null, WorkflowExpression<int> bodyhyperparametersnEpochs = null, WorkflowExpression<string> bodysuffix = null)
         {
@@ -178,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FineTuningGetResponse> __BuildFineTuningGet(WorkflowExpression<string> fineTuningJobId)
         {
@@ -199,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FineTuningCancelPostResponse> __BuildFineTuningCancel(WorkflowExpression<string> fineTuningJobId)
         {
@@ -220,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FineTuningEventsGetResponse> __BuildFineTuningEventsGet(WorkflowExpression<string> fineTuningJobId, WorkflowExpression<string> after = null, WorkflowExpression<int> limit = null)
         {
@@ -247,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModerationPostResponse> __BuildModeration(WorkflowExpression<string> bodyinput, WorkflowExpression<bodymodelInput> bodymodel = null)
         {
@@ -294,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmbedPostResponse> __BuildEmbed(WorkflowExpression<string> bodyinput, WorkflowExpression<string> bodymodel = null, WorkflowExpression<bodyencodingFormatInput> bodyencodingFormat = null, WorkflowExpression<string> bodyuser = null)
         {
@@ -365,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudioSpeechPostResponse> __BuildAudioSpeech(WorkflowExpression<bodymodelInput> bodymodel, WorkflowExpression<string> bodyinput, WorkflowExpression<bodyvoiceInput> bodyvoice, WorkflowExpression<bodyresponseFormatInput> bodyresponseFormat = null, WorkflowExpression<double> bodyspeed = null)
         {
@@ -435,7 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudioTranscriptionPostResponse> __BuildAudioTranscription(WorkflowExpression<object> file, WorkflowExpression<string> model, WorkflowExpression<string> language = null, WorkflowExpression<string> prompt = null, WorkflowExpression<double> temperature = null)
         {
@@ -460,7 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudioTranslationPostResponse> __BuildAudioTranslation(WorkflowExpression<object> file, WorkflowExpression<string> model, WorkflowExpression<string> prompt = null, WorkflowExpression<double> temperature = null)
         {
@@ -484,7 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImagePostResponse> __BuildImage(WorkflowExpression<string> bodyprompt, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<int> bodyn = null, WorkflowExpression<bodyqualityInput> bodyquality = null, WorkflowExpression<bodysizeInput> bodysize = null, WorkflowExpression<bodystyleInput> bodystyle = null, WorkflowExpression<string> bodyuser = null)
         {
@@ -588,7 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageEditPostResponse> __BuildImageEdit(WorkflowExpression<object> image, WorkflowExpression<string> prompt = null, WorkflowExpression<object> mask = null, WorkflowExpression<string> model = null, WorkflowExpression<int> n = null, WorkflowExpression<sizeInput> size = null, WorkflowExpression<string> user = null)
         {
@@ -615,7 +603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageVariationPostResponse> __BuildImageVariation(WorkflowExpression<object> image, WorkflowExpression<string> model = null, WorkflowExpression<int> n = null, WorkflowExpression<sizeInput> size = null, WorkflowExpression<string> user = null)
         {

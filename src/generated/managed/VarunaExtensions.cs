@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetADocument(WorkflowExpression<string> documentType, WorkflowExpression<string> documentId)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateADocumentResponse> __BuildCreateADocument(WorkflowExpression<string> documentType, WorkflowExpression<object> createSchema = null)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteADocumentResponse> __BuildDeleteADocument(WorkflowExpression<string> documentType, WorkflowExpression<string> documentId)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateADocumentResponse> __BuildUpdateADocument(WorkflowExpression<string> documentType, WorkflowExpression<string> documentId, WorkflowExpression<object> updateSchema = null)
         {
@@ -116,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGetAllDocumentsByType(WorkflowExpression<string> documentType)
         {

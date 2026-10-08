@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAddressBookResponse> __BuildCreateAddressBook(WorkflowExpression<regionInput> region, WorkflowExpression<string> bodyname, WorkflowExpression<bodyvisibilityInput> bodyvisibility = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> addressBook, WorkflowExpression<regionInput> region, WorkflowExpression<string> bodyemail, WorkflowExpression<bodydataFieldsInputItem[]> bodydataFields = null, WorkflowExpression<bodyemailTypeInput> bodyemailType = null, WorkflowExpression<bodyoptInTypeInput> bodyoptInType = null)
         {
@@ -141,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendEmailCampaignResponse> __BuildSendEmailCampaign(WorkflowExpression<regionInput> region, WorkflowExpression<int> bodycampaignID, WorkflowExpression<int[]> bodyaddressBookIDs = null, WorkflowExpression<int[]> bodycontactIDs = null, WorkflowExpression<string> bodysendDate = null)
         {
@@ -194,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendTransactionalEmailUsingTriggeredCampagin(WorkflowExpression<regionInput> region, WorkflowExpression<int> bodycampaignID, WorkflowExpression<string[]> bodytoAddresses, WorkflowExpression<bodypersonalizationValuesInputItem[]> bodypersonalizationValues = null)
         {
@@ -236,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProgramEnrolmentResponse> __BuildCreateProgramEnrolment(WorkflowExpression<regionInput> region, WorkflowExpression<int> bodyprogramID, WorkflowExpression<int[]> bodyaddressBooks = null, WorkflowExpression<int[]> bodycontacts = null)
         {
@@ -282,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendSmsMessage(WorkflowExpression<string> telephoneNumber, WorkflowExpression<regionInput> region, WorkflowExpression<string> bodymessage)
         {
@@ -315,7 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBulkContactsImport(WorkflowExpression<string> addressBook, WorkflowExpression<object> filedata)
         {
@@ -337,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetContactsImportStatus(WorkflowExpression<string> id)
         {
@@ -358,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetContactsImportReport(WorkflowExpression<string> id)
         {

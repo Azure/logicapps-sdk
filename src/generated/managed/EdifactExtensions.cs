@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateControlNumberResult[]> __BuildAddOrUpdateControlNumbers(WorkflowExpression<ReplicableControlNumberContent[]> controlNumberContents = null)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement> __BuildDecode(WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<payloadCharacterSetInput> payloadCharacterSet = null, WorkflowExpression<bool> preserveInterchange = null, WorkflowExpression<bool> suspendInterchangeOnError = null, WorkflowExpression<string> body = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdiAgreementProperties> __BuildResolveAgreement(WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdifactEncodeResponse> __BuildEncodeResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
         {
@@ -195,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdifactEncodeV2Response> __BuildEncodeV2ResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
         {
@@ -240,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdifactBatchEncodeResponse> __BuildBatchEncodeResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<string> messagesToBatchbatchName = null, WorkflowExpression<string> messagesToBatchpartitionName = null, WorkflowExpression<BatchItem[]> messagesToBatchitems = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null)
         {
@@ -311,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdifactBatchEncodeResponse> __BuildBatchEncodeResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> senderQualifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> receiverQualifier, WorkflowExpression<string> messagesToBatchbatchName = null, WorkflowExpression<string> messagesToBatchpartitionName = null, WorkflowExpression<BatchItem[]> messagesToBatchitems = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null)
         {
@@ -388,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdifactEncodeResponse> __BuildEncodeResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> senderQualifier = null, WorkflowExpression<string> receiverQualifier = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
         {
@@ -441,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdifactEncodeV2Response> __BuildEncodeV2ResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> senderQualifier = null, WorkflowExpression<string> receiverQualifier = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
         {

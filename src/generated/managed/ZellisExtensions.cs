@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildValidateNotification(WorkflowExpression<string> xZipSignature, WorkflowExpression<string> bodypayload)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StaticResponseWriteSchema> __BuildAmendObject(WorkflowExpression<entityInput> entity, WorkflowExpression<object> body = null)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetZellisObjects(WorkflowExpression<string> entity, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> top = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<string> select = null)
         {
@@ -112,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StaticResponseWriteSchema> __BuildUpdateObject(WorkflowExpression<entityInput> entity, WorkflowExpression<object> body = null)
         {

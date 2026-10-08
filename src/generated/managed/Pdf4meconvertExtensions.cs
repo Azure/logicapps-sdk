@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertHtmlToPdf(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocName, WorkflowExpression<string> bodyindexFilePath = null, WorkflowExpression<bodylayoutInput> bodylayout = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<double> bodyscale = null, WorkflowExpression<string> bodytopMargin = null, WorkflowExpression<string> bodybottomMargin = null, WorkflowExpression<string> bodyleftMargin = null, WorkflowExpression<string> bodyrightMargin = null, WorkflowExpression<bool> bodyprintBackground = null)
         {
@@ -194,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertJsonToExcel(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<int> bodyfirstRow = null, WorkflowExpression<int> bodyfirstColumn = null, WorkflowExpression<string> bodyworksheetName = null, WorkflowExpression<bool> bodyconvertNumberAndDate = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<string> bodynumberFormat = null, WorkflowExpression<bool> bodyignoreNullValues = null, WorkflowExpression<bool> bodyisTitleBold = null, WorkflowExpression<bool> bodyisTitleWrapText = null)
         {
@@ -372,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertMdToPdf(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocName, WorkflowExpression<string> bodymdFilePath = null)
         {
@@ -412,7 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertToPdf(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -457,7 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertUrlToPdf(WorkflowExpression<string> bodywebUrl, WorkflowExpression<bodyauthTypeInput> bodyauthType = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodypassword = null)
         {
@@ -518,7 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertVisio(WorkflowExpression<schemaValInput> schemaVal = null, WorkflowExpression<object> operation = null)
         {
@@ -544,7 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertWordToPdfForm(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -589,7 +582,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreatePdfA(WorkflowExpression<bodycomplianceInput> bodycompliance, WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bool> bodyallowUpgrade = null, WorkflowExpression<bool> bodyallowDowngrade = null)
         {
@@ -671,7 +663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCustomAPI(WorkflowExpression<string> featurePath, WorkflowExpression<string> body = null)
         {
@@ -695,7 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPdfToExcel(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyqualityTypeInput> bodyqualityType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodymergeAllSheets = null, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bool> bodyisAsync = null)
         {
@@ -801,7 +791,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPdfToPowerPoint(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodyqualityTypeInput> bodyqualityType = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyisAsync = null)
         {
@@ -887,7 +876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPdfToWord(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyqualityTypeInput> bodyqualityType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyisAsync = null)
         {

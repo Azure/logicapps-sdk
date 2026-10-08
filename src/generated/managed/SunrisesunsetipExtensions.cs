@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDataResponse> __BuildGetData(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> date = null, WorkflowExpression<formattedInput> formatted = null)
         {

@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FormSubAddResponse> __BuildFormSubAdd(WorkflowExpression<string> formId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<int[]> bodytags = null)
         {
@@ -88,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FormSubListResponse> __BuildFormSubList(WorkflowExpression<string> formId, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<subscriberStateInput> subscriberState = null, WorkflowExpression<int> page = null)
         {
@@ -129,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SequenceSubAddResponse> __BuildSequenceSubAdd(WorkflowExpression<string> sequenceId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<int[]> bodytags = null)
         {
@@ -182,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SequenceSubListResponse> __BuildSequenceSubList(WorkflowExpression<string> sequenceId, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<subscriberStateInput> subscriberState = null, WorkflowExpression<int> page = null)
         {
@@ -223,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagAddResponse> __BuildTagAdd(WorkflowExpression<string> bodytagname = null)
         {
@@ -265,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagSubResponse> __BuildTagSub(WorkflowExpression<string> tagId, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<int[]> bodytags = null)
         {
@@ -322,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagSubRemoveResponse> __BuildTagSubRemove(WorkflowExpression<string> subscriberId, WorkflowExpression<string> tagId)
         {
@@ -344,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagSubRemoveEmailResponse> __BuildTagSubRemoveEmail(WorkflowExpression<string> tagId, WorkflowExpression<string> bodyemail)
         {
@@ -375,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagSubListResponse> __BuildTagSubList(WorkflowExpression<string> tagId, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<subscriberStateInput> subscriberState = null, WorkflowExpression<int> page = null)
         {
@@ -407,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberListResponse> __BuildSubscriberList(WorkflowExpression<string> from = null, WorkflowExpression<string> to = null, WorkflowExpression<string> updatedFrom = null, WorkflowExpression<string> updatedTo = null, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<string> emailAddress = null, WorkflowExpression<int> page = null)
         {
@@ -453,7 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberGetResponse> __BuildSubscriberGet(WorkflowExpression<string> subscriberId)
         {
@@ -474,7 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberUpdateResponse> __BuildSubscriberUpdate(WorkflowExpression<string> subscriberId, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodyemailAddress = null)
         {
@@ -524,7 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberUnsubResponse> __BuildSubscriberUnsub(WorkflowExpression<string> bodyemail)
         {
@@ -554,7 +541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriberTagsResponse> __BuildSubscriberTags(WorkflowExpression<string> subscriberId)
         {
@@ -584,7 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BroadcastAddResponse> __BuildBroadcastAdd(WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyemailLayoutTemplate = null, WorkflowExpression<bool> bodyPublic = null, WorkflowExpression<string> bodypublishedAt = null, WorkflowExpression<string> bodysendAt = null, WorkflowExpression<string> bodythumbnailAlt = null, WorkflowExpression<string> bodythumbnailUrl = null)
         {
@@ -681,7 +666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BroadcastGetResponse> __BuildBroadcastGet(WorkflowExpression<string> broadcastId)
         {
@@ -702,7 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BroadcastUpdateResponse> __BuildBroadcastUpdate(WorkflowExpression<string> broadcastId, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyemailLayoutTemplate = null, WorkflowExpression<bool> bodyPublic = null, WorkflowExpression<string> bodypublishedAt = null, WorkflowExpression<string> bodysendAt = null, WorkflowExpression<string> bodythumbnailAlt = null, WorkflowExpression<string> bodythumbnailUrl = null)
         {
@@ -800,7 +783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildBroadcastDelete(WorkflowExpression<string> broadcastId)
         {
@@ -821,7 +803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BroadcastGetStatResponse> __BuildBroadcastGetStat(WorkflowExpression<string> broadcastId)
         {
@@ -842,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PurchaseListResponse> __BuildPurchaseList(WorkflowExpression<int> page = null)
         {
@@ -865,7 +845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PurchaseAddResponse> __BuildPurchaseAdd(WorkflowExpression<string> bodypurchasetransactionId = null, WorkflowExpression<string> bodypurchaseemailAddress = null, WorkflowExpression<string> bodypurchasefirstName = null, WorkflowExpression<string> bodypurchasecurrency = null, WorkflowExpression<string> bodypurchasetransactionTime = null, WorkflowExpression<int> bodypurchasesubtotal = null, WorkflowExpression<int> bodypurchasetax = null, WorkflowExpression<int> bodypurchaseshipping = null, WorkflowExpression<int> bodypurchasediscount = null, WorkflowExpression<int> bodypurchasetotal = null, WorkflowExpression<string> bodypurchasestatus = null, WorkflowExpression<bodypurchaseproductsInputItem[]> bodypurchaseproducts = null)
         {
@@ -984,7 +963,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PurchaseGetResponse> __BuildPurchaseGet(WorkflowExpression<string> purchaseId)
         {

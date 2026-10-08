@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFlightsResponse> __BuildListFlights(WorkflowExpression<string> flag = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> depIata = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> arrIata = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFlightResponse> __BuildGetFlight(WorkflowExpression<string> flightIata = null, WorkflowExpression<string> flightIcao = null)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAirlinesResponse> __BuildListAirlines(WorkflowExpression<string> iataCode = null, WorkflowExpression<string> iataPrefix = null, WorkflowExpression<string> iataAccounting = null, WorkflowExpression<string> icaoCode = null, WorkflowExpression<string> callsign = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> Fields = null)
         {
@@ -126,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRoutesResponse> __BuildListRoutes(WorkflowExpression<string> depIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> arrIata = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> airlineIcao = null, WorkflowExpression<string> airlineIata = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> Fields = null)
         {
@@ -173,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSchedulesResponse> __BuildListSchedules(WorkflowExpression<string> depIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> arrIata = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> airlineIcao = null, WorkflowExpression<string> airlineIata = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> Fields = null)
         {
@@ -220,7 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAirportsResponse> __BuildListAirports(WorkflowExpression<string> iataCode = null, WorkflowExpression<string> icaoCode = null, WorkflowExpression<string> cityCode = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> Fields = null)
         {
@@ -255,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCountriesResponse> __BuildListCountries(WorkflowExpression<string> code = null, WorkflowExpression<string> code3 = null, WorkflowExpression<string> continent = null, WorkflowExpression<string> Fields = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadFileResponse> __BuildUploadFile(WorkflowExpression<string> bodybase64, WorkflowExpression<string> bodytitle)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateEnvelopeFromTemplate(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytemplateTitle = null, WorkflowExpression<string> bodyuploadFile = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodysignersInputItem[]> bodysigners = null)
         {
@@ -119,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEnvelopeResponse> __BuildCreateEnvelope(WorkflowExpression<string> bodytitle, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments, WorkflowExpression<bodysignersInputItem[]> bodysigners, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bool> bodyenvelopeOptionssignInSequentialOrder = null, WorkflowExpression<bodycarbonCopiesInputItem[]> bodycarbonCopies = null)
         {

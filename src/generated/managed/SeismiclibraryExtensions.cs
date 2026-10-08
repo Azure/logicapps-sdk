@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildCreateLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<bool> resolveNameCollision = null, WorkflowExpression<string> metadata = null, WorkflowExpression<object> content = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildGetLibraryFileDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildUpdateLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bool> includeResponse = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyexpiresAt = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null, WorkflowExpression<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, WorkflowExpression<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
         {
@@ -163,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> __BuildDownloadLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bool> redirect = null)
         {
@@ -189,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildCreateLibraryFileVersion(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<object> content = null)
         {
@@ -212,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> __BuildDownloadLibraryFileVersion(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> libraryVersionId, WorkflowExpression<bool> redirect = null)
         {
@@ -239,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildCopyLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
         {
@@ -271,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildCreateLibraryFolder(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null)
         {
@@ -323,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildGetLibraryFolderDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -345,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildUpdateLibraryFolder(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null)
         {
@@ -398,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> __BuildCreateNestedLibraryFolders(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> folderPath = null)
         {
@@ -422,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildCopyLibraryFolder(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
         {
@@ -454,7 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildGetLibraryFolderItems(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeExpiration = null, WorkflowExpression<bool> includeProperties = null)
         {
@@ -490,7 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildGetLibraryItemDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -512,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteLibraryItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -534,7 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildCopyLibraryItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
         {
@@ -566,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> __BuildGetLibraryItemVersion(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -588,7 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildGetLibraryItemsByQuery(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> externalId = null, WorkflowExpression<string> externalConnectionId = null)
         {
@@ -615,7 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUpdateThumbnailItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> body = null)
         {
@@ -639,7 +620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> __BuildGetLibraryInstructions(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
         {
@@ -667,7 +647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> __BuildAddLibraryInstruction(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytext = null)
         {
@@ -717,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteLibraryInstruction(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> instructionId)
         {
@@ -740,7 +718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildSubmitLibraryItemToWorkflow(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodycomments = null)
         {
@@ -776,7 +753,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRecallItemFromWorkflow(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodycomments = null)
         {
@@ -812,7 +788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> __BuildPublishLibraryItems(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodypublishAt = null, WorkflowExpression<SeismicContentManagerPublishContentItem[]> bodycontent = null)
         {
@@ -861,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnpublishLibraryItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -883,7 +857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> __BuildUpdateLibraryWorkflowStep(WorkflowExpression<string> approvalWorkflowId, WorkflowExpression<string> stepId, WorkflowExpression<bodyactionInput> bodyaction = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodynextApprovernextApproverUsedId = null, WorkflowExpression<string> bodynextApprovernextApproverUserType = null)
         {
@@ -948,7 +921,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> __BuildGetLibraryWorkflow(WorkflowExpression<string> approvalWorkflowId)
         {
@@ -969,7 +941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> __BuildGetWorkflows(WorkflowExpression<string> teamsiteId = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> currentStepAssignedTo = null, WorkflowExpression<string> status = null)
         {
@@ -1004,7 +975,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildCreateLibraryUrl(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> bodyformat = null, WorkflowExpression<string> bodyurlurl = null, WorkflowExpression<bool> bodyurlopenInNewWindow = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyexpiresAt = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null, WorkflowExpression<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, WorkflowExpression<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
         {
@@ -1124,7 +1094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildGetLibraryUrlDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
         {
@@ -1146,7 +1115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildUpdateLibraryUrl(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bool> includeResponse = null, WorkflowExpression<string> bodyurlurl = null, WorkflowExpression<bool> bodyurlopenInNewWindow = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, WorkflowExpression<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyexpiresAt = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null)
         {
@@ -1264,7 +1232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildCopyLibraryUrl(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
         {

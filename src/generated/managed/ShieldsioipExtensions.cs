@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBadgeCreate(WorkflowExpression<string> label = null, WorkflowExpression<string> labelColor = null, WorkflowExpression<string> message = null, WorkflowExpression<string> color = null, WorkflowExpression<string> style = null, WorkflowExpression<string> logo = null, WorkflowExpression<string> logoColor = null, WorkflowExpression<int> logoWidth = null, WorkflowExpression<string> link = null, WorkflowExpression<int> cacheSeconds = null)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBadgeGet(WorkflowExpression<string> parameters)
         {

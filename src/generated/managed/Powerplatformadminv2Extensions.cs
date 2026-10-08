@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AdvisorActionResponse> __BuildExecuteRecommendationAction(WorkflowExpression<string> bodyrecommendationName, WorkflowExpression<object> bodyparameters, WorkflowExpression<string> actionName, WorkflowExpression<string> apiVersion)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> __BuildGetRecommendations(WorkflowExpression<string> apiVersion)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation> __BuildGetRecommendationResources(WorkflowExpression<string> scenario, WorkflowExpression<string> apiVersion)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TenantApplicationPackageContinuationResponse> __BuildGetTenantApplicationPackage(WorkflowExpression<string> apiVersion)
         {
@@ -121,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApplicationPackageContinuationResponse> __BuildGetEnvironmentApplicationPackage(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<appInstallStateInput> appInstallState = null, WorkflowExpression<string> lcid = null)
         {
@@ -150,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InstancePackage> __BuildInstallApplicationPackage(WorkflowExpression<string> environmentId, WorkflowExpression<string> uniqueName, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodypayloadValue = null)
         {
@@ -188,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InstancePackageOperationPollingResponse> __BuildGetApplicationPackageInstallStatus(WorkflowExpression<string> environmentId, WorkflowExpression<string> operationId, WorkflowExpression<string> apiVersion)
         {
@@ -212,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RoleAssignmentResponse> __BuildListRoleAssignments(WorkflowExpression<string> apiVersion)
         {
@@ -234,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RoleAssignmentResponse> __BuildCreateRoleAssignment(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyprincipalObjectId = null, WorkflowExpression<string> bodyroleDefinitionId = null, WorkflowExpression<string> bodyscope = null, WorkflowExpression<string> bodyprincipalType = null)
         {
@@ -291,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRoleAssignment(WorkflowExpression<string> roleAssignmentId, WorkflowExpression<string> apiVersion)
         {
@@ -314,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RoleDefinitionResponse> __BuildListRoleDefinitions(WorkflowExpression<string> apiVersion)
         {
@@ -336,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListConnectorsResponse> __BuildListConnectors(WorkflowExpression<string> environmentId, WorkflowExpression<string> filter, WorkflowExpression<string> apiVersion)
         {
@@ -361,7 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConnectorByIdResponse> __BuildGetConnectorById(WorkflowExpression<string> environmentId, WorkflowExpression<string> connectorId, WorkflowExpression<string> filter, WorkflowExpression<string> apiVersion)
         {
@@ -387,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotQuarantineStatus> __BuildGetBotQuarantineStatus(WorkflowExpression<string> environmentId, WorkflowExpression<string> botId, WorkflowExpression<string> apiVersion)
         {
@@ -411,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotQuarantineStatus> __BuildSetBotAsQuarantined(WorkflowExpression<string> environmentId, WorkflowExpression<string> botId, WorkflowExpression<string> apiVersion)
         {
@@ -435,7 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotQuarantineStatus> __BuildSetBotAsUnquarantined(WorkflowExpression<string> environmentId, WorkflowExpression<string> botId, WorkflowExpression<string> apiVersion)
         {
@@ -459,7 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildDeleteEnvironmentBackup(WorkflowExpression<string> environmentId, WorkflowExpression<string> backupId, WorkflowExpression<string> apiVersion)
         {
@@ -483,7 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildDisableEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<string> bodyreason = null)
         {
@@ -526,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationExecutionResult> __BuildDisableDisasterRecovery(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
         {
@@ -555,7 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationExecutionResult> __BuildPerformDRDrill(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
         {
@@ -584,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildEnableEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<string> bodyreason = null)
         {
@@ -627,7 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationExecutionResult> __BuildEnableDisasterRecovery(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
         {
@@ -656,7 +634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationExecutionResult> __BuildPerformForceFailover(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodylastSyncTime, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
         {
@@ -695,7 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildRecoverEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
         {
@@ -724,7 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildCopyEnvironment(WorkflowExpression<string> targetEnvironmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodysourceEnvironmentId, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<bodycopyTypeInput> bodycopyType = null, WorkflowExpression<string> bodycopyOptionsenvironmentNameToOverride = null, WorkflowExpression<string> bodycopyOptionssecurityGroupIdToOverride = null, WorkflowExpression<bool> bodycopyOptionsskipAuditData = null, WorkflowExpression<bool> bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = null)
         {
@@ -806,7 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildRestoreEnvironment(WorkflowExpression<string> targetEnvironmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyrestorePointDateTime, WorkflowExpression<string> bodysourceEnvironmentId, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<bool> bodyskipAuditData = null)
         {
@@ -855,7 +829,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetails> __BuildGetEnvironmentGroupOperation(WorkflowExpression<string> operationId, WorkflowExpression<string> apiVersion)
         {
@@ -878,7 +851,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetails> __BuildDeleteEnvironmentGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> apiVersion)
         {
@@ -901,7 +873,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetails> __BuildAddEnvironmentToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -925,7 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetails> __BuildRemoveEnvironmentFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -949,7 +919,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnvironmentList> __BuildListEnvironmentsForUser(WorkflowExpression<string> apiVersion)
         {
@@ -971,7 +940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnvironmentResponse> __BuildGetEnvironmentByIdForUser(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -994,7 +962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidationResponse> __BuildDeleteEnvironmentByID(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
         {
@@ -1023,7 +990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Policy> __BuildCreateRuleBasedPolicy(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<RuleSet[]> bodyruleSets = null)
         {
@@ -1066,7 +1032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPolicyResponse> __BuildListRuleBasedPolicies(WorkflowExpression<string> apiVersion)
         {
@@ -1088,7 +1053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Policy> __BuildGetRuleBasedPolicyByID(WorkflowExpression<string> policyId, WorkflowExpression<string> apiVersion)
         {
@@ -1111,7 +1075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RuleAssignment> __BuildUpdateRuleBasedPolicyByID(WorkflowExpression<string> policyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<RuleSet[]> bodyruleSets = null)
         {
@@ -1155,7 +1118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignmentsByPolicyId(WorkflowExpression<string> policyId, WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
         {
@@ -1180,7 +1142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignments(WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
         {
@@ -1204,7 +1165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignmentsByEnvironmentGroupId(WorkflowExpression<string> environmentGroupId, WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
         {
@@ -1229,7 +1189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignmentsByEnvironmentId(WorkflowExpression<string> environmentId, WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
         {
@@ -1254,7 +1213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation> __BuildListCrossTenantConnectionReports(WorkflowExpression<string> apiVersion)
         {
@@ -1276,7 +1234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CrossTenantConnectionReport> __BuildGetCrossTenantConnectionReport(WorkflowExpression<string> reportId, WorkflowExpression<string> apiVersion)
         {
@@ -1299,7 +1256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResourceQueryResponse> __BuildQueryResources(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodytableName, WorkflowExpression<Clause[]> bodyclauses, WorkflowExpression<int> bodyoptionstop = null, WorkflowExpression<int> bodyoptionsskip = null, WorkflowExpression<string> bodyoptionsskipToken = null)
         {
@@ -1363,7 +1319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation> __BuildListBillingPolicies(WorkflowExpression<string> apiVersion, WorkflowExpression<string> top = null)
         {
@@ -1388,7 +1343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildCreateBillingPolicy(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodybillingInstrumentsubscriptionId = null, WorkflowExpression<string> bodybillingInstrumentresourceGroup = null, WorkflowExpression<string> bodybillingInstrumentid = null, WorkflowExpression<bodystatusInput> bodystatus = null)
         {
@@ -1467,7 +1421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildGetBillingPolicy(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
         {
@@ -1490,7 +1443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildUpdateBillingPolicy(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodystatusInput> bodystatus = null)
         {
@@ -1534,7 +1486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteBillingPolicy(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
         {
@@ -1557,7 +1508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation> __BuildListBillingPolicyEnvironments(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
         {
@@ -1580,7 +1530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1> __BuildGetBillingPolicyEnvironment(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -1604,7 +1553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddBillingPolicyEnvironment(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string[]> bodyenvironmentIds = null)
         {
@@ -1641,7 +1589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveBillingPolicyEnvironment(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string[]> bodyenvironmentIds = null)
         {
@@ -1678,7 +1625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildRefreshProvisioningStatus(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
         {
@@ -1701,7 +1647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> __BuildGetCurrencyAllocationByEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -1724,7 +1669,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> __BuildPatchCurrencyAllocationByEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<CurrencyAllocationRequestModelV1[]> bodycurrencyAllocations = null)
         {
@@ -1761,7 +1705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildGetEnvironmentBillingPolicy(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -1784,7 +1727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation> __BuildListISVContracts(WorkflowExpression<string> apiVersion, WorkflowExpression<string> top = null)
         {
@@ -1809,7 +1751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsvContractResponseModel> __BuildCreateISVContract(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodygeo, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodyconsumertenantId = null, WorkflowExpression<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, WorkflowExpression<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, WorkflowExpression<string> bodybillingInstrumentsubscriptionId = null, WorkflowExpression<string> bodybillingInstrumentresourceGroup = null, WorkflowExpression<string> bodybillingInstrumentid = null, WorkflowExpression<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
@@ -1954,7 +1895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsvContractResponseModel> __BuildGetISVContract(WorkflowExpression<string> isvContractId, WorkflowExpression<string> apiVersion)
         {
@@ -1977,7 +1917,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsvContractResponseModel> __BuildUpdateISVContract(WorkflowExpression<string> isvContractId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, WorkflowExpression<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, WorkflowExpression<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
@@ -2080,7 +2019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteISVContract(WorkflowExpression<string> isvContractId, WorkflowExpression<string> apiVersion)
         {
@@ -2103,7 +2041,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TenantCapacityDetailsModel> __BuildGetTenantCapacityDetails(WorkflowExpression<string> apiVersion)
         {
@@ -2125,7 +2062,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CurrencyReportV2[]> __BuildListCurrencyReports(WorkflowExpression<string> apiVersion, WorkflowExpression<bool> includeAllocations = null, WorkflowExpression<bool> includeConsumptions = null)
         {
@@ -2155,7 +2091,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResourceArrayPowerApp> __BuildGetAdminApps(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<int> top = null, WorkflowExpression<string> skiptoken = null)
         {
@@ -2185,7 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PowerApp> __BuildGetAdminApp(WorkflowExpression<string> environmentId, WorkflowExpression<string> app, WorkflowExpression<string> apiVersion)
         {
@@ -2209,7 +2143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildApplyAdminRole(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
         {
@@ -2232,7 +2165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MCPQueryResponse> __BuildMcpEnvironmentManagement(WorkflowExpression<string> queryRequestjsonrpc = null, WorkflowExpression<string> queryRequestid = null, WorkflowExpression<string> queryRequestmethod = null, WorkflowExpression<string> sessionId = null)
         {

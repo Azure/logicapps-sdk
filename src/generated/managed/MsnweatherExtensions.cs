@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CurrentWeather> __BuildCurrentWeather(WorkflowExpression<string> location, WorkflowExpression<unitsInput> units)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WeatherForecast> __BuildTodaysForecast(WorkflowExpression<string> location, WorkflowExpression<unitsInput> units)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WeatherForecast> __BuildTomorrowsForecast(WorkflowExpression<string> location, WorkflowExpression<unitsInput> units)
         {

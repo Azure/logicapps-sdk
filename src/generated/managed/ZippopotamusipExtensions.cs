@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> __BuildGetDetailsByPostalCode(WorkflowExpression<countryInput> country, WorkflowExpression<string> postalCode)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDetailsByStateCityResponse> __BuildGetDetailsByStateCity(WorkflowExpression<countryInput> country, WorkflowExpression<string> state, WorkflowExpression<string> city)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateRecord(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> recordType, WorkflowExpression<object> body = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildListRecords(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> recordType, WorkflowExpression<string> where = null, WorkflowExpression<string> order = null, WorkflowExpression<int> top = null, WorkflowExpression<object> body = null)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetRecord(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> recordType, WorkflowExpression<string> recordId, WorkflowExpression<object> body = null)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateRecord(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> recordType, WorkflowExpression<string> recordId, WorkflowExpression<object> body = null)
         {
@@ -129,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteRecord(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> recordType, WorkflowExpression<string> recordId, WorkflowExpression<object> body = null)
         {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendHttpRequestResponse> __BuildSendHttpRequest(WorkflowExpression<string> xeroTenantId, WorkflowExpression<bodymethodInput> bodymethod, WorkflowExpression<string> bodyuri, WorkflowExpression<bodyheadersInputItem[]> bodyheaders = null, WorkflowExpression<string> bodybody = null)
         {

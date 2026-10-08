@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDocumentsResponseItem[]> __BuildListDocuments(WorkflowExpression<statusInput> status = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> modifiedAfter = null, WorkflowExpression<string> modifiedBefore = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentProcessParticipantsResponse> __BuildDocumentProcessParticipants(WorkflowExpression<string> documentProcessId, WorkflowExpression<bodyparticipantTypeInput> bodyparticipantType, WorkflowExpression<bodyroleTypeInput> bodyroleType = null, WorkflowExpression<string> bodysignatureType = null, WorkflowExpression<object> bodyparticipantData = null)
         {
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddFileResponse> __BuildAddFile(WorkflowExpression<string> documentProcessId, WorkflowExpression<object> file)
         {
@@ -127,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFilesInfoResponse> __BuildGetFilesInfo(WorkflowExpression<string> documentProcessId, WorkflowExpression<filePurposeInput> filePurpose = null)
         {
@@ -152,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionsAvailabilityResponse> __BuildActionsAvailability(WorkflowExpression<string> documentProcessId, WorkflowExpression<bodyeventTypeInput> bodyeventType)
         {
@@ -183,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetByIdResponse> __BuildGetById(WorkflowExpression<string> documentProcessId)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDownloadFile(WorkflowExpression<string> documentProcessId, WorkflowExpression<string> fileId)
         {
@@ -226,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddTag(WorkflowExpression<string> documentProcessId, WorkflowExpression<string> bodyid = null)
         {

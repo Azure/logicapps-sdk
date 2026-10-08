@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContactsResponse> __BuildGetContacts(WorkflowExpression<string> filter = null, WorkflowExpression<double> top = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectsResponse> __BuildGetProjects(WorkflowExpression<string> filter = null, WorkflowExpression<double> top = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiProject> __BuildPostProjects(WorkflowExpression<string> bodyclientId = null, WorkflowExpression<string> bodydescriptionHTML = null, WorkflowExpression<string> bodydivisionId = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyisArchived = null, WorkflowExpression<bool> bodyisRecycled = null, WorkflowExpression<int> bodylockMode = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<int> bodynumberIncremential = null, WorkflowExpression<string> bodynumberPrefix = null, WorkflowExpression<string> bodynumberSuffix = null, WorkflowExpression<string> bodyportfolioId = null, WorkflowExpression<int> bodypriority = null, WorkflowExpression<string> bodyprojectStatusId = null, WorkflowExpression<int> bodyriskScore = null, WorkflowExpression<int> bodysizeScore = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<int> bodyvalueScore = null)
         {
@@ -223,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteProject(WorkflowExpression<string> projectId)
         {
@@ -244,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectByIdResponse> __BuildGetProjectById(WorkflowExpression<string> projectId)
         {
@@ -265,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateProjectResponse> __BuildUpdateProject(WorkflowExpression<string> projectId, WorkflowExpression<string> bodyclientId = null, WorkflowExpression<string> bodydescriptionHTML = null, WorkflowExpression<string> bodydivisionId = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyisArchived = null, WorkflowExpression<bool> bodyisRecycled = null, WorkflowExpression<int> bodylockMode = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<int> bodynumberIncremential = null, WorkflowExpression<string> bodynumberPrefix = null, WorkflowExpression<string> bodynumberSuffix = null, WorkflowExpression<string> bodyportfolioId = null, WorkflowExpression<int> bodypriority = null, WorkflowExpression<string> bodyprojectStatusId = null, WorkflowExpression<int> bodyriskScore = null, WorkflowExpression<int> bodysizeScore = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<int> bodyvalueScore = null)
         {
@@ -419,7 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddProjectMember(WorkflowExpression<string> projectId, WorkflowExpression<string> bodycontactId, WorkflowExpression<int> bodyrole)
         {
@@ -453,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTasksResponse> __BuildGetTasks(WorkflowExpression<string> filter = null, WorkflowExpression<double> top = null)
         {
@@ -479,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiTask> __BuildPostTask(WorkflowExpression<string> bodydescriptionHTML = null, WorkflowExpression<string> bodyendDateTime = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<string> bodystartDateTime = null, WorkflowExpression<double> bodyworkAmount = null)
         {
@@ -555,7 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTask(WorkflowExpression<string> taskId)
         {
@@ -576,7 +566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskByIdResponse> __BuildGetTaskById(WorkflowExpression<string> taskId)
         {
@@ -597,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTaskResponse> __BuildUpdateTask(WorkflowExpression<string> taskId, WorkflowExpression<string> bodydescriptionHTML = null, WorkflowExpression<string> bodyendDateTime = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<string> bodystartDateTime = null, WorkflowExpression<double> bodyworkAmount = null)
         {

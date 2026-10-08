@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionPostResponse> __BuildAction(WorkflowExpression<string> actionId, WorkflowExpression<string> bodyinstructions, WorkflowExpression<bool> bodypreviewOnly = null)
         {

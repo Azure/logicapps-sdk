@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScreenPostResponse> __BuildScreen(WorkflowExpression<string> bodyip = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodybillAddr = null, WorkflowExpression<string> bodybillCity = null, WorkflowExpression<string> bodybillState = null, WorkflowExpression<string> bodybillCountry = null, WorkflowExpression<string> bodybillZipCode = null, WorkflowExpression<string> bodyshipLastName = null, WorkflowExpression<string> bodyshipFirstName = null, WorkflowExpression<string> bodyshipAddr = null, WorkflowExpression<string> bodyshipCity = null, WorkflowExpression<string> bodyshipState = null, WorkflowExpression<string> bodyshipCountry = null, WorkflowExpression<string> bodyshipZipCode = null, WorkflowExpression<string> bodyuserPhone = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyemailHash = null, WorkflowExpression<string> bodyemailDomain = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodybinNo = null, WorkflowExpression<string> bodycardHash = null, WorkflowExpression<string> bodyavsResult = null, WorkflowExpression<string> bodycvvResult = null, WorkflowExpression<string> bodyuserOrderId = null, WorkflowExpression<string> bodyuserOrderMemo = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<int> bodyquantity = null, WorkflowExpression<string> bodycurrency = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodypaymentGateway = null, WorkflowExpression<bodypaymentModeInput> bodypaymentMode = null, WorkflowExpression<string> bodyflpChecksum = null)
         {
@@ -276,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FeedbackPostResponse> __BuildFeedback(WorkflowExpression<string> bodyid = null, WorkflowExpression<bodyactionInput> bodyaction = null, WorkflowExpression<string> bodynote = null)
         {
@@ -334,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultGetResponse> __BuildResultGet(WorkflowExpression<string> id = null, WorkflowExpression<idTypeInput> idType = null)
         {

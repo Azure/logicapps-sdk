@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompileTemplateResponse> __BuildCompileTemplate(WorkflowExpression<string> templateToken, WorkflowExpression<string> docDeliveryType = null, WorkflowExpression<int> docUrlExpiresIn = null, WorkflowExpression<string> latexCompiler = null, WorkflowExpression<int> latexRuns = null, WorkflowExpression<string> mainFileName = null, WorkflowExpression<string> docFileName = null, WorkflowExpression<string> encryptType = null)
         {

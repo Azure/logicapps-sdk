@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttributeSetDTO[]> __BuildAttributeSetsGETGetAll(WorkflowExpression<string> title = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttributeDTO> __BuildAttributesGETGetAll(WorkflowExpression<statusInput> status = null, WorkflowExpression<string> type = null, WorkflowExpression<bool> isFilterable = null, WorkflowExpression<bool> displayOnProduct = null, WorkflowExpression<bool> displayInList = null, WorkflowExpression<string> search = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrandDTO[]> __BuildBrandsGETGetAll(WorkflowExpression<statusInput> status = null, WorkflowExpression<string> search = null, WorkflowExpression<string> code = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -141,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CategoryDTO[]> __BuildCategoriesGETGetAll(WorkflowExpression<string> title = null, WorkflowExpression<string> id = null, WorkflowExpression<string> search = null, WorkflowExpression<string> code = null, WorkflowExpression<string> parentId = null, WorkflowExpression<string> path = null, WorkflowExpression<string> parentIds = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -203,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcoTagDTO[]> __BuildIcoTagsGETGetAll(WorkflowExpression<string> name = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -238,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetails> __BuildProductVariantsGETGetAllFlat(WorkflowExpression<string> price = null, WorkflowExpression<double> maxPrice = null, WorkflowExpression<string> size1 = null, WorkflowExpression<string> size2 = null, WorkflowExpression<string> size3 = null, WorkflowExpression<string> insertDate = null, WorkflowExpression<string> date1 = null, WorkflowExpression<string> date2 = null, WorkflowExpression<string> date3 = null, WorkflowExpression<string> date1DateRange = null, WorkflowExpression<string> date2DateRange = null, WorkflowExpression<string> date3DateRange = null, WorkflowExpression<string> insertDateRange = null, WorkflowExpression<string> search = null, WorkflowExpression<double> minPrice = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> availability = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> sourceTag = null, WorkflowExpression<string> privacyRule = null, WorkflowExpression<string> rule = null, WorkflowExpression<string> condition = null, WorkflowExpression<string> ids = null, WorkflowExpression<string> id = null, WorkflowExpression<string> priceRange = null, WorkflowExpression<string> brandCode = null, WorkflowExpression<string> brandId = null, WorkflowExpression<string> attribute = null, WorkflowExpression<string> pathCategory = null, WorkflowExpression<string> categoryId = null, WorkflowExpression<string> additionalCategoryId = null, WorkflowExpression<string> stockAvailabilityId = null, WorkflowExpression<string> attributeSetId = null, WorkflowExpression<string> priceCategoryId = null, WorkflowExpression<bool> hasMedia = null, WorkflowExpression<string> masterId = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -375,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RelatedProductVariantDTO> __BuildRelatedProductsGETGetRelated(WorkflowExpression<string> productId, WorkflowExpression<string> variantId)
         {
@@ -397,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StockAvailabilityDTO[]> __BuildStockAvailabilityGETGetAll(WorkflowExpression<string> title = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -429,7 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnitDTO[]> __BuildUnitsGETGetAll(WorkflowExpression<string> name = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -461,7 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetails> __BuildCartDELETERemoveFromCart(WorkflowExpression<string> token, WorkflowExpression<string> productVariantId)
         {
@@ -483,7 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssortmentValueDTO[]> __BuildAssortmentValueGETGetAll(WorkflowExpression<string> customerid, WorkflowExpression<statusInput> status = null, WorkflowExpression<sourceInput> source = null, WorkflowExpression<string> type = null, WorkflowExpression<string> category = null, WorkflowExpression<string> id = null, WorkflowExpression<string> productId = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -531,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerDTO[]> __BuildCustomersGETGetAll(WorkflowExpression<statusInput> status = null, WorkflowExpression<string> search = null, WorkflowExpression<string> name = null, WorkflowExpression<string> salesmanId = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -575,7 +563,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InventoryLevelDTO[]> __BuildInventoryLevelsGETGetByVariantId(WorkflowExpression<string> variantId)
         {
@@ -596,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrderDTO[]> __BuildOrderGETGetAll(WorkflowExpression<string> search = null, WorkflowExpression<string> code = null, WorkflowExpression<string> customerId = null, WorkflowExpression<string> orderStatus = null, WorkflowExpression<string> status = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> customerCode = null, WorkflowExpression<string> customerTin = null, WorkflowExpression<string> insertDate = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {

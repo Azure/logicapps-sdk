@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSpeciesResponse> __BuildGetSpecies(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Starship[]> __BuildGetStarships(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFilmsResponse> __BuildGetFilms(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Film> __BuildGetFilmById(WorkflowExpression<string> id)
         {
@@ -117,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPlanetsResponse> __BuildGetPlanets(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
         {
@@ -143,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Person> __BuildGetPeople(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
         {
@@ -169,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Person> __BuildGetPersonById(WorkflowExpression<string> id)
         {
@@ -190,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Planet> __BuildGetPlanetById(WorkflowExpression<string> id)
         {
@@ -211,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Species> __BuildGetSpeciesById(WorkflowExpression<string> id)
         {
@@ -232,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Starship> __BuildGetStarShipById(WorkflowExpression<string> id)
         {

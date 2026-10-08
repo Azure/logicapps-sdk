@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<int> __BuildCreateDraftInvoice(WorkflowExpression<string> senderEmail, WorkflowExpression<string> recipientEmail, WorkflowExpression<string> raisedDate = null, WorkflowExpression<object> file = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<int> __BuildCreateInvoice(WorkflowExpression<string> modelinvoiceNumber = null, WorkflowExpression<string> modelpurchaseOrderNumber = null, WorkflowExpression<string> modelraisedDate = null, WorkflowExpression<string> modeldueDate = null, WorkflowExpression<string> modelsupplierReferenceNumber = null, WorkflowExpression<string> modeldescription = null, WorkflowExpression<string> modelcomments = null, WorkflowExpression<string> modeldivisionName = null, WorkflowExpression<string> modelcurrencyCode = null, WorkflowExpression<LineItemAddIntegrationModel[]> modellineItems = null)
         {
@@ -139,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<int> __BuildCreatePurchaseOrder(WorkflowExpression<string> modelrequisitorName = null, WorkflowExpression<string> modelrequiredDate = null, WorkflowExpression<string> modelsupplierReferenceNumber = null, WorkflowExpression<string> modeldescription = null, WorkflowExpression<string> modelcomments = null, WorkflowExpression<string> modeldivisionName = null, WorkflowExpression<string> modelcurrencyCode = null, WorkflowExpression<LineItemAddIntegrationModel[]> modellineItems = null)
         {
@@ -222,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<int> __BuildCreateSupplier(WorkflowExpression<string> modeladdressLines = null, WorkflowExpression<string> modelcontactName = null, WorkflowExpression<string> modelcountryCode = null, WorkflowExpression<string> modelemail = null, WorkflowExpression<string> modelpostCode = null, WorkflowExpression<string> modelreferenceNumber = null, WorkflowExpression<string> modelsupplierName = null, WorkflowExpression<string> modeltelephone = null, WorkflowExpression<string> modeltype = null)
         {
@@ -312,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateSupplier(WorkflowExpression<int> id, WorkflowExpression<int> modelid = null, WorkflowExpression<string> modeladdressLines = null, WorkflowExpression<string> modelcontactName = null, WorkflowExpression<string> modelcountryCode = null, WorkflowExpression<string> modelemail = null, WorkflowExpression<string> modelpostCode = null, WorkflowExpression<string> modelreferenceNumber = null, WorkflowExpression<string> modelsupplierName = null, WorkflowExpression<string> modeltelephone = null, WorkflowExpression<string> modeltype = null)
         {

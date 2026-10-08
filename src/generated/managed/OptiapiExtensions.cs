@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculateAverageResponse> __BuildCalculateAverage(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChunkAnArrayResponse> __BuildChunkAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<int> bodysize)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CombineArrayResponse> __BuildCombineArray(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string[]> bodykeys, WorkflowExpression<string[]> bodyvalues)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> __BuildCheckIfArrayContainAValue(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey, WorkflowExpression<string> bodysearch)
         {
@@ -163,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> __BuildFindDifferenceBetweenArrays(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string[]> bodycompare)
         {
@@ -198,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindDuplicatesInArraysResponse> __BuildFindDuplicatesInArrays(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey = null)
         {
@@ -237,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilterAnArrayResponse> __BuildFilterAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<bool> bodypreserveKeys)
         {
@@ -272,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> __BuildFirstWhereWithinAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey, WorkflowExpression<string> bodyvalue, WorkflowExpression<bodyOperatorInput> bodyOperator = null)
         {
@@ -317,7 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FlattenAnArrayResponse> __BuildFlattenAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<int> bodydepth = null)
         {
@@ -356,7 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveItemFromArrayResponse> __BuildRemoveItemFromArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey)
         {
@@ -391,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupByAnArrayKeyResponse> __BuildGroupByAnArrayKey(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey)
         {
@@ -426,7 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StandardArrayResponse> __BuildSortAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<bodysortInput> bodysort)
         {
@@ -461,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> __BuildGetUniqueItemsInAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey = null)
         {
@@ -500,7 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> __BuildAddOrSubtractFromTimeOrDates(WorkflowExpression<bodyactionInput> bodyaction, WorkflowExpression<string> bodydatetime, WorkflowExpression<bodyOperatorInput> bodyOperator, WorkflowExpression<int> bodyvalue, WorkflowExpression<string> bodyoutputFormat = null)
         {
@@ -548,7 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> __BuildConvertAStringToADatetimeObject(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyinputFormat, WorkflowExpression<string> bodyoutputFormat, WorkflowExpression<string> bodystring, WorkflowExpression<string> bodytimezone = null)
         {
@@ -595,7 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> __BuildPerformOcrOnAScannedPdfOrImageFile(WorkflowExpression<string> bodyfile, WorkflowExpression<bodyoemInput> bodyoem, WorkflowExpression<bodypsmInput> bodypsm, WorkflowExpression<bool> bodytrim, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodylanguage = null)
         {
@@ -656,7 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> __BuildCombineMultiplePdfFiles(WorkflowExpression<string[]> bodypdfs)
         {
@@ -688,7 +671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPdfMetadataInformationResponse> __BuildGetPdfMetadataInformation(WorkflowExpression<string> bodypdf)
         {
@@ -720,7 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StandardArrayResponse> __BuildConvertAPdfFileToText(WorkflowExpression<bodylayoutInput> bodylayout, WorkflowExpression<string> bodypdf, WorkflowExpression<int> bodyendPage = null, WorkflowExpression<int> bodystartPage = null)
         {
@@ -769,7 +750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> __BuildSetPasswordOnAPdfFile(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodypdf)
         {
@@ -806,7 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> __BuildReplaceTextInStringBasedOnARegularExpression(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodyreplacement, WorkflowExpression<string> bodytext)
         {
@@ -844,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> __BuildFindValuesFromAStringBasedOnARegularExpression(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodytext, WorkflowExpression<int> bodygroup = null)
         {
@@ -886,7 +864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReplaceTextInStringResponse> __BuildReplaceTextInString(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyreplace, WorkflowExpression<string> bodysearch, WorkflowExpression<string> bodytext)
         {

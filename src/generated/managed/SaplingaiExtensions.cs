@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SpellcheckResponse> __BuildSpellcheck(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyminLength, WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodymultipleEdits = null, WorkflowExpression<bool> bodyneuralSpellcheck = null, WorkflowExpression<string> bodylang = null)
         {
@@ -75,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MedicalSpellcheckResponse> __BuildMedicalSpellcheck(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyminLength, WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodymultipleEdits = null, WorkflowExpression<bool> bodyneuralSpellcheck = null, WorkflowExpression<string> bodylang = null)
         {
@@ -132,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AutocompleteResponse> __BuildAutocomplete(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodysessionId)
         {
@@ -165,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatisticsResponse> __BuildStatistics(WorkflowExpression<string> bodytext, WorkflowExpression<string> bodysessionId)
         {
@@ -198,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectAiResponse> __BuildDetectAi(WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodysentScores = null)
         {

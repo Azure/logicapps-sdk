@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFaceListResponse> __BuildGetFaceList(WorkflowExpression<string> faceListId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateFaceList(WorkflowExpression<string> faceListId, WorkflowExpression<string> bodyfaceListName, WorkflowExpression<string> bodyuserData = null)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectResponseItem[]> __BuildDetect(WorkflowExpression<string> bodyimageUrl)
         {
@@ -110,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddPersonFaceResponse> __BuildAddPersonFace(WorkflowExpression<string> personGroupId, WorkflowExpression<string> personId, WorkflowExpression<string> bodyimageUrl, WorkflowExpression<string> targetFace = null, WorkflowExpression<string> userData = null)
         {
@@ -148,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddPersonFaceResponse> __BuildAddFaceToFaceList(WorkflowExpression<string> faceListId, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<string> targetFace = null, WorkflowExpression<string> userData = null)
         {
@@ -189,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPersonGroupResponse> __BuildGetPersonGroup(WorkflowExpression<string> personGroupId)
         {
@@ -210,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreatePersonGroup(WorkflowExpression<string> personGroupId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyuserData = null)
         {
@@ -248,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VerifyResponse> __BuildVerify(WorkflowExpression<string> bodyfaceId, WorkflowExpression<string> bodypersonGroupId, WorkflowExpression<string> bodypersonId)
         {
@@ -284,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPersonFaceResponse> __BuildGetPersonFace(WorkflowExpression<string> personGroupId, WorkflowExpression<string> personId, WorkflowExpression<string> persistedFaceId)
         {
@@ -307,7 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePersonResponse> __BuildCreatePerson(WorkflowExpression<string> personGroupId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyuserData = null)
         {
@@ -345,7 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPersonResponse> __BuildGetPerson(WorkflowExpression<string> personGroupId, WorkflowExpression<string> personId)
         {

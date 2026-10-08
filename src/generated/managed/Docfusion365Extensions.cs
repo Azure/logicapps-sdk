@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> __BuildGetTheLinkedListTemplates(WorkflowExpression<string> siteUrl, WorkflowExpression<string> listName)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComposeLinkedTemplateResponse> __BuildComposeALinkedTemplate(WorkflowExpression<string> siteUrl, WorkflowExpression<string> listName, WorkflowExpression<int> templateId, WorkflowExpression<int> listItemId, WorkflowExpression<bool> skipPostProcess)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> __BuildComposeAllTheLinkedTemplates(WorkflowExpression<string> siteUrl, WorkflowExpression<string> listName, WorkflowExpression<int> listItemId, WorkflowExpression<bool> skipPostProcess)
         {

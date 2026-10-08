@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ImsProgramCall
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "imsProgramCall")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteMethod(WorkflowExpression<string> hidx, WorkflowExpression<string> method, WorkflowExpression<object> inputParameters)
         {

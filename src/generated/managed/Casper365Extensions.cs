@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Course[]> __BuildCourseGet(WorkflowExpression<string> course = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildCourse(WorkflowExpression<string> courseaudience = null, WorkflowExpression<string> coursecourseName = null, WorkflowExpression<string> coursedos = null, WorkflowExpression<string> courseemail = null)
         {
@@ -96,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLogEnd(WorkflowExpression<string> identifier = null)
         {
@@ -119,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLogStart(WorkflowExpression<string> identifier = null)
         {
@@ -142,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Student> __BuildStudentGet(WorkflowExpression<string> studentId = null)
         {
@@ -165,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildStudent(WorkflowExpression<string> studentacadCareer = null, WorkflowExpression<string> studentacadOrgDescr = null, WorkflowExpression<string> studentacadProgram = null, WorkflowExpression<string> studentaddress1 = null, WorkflowExpression<string> studentaddress2 = null, WorkflowExpression<string> studentaddress3 = null, WorkflowExpression<string> studentaddress4 = null, WorkflowExpression<string> studentbarcode = null, WorkflowExpression<string> studentbirthCountryCode = null, WorkflowExpression<string> studentcellTel = null, WorkflowExpression<string> studentcity = null, WorkflowExpression<double> studentcollegeAccountNo = null, WorkflowExpression<string> studentcountry = null, WorkflowExpression<string> studentcountryCitizen = null, WorkflowExpression<string> studentcountryCitizen2 = null, WorkflowExpression<string> studentcrsid = null, WorkflowExpression<string> studentdegree = null, WorkflowExpression<string> studentdob = null, WorkflowExpression<string> studentdos = null, WorkflowExpression<string> studentdosEmail = null, WorkflowExpression<string> studentdosEmployeeId = null, WorkflowExpression<string> studentemail = null, WorkflowExpression<string> studentemailAddr = null, WorkflowExpression<string> studentemailPersonal = null, WorkflowExpression<string> studentendDate = null, WorkflowExpression<string> studentenqGrp = null, WorkflowExpression<string> studentfirstNames = null, WorkflowExpression<string> studentgradTutor = null, WorkflowExpression<string> studentgradTutorEmail = null, WorkflowExpression<string> studentgradTutorEmployeeId = null, WorkflowExpression<string> studentgrp = null, WorkflowExpression<string> studentgrpId = null, WorkflowExpression<string> studenthomeAddress1 = null, WorkflowExpression<string> studenthomeAddress2 = null, WorkflowExpression<string> studenthomeAddress3 = null, WorkflowExpression<string> studenthomeAddress4 = null, WorkflowExpression<string> studenthomeAddress5 = null, WorkflowExpression<string> studenthomeCountry = null, WorkflowExpression<string> studenthomePostal = null, WorkflowExpression<string> studenthomeState = null, WorkflowExpression<string> studenthomeTel = null, WorkflowExpression<string> studentmatriculation = null, WorkflowExpression<string> studentmobileTel = null, WorkflowExpression<string> studentnationality = null, WorkflowExpression<string> studentpostal = null, WorkflowExpression<string> studentprinSuper = null, WorkflowExpression<string> studentprinSuperEmail = null, WorkflowExpression<string> studentprinSuperEmployeeId = null, WorkflowExpression<string> studentsex = null, WorkflowExpression<string> studentstartDate = null, WorkflowExpression<string> studentstudentFeesClass = null, WorkflowExpression<string> studentstudyYear = null, WorkflowExpression<string> studentsubject = null, WorkflowExpression<string> studentsubjectDescr = null, WorkflowExpression<string> studentsuperEmail = null, WorkflowExpression<string> studentsurname = null, WorkflowExpression<string> studenttitle = null, WorkflowExpression<string> studenttutor = null, WorkflowExpression<string> studenttutorEmail = null, WorkflowExpression<string> studenttutorEmployeeId = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataflowModel> __BuildRefreshDataflow(WorkflowExpression<workspaceTypeInput> workspaceType, WorkflowExpression<string> groupIdForRefreshDataflow, WorkflowExpression<string> dataflowIdForRefreshDataflow)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendNews(WorkflowExpression<string> bodyheadline, WorkflowExpression<string> bodytext, WorkflowExpression<string> bodyuRL = null, WorkflowExpression<string> bodypictureURL = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<int> bodytimeToLiveInDays = null, WorkflowExpression<string> bodyuserId = null)
         {
@@ -86,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendNotification(WorkflowExpression<string> bodytext, WorkflowExpression<string> bodyuserId = null)
         {

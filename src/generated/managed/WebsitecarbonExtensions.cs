@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SiteAnalysisResponse> __BuildSiteAnalysis(WorkflowExpression<string> url)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataAnalysisResponse> __BuildDataAnalysis(WorkflowExpression<int> bytes, WorkflowExpression<greenInput> green)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUsersResponseItem[]> __BuildGetUsers(WorkflowExpression<int> page = null)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserResponse> __BuildGetUser(WorkflowExpression<string> name)
         {
@@ -98,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSpecificOrganisationResponse> __BuildGetSpecificOrganisation(WorkflowExpression<string> organisation)
         {

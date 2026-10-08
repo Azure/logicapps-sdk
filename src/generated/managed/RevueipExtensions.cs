@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List> __BuildGetList(WorkflowExpression<string> id)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Export> __BuildGetExport(WorkflowExpression<string> id)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Export> __BuildStartExport(WorkflowExpression<string> id)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Subscriber> __BuildAddSubscriber(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bool> bodydoubleOptIn = null)
         {
@@ -185,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Subscriber> __BuildUpdateSubscriber(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bool> bodydoubleOptIn = null)
         {
@@ -245,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Subscriber> __BuildUnsubscribeSubscriber(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bool> bodydoubleOptIn = null)
         {

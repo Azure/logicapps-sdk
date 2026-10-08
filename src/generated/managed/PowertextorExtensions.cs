@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse> __BuildSendTextMessageToMultipleContacts(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse> __BuildScheduleReviewTextMessageForContacts(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodygooglePlaceId, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -107,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse> __BuildSendTextMessageToMultipleGroups(WorkflowExpression<string[]> bodygroupName, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReviewTextGroupsResponse> __BuildSendReviewTextGroups(WorkflowExpression<string[]> bodygroupName, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyplaceId, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -190,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleMessageForAContactResponse> __BuildScheduleMessageForAContact(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -236,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleMessageForGroupsResponse> __BuildScheduleMessageForGroups(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -282,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse> __BuildScheduleReviewMessageForAContact(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodygooglePlaceId, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -331,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleReviewGroupsResponse> __BuildScheduleReviewGroups(WorkflowExpression<string[]> bodygroupName, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyplaceId, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -380,7 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextToAContactResponse> __BuildSendTextToAContact(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -420,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse> __BuildScheduleTextToMultipleContacts(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -466,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReviewSingleContactResponse> __BuildSendReviewSingleContact(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodygooglePlaceId, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -509,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse> __BuildSendReviewTextMultipleContacts(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodygooglePlaceId, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -552,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse> __BuildSendTextMessageEventReminderToAContact(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodyreminderText, WorkflowExpression<string> bodyeventDate, WorkflowExpression<int> bodyday, WorkflowExpression<string> bodytime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -601,7 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse> __BuildSendTextMessageEventReminderToMultipleContacts(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodyreminderText, WorkflowExpression<string> bodyeventDate, WorkflowExpression<int> bodyday, WorkflowExpression<string> bodytime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -650,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse> __BuildSendTextMessageEventReminderToGroups(WorkflowExpression<string[]> bodygroupName, WorkflowExpression<string> bodyreminderText, WorkflowExpression<string> bodyeventDate, WorkflowExpression<int> bodyday, WorkflowExpression<string> bodytime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -699,7 +684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageToANumberResponse> __BuildSendTextMessageToANumber(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -739,7 +723,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse> __BuildScheduleReviewTextMessageForAGroup(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyplaceId, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -788,7 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse> __BuildScheduleTextMessagesForAGroup(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -834,7 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse> __BuildSendTextEventReminderToAGroup(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodyreminderText, WorkflowExpression<string> bodyeventDate, WorkflowExpression<int> bodyday, WorkflowExpression<string> bodytime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -883,7 +864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse> __BuildSendReviewTextMessageToAGroup(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyplaceId, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -926,7 +906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageToAGroupResponse> __BuildSendTextMessageToAGroup(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -966,7 +945,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextToANewGroupResponse> __BuildSendTextToANewGroup(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodygroupName, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1009,7 +987,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleTextForANewGroupResponse> __BuildScheduleTextForANewGroup(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodygroupName, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1058,7 +1035,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse> __BuildSendTextEventReminderToNewGroup(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodyreminderText, WorkflowExpression<string> bodygroupName, WorkflowExpression<string> bodyeventDate, WorkflowExpression<int> bodyday, WorkflowExpression<string> bodytime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1110,7 +1086,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageToANewContactResponse> __BuildSendMessageToANewContact(WorkflowExpression<string> bodycontactNumber, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodycontactName = null, WorkflowExpression<string> bodycontactLastName = null, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1164,7 +1139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse> __BuildScheduleReviewTextMessageToANewContact(WorkflowExpression<string> bodycontactNumber, WorkflowExpression<string> bodyreviewText, WorkflowExpression<string> bodygooglePlaceId, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<string> bodycontactName = null, WorkflowExpression<string> bodycontactLastName = null, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1227,7 +1201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse> __BuildSendReviewTextMessageToANewContact(WorkflowExpression<string> bodycontactNumber, WorkflowExpression<string> bodyreviewText, WorkflowExpression<string> bodyplaceId, WorkflowExpression<string> bodycontactName = null, WorkflowExpression<string> bodycontactLastName = null, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1284,7 +1257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse> __BuildScheduleReviewToANewGroup(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodyreviewText, WorkflowExpression<string> bodygroupName, WorkflowExpression<string> bodyplaceId, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1336,7 +1308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReviewToANewGroupResponse> __BuildSendReviewToANewGroup(WorkflowExpression<string[]> bodyto, WorkflowExpression<string> bodyreviewText, WorkflowExpression<string> bodygroupName, WorkflowExpression<string> bodyplaceId, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1382,7 +1353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleTextForANewContactResponse> __BuildScheduleTextForANewContact(WorkflowExpression<string> bodycontactNumber, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodyscheduledDate, WorkflowExpression<string> bodyscheduledTime, WorkflowExpression<string> bodycontactName = null, WorkflowExpression<string> bodycontactLastName = null, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1442,7 +1412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAContactResponse> __BuildCreateAContact(WorkflowExpression<string> bodyphone, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodylastName = null)
         {
@@ -1486,7 +1455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse> __BuildSendMessageEventReminderToANewContact(WorkflowExpression<string> bodycontactNumber, WorkflowExpression<string> bodyreminderText, WorkflowExpression<string> bodyeventDate, WorkflowExpression<int> bodyday, WorkflowExpression<string> bodytime, WorkflowExpression<string> bodycontactName = null, WorkflowExpression<string> bodycontactLastName = null, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1549,7 +1517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAPowerTextorContactResponse> __BuildUpdateAPowerTextorContact(WorkflowExpression<string> bodycontact, WorkflowExpression<string> bodyupdatedContactName = null, WorkflowExpression<string> bodyupdatedContactLastName = null, WorkflowExpression<string> bodyupdatedContactNumber = null)
         {
@@ -1600,7 +1567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse> __BuildSendMessageToMultipleNumbers(WorkflowExpression<string> bodycontactNumber, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1640,7 +1606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendTextMessageResponse> __BuildSendTextMessage(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<bool> bodyreplySTOPToOptOut = null)
         {
@@ -1680,7 +1645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMMSGroupResponse> __BuildSendMMSGroup(WorkflowExpression<string> groupName, WorkflowExpression<string> message, WorkflowExpression<object> attachment, WorkflowExpression<bool> replySTOPToOptOut = null)
         {
@@ -1704,7 +1668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMMSNewContactResponse> __BuildSendMMSNewContact(WorkflowExpression<string> contactNumber, WorkflowExpression<object> attachment, WorkflowExpression<string> message, WorkflowExpression<string> contactName = null, WorkflowExpression<string> contactLastName = null, WorkflowExpression<bool> replySTOPToOptOut = null)
         {
@@ -1730,7 +1693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMMSContactsResponse> __BuildSendMMSContacts(WorkflowExpression<string> to, WorkflowExpression<string> message, WorkflowExpression<object> attachment, WorkflowExpression<bool> replySTOPToOptOut = null)
         {

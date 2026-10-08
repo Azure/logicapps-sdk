@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apptigentpowertoolspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCompositeImage(WorkflowExpression<positionInput> position, WorkflowExpression<double> opacity, WorkflowExpression<object> background, WorkflowExpression<object> foreground, WorkflowExpression<double> horizontal = null, WorkflowExpression<double> vertical = null, WorkflowExpression<string> filename = null)
         {

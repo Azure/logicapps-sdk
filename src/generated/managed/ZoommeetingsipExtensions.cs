@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateMeetingResponse> __BuildCreateMeeting(WorkflowExpression<string> bodytopic = null, WorkflowExpression<int> bodytype = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyduration = null, WorkflowExpression<bool> bodysettingshostVideo = null, WorkflowExpression<bool> bodysettingsparticipantVideo = null, WorkflowExpression<bool> bodysettingsjoinBeforeHost = null, WorkflowExpression<string> bodysettingsmuteUponEntry = null, WorkflowExpression<string> bodysettingswatermark = null, WorkflowExpression<string> bodysettingsaudio = null, WorkflowExpression<string> bodysettingsautoRecording = null)
         {
@@ -138,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MeetingDetailsResponse> __BuildMeetingDetails(WorkflowExpression<string> meetingid)
         {

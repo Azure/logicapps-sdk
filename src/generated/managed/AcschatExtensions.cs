@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMessagesResponse> __BuildListMessages(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId, WorkflowExpression<string> startTime = null, WorkflowExpression<string> maxPageSize = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendChatResponse> __BuildSendChat(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId, WorkflowExpression<string> bodycontent, WorkflowExpression<string> bodysenderDisplayName)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddParticipantsResponse> __BuildAddParticipants(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId, WorkflowExpression<bodyparticipantsInputItem[]> bodyparticipants = null)
         {
@@ -123,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveParticipant(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId, WorkflowExpression<string> bodycommunicationUseruserID = null)
         {
@@ -169,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListChatThreadsResponse> __BuildListChatThreads(WorkflowExpression<string> accessToken, WorkflowExpression<string> startTime = null, WorkflowExpression<int> maxPageSize = null)
         {
@@ -198,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateChatResponse> __BuildCreateChat(WorkflowExpression<string> accessToken, WorkflowExpression<string> bodytopic, WorkflowExpression<bodyparticipantsInputItem2[]> bodyparticipants = null)
         {
@@ -238,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListParticipantsResponse> __BuildListParticipants(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId, WorkflowExpression<string> skip = null, WorkflowExpression<string> maxPageSize = null)
         {
@@ -268,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetThreadPropertiesResponse> __BuildGetThreadProperties(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId)
         {
@@ -292,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateChatThreadProperties(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId, WorkflowExpression<string> bodytopic = null)
         {
@@ -331,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteChatThread(WorkflowExpression<string> accessToken, WorkflowExpression<string> chatThreadId)
         {

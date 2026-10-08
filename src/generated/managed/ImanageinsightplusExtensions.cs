@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> __BuildGetCurationPropertiesForDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<bool> bodylatest)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> __BuildSetCurationPropertiesForDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyapprover = null, WorkflowExpression<string> bodydraftingNotes = null, WorkflowExpression<bool> bodyisMaintained = null, WorkflowExpression<string> bodyknowledgeOwner = null, WorkflowExpression<string> bodyknowledgeType = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodylastReviewDate = null, WorkflowExpression<string> bodyminiSummary = null, WorkflowExpression<string> bodynextReviewDate = null, WorkflowExpression<string> bodyotherNoteworthy = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodysubmitDate = null, WorkflowExpression<string> bodytaxonomy1 = null, WorkflowExpression<string> bodytaxonomy2 = null, WorkflowExpression<string> bodytaxonomy3 = null, WorkflowExpression<string> bodytaxonomy4 = null, WorkflowExpression<string> bodytaxonomy5 = null, WorkflowExpression<string> bodysubmitter = null, WorkflowExpression<string> bodysubmittedDocId = null)
         {
@@ -214,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetKnowledgeTypesResponse> __BuildGetKnowledgeTypes(WorkflowExpression<string> libraryId)
         {
@@ -236,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCurationConfigurationResponse> __BuildGetCurationConfiguration(WorkflowExpression<string> libraryId)
         {
@@ -258,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> __BuildSearchCurationTaxonomyNodeValues(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodytaxonomyProperty, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyquery = null, WorkflowExpression<bodyenabledStateInput> bodyenabledState = null, WorkflowExpression<bool> bodyincludePath = null, WorkflowExpression<string> bodychildrenOfSsid = null, WorkflowExpression<bool> bodyimmediateChildrenOnly = null)
         {

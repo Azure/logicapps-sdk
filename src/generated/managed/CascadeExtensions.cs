@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllGoalsResponse> __BuildGetAllGoals(WorkflowExpression<string> instance)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateGoalResponse> __BuildCreateGoal(WorkflowExpression<string> instance, WorkflowExpression<int> bodygoalroleId = null, WorkflowExpression<int> bodygoalcreatorId = null, WorkflowExpression<bodygoalstatusInput> bodygoalstatus = null, WorkflowExpression<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, WorkflowExpression<bodygoaltargetFlowInput> bodygoaltargetFlow = null, WorkflowExpression<string> bodygoalaction = null, WorkflowExpression<string> bodygoaldetails = null, WorkflowExpression<double> bodygoalinitial = null, WorkflowExpression<double> bodygoalprogress = null, WorkflowExpression<double> bodygoaltarget = null, WorkflowExpression<string> bodygoalstartTime = null, WorkflowExpression<string> bodygoalendTime = null, WorkflowExpression<bodygoalweightIdInput> bodygoalweightId = null, WorkflowExpression<bodygoalisPrivateInput> bodygoalisPrivate = null, WorkflowExpression<bodygoaltrackingTypeInput> bodygoaltrackingType = null, WorkflowExpression<int> bodygoalentityTemplateId = null, WorkflowExpression<int[]> bodygoaldirectFocusAreaIds = null, WorkflowExpression<int[]> bodygoalalignedFromIds = null, WorkflowExpression<int[]> bodygoalalignedToIds = null)
         {
@@ -211,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSingleGoalResponse> __BuildGetSingleGoal(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -234,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteGoalResponse> __BuildDeleteGoal(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -257,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateGoalResponse> __BuildUpdateGoal(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<int> bodygoalroleId = null, WorkflowExpression<int> bodygoalcreatorId = null, WorkflowExpression<bodygoalstatusInput> bodygoalstatus = null, WorkflowExpression<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, WorkflowExpression<bodygoaltargetFlowInput> bodygoaltargetFlow = null, WorkflowExpression<string> bodygoalaction = null, WorkflowExpression<string> bodygoaldetails = null, WorkflowExpression<double> bodygoalinitial = null, WorkflowExpression<double> bodygoalprogress = null, WorkflowExpression<double> bodygoaltarget = null, WorkflowExpression<string> bodygoalstartTime = null, WorkflowExpression<string> bodygoalendTime = null, WorkflowExpression<bodygoalweightIdInput> bodygoalweightId = null, WorkflowExpression<int> bodygoalisPrivate = null, WorkflowExpression<bodygoaltrackingTypeInput> bodygoaltrackingType = null, WorkflowExpression<int> bodygoalentityTemplateId = null, WorkflowExpression<int[]> bodygoaldirectFocusAreaIds = null, WorkflowExpression<int[]> bodygoalinheritedFocusAreaIds = null, WorkflowExpression<int[]> bodygoalalignedFromIds = null, WorkflowExpression<int[]> bodygoalalignedToIds = null)
         {
@@ -436,7 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllRisksResponse> __BuildGetAllRisks(WorkflowExpression<string> instance)
         {
@@ -458,7 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateRiskResponse> __BuildCreateRisk(WorkflowExpression<string> instance, WorkflowExpression<string> bodyissueissue = null, WorkflowExpression<bodyissueisCriticalInput> bodyissueisCritical = null, WorkflowExpression<bodyissueisResolvedInput> bodyissueisResolved = null, WorkflowExpression<int> bodyissueroleId = null, WorkflowExpression<int> bodyissuegoalId = null, WorkflowExpression<string> bodyissuedueDate = null, WorkflowExpression<int> bodyissueentityTemplateId = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011281053 = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011296755 = null)
         {
@@ -567,7 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSingleRiskResponse> __BuildGetSingleRisk(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -590,7 +582,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteRiskResponse> __BuildDeleteRisk(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -613,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateRiskResponse> __BuildUpdateRisk(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<string> bodyissueissue = null, WorkflowExpression<bodyissueisCriticalInput> bodyissueisCritical = null, WorkflowExpression<bodyissueisResolvedInput> bodyissueisResolved = null, WorkflowExpression<int> bodyissueroleId = null, WorkflowExpression<string> bodyissuedueDate = null, WorkflowExpression<int> bodyissueentityTemplateId = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011281053 = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011296755 = null)
         {
@@ -716,7 +706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllTasksResponse> __BuildGetAllTasks(WorkflowExpression<string> instance)
         {
@@ -738,7 +727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> instance, WorkflowExpression<string> bodytasktask = null, WorkflowExpression<string> bodytaskcomment = null, WorkflowExpression<bodytaskisCompleteInput> bodytaskisComplete = null, WorkflowExpression<int> bodytaskroleId = null, WorkflowExpression<int> bodytaskgoalId = null, WorkflowExpression<string> bodytaskstartDate = null, WorkflowExpression<string> bodytaskdueDate = null, WorkflowExpression<bodytaskweightIdInput> bodytaskweightId = null, WorkflowExpression<int> bodytaskentityTemplateId = null)
         {
@@ -839,7 +827,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSingleTaskResponse> __BuildGetSingleTask(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -862,7 +849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteTaskResponse> __BuildDeleteTask(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -885,7 +871,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTaskResponse> __BuildUpdateTask(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<string> bodytasktask = null, WorkflowExpression<string> bodytaskcomment = null, WorkflowExpression<bodytaskisCompleteInput> bodytaskisComplete = null, WorkflowExpression<int> bodytaskroleId = null, WorkflowExpression<int> bodytaskgoalId = null, WorkflowExpression<string> bodytaskstartDate = null, WorkflowExpression<string> bodytaskdueDate = null, WorkflowExpression<bodytaskweightIdInput> bodytaskweightId = null, WorkflowExpression<int> bodytaskentityTemplateId = null)
         {
@@ -987,7 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllUpdatesResponse> __BuildGetAllUpdates(WorkflowExpression<string> instance)
         {
@@ -1009,7 +993,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUpdateResponse> __BuildCreateUpdate(WorkflowExpression<string> instance, WorkflowExpression<string> bodyupdatecomment = null, WorkflowExpression<int> bodyupdategoalId = null, WorkflowExpression<int> bodyupdateentityTemplateId = null)
         {
@@ -1068,7 +1051,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSingleUpdateResponse> __BuildGetSingleUpdate(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -1091,7 +1073,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteUpdateResponse> __BuildDeleteUpdate(WorkflowExpression<string> id, WorkflowExpression<string> instance)
         {
@@ -1114,7 +1095,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateUpdateResponse> __BuildUpdateUpdate(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<string> bodyupdatecomment = null, WorkflowExpression<string> bodyupdatecreatedAt = null, WorkflowExpression<string> bodyupdateupdatedAt = null, WorkflowExpression<int> bodyupdategoalId = null, WorkflowExpression<int> bodyupdatedeleted = null, WorkflowExpression<int> bodyupdateentityTemplateId = null)
         {

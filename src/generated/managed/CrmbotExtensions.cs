@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildCustomMessageResponse> __BuildBuildCustomMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytext)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildTextMessageResponse> __BuildBuildTextMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytext)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildCardMessageResponse> __BuildBuildCardMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytitle, WorkflowExpression<bool> bodyisCarousel, WorkflowExpression<string> bodysubtitle = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodybuttontitle1 = null, WorkflowExpression<string> bodybuttonpostback1 = null, WorkflowExpression<string> bodybuttontitle2 = null, WorkflowExpression<string> bodybuttonpostback2 = null, WorkflowExpression<string> bodybuttontitle3 = null, WorkflowExpression<string> bodybuttonpostback3 = null)
         {
@@ -176,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildQuickrepliesMessageResponse> __BuildBuildQuickrepliesMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytext)
         {
@@ -212,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildMediaMessageResponse> __BuildBuildMediaMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodyurl, WorkflowExpression<bodymediaTypeInput> bodymediaType)
         {
@@ -248,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendResponse(WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodyuseGlossary, WorkflowExpression<string> bodytargetLanguage, WorkflowExpression<JToken[]> bodywebhookResponsefulfillmentMessages = null, WorkflowExpression<string> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, WorkflowExpression<string> bodywebhookResponseapplySpecificContextToResponse = null, WorkflowExpression<int> bodywebhookResponsedurationOfContext = null)
         {
@@ -320,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendProactiveMessage(WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodyuseGlossary, WorkflowExpression<string> bodytargetLanguage, WorkflowExpression<JToken[]> bodywebhookResponsefulfillmentMessages = null)
         {

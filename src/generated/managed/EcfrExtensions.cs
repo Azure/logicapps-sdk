@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResultsResponse> __BuildSearchCfrResults(WorkflowExpression<string> query, WorkflowExpression<string> lastModifiedOnOrAfter = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<paginateByInput> paginateBy = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HierarchyCountResponse> __BuildGetHierarchyCounts(WorkflowExpression<string> query, WorkflowExpression<string> agencySlugs = null, WorkflowExpression<string> date = null, WorkflowExpression<string> lastModifiedAfter = null, WorkflowExpression<string> lastModifiedOnOrAfter = null, WorkflowExpression<string> lastModifiedBefore = null, WorkflowExpression<string> lastModifiedOnOrBefore = null)
         {
@@ -95,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildGetFullRegulationXML(WorkflowExpression<string> date, WorkflowExpression<string> title, WorkflowExpression<string> subtitle = null, WorkflowExpression<string> chapter = null, WorkflowExpression<string> subchapter = null, WorkflowExpression<string> part = null, WorkflowExpression<string> subpart = null, WorkflowExpression<string> section = null, WorkflowExpression<string> appendix = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateDocumentResponse> __BuildGenerateDocument(WorkflowExpression<bool> includeDocumentData, WorkflowExpression<string> bodytransactionData, WorkflowExpression<int> bodybatchConfigResId, WorkflowExpression<int> bodyprojectID = null, WorkflowExpression<int> bodytransactionRange = null, WorkflowExpression<bodytransactionDataTypeInput> bodytransactionDataType = null, WorkflowExpression<bodypropertiesInputItem[]> bodyproperties = null)
         {

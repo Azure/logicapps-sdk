@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PackagesResponse> __BuildPackagesGET(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Package> __BuildPackagesPOST(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymachineName = null, WorkflowExpression<string> bodydomain = null, WorkflowExpression<string> bodyversion = null, WorkflowExpression<string> bodycreatedAt = null, WorkflowExpression<string> bodyupdatedAt = null, WorkflowExpression<string> bodypublishedAt = null, WorkflowExpression<string> bodylogoUrl = null, WorkflowExpression<string> bodycontactEmail = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodymachineDescription = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodyopenapi = null)
         {
@@ -165,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Package[]> __BuildPackagesLookupGET(WorkflowExpression<string> ids = null)
         {
@@ -188,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Package> __BuildPackagesByPackageIdGET(WorkflowExpression<string> packageId)
         {
@@ -209,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Package> __BuildPackagesByPackageIdPOST(WorkflowExpression<string> packageId, WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymachineName = null, WorkflowExpression<string> bodydomain = null, WorkflowExpression<string> bodyversion = null, WorkflowExpression<string> bodycreatedAt = null, WorkflowExpression<string> bodyupdatedAt = null, WorkflowExpression<string> bodypublishedAt = null, WorkflowExpression<string> bodylogoUrl = null, WorkflowExpression<string> bodycontactEmail = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodymachineDescription = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodyopenapi = null)
         {
@@ -331,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PackagesOpenapiResponse> __BuildPackagesOpenapiByPackageIdGET(WorkflowExpression<string> packageId, WorkflowExpression<formatInput> format = null)
         {
@@ -355,7 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AiPlugin> __BuildPackagesAiPluginByPackageIdGET(WorkflowExpression<string> packageId)
         {
@@ -376,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AiPlugin[]> __BuildAiPluginsSearchGET(WorkflowExpression<string> query, WorkflowExpression<int> limit = null)
         {
@@ -401,7 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AiPlugin[]> __BuildAiPluginsLookupGET(WorkflowExpression<string> ids = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildArchiveActivity(WorkflowExpression<string> sL360BusinessProcess, WorkflowExpression<string> sL360BusinessTransaction, WorkflowExpression<string> sL360CurrentStage, WorkflowExpression<string> sL360StageActivityId)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLogExceptionActivity(WorkflowExpression<string> sL360StageActivityId, WorkflowExpression<string> sL360ExceptionMessage, WorkflowExpression<string> sL360ExceptionCode, WorkflowExpression<string> sL360BusinessProcess)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartActivityResponse> __BuildStartActivity(WorkflowExpression<string> sL360BusinessProcess, WorkflowExpression<string> sL360BusinessTransaction, WorkflowExpression<string> sL360CurrentStage, WorkflowExpression<string> sL360MainActivityId = null, WorkflowExpression<string> sL360PreviousStage = null, WorkflowExpression<sL360ArchiveMessageInput> sL360ArchiveMessage = null, WorkflowExpression<string> sL360BatchId = null)
         {
@@ -158,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateActivity(WorkflowExpression<string> sL360MainActivityId, WorkflowExpression<string> sL360StageActivityId, WorkflowExpression<string> sL360BusinessProcess, WorkflowExpression<string> sL360BusinessTransaction, WorkflowExpression<string> sL360CurrentStage, WorkflowExpression<sL360StatusInput> sL360Status = null, WorkflowExpression<sL360ArchiveMessageInput> sL360ArchiveMessage = null)
         {

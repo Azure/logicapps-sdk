@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmbedPostResponse> __BuildEmbed(WorkflowExpression<string[]> bodytexts = null, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<bodytruncateInput> bodytruncate = null)
         {
@@ -76,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassifyPostResponse> __BuildClassify(WorkflowExpression<string[]> bodyinputs = null, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<bodyexamplesInputItem[]> bodyexamples = null, WorkflowExpression<string> bodypreset = null, WorkflowExpression<bodytruncateInput> bodytruncate = null)
         {
@@ -148,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TokenPostResponse> __BuildToken(WorkflowExpression<string> bodytext = null)
         {
@@ -182,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetokenPostResponse> __BuildDetoken(WorkflowExpression<int[]> bodytokens = null)
         {
@@ -216,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguagePostResponse> __BuildLanguage(WorkflowExpression<string[]> bodytexts = null)
         {
@@ -250,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatPostResponse> __BuildChat(WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodymodel = null, WorkflowExpression<string> bodypreamble = null, WorkflowExpression<bodychatHistoryInputItem[]> bodychatHistory = null, WorkflowExpression<string> bodyconversationId = null, WorkflowExpression<bodypromptTruncationInput> bodypromptTruncation = null, WorkflowExpression<bodyconnectorsInputItem[]> bodyconnectors = null, WorkflowExpression<bool> bodysearchQueriesOnly = null, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null, WorkflowExpression<bodycitationQualityInput> bodycitationQuality = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<int> bodymaxInputTokens = null, WorkflowExpression<int> bodyk = null, WorkflowExpression<double> bodyp = null, WorkflowExpression<double> bodyseed = null, WorkflowExpression<string[]> bodystopSequences = null, WorkflowExpression<double> bodyfrequencyPenalty = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null)
         {

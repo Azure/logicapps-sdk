@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> customerId, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestBodysender, WorkflowExpression<string> requestBodycontent, WorkflowExpression<requestBodyprotocolInput> requestBodyprotocol, WorkflowExpression<requestBodyrecipientsInputItem[]> requestBodyrecipients, WorkflowExpression<string> requestBodysendDateTime = null, WorkflowExpression<string> requestBodyattachmentUri = null, WorkflowExpression<string> requestBodycustomerData = null, WorkflowExpression<bool> requestBodyadMessage = null, WorkflowExpression<string> requestBodydlrUrl = null, WorkflowExpression<string> requestBodyrequestId = null)
         {
@@ -103,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendReplyMessageResponse> __BuildSendReplyMessage(WorkflowExpression<string> parentMessageId, WorkflowExpression<string> customerId, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestBodysender, WorkflowExpression<string> requestBodycontent, WorkflowExpression<requestBodyprotocolInput> requestBodyprotocol, WorkflowExpression<requestBodyrecipientsInputItem[]> requestBodyrecipients, WorkflowExpression<string> requestBodysendDateTime = null, WorkflowExpression<string> requestBodyattachmentUri = null, WorkflowExpression<string> requestBodycustomerData = null, WorkflowExpression<bool> requestBodyadMessage = null, WorkflowExpression<string> requestBodydlrUrl = null, WorkflowExpression<string> requestBodyrequestId = null)
         {
@@ -189,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> __BuildSendDiscussionReplyMessage(WorkflowExpression<string> customerId, WorkflowExpression<string> requestBodythreadId, WorkflowExpression<string> requestBodycontent, WorkflowExpression<string> requestBodycustomerData = null)
         {
@@ -231,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateWhatsappTemplate(WorkflowExpression<string> customerId, WorkflowExpression<string> identityNumber, WorkflowExpression<string> requestBodydisplayName, WorkflowExpression<string> requestBodyrawContent, WorkflowExpression<string> requestBodycategory, WorkflowExpression<string> requestBodylanguage, WorkflowExpression<requestBodybuttonsInputItem[]> requestBodybuttons = null, WorkflowExpression<string> requestBodyattachmentUrl = null)
         {
@@ -286,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> __BuildSendWhatsappTemplateMessage(WorkflowExpression<string> customerId, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestBodytemplateName, WorkflowExpression<requestBodyrecipientsInputItem2[]> requestBodyrecipients, WorkflowExpression<string[]> requestBodybodyParameters = null, WorkflowExpression<string[]> requestBodyheaderParameters = null, WorkflowExpression<requestBodybuttonsInputItem2[]> requestBodybuttons = null, WorkflowExpression<string> requestBodysendDateTime = null, WorkflowExpression<string> requestBodyattachmentUri = null, WorkflowExpression<bool> requestBodyuseSmsFallback = null, WorkflowExpression<string> requestBodydlrUrl = null, WorkflowExpression<string> requestBodycustomerData = null, WorkflowExpression<string> requestBodyrequestId = null)
         {
@@ -386,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupContactResponse> __BuildGetGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> phone, WorkflowExpression<string> region = null)
         {
@@ -412,7 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildDeleteGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> phone)
         {
@@ -435,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildUpdateGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> phone, WorkflowExpression<bool> requestBodyactive = null, WorkflowExpression<string> requestBodyemail = null, WorkflowExpression<string> requestBodyfirstName = null, WorkflowExpression<string> requestBodylastName = null, WorkflowExpression<requestBodygenderInput> requestBodygender = null, WorkflowExpression<int> requestBodybirthYear = null, WorkflowExpression<string> requestBodystreetAddress = null, WorkflowExpression<string> requestBodyzipCode = null, WorkflowExpression<string> requestBodycity = null, WorkflowExpression<string> requestBodycountryCode = null, WorkflowExpression<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, WorkflowExpression<string[]> requestBodyphoneNumberRegions = null)
         {
@@ -559,7 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildDeleteAllGroupContacts(WorkflowExpression<string> customer, WorkflowExpression<string> groupService)
         {
@@ -581,7 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> requestBodyphone, WorkflowExpression<bool> requestBodyactive = null, WorkflowExpression<string> requestBodyemail = null, WorkflowExpression<string> requestBodyfirstName = null, WorkflowExpression<string> requestBodylastName = null, WorkflowExpression<requestBodygenderInput> requestBodygender = null, WorkflowExpression<int> requestBodybirthYear = null, WorkflowExpression<string> requestBodystreetAddress = null, WorkflowExpression<string> requestBodyzipCode = null, WorkflowExpression<string> requestBodycity = null, WorkflowExpression<string> requestBodycountryCode = null, WorkflowExpression<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, WorkflowExpression<string[]> requestBodyphoneNumberRegions = null)
         {

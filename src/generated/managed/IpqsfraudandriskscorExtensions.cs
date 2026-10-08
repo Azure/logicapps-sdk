@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IPREPUTATIONResponse> __BuildIPREPUTATION(WorkflowExpression<string> ip, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> userLanguage = null, WorkflowExpression<bool> fast = null, WorkflowExpression<bool> mobile = null, WorkflowExpression<bool> allowPublicAccessPoints = null, WorkflowExpression<bool> lighterPenalties = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EMAILREPUTATIONResponse> __BuildEMAILREPUTATION(WorkflowExpression<string> email, WorkflowExpression<abuseStrictnessInput> abuseStrictness, WorkflowExpression<bool> fast = null, WorkflowExpression<int> timeout = null, WorkflowExpression<bool> suggestDomain = null)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<URLREPUTATIONResponse> __BuildURLREPUTATION(WorkflowExpression<string> url, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<bool> fast = null)
         {
@@ -94,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PHONEREPUTATIONResponse> __BuildPHONEREPUTATION(WorkflowExpression<string> phone, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<string> country = null)
         {

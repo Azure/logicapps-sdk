@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOrderResponse> __BuildCreateOrder(WorkflowExpression<serviceInput> service, WorkflowExpression<string> toName, WorkflowExpression<string> toAddress1, WorkflowExpression<string> toCity, WorkflowExpression<string> toState, WorkflowExpression<string> toPostcode, WorkflowExpression<string> fromName, WorkflowExpression<string> fromAddress1, WorkflowExpression<string> fromCity, WorkflowExpression<string> fromState, WorkflowExpression<string> fromPostcode, WorkflowExpression<object> file = null, WorkflowExpression<string> url = null, WorkflowExpression<string> customerReference = null, WorkflowExpression<string> webhook = null, WorkflowExpression<bool> simplex = null, WorkflowExpression<bool> color = null, WorkflowExpression<bool> flat = null, WorkflowExpression<bool> returnEnvelope = null, WorkflowExpression<bool> stamp = null, WorkflowExpression<string> message = null, WorkflowExpression<string> toOrganization = null, WorkflowExpression<string> toAddress2 = null, WorkflowExpression<string> toCountry = null, WorkflowExpression<string> fromOrganization = null, WorkflowExpression<string> fromAddress2 = null, WorkflowExpression<string> fromCountry = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrderResponse> __BuildGetOrder(WorkflowExpression<string> id)
         {

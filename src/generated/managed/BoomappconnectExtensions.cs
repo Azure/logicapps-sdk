@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SMS1Response> __BuildSMS1(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
         {
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SMS2Response> __BuildSMS2(WorkflowExpression<string> bodyconversationId = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<int> bodyvalidityPeriod = null, WorkflowExpression<bool> bodyopenTicket = null, WorkflowExpression<string> bodyemailResponses = null, WorkflowExpression<string> bodypushResponses = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
         {
@@ -198,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SMS3Response> __BuildSMS3(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
         {
@@ -274,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VOICEResponse> __BuildVOICE(WorkflowExpression<string> bodyvoiceIntro = null, WorkflowExpression<string> bodyvoiceThankYou = null, WorkflowExpression<string> bodyvoiceRedirectMessage = null, WorkflowExpression<string> bodyvoiceRedirectNonumber = null, WorkflowExpression<int> bodyvoiceRetries = null, WorkflowExpression<int> bodyvoiceDelay = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
         {
@@ -393,7 +389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EMAILResponse> __BuildEMAIL(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyemailSubject = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<string[]> bodyemailAddress = null, WorkflowExpression<int> bodyvalidityPeriod = null, WorkflowExpression<bool> bodyopenTicket = null, WorkflowExpression<string> bodyemailResponses = null, WorkflowExpression<string> bodypushResponses = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
         {

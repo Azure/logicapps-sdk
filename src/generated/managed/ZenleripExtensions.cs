@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserListResponse> __BuildUserList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> search = null, WorkflowExpression<int> role = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodylastName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodypassword, WorkflowExpression<int> bodycommission, WorkflowExpression<string> bodyroles, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodygdprConsentStatus = null)
         {
@@ -152,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserGetResponse> __BuildUserGet(WorkflowExpression<string> userId)
         {
@@ -173,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDeleteResponse> __BuildUserDelete(WorkflowExpression<string> userId)
         {
@@ -194,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserPutResponse> __BuildUserPut(WorkflowExpression<string> userId, WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodylastName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodypassword, WorkflowExpression<int> bodycommission, WorkflowExpression<string> bodyroles, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodygdprConsentStatus = null)
         {
@@ -289,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserEnrollResponse> __BuildUserEnroll(WorkflowExpression<string> userId, WorkflowExpression<string> bodycourseId, WorkflowExpression<string> bodyplanId = null)
         {
@@ -327,7 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserUnenrollResponse> __BuildUserUnenroll(WorkflowExpression<string> userId, WorkflowExpression<string> bodycourseId)
         {
@@ -358,7 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CourseListResponse> __BuildCourseList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> order = null, WorkflowExpression<string> search = null, WorkflowExpression<int> type = null, WorkflowExpression<int> status = null)
         {
@@ -399,7 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CourseGetResponse> __BuildCourseGet(WorkflowExpression<string> courseId)
         {
@@ -420,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FunnelListResponse> __BuildFunnelList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> order = null, WorkflowExpression<string> search = null, WorkflowExpression<int> status = null)
         {
@@ -458,7 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FunnelEnrollmentResponse> __BuildFunnelEnrollment(WorkflowExpression<string> funnelId)
         {
@@ -479,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FunnelSubscribeResponse> __BuildFunnelSubscribe(WorkflowExpression<string> funnelId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodygdprConsentStatus = null)
         {
@@ -569,7 +557,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FunnelUnsubscribeResponse> __BuildFunnelUnsubscribe(WorkflowExpression<string> funnelId, WorkflowExpression<string> bodyemail = null)
         {
@@ -604,7 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassListResponse> __BuildClassList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> search = null)
         {
@@ -640,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassRegisterResponse> __BuildClassRegister(WorkflowExpression<string> liveclassId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodylastName = null)
         {
@@ -681,7 +666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassUnregisterResponse> __BuildClassUnregister(WorkflowExpression<string> liveclassId, WorkflowExpression<string> bodyemail = null)
         {
@@ -716,7 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebinarListResponse> __BuildWebinarList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> search = null)
         {
@@ -752,7 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebinarRegisterResponse> __BuildWebinarRegister(WorkflowExpression<string> webinarId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null)
         {
@@ -828,7 +810,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebinarUnregisterResponse> __BuildWebinarUnregister(WorkflowExpression<string> webinarId, WorkflowExpression<string> bodyemail)
         {
@@ -859,7 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportEnrollBriefResponse> __BuildReportEnrollBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> courseId = null)
         {
@@ -888,7 +868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportEnrollDetailResponse> __BuildReportEnrollDetail(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> courseId = null)
         {
@@ -917,7 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportSalesBriefResponse> __BuildReportSalesBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> groupby = null, WorkflowExpression<string> courseIds = null)
         {
@@ -955,7 +933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportSalesDetailedResponse> __BuildReportSalesDetailed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<int> paymentType = null)
         {
@@ -993,7 +970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportProgressBriefResponse> __BuildReportProgressBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null)
         {
@@ -1028,7 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportProgressDetailedResponse> __BuildReportProgressDetailed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<string> afV = null, WorkflowExpression<string> couponIs = null, WorkflowExpression<string> couponLike = null, WorkflowExpression<string> nameIs = null, WorkflowExpression<string> nameLike = null, WorkflowExpression<string> emailIs = null, WorkflowExpression<string> emailLike = null, WorkflowExpression<string> affiliateIs = null, WorkflowExpression<int> paymentType = null)
         {
@@ -1090,7 +1065,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportAffiliateBriefResponse> __BuildReportAffiliateBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<string> affiliateIds = null)
         {
@@ -1128,7 +1102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportAffiliateDetailedResponse> __BuildReportAffiliateDetailed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<string> affiliateIds = null, WorkflowExpression<string> afV = null, WorkflowExpression<string> couponIs = null, WorkflowExpression<string> couponLike = null, WorkflowExpression<string> nameIs = null, WorkflowExpression<string> nameLike = null, WorkflowExpression<string> emailIs = null, WorkflowExpression<string> emailLike = null, WorkflowExpression<string> affiliateIs = null, WorkflowExpression<string> paymentType = null)
         {

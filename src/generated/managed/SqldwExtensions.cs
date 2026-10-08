@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteProcedure(WorkflowExpression<string> procedure, WorkflowExpression<object> parameters = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecutePassThroughNativeQuery(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> queryquery = null, WorkflowExpression<object> queryactualParameters = null)
         {
@@ -92,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsListV2> __BuildGetItems(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> skip = null, WorkflowExpression<int> top = null, WorkflowExpression<string> select = null)
         {
@@ -130,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> server, WorkflowExpression<string> database)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> dataset)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildPostItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<itemInput> item = null)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildGetItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -114,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -137,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildPatchItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<itemInput> item = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiApplicantCreateResponse> __BuildApiApplicantCreate(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodynameFirst = null, WorkflowExpression<string> bodynameLast = null, WorkflowExpression<string> bodyflowName = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiVerificationlinkCreateResponse> __BuildApiVerificationlinkCreate(WorkflowExpression<string> bodyapplicant = null)
         {
@@ -114,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildApiDocumentUpload(WorkflowExpression<string> bodyapplicantId = null, WorkflowExpression<string> bodydocType = null, WorkflowExpression<string> bodydocSubType = null, WorkflowExpression<string> bodydocCountryISO = null, WorkflowExpression<string> bodydocFilefilename = null, WorkflowExpression<string> bodydocFilecontents = null)
         {
@@ -191,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiApplicantStatusResponse> __BuildApiApplicantStatus(WorkflowExpression<string> bodyapplicantId = null)
         {
@@ -225,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiApplicantDetailsResponse> __BuildApiApplicantDetails(WorkflowExpression<string> bodyapplicantId = null)
         {
@@ -259,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildApiRequestApplicantCheck(WorkflowExpression<string> bodyapplicantId = null)
         {

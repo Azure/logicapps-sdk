@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReturnFlowResult(WorkflowExpression<string> callbackId, WorkflowExpression<callbackBodyflowResultInput> callbackBodyflowResult = null)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BttnApiInfo> __BuildGetBttnInfo(WorkflowExpression<string> id)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BttnApiCounter> __BuildGetBttnCounter(WorkflowExpression<string> id)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendSurvey(WorkflowExpression<string> campaign, WorkflowExpression<string> bodyrespondentemailAddress = null, WorkflowExpression<string> bodyrespondentfirstName = null, WorkflowExpression<string> bodyrespondentlastName = null, WorkflowExpression<string> bodyrespondentphoneNumber = null)
         {
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddEmployee(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyteam = null, WorkflowExpression<string> bodydivision = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<bool> bodyactive = null)
         {

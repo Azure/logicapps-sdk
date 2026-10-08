@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentResponse> __BuildGETAppointment(WorkflowExpression<string> patient = null, WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTAppointmentResponse> __BuildPOSTAppointment(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodyserviceCategoryInputItem[]> bodyserviceCategory = null, WorkflowExpression<bodyserviceTypeInputItem[]> bodyserviceType = null, WorkflowExpression<bodyspecialtyInputItem[]> bodyspecialty = null, WorkflowExpression<bodyappointmentTypecodingInputItem[]> bodyappointmentTypecoding = null, WorkflowExpression<bodyreasonReferenceInputItem[]> bodyreasonReference = null, WorkflowExpression<int> bodypriority = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodycreated = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<bodybasedOnInputItem[]> bodybasedOn = null, WorkflowExpression<bodyparticipantInputItem[]> bodyparticipant = null)
         {
@@ -216,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentIDResponse> __BuildGETAppointmentID(WorkflowExpression<string> id)
         {
@@ -237,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEAppointmentIDResponse> __BuildDELETEAppointmentID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodyparticipantInputItem[]> bodyparticipant = null)
         {
@@ -337,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTAppointmentIDResponse> __BuildPUTAppointmentID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodyparticipantInputItem[]> bodyparticipant = null)
         {
@@ -437,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentIDVERSIONResponse> __BuildGETAppointmentIDVERSION(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -459,7 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentIDHistoryResponse> __BuildGETAppointmentIDHistory(WorkflowExpression<string> id)
         {
@@ -480,7 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentHistoryResponse> __BuildGETAppointmentHistory(WorkflowExpression<string> patient = null)
         {
@@ -503,7 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentResponseResponse> __BuildGETAppointmentResponse(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -532,7 +523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTAppointmentResponseResponse> __BuildPOSTAppointmentResponse(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodyappointmentreference = null, WorkflowExpression<string> bodyappointmentdisplay = null, WorkflowExpression<string> bodyactorreference = null, WorkflowExpression<string> bodyactordisplay = null, WorkflowExpression<string> bodyparticipantStatus = null)
         {
@@ -646,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentResponseIDResponse> __BuildGETAppointmentResponseID(WorkflowExpression<string> id)
         {
@@ -667,7 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEAppointmentResponseIDResponse> __BuildDELETEAppointmentResponseID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodyappointmentreference = null, WorkflowExpression<string> bodyappointmentdisplay = null, WorkflowExpression<string> bodyactorreference = null, WorkflowExpression<string> bodyactordisplay = null, WorkflowExpression<string> bodyparticipantStatus = null)
         {
@@ -804,7 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTAppointmentResponseIDResponse> __BuildPUTAppointmentResponseID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodyappointmentreference = null, WorkflowExpression<string> bodyappointmentdisplay = null, WorkflowExpression<string> bodyactorreference = null, WorkflowExpression<string> bodyactordisplay = null, WorkflowExpression<string> bodyparticipantStatus = null)
         {
@@ -941,7 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentResponseIDVersionResponse> __BuildGETAppointmentResponseIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -963,7 +949,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETAppointmentResponseIDHistoryResponse> __BuildGETAppointmentResponseIDHistory(WorkflowExpression<string> id)
         {
@@ -993,7 +978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETDeviceResponse> __BuildGETDevice(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -1022,7 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTDeviceResponse> __BuildPOSTDevice(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<bodyudiCarrierInputItem[]> bodyudiCarrier = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodydistinctIdentifier = null, WorkflowExpression<string> bodymanufactureDate = null, WorkflowExpression<string> bodyexpirationDate = null, WorkflowExpression<string> bodylotNumber = null, WorkflowExpression<string> bodyserialNumber = null, WorkflowExpression<bodydeviceNameInputItem[]> bodydeviceName = null, WorkflowExpression<bodytypecodingInputItem[]> bodytypecoding = null, WorkflowExpression<string> bodytypetext = null, WorkflowExpression<string> bodypatientreference = null)
         {
@@ -1178,7 +1161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETDeviceIDResponse> __BuildGETDeviceID(WorkflowExpression<string> id)
         {
@@ -1199,7 +1181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEDeviceIDResponse> __BuildDELETEDeviceID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<bodyidentifierInputItem[]> bodyidentifier = null)
         {
@@ -1292,7 +1273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTDeviceIDResponse> __BuildPUTDeviceID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<bodyidentifierInputItem[]> bodyidentifier = null)
         {
@@ -1385,7 +1365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETDeviceIDVERSIONResponse> __BuildGETDeviceIDVERSION(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -1407,7 +1386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETDeviceIDHISTORYResponse> __BuildGETDeviceIDHISTORY(WorkflowExpression<string> id)
         {
@@ -1437,7 +1415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETEncounterResponse> __BuildGETEncounter(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -1466,7 +1443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTEncounterResponse> __BuildPOSTEncounter(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyClasssystem = null, WorkflowExpression<string> bodyClasscode = null, WorkflowExpression<bodytypeInputItem[]> bodytype = null, WorkflowExpression<string> bodysubjectreference = null, WorkflowExpression<string> bodysubjectdisplay = null, WorkflowExpression<bodyparticipantInputItem2[]> bodyparticipant = null, WorkflowExpression<string> bodyperiodstart = null, WorkflowExpression<string> bodyperiodend = null, WorkflowExpression<string> bodyserviceProviderreference = null, WorkflowExpression<string> bodyserviceProviderdisplay = null)
         {
@@ -1638,7 +1614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETEncounterIDResponse> __BuildGETEncounterID(WorkflowExpression<string> id)
         {
@@ -1659,7 +1634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEEncounterIDResponse> __BuildDELETEEncounterID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyClasssystem = null, WorkflowExpression<string> bodyClasscode = null, WorkflowExpression<bodytypeInputItem[]> bodytype = null, WorkflowExpression<string> bodysubjectreference = null, WorkflowExpression<string> bodysubjectdisplay = null, WorkflowExpression<bodyparticipantInputItem2[]> bodyparticipant = null, WorkflowExpression<string> bodyperiodstart = null, WorkflowExpression<string> bodyperiodend = null, WorkflowExpression<string> bodyserviceProviderreference = null, WorkflowExpression<string> bodyserviceProviderdisplay = null)
         {
@@ -1832,7 +1806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTEncounterIDResponse> __BuildPUTEncounterID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyClasssystem = null, WorkflowExpression<string> bodyClasscode = null, WorkflowExpression<bodytypeInputItem[]> bodytype = null, WorkflowExpression<string> bodysubjectreference = null, WorkflowExpression<string> bodysubjectdisplay = null, WorkflowExpression<bodyparticipantInputItem2[]> bodyparticipant = null, WorkflowExpression<string> bodyperiodstart = null, WorkflowExpression<string> bodyperiodend = null, WorkflowExpression<string> bodyserviceProviderreference = null, WorkflowExpression<string> bodyserviceProviderdisplay = null)
         {
@@ -2005,7 +1978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETEncounterIDVersionResponse> __BuildGETEncounterIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -2027,7 +1999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETEncounterIDHISTORYResponse> __BuildGETEncounterIDHISTORY(WorkflowExpression<string> id)
         {
@@ -2057,7 +2028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETFlagResponse> __BuildGETFlag(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -2086,7 +2056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTFLAGResponse> __BuildPOSTFLAG(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<bodyidentifierInputItem2[]> bodyidentifier = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodycategoryInputItem[]> bodycategory = null, WorkflowExpression<bodycodecodingInputItem[]> bodycodecoding = null, WorkflowExpression<string> bodycodetext = null, WorkflowExpression<string> bodysubjectreference = null, WorkflowExpression<string> bodysubjectdisplay = null, WorkflowExpression<string> bodyperiodstart = null, WorkflowExpression<string> bodyperiodend = null, WorkflowExpression<string> bodyauthorreference = null, WorkflowExpression<string> bodyauthordisplay = null)
         {
@@ -2258,7 +2227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETFlagIDResponse> __BuildGETFlagID(WorkflowExpression<string> id)
         {
@@ -2279,7 +2247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEFlagIDResponse> __BuildDELETEFlagID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<bodyidentifierInputItem2[]> bodyidentifier = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodycategoryInputItem[]> bodycategory = null, WorkflowExpression<bodycodecodingInputItem[]> bodycodecoding = null, WorkflowExpression<string> bodycodetext = null, WorkflowExpression<string> bodysubjectreference = null, WorkflowExpression<string> bodysubjectdisplay = null, WorkflowExpression<string> bodyperiodstart = null, WorkflowExpression<string> bodyperiodend = null, WorkflowExpression<string> bodyauthorreference = null, WorkflowExpression<string> bodyauthordisplay = null)
         {
@@ -2452,7 +2419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTFlagIDResponse> __BuildPUTFlagID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<bodyidentifierInputItem2[]> bodyidentifier = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodycategoryInputItem[]> bodycategory = null, WorkflowExpression<bodycodecodingInputItem[]> bodycodecoding = null, WorkflowExpression<string> bodycodetext = null, WorkflowExpression<string> bodysubjectreference = null, WorkflowExpression<string> bodysubjectdisplay = null, WorkflowExpression<string> bodyperiodstart = null, WorkflowExpression<string> bodyperiodend = null, WorkflowExpression<string> bodyauthorreference = null, WorkflowExpression<string> bodyauthordisplay = null)
         {
@@ -2625,7 +2591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETFlagIDVersionResponse> __BuildGETFlagIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -2647,7 +2612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETFlagIDHistoryResponse> __BuildGETFlagIDHistory(WorkflowExpression<string> id)
         {
@@ -2677,7 +2641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETLocationResponse> __BuildGETLocation(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -2706,7 +2669,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTLocationResponse> __BuildPOSTLocation(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodypartOfreference = null, WorkflowExpression<string> bodypartOfdisplay = null)
         {
@@ -2812,7 +2774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETLocationIDResponse> __BuildGETLocationID(WorkflowExpression<string> id)
         {
@@ -2833,7 +2794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETELocationIDResponse> __BuildDELETELocationID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodypartOfreference = null, WorkflowExpression<string> bodypartOfdisplay = null)
         {
@@ -2940,7 +2900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTLocationIDResponse> __BuildPUTLocationID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytextstatus = null, WorkflowExpression<string> bodytextdiv = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodypartOfreference = null, WorkflowExpression<string> bodypartOfdisplay = null)
         {
@@ -3047,7 +3006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETLocationIDVersionResponse> __BuildGETLocationIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -3069,7 +3027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETLocationIDHistoryResponse> __BuildGETLocationIDHistory(WorkflowExpression<string> id)
         {
@@ -3099,7 +3056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPatientResponse> __BuildGETPatient(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -3128,7 +3084,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTPatientResponse> __BuildPOSTPatient(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodynameInputItem[]> bodyname = null, WorkflowExpression<bodytelecomInputItem[]> bodytelecom = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<bool> bodydeceasedBoolean = null, WorkflowExpression<bodyaddressInputItem[]> bodyaddress = null)
         {
@@ -3211,7 +3166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPatientIDResponse> __BuildGETPatientID(WorkflowExpression<string> id)
         {
@@ -3232,7 +3186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEPatientIDResponse> __BuildDELETEPatientID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodynameInputItem[]> bodyname = null, WorkflowExpression<bodytelecomInputItem[]> bodytelecom = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<bool> bodydeceasedBoolean = null, WorkflowExpression<bodyaddressInputItem[]> bodyaddress = null)
         {
@@ -3323,7 +3276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTPatientIDResponse> __BuildPUTPatientID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodynameInputItem[]> bodyname = null, WorkflowExpression<bodytelecomInputItem[]> bodytelecom = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<bool> bodydeceasedBoolean = null, WorkflowExpression<bodyaddressInputItem[]> bodyaddress = null)
         {
@@ -3414,7 +3366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPatientIDVersionResponse> __BuildGETPatientIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -3436,7 +3387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPatientIDHistoryResponse> __BuildGETPatientIDHistory(WorkflowExpression<string> id)
         {
@@ -3466,7 +3416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPersonResponse> __BuildGETPerson(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -3495,7 +3444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTPersonResponse> __BuildPOSTPerson(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<bodynameInputItem[]> bodyname = null, WorkflowExpression<bodytelecomInputItem2[]> bodytelecom = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<bodyaddressInputItem2[]> bodyaddress = null, WorkflowExpression<string> bodymanagingOrganizationreference = null, WorkflowExpression<string> bodymanagingOrganizationdisplay = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodylinkInputItem[]> bodylink = null)
         {
@@ -3607,7 +3555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPersonIDResponse> __BuildGETPersonID(WorkflowExpression<string> id)
         {
@@ -3628,7 +3575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEPersonIDResponse> __BuildDELETEPersonID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<bodynameInputItem[]> bodyname = null, WorkflowExpression<bodytelecomInputItem2[]> bodytelecom = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<bodyaddressInputItem2[]> bodyaddress = null, WorkflowExpression<string> bodymanagingOrganizationreference = null, WorkflowExpression<string> bodymanagingOrganizationdisplay = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodylinkInputItem[]> bodylink = null)
         {
@@ -3741,7 +3687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTPersonIDResponse> __BuildPUTPersonID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<bodynameInputItem[]> bodyname = null, WorkflowExpression<bodytelecomInputItem2[]> bodytelecom = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<bodyaddressInputItem2[]> bodyaddress = null, WorkflowExpression<string> bodymanagingOrganizationreference = null, WorkflowExpression<string> bodymanagingOrganizationdisplay = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodylinkInputItem[]> bodylink = null)
         {
@@ -3854,7 +3799,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPersonIDVersionResponse> __BuildGETPersonIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -3876,7 +3820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPersonIDHistoryResponse> __BuildGETPersonIDHistory(WorkflowExpression<string> id)
         {
@@ -3906,7 +3849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPractitionerResponse> __BuildGETPractitioner(WorkflowExpression<string> Count = null, WorkflowExpression<string> Sort = null, WorkflowExpression<string> patient = null)
         {
@@ -3935,7 +3877,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTPractitionerResponse> __BuildPOSTPractitioner(WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<bodyidentifierInputItem[]> bodyidentifier = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodynameInputItem2[]> bodyname = null, WorkflowExpression<bodyaddressInputItem22[]> bodyaddress = null, WorkflowExpression<bodyqualificationInputItem[]> bodyqualification = null)
         {
@@ -4004,7 +3945,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPractitionerIDResponse> __BuildGETPractitionerID(WorkflowExpression<string> id)
         {
@@ -4025,7 +3965,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DELETEPractitionerIDResponse> __BuildDELETEPractitionerID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<bodyidentifierInputItem[]> bodyidentifier = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodynameInputItem2[]> bodyname = null, WorkflowExpression<bodytelecomInputItem2[]> bodytelecom = null, WorkflowExpression<bodyaddressInputItem222[]> bodyaddress = null, WorkflowExpression<string> bodygender = null)
         {
@@ -4131,7 +4070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PUTPractitionerIDResponse> __BuildPUTPractitionerID(WorkflowExpression<string> id, WorkflowExpression<string> bodyresourceType = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodymetaversionId = null, WorkflowExpression<string> bodymetalastUpdated = null, WorkflowExpression<bodyidentifierInputItem[]> bodyidentifier = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bodynameInputItem2[]> bodyname = null, WorkflowExpression<bodytelecomInputItem2[]> bodytelecom = null, WorkflowExpression<bodyaddressInputItem222[]> bodyaddress = null, WorkflowExpression<string> bodygender = null)
         {
@@ -4237,7 +4175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPractitionerIDVersionResponse> __BuildGETPractitionerIDVersion(WorkflowExpression<string> id, WorkflowExpression<string> vid)
         {
@@ -4259,7 +4196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GETPractitionerIDHistoryResponse> __BuildGETPractitionerIDHistory(WorkflowExpression<string> id)
         {

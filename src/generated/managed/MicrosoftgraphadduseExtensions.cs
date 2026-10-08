@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<bool> bodyaccountEnabled = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodymailNickname = null, WorkflowExpression<string> bodyuserPrincipalName = null, WorkflowExpression<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowExpression<string> bodypasswordProfilepassword = null, WorkflowExpression<bodyidentitiesInputItem[]> bodyidentities = null, WorkflowExpression<string> bodyonPremisesImmutableId = null)
         {
@@ -109,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvitePostResponse> __BuildInvite(WorkflowExpression<string> bodyinvitedUserEmailAddress = null, WorkflowExpression<string> bodyinviteRedirectUrl = null)
         {
@@ -150,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMembersPatch(WorkflowExpression<string> groupId, WorkflowExpression<string[]> bodymembersOdataBind)
         {

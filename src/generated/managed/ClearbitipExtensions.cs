@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildLogoGet(WorkflowExpression<string> domain, WorkflowExpression<int> size = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> greyscale = null)
         {

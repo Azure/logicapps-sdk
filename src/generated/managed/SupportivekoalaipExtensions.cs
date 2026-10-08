@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImagesPostResponse> __BuildImages(WorkflowExpression<string> bodytemplate, WorkflowExpression<bodyformatInput> bodyformat = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowExpression<string> id)
         {
@@ -103,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplatePostResponse> __BuildTemplate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyParams = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null)
         {
@@ -154,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowExpression<string> id)
         {

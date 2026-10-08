@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCompaniesResponse> __BuildGetCompanies(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> companyName = null, WorkflowExpression<int> gupAmeeCompanyId = null, WorkflowExpression<bool> isGup = null, WorkflowExpression<string> city = null, WorkflowExpression<int> postcode = null, WorkflowExpression<string> provinceName = null, WorkflowExpression<string> ukSic2007 = null, WorkflowExpression<int> minEmployees = null, WorkflowExpression<int> maxEmployees = null, WorkflowExpression<int> minAnnualSalesLocal = null, WorkflowExpression<int> maxAnnualSalesLocal = null, WorkflowExpression<int> minScore = null, WorkflowExpression<int> maxScore = null, WorkflowExpression<string> fromLatLon = null, WorkflowExpression<int> distance = null, WorkflowExpression<string> stats = null)
         {
@@ -92,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCompanyResponse> __BuildGetCompany(WorkflowExpression<string> id, WorkflowExpression<string> type = null)
         {

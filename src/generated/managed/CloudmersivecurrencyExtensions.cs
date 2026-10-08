@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConvertedCurrencyResult> __BuildCurrencyExchangeConvertCurrency(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<double> sourcePrice = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeRateResult> __BuildCurrencyExchangeGetExchangeRate(WorkflowExpression<string> source, WorkflowExpression<string> destination)
         {

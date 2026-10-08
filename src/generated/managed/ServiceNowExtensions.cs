@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetAttachmentMetdata(WorkflowExpression<string> sysparmLimit = null, WorkflowExpression<string> sysparmOffset = null, WorkflowExpression<string> sysparmQuery = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadAttachmentResponse> __BuildUploadAttachmentFile(WorkflowExpression<string> tableName, WorkflowExpression<string> tableSysId, WorkflowExpression<string> fileName, WorkflowExpression<string> file = null)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadAttachmentResponse> __BuildUploadAttachment(WorkflowExpression<object> attachmentContent, WorkflowExpression<string> tableName, WorkflowExpression<string> tableSysId)
         {
@@ -100,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRetrieveAttachmentMetadata(WorkflowExpression<string> sysId)
         {
@@ -121,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAttachment(WorkflowExpression<string> sysId)
         {
@@ -142,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRetrieveAttachmentContent(WorkflowExpression<string> sysId)
         {
@@ -163,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRecordsResponse> __BuildGetRecords(WorkflowExpression<string> tableType, WorkflowExpression<bool> sysparmDisplayValue = null, WorkflowExpression<bool> sysparmExcludeReferenceLink = null, WorkflowExpression<string> sysparmQuery = null, WorkflowExpression<int> sysparmLimit = null, WorkflowExpression<int> sysparmOffset = null, WorkflowExpression<string> sysparmFields = null)
         {
@@ -204,7 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildCreateRecord(WorkflowExpression<string> tableType, WorkflowExpression<object> body = null, WorkflowExpression<bool> sysparmDisplayValue = null, WorkflowExpression<bool> sysparmExcludeReferenceLink = null, WorkflowExpression<string> sysparmFields = null)
         {
@@ -238,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildGetRecord(WorkflowExpression<string> tableType, WorkflowExpression<string> sysid, WorkflowExpression<bool> sysparmDisplayValue = null, WorkflowExpression<bool> sysparmExcludeReferenceLink = null, WorkflowExpression<string> sysparmFields = null)
         {
@@ -271,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildUpdateRecord(WorkflowExpression<string> tableType, WorkflowExpression<string> sysid, WorkflowExpression<object> body = null, WorkflowExpression<bool> sysparmDisplayValue = null, WorkflowExpression<bool> sysparmExcludeReferenceLink = null, WorkflowExpression<string> sysparmFields = null)
         {
@@ -306,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRecord(WorkflowExpression<string> tableType, WorkflowExpression<string> sysid)
         {
@@ -337,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCatalogsResponse> __BuildGetCatalogs(WorkflowExpression<int> sysparmLimit = null, WorkflowExpression<string> sysparmText = null)
         {
@@ -363,7 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCatalogCategoriesResponse> __BuildGetCatalogCategories(WorkflowExpression<string> catalogId, WorkflowExpression<int> sysparmLimit = null, WorkflowExpression<int> sysparmOffset = null)
         {
@@ -390,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCatalogItemsResponse> __BuildGetCatalogItems(WorkflowExpression<int> sysparmLimit, WorkflowExpression<string> sysparmCategory = null, WorkflowExpression<string> sysparmText = null, WorkflowExpression<string> sysparmCatalog = null)
         {
@@ -421,7 +407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCatalogItemResponse> __BuildGetCatalogItem(WorkflowExpression<string> sysId)
         {
@@ -442,7 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrderItemResponse> __BuildOrderItem(WorkflowExpression<string> sysId, WorkflowExpression<int> bodysysparmQuantity, WorkflowExpression<string> bodysysparmRequestedFor = null, WorkflowExpression<object> bodyvariables = null)
         {
@@ -487,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetArticlesResponse> __BuildGetKnowledgeArticles(WorkflowExpression<string> query, WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> kb = null)
         {

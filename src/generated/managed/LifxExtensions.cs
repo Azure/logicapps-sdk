@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveEffect(WorkflowExpression<string> lights, WorkflowExpression<bodydirectionInput> bodydirection = null, WorkflowExpression<double> bodyperiod = null, WorkflowExpression<double> bodycycles = null, WorkflowExpression<bool> bodypowerOn = null)
         {
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPulseEffect(WorkflowExpression<string> lights, WorkflowExpression<bodycolorInput> bodycolor, WorkflowExpression<bodyfromColorInput> bodyfromColor = null, WorkflowExpression<double> bodyperiod = null, WorkflowExpression<double> bodycycles = null, WorkflowExpression<bool> bodypersist = null, WorkflowExpression<bool> bodypowerOn = null)
         {
@@ -190,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildActivateScene(WorkflowExpression<string> scene, WorkflowExpression<int> bodyduration = null)
         {
@@ -235,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetStateResponse> __BuildSetState(WorkflowExpression<string> lights, WorkflowExpression<bodypowerInput> bodypower = null, WorkflowExpression<bodycolorInput> bodycolor = null, WorkflowExpression<double> bodybrightness = null, WorkflowExpression<double> bodyduration = null, WorkflowExpression<double> bodyinfrared = null)
         {
@@ -318,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEffectsOff(WorkflowExpression<string> lights, WorkflowExpression<bool> bodypowerOff = null)
         {
@@ -353,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetStates(WorkflowExpression<bodystatesInputItem[]> bodystates, WorkflowExpression<bodydefaultspowerInput> bodydefaultspower = null, WorkflowExpression<bodydefaultscolorInput> bodydefaultscolor = null, WorkflowExpression<double> bodydefaultsbrightness = null, WorkflowExpression<double> bodydefaultsduration = null, WorkflowExpression<double> bodydefaultsinfrared = null)
         {
@@ -446,7 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTogglePower(WorkflowExpression<string> lights, WorkflowExpression<double> bodyduration = null)
         {
@@ -491,7 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBreatheEffect(WorkflowExpression<string> lights, WorkflowExpression<bodycolorInput> bodycolor, WorkflowExpression<bodyfromColorInput> bodyfromColor = null, WorkflowExpression<double> bodyperiod = null, WorkflowExpression<double> bodycycles = null, WorkflowExpression<bool> bodypersist = null, WorkflowExpression<bool> bodypowerOn = null, WorkflowExpression<double> bodypeak = null)
         {
@@ -604,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMorphEffect(WorkflowExpression<string> lights, WorkflowExpression<int> bodyperiod = null, WorkflowExpression<int> bodyduration = null, WorkflowExpression<string[]> bodypalette = null, WorkflowExpression<bool> bodypowerOn = null)
         {

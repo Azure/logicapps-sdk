@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateRoomsResponse> __BuildCreateRooms(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydomainName, WorkflowExpression<int> bodymaximumBoards = null, WorkflowExpression<int> bodymaximumUsers = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyadministrator = null)
         {
@@ -96,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBoardsResponse> __BuildListBoards(WorkflowExpression<string> search = null, WorkflowExpression<sortDirectionInput> sortDirection = null)
         {
@@ -125,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCardResponse> __BuildCreateCard(WorkflowExpression<typeCardInput> typeCard, WorkflowExpression<object> dynamicSchema = null)
         {
@@ -149,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateQCDIndicatorsValue(WorkflowExpression<string> bodyboardId, WorkflowExpression<JToken[]> bodyletters)
         {
@@ -182,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildComputeQCDIndicator(WorkflowExpression<string> letterName, WorkflowExpression<string> indicatorName, WorkflowExpression<double> wedgeValue, WorkflowExpression<int> wedgeNumber, WorkflowExpression<wedgeRingInput> wedgeRing, WorkflowExpression<string> period = null)
         {
@@ -215,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCardsActivityResponse> __BuildListCardsActivity(WorkflowExpression<string> boardId, WorkflowExpression<int> page, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null, WorkflowExpression<int> size = null)
         {
@@ -249,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateAssetBoardImage(WorkflowExpression<string> boardImageId, WorkflowExpression<object> file, WorkflowExpression<fileContentTypeInput> fileContentType)
         {
@@ -272,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateGauge(WorkflowExpression<string> gaugeId, WorkflowExpression<double> bodyvalue, WorkflowExpression<string> bodytitle = null)
         {

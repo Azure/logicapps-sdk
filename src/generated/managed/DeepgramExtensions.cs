@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TranscribePostResponse> __BuildTranscribe(WorkflowExpression<string> bodyurl, WorkflowExpression<modelInput> model = null, WorkflowExpression<tierInput> tier = null, WorkflowExpression<versionInput> version = null, WorkflowExpression<string> language = null, WorkflowExpression<bool> detectLanguage = null, WorkflowExpression<bool> punctuate = null, WorkflowExpression<bool> profanityFilter = null, WorkflowExpression<redactInput> redact = null, WorkflowExpression<bool> diarize = null, WorkflowExpression<string> diarizeVersion = null, WorkflowExpression<bool> smartFormat = null, WorkflowExpression<bool> fillerWords = null, WorkflowExpression<bool> multichannel = null, WorkflowExpression<int> alternatives = null, WorkflowExpression<string> search = null, WorkflowExpression<string> replace = null, WorkflowExpression<string> callback = null, WorkflowExpression<string> keywords = null, WorkflowExpression<bool> paragraphs = null, WorkflowExpression<string> summarize = null, WorkflowExpression<bool> detectTopics = null, WorkflowExpression<bool> utterances = null, WorkflowExpression<double> uttSplit = null, WorkflowExpression<string> tag = null, WorkflowExpression<bool> numerals = null, WorkflowExpression<bool> ner = null, WorkflowExpression<bool> measurements = null, WorkflowExpression<bool> dictation = null)
         {
@@ -141,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectGetResponse> __BuildProjectGet(WorkflowExpression<string> projectId)
         {
@@ -162,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildProjectDelete(WorkflowExpression<string> projectId)
         {
@@ -183,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectPatchResponse> __BuildProjectPatch(WorkflowExpression<string> projectId, WorkflowExpression<string> bodyname)
         {
@@ -214,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestsGetResponse> __BuildRequestsGet(WorkflowExpression<string> projectId, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> limit = null, WorkflowExpression<statusInput> status = null)
         {
@@ -247,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestGetResponse> __BuildRequestGet(WorkflowExpression<string> projectId, WorkflowExpression<string> requestId)
         {
@@ -269,7 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UsageGetResponse> __BuildUsageGet(WorkflowExpression<string> projectId, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> accessor = null, WorkflowExpression<string> tag = null, WorkflowExpression<methodInput> method = null, WorkflowExpression<string> model = null, WorkflowExpression<bool> multichannel = null, WorkflowExpression<bool> interimResults = null, WorkflowExpression<bool> punctuate = null, WorkflowExpression<bool> ner = null, WorkflowExpression<bool> utterances = null, WorkflowExpression<bool> replace = null, WorkflowExpression<bool> profanityFilter = null, WorkflowExpression<bool> keywords = null, WorkflowExpression<bool> detectTopics = null, WorkflowExpression<bool> diarize = null, WorkflowExpression<bool> search = null, WorkflowExpression<bool> redact = null, WorkflowExpression<bool> alternatives = null, WorkflowExpression<bool> numerals = null, WorkflowExpression<bool> smartFormat = null)
         {
@@ -353,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FieldsGetResponse> __BuildFieldsGet(WorkflowExpression<string> projectId, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null)
         {

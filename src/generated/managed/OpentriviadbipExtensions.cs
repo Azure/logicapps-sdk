@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetQuestionResponse> __BuildGetQuestion(WorkflowExpression<int> amount, WorkflowExpression<int> category = null, WorkflowExpression<difficultyInput> difficulty = null, WorkflowExpression<typeInput> type = null)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QuestionCountLookupResponse> __BuildQuestionCountLookup(WorkflowExpression<int> category)
         {

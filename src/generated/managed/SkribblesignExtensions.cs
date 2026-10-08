@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ErrorResponse> __BuildCreateSeal(WorkflowExpression<string> requestcontent, WorkflowExpression<string> requesttitle = null, WorkflowExpression<string> requestsealForSealing = null, WorkflowExpression<string> requestvisualSignatureformField = null, WorkflowExpression<string> requestvisualSignatureimagecontent = null, WorkflowExpression<string> requestvisualSignatureimagecontentType = null, WorkflowExpression<Position[]> requestvisualSignaturepositions = null)
         {

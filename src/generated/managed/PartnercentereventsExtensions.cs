@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEventRegistration(WorkflowExpression<string> bodysignatureTokenToMsSignatureHeader = null, WorkflowExpression<string[]> bodywebhookEvents = null, WorkflowExpression<string> bodywebhookUrl = null)
         {
@@ -76,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateRegistrationResponse> __BuildUpdateRegistration(WorkflowExpression<string> bodysignatureTokenToMsSignatureHeader = null, WorkflowExpression<string[]> bodywebhookEvents = null, WorkflowExpression<string> bodywebhookUrl = null)
         {

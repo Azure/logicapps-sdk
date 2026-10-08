@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddPassword(WorkflowExpression<string> file, WorkflowExpression<string> password)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddRestrictions(WorkflowExpression<string> file, WorkflowExpression<string> ownerPassword, WorkflowExpression<string> userPassword = null, WorkflowExpression<bool> allowCopyContent = null, WorkflowExpression<bool> allowChangeContent = null, WorkflowExpression<bool> allowPrint = null, WorkflowExpression<bool> allowPrintHighResolution = null, WorkflowExpression<bool> allowCommentAndFillForm = null, WorkflowExpression<bool> allowFillForm = null, WorkflowExpression<bool> allowAssembleDocument = null, WorkflowExpression<bool> allowAccessibility = null)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddWatermark(WorkflowExpression<string> file, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<int> template = null, WorkflowExpression<colorInput> color = null, WorkflowExpression<int> transparency = null, WorkflowExpression<double> margin = null)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddImageWatermark(WorkflowExpression<string> file, WorkflowExpression<string> image, WorkflowExpression<int> transparency = null, WorkflowExpression<double> margin = null)
         {
@@ -123,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExtractPages(WorkflowExpression<string> file, WorkflowExpression<int> firstPage = null, WorkflowExpression<int> lastPage = null)
         {
@@ -146,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMergeDocuments(WorkflowExpression<string> file1 = null, WorkflowExpression<string> file2 = null, WorkflowExpression<string> file3 = null, WorkflowExpression<string> file4 = null, WorkflowExpression<string> file5 = null, WorkflowExpression<string> file6 = null, WorkflowExpression<string> file7 = null, WorkflowExpression<string> file8 = null, WorkflowExpression<string> file9 = null, WorkflowExpression<string> file10 = null)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRemovePages(WorkflowExpression<string> file, WorkflowExpression<int> firstPage = null, WorkflowExpression<int> lastPage = null)
         {
@@ -199,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRemovePassword(WorkflowExpression<string> file, WorkflowExpression<string> password)
         {
@@ -221,7 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRemoveRestrictions(WorkflowExpression<string> file)
         {
@@ -242,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRemoveSignatures(WorkflowExpression<string> file)
         {
@@ -263,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildReversePages(WorkflowExpression<string> file)
         {
@@ -284,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRotatePages(WorkflowExpression<string> file, WorkflowExpression<angleInput> angle, WorkflowExpression<int> firstPage = null, WorkflowExpression<int> lastPage = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListObjectsS3Response> __BuildListObjectsS3(WorkflowExpression<string> region, WorkflowExpression<string> bucket, WorkflowExpression<string> bucketlistType = null, WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> delimiter = null, WorkflowExpression<string> prefix = null, WorkflowExpression<string> encodingType = null, WorkflowExpression<string> fetchOwner = null, WorkflowExpression<double> maxKeys = null, WorkflowExpression<string> startAfter = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteObjectS3(WorkflowExpression<string> region, WorkflowExpression<string> bucket, WorkflowExpression<string> key)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetObjectS3(WorkflowExpression<string> region, WorkflowExpression<string> bucket, WorkflowExpression<string> key)
         {
@@ -111,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutObjectS3(WorkflowExpression<string> region, WorkflowExpression<string> bucket, WorkflowExpression<string> key, WorkflowExpression<string> body = null)
         {

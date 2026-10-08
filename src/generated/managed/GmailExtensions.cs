@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetailedReceiveMessage> __BuildGetEmail(WorkflowExpression<string> id, WorkflowExpression<bool> includeAttachments = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEmail(WorkflowExpression<string> id)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTrashEmail(WorkflowExpression<string> id)
         {
@@ -85,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReplyTo(WorkflowExpression<string> id, WorkflowExpression<string> replyMessageto = null, WorkflowExpression<string> replyMessagecC = null, WorkflowExpression<string> replyMessagebCC = null, WorkflowExpression<string> replyMessagesubject = null, WorkflowExpression<string> replyMessagebody = null, WorkflowExpression<bool> replyMessagereplyAll = null, WorkflowExpression<replyMessageimportanceInput> replyMessageimportance = null, WorkflowExpression<Attachment[]> replyMessageattachments = null)
         {
@@ -169,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendEmail(WorkflowExpression<string> emailMessageto, WorkflowExpression<string> emailMessagecC = null, WorkflowExpression<string> emailMessagebCC = null, WorkflowExpression<string> emailMessagesubject = null, WorkflowExpression<string> emailMessagebody = null, WorkflowExpression<emailMessageimportanceInput> emailMessageimportance = null, WorkflowExpression<Attachment[]> emailMessageattachments = null)
         {

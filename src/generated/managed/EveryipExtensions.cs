@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowseResponse> __BuildBrowse(WorkflowExpression<string> cause, WorkflowExpression<int> take = null, WorkflowExpression<int> page = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> term, WorkflowExpression<int> take = null, WorkflowExpression<string> cause = null)
         {
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetailsResponse> __BuildDetails(WorkflowExpression<string> identifier)
         {

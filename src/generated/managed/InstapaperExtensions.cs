@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarksResponse> __BuildListBookmarksLiked(WorkflowExpression<string> readFilterreadFilter = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarksResponse> __BuildListBookmarksArchived(WorkflowExpression<filterslikedFilterDefaultAllInput> filterslikedFilterDefaultAll = null, WorkflowExpression<filtersreadFilterDefaultAllInput> filtersreadFilterDefaultAll = null)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarksResponse> __BuildListBookmarksInFolder(WorkflowExpression<string> folderId, WorkflowExpression<likedFilterInput> likedFilter = null, WorkflowExpression<readFilterInput> readFilter = null)
         {
@@ -130,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlighstResponse> __BuildListHighlights(WorkflowExpression<string> bookmarkId)
         {
@@ -151,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarkResponse> __BuildUnlikeBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -173,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarkResponse> __BuildLikeBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -195,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarkResponse> __BuildArchiveBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -217,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookmarkResponse> __BuildUnarchiveBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -239,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -261,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMarkReadBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -283,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMarkUnreadBookmark(WorkflowExpression<string> bookmarkId)
         {
@@ -305,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightResponse> __BuildAddHighlight(WorkflowExpression<string> bookmarkId, WorkflowExpression<string> text)
         {
@@ -328,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderResponse> __BuildCreateFolder(WorkflowExpression<string> title)
         {

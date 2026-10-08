@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupMembersResponse> __BuildListGroupMembers(WorkflowExpression<string> groupId, WorkflowExpression<int> top = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddMemberToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> userUpn)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupsResponse> __BuildListGroups(WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null, WorkflowExpression<string> filter = null, WorkflowExpression<int> top = null, WorkflowExpression<string> skiptoken = null)
         {
@@ -109,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCalendarEventResponse> __BuildUpdateCalendarEvent(WorkflowExpression<string> groupId, WorkflowExpression<string> @event, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodystartstartTime = null, WorkflowExpression<string> bodyendendTime = null, WorkflowExpression<string> bodybodybody = null, WorkflowExpression<string> bodylocationlocation = null, WorkflowExpression<bodyimportanceInput> bodyimportance = null, WorkflowExpression<bool> bodyisAllDay = null, WorkflowExpression<bool> bodyisReminderOn = null, WorkflowExpression<int> bodyreminderStartDuration = null, WorkflowExpression<bodyshowAsInput> bodyshowAs = null, WorkflowExpression<bool> bodyresponseRequested = null)
         {
@@ -249,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveMemberFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> userUpn)
         {
@@ -281,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRestoreDeletedGroup(WorkflowExpression<string> groupId)
         {
@@ -302,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupsResponse> __BuildListDeletedGroupsByOwner(WorkflowExpression<string> userId)
         {
@@ -324,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCalendarDeleteItem(WorkflowExpression<string> groupId, WorkflowExpression<string> @event)
         {
@@ -346,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCalendarEventResponse> __BuildCreateCalendarEvent(WorkflowExpression<string> groupId, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodystartstartTime = null, WorkflowExpression<string> bodyendendTime = null, WorkflowExpression<string> bodybodybody = null, WorkflowExpression<string> bodylocationlocation = null, WorkflowExpression<bodyimportanceInput> bodyimportance = null, WorkflowExpression<bool> bodyisAllDay = null, WorkflowExpression<bool> bodyisReminderOn = null, WorkflowExpression<int> bodyreminderStartDuration = null, WorkflowExpression<bodyshowAsInput> bodyshowAs = null, WorkflowExpression<bool> bodyresponseRequested = null)
         {
@@ -485,7 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
         {

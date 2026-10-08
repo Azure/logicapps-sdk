@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> __BuildGetServiceAssignmentsDispatcher(WorkflowExpression<int> bodyskip, WorkflowExpression<string> bodysearch = null, WorkflowExpression<int> bodyorderColumns = null, WorkflowExpression<bool> bodyorderByAsc = null, WorkflowExpression<bool> bodytakeAll = null, WorkflowExpression<string> bodyadditionalSearchDatadateTimeFrom = null, WorkflowExpression<string> bodyadditionalSearchDatadateTimeTo = null, WorkflowExpression<double> bodyadditionalSearchDataquantityFrom = null, WorkflowExpression<double> bodyadditionalSearchDataquantityTo = null, WorkflowExpression<int[]> bodyadditionalSearchDatauserIds = null, WorkflowExpression<string[]> bodyadditionalSearchDataserviceArticles = null, WorkflowExpression<int> bodyadditionalSearchDataassignmentStatusId = null, WorkflowExpression<bool> bodyadditionalSearchDataisInvoice = null)
         {
@@ -162,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateActivityRecordingResponse> __BuildCreateActivityRecording(WorkflowExpression<string> bodydateFrom, WorkflowExpression<string> bodyquantity = null, WorkflowExpression<string> bodydateTo = null, WorkflowExpression<string> bodybookText = null, WorkflowExpression<string> bodynoteText = null, WorkflowExpression<int> bodyprojectId = null, WorkflowExpression<int> bodyprojectPhaseId = null, WorkflowExpression<int> bodyticketid = null)
         {
@@ -241,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> __BuildCreateInvoicePositionNote(WorkflowExpression<string> bodydateFrom, WorkflowExpression<string> bodydateTo, WorkflowExpression<int> bodypause = null, WorkflowExpression<bool> bodynoInvoice = null, WorkflowExpression<bool> bodyextraCharge = null, WorkflowExpression<string> bodyhint = null, WorkflowExpression<string> bodyserviceContractId = null, WorkflowExpression<string> bodyuserName = null)
         {

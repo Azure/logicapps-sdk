@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityLinkingResult> __BuildEntitiesLinking(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntitiesResultV3> __BuildEntitiesRecognitionGeneral(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyPhraseResultV3> __BuildKeyPhrase(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
         {
@@ -126,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageResultV3> __BuildLanguages(WorkflowExpression<LanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
         {
@@ -162,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentimentResponse> __BuildSentiment(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
         {

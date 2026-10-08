@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWebAppStart(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> webAppName)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWebAppStop(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> webAppName)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWebAppRestart(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> webAppName)
         {

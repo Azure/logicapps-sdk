@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpsertContactResponse> __BuildUpsertContact(WorkflowExpression<string> contactGUID, WorkflowExpression<string> oDataMaxVersion, WorkflowExpression<string> oDataVersion, WorkflowExpression<string> accept, WorkflowExpression<string> contentType, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodybirthdate = null, WorkflowExpression<string> bodycustomertypecode = null, WorkflowExpression<string> bodyemailaddress1 = null, WorkflowExpression<string> bodyemailaddress2 = null, WorkflowExpression<string> bodytelephone1 = null, WorkflowExpression<string> bodytelephone2 = null, WorkflowExpression<string> bodytelephone3 = null, WorkflowExpression<string> bodymobilephone = null, WorkflowExpression<string> bodyaddress1Line1 = null, WorkflowExpression<string> bodyaddress1Line2 = null, WorkflowExpression<string> bodyaddress1City = null, WorkflowExpression<string> bodyaddress1Stateorprovince = null, WorkflowExpression<string> bodyaddress1Postalcode = null, WorkflowExpression<string> bodyaddress1County = null)
         {
@@ -173,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpsertAccountResponse> __BuildUpsertAccount(WorkflowExpression<string> accountGUID, WorkflowExpression<string> oDataMaxVersion, WorkflowExpression<string> oDataVersion, WorkflowExpression<string> accept, WorkflowExpression<string> contentType, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyaddress1Line1 = null, WorkflowExpression<string> bodyaddress1Line2 = null, WorkflowExpression<string> bodyaddress1City = null, WorkflowExpression<string> bodyaddress1Stateorprovince = null, WorkflowExpression<string> bodyaddress1Postalcode = null, WorkflowExpression<string> bodyaddress1County = null)
         {
@@ -258,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpsertLeadResponse> __BuildUpsertLead(WorkflowExpression<string> leadGUID, WorkflowExpression<string> oDataMaxVersion, WorkflowExpression<string> oDataVersion, WorkflowExpression<string> accept, WorkflowExpression<string> contentType, WorkflowExpression<string> bodyfullname = null, WorkflowExpression<string> bodyemailaddress1 = null, WorkflowExpression<string> bodytelephone1 = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentimentAnalysisResponse> __BuildAnalyticsSentiment(WorkflowExpression<string> inputtextToAnalyze = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProfanityAnalysisResponse> __BuildAnalyticsProfanity(WorkflowExpression<string> inputtextToAnalyze = null)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubjectivityAnalysisResponse> __BuildAnalyticsSubjectivity(WorkflowExpression<string> inputtextToAnalyze = null)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractEntitiesResponse> __BuildExtractEntities(WorkflowExpression<string> valueinputString = null)
         {
@@ -154,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageDetectionResponse> __BuildLanguageDetectionGetLanguage(WorkflowExpression<string> inputtextToDetect = null)
         {
@@ -188,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageTranslationResponse> __BuildLanguageTranslationTranslateDeuToEng(WorkflowExpression<string> inputtextToTranslate = null)
         {
@@ -222,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageTranslationResponse> __BuildLanguageTranslationTranslateEngToDeu(WorkflowExpression<string> inputtextToTranslate = null)
         {
@@ -256,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageTranslationResponse> __BuildLanguageTranslationTranslateRusToEng(WorkflowExpression<string> inputtextToTranslate = null)
         {
@@ -290,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageTranslationResponse> __BuildLanguageTranslationTranslateEngToRus(WorkflowExpression<string> inputtextToTranslate = null)
         {
@@ -324,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResponse> __BuildParseParseString(WorkflowExpression<string> inputinputString = null)
         {
@@ -358,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosResponse> __BuildPosTaggerTagSentence(WorkflowExpression<string> requestinputText = null)
         {
@@ -392,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosResponse> __BuildPosTaggerTagVerbs(WorkflowExpression<string> requestinputText = null)
         {
@@ -426,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosResponse> __BuildPosTaggerTagNouns(WorkflowExpression<string> requestinputText = null)
         {
@@ -460,7 +447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosResponse> __BuildPosTaggerTagAdjectives(WorkflowExpression<string> requestinputText = null)
         {
@@ -494,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosResponse> __BuildPosTaggerTagAdverbs(WorkflowExpression<string> requestinputText = null)
         {
@@ -528,7 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosResponse> __BuildPosTaggerTagPronouns(WorkflowExpression<string> requestinputText = null)
         {
@@ -562,7 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RephraseResponse> __BuildRephraseEnglishRephraseSentenceBySentence(WorkflowExpression<string> inputtextToTranslate = null, WorkflowExpression<int> inputtargetRephrasingCount = null)
         {
@@ -603,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentenceSegmentationResponse> __BuildSegmentationGetSentences(WorkflowExpression<string> inputinputString = null)
         {
@@ -637,7 +619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWordsResponse> __BuildSegmentationGetWords(WorkflowExpression<string> inputinputText = null)
         {
@@ -671,7 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckWordResponse> __BuildSpellcheckCorrectJson(WorkflowExpression<string> valueword = null)
         {
@@ -705,7 +685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckSentenceResponse> __BuildSpellcheckCheckSentence(WorkflowExpression<string> valuesentence = null)
         {

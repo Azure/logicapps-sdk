@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailSendResult> __BuildSendEmailGAVersion(WorkflowExpression<string> emailMessagesenderAddress, WorkflowExpression<string> emailMessagecontentsubject, WorkflowExpression<emailMessageimportanceInput> emailMessageimportance = null, WorkflowExpression<emailMessagerecipientstoInputItem[]> emailMessagerecipientsto = null, WorkflowExpression<emailMessagerecipientscCInputItem[]> emailMessagerecipientscC = null, WorkflowExpression<emailMessagerecipientsbCCInputItem[]> emailMessagerecipientsbCC = null, WorkflowExpression<string> emailMessagecontenthtml = null, WorkflowExpression<emailMessagereplyToInputItem[]> emailMessagereplyTo = null, WorkflowExpression<emailMessageattachmentsInputItem[]> emailMessageattachments = null, WorkflowExpression<EmailCustomHeader[]> emailMessageheaders = null, WorkflowExpression<bool> emailMessageuserEngagementTrackingDisabled = null)
         {
@@ -141,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailSendResult> __BuildGetMessageStatusGAVersion(WorkflowExpression<string> operationId)
         {

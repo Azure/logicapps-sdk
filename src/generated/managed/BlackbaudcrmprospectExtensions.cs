@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedUnplannedContactReport> __BuildCreateUnplannedContactReport(WorkflowExpression<string> bodyplanID, WorkflowExpression<string> bodyobjective, WorkflowExpression<string> bodyactualDate, WorkflowExpression<string> bodystage, WorkflowExpression<string> bodycontactMethod, WorkflowExpression<string> bodycomment, WorkflowExpression<string> bodyowner = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<PrsmgNewUnplannedContactReportFundraiser[]> bodyfundraisers = null, WorkflowExpression<PrsmgNewUnplannedContactReportParticipant[]> bodyparticipants = null)
         {
@@ -142,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditProspectContactReport(WorkflowExpression<string> contactReportId, WorkflowExpression<string> bodyobjective = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<string> bodystage = null, WorkflowExpression<string> bodycontactMethod = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<string> bodycomment = null)
         {
@@ -270,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedProspectOpportunity> __BuildCreateProspectOpportunity(WorkflowExpression<string> bodyplanID, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodytype = null, WorkflowExpression<double> bodyexpectedAskAmount = null, WorkflowExpression<string> bodyexpectedAskDate = null, WorkflowExpression<string> bodylikelihood = null, WorkflowExpression<double> bodyaskAmount = null, WorkflowExpression<string> bodyaskDate = null, WorkflowExpression<double> bodyacceptedAmount = null, WorkflowExpression<string> bodyresponseDate = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodytransactionCurrency = null)
         {
@@ -373,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgProspectOpportunitySearchResultCollection> __BuildSearchProspectOpportunities(WorkflowExpression<string> keyname = null, WorkflowExpression<string> firstname = null, WorkflowExpression<string> lookupId = null, WorkflowExpression<bool> exactmatchonly = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> askDate = null, WorkflowExpression<double> askAmount = null, WorkflowExpression<string> designationuserid = null, WorkflowExpression<bool> onlyProspects = null, WorkflowExpression<bool> onlyFundraisers = null, WorkflowExpression<bool> onlyStaff = null, WorkflowExpression<bool> onlyVolunteers = null, WorkflowExpression<bool> onlyPrimaryAddress = null, WorkflowExpression<bool> includedeceased = null, WorkflowExpression<bool> includeinactive = null, WorkflowExpression<bool> checknickname = null, WorkflowExpression<bool> checkaliases = null, WorkflowExpression<bool> checkalternatelookupids = null, WorkflowExpression<int> limit = null)
         {
@@ -450,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgProspectOpportunity> __BuildGetProspectOpportunity(WorkflowExpression<string> opportunityId)
         {
@@ -471,7 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditProspectOpportunity(WorkflowExpression<string> opportunityId, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<double> bodyexpectedAskAmount = null, WorkflowExpression<string> bodyexpectedAskDate = null, WorkflowExpression<string> bodylikelihood = null, WorkflowExpression<double> bodyaskAmount = null, WorkflowExpression<string> bodyaskDate = null, WorkflowExpression<double> bodyacceptedAmount = null, WorkflowExpression<string> bodyresponseDate = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodytransactionCurrency = null)
         {
@@ -576,7 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgPlanOpportunityCollection> __BuildListPlanOpportunities(WorkflowExpression<string> planId, WorkflowExpression<statusInput> status = null)
         {
@@ -600,7 +593,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlan> __BuildCreateMajorGivingPlan(WorkflowExpression<string> bodyprospectID, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodynarrative = null, WorkflowExpression<string> bodyprimaryManagerID = null, WorkflowExpression<string> bodyprimaryStartDate = null, WorkflowExpression<string> bodysecondaryManagerID = null, WorkflowExpression<string> bodysecondaryStartDate = null, WorkflowExpression<PrsmgNewMajorGivingPlanParticipant[]> bodyparticipants = null, WorkflowExpression<PrsmgNewMajorGivingPlanSecondaryFundraiser[]> bodyfundraisers = null)
         {
@@ -692,7 +684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgMajorGivingPlan> __BuildGetMajorGivingPlan(WorkflowExpression<string> planId)
         {
@@ -713,7 +704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteMajorGivingPlan(WorkflowExpression<string> planId)
         {
@@ -734,7 +724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgProspectSearchResultCollection> __BuildSearchProspects(WorkflowExpression<string> keyName = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lookupId = null, WorkflowExpression<string> phoneNumber = null, WorkflowExpression<string> country = null, WorkflowExpression<string> addressBlock = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> postCode = null, WorkflowExpression<bool> exactMatchOnly = null, WorkflowExpression<string> constituency = null, WorkflowExpression<bool> onlyProspects = null, WorkflowExpression<bool> onlyFundraisers = null, WorkflowExpression<bool> onlyStaff = null, WorkflowExpression<bool> onlyVolunteers = null, WorkflowExpression<bool> onlyPrimaryAddress = null, WorkflowExpression<bool> includeDeceased = null, WorkflowExpression<bool> includeInactive = null, WorkflowExpression<bool> fuzzySearchOnName = null, WorkflowExpression<int> limit = null)
         {
@@ -814,7 +803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditProspect(WorkflowExpression<string> constituentId, WorkflowExpression<string> bodymanagerID = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -856,7 +844,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteProspectOpportunity(WorkflowExpression<string> opportunityId)
         {
@@ -877,7 +864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgProspectPlanCollection> __BuildListProspectPlans(WorkflowExpression<string> constituentId, WorkflowExpression<bool> includeInactivePlans = null)
         {
@@ -901,7 +887,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgProspectSummary> __BuildGetProspectSummary(WorkflowExpression<string> constituentId)
         {
@@ -922,7 +907,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedProspectConstituency> __BuildCreateProspectConstituency(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodydateFrom = null, WorkflowExpression<string> bodydateTo = null)
         {
@@ -966,7 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlanStep> __BuildCreateMajorGivingPlanStep(WorkflowExpression<string> bodyplanID, WorkflowExpression<string> bodyobjective, WorkflowExpression<string> bodytype, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodyexpectedDate, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodycontactMethod = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<bool> bodyallDayEvent = null, WorkflowExpression<int> bodyexpectedStarthour = null, WorkflowExpression<int> bodyexpectedStartminute = null, WorkflowExpression<int> bodyexpectedEndhour = null, WorkflowExpression<int> bodyexpectedEndminute = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodyotherLocation = null, WorkflowExpression<PrsmgNewMajorGivingPlanStepFundraiser[]> bodyfundraisers = null, WorkflowExpression<PrsmgNewMajorGivingPlanStepParticipant[]> bodyparticipants = null)
         {
@@ -1180,7 +1163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteMajorGivingPlanStep(WorkflowExpression<string> stepId)
         {
@@ -1201,7 +1183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditMajorGivingPlanStep(WorkflowExpression<string> vProspectPlanId, WorkflowExpression<string> stepId, WorkflowExpression<string> bodyobjective = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodyexpectedDate = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodycontactMethod = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<bool> bodyallDayEvent = null, WorkflowExpression<int> bodyexpectedStarthour = null, WorkflowExpression<int> bodyexpectedStartminute = null, WorkflowExpression<int> bodyexpectedEndhour = null, WorkflowExpression<int> bodyexpectedEndminute = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<string> bodyotherLocation = null)
         {
@@ -1410,7 +1391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedStewardshipPlan> __BuildCreateStewardshipPlan(WorkflowExpression<string> bodyprospectID, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodysubtype = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodymanagerID = null, WorkflowExpression<string> bodymanagerStartDate = null, WorkflowExpression<PrsmgNewStewardshipPlanSteward[]> bodystewards = null)
         {
@@ -1485,7 +1465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteStewardshipPlan(WorkflowExpression<string> planId)
         {
@@ -1506,7 +1485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PrsmgCreatedStewardshipPlanStep> __BuildCreateStewardshipPlanStep(WorkflowExpression<string> bodyplanID, WorkflowExpression<string> bodyobjective, WorkflowExpression<string> bodytargetDate, WorkflowExpression<bodyfrequencyInput> bodyfrequency, WorkflowExpression<bool> bodylocked = null, WorkflowExpression<bool> bodyallDayEvent = null, WorkflowExpression<int> bodytargetStarthour = null, WorkflowExpression<int> bodytargetStartminute = null, WorkflowExpression<int> bodytargetEndhour = null, WorkflowExpression<int> bodytargetEndminute = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyassignedTo = null, WorkflowExpression<string> bodycontactMethod = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodynextTargetDate = null, WorkflowExpression<bodyconnectToInput> bodyconnectTo = null, WorkflowExpression<string> bodybenefitID = null, WorkflowExpression<string> bodyeventID = null, WorkflowExpression<string> bodymailingID = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<PrsmgNewStewardshipPlanStepParticipant[]> bodyparticipants = null, WorkflowExpression<PrsmgNewStewardshipPlanStepAssociatedPlan[]> bodyassociatedPlans = null)
         {
@@ -1752,7 +1730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteStewardshipPlanStep(WorkflowExpression<string> stepId)
         {
@@ -1773,7 +1750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditStewardshipPlanStep(WorkflowExpression<string> stepId, WorkflowExpression<string> bodyobjective = null, WorkflowExpression<string> bodytargetDate = null, WorkflowExpression<bool> bodylocked = null, WorkflowExpression<bool> bodyallDayEvent = null, WorkflowExpression<int> bodytargetStarthour = null, WorkflowExpression<int> bodytargetStartminute = null, WorkflowExpression<int> bodytargetEndhour = null, WorkflowExpression<int> bodytargetEndminute = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyassignedTo = null, WorkflowExpression<string> bodycontactMethod = null, WorkflowExpression<bodyfrequencyInput> bodyfrequency = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodynextTargetDate = null, WorkflowExpression<bodyconnectToInput> bodyconnectTo = null, WorkflowExpression<string> bodybenefitID = null, WorkflowExpression<string> bodyeventID = null, WorkflowExpression<string> bodymailingID = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null)
         {

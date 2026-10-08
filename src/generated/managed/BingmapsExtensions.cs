@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocationResponse> __BuildGetLocationByPoint(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<string> includeEntityTypes = null, WorkflowExpression<bool> includeNeighborhood = null, WorkflowExpression<bool> include = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocationResponse> __BuildGetLocationByAddress(WorkflowExpression<string> addressLine = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> adminDistrict = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> countryRegion = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetMap(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<imagerySetInput> imagerySet, WorkflowExpression<string> zoomLevel, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> mapSize = null, WorkflowExpression<double> pushpinLatitude = null, WorkflowExpression<double> pushpinLongitude = null, WorkflowExpression<int> pushpinIconStyle = null, WorkflowExpression<string> pushpinLabel = null)
         {
@@ -132,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRouteResponse> __BuildGetRoute(WorkflowExpression<string> wp0, WorkflowExpression<string> wp1, WorkflowExpression<travelModeInput> travelMode, WorkflowExpression<bool> avoidHighways = null, WorkflowExpression<bool> avoidTolls = null, WorkflowExpression<bool> avoidFerry = null, WorkflowExpression<bool> avoidMinimizeHighways = null, WorkflowExpression<bool> avoidMinimizeTolls = null, WorkflowExpression<bool> avoidBorderCrossing = null, WorkflowExpression<optimizeInput> optimize = null, WorkflowExpression<distanceUnitInput> distanceUnit = null, WorkflowExpression<string> dateTime = null, WorkflowExpression<timeTypeInput> timeType = null)
         {

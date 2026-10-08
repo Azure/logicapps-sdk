@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupSearch> __BuildGroupsSearch(WorkflowExpression<int> bodyoffset = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null)
         {
@@ -86,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryExecutionResults> __BuildGetQueryExecutionById(WorkflowExpression<string> id)
         {
@@ -107,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowExecutionsSearch> __BuildWorkflowExecutionsSearch(WorkflowExpression<int> bodylimit = null, WorkflowExpression<int> bodyoffset = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null, WorkflowExpression<string> bodypredicatepath = null, WorkflowExpression<string> bodypredicatevalue = null, WorkflowExpression<string> bodypredicatecomparator = null)
         {
@@ -224,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowExecutions> __BuildWorkflowExecutions(WorkflowExpression<string> bodyparentid = null)
         {
@@ -266,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowsSearch> __BuildWorkflowsSearch(WorkflowExpression<int> bodyoffset = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null, WorkflowExpression<string> bodypredicatepath = null, WorkflowExpression<string> bodypredicatevalue = null, WorkflowExpression<string> bodypredicatecomparator = null)
         {

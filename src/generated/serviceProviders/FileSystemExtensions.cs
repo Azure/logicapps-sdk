@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAppendFile(WorkflowExpression<string> filePath, WorkflowExpression<object> body, WorkflowExpression<bool> createFileIfNotPresent = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCopyFile(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFileOutput> __BuildCreateFile(WorkflowExpression<string> filePath, WorkflowExpression<object> body = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeleteFile(WorkflowExpression<string> filePath, WorkflowExpression<bool> skipIfFileNotPresent = null)
         {
@@ -148,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContent(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
         {
@@ -183,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContentV2(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
         {
@@ -218,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileMetadataOutput> __BuildGetFileMetadata(WorkflowExpression<string> filePath)
         {
@@ -243,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFolderOutputItem[]> __BuildListFolder(WorkflowExpression<string> folderPath, WorkflowExpression<bool> enableRecursiveListing = null)
         {
@@ -274,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenameFile(WorkflowExpression<string> filePath, WorkflowExpression<string> newName)
         {
@@ -301,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateFileOutput> __BuildUpdateFile(WorkflowExpression<string> filePath, WorkflowExpression<object> body)
         {
@@ -328,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> __BuildExtractArchive(WorkflowExpression<string> folderPath, WorkflowExpression<string> filePath = null, WorkflowExpression<ExtractArchiveInputOverwriteType> overwrite = null, WorkflowExpression<object> body = null)
         {

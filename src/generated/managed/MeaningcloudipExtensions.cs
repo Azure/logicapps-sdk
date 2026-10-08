@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentimentAnalysisResponse> __BuildSentimentAnalysis(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<string> lang, WorkflowExpression<ofInput> of = null, WorkflowExpression<txtfInput> txtf = null, WorkflowExpression<string> model = null, WorkflowExpression<verboseInput> verbose = null, WorkflowExpression<uwInput> uw = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextClassificationResponse> __BuildTextClassification(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<modelInput> model, WorkflowExpression<string> title = null, WorkflowExpression<debugInput> debug = null, WorkflowExpression<verboseInput> verbose = null, WorkflowExpression<expandHierarchyInput> expandHierarchy = null)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CorporateReputationResponse> __BuildCorporateReputation(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<string> lang, WorkflowExpression<string> model = null)
         {
@@ -97,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SummarizationResponse> __BuildSummarization(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<string> lang, WorkflowExpression<int> sentences = null, WorkflowExpression<ofInput> of = null)
         {
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeepCategorizationResponse> __BuildDeepCategorization(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<modelInput> model, WorkflowExpression<string> title = null, WorkflowExpression<ofInput> of = null, WorkflowExpression<debugInput> debug = null, WorkflowExpression<verboseInput> verbose = null, WorkflowExpression<polarityInput> polarity = null)
         {
@@ -150,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageIdentificationResponse> __BuildLanguageIdentification(WorkflowExpression<string> key, WorkflowExpression<string> txt)
         {
@@ -172,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextClusteringResponse> __BuildTextClustering(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<langInput> lang, WorkflowExpression<ofInput> of = null, WorkflowExpression<modeInput> mode = null, WorkflowExpression<swInput> sw = null)
         {
@@ -198,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentStructureResponse> __BuildDocumentStructure(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<ofInput> of = null)
         {

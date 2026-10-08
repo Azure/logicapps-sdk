@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchHTMLResponse> __BuildFetchHTML(WorkflowExpression<string> bodyurl)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SelectElementsResponse> __BuildSelectElements(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyselector, WorkflowExpression<bodyselectorTypeInput> bodyselectorType = null)
         {
@@ -102,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractValuesResponse> __BuildExtractValues(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyselector, WorkflowExpression<string> bodyattribute, WorkflowExpression<bodyselectorTypeInput> bodyselectorType = null)
         {
@@ -157,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindAllElementsResponse> __BuildFindAllElements(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodytagName, WorkflowExpression<string> bodyattributesid = null, WorkflowExpression<string> bodyattributesClass = null)
         {
@@ -214,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseTableResponse> __BuildParseTable(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodytableSelector = null, WorkflowExpression<bool> bodyheaderRowsExist = null)
         {

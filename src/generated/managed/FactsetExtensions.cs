@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetHeadlinesResponse> __BuildGetHeadlines(WorkflowExpression<string> createdGt = null, WorkflowExpression<string> createdLt = null, WorkflowExpression<string> signalIds = null, WorkflowExpression<string> ids = null, WorkflowExpression<double> userRelevanceScoreGt = null, WorkflowExpression<double> userRelevanceScoreLt = null, WorkflowExpression<string> sort = null, WorkflowExpression<double> userRelevanceScoreGte = null, WorkflowExpression<double> userRelevanceScoreLte = null, WorkflowExpression<string> updatedGt = null, WorkflowExpression<string> updatedLt = null, WorkflowExpression<string> createdGte = null, WorkflowExpression<string> updatedGte = null, WorkflowExpression<string> createdLte = null, WorkflowExpression<string> updatedLte = null, WorkflowExpression<string> portfolios = null, WorkflowExpression<string> themes = null, WorkflowExpression<string> categories = null)
         {
@@ -93,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDetailsResponse> __BuildGetDetails(WorkflowExpression<string> signalIds = null, WorkflowExpression<string> ids = null, WorkflowExpression<double> userRelevanceScoreGt = null, WorkflowExpression<string> sort = null, WorkflowExpression<double> userRelevanceScoreLt = null, WorkflowExpression<double> userRelevanceScoreLte = null, WorkflowExpression<double> userRelevanceScoreGte = null, WorkflowExpression<string> updatedGt = null, WorkflowExpression<string> updatedLt = null, WorkflowExpression<string> createdGte = null, WorkflowExpression<string> updatedGte = null, WorkflowExpression<string> createdLte = null, WorkflowExpression<string> updatedLte = null, WorkflowExpression<string> portfolios = null, WorkflowExpression<string> themes = null, WorkflowExpression<string> categories = null)
         {
@@ -162,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAdaptiveCardResponse> __BuildGetAdaptiveCard(WorkflowExpression<string> signalIds = null, WorkflowExpression<string> ids = null, WorkflowExpression<double> userRelevanceScoreGt = null, WorkflowExpression<string> sort = null, WorkflowExpression<double> userRelevanceScoreLt = null, WorkflowExpression<double> userRelevanceScoreLte = null, WorkflowExpression<double> userRelevanceScoreGte = null, WorkflowExpression<string> updatedGt = null, WorkflowExpression<string> updatedLt = null, WorkflowExpression<string> createdGte = null, WorkflowExpression<string> updatedGte = null, WorkflowExpression<string> createdLte = null, WorkflowExpression<string> updatedLte = null, WorkflowExpression<string> portfolios = null, WorkflowExpression<string> themes = null, WorkflowExpression<string> categories = null)
         {
@@ -231,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NEREntitiesResponse> __BuildNEREntities(WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodyfilterEntities = null, WorkflowExpression<bool> bodyenableIdLookup = null)
         {
@@ -313,7 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateBookFromTemplateResponse> __BuildCreateBookFromTemplate(WorkflowExpression<string> bodyticker = null, WorkflowExpression<string> bodytemplateId = null)
         {
@@ -354,7 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetPDF(WorkflowExpression<string> bookId)
         {

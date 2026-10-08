@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RefreshStoreResponse> __BuildStoresRefreshStore(WorkflowExpression<int> bodystoreId = null, WorkflowExpression<string> bodyrefreshDate = null)
         {

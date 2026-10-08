@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardResponse> __BuildGetBoard(WorkflowExpression<string> boardId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponse[]> __BuildGetTasks(WorkflowExpression<string> boardId)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskname, WorkflowExpression<string> taskdescription = null, WorkflowExpression<string> taskswimlaneId = null, WorkflowExpression<string> taskworkflowStageId = null, WorkflowExpression<string> taskcardTypeId = null, WorkflowExpression<string> taskassignedUserId = null)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponse2> __BuildGetTask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId)
         {
@@ -156,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteTaskResponse> __BuildDeleteTask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId)
         {
@@ -178,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTaskResponse> __BuildUpdateTask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId, WorkflowExpression<string> taskname = null, WorkflowExpression<string> taskdescription = null, WorkflowExpression<string> taskcardTypeId = null, WorkflowExpression<string> taskassignedUserId = null)
         {
@@ -235,7 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveTaskResponse> __BuildMoveTask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId, WorkflowExpression<taskdirectionInput> taskdirection = null, WorkflowExpression<string> taskswimlaneId = null, WorkflowExpression<string> taskworkflowStageId = null)
         {
@@ -285,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArchiveTaskResponse> __BuildArchiveTask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId)
         {
@@ -307,7 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> __BuildBoardActivities(WorkflowExpression<string> boardId)
         {
@@ -328,7 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCommentResponse[]> __BuildGetComments(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId)
         {
@@ -350,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCommentResponse> __BuildCreateComment(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId, WorkflowExpression<string> commentcontent)
         {
@@ -382,7 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubtaskResponse[]> __BuildGetSubtasks(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId)
         {
@@ -404,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubtaskResponse> __BuildCreateSubtask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId, WorkflowExpression<string> subtaskname, WorkflowExpression<string> subtaskassignedUserId = null)
         {
@@ -443,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubtaskResponse> __BuildDeleteSubtask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId, WorkflowExpression<string> subtaskId)
         {
@@ -466,7 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubtaskResponse> __BuildUpdateSubtask(WorkflowExpression<string> boardId, WorkflowExpression<string> taskId, WorkflowExpression<string> subtaskId, WorkflowExpression<string> subtaskname = null, WorkflowExpression<bool> subtaskisCompleted = null, WorkflowExpression<string> subtaskassignedUserId = null)
         {

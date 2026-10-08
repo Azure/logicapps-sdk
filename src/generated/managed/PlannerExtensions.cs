@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTask(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponseV2> __BuildUnassignUsers(WorkflowExpression<string> id, WorkflowExpression<string> bodyremoveAssignedUsers)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponseV2> __BuildAssignUsers(WorkflowExpression<string> id, WorkflowExpression<string> bodyassignedUserIds)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMyPlansResponse> __BuildListGroupPlans(WorkflowExpression<string> groupId)
         {
@@ -124,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateBucketResponse> __BuildCreateBucket(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyplanId)
         {
@@ -160,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponseV3> __BuildCreateTask(WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyplanId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodybucketId = null, WorkflowExpression<string> bodystartDateTime = null, WorkflowExpression<string> bodydueDateTime = null, WorkflowExpression<string> bodyassignedUserIds = null, WorkflowExpression<bool> bodyappliedCategoriespink = null, WorkflowExpression<bool> bodyappliedCategoriesred = null, WorkflowExpression<bool> bodyappliedCategoriesyellow = null, WorkflowExpression<bool> bodyappliedCategoriesgreen = null, WorkflowExpression<bool> bodyappliedCategoriesblue = null, WorkflowExpression<bool> bodyappliedCategoriespurple = null, WorkflowExpression<bool> bodyappliedCategoriesbronze = null, WorkflowExpression<bool> bodyappliedCategorieslime = null, WorkflowExpression<bool> bodyappliedCategoriesaqua = null, WorkflowExpression<bool> bodyappliedCategoriesgray = null, WorkflowExpression<bool> bodyappliedCategoriessilver = null, WorkflowExpression<bool> bodyappliedCategoriesbrown = null, WorkflowExpression<bool> bodyappliedCategoriescranberry = null, WorkflowExpression<bool> bodyappliedCategoriesorange = null, WorkflowExpression<bool> bodyappliedCategoriespeach = null, WorkflowExpression<bool> bodyappliedCategoriesmarigold = null, WorkflowExpression<bool> bodyappliedCategorieslightGreen = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGreen = null, WorkflowExpression<bool> bodyappliedCategoriesteal = null, WorkflowExpression<bool> bodyappliedCategorieslightBlue = null, WorkflowExpression<bool> bodyappliedCategoriesdarkBlue = null, WorkflowExpression<bool> bodyappliedCategorieslavender = null, WorkflowExpression<bool> bodyappliedCategoriesplum = null, WorkflowExpression<bool> bodyappliedCategorieslightGray = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGray = null, WorkflowExpression<int> bodypriority = null)
         {
@@ -415,7 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponseV2> __BuildGetTask(WorkflowExpression<string> id)
         {
@@ -436,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskDetailsResponse> __BuildGetTaskDetails(WorkflowExpression<string> id)
         {
@@ -457,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBucketsResponse> __BuildListBuckets(WorkflowExpression<string> groupId, WorkflowExpression<string> id)
         {
@@ -489,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTasksResponseV2> __BuildListTasks(WorkflowExpression<string> groupId, WorkflowExpression<string> id)
         {
@@ -512,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponseV2> __BuildUpdateTask(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydueDateTime = null, WorkflowExpression<string> bodystartDateTime = null, WorkflowExpression<int> bodypercentComplete = null, WorkflowExpression<string> bodybucketId = null, WorkflowExpression<bool> bodyappliedCategoriespink = null, WorkflowExpression<bool> bodyappliedCategoriesred = null, WorkflowExpression<bool> bodyappliedCategoriesyellow = null, WorkflowExpression<bool> bodyappliedCategoriesgreen = null, WorkflowExpression<bool> bodyappliedCategoriesblue = null, WorkflowExpression<bool> bodyappliedCategoriespurple = null, WorkflowExpression<bool> bodyappliedCategoriesbronze = null, WorkflowExpression<bool> bodyappliedCategorieslime = null, WorkflowExpression<bool> bodyappliedCategoriesaqua = null, WorkflowExpression<bool> bodyappliedCategoriesgray = null, WorkflowExpression<bool> bodyappliedCategoriessilver = null, WorkflowExpression<bool> bodyappliedCategoriesbrown = null, WorkflowExpression<bool> bodyappliedCategoriescranberry = null, WorkflowExpression<bool> bodyappliedCategoriesorange = null, WorkflowExpression<bool> bodyappliedCategoriespeach = null, WorkflowExpression<bool> bodyappliedCategoriesmarigold = null, WorkflowExpression<bool> bodyappliedCategorieslightGreen = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGreen = null, WorkflowExpression<bool> bodyappliedCategoriesteal = null, WorkflowExpression<bool> bodyappliedCategorieslightBlue = null, WorkflowExpression<bool> bodyappliedCategoriesdarkBlue = null, WorkflowExpression<bool> bodyappliedCategorieslavender = null, WorkflowExpression<bool> bodyappliedCategoriesplum = null, WorkflowExpression<bool> bodyappliedCategorieslightGray = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGray = null)
         {
@@ -759,7 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskDetailsResponse> __BuildUpdateTaskDetails(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodyreferencesInputItem[]> bodyreferences = null, WorkflowExpression<bodychecklistInputItem[]> bodychecklist = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetData(WorkflowExpression<string> device, WorkflowExpression<string> variable, WorkflowExpression<queryInput> query = null, WorkflowExpression<int> qty = null, WorkflowExpression<timezoneInput> timezone = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> serie = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostDataResponse> __BuildPostData(WorkflowExpression<string> bodydeviceId, WorkflowExpression<string> bodyvariable, WorkflowExpression<string> bodyvalue, WorkflowExpression<bodytimezoneInput> bodytimezone = null, WorkflowExpression<string> bodytimestamp = null, WorkflowExpression<string> bodyserie = null, WorkflowExpression<string> bodyunit = null)
         {

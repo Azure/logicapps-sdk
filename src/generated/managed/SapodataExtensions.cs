@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Output> __BuildGetEntityData(WorkflowExpression<string> entity, WorkflowExpression<string> relativePath = null, WorkflowExpression<double> top = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> search = null, WorkflowExpression<inlinecountInput> inlinecount = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null, WorkflowExpression<double> top = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> search = null, WorkflowExpression<inlinecountInput> inlinecount = null)
         {
@@ -120,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null)
         {
@@ -148,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null)
         {
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AdHocRequestResponse> __BuildAdHocRequest(WorkflowExpression<string> relativePath, WorkflowExpression<entryInputhttpMethodInput> entryInputhttpMethod, WorkflowExpression<bool> bypassMetadata = null)
         {
@@ -228,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AdHocBulkRequestResponse> __BuildAdHocBulkRequest(WorkflowExpression<string> relativePath, WorkflowExpression<entryInputhttpMethodInput> entryInputhttpMethod, WorkflowExpression<JToken[]> entryInputpayload = null, WorkflowExpression<bool> bypassMetadata = null)
         {
@@ -279,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null)
         {

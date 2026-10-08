@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompressResponse> __BuildCompress(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodycompressionLevelInput> bodycompressionLevel = null)
         {
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SplitResponse> __BuildSplit(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<bodysplitModeInput> bodysplitMode, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodyranges = null, WorkflowExpression<string> bodyfixedRange = null, WorkflowExpression<string> bodyremovePages = null, WorkflowExpression<bodymergeAfterInput> bodymergeAfter = null)
         {
@@ -150,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProtectResponse> __BuildProtect(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -200,7 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PDFtoJPGResponse> __BuildPDFtoJPG(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodypdfjpgModeInput> bodypdfjpgMode = null)
         {
@@ -254,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageToPDFResponse> __BuildImageToPDF(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodyorientation = null, WorkflowExpression<string> bodymargin = null, WorkflowExpression<bodypagesizeInput> bodypagesize = null)
         {
@@ -322,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PDFtoPDFAResponse> __BuildPDFtoPDFA(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyconformanceInput> bodyconformance = null, WorkflowExpression<bodyallowDowngradeInput> bodyallowDowngrade = null)
         {
@@ -383,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnlockResponse> __BuildUnlock(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodypassword = null)
         {
@@ -437,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddPageNumberResponse> __BuildAddPageNumber(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyfacingPagesInput> bodyfacingPages = null, WorkflowExpression<bodyfirstCoverInput> bodyfirstCover = null, WorkflowExpression<string> bodypages = null, WorkflowExpression<string> bodystartingNumber = null, WorkflowExpression<bodyverticalPositionInput> bodyverticalPosition = null, WorkflowExpression<bodyhorizontalPositionInput> bodyhorizontalPosition = null, WorkflowExpression<string> bodyverticalPositionAdjustment = null, WorkflowExpression<string> bodyhorizontalPositionAdjustment = null, WorkflowExpression<bodyfontFamilyInput> bodyfontFamily = null, WorkflowExpression<string> bodyfontSize = null, WorkflowExpression<string> bodyfontColor = null, WorkflowExpression<string> bodytext = null)
         {
@@ -568,7 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeResponse> __BuildMerge(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyfileSource2Input> bodyfileSource2 = null, WorkflowExpression<string> bodyfileName2 = null, WorkflowExpression<string> bodyfile2 = null, WorkflowExpression<string> bodyfileUrl2 = null)
         {
@@ -643,7 +634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WatermarkResponse> __BuildWatermark(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodymodeInput> bodymode = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyimageSource = null, WorkflowExpression<string> bodyimageName = null, WorkflowExpression<string> bodyimageFile = null, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<string> bodypages = null, WorkflowExpression<bodyverticalPositionInput> bodyverticalPosition = null, WorkflowExpression<bodyhorizontalPositionInput> bodyhorizontalPosition = null, WorkflowExpression<string> bodyverticalPositionAdjustment = null, WorkflowExpression<string> bodyhorizontalPositionAdjustment = null, WorkflowExpression<bodymosaicInput> bodymosaic = null, WorkflowExpression<string> bodyrotation = null, WorkflowExpression<bodyfontFamilyInput> bodyfontFamily = null, WorkflowExpression<bodyfontStyleInput> bodyfontStyle = null, WorkflowExpression<string> bodyfontSize = null, WorkflowExpression<string> bodyfontColor = null, WorkflowExpression<string> bodytransparency = null, WorkflowExpression<bodylayerInput> bodylayer = null)
         {
@@ -823,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RotateResponse> __BuildRotate(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyrotateInput> bodyrotate = null)
         {
@@ -877,7 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PDFOCRResponse> __BuildPDFOCR(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodyocrLanguages = null)
         {
@@ -931,7 +919,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeToPDFResponse> __BuildOfficeToPDF(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null)
         {

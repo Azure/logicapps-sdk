@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectsWrapper> __BuildListProjects(WorkflowExpression<string> siteUrl)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Project> __BuildCreateProject(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projprojectName, WorkflowExpression<string> projprojectDescription = null, WorkflowExpression<string> projprojectStartDate = null)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Project> __BuildListProject(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projectId, WorkflowExpression<string> select = null)
         {
@@ -112,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildCreateTask(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projectId, WorkflowExpression<string> taskparameterstaskName, WorkflowExpression<string> taskparameterstaskNotes = null, WorkflowExpression<string> taskparameterstaskStartDate = null, WorkflowExpression<string> taskparameterstaskDuration = null)
         {
@@ -174,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnterpriseResource> __BuildCreateResource(WorkflowExpression<string> siteUrl, WorkflowExpression<string> resourceresourceName, WorkflowExpression<bool> resourceisResourceInBudget = null, WorkflowExpression<bool> resourceisResourceGeneric = null, WorkflowExpression<bool> resourceisResourceInactive = null)
         {
@@ -227,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksWrapper> __BuildListTasks(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null)
         {
@@ -256,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildGetProjectSummaryTask(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projectId)
         {
@@ -279,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCheckoutProject(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projectId)
         {
@@ -302,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPublishProject(WorkflowExpression<string> siteUrl, WorkflowExpression<string> projectId)
         {

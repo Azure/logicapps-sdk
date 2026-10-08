@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtendedSignerModel[]> __BuildActorsList(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId, WorkflowExpression<bool> hasActed = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtendedSignerModel> __BuildActorsCreate(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId, WorkflowExpression<actorModelactionInput> actorModelaction, WorkflowExpression<string> actorModelfirstname, WorkflowExpression<string> actorModellastname, WorkflowExpression<string> actorModelemail, WorkflowExpression<string> actorModelmobile, WorkflowExpression<string> actorModeldeadline, WorkflowExpression<actorModellanguageInput> actorModellanguage, WorkflowExpression<bool> actorModelvalidateRealIdentity, WorkflowExpression<string> actorModelprefix = null, WorkflowExpression<int> actorModeldossierPersonId = null, WorkflowExpression<string> actorModelmessage = null, WorkflowExpression<string> actorModelfieldName = null, WorkflowExpression<string> actorModelplaceholder = null)
         {
@@ -139,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtendedSignerModel> __BuildActorsUpdate(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId, WorkflowExpression<string> actorId, WorkflowExpression<actorModelModelactionInput> actorModelModelaction, WorkflowExpression<string> actorModelModelfirstname, WorkflowExpression<string> actorModelModellastname, WorkflowExpression<string> actorModelModelemail, WorkflowExpression<string> actorModelModelmobile, WorkflowExpression<string> actorModelModeldeadline, WorkflowExpression<actorModelModellanguageInput> actorModelModellanguage, WorkflowExpression<bool> actorModelModelvalidateRealIdentity, WorkflowExpression<string> actorModelModelprefix = null, WorkflowExpression<int> actorModelModeldossierPersonId = null, WorkflowExpression<string> actorModelModelmessage = null)
         {
@@ -214,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtendedSignerModel> __BuildActorsGet(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId, WorkflowExpression<string> actorId)
         {
@@ -237,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildActorsDelete(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId, WorkflowExpression<string> actorId)
         {
@@ -260,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtendedSignerModel[]> __BuildActorsRequestActors(WorkflowExpression<string> requestId, WorkflowExpression<bool> hasActed = null)
         {
@@ -284,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildActorsResendCurrentInvite(WorkflowExpression<string> requestId)
         {
@@ -305,7 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildActorsWithdrawCurrentInvite(WorkflowExpression<string> requestId)
         {
@@ -326,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentMetaDataModel> __BuildDocumentsGet(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId)
         {
@@ -348,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentMetaDataModel> __BuildDocumentsUpdate(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId, WorkflowExpression<metadatadocumentTypeInput> metadatadocumentType, WorkflowExpression<string> metadataname = null, WorkflowExpression<string> metadatafilename = null)
         {
@@ -394,7 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDocumentsDelete(WorkflowExpression<string> requestId, WorkflowExpression<string> documentId)
         {
@@ -416,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> __BuildOrganisationsGetWorkgroups(WorkflowExpression<string> organisationId)
         {
@@ -437,7 +425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> __BuildOrganisationsGetWorkgroupsByUser(WorkflowExpression<string> organisationId, WorkflowExpression<string> modelusername)
         {
@@ -468,7 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestModel> __BuildRequestsCreate(WorkflowExpression<string> modelname, WorkflowExpression<int> modelclearancelevel, WorkflowExpression<string> modelworkgroupId = null, WorkflowExpression<string> modelowner = null)
         {
@@ -515,7 +501,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestModel> __BuildRequestsGet(WorkflowExpression<string> requestId, WorkflowExpression<string> callbackAuthenticationKey = null)
         {
@@ -539,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestModel> __BuildRequestsUpdate(WorkflowExpression<string> requestId, WorkflowExpression<string> modelname, WorkflowExpression<int> modelclearancelevel, WorkflowExpression<string> modelworkgroupId = null, WorkflowExpression<string> modelowner = null)
         {
@@ -587,7 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRequestsDelete(WorkflowExpression<string> requestId)
         {
@@ -608,7 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildRequestsDownload(WorkflowExpression<string> requestId)
         {
@@ -629,7 +611,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRequestsSend(WorkflowExpression<string> requestId)
         {

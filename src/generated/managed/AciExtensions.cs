@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerGroupListResult> __BuildContainerGroupsList(WorkflowExpression<string> subscriptionId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerGroupListResult> __BuildContainerGroupsListByResourceGroup(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName)
         {
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerGroup> __BuildContainerGroupsGet(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName)
         {
@@ -87,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerGroup> __BuildContainerGroupsUpdate(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName, WorkflowExpression<string> resourceid = null, WorkflowExpression<string> resourcename = null, WorkflowExpression<string> resourcetype = null, WorkflowExpression<string> resourcelocation = null, WorkflowExpression<string[]> resourcezones = null)
         {
@@ -161,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerGroup> __BuildContainerGroupsDelete(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName)
         {
@@ -185,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildContainerGroupsRestart(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName)
         {
@@ -209,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildContainerGroupsStop(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName)
         {
@@ -233,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildContainerGroupsStart(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName)
         {
@@ -257,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UsageListResult> __BuildLocationListUsage(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> location)
         {
@@ -280,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Logs> __BuildContainerLogsList(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName, WorkflowExpression<string> containerName, WorkflowExpression<int> tail = null)
         {
@@ -308,7 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerExecResponse> __BuildContainersExecuteCommand(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName, WorkflowExpression<string> containerName, WorkflowExpression<string> containerExecRequestcommand = null, WorkflowExpression<int> containerExecRequestterminalSizerows = null, WorkflowExpression<int> containerExecRequestterminalSizecols = null)
         {
@@ -369,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContainerAttachResponse> __BuildContainersAttach(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName, WorkflowExpression<string> containerName)
         {
@@ -394,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CachedImagesListResult> __BuildLocationListCachedImages(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> location)
         {
@@ -417,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CapabilitiesListResult> __BuildLocationListCapabilities(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> location)
         {
@@ -440,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildContainerGroupsGetOutboundNetworkDependenciesEndpoints(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> containerGroupName)
         {
@@ -464,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSubnetServiceAssociationLinkDelete(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> virtualNetworkName, WorkflowExpression<string> subnetName)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAccessTokenResponse> __BuildGetAccessToken(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyclientId, WorkflowExpression<string> bodyclientSecret)
         {

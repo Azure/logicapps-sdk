@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ESealResponse> __BuildESeal(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<providerNameInput> providerName, WorkflowExpression<string> xCredentialId, WorkflowExpression<string> xAuthPin, WorkflowExpression<string> xAuthToken, WorkflowExpression<signatureFormatInput> signatureFormat, WorkflowExpression<string> fieldName, WorkflowExpression<int> pageNumber = null, WorkflowExpression<int> topCoordinate = null, WorkflowExpression<int> leftCoordinate = null, WorkflowExpression<int> rightCoordinate = null, WorkflowExpression<int> bottomCoordinate = null, WorkflowExpression<bool> displayName = null, WorkflowExpression<bool> displayDate = null, WorkflowExpression<bool> displayLabels = null, WorkflowExpression<bool> displayDistinguishedName = null, WorkflowExpression<object> sealImageFile = null, WorkflowExpression<sealImageFormatInput> sealImageFormat = null, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFFromExcel(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFFromPPT(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFFromWord(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -150,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFFromImage(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -178,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFGeneric(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -206,7 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFFromDynamicHtml(WorkflowExpression<string> inputFileName, WorkflowExpression<pageSizeInput> pageSize, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<bool> includeHeaderFooter = null, WorkflowExpression<string> dataToMerge = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -237,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePDFResponse> __BuildCreatePDFFromStaticHtml(WorkflowExpression<string> inputFileName, WorkflowExpression<pageSizeInput> pageSize, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<bool> includeHeaderFooter = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -267,7 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportDocumentResponse> __BuildExportPDFToExcel(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -295,7 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportDocumentResponse> __BuildExportPDFToPPT(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -323,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportDocumentResponse> __BuildExportPDFToWord(WorkflowExpression<string> inputFileName, WorkflowExpression<targetFormatInput> targetFormat, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -352,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportDocumentResponse> __BuildExportPDFToImage(WorkflowExpression<string> inputFileName, WorkflowExpression<targetFormatInput> targetFormat, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -381,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseExportedImages> __BuildExportPDFToImageList(WorkflowExpression<string> inputFileName, WorkflowExpression<targetFormatInput> targetFormat, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -410,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportDocumentResponse> __BuildExportPDFGeneric(WorkflowExpression<string> inputFileName, WorkflowExpression<targetFormatInput> targetFormat, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -439,7 +425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompressPDFResponse> __BuildCompressPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<compressionLevelInput> compressionLevel = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -468,7 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinearizePDFResponse> __BuildLinearizePDF(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -496,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CombinePDFResponse> __BuildCombinePDF(WorkflowExpression<string> filesArraymergedPDFFileName, WorkflowExpression<string[]> filesArrayfiles, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -534,7 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OCRPDFResponse> __BuildOcrPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<ocrLocaleInput> ocrLocale, WorkflowExpression<ocrTypeInput> ocrType, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -564,7 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProtectPDFResponse> __BuildProtectUserPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<string> userPassword, WorkflowExpression<contentEncryptionInput> contentEncryption, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -594,7 +575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProtectPDFResponse> __BuildProtectOwnerPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<string> ownerPassword, WorkflowExpression<contentEncryptionInput> contentEncryption, WorkflowExpression<bool> allowPrintLowQuality, WorkflowExpression<bool> allowPrintHighQuality, WorkflowExpression<bool> allowEditContent, WorkflowExpression<bool> allowEditDocumentAssembly, WorkflowExpression<bool> allowEditAnnotations, WorkflowExpression<bool> allowEditFillAndSignFormFields, WorkflowExpression<bool> allowCopyContent, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -631,7 +611,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProtectPDFResponse> __BuildProtectGenericPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<string> userPassword, WorkflowExpression<string> ownerPassword, WorkflowExpression<contentEncryptionInput> contentEncryption, WorkflowExpression<bool> allowPrintLowQuality, WorkflowExpression<bool> allowPrintHighQuality, WorkflowExpression<bool> allowEditContent, WorkflowExpression<bool> allowEditDocumentAssembly, WorkflowExpression<bool> allowEditAnnotations, WorkflowExpression<bool> allowEditFillAndSignFormFields, WorkflowExpression<bool> allowCopyContent, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -669,7 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnProtectPDFResponse> __BuildRemovePassword(WorkflowExpression<string> inputFileName, WorkflowExpression<string> password, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -698,7 +676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseSplitDocument> __BuildSplitPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<splitByTypeInput> splitByType, WorkflowExpression<string> splitConfiguration, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -728,7 +705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseExtractImages> __BuildExtractImagesFromPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -755,7 +731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseExtractTables> __BuildExtractTablesFromPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -782,7 +757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseExtractJSONFile> __BuildExtractJSONFileFromPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<bool> addCharInfo = null, WorkflowExpression<bool> getStylingInfo = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -811,7 +785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseExtractJsonObject> __BuildExtractJSONObjectFromPDF(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<bool> addCharInfo = null, WorkflowExpression<bool> getStylingInfo = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -840,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseExtractDocument> __BuildExtractJSONAndImagesAndTablesFromPDF(WorkflowExpression<bool> addTables, WorkflowExpression<bool> addFigures, WorkflowExpression<pdfStructureOutputFormatInput> pdfStructureOutputFormat, WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<bool> addCharInfo = null, WorkflowExpression<bool> getStylingInfo = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -872,7 +844,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponsePDFProperties> __BuildPDFProperties(WorkflowExpression<string> inputFileName, WorkflowExpression<object> inputFile0, WorkflowExpression<bool> pageLevel, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -900,7 +871,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocGenResponse> __BuildDocGen(WorkflowExpression<string> inputFileName, WorkflowExpression<string> jsonStringForMerge, WorkflowExpression<targetFormatInput> targetFormat, WorkflowExpression<object> inputFile0, WorkflowExpression<string> outputFileName = null, WorkflowExpression<string> fragments = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {
@@ -931,7 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseAutotagPDF> __BuildAutoTag(WorkflowExpression<string> inputFileName, WorkflowExpression<object> fileData, WorkflowExpression<bool> generateReport, WorkflowExpression<bool> shiftHeadings, WorkflowExpression<string> outputFileName = null, WorkflowExpression<xRegionValueInput> xRegionValue = null)
         {

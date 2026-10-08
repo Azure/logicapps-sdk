@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildInvokeMCP(WorkflowExpression<string> mcpSessionId = null, WorkflowExpression<string> queryRequestjsonrpc = null, WorkflowExpression<string> queryRequestid = null, WorkflowExpression<string> queryRequestmethod = null)
         {
@@ -93,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentsResponse[]> __BuildGetDocuments(WorkflowExpression<string> reqexecutionId)
         {
@@ -123,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FlowExecutionResponse> __BuildGetExecutionStatus(WorkflowExpression<string> reqexecutionId)
         {
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadDocument(WorkflowExpression<string> reqdocumentId)
         {
@@ -183,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FlowExecutionResponse> __BuildExecuteFlow(WorkflowExpression<string> reqflowId, WorkflowExpression<object> reqexecutionData, WorkflowExpression<int> reqpriority = null, WorkflowExpression<bool> reqenableAsynchronousRequestReplyPattern = null)
         {
@@ -240,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExportPackage(WorkflowExpression<reqrecordTypeInput> reqrecordType, WorkflowExpression<reqexportModeInput> reqexportMode, WorkflowExpression<bool> reqincludeAllDependencies, WorkflowExpression<object> reqrecords = null, WorkflowExpression<bool> reqincludeTemplateHistory = null, WorkflowExpression<bool> reqincludeSamples = null)
         {
@@ -317,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildImportPackage(WorkflowExpression<object> package, WorkflowExpression<bool> overwriteExisting)
         {
@@ -340,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildBackupPackage(WorkflowExpression<bool> reqincludeHistory, WorkflowExpression<bool> req00000000000000000000000000000000 = null)
         {
@@ -387,7 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRestorePackage(WorkflowExpression<object> package)
         {

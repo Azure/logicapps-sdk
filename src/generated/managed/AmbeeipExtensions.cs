@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityGeoResponse> __BuildAirQualityGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityPostalResponse> __BuildAirQualityPostal(WorkflowExpression<int> postalCode = null, WorkflowExpression<string> countryCode = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityCityResponse> __BuildAirQualityCity(WorkflowExpression<string> city = null)
         {
@@ -93,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityCountryResponse> __BuildAirQualityCountry(WorkflowExpression<string> countryCode = null)
         {
@@ -116,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityGeoHistoryResponse> __BuildAirQualityGeoHistory(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -148,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityPostalHistoryResponse> __BuildAirQualityPostalHistory(WorkflowExpression<int> postalCode = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -198,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WeatherCurrentResponse> __BuildWeatherCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -224,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WeatherHistoryResponse> __BuildWeatherHistory(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -256,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WeatherForecastResponse> __BuildWeatherForecast(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> filter = null)
         {
@@ -285,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PollenLatestGeoResponse> __BuildPollenLatestGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -311,7 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PollenLatestPlaceResponse> __BuildPollenLatestPlace(WorkflowExpression<string> place = null)
         {
@@ -334,7 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PollenHistoryGeoResponse> __BuildPollenHistoryGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -366,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PollenHistoryPlaceResponse> __BuildPollenHistoryPlace(WorkflowExpression<string> place = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -395,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PollForecastGeoResponse> __BuildPollForecastGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -421,7 +407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FireCurrentResponse> __BuildFireCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -447,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SoilCurrentResponse> __BuildSoilCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -473,7 +457,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SoilHistoryResponse> __BuildSoilHistory(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -505,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WaterVaporCurrentResponse> __BuildWaterVaporCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
         {
@@ -531,7 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WaterVaporGeoResponse> __BuildWaterVaporGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {

@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTablesOutputItem[]> __BuildGetTables(WorkflowExpression<bool> ownedTables = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildExecuteQuery(WorkflowExpression<string> query, WorkflowExpression<object> queryParameters = null)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGetRows(WorkflowExpression<string> tableName, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<int> skipCount = null, WorkflowExpression<int> maxCount = null, WorkflowExpression<string> orderBy = null, WorkflowExpression<string[]> filterBy = null)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildInsertRow(WorkflowExpression<string> tableName, WorkflowExpression<object> setColumns = null)
         {
@@ -178,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> __BuildExecuteStoredProcedure(WorkflowExpression<string> storedProcedure, WorkflowExpression<object> storedProcedureParameters = null)
         {

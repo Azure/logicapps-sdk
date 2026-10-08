@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostLearning(WorkflowExpression<string> learningType, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodycourseName, WorkflowExpression<double> bodyscore, WorkflowExpression<string> bodycontentCategory = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostPerformance(WorkflowExpression<string> performanceType, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodykpiName, WorkflowExpression<double> bodykpiValue, WorkflowExpression<string> bodyadditionalData = null)
         {

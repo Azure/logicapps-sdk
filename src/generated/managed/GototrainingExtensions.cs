@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Training> __BuildGetTraining(WorkflowExpression<string> trainingid)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Registrant[]> __BuildListRegistrations(WorkflowExpression<string> trainingid)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddRegistrantResponse> __BuildAddRegistrant(WorkflowExpression<string> trainingid, WorkflowExpression<string> bodyregistrantEmail, WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodylastName)
         {
@@ -97,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Registrant> __BuildGetRegistrant(WorkflowExpression<string> trainingid, WorkflowExpression<string> registrantKey)
         {

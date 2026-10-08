@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOpportunityResponse> __BuildCreateOpportunity(WorkflowExpression<int> bodyopportunitypartypartyId, WorkflowExpression<int> bodyopportunitymilestoneid, WorkflowExpression<string> bodyopportunityname = null, WorkflowExpression<string> bodyopportunitydescription = null, WorkflowExpression<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, WorkflowExpression<string> bodyopportunityduration = null, WorkflowExpression<string> bodyopportunityexpectedCloseDate = null, WorkflowExpression<int> bodyopportunitywinningProbability = null, WorkflowExpression<int> bodyopportunityexpectedamount = null, WorkflowExpression<string> bodyopportunityexpectedcurrency = null)
         {
@@ -147,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOpportunityResponse> __BuildGetOpportunity(WorkflowExpression<string> opportunityId)
         {
@@ -168,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateOpportunityResponse> __BuildUpdateOpportunity(WorkflowExpression<string> opportunityId, WorkflowExpression<int> bodyopportunitypartypartyId, WorkflowExpression<int> bodyopportunitymilestonemilestoneId, WorkflowExpression<string> bodyopportunityname = null, WorkflowExpression<string> bodyopportunitydescription = null, WorkflowExpression<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, WorkflowExpression<string> bodyopportunityduration = null, WorkflowExpression<string> bodyopportunityexpectedCloseDate = null, WorkflowExpression<int> bodyopportunitywinningProbability = null, WorkflowExpression<int> bodyopportunityexpectedamount = null, WorkflowExpression<string> bodyopportunityexpectedcurrency = null)
         {
@@ -290,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteOpportunity(WorkflowExpression<string> opportunityId)
         {
@@ -311,7 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePersonResponse> __BuildCreatePerson(WorkflowExpression<string> bodypartylastName = null, WorkflowExpression<string> bodypartyfirstName = null, WorkflowExpression<bodypartytitleInput> bodypartytitle = null, WorkflowExpression<string> bodypartyjobTitle = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyorganisationId = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
         {
@@ -520,7 +515,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdatePersonResponse> __BuildUpdatePerson(WorkflowExpression<string> personId, WorkflowExpression<string> bodypartylastName = null, WorkflowExpression<string> bodypartyfirstName = null, WorkflowExpression<bodypartytitleInput> bodypartytitle = null, WorkflowExpression<string> bodypartyjobTitle = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyorganisationId = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
         {
@@ -730,7 +724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOrganisationResponse> __BuildCreateOrganisation(WorkflowExpression<string> bodypartyname = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
         {
@@ -911,7 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateOrganisationResponse> __BuildUpdateOrganisation(WorkflowExpression<string> id, WorkflowExpression<string> bodypartyname = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
         {
@@ -1120,7 +1112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPartyResponse> __BuildGetParty(WorkflowExpression<string> personId)
         {
@@ -1141,7 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteParty(WorkflowExpression<string> personId)
         {
@@ -1171,7 +1161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodytaskdescription = null, WorkflowExpression<string> bodytaskdueDate = null, WorkflowExpression<string> bodytaskdueTime = null, WorkflowExpression<string> bodytaskdetails = null, WorkflowExpression<int> bodytaskpartyid = null)
         {
@@ -1249,7 +1238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompleteTaskResponse> __BuildCompleteTask(WorkflowExpression<string> taskId)
         {

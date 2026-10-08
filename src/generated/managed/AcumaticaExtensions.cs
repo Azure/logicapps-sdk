@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievesCustomerUsingCustomeridResponse> __BuildRetrievesCustomerUsingCustomerid(WorkflowExpression<string> ids, WorkflowExpression<string> accept)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeletesCustomerUsingCustomerid(WorkflowExpression<string> ids)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievesOpportunityUsingOpportunityidResponse> __BuildRetrievesOpportunityUsingOpportunityid(WorkflowExpression<string> ids, WorkflowExpression<string> accept)
         {
@@ -85,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeletesOpportunityUsingOpportunityid(WorkflowExpression<string> ids)
         {
@@ -106,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievesCaseUsingCaseidResponse> __BuildRetrievesCaseUsingCaseid(WorkflowExpression<string> ids, WorkflowExpression<string> accept)
         {
@@ -129,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeletesCaseUsingCaseid(WorkflowExpression<string> ids)
         {
@@ -150,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]> __BuildRetrievesListOfCustomersThatSatisfyTheSpecifiedConditions(WorkflowExpression<string> filter, WorkflowExpression<string> skip, WorkflowExpression<string> top, WorkflowExpression<string> accept)
         {
@@ -178,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse> __BuildCreatesOrUpdatesAnExistingCustomer(WorkflowExpression<string> accept, WorkflowExpression<string> contentType, WorkflowExpression<string> bodycustomerIDvalue = null, WorkflowExpression<string> bodycustomerNamevalue = null, WorkflowExpression<string> bodystatusvalue = null, WorkflowExpression<string> bodyaccountRefvalue = null, WorkflowExpression<string> bodycurrencyIDvalue = null, WorkflowExpression<string> bodycustomerClassvalue = null, WorkflowExpression<string> bodytermsvalue = null)
         {
@@ -314,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]> __BuildRetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditions(WorkflowExpression<string> accept, WorkflowExpression<string> filter = null, WorkflowExpression<string> skip = null, WorkflowExpression<string> top = null)
         {
@@ -348,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse> __BuildCreatesOrUpdatesAnExistingOpportunity(WorkflowExpression<string> accept, WorkflowExpression<string> contentType, WorkflowExpression<string> bodyopportunityIDvalue = null, WorkflowExpression<string> bodysubjectvalue = null, WorkflowExpression<string> bodystatusvalue = null, WorkflowExpression<string> bodystagevalue = null, WorkflowExpression<string> bodycurrencyIDvalue = null, WorkflowExpression<string> bodybusinessAccountvalue = null, WorkflowExpression<string> bodycontactDisplayNamevalue = null, WorkflowExpression<double> bodyamountvalue = null, WorkflowExpression<double> bodydiscountvalue = null, WorkflowExpression<double> bodytotalvalue = null, WorkflowExpression<string> bodysourcevalue = null, WorkflowExpression<string> bodyreasonvalue = null, WorkflowExpression<string> bodyprojectvalue = null)
         {
@@ -574,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]> __BuildRetrievesListOfCasesThatSatisfyTheSpecifiedConditions(WorkflowExpression<string> accept, WorkflowExpression<string> filter = null, WorkflowExpression<string> skip = null, WorkflowExpression<string> top = null)
         {
@@ -608,7 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse> __BuildCreatesOrUpdatesAnExistingCase(WorkflowExpression<string> accept, WorkflowExpression<string> contentType, WorkflowExpression<string> bodycaseIDvalue = null, WorkflowExpression<string> bodysubjectvalue = null, WorkflowExpression<string> bodyclassIDvalue = null, WorkflowExpression<string> bodybusinessAccountvalue = null, WorkflowExpression<string> bodydescriptionvalue = null, WorkflowExpression<string> bodycontactDisplayNamevalue = null, WorkflowExpression<string> bodystatusvalue = null, WorkflowExpression<string> bodyreasonvalue = null, WorkflowExpression<string> bodyseverityvalue = null, WorkflowExpression<string> bodypriorityvalue = null)
         {

@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildExecuteQuery(WorkflowExpression<string> query, WorkflowExpression<object> queryParameters = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildInsertRow(WorkflowExpression<string> tableName, WorkflowExpression<object> setColumns = null)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildDeleteRows(WorkflowExpression<string> tableName, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<string> primaryKey = null)
         {
@@ -119,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGetRows(WorkflowExpression<string> tableName, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<string> primaryKey = null, WorkflowExpression<object> queries = null)
         {
@@ -162,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRowsV2Output> __BuildGetRowsV2(WorkflowExpression<string> tableName, WorkflowExpression<object> queries = null)
         {
@@ -193,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildUpdateRows(WorkflowExpression<string> tableName, WorkflowExpression<object> setColumns, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<string> primaryKey = null)
         {
@@ -242,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> __BuildExecuteStoredProcedure(WorkflowExpression<string> storedProcedureName, WorkflowExpression<object> storedProcedureParameters = null, WorkflowExpression<bool> includeEmptyResultSets = null)
         {

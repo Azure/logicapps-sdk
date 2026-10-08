@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventsResponse> __BuildEvents(WorkflowExpression<string> source = null, WorkflowExpression<string> category = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> days = null, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> magID = null, WorkflowExpression<string> magMin = null, WorkflowExpression<string> magMax = null, WorkflowExpression<string> bbox = null)
         {
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventsGeoJSONResponse> __BuildEventsGeoJSON(WorkflowExpression<string> source = null, WorkflowExpression<string> category = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> days = null, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> magID = null, WorkflowExpression<string> magMin = null, WorkflowExpression<string> magMax = null, WorkflowExpression<string> bbox = null)
         {
@@ -126,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventCategoriesResponse> __BuildEventCategories(WorkflowExpression<string> category, WorkflowExpression<string> source = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> days = null, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null)
         {
@@ -174,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LayersResponse> __BuildLayers(WorkflowExpression<string> category)
         {

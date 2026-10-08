@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BSPResponse> __BuildBusinessServiceProvidersSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> categories = null, WorkflowExpression<string> itaOffices = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> size = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScreeningListSearchResponse> __BuildConsolidatedScreeningListSearch(WorkflowExpression<string> name = null, WorkflowExpression<fuzzyNameInput> fuzzyName = null, WorkflowExpression<string> sources = null, WorkflowExpression<string> types = null, WorkflowExpression<string> countries = null, WorkflowExpression<string> address = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> fullAddress = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> size = null)
         {
@@ -127,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeMinimisListResponse> __BuildDeMinimisList(WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
         {
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeMinimisListResponse> __BuildDeMinimisSearch(WorkflowExpression<string> countryCodes = null, WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
         {
@@ -182,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITAOfficeSearchResponse> __BuildITAOfficeLocationsSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> countryCodes = null, WorkflowExpression<string> states = null, WorkflowExpression<string> assignedZipCodes = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> size = null)
         {
@@ -229,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TradeEventSearchResponse> __BuildTradeEventsSearch(WorkflowExpression<string> sources = null, WorkflowExpression<string> countries = null, WorkflowExpression<string> eventTypes = null, WorkflowExpression<string> industries = null, WorkflowExpression<string> states = null, WorkflowExpression<string> q = null, WorkflowExpression<string> startDateRangeFrom = null, WorkflowExpression<string> startDateRangeTo = null, WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
         {
@@ -288,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TradeLeadsSearchResponse> __BuildSearchTradeLeads(WorkflowExpression<string> q = null, WorkflowExpression<string> countryCodes = null, WorkflowExpression<string> tenderStartDateRangeFrom = null, WorkflowExpression<string> tenderStartDateRangeTo = null, WorkflowExpression<string> contractStartDateRangeFrom = null, WorkflowExpression<string> contractStartDateRangeTo = null, WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
         {

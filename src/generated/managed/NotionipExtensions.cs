@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveuserResponse> __BuildRetrieveuser(WorkflowExpression<string> userId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOfAllUsersResponse> __BuildListOfAllUsers(WorkflowExpression<int> pageSize = null)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveablockResponse> __BuildRetrieveablock(WorkflowExpression<string> blockId)
         {
@@ -87,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteablockResponse> __BuildDeleteablock(WorkflowExpression<string> blockId)
         {
@@ -109,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateablock(WorkflowExpression<string> blockId, WorkflowExpression<bodyparagraphrichTextInputItem[]> bodyparagraphrichText = null, WorkflowExpression<string> bodyparagraphcolor = null, WorkflowExpression<bodyheading1richTextInputItem[]> bodyheading1richText = null, WorkflowExpression<string> bodyheading1color = null, WorkflowExpression<bodyheading2richTextInputItem[]> bodyheading2richText = null, WorkflowExpression<string> bodyheading2color = null, WorkflowExpression<bodyheading3richTextInputItem[]> bodyheading3richText = null, WorkflowExpression<string> bodyheading3color = null, WorkflowExpression<bodybulletedListItemrichTextInputItem[]> bodybulletedListItemrichText = null, WorkflowExpression<string> bodybulletedListItemcolor = null, WorkflowExpression<bodynumberedListItemrichTextInputItem[]> bodynumberedListItemrichText = null, WorkflowExpression<string> bodynumberedListItemcolor = null, WorkflowExpression<bodytoDorichTextInputItem[]> bodytoDorichText = null, WorkflowExpression<bool> bodytoDochecked = null, WorkflowExpression<string> bodytoDocolor = null)
         {
@@ -300,7 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveBlockChildrenResponse> __BuildRetrieveBlockChildren(WorkflowExpression<string> blockId, WorkflowExpression<int> pageSize = null)
         {
@@ -326,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAppendblockchildren(WorkflowExpression<string> blockId, WorkflowExpression<bodychildrenInputItem[]> bodychildren = null)
         {
@@ -363,7 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DatabaseResponse> __BuildRetrieveADatabase(WorkflowExpression<string> databaseId)
         {
@@ -385,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodysortdirection = null, WorkflowExpression<string> bodysorttimestamp = null)
         {
@@ -439,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DatabaseResponse> __BuildQueryADatabase(WorkflowExpression<string> databaseId)
         {
@@ -472,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> __BuildRetrieveapagepropertyitem(WorkflowExpression<string> pageId, WorkflowExpression<string> propertyId)
         {
@@ -495,7 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveapageResponse> __BuildRetrieveapage(WorkflowExpression<string> pageId)
         {
@@ -517,7 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateaPageResponse> __BuildCreateaPage(WorkflowExpression<string> bodyparentdatabaseId = null, WorkflowExpression<string> bodyiconemoji = null, WorkflowExpression<string> bodycoverexternalurl = null)
         {
@@ -607,7 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommentResponse> __BuildRetrievecomments(WorkflowExpression<string> blockId)
         {
@@ -630,7 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommentResponse> __BuildCreatecomment(WorkflowExpression<string> bodyparentpageId = null, WorkflowExpression<string> bodydiscussionId = null, WorkflowExpression<bodyrichTextInputItem[]> bodyrichText = null)
         {

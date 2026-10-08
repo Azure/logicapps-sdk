@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Profile> __BuildGetProfile(WorkflowExpression<string> id)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListTeamSettingsIteration> __BuildListIterations(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> team)
         {
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildResult> __BuildQueueNewBuild(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> buildDefId, WorkflowExpression<string> buildDetailssourceBranch = null, WorkflowExpression<string> buildDetailsparameters = null)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListGitRepository> __BuildListGitRepositories(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -141,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListProject> __BuildListProjects(WorkflowExpression<string> account)
         {
@@ -163,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListReleaseDefinition> __BuildListReleaseDefinitions(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -186,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Release> __BuildCreateRelease(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> releaseDefId, WorkflowExpression<string> releaseStartMetadatadescription = null, WorkflowExpression<bool> releaseStartMetadataisDraft = null, WorkflowExpression<releaseStartMetadatareasonInput> releaseStartMetadatareason = null, WorkflowExpression<ConfigurationVariable[]> releaseStartMetadatareleaseVariables = null)
         {
@@ -246,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> account, WorkflowExpression<parametersmethodInput> parametersmethod, WorkflowExpression<string> parametersrelativeURI, WorkflowExpression<string> parametersbody = null, WorkflowExpression<bool> parametersbodyIsBase64 = null)
         {
@@ -303,7 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListWorkItemType> __BuildListWorkItemTypes(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -327,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DynamicWorkItemResponse> __BuildGetWorkItemDetails(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> typeName, WorkflowExpression<string> id)
         {
@@ -354,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchWorkItemResponse> __BuildUpdateWorkItem(WorkflowExpression<string> account, WorkflowExpression<string> id, WorkflowExpression<string> project = null, WorkflowExpression<string> type = null, WorkflowExpression<string> workItemtitle = null, WorkflowExpression<string> workItemdescription = null, WorkflowExpression<int> workItempriority = null, WorkflowExpression<string> workItemiterationPath = null, WorkflowExpression<string> workItemareaPath = null, WorkflowExpression<string> workItemlinkURL = null, WorkflowExpression<workItemlinkTypeInput> workItemlinkType = null, WorkflowExpression<string> workItemlinkComment = null, WorkflowExpression<object> workItemdynamicFields = null)
         {
@@ -461,7 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> __BuildGetWorkItemChildren(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> id, WorkflowExpression<string> workItemType = null)
         {
@@ -490,7 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchWorkItemResponse> __BuildCreateWorkItem(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> type, WorkflowExpression<string> workItemtitle, WorkflowExpression<bool> shouldReturnAllFields = null, WorkflowExpression<string> workItemdescription = null, WorkflowExpression<int> workItempriority = null, WorkflowExpression<string> workItemiterationPath = null, WorkflowExpression<string> workItemareaPath = null, WorkflowExpression<string> workItemlinkURL = null, WorkflowExpression<workItemlinkTypeInput> workItemlinkType = null, WorkflowExpression<string> workItemlinkComment = null, WorkflowExpression<object> workItemdynamicFields = null)
         {
@@ -591,7 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> __BuildListRootQueryFolders(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -614,7 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> __BuildListQueriesInFolder(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> folderPath)
         {
@@ -639,7 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> __BuildListWorkItems(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> workItemIds, WorkflowExpression<string> workItemType = null)
         {
@@ -668,7 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Pipeline> __BuildListPipelines(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -691,7 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Run> __BuildListPipelineRuns(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<int> pipelineId)
         {
@@ -715,7 +697,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> __BuildGetQueryResults(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> queryId, WorkflowExpression<int> workItemsCount = null, WorkflowExpression<bool> throwIfQueryChanged = null)
         {

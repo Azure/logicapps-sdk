@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendNotification(WorkflowExpression<string> notificationName, WorkflowExpression<string> bodydynamicText = null, WorkflowExpression<string> bodydynamicTitle = null, WorkflowExpression<string> bodyinputParameter = null, WorkflowExpression<string[]> bodydevices = null)
         {

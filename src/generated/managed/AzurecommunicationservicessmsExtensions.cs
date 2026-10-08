@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSMSv2Response> __BuildSendSMSv2(WorkflowExpression<string> bodyfromPhoneNumber, WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients, WorkflowExpression<string> bodymessage, WorkflowExpression<bool> bodysmsSendOptionsdeliveryReport = null, WorkflowExpression<string> bodysmsSendOptionstag = null)
         {

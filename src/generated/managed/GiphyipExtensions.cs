@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGIFResponse> __BuildGetGIF(WorkflowExpression<string> aPIKEY, WorkflowExpression<string> q, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> rating = null, WorkflowExpression<string> lang = null)
         {

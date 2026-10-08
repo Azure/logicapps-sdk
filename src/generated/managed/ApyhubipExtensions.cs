@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArchiveFilePostResponse> __BuildArchiveFile(WorkflowExpression<string[]> bodyurls, WorkflowExpression<string> output = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArchiveURLPostResponse> __BuildArchiveURL(WorkflowExpression<string[]> bodyurls, WorkflowExpression<string> output = null)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnarchiveURLPostResponse> __BuildUnarchiveURL(WorkflowExpression<string> bodyurl)
         {

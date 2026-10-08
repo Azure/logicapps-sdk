@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplateResponse> __BuildGetTemplate(WorkflowExpression<string> id)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTemplate(WorkflowExpression<string> id)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDocumentsResponseItem[]> __BuildListDocuments(WorkflowExpression<string> templateId)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateDocumentResponse> __BuildGenerateDocument(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodydata, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null)
         {
@@ -147,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentResponse> __BuildGetDocument(WorkflowExpression<string> id)
         {
@@ -168,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> id)
         {
@@ -189,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateDocumentResponse> __BuildUpdateDocument(WorkflowExpression<string> id, WorkflowExpression<string> bodyname = null)
         {

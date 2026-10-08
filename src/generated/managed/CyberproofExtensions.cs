@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCPCreateExecution(WorkflowExpression<string> actionReqselectAction, WorkflowExpression<object> actionReqparameters)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCPCreateWebhookExecution(WorkflowExpression<string> actionReqselectAction, WorkflowExpression<object> actionReqparameters)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCPSetAlertCustomField(WorkflowExpression<string> actionCustomReqalertId, WorkflowExpression<string> actionCustomReqselectClassification, WorkflowExpression<object> actionCustomReqselectField)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCPGetAlertCustomField(WorkflowExpression<string> actionCustomReqalertId, WorkflowExpression<string> actionCustomReqselectClassification, WorkflowExpression<object> actionCustomReqselectField)
         {
@@ -158,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCPGetIncidentSummary(WorkflowExpression<string> actionCustomReqincidentId, WorkflowExpression<object> actionCustomReqselectIncidentSummary)
         {
@@ -191,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCPSetIncidentSummary(WorkflowExpression<string> actionCustomReqincidentId, WorkflowExpression<object> actionCustomReqselectValue)
         {

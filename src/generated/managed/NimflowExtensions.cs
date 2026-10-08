@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DispatchContextActionResult> __BuildContextsDispatchAction(WorkflowExpression<string> commandcontextTypeName, WorkflowExpression<string> commandreference, WorkflowExpression<string> commandaction, WorkflowExpression<string> commandsubject = null)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddTaskResponseResult> __BuildTasksAddResponse(WorkflowExpression<string> commandcontextReference, WorkflowExpression<string> commandcontextTypeName, WorkflowExpression<string> commandtaskTypeName, WorkflowExpression<string> commandresponseTypeName, WorkflowExpression<string> commandsentBy = null, WorkflowExpression<string> commandstartedOn = null, WorkflowExpression<string> commandsentOn = null, WorkflowExpression<string> commandsubject = null, WorkflowExpression<string> commanditemKey = null)
         {

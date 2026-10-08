@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Expense[]> __BuildListExpenses(WorkflowExpression<string> accountid)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Expense> __BuildAddExpense(WorkflowExpression<string> accountid, WorkflowExpression<string> bodyexpenseamountamount, WorkflowExpression<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, WorkflowExpression<int> bodyexpensecategory = null, WorkflowExpression<int> bodyexpensestaff = null, WorkflowExpression<string> bodyexpensedate = null, WorkflowExpression<string> bodyexpensevendor = null, WorkflowExpression<string> bodyexpensenotes = null)
         {
@@ -130,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateExpense(WorkflowExpression<string> accountid, WorkflowExpression<string> expenseid, WorkflowExpression<string> bodyexpenseamountamount = null, WorkflowExpression<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, WorkflowExpression<int> bodyexpensecategory = null, WorkflowExpression<int> bodyexpensestaff = null, WorkflowExpression<string> bodyexpensedate = null, WorkflowExpression<string> bodyexpensevendor = null, WorkflowExpression<string> bodyexpensenotes = null)
         {
@@ -225,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteExpense(WorkflowExpression<string> accountid, WorkflowExpression<string> expenseid)
         {
@@ -265,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Client> __BuildAddClient(WorkflowExpression<string> accountid, WorkflowExpression<string> bodyclientfirstName = null, WorkflowExpression<string> bodyclientlastName = null, WorkflowExpression<string> bodyclientorganization = null, WorkflowExpression<string> bodyclientemailAddress = null, WorkflowExpression<string> bodyclientphoneNumber = null, WorkflowExpression<bodyclientcurrencyInput> bodyclientcurrency = null, WorkflowExpression<string> bodyclientstreetAddress1 = null, WorkflowExpression<string> bodyclientstreetAddress2 = null, WorkflowExpression<string> bodyclientcity = null, WorkflowExpression<string> bodyclientpostalCode = null, WorkflowExpression<string> bodyclientcountry = null, WorkflowExpression<string> bodyclientprovince = null)
         {

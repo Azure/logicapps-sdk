@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotebookPostResponse> __BuildNotebook(WorkflowExpression<string> bodydisplayName)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotebookGetAResponse> __BuildNotebookGetA(WorkflowExpression<string> notebookId)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SectionGetResponse> __BuildSectionGet(WorkflowExpression<string> notebookId, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> search = null, WorkflowExpression<string> select = null, WorkflowExpression<int> skip = null, WorkflowExpression<int> top = null, WorkflowExpression<bool> count = null, WorkflowExpression<string> skiptoken = null)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SectionPostResponse> __BuildSection(WorkflowExpression<string> notebookId, WorkflowExpression<string> bodydisplayName)
         {
@@ -156,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageGetResponse> __BuildPageGet(WorkflowExpression<string> sectionId, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> search = null, WorkflowExpression<string> select = null, WorkflowExpression<int> skip = null, WorkflowExpression<int> top = null, WorkflowExpression<bool> count = null, WorkflowExpression<string> skiptoken = null)
         {
@@ -204,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PagePostResponse> __BuildPage(WorkflowExpression<string> sectionId, WorkflowExpression<string> contentType, WorkflowExpression<string> body = null)
         {

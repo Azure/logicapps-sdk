@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApprovalResponseResponse> __BuildApprovalResponse(WorkflowExpression<string> bodyresultapproval = null, WorkflowExpression<string> bodyresultreason = null, WorkflowExpression<string> bodyresultreviewedBy = null)
         {

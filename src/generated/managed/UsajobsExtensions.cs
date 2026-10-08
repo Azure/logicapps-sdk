@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchJobsResponse> __BuildSearchJobs(WorkflowExpression<string> keyword = null, WorkflowExpression<string> positionTitle = null, WorkflowExpression<int> remunerationMinimumAmount = null, WorkflowExpression<int> remunerationMaximumAmount = null, WorkflowExpression<string> payGradeHigh = null, WorkflowExpression<string> payGradeLow = null, WorkflowExpression<string> jobCategoryCode = null, WorkflowExpression<bool> remoteIndicator = null, WorkflowExpression<string> locationName = null, WorkflowExpression<int> radius = null, WorkflowExpression<bool> relocationIndicator = null, WorkflowExpression<string> travelPercentage = null, WorkflowExpression<string> organization = null, WorkflowExpression<string> positionOfferingTypeCode = null, WorkflowExpression<string> positionScheduleTypeCode = null, WorkflowExpression<string> securityClearanceRequired = null, WorkflowExpression<positionSensitivityInput> positionSensitivity = null, WorkflowExpression<bool> supervisoryStatus = null, WorkflowExpression<int> datePosted = null, WorkflowExpression<string> jobGradeCode = null, WorkflowExpression<string> whoMayApply = null, WorkflowExpression<string> salaryBucket = null, WorkflowExpression<string> gradeBucket = null, WorkflowExpression<string> hiringPath = null, WorkflowExpression<string> missionCriticalTags = null, WorkflowExpression<string> postingChannel = null, WorkflowExpression<fieldsInput> fields = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<sortDirectionInput> sortDirection = null, WorkflowExpression<int> page = null, WorkflowExpression<int> resultsPerPage = null)
         {
@@ -131,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAcademicHonorsResponse> __BuildListAcademicHonors(WorkflowExpression<string> lastmodified = null)
         {
@@ -154,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAcademicLevelsResponse> __BuildListAcademicLevels(WorkflowExpression<string> lastmodified = null)
         {
@@ -177,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListActionCodesResponse> __BuildListActionCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -200,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAgencySubelementsResponse> __BuildListAgencySubelements(WorkflowExpression<string> lastmodified = null)
         {
@@ -223,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> __BuildListAnnouncementClosingTypes(WorkflowExpression<string> lastmodified = null)
         {
@@ -246,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListApplicantSuppliersResponse> __BuildListApplicantSuppliers(WorkflowExpression<string> lastmodified = null)
         {
@@ -269,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListApplicationStatusesResponse> __BuildListApplicationStatuses(WorkflowExpression<string> lastmodified = null)
         {
@@ -292,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCountriesResponse> __BuildListCountries(WorkflowExpression<string> lastmodified = null)
         {
@@ -315,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCountrySubdivisionsResponse> __BuildListCountrySubdivisions(WorkflowExpression<string> country = null, WorkflowExpression<string> lastmodified = null)
         {
@@ -341,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> __BuildListCyberWorkGroupings(WorkflowExpression<string> lastmodified = null)
         {
@@ -364,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCyberWorkRolesResponse> __BuildListCyberWorkRoles(WorkflowExpression<string> lastmodified = null)
         {
@@ -387,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDegreeTypeCodesResponse> __BuildListDegreeTypeCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -410,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDisabilitiesResponse> __BuildListDisabilities(WorkflowExpression<string> lastmodified = null)
         {
@@ -433,7 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDocumentationsResponse> __BuildListDocumentations(WorkflowExpression<string> lastmodified = null)
         {
@@ -456,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDocumentFormatsResponse> __BuildListDocumentFormats(WorkflowExpression<string> lastmodified = null)
         {
@@ -479,7 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListEthnicitiesResponse> __BuildListEthnicities(WorkflowExpression<string> lastmodified = null)
         {
@@ -502,7 +485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> __BuildListFederalEmploymentStatuses(WorkflowExpression<string> lastmodified = null)
         {
@@ -525,7 +507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGeolocCodesResponse> __BuildListGeolocCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -548,7 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGsaGeolocCodesResponse> __BuildListGsaGeolocCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -571,7 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListHiringPathsResponse> __BuildListHiringPaths(WorkflowExpression<string> lastmodified = null)
         {
@@ -594,7 +573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> __BuildListKeyStandardRequirements(WorkflowExpression<string> lastmodified = null)
         {
@@ -617,7 +595,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListLanguageCodesResponse> __BuildListLanguageCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -640,7 +617,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListLanguageProficienciesResponse> __BuildListLanguageProficiencies(WorkflowExpression<string> lastmodified = null)
         {
@@ -663,7 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListLocationExpansionsResponse> __BuildListLocationExpansions(WorkflowExpression<string> lastmodified = null)
         {
@@ -686,7 +661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> __BuildListMilitaryStatusCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -709,7 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMissionCriticalCodesResponse> __BuildListMissionCriticalCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -732,7 +705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOccupationalSeriesResponse> __BuildListOccupationalSeries(WorkflowExpression<string> lastmodified = null)
         {
@@ -755,7 +727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPayPlansResponse> __BuildListPayPlans(WorkflowExpression<string> lastmodified = null)
         {
@@ -778,7 +749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPositionOfferingTypesResponse> __BuildListPositionOfferingTypes(WorkflowExpression<string> lastmodified = null)
         {
@@ -801,7 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> __BuildListPositionOpeningStatuses(WorkflowExpression<string> lastmodified = null)
         {
@@ -824,7 +793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPositionScheduleTypesResponse> __BuildListPositionScheduleTypes(WorkflowExpression<string> lastmodified = null)
         {
@@ -847,7 +815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPostalCodesResponse> __BuildListPostalCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -870,7 +837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRaceCodesResponse> __BuildListRaceCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -893,7 +859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRefereeTypeCodesResponse> __BuildListRefereeTypeCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -916,7 +881,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> __BuildListRemunerationRateIntervalCodes(WorkflowExpression<string> lastmodified = null)
         {
@@ -939,7 +903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> __BuildListRequiredStandardDocuments(WorkflowExpression<string> lastmodified = null)
         {
@@ -962,7 +925,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSecurityClearancesResponse> __BuildListSecurityClearances(WorkflowExpression<string> lastmodified = null)
         {
@@ -985,7 +947,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListServiceTypesResponse> __BuildListServiceTypes(WorkflowExpression<string> lastmodified = null)
         {
@@ -1008,7 +969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSpecialHiringsResponse> __BuildListSpecialHirings(WorkflowExpression<string> lastmodified = null)
         {
@@ -1031,7 +991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTravelPercentagesResponse> __BuildListTravelPercentages(WorkflowExpression<string> lastmodified = null)
         {
@@ -1054,7 +1013,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWhoMayApplyResponse> __BuildListWhoMayApply(WorkflowExpression<string> lastmodified = null)
         {

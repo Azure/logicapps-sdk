@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildAddForm(WorkflowExpression<string> bodyformName, WorkflowExpression<string> bodyformDescription = null, WorkflowExpression<string> bodythankYouText = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildAddFormField(WorkflowExpression<string> bodyformID, WorkflowExpression<string> bodyformName, WorkflowExpression<string> bodyfieldName, WorkflowExpression<string> bodyfieldType, WorkflowExpression<object> bodyfieldConfiguration = null)
         {
@@ -108,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildAddAdaptiveCard(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycard, WorkflowExpression<string> bodycardAfterSubmit = null)
         {
@@ -148,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetCardResponse(WorkflowExpression<string> instanceId, WorkflowExpression<string> name)
         {
@@ -170,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFormAdaptiveCardJson(WorkflowExpression<string> instanceId)
         {

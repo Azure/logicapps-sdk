@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPOSTHttp(WorkflowExpression<string> path = null)
         {
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTJsonResponse> __BuildPOSTJson(WorkflowExpression<string> bodyflowPropertiesdisplayName = null, WorkflowExpression<string> bodyflowPropertiesflowId = null, WorkflowExpression<string> bodyflowPropertiesowner = null, WorkflowExpression<string> bodyflowPropertiesenvironment = null, WorkflowExpression<string[]> bodyconfigscomplexity = null, WorkflowExpression<string[]> bodyconfigsscoring = null)
         {
@@ -183,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPOSTFile(WorkflowExpression<string> bodyflowPropertiesdisplayName = null, WorkflowExpression<string> bodyflowPropertiesflowId = null, WorkflowExpression<string> bodyflowPropertiesowner = null, WorkflowExpression<string> bodyflowPropertiesenvironment = null, WorkflowExpression<bodyconfigfileTypeInput> bodyconfigfileType = null, WorkflowExpression<string[]> bodyconfigcomplexity = null, WorkflowExpression<string[]> bodyconfigscoring = null)
         {
@@ -309,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<POSTDiagramResponse> __BuildPOSTDiagram(WorkflowExpression<string> bodypropertiesdisplayName = null, WorkflowExpression<string> bodypropertiesflowId = null, WorkflowExpression<string> bodypropertiesowner = null, WorkflowExpression<string> bodypropertiesenvironment = null)
         {

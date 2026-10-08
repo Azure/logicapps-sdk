@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectCarbonResponse> __BuildDirectCarbon(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodyweightvalue = null, WorkflowExpression<bodyweightunitsInput> bodyweightunits = null, WorkflowExpression<string[]> bodyprojectMatchlocationlatlng = null, WorkflowExpression<string> bodynote = null)
         {
@@ -98,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectTransactionResponse> __BuildDirectTransaction(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodycurrencyvalue = null, WorkflowExpression<string> bodycurrencyunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<int> bodyunitCostUsdCents = null)
         {
@@ -177,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculatePackageResponse> __BuildCalculatePackage(WorkflowExpression<string> transaction, WorkflowExpression<double> bodyweightvalue = null, WorkflowExpression<string> bodyweightunits = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<double> bodydistancevalue = null, WorkflowExpression<string> bodydistanceunits = null, WorkflowExpression<string> bodyfrompostalCode = null, WorkflowExpression<string> bodyfromcountry = null, WorkflowExpression<string> bodytopostalCode = null, WorkflowExpression<string> bodytocountry = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
         {
@@ -351,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculateMCCResponse> __BuildCalculateMCC(WorkflowExpression<string> transaction, WorkflowExpression<int> bodymccCode = null, WorkflowExpression<double> bodycurrencyvalue = null, WorkflowExpression<string> bodycurrencyunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
         {
@@ -459,7 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculateFreightResponse> __BuildCalculateFreight(WorkflowExpression<string> transaction, WorkflowExpression<double> bodyweightvalue, WorkflowExpression<string> bodyweightunits, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodydistancevalue = null, WorkflowExpression<string> bodydistanceunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
         {
@@ -588,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculateFlightResponse> __BuildCalculateFlight(WorkflowExpression<transactionInput> transaction, WorkflowExpression<string[]> bodyairports, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
         {
@@ -670,7 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculateVehicleResponse> __BuildCalculateVehicle(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodydistancevalue = null, WorkflowExpression<string> bodydistanceunits = null, WorkflowExpression<double> bodyfuelEfficiencyvalue = null, WorkflowExpression<string> bodyfuelEfficiencyunits = null, WorkflowExpression<string> bodyfuelEfficiencyof = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
         {
@@ -800,7 +793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalculateElectricityResponse> __BuildCalculateElectricity(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodyenergyvalue = null, WorkflowExpression<bodyenergyunitsInput> bodyenergyunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
         {
@@ -901,7 +893,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectDetailsResponse> __BuildProjectDetails(WorkflowExpression<string> projectId)
         {
@@ -922,7 +913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PortfolioDetailsResponse> __BuildPortfolioDetails(WorkflowExpression<string> portfolioId)
         {
@@ -961,7 +951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConvertEstimateResponse> __BuildConvertEstimate(WorkflowExpression<string> bodytransactionID)
         {

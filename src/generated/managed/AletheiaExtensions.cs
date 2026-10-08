@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityFilingsResponseItem[]> __BuildEntityFilings(WorkflowExpression<string> id, WorkflowExpression<string> filing = null, WorkflowExpression<int> before = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenForm4Response> __BuildOpenForm4(WorkflowExpression<string> filingurl)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenCommonFinancialsResponse> __BuildOpenCommonFinancials(WorkflowExpression<string> filingurl)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchEntitiesResponseItem[]> __BuildSearchEntities(WorkflowExpression<string> term, WorkflowExpression<int> top = null)
         {
@@ -116,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntityResponse> __BuildGetEntity(WorkflowExpression<string> id)
         {
@@ -138,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFilingResponse> __BuildGetFiling(WorkflowExpression<string> id = null, WorkflowExpression<string> url = null)
         {
@@ -164,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LatestTransactionsResponseItem[]> __BuildLatestTransactions(WorkflowExpression<string> issuer = null, WorkflowExpression<int> owner = null, WorkflowExpression<int> top = null, WorkflowExpression<string> before = null, WorkflowExpression<int> securitytype = null, WorkflowExpression<int> transactiontype = null, WorkflowExpression<bool> cascade = null)
         {
@@ -206,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> __BuildAffiliatedOwners(WorkflowExpression<string> id)
         {
@@ -228,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCommonFinancialsResponse> __BuildGetCommonFinancials(WorkflowExpression<string> id, WorkflowExpression<periodInput> period = null, WorkflowExpression<string> before = null)
         {
@@ -256,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> __BuildFinancialFactTrend(WorkflowExpression<string> id, WorkflowExpression<int> label, WorkflowExpression<int> period = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {
@@ -289,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> __BuildSearchEarningsCalls(WorkflowExpression<string> company = null, WorkflowExpression<int> year = null, WorkflowExpression<string> quarter = null, WorkflowExpression<int> top = null)
         {
@@ -321,7 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EarningsCallResponse> __BuildEarningsCall(WorkflowExpression<string> company, WorkflowExpression<int> year = null, WorkflowExpression<string> quarter = null, WorkflowExpression<int> begin = null, WorkflowExpression<int> end = null)
         {
@@ -355,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> __BuildEarningsCallHighlights(WorkflowExpression<string> company, WorkflowExpression<int> year, WorkflowExpression<string> quarter, WorkflowExpression<int> category = null, WorkflowExpression<int> top = null)
         {
@@ -387,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CryptoQuoteResponse> __BuildCryptoQuote(WorkflowExpression<string> symbol)
         {
@@ -409,7 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StockDataV2Response> __BuildStockData(WorkflowExpression<string> symbol, WorkflowExpression<string> fields = null)
         {

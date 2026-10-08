@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReverseGeocodeResponse> __BuildReverseGeocode(WorkflowExpression<double> x, WorkflowExpression<double> y, WorkflowExpression<string> srs = null, WorkflowExpression<locationTypeInput> locationType = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGeometryService(WorkflowExpression<string> operation, WorkflowExpression<object> data = null)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeConversionHelperResponse> __BuildTimeConversionHelper(WorkflowExpression<string> datadateTime)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePointGeometryHelperResponse> __BuildCreatePointGeometryHelper(WorkflowExpression<double> x, WorkflowExpression<double> y, WorkflowExpression<string> srs = null)
         {
@@ -130,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildEXIF(WorkflowExpression<string> data = null)
         {
@@ -152,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGeocodeAddresses(WorkflowExpression<string> dataaddresses)
         {
@@ -182,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GeoenrichV2Response> __BuildGeoenrich(WorkflowExpression<string> country, WorkflowExpression<string> datacollection, WorkflowExpression<string> parameter, WorkflowExpression<buffertypeInput> buffertype, WorkflowExpression<object> body = null)
         {
@@ -212,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRouteV2Response> __BuildGetRoute(WorkflowExpression<string> routingroutingStops, WorkflowExpression<string> travelModeName = null, WorkflowExpression<bool> findBestSequence = null, WorkflowExpression<bool> preserveFirstStop = null, WorkflowExpression<bool> returnDirections = null)
         {

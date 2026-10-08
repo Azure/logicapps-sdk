@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIssueResponse> __BuildGetIssue(WorkflowExpression<string> issueId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUpdateIssue(WorkflowExpression<string> issueId, WorkflowExpression<string> issueissuepriority = null, WorkflowExpression<issueissuetrackerInput> issueissuetracker = null, WorkflowExpression<issueissuestatusInput> issueissuestatus = null, WorkflowExpression<string> issueissuesubject = null, WorkflowExpression<string> issueissuedescription = null)
         {
@@ -110,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowExpression<string> projectId)
         {
@@ -140,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserResponse> __BuildGetUser(WorkflowExpression<string> userId)
         {

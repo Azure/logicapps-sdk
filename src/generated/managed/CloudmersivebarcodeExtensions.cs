@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BarcodeLookupResponse> __BuildBarcodeLookupEanLookup(WorkflowExpression<string> value = null)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BarcodeScanResult> __BuildBarcodeScanImage(WorkflowExpression<object> imageFile)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGenerateBarcodeQRCode(WorkflowExpression<string> value = null)
         {
@@ -83,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGenerateBarcodeUPCA(WorkflowExpression<string> value = null)
         {
@@ -105,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGenerateBarcodeUPCE(WorkflowExpression<string> value = null)
         {
@@ -127,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGenerateBarcodeEAN13(WorkflowExpression<string> value = null)
         {
@@ -149,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGenerateBarcodeEAN8(WorkflowExpression<string> value = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSMS(WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodygroupMsg = null, WorkflowExpression<bodymessagesInputItem[]> bodymessages = null)
         {

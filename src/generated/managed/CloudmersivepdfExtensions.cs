@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfAddAnnotations(WorkflowExpression<PdfAnnotation[]> requestannotationsToAdd = null, WorkflowExpression<string> requestinputFileBytes = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPdfAnnotationsResult> __BuildEditPdfGetAnnotations(WorkflowExpression<object> inputFile)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfRemoveAllAnnotations(WorkflowExpression<object> inputFile)
         {
@@ -101,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfRemoveAnnotationItem(WorkflowExpression<object> inputFile, WorkflowExpression<int> annotationIndex)
         {
@@ -124,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfDecrypt(WorkflowExpression<string> password, WorkflowExpression<object> inputFile)
         {
@@ -147,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfEncrypt(WorkflowExpression<object> inputFile, WorkflowExpression<string> userPassword = null, WorkflowExpression<string> ownerPassword = null, WorkflowExpression<string> encryptionKeyLength = null)
         {
@@ -177,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfSetPermissions(WorkflowExpression<string> ownerPassword, WorkflowExpression<string> userPassword, WorkflowExpression<object> inputFile, WorkflowExpression<string> encryptionKeyLength = null, WorkflowExpression<bool> allowPrinting = null, WorkflowExpression<bool> allowDocumentAssembly = null, WorkflowExpression<bool> allowContentExtraction = null, WorkflowExpression<bool> allowFormFilling = null, WorkflowExpression<bool> allowEditing = null, WorkflowExpression<bool> allowAnnotations = null, WorkflowExpression<bool> allowDegradedPrinting = null)
         {
@@ -226,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PdfFormFields> __BuildEditPdfGetFormFields(WorkflowExpression<object> inputFile)
         {
@@ -247,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfSetFormFields(WorkflowExpression<SetFormFieldValue[]> fieldValuesfieldValues = null, WorkflowExpression<string> fieldValuesinputFileBytes = null)
         {
@@ -288,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PdfMetadata> __BuildEditPdfGetMetadata(WorkflowExpression<object> inputFile)
         {
@@ -309,7 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfDeletePages(WorkflowExpression<object> inputFile, WorkflowExpression<int> pageStart, WorkflowExpression<int> pageEnd)
         {
@@ -334,7 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PdfTextByPageResult> __BuildEditPdfGetPdfTextByPages(WorkflowExpression<object> inputFile)
         {
@@ -355,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfInsertPages(WorkflowExpression<object> sourceFile, WorkflowExpression<object> destinationFile, WorkflowExpression<int> pageStartSource, WorkflowExpression<int> pageEndSource, WorkflowExpression<int> pageInsertBeforeDesitnation)
         {
@@ -383,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfRotateAllPages(WorkflowExpression<object> inputFile, WorkflowExpression<int> rotationAngle)
         {
@@ -406,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfRotatePageRange(WorkflowExpression<object> inputFile, WorkflowExpression<int> rotationAngle, WorkflowExpression<int> pageStart, WorkflowExpression<int> pageEnd)
         {
@@ -433,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfRasterize(WorkflowExpression<object> inputFile)
         {
@@ -454,7 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfSetMetadata(WorkflowExpression<string> requestinputFileBytes = null, WorkflowExpression<string> requestmetadataToSetauthor = null, WorkflowExpression<string> requestmetadataToSetcreator = null, WorkflowExpression<string> requestmetadataToSetdateCreated = null, WorkflowExpression<string> requestmetadataToSetdateModified = null, WorkflowExpression<string> requestmetadataToSetkeywords = null, WorkflowExpression<int> requestmetadataToSetpageCount = null, WorkflowExpression<string> requestmetadataToSetsubject = null, WorkflowExpression<bool> requestmetadataToSetsuccessful = null, WorkflowExpression<string> requestmetadataToSettitle = null)
         {
@@ -559,7 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEditPdfWatermarkText(WorkflowExpression<string> watermarkText, WorkflowExpression<object> inputFile, WorkflowExpression<string> fontName = null, WorkflowExpression<double> fontSize = null, WorkflowExpression<string> fontColor = null, WorkflowExpression<double> fontTransparency = null)
         {

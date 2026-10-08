@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteuae")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFILEDOWNLOADBYURL(WorkflowExpression<string> downloadUrl)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteuae")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSETFILEMETADATA(WorkflowExpression<string> projectId, WorkflowExpression<string> folderId, WorkflowExpression<object> items = null)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteuae")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUPLOADBINARYFILE(WorkflowExpression<string> projectId, WorkflowExpression<string> folderId, WorkflowExpression<string> fileName, WorkflowExpression<string> metadataId, WorkflowExpression<string> fileBinary = null)
         {

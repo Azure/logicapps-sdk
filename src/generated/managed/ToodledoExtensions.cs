@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject[]> __BuildListTasks(WorkflowExpression<int> comp = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildCreateTask(WorkflowExpression<string> tasktitle = null, WorkflowExpression<int> taskfolderId = null, WorkflowExpression<int> taskpriority = null, WorkflowExpression<string> tasknote = null, WorkflowExpression<string> taskdueDate = null, WorkflowExpression<string> taskdueTime = null)
         {
@@ -111,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildGetTaskById(WorkflowExpression<int> id)
         {
@@ -133,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildUpdateTask(WorkflowExpression<int> taskid = null, WorkflowExpression<string> tasktitle = null, WorkflowExpression<string> taskcompleted = null, WorkflowExpression<string> taskdueDate = null, WorkflowExpression<string> taskdueTime = null, WorkflowExpression<string> tasknote = null, WorkflowExpression<int> taskpriority = null, WorkflowExpression<int> taskfolder = null, WorkflowExpression<string> taskmodified = null)
         {

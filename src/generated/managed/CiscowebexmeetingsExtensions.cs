@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewMeetingResponse> __BuildNewMeeting(WorkflowExpression<string> bodytopic, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string> bodyattendees = null, WorkflowExpression<string> bodyagenda = null)
         {

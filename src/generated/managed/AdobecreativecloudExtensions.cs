@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatedAssetDetails> __BuildCreateAsset(WorkflowExpression<string> path, WorkflowExpression<string> name, WorkflowExpression<string> body = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetContentById(WorkflowExpression<string> assetId)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssetMetadata> __BuildGetMetadataById(WorkflowExpression<string> assetId)
         {
@@ -88,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAssetByPath(WorkflowExpression<string> path)
         {
@@ -111,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetContentByPath(WorkflowExpression<string> path)
         {
@@ -133,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssetMetadata> __BuildGetMetadataByPath(WorkflowExpression<string> path)
         {
@@ -155,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectoryListing> __BuildListFilesInDirectory(WorkflowExpression<string> path)
         {
@@ -177,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatedAssetDetails> __BuildCopyAsset(WorkflowExpression<string> bodysourceAssetPath, WorkflowExpression<string> bodydestinationAssetPath)
         {

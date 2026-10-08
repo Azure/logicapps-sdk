@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbonprem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> dataset)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbonprem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<object> item = null)
         {
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbonprem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -86,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbonprem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -109,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbonprem")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<object> item = null)
         {

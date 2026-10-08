@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EthGetBalanceResponse> __BuildEthGetBalance(WorkflowExpression<string> bodyParamsaddress = null, WorkflowExpression<bodyParamsblockInput> bodyParamsblock = null)
         {

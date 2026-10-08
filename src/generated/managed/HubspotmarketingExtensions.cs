@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFormsList(WorkflowExpression<int> limit = null, WorkflowExpression<bool> archived = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFormsCreate(WorkflowExpression<string> dataformType = null, WorkflowExpression<string> dataname = null, WorkflowExpression<string> datacreatedAt = null, WorkflowExpression<string> dataupdatedAt = null, WorkflowExpression<bool> dataarchived = null, WorkflowExpression<string> dataarchivedAt = null, WorkflowExpression<datafieldGroupsInputItem[]> datafieldGroups = null, WorkflowExpression<string> dataconfigurationlanguage = null, WorkflowExpression<bool> dataconfigurationcloneable = null, WorkflowExpression<string> dataconfigurationpostSubmitActiontype = null, WorkflowExpression<string> dataconfigurationpostSubmitActionvalue = null, WorkflowExpression<bool> dataconfigurationeditable = null, WorkflowExpression<bool> dataconfigurationarchivable = null, WorkflowExpression<bool> dataconfigurationrecaptchaEnabled = null, WorkflowExpression<bool> dataconfigurationnotifyContactOwner = null, WorkflowExpression<string[]> dataconfigurationnotifyRecipients = null, WorkflowExpression<bool> dataconfigurationcreateNewContactForNewEmail = null, WorkflowExpression<bool> dataconfigurationprePopulateKnownValues = null, WorkflowExpression<bool> dataconfigurationallowLinkToResetKnownValues = null, WorkflowExpression<bool> datadisplayOptionsrenderRawHtml = null, WorkflowExpression<string> datadisplayOptionstheme = null, WorkflowExpression<string> datadisplayOptionssubmitButtonText = null, WorkflowExpression<string> datadisplayOptionsstylefontFamily = null, WorkflowExpression<string> datadisplayOptionsstylebackgroundWidth = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextSize = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextColor = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextSize = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextSize = null, WorkflowExpression<string> datadisplayOptionsstylesubmitColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitAlignment = null, WorkflowExpression<string> datadisplayOptionsstylesubmitFontColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitSize = null, WorkflowExpression<string> datadisplayOptionscssClass = null)
         {
@@ -370,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFormsRead(WorkflowExpression<string> formId, WorkflowExpression<bool> archived = null)
         {
@@ -395,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFormsArchive(WorkflowExpression<string> formId)
         {
@@ -416,7 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFormsUpdate(WorkflowExpression<string> formId, WorkflowExpression<string> dataformType, WorkflowExpression<string> dataid, WorkflowExpression<string> datacreatedAt, WorkflowExpression<string> dataupdatedAt, WorkflowExpression<bool> dataarchived, WorkflowExpression<string> dataname = null, WorkflowExpression<string> dataarchivedAt = null, WorkflowExpression<datafieldGroupsInputItem[]> datafieldGroups = null, WorkflowExpression<string> dataconfigurationlanguage = null, WorkflowExpression<bool> dataconfigurationcloneable = null, WorkflowExpression<string> dataconfigurationpostSubmitActiontype = null, WorkflowExpression<string> dataconfigurationpostSubmitActionvalue = null, WorkflowExpression<bool> dataconfigurationeditable = null, WorkflowExpression<bool> dataconfigurationarchivable = null, WorkflowExpression<bool> dataconfigurationrecaptchaEnabled = null, WorkflowExpression<bool> dataconfigurationnotifyContactOwner = null, WorkflowExpression<string[]> dataconfigurationnotifyRecipients = null, WorkflowExpression<bool> dataconfigurationcreateNewContactForNewEmail = null, WorkflowExpression<bool> dataconfigurationprePopulateKnownValues = null, WorkflowExpression<bool> dataconfigurationallowLinkToResetKnownValues = null, WorkflowExpression<bool> datadisplayOptionsrenderRawHtml = null, WorkflowExpression<string> datadisplayOptionstheme = null, WorkflowExpression<string> datadisplayOptionssubmitButtonText = null, WorkflowExpression<string> datadisplayOptionsstylefontFamily = null, WorkflowExpression<string> datadisplayOptionsstylebackgroundWidth = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextSize = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextColor = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextSize = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextSize = null, WorkflowExpression<string> datadisplayOptionsstylesubmitColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitAlignment = null, WorkflowExpression<string> datadisplayOptionsstylesubmitFontColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitSize = null, WorkflowExpression<string> datadisplayOptionscssClass = null)
         {
@@ -708,7 +703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEventRead(WorkflowExpression<string> externalEventId, WorkflowExpression<string> externalAccountId)
         {
@@ -731,7 +725,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEventsArchive(WorkflowExpression<string> externalEventId, WorkflowExpression<string> externalAccountId)
         {
@@ -754,7 +747,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEventsUpdateCreateOrUpdate(WorkflowExpression<string> externalEventId, WorkflowExpression<string> dataeventName, WorkflowExpression<string> dataeventOrganizer, WorkflowExpression<string> dataexternalAccountId, WorkflowExpression<string> dataexternalEventId, WorkflowExpression<dataeventTypeInput> dataeventType = null, WorkflowExpression<string> datastartDateTime = null, WorkflowExpression<string> dataendDateTime = null, WorkflowExpression<string> dataeventDescription = null, WorkflowExpression<string> dataeventUrl = null, WorkflowExpression<bool> dataeventCancelled = null, WorkflowExpression<datacustomPropertiesInputItem[]> datacustomProperties = null)
         {
@@ -843,7 +835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEmailsList(WorkflowExpression<int> limit = null, WorkflowExpression<string> orderBy = null)
         {
@@ -871,7 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEmailsRead(WorkflowExpression<string> id)
         {
@@ -892,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEmailsArchive(WorkflowExpression<string> id)
         {
@@ -913,7 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEmailsUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodysubject = null)
         {
@@ -962,7 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEmailsCampaignRead(WorkflowExpression<string> campaignId)
         {
@@ -983,7 +970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarketingEmailsCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodysubject = null)
         {

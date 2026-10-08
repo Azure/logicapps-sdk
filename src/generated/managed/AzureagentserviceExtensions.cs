@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAgentsResponse> __BuildListAgents(WorkflowExpression<apiVersionInput> apiVersion)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateThreadResponse> __BuildCreateThread(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<Messages[]> requestBodymessages = null)
         {
@@ -92,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateRunResponse> __BuildCreateRun(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> threadId, WorkflowExpression<string> requestBodyassistantId, WorkflowExpression<string> requestBodymodel = null, WorkflowExpression<string> requestBodyinstructions = null, WorkflowExpression<string> requestBodyadditionalInstructions = null, WorkflowExpression<Messages[]> requestBodyadditionalMessages = null, WorkflowExpression<Tools[]> requestBodytools = null, WorkflowExpression<double> requestBodytemperature = null, WorkflowExpression<double> requestBodytopP = null, WorkflowExpression<bool> requestBodystream = null, WorkflowExpression<int> requestBodymaxPromptTokens = null, WorkflowExpression<int> requestBodymaxCompletionTokens = null)
         {
@@ -247,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRunResponse> __BuildGetRun(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> threadId, WorkflowExpression<string> runId)
         {
@@ -271,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMessageResponse> __BuildListMessages(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> threadId)
         {
@@ -294,7 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenAIResponse> __BuildInvokeAgent(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> bodypromptid, WorkflowExpression<bodyagenttypeInput> bodyagenttype, WorkflowExpression<string> bodyagentname, WorkflowExpression<string> bodyagentversion, WorkflowExpression<string> bodyuser = null, WorkflowExpression<int> bodytopLogprobs = null, WorkflowExpression<string> bodypreviousResponseId = null, WorkflowExpression<bool> bodybackground = null, WorkflowExpression<int> bodymaxOutputTokens = null, WorkflowExpression<int> bodymaxToolCalls = null, WorkflowExpression<bodytextformattypeInput> bodytextformattype = null, WorkflowExpression<OpenAITool[]> bodytools = null, WorkflowExpression<object> bodytoolChoice = null, WorkflowExpression<string> bodypromptversion = null, WorkflowExpression<bodytruncationInput> bodytruncation = null, WorkflowExpression<object> bodyinput = null, WorkflowExpression<OpenAIIncludable[]> bodyinclude = null, WorkflowExpression<bool> bodyparallelToolCalls = null, WorkflowExpression<bool> bodystore = null, WorkflowExpression<string> bodyinstructions = null)
         {
@@ -535,7 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendActivity(WorkflowExpression<string> agentId)
         {
@@ -564,7 +557,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendActivityApplication(WorkflowExpression<string> myApplication)
         {

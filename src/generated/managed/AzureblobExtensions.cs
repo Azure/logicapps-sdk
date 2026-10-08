@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCopyFile(WorkflowExpression<string> dataset, WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateBlockBlob(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> folderPath, WorkflowExpression<string> name, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCreateFile(WorkflowExpression<string> dataset, WorkflowExpression<string> folderPath, WorkflowExpression<string> name, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -111,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SharedAccessSignature> __BuildCreateShareLinkByPath(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> path, WorkflowExpression<string> policygroupPolicyIdentifier = null, WorkflowExpression<policypermissionsInput> policypermissions = null, WorkflowExpression<string> policystartTime = null, WorkflowExpression<string> policyexpiryTime = null, WorkflowExpression<policysharedAccessProtocolInput> policysharedAccessProtocol = null, WorkflowExpression<string> policyiPAddressOrIPAddressRange = null)
         {
@@ -193,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFile(WorkflowExpression<string> dataset, WorkflowExpression<string> id)
         {
@@ -216,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildExtractFolder(WorkflowExpression<string> dataset, WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -246,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SharedAccessSignatureBlobPolicy[]> __BuildGetAccessPolicies(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> path)
         {
@@ -269,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContent(WorkflowExpression<string> dataset, WorkflowExpression<string> id, WorkflowExpression<bool> inferContentType = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -301,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContentByPath(WorkflowExpression<string> dataset, WorkflowExpression<string> path, WorkflowExpression<bool> inferContentType = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -335,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataWithSensitivityLabelInfo> __BuildGetFileMetadata(WorkflowExpression<string> dataset, WorkflowExpression<string> id, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -363,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataWithSensitivityLabelInfo> __BuildGetFileMetadataByPath(WorkflowExpression<string> dataset, WorkflowExpression<string> path, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -393,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOfBlobsWithSensitivityLabels> __BuildListFolder(WorkflowExpression<string> dataset, WorkflowExpression<string> id, WorkflowExpression<string> nextPageMarker = null, WorkflowExpression<bool> useFlatListing = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -429,7 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadataPage> __BuildListRootFolder(WorkflowExpression<string> dataset, WorkflowExpression<string> nextPageMarker = null)
         {
@@ -455,7 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetBlobTierByPath(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> path, WorkflowExpression<newTierInput> newTier)
         {
@@ -480,7 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildUpdateFile(WorkflowExpression<string> dataset, WorkflowExpression<string> id, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {

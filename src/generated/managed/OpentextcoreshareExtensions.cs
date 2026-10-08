@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateDocument(WorkflowExpression<string> bodyparentID, WorkflowExpression<string> bodyfilefileName, WorkflowExpression<string> bodyfilefileContent)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocument(WorkflowExpression<string> id, WorkflowExpression<string> bodyfilefileName, WorkflowExpression<string> bodyfilefileContent)
         {
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnlockDocument(WorkflowExpression<string> id)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLockDocument(WorkflowExpression<string> id)
         {
@@ -146,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentResponse> __BuildGetDocument(WorkflowExpression<string> id)
         {
@@ -167,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentVersionContentResponse> __BuildGetDocumentVersionContent(WorkflowExpression<string> id, WorkflowExpression<string> versionId)
         {
@@ -189,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> id)
         {
@@ -210,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Version[]> __BuildGetDocumentVersions(WorkflowExpression<string> id)
         {
@@ -231,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveDocument(WorkflowExpression<string> id, WorkflowExpression<string> parentId)
         {
@@ -253,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCopyDocument(WorkflowExpression<string> id, WorkflowExpression<string> parentId)
         {
@@ -275,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateFolder(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentID)
         {
@@ -308,7 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateFolder(WorkflowExpression<string> id, WorkflowExpression<string> bodyname)
         {
@@ -339,7 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFolderResponse> __BuildGetFolder(WorkflowExpression<string> id)
         {
@@ -360,7 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFolder(WorkflowExpression<string> id)
         {
@@ -381,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultItem[]> __BuildGetFolderChildren(WorkflowExpression<string> id)
         {
@@ -402,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultItem[]> __BuildSimpleSearch(WorkflowExpression<string> bodyname)
         {
@@ -432,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultItem[]> __BuildAdvancedSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodylimit = null)
         {

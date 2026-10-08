@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunPluginForFileResponse> __BuildRunPluginForFile(WorkflowExpression<string> bodyplugin = null, WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunPluginTextResponse> __BuildRunPluginText(WorkflowExpression<string> bodyplugin = null, WorkflowExpression<string> bodytext = null)
         {
@@ -108,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> __BuildExtractDataFromInvoice(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -142,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> __BuildExtractDataPurchaseOrders(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDataBillofLadingResponse> __BuildExtractDataBillofLading(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -210,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDataCVResponse> __BuildExtractDataCV(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -244,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectDocumentTypeResponse> __BuildDetectDocumentType(WorkflowExpression<doctypeInput> doctype, WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -279,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> __BuildExtractDataBusinessCards(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -313,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractQRCodeResponse> __BuildExtractQRCode(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -347,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> __BuildExtractBarcodeFromFile(WorkflowExpression<string> bodyfileUrl = null)
         {
@@ -381,7 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectResponseColdEmailResponse> __BuildDetectResponseColdEmail(WorkflowExpression<string> bodytext = null)
         {
@@ -415,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDataHAROResponse> __BuildExtractDataHARO(WorkflowExpression<string> bodytext = null)
         {

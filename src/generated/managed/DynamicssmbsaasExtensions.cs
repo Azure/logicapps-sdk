@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildInvokeMCP(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> configurationName, WorkflowExpression<string> company, WorkflowExpression<string> mcpSessionId = null, WorkflowExpression<string> queryRequestjsonrpc = null, WorkflowExpression<string> queryRequestid = null, WorkflowExpression<string> queryRequestmethod = null)
         {
@@ -96,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -121,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteProcedure(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> procedure, WorkflowExpression<object> parameters = null)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAdaptiveCardV3Response> __BuildGetAdaptiveCard(WorkflowExpression<string> targeturl, WorkflowExpression<targetappInput> targetapp)
         {
@@ -169,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetBlobFromNavigation(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> blobnavigationpath, WorkflowExpression<object> pathParameters = null)
         {
@@ -195,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanyList> __BuildGetCompanies(WorkflowExpression<string> bcenvironment)
         {
@@ -216,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFirstItem(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<bodytypeOfOrderInput> bodytypeOfOrder = null, WorkflowExpression<string> bodyorderResultsBy = null, WorkflowExpression<bool> bodycontinueWithEmptyResultWhenNoRecordWasFound = null, WorkflowExpression<FilterGroup[]> bodyfilter = null, WorkflowExpression<bool> readOnlyConnection = null)
         {
@@ -288,7 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<bool> readOnlyConnection = null)
         {
@@ -316,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsListV3> __BuildGetItems(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> readOnlyConnection = null)
         {
@@ -355,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUrlV3Response> __BuildGetUrl(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> page, WorkflowExpression<string> id)
         {
@@ -379,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPatchBlobFromNavigation(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> blobnavigationpath, WorkflowExpression<object> pathParameters = null)
         {
@@ -405,7 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<object> item = null)
         {
@@ -432,7 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<object> item = null)
         {

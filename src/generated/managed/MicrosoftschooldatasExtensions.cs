@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetInboundFlow(WorkflowExpression<string> inboundFlowId, WorkflowExpression<string> accessToken = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDataconnectorList(WorkflowExpression<string> accessToken)
         {
@@ -81,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallGetuploadsession(WorkflowExpression<string> createdDataConnectorId, WorkflowExpression<string> accessToken)
         {
@@ -104,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallValidate(WorkflowExpression<string> createdDataConnectorId, WorkflowExpression<string> accessToken)
         {
@@ -128,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCheckValidationResult(WorkflowExpression<string> validationOperationUri, WorkflowExpression<string> accessToken)
         {

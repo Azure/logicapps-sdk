@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssignFormResponse> __BuildAssignForm(WorkflowExpression<string> formAssignBodyuser, WorkflowExpression<string> formAssignBodyform, WorkflowExpression<object> formAssignBodyfields = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddData(WorkflowExpression<string> formDataBodyform, WorkflowExpression<object> formDataBodyfields = null)
         {

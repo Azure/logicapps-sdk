@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BulkCreateOrUpdateDocumentOutputItem[]> __BuildBulkCreateOrUpdateDocument(WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<object> items, WorkflowExpression<bool> isUpsert = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOrUpdateDocumentOutput> __BuildCreateOrUpdateDocument(WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> item, WorkflowExpression<string> partitionKey = null, WorkflowExpression<bool> isUpsert = null, WorkflowExpression<string> sessionToken = null, WorkflowExpression<string> etag = null)
         {
@@ -116,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteDocumentOutput> __BuildDeleteDocument(WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> itemId, WorkflowExpression<string> partitionKey, WorkflowExpression<string> sessionToken = null)
         {
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryDocumentsOutput> __BuildQueryDocuments(WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> queryText, WorkflowExpression<string> partitionKey = null, WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> maxItemCount = null, WorkflowExpression<string> sessionToken = null)
         {
@@ -206,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadDocumentOutput> __BuildReadDocument(WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> itemId, WorkflowExpression<string> partitionKey, WorkflowExpression<string> sessionToken = null)
         {
@@ -243,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchItemOutput> __BuildPatchItem(WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> itemId, WorkflowExpression<string> partitionKey, WorkflowExpression<PatchItemInputPatchOperationsTypeItem[]> patchOperations, WorkflowExpression<string> sessionToken = null)
         {

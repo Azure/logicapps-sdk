@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrganizationsResponseItem[]> __BuildGetOrganizations(WorkflowExpression<string> acceptLanguage = null, WorkflowExpression<string> xTimeZone = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InitParametersResponse> __BuildInitParameters(WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytheUserSTimeZoneInIANAFormat = null)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InitResponse> __BuildInit(WorkflowExpression<string> bodyorganizationID = null, WorkflowExpression<string> bodyprojectID = null)
         {

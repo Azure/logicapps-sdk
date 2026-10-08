@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> __BuildInspectionPerVehicle(WorkflowExpression<string> sv, WorkflowExpression<string> bodymasterEmail, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyvehicleNumber, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate)
         {

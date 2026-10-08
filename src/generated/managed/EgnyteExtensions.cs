@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowExpression<string> bodydisplayName, WorkflowExpression<bodymembersInputItem[]> bodymembers = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupInfoByIdResponse> __BuildGroupInfoById(WorkflowExpression<string> bodyid)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupsResponse> __BuildListGroups(WorkflowExpression<int> bodystartIndex = null, WorkflowExpression<int> bodycount = null, WorkflowExpression<string> bodyfilter = null)
         {
@@ -133,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserInfoResponse> __BuildGetUser(WorkflowExpression<int> bodyid)
         {
@@ -163,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserListResponse> __BuildGetUserList(WorkflowExpression<int> bodystartIndex = null, WorkflowExpression<int> bodycount = null, WorkflowExpression<string> bodyfilter = null)
         {
@@ -211,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateUserResponse> __BuildUpdateUser(WorkflowExpression<int> bodyid, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodynamegivenName = null, WorkflowExpression<string> bodynamefamilyName = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<bool> bodysendInvite = null, WorkflowExpression<bodylanguageInput> bodylanguage = null, WorkflowExpression<bodyauthTypeInput> bodyauthType = null, WorkflowExpression<bodyuserTypeInput> bodyuserType = null, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string> bodyidpUserId = null, WorkflowExpression<string> bodyuserPrincipalName = null)
         {
@@ -326,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> bodyuserName, WorkflowExpression<string> bodyemail, WorkflowExpression<bool> bodyactive, WorkflowExpression<bodyuserTypeInput> bodyuserType, WorkflowExpression<bodyauthTypeInput> bodyauthType, WorkflowExpression<string> bodynamegivenName = null, WorkflowExpression<string> bodynamefamilyName = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<bool> bodysendInvite = null, WorkflowExpression<bool> bodyisServiceAccount = null, WorkflowExpression<bodylanguageInput> bodylanguage = null, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string> bodyidpUserId = null, WorkflowExpression<string> bodyuserPrincipalName = null)
         {
@@ -439,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteUser(WorkflowExpression<int> bodyid)
         {
@@ -469,7 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFolderResponse> __BuildCreateFolder(WorkflowExpression<string> bodypath)
         {
@@ -499,7 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFileByPathResponse> __BuildDeleteFileByPath(WorkflowExpression<string> bodypath)
         {
@@ -529,7 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFolderByPathResponse> __BuildDeleteFolderByPath(WorkflowExpression<string> bodypath)
         {
@@ -559,7 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFolderByIdResponse> __BuildDeleteFolderById(WorkflowExpression<string> bodyid)
         {
@@ -589,7 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFileByIdResponse> __BuildDeleteFileById(WorkflowExpression<string> bodyid)
         {
@@ -619,7 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFileByPathResponse> __BuildCopyFileByPath(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodydestinationPath)
         {
@@ -652,7 +638,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFolderByPathResponse> __BuildCopyFolderByPath(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodydestinationPath)
         {
@@ -685,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FullGroupUpdateResponse> __BuildFullGroupUpdate(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydisplayName, WorkflowExpression<bodymembersInputItem2[]> bodymembers = null)
         {
@@ -725,7 +709,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PartialGroupUpdateResponse> __BuildPartialGroupUpdate(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<bodymembersInputItem22[]> bodymembers = null)
         {
@@ -769,7 +752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteGroup(WorkflowExpression<string> bodyid)
         {
@@ -799,7 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFileByIdResponse> __BuildCopyFileById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydestinationPath)
         {
@@ -832,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFolderByIdResponse> __BuildCopyFolderById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydestinationPath)
         {
@@ -865,7 +845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveFileByPathResponse> __BuildMoveFileByPath(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodydestinationPath)
         {
@@ -898,7 +877,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveFolderByPathResponse> __BuildMoveFolderByPath(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodydestinationPath)
         {
@@ -931,7 +909,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveFileByIdResponse> __BuildMoveFileById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydestinationPath)
         {
@@ -964,7 +941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveFolderByIdResponse> __BuildMoveFolderById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydestinationPath)
         {
@@ -997,7 +973,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShareFileResponse> __BuildShareFile(WorkflowExpression<string> bodypath)
         {
@@ -1027,7 +1002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShareFolderResponse> __BuildShareFolder(WorkflowExpression<string> bodypath)
         {
@@ -1057,7 +1031,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileInfoResponse> __BuildFileInfoByPath(WorkflowExpression<string> bodypath)
         {
@@ -1087,7 +1060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderInfoResponse> __BuildFolderInfoByPath(WorkflowExpression<string> bodypath)
         {
@@ -1117,7 +1089,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModifyFolderOptionsResponse> __BuildModifyFolderOptions(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodyfolderDescription = null, WorkflowExpression<bool> bodyallowLinks = null, WorkflowExpression<bodypublicLinksInput> bodypublicLinks = null, WorkflowExpression<bool> bodyrestrictMoveDelete = null, WorkflowExpression<bool> bodyemailPreferencescontentUpdates = null, WorkflowExpression<bool> bodyemailPreferencescontentAccessed = null)
         {
@@ -1197,7 +1168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileInfoResponse> __BuildFileInfoById(WorkflowExpression<string> bodyid)
         {
@@ -1227,7 +1197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderInfoResponse> __BuildFolderInfoById(WorkflowExpression<string> bodyid)
         {
@@ -1257,7 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LockFileByPathResponse> __BuildLockFileByPath(WorkflowExpression<string> bodypath)
         {
@@ -1287,7 +1255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnlockFileByPath(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodylockToken)
         {
@@ -1320,7 +1287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LockFileByIdResponse> __BuildLockFileById(WorkflowExpression<string> bodyid)
         {
@@ -1350,7 +1316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnlockFileById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylockToken)
         {
@@ -1383,7 +1348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileContentByPath(WorkflowExpression<string> bodyfilePath)
         {
@@ -1413,7 +1377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileContentById(WorkflowExpression<string> bodyfileId)
         {
@@ -1443,7 +1406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFileResponse> __BuildCreateFile(WorkflowExpression<string> name, WorkflowExpression<string> path, WorkflowExpression<string> body = null)
         {
@@ -1469,7 +1431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetMetadataByFileId(WorkflowExpression<string> bodyfileId, WorkflowExpression<string> bodynamespaceName, WorkflowExpression<string> bodymetadataName, WorkflowExpression<string> bodymetadataValue = null)
         {
@@ -1512,7 +1473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetMetadataByFolderId(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodynamespaceName, WorkflowExpression<string> bodymetadataName, WorkflowExpression<string> bodymetadataValue)
         {
@@ -1560,7 +1520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateNamespace(WorkflowExpression<string> bodyname, WorkflowExpression<bodyscopeInput> bodyscope, WorkflowExpression<bodykeysInputItem[]> bodykeys, WorkflowExpression<string> bodydisplayName = null)
         {
@@ -1603,7 +1562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NamespaceItem> __BuildUpdateNamespaceAttributes(WorkflowExpression<string> bodyNamespace, WorkflowExpression<string> bodydisplayName = null)
         {
@@ -1648,7 +1606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateNamespaceKeysResponse> __BuildUpdateNamespaceKeys(WorkflowExpression<string> bodyNamespace, WorkflowExpression<string> bodykey, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<double> bodypriority = null, WorkflowExpression<string> bodydata = null, WorkflowExpression<string> bodyhelpText = null)
         {
@@ -1716,7 +1673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NamespaceItem> __BuildGetNamespace(WorkflowExpression<string> bodyNamespace)
         {
@@ -1746,7 +1702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteNamespace(WorkflowExpression<string> bodyNamespace, WorkflowExpression<bool> bodyforce = null)
         {
@@ -1792,7 +1747,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkFolderAsProjectResponse> __BuildMarkFolderAsProject(WorkflowExpression<string> bodyrootFolderId, WorkflowExpression<string> bodyname, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodycompletionDate = null)
         {
@@ -1849,7 +1803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProjectFromTemplateResponse> __BuildCreateProjectFromTemplate(WorkflowExpression<string> bodyparentFolderId, WorkflowExpression<string> bodytemplateFolderId, WorkflowExpression<string> bodyfolderName, WorkflowExpression<string> bodyname, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<string> bodycustomerName = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodycompletionDate = null, WorkflowExpression<string> bodylocationstreetAddress1 = null, WorkflowExpression<string> bodylocationstreetAddress2 = null, WorkflowExpression<string> bodylocationcity = null, WorkflowExpression<string> bodylocationstate = null, WorkflowExpression<string> bodylocationcountry = null, WorkflowExpression<string> bodylocationpostalCode = null)
         {
@@ -1976,7 +1929,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectItem> __BuildGetProjectById(WorkflowExpression<string> bodyprojectId)
         {
@@ -2006,7 +1958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateProjectById(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyprojectId, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodycustomProjectId = null, WorkflowExpression<string> bodycustomerName = null, WorkflowExpression<string> bodylocationstreetAddress1 = null, WorkflowExpression<string> bodylocationstreetAddress2 = null, WorkflowExpression<string> bodylocationcity = null, WorkflowExpression<string> bodylocationstate = null, WorkflowExpression<string> bodylocationpostalCode = null, WorkflowExpression<string> bodylocationcountry = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodycompletionDate = null)
         {
@@ -2127,7 +2078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteProjectById(WorkflowExpression<string> projectId)
         {
@@ -2148,7 +2098,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectItem> __BuildGetProjectByRootFolderId(WorkflowExpression<string> bodyrootFolderId)
         {
@@ -2178,7 +2127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CleanupProjectResponse> __BuildCleanupProject(WorkflowExpression<string> bodyprojectId, WorkflowExpression<bool> bodydeleteLinks, WorkflowExpression<int[]> bodyusersToDelete = null, WorkflowExpression<int[]> bodyusersToDisable = null)
         {
@@ -2225,7 +2173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateMetadataKey(WorkflowExpression<string> bodyNamespace, WorkflowExpression<string> bodykey, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<double> bodypriority = null, WorkflowExpression<string> bodyhelpText = null, WorkflowExpression<string[]> bodydata = null)
         {
@@ -2289,7 +2236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteMetadataKey(WorkflowExpression<string> bodyNamespace, WorkflowExpression<string> bodykey, WorkflowExpression<bool> bodyforce = null)
         {
@@ -2329,7 +2275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetMetadataByFileId(WorkflowExpression<string> bodyfileId, WorkflowExpression<string> bodyNamespace)
         {
@@ -2362,7 +2307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetMetadataByFolderId(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodyNamespace)
         {
@@ -2395,7 +2339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSearchMetadata(WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<bodyhasKeyInputItem[]> bodyhasKey = null, WorkflowExpression<bodykeyWithValueInputItem[]> bodykeyWithValue = null)
         {
@@ -2443,7 +2386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEffectivePermissionsResponse> __BuildGetEffectivePermissions(WorkflowExpression<string> bodypath, WorkflowExpression<string> bodyusername)
         {
@@ -2476,7 +2418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetFolderPermissions(WorkflowExpression<string> bodypath, WorkflowExpression<bool> bodyinheritsPermissions = null, WorkflowExpression<bool> bodykeepParentPermissions = null)
         {
@@ -2536,7 +2477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFolderPermissionsResponse> __BuildGetFolderPermissions(WorkflowExpression<string> bodypath)
         {
@@ -2566,7 +2506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeepLinksByIdResponse> __BuildDeepLinksById(WorkflowExpression<string> bodyid, WorkflowExpression<bodytypeInput> bodytype)
         {
@@ -2599,7 +2538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeepLinksByPathResponse> __BuildDeepLinksByPath(WorkflowExpression<string> bodypath)
         {
@@ -2629,7 +2567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListLinksResponse> __BuildListLinks(WorkflowExpression<string> bodypath = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodycreatedBefore = null, WorkflowExpression<string> bodycreatedAfter = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<bodyaccessibilityInput> bodyaccessibility = null, WorkflowExpression<string> bodyoffset = null, WorkflowExpression<string> bodycount = null)
         {
@@ -2712,7 +2649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShowLinkDetailsResponse> __BuildShowLinkDetails(WorkflowExpression<string> bodylinkId)
         {
@@ -2742,7 +2678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateLinkResponse> __BuildCreateLink(WorkflowExpression<string> bodypath, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bool> bodyuseDefaultSettings, WorkflowExpression<bodyaccessibilityInput> bodyaccessibility = null, WorkflowExpression<bool> bodysendEmail = null, WorkflowExpression<string[]> bodyrecipients = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<bool> bodycopyMe = null, WorkflowExpression<bool> bodynotify = null, WorkflowExpression<bool> bodylinkToCurrent = null, WorkflowExpression<string> bodyexpiryDate = null, WorkflowExpression<double> bodyexpiryClicks = null, WorkflowExpression<bool> bodyaddFileName = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<bodyprotectionInput> bodyprotection = null, WorkflowExpression<bool> bodyfolderPerRecipient = null)
         {
@@ -2869,7 +2804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteLink(WorkflowExpression<string> bodylinkId)
         {
@@ -2899,7 +2833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIQuestionResponse> __BuildAskDocumentQuestion(WorkflowExpression<string> bodyentryId = null, WorkflowExpression<string> bodyquestion = null, WorkflowExpression<bool> bodyincludeCitations = null, WorkflowExpression<AIMessage[]> bodychatHistorymessages = null)
         {
@@ -2972,7 +2905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AISummaryResponse> __BuildSummarizeDocument(WorkflowExpression<string> bodyentryId = null, WorkflowExpression<AIMessage[]> bodychatHistorymessages = null)
         {
@@ -3021,7 +2953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AICopilotResponse> __BuildCopilotAsk(WorkflowExpression<string> bodyquestion = null, WorkflowExpression<bodyselectedItemsfoldersInputItem[]> bodyselectedItemsfolders = null, WorkflowExpression<bodyselectedItemsfilesInputItem[]> bodyselectedItemsfiles = null, WorkflowExpression<bool> bodyincludeCitations = null, WorkflowExpression<AIMessage[]> bodychatHistorymessages = null)
         {
@@ -3109,7 +3040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchV2Response> __BuildSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<int> bodyoffset = null, WorkflowExpression<int> bodycount = null, WorkflowExpression<string> bodyfolder = null, WorkflowExpression<int> bodymodifiedBefore = null, WorkflowExpression<int> bodymodifiedAfter = null, WorkflowExpression<int> bodyuploadedBefore = null, WorkflowExpression<int> bodyuploadedAfter = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<bool> bodysnippetRequested = null, WorkflowExpression<bodysortByInput> bodysortBy = null, WorkflowExpression<bodysortDirectionInput> bodysortDirection = null, WorkflowExpression<bodyfileQueryFieldsInputItem[]> bodyfileQueryFields = null, WorkflowExpression<bodyfolderQueryFieldsInputItem[]> bodyfolderQueryFields = null, WorkflowExpression<bodyqueryOperatorInput> bodyqueryOperator = null, WorkflowExpression<string[]> bodymlt = null, WorkflowExpression<string[]> bodymltt = null)
         {

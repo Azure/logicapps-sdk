@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnalysisDto> __BuildAnalysisControllerGetResults(WorkflowExpression<string> targetUrlDomain = null, WorkflowExpression<string> finalUrlDomain = null, WorkflowExpression<bool> finalUrlLive = null, WorkflowExpression<bool> targetUrlRedirects = null, WorkflowExpression<string> targetUrlAgencyOwner = null, WorkflowExpression<string> targetUrlBureauOwner = null, WorkflowExpression<primaryScanStatusInput> primaryScanStatus = null, WorkflowExpression<bool> dapDetectedFinalUrl = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PaginatedWebsiteResponseDto> __BuildWebsiteControllerGetResults(WorkflowExpression<string> targetUrlDomain = null, WorkflowExpression<string> finalUrlDomain = null, WorkflowExpression<bool> finalUrlLive = null, WorkflowExpression<bool> targetUrlRedirects = null, WorkflowExpression<string> targetUrlAgencyOwner = null, WorkflowExpression<string> targetUrlBureauOwner = null, WorkflowExpression<primaryScanStatusInput> primaryScanStatus = null, WorkflowExpression<bool> dapDetectedFinalUrl = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -112,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebsiteApiResultDto> __BuildWebsiteControllerGetResultByUrl(WorkflowExpression<string> url)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityGetResponse> __BuildEntityGet(WorkflowExpression<string> text = null, WorkflowExpression<string> html = null, WorkflowExpression<string> htmlFragment = null, WorkflowExpression<string> lang = null, WorkflowExpression<int> topEntities = null, WorkflowExpression<int> minConfidence = null, WorkflowExpression<int> minLength = null, WorkflowExpression<bool> socialHashtag = null, WorkflowExpression<bool> socialMention = null, WorkflowExpression<string> include = null, WorkflowExpression<string> extraTypes = null, WorkflowExpression<string> country = null, WorkflowExpression<double> epsilon = null)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SimilarityGetResponse> __BuildSimilarityGet(WorkflowExpression<string> text1 = null, WorkflowExpression<string> html1 = null, WorkflowExpression<string> htmlFragment1 = null, WorkflowExpression<string> text2 = null, WorkflowExpression<string> html2 = null, WorkflowExpression<string> htmlFragment2 = null, WorkflowExpression<string> lang = null, WorkflowExpression<bowInput> bow = null)
         {
@@ -121,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LanguageGetResponse> __BuildLanguageGet(WorkflowExpression<string> text = null, WorkflowExpression<string> html = null, WorkflowExpression<string> htmlFragment = null, WorkflowExpression<bool> clean = null)
         {
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentimentGetResponse> __BuildSentimentGet(WorkflowExpression<string> text = null, WorkflowExpression<string> html = null, WorkflowExpression<string> htmlFragment = null, WorkflowExpression<string> lang = null)
         {
@@ -185,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WikipediaGetResponse> __BuildWikipediaGet(WorkflowExpression<string> text, WorkflowExpression<langInput> lang, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<queryInput> query = null, WorkflowExpression<string> include = null)
         {

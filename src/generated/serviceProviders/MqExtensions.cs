@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowseMessageOutput> __BuildBrowseMessage(WorkflowExpression<string> queueName, WorkflowExpression<bool> includeInfo, WorkflowExpression<BrowseMessageInputGetMessageOptionsType> getMessageOptions = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowseBatchOutput> __BuildBrowseBatch(WorkflowExpression<string> queueName, WorkflowExpression<bool> includeInfo, WorkflowExpression<BrowseBatchInputGetMessageOptionsType> getMessageOptions = null)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReceiveMessageOutput> __BuildReceiveMessage(WorkflowExpression<string> queueName, WorkflowExpression<bool> includeInfo, WorkflowExpression<ReceiveMessageInputGetMessageOptionsType> getMessageOptions = null)
         {
@@ -119,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReceiveBatchOutput> __BuildReceiveBatch(WorkflowExpression<string> queueName, WorkflowExpression<bool> includeInfo, WorkflowExpression<ReceiveBatchInputGetMessageOptionsType> getMessageOptions = null)
         {
@@ -152,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageOutput> __BuildSendMessage(WorkflowExpression<string> queueName, WorkflowExpression<string> message, WorkflowExpression<SendMessageInputSendMessageOptionsType> sendMessageOptions = null)
         {
@@ -185,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendBatchOutput> __BuildSendBatch(WorkflowExpression<string> queueName, WorkflowExpression<SendBatchInputMessageListTypeItem[]> messageList, WorkflowExpression<SendBatchInputSendMessageOptionsType> sendMessageOptions = null)
         {
@@ -218,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompleteMessageOutput> __BuildCompleteMessage(WorkflowExpression<string> operationConnectionId, WorkflowExpression<string> queueName, WorkflowExpression<string> uniqueId, WorkflowExpression<string> messageId, WorkflowExpression<CompleteMessageInputCompleteActionType> completeAction)
         {
@@ -251,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompleteBatchOutput> __BuildCompleteBatch(WorkflowExpression<string> operationConnectionId, WorkflowExpression<string> queueName, WorkflowExpression<CompleteBatchInputCompleteActionType> completeAction)
         {
@@ -280,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> __BuildMoveMessageToDeadLetterQueue(WorkflowExpression<object> message, WorkflowExpression<int> reasonCode, WorkflowExpression<string> deadLetterQueueName = null, WorkflowExpression<MoveMessageToDeadLetterQueueInputSendMessageOptionsType> sendMessageOptions = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTicketResponse> __BuildCreateTicket(WorkflowExpression<int> bodyticketType, WorkflowExpression<string> bodyticketHeader, WorkflowExpression<string> bodyticketText, WorkflowExpression<int> bodyenterpriseId, WorkflowExpression<int> bodyentranceType, WorkflowExpression<int> bodyareaId, WorkflowExpression<bool> bodyreleasedOption, WorkflowExpression<bool> bodyprivateOption, WorkflowExpression<bool> bodyinternalOption, WorkflowExpression<bodyurgencyTypeInput> bodyurgencyType, WorkflowExpression<bodyeffectsTypeInput> bodyeffectsType, WorkflowExpression<int> bodycontactId = null, WorkflowExpression<int[]> bodyrelatedAssetIds = null, WorkflowExpression<bodyfieldGroupsInputItem[]> bodyfieldGroups = null, WorkflowExpression<string> bodyreferenceNumber = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<int> bodyserviceContractId = null, WorkflowExpression<int> bodydelegatedTicketEditor = null)
         {
@@ -134,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTicketPositionResponse> __BuildCreateTicketPosition(WorkflowExpression<string> bodyreferenceNumber, WorkflowExpression<string> bodyticketPositionText, WorkflowExpression<bodyticketPositionTypeInput> bodyticketPositionType, WorkflowExpression<bodyticketPositionVisibilityInput> bodyticketPositionVisibility, WorkflowExpression<bodyfieldGroupsInputItem2[]> bodyfieldGroups = null, WorkflowExpression<string> bodyparkTicketparkUntil = null, WorkflowExpression<bodyparkTicketparkingReasonInput> bodyparkTicketparkingReason = null, WorkflowExpression<string> bodyparkTicketparkingPositionText = null, WorkflowExpression<bodyparkTicketafterParkingActionInput> bodyparkTicketafterParkingAction = null)
         {
@@ -216,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddAssetRelationResponse> __BuildAddAssetRelation(WorkflowExpression<string> bodyreferenceNumber, WorkflowExpression<int[]> bodyrelatedAssetIds)
         {
@@ -249,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTicketResponse> __BuildGetTicket(WorkflowExpression<string> bodyreferenceNumber)
         {
@@ -279,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchTicketResponse> __BuildSearchTicket(WorkflowExpression<string> bodyreferencenumber)
         {
@@ -309,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchTicketbyParameterResponse> __BuildSearchTicketbyParameter(WorkflowExpression<string> bodysearchParam, WorkflowExpression<int> bodytake, WorkflowExpression<int> bodyskip)
         {
@@ -345,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse> __BuildGetTicketFieldGroupConfig(WorkflowExpression<int> bodyticketTypeId, WorkflowExpression<string> bodyticketId = null, WorkflowExpression<string> bodyfieldGroupSettingsId = null)
         {
@@ -389,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllTicketTypesResponse> __BuildGetAllTicketTypes(WorkflowExpression<int> bodyresponseType, WorkflowExpression<int> bodypageSize, WorkflowExpression<int> bodyskip, WorkflowExpression<string> bodysearch = null, WorkflowExpression<bool> bodyorderByAsc = null)
         {
@@ -439,7 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllAreasResponse> __BuildGetAllAreas(WorkflowExpression<int> bodyresponseType, WorkflowExpression<int> bodypageSize, WorkflowExpression<int> bodyskip, WorkflowExpression<string> bodysearch = null, WorkflowExpression<bool> bodyorderByAsc = null)
         {
@@ -489,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllStartingAreasResponse> __BuildGetAllStartingAreas(WorkflowExpression<int> bodyresponseType, WorkflowExpression<int> bodypageSize, WorkflowExpression<int> bodyskip, WorkflowExpression<string> bodysearch = null, WorkflowExpression<bool> bodyorderByAsc = null)
         {

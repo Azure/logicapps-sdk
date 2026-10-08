@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateItemResponse> __BuildCreateItem(WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyitemName, WorkflowExpression<string> bodyworkspaceId = null, WorkflowExpression<string> bodyboardId = null, WorkflowExpression<object> bodycolumnValues = null)
         {
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DuplicateBoardResponse> __BuildDuplicateBoard(WorkflowExpression<string> bodysourceWorkspaceId, WorkflowExpression<string> bodysourceBoardId, WorkflowExpression<bodyduplicationTypeInput> bodyduplicationType, WorkflowExpression<bool> bodykeepBoardSubscribers, WorkflowExpression<string> bodyduplicatedBoardName = null, WorkflowExpression<string> bodydestinationWorkspaceId = null, WorkflowExpression<string> bodydestinationFolder = null)
         {
@@ -132,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateBoardResponse> __BuildCreateBoard(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardName)
         {
@@ -165,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateColumnResponse> __BuildCreateColumn(WorkflowExpression<string> bodytitle, WorkflowExpression<bodycolumnTypeInput> bodycolumnType, WorkflowExpression<string> bodyworkspaceId = null, WorkflowExpression<string> bodyboardId = null, WorkflowExpression<string> bodydescription = null)
         {
@@ -219,7 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowExpression<string> bodygroupName, WorkflowExpression<string> bodyworkspaceId = null, WorkflowExpression<string> bodyboardId = null)
         {
@@ -263,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateItemColumnResponse> __BuildUpdateItemColumn(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, WorkflowExpression<string> bodyitemId, WorkflowExpression<string> bodycolumnId = null, WorkflowExpression<object> bodycolumnValues = null)
         {
@@ -313,7 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse> __BuildUpdateMultipleItemColumns(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, WorkflowExpression<string> bodyitemId, WorkflowExpression<string> bodyitemName = null, WorkflowExpression<object> bodycolumnValues = null)
         {
@@ -363,7 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveItemToGroupResponse> __BuildMoveItemToGroup(WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyitemId, WorkflowExpression<string> bodyworkspaceId = null, WorkflowExpression<string> bodyboardId = null)
         {
@@ -410,7 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateNotificationResponse> __BuildCreateNotification(WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodytargetId, WorkflowExpression<string> bodytext)
         {
@@ -446,7 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSubitemResponse> __BuildCreateSubitem(WorkflowExpression<string> bodyboardId, WorkflowExpression<string> bodyparentItemId, WorkflowExpression<string> bodyitemName, WorkflowExpression<string> bodyworkspaceId = null, WorkflowExpression<object> bodycolumnValues = null)
         {
@@ -496,7 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetSubitems(WorkflowExpression<string> workspaceId, WorkflowExpression<string> boardId, WorkflowExpression<string> itemId)
         {
@@ -522,7 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUpdateResponse> __BuildCreateUpdate(WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyitemId, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyworkspaceId = null, WorkflowExpression<string> bodyboardId = null)
         {
@@ -572,7 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItemById(WorkflowExpression<string> itemId, WorkflowExpression<string> workspaceId, WorkflowExpression<string> boardId)
         {
@@ -598,7 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWorkspaceV2Response> __BuildCreateWorkspace(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription = null)
         {
@@ -635,7 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItems(WorkflowExpression<string> workspaceId, WorkflowExpression<string> boardId, WorkflowExpression<string> groupId, WorkflowExpression<string> filter1Column = null, WorkflowExpression<string> filter1Operator = null, WorkflowExpression<string> filter1Value = null, WorkflowExpression<string> filter2Column = null, WorkflowExpression<string> filter2Operator = null, WorkflowExpression<string> filter2Value = null, WorkflowExpression<string> filter3Column = null, WorkflowExpression<string> filter3Operator = null, WorkflowExpression<string> filter3Value = null, WorkflowExpression<string> filter4Column = null, WorkflowExpression<string> filter4Operator = null, WorkflowExpression<string> filter4Value = null)
         {

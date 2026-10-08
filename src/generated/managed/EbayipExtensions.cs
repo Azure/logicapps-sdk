@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse> __BuildGetDefaultCategoryTreeId(WorkflowExpression<string> marketplaceId, WorkflowExpression<string> acceptLanguage)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCategorySuggestionsResponse> __BuildGetCategorySuggestions(WorkflowExpression<string> categoryTreeId, WorkflowExpression<string> q)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetItemAspectsResponse> __BuildGetItemAspects(WorkflowExpression<string> categoryTreeId, WorkflowExpression<string> categoryId)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFulfillmentPoliciesResponse> __BuildGetFulfillmentPolicies(WorkflowExpression<string> marketplaceId)
         {
@@ -112,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFulfillmentPolicyResponse> __BuildGetFulfillmentPolicy(WorkflowExpression<string> fulfillmentPolicyId)
         {
@@ -133,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPaymentPolicyResponse> __BuildGetPaymentPolicy(WorkflowExpression<string> paymentPolicyId)
         {
@@ -154,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetReturnPoliciesResponse> __BuildGetReturnPolicies(WorkflowExpression<string> marketplaceId)
         {
@@ -176,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetReturnPolicyResponse> __BuildGetReturnPolicy(WorkflowExpression<string> returnPolicyId)
         {
@@ -197,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInventoryItemResponse> __BuildGetInventoryItem(WorkflowExpression<string> sku)
         {
@@ -219,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> __BuildCreateOrReplaceInventoryItem(WorkflowExpression<string> sku, WorkflowExpression<string> contentLanguage, WorkflowExpression<bodyavailabilitypickupAtLocationAvailabilityInputItem[]> bodyavailabilitypickupAtLocationAvailability = null, WorkflowExpression<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, WorkflowExpression<int> bodyavailabilityshipToLocationAvailabilityquantity = null, WorkflowExpression<bodyconditionInput> bodycondition = null, WorkflowExpression<string> bodyconditionDescription = null, WorkflowExpression<double> bodypackageWeightAndSizedimensionsheight = null, WorkflowExpression<double> bodypackageWeightAndSizedimensionslength = null, WorkflowExpression<bodypackageWeightAndSizedimensionsunitInput> bodypackageWeightAndSizedimensionsunit = null, WorkflowExpression<double> bodypackageWeightAndSizedimensionswidth = null, WorkflowExpression<bodypackageWeightAndSizepackageTypeInput> bodypackageWeightAndSizepackageType = null, WorkflowExpression<bodypackageWeightAndSizeweightunitInput> bodypackageWeightAndSizeweightunit = null, WorkflowExpression<double> bodypackageWeightAndSizeweightvalue = null, WorkflowExpression<string> bodyproductbrand = null, WorkflowExpression<string> bodyproductdescription = null, WorkflowExpression<string[]> bodyproductean = null, WorkflowExpression<string> bodyproductepid = null, WorkflowExpression<string[]> bodyproductimageUrls = null, WorkflowExpression<string[]> bodyproductisbn = null, WorkflowExpression<string> bodyproductmpn = null, WorkflowExpression<string> bodyproductsubtitle = null, WorkflowExpression<string> bodyproducttitle = null, WorkflowExpression<string[]> bodyproductupc = null, WorkflowExpression<string[]> bodyproductvideoIds = null)
         {
@@ -468,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInventoryItemsResponse> __BuildGetInventoryItems(WorkflowExpression<string> Limit = null, WorkflowExpression<string> Offset = null)
         {
@@ -495,7 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInventoryLocationResponse> __BuildGetInventoryLocation(WorkflowExpression<string> merchantLocationKey)
         {
@@ -516,7 +504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateInventoryLocation(WorkflowExpression<string> merchantLocationKey, WorkflowExpression<string> bodylocationaddressaddressLine1 = null, WorkflowExpression<string> bodylocationaddressaddressLine2 = null, WorkflowExpression<string> bodylocationaddresscity = null, WorkflowExpression<string> bodylocationaddresscountry = null, WorkflowExpression<string> bodylocationaddresscounty = null, WorkflowExpression<string> bodylocationaddresspostalCode = null, WorkflowExpression<string> bodylocationaddressstateOrProvince = null, WorkflowExpression<string> bodylocationgeoCoordinateslatitude = null, WorkflowExpression<string> bodylocationgeoCoordinateslongitude = null, WorkflowExpression<string> bodylocationAdditionalInformation = null, WorkflowExpression<string> bodylocationInstructions = null, WorkflowExpression<bodylocationTypesInputItem[]> bodylocationTypes = null, WorkflowExpression<string> bodylocationWebUrl = null, WorkflowExpression<string> bodymerchantLocationStatus = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodyoperatingHoursInputItem[]> bodyoperatingHours = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<bodyspecialHoursInputItem[]> bodyspecialHours = null)
         {
@@ -695,7 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInventoryLocationsResponse> __BuildGetInventoryLocations(WorkflowExpression<string> Offset = null, WorkflowExpression<string> Limit = null)
         {
@@ -721,7 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetItemConditionPoliciesResponse> __BuildGetItemConditionPolicies(WorkflowExpression<string> marketplaceId, WorkflowExpression<string> Filter = null)
         {
@@ -745,7 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOffersResponse> __BuildGetOffers(WorkflowExpression<string> sku, WorkflowExpression<string> MarketplaceId = null, WorkflowExpression<string> Format = null, WorkflowExpression<string> Limit = null, WorkflowExpression<string> Offset = null)
         {
@@ -780,7 +764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOfferResponse> __BuildCreateOffer(WorkflowExpression<int> bodyavailableQuantity = null, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<string> bodycharitycharityId = null, WorkflowExpression<string> bodycharitydonationPercentage = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproducerProductId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityshipmentPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductDocumentationId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<bool> bodyhideBuyerDetails = null, WorkflowExpression<bool> bodyincludeCatalogProductDetails = null, WorkflowExpression<string> bodylistingDescription = null, WorkflowExpression<bodylistingDurationInput> bodylistingDuration = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, WorkflowExpression<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, WorkflowExpression<bool> bodylistingPolicieseBayPlusIfEligible = null, WorkflowExpression<string> bodylistingPoliciesfulfillmentPolicyId = null, WorkflowExpression<string> bodylistingPoliciespaymentPolicyId = null, WorkflowExpression<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, WorkflowExpression<string> bodylistingPoliciesreturnPolicyId = null, WorkflowExpression<bodylistingPoliciesshippingCostOverridesInputItem[]> bodylistingPoliciesshippingCostOverrides = null, WorkflowExpression<string> bodylistingPoliciestakeBackPolicyId = null, WorkflowExpression<string> bodylistingStartDate = null, WorkflowExpression<int> bodylotSize = null, WorkflowExpression<string> bodymarketplaceId = null, WorkflowExpression<string> bodymerchantLocationKey = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricevalue = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricevalue = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricevalue = null, WorkflowExpression<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricecurrency = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricevalue = null, WorkflowExpression<string> bodypricingSummarypricecurrency = null, WorkflowExpression<string> bodypricingSummarypricevalue = null, WorkflowExpression<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, WorkflowExpression<int> bodyquantityLimitPerBuyer = null, WorkflowExpression<string> bodysecondaryCategoryId = null, WorkflowExpression<string> bodysku = null, WorkflowExpression<string[]> bodystoreCategoryNames = null, WorkflowExpression<bool> bodytaxapplyTax = null, WorkflowExpression<string> bodytaxthirdPartyTaxCategory = null, WorkflowExpression<double> bodytaxvatPercentage = null)
         {
@@ -1271,7 +1254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOfferResponse> __BuildGetOffer(WorkflowExpression<string> offerId)
         {
@@ -1293,7 +1275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteOffer(WorkflowExpression<string> offerId)
         {
@@ -1316,7 +1297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateOfferResponse> __BuildUpdateOffer(WorkflowExpression<string> offerId, WorkflowExpression<int> bodyavailableQuantity = null, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<string> bodycharitycharityId = null, WorkflowExpression<string> bodycharitydonationPercentage = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproducerProductId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityshipmentPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductDocumentationId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, WorkflowExpression<bool> bodyhideBuyerDetails = null, WorkflowExpression<bool> bodyincludeCatalogProductDetails = null, WorkflowExpression<string> bodylistingDescription = null, WorkflowExpression<bodylistingDurationInput> bodylistingDuration = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, WorkflowExpression<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, WorkflowExpression<bool> bodylistingPolicieseBayPlusIfEligible = null, WorkflowExpression<string> bodylistingPoliciesfulfillmentPolicyId = null, WorkflowExpression<string> bodylistingPoliciespaymentPolicyId = null, WorkflowExpression<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, WorkflowExpression<string> bodylistingPoliciesreturnPolicyId = null, WorkflowExpression<bodylistingPoliciesshippingCostOverridesInputItem2[]> bodylistingPoliciesshippingCostOverrides = null, WorkflowExpression<string> bodylistingPoliciestakeBackPolicyId = null, WorkflowExpression<string> bodylistingStartDate = null, WorkflowExpression<int> bodylotSize = null, WorkflowExpression<string> bodymerchantLocationKey = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricevalue = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricevalue = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricevalue = null, WorkflowExpression<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricecurrency = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricevalue = null, WorkflowExpression<string> bodypricingSummarypricecurrency = null, WorkflowExpression<string> bodypricingSummarypricevalue = null, WorkflowExpression<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, WorkflowExpression<int> bodyquantityLimitPerBuyer = null, WorkflowExpression<string> bodysecondaryCategoryId = null, WorkflowExpression<string[]> bodystoreCategoryNames = null, WorkflowExpression<bool> bodytaxapplyTax = null, WorkflowExpression<string> bodytaxthirdPartyTaxCategory = null, WorkflowExpression<double> bodytaxvatPercentage = null)
         {
@@ -1786,7 +1766,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WithdrawOfferResponse> __BuildWithdrawOffer(WorkflowExpression<string> offerId)
         {
@@ -1808,7 +1787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PublishOfferResponse> __BuildPublishOffer(WorkflowExpression<string> offerId)
         {

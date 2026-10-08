@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExchangeRatesResponse> __BuildGetExchangeRates(WorkflowExpression<string> basecurrency)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExchangeRateResponse> __BuildGetExchangeRate(WorkflowExpression<string> baseCurrency, WorkflowExpression<string> targetCurrency)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetHistoricalRatesResponse> __BuildGetHistoricalRates(WorkflowExpression<string> baseCurrency, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
         {
@@ -94,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetHistoricalConversionsResponse> __BuildGetHistoricalConversions(WorkflowExpression<string> baseCurrency, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day, WorkflowExpression<string> amount)
         {

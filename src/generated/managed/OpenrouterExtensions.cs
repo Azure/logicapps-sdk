@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListModelEndpointsResponse> __BuildListModelEndpoints(WorkflowExpression<string> author, WorkflowExpression<string> slug)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGenerationResponse> __BuildGetGeneration(WorkflowExpression<string> id)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages)
         {
@@ -112,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompletionResponse> __BuildCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyprompt)
         {

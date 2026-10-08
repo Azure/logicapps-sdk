@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetDNDResponse> __BuildSetDND(WorkflowExpression<string> numMinutes = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateChannelResponse> __BuildCreateChannel(WorkflowExpression<string> name = null, WorkflowExpression<bool> isPrivate = null)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JoinChannelResponseV2> __BuildJoinChannel(WorkflowExpression<string> channel = null)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostMessageResponse> __BuildPostMessage(WorkflowExpression<string> messagechannelName, WorkflowExpression<string> messagemessageText, WorkflowExpression<string> messagebotName = null, WorkflowExpression<bool> messagepostAsUser = null, WorkflowExpression<messageparseModeInput> messageparseMode = null, WorkflowExpression<bool> messageslackMarkupParsing = null, WorkflowExpression<int> messagelinkNames = null, WorkflowExpression<bool> messageunfurlLinks = null, WorkflowExpression<bool> messageunfurlMedia = null, WorkflowExpression<string> messageiconUrl = null, WorkflowExpression<string> messageiconEmoji = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> __BuildValidateUserIdentityToken(WorkflowExpression<string> bodyuserIdentityToken, WorkflowExpression<string> bodyapplicationID)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendHttpRequest(WorkflowExpression<bodymethodInput> bodymethod, WorkflowExpression<string> bodyrelativePath, WorkflowExpression<string> bodybody = null)
         {

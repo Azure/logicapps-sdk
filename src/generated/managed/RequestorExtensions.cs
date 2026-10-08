@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateTicket(WorkflowExpression<int> bodytype, WorkflowExpression<int> bodyserviceId, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodysubmitterEmail, WorkflowExpression<string> bodysolverUserProviderKey = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateUser(WorkflowExpression<string> bodyuserName, WorkflowExpression<bool> bodychangePasswordAfterLogging, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<bool> bodyroleEndUser = null, WorkflowExpression<bool> bodyroleSmartUser = null, WorkflowExpression<bool> bodyroleOperator = null, WorkflowExpression<bool> bodyroleSuperOperator = null, WorkflowExpression<bool> bodyroleAdministrator = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodyadminNote = null, WorkflowExpression<string> bodyadditionalInformation = null, WorkflowExpression<string[]> bodycustomerNames = null)
         {

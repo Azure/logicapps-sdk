@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildConvertHTMLToPDF(WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodyhtmlBody = null, WorkflowExpression<string> bodycipher = null)
         {

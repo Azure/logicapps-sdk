@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListLinksResponseItem[]> __BuildListLinks(WorkflowExpression<string> domainId = null, WorkflowExpression<string> slashtag = null, WorkflowExpression<orderByInput> orderBy = null, WorkflowExpression<orderDirInput> orderDir = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> workspace = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateLinkResponse> __BuildCreateLink(WorkflowExpression<string> bodydestination = null, WorkflowExpression<string> bodyslashtag = null, WorkflowExpression<string> bodydomainid = null, WorkflowExpression<string> bodytitle = null)
         {
@@ -136,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWorkspacesResponseItem[]> __BuildListWorkspaces(WorkflowExpression<orderByInput> orderBy = null, WorkflowExpression<orderDirInput> orderDir = null, WorkflowExpression<int> limit = null)
         {
@@ -165,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLinkResponse> __BuildGetLink(WorkflowExpression<string> id, WorkflowExpression<string> workspace = null)
         {
@@ -189,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteLinkResponse> __BuildDeleteLink(WorkflowExpression<string> id, WorkflowExpression<string> workspace = null)
         {
@@ -213,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateLinkResponse> __BuildUpdateLink(WorkflowExpression<string> id, WorkflowExpression<string> workspace = null, WorkflowExpression<string> bodydestinationURL = null, WorkflowExpression<string> bodytitle = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Process> __BuildProcess(WorkflowExpression<string> bodyimage = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodydocumentType = null, WorkflowExpression<string> bodydefaultDateParsing = null, WorkflowExpression<string> bodydecimalPlaces = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Result> __BuildResult(WorkflowExpression<string> token)
         {

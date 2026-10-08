@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> __BuildGetContentPropertyValues(WorkflowExpression<string> contentPropertyId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> __BuildAddContentPropertyValues(WorkflowExpression<string> contentPropertyId, WorkflowExpression<string[]> body = null)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicContentPropertiesContentProperty[]> __BuildGetContentProperties(WorkflowExpression<string> teamsiteId = null, WorkflowExpression<bool> includeValues = null)
         {
@@ -89,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse> __BuildAddContentProperty(WorkflowExpression<string> bodyname, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string[]> bodycontentPropertyValues, WorkflowExpression<SeismicContentManagerContentPropertyTeamSiteInfo[]> bodyteamsiteIds)
         {
@@ -128,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPrivacyManagementGdprEmailSettingResponse> __BuildGetGdprEmails(WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
         {
@@ -154,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteGdprEmail(WorkflowExpression<string> email)
         {
@@ -184,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse> __BuildGetTeamsiteDetails(WorkflowExpression<string> teamsiteId)
         {
@@ -214,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicDocCenterContentProfileResponse[]> __BuildGetUserProfiles(WorkflowExpression<string> application = null, WorkflowExpression<bool> isPredictiveOnly = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateConnectionResponse> __BuildValidateConnectGoodService(WorkflowExpression<string> bodymessage = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateConnectionResponse> __BuildValidateConnectBadService(WorkflowExpression<string> bodymessage = null)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AppendDocumentResponse> __BuildWordAppendDocuments(WorkflowExpression<string[]> bodyappendDocumentList = null)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractContentByHeadingResponse> __BuildWordExtractContentByHeading(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodyheadingStyleName = null)
         {
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractSectionByTitleResponse> __BuildWordExtractContentByTitle(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodyheadingText = null, WorkflowExpression<string> bodyheadingStyleName = null, WorkflowExpression<string[]> bodyheadingEscapeStyleNames = null)
         {
@@ -246,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractContentByBookMarksResponse> __BuildWordExtractContentByBookmarks(WorkflowExpression<string> bodystartBookMark = null, WorkflowExpression<string> bodyendBookMark = null, WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null)
         {
@@ -309,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertDocumentResponse> __BuildWordInsertDocuments(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string[]> bodyinsertDocumentList = null, WorkflowExpression<string> bodybookmarkName = null, WorkflowExpression<bool> bodydeleteBookmark = null)
         {
@@ -379,7 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApplyStylesResponse> __BuildWordApplyStyleToDocument(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodydestinationDocumentdocumentContent = null, WorkflowExpression<string> bodydestinationDocumentdocumentName = null)
         {

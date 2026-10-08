@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robolytix")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SonarResponse> __BuildSonar(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyprocessid, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodyrunid = null)
         {

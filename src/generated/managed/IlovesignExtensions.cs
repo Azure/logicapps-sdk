@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignResponse> __BuildSign(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodysigners = null, WorkflowExpression<string> bodysignersEmails = null, WorkflowExpression<string> bodysignsPositions = null, WorkflowExpression<bodysignTypeInput> bodysignType = null, WorkflowExpression<string> bodyexpirationDays = null, WorkflowExpression<bodysignerRemindersInput> bodysignerReminders = null, WorkflowExpression<string> bodysignerReminderDaysCycle = null, WorkflowExpression<string> bodypages = null, WorkflowExpression<string> bodysize = null)
         {

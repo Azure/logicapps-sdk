@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PurchaseTreesResponse> __BuildPurchaseTrees(WorkflowExpression<int> bodynumber, WorkflowExpression<string> bodyname = null, WorkflowExpression<bool> bodytest = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PurchaseOffsetsResponse> __BuildPurchaseOffsets(WorkflowExpression<int> bodynumber, WorkflowExpression<string> bodyunits, WorkflowExpression<bool> bodytest = null)
         {
@@ -102,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetImpactResponse> __BuildGetImpact(WorkflowExpression<string> username)
         {
@@ -123,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTreesResponse> __BuildGetTrees(WorkflowExpression<string> username)
         {
@@ -144,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOffsetResponse> __BuildGetOffset(WorkflowExpression<string> username)
         {

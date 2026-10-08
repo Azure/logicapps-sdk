@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FlightGetResponse> __BuildFlightGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<flightStatusInput> flightStatus = null, WorkflowExpression<string> flightDate = null, WorkflowExpression<string> depIata = null, WorkflowExpression<string> arrIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> airlineName = null, WorkflowExpression<string> airlineIata = null, WorkflowExpression<string> airlineIcao = null, WorkflowExpression<int> flightNumber = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<int> minDelayDep = null, WorkflowExpression<int> minDelayArr = null, WorkflowExpression<int> maxDelayDep = null, WorkflowExpression<int> maxDelayArr = null, WorkflowExpression<string> arrScheduledTimeArr = null, WorkflowExpression<string> arrScheduledTimeDep = null)
         {
@@ -98,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirportGetResponse> __BuildAirportGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -124,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirlineGetResponse> __BuildAirlineGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirplaneGetResponse> __BuildAirplaneGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AircraftGetResponse> __BuildAircraftGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -202,7 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaxesGetResponse> __BuildTaxesGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -228,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CityGetResponse> __BuildCityGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -254,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CountryGetResponse> __BuildCountryGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {

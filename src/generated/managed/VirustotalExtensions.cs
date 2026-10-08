@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UrlResult> __BuildVirusTotalGetUrlReport(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilesReport> __BuildVirusTotalAnalyesFile(WorkflowExpression<object> file)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainResult> __BuildVirusTotalGetDomainReport(WorkflowExpression<string> domain)
         {
@@ -81,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UrlReport> __BuildVirusTotalAnalysisurl(WorkflowExpression<string> url)
         {
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Ip> __BuildVirusTotalGetIpScanV3(WorkflowExpression<string> ip)
         {
@@ -123,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Analyses> __BuildVirusTotalRetrieveInfo(WorkflowExpression<string> id)
         {
@@ -144,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<File> __BuildVirusTotalRetrieveInfoaboutFile(WorkflowExpression<string> id)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyaccessToApproveDocsOnly = null, WorkflowExpression<string> bodyallowAccessToReports = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyenableMfa = null, WorkflowExpression<string> bodyenforceMfaForUsers = null, WorkflowExpression<string> bodyfirmFlowRoutingNotification = null, WorkflowExpression<string> bodyfullAccessToDocTracking = null, WorkflowExpression<string> bodygroupName = null, WorkflowExpression<string> bodymfaRequired = null, WorkflowExpression<string> bodypermissonToApproveDocs = null, WorkflowExpression<bodyreportsInputItem[]> bodyreports = null, WorkflowExpression<string> bodyuploadLocation = null, WorkflowExpression<string[]> bodyusers = null)
         {
@@ -139,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetGroupDocSecurityResponse> __BuildSetGroupDocSecurity(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodycabinetName = null, WorkflowExpression<bodydocumentSecurityInputItem[]> bodydocumentSecurity = null, WorkflowExpression<string> bodydrawerName = null, WorkflowExpression<string> bodygroupName = null)
         {
@@ -197,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModifyGroupResponse> __BuildModifyGroup(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyaccessToApproveDocsOnly = null, WorkflowExpression<string> bodyallowAccessToReports = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyenableMfa = null, WorkflowExpression<string> bodyenforceMfaForUsers = null, WorkflowExpression<string> bodyfirmFlowRoutingNotification = null, WorkflowExpression<string> bodyfullAccessToDocTracking = null, WorkflowExpression<string> bodygroupName = null, WorkflowExpression<string> bodymfaRequired = null, WorkflowExpression<string> bodypermissonToApproveDocs = null, WorkflowExpression<string> bodyrenameGroup = null, WorkflowExpression<bodyreportsInputItem[]> bodyreports = null, WorkflowExpression<string> bodyuploadLocation = null, WorkflowExpression<string[]> bodyusers = null)
         {
@@ -325,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupPermissionsResponse> __BuildGetGroupPermissions(WorkflowExpression<string> groupName = null, WorkflowExpression<string> xAuthorization = null)
         {
@@ -351,7 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetGroupPermissionsResponse> __BuildSetGroupPermissions(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodycabinet = null, WorkflowExpression<string> bodycabinetPermissionadd = null, WorkflowExpression<string> bodycabinetPermissiondelete = null, WorkflowExpression<string> bodycabinetPermissiondeny = null, WorkflowExpression<string> bodycabinetPermissionedit = null, WorkflowExpression<string> bodycabinetPermissionlookUp = null, WorkflowExpression<string> bodycabinetPermissionread = null, WorkflowExpression<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, WorkflowExpression<string> bodygroupName = null)
         {
@@ -452,7 +447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> __BuildGetGroupDocumentSecurity(WorkflowExpression<string> groupName, WorkflowExpression<string> cabinetName, WorkflowExpression<string> drawerName, WorkflowExpression<string> xAuthorization = null)
         {
@@ -478,7 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupsResponseItem[]> __BuildGetGroups(WorkflowExpression<string> xAuthorization = null)
         {
@@ -501,7 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUsersResponse> __BuildCreateUsers(WorkflowExpression<userTypeInput> userType = null, WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyaccountExpiresDate = null, WorkflowExpression<string> bodydisabledComments = null, WorkflowExpression<string> bodyfullName = null, WorkflowExpression<string[]> bodygroups = null, WorkflowExpression<string> bodyisAccountExpires = null, WorkflowExpression<string> bodyisAdvanceFlow = null, WorkflowExpression<string> bodyisAllowAccessToReports = null, WorkflowExpression<string> bodyisAllowOffline = null, WorkflowExpression<string> bodyisDisabled = null, WorkflowExpression<string> bodyisFirmFlow = null, WorkflowExpression<string> bodyisFirmFlowNotificationGroup = null, WorkflowExpression<string> bodyisFirmFlowNotificationUser = null, WorkflowExpression<string> bodyisMfa = null, WorkflowExpression<string> bodyisUserAdministration = null, WorkflowExpression<string> bodyisWorkflowManagerUser = null, WorkflowExpression<string> bodylicenseType = null, WorkflowExpression<string> bodyloginName = null, WorkflowExpression<string> bodymanagerEmail = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<bodyreportsInputItem[]> bodyreports = null, WorkflowExpression<string> bodyuploadLocation = null)
         {
@@ -682,7 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteUserResponse> __BuildDeleteUser(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyloginId = null, WorkflowExpression<bodyuserTypeInput> bodyuserType = null)
         {
@@ -726,7 +717,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetUserDocSecurityResponse> __BuildSetUserDocSecurity(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodycabinetName = null, WorkflowExpression<bodydocumentSecurityInputItem2[]> bodydocumentSecurity = null, WorkflowExpression<string> bodydrawerName = null, WorkflowExpression<string> bodyloginId = null)
         {
@@ -784,7 +774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserInfoResponse> __BuildGetUserInfo(WorkflowExpression<string> bodyloginName, WorkflowExpression<string> bodyuserType, WorkflowExpression<string> xAuthorization = null)
         {
@@ -820,7 +809,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLicensesResponse> __BuildGetLicenses(WorkflowExpression<licenseInput> license = null, WorkflowExpression<string> xAuthorization = null)
         {
@@ -846,7 +834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModifyUserResponse> __BuildModifyUser(WorkflowExpression<userTypeInput> userType = null, WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyaccountExpiresDate = null, WorkflowExpression<string> bodydisabledComments = null, WorkflowExpression<string> bodyfullName = null, WorkflowExpression<string[]> bodygroups = null, WorkflowExpression<string> bodyisAccountExpires = null, WorkflowExpression<string> bodyisAdvanceFlow = null, WorkflowExpression<string> bodyisAllowAccessToReports = null, WorkflowExpression<string> bodyisAllowOffline = null, WorkflowExpression<string> bodyisChangeNextLogin = null, WorkflowExpression<string> bodyisDisabled = null, WorkflowExpression<string> bodyisFirmFlow = null, WorkflowExpression<string> bodyisFirmFlowNotificationGroup = null, WorkflowExpression<string> bodyisFirmFlowNotificationUser = null, WorkflowExpression<string> bodyisMfa = null, WorkflowExpression<string> bodyisUserAdministration = null, WorkflowExpression<string> bodyisWorkflowManagerUser = null, WorkflowExpression<string> bodylicenseType = null, WorkflowExpression<string> bodyloginName = null, WorkflowExpression<string> bodymanagerEmail = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<bodyreportsInputItem[]> bodyreports = null, WorkflowExpression<string> bodyuploadLocation = null)
         {
@@ -1033,7 +1020,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPasswordPolicyResponse> __BuildGetPasswordPolicy(WorkflowExpression<string> xAuthorization = null)
         {
@@ -1056,7 +1042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetUserPermissionsResponse> __BuildSetUserPermissions(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodycabinet = null, WorkflowExpression<string> bodycabinetPermissionadd = null, WorkflowExpression<string> bodycabinetPermissiondelete = null, WorkflowExpression<string> bodycabinetPermissiondeny = null, WorkflowExpression<string> bodycabinetPermissionedit = null, WorkflowExpression<string> bodycabinetPermissionlookUp = null, WorkflowExpression<string> bodycabinetPermissionread = null, WorkflowExpression<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, WorkflowExpression<string> bodyloginId = null)
         {
@@ -1157,7 +1142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListOfReportsResponse> __BuildGetListOfReports(WorkflowExpression<string> xAuthorization = null)
         {
@@ -1180,7 +1164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUploadLocationResponse> __BuildGetUploadLocation(WorkflowExpression<string> xAuthorization = null)
         {
@@ -1203,7 +1186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserDocumentSecurityResponse> __BuildGetUserDocumentSecurity(WorkflowExpression<string> loginId, WorkflowExpression<string> cabinetName, WorkflowExpression<string> drawerName, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1229,7 +1211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserPermissionResponse> __BuildGetUserPermission(WorkflowExpression<string> login, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1253,7 +1234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUsersResponseItem[]> __BuildGetUsers(WorkflowExpression<userTypeInput> userType = null, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1279,7 +1259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLookupListResponseItem[]> __BuildGetLookupList(WorkflowExpression<string> drawerId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1303,7 +1282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentResponse> __BuildCreateDocument(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydrawerId = null, WorkflowExpression<bodyindexesInputItem[]> bodyindexes = null)
         {
@@ -1347,7 +1325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyDocumentResponseItem[]> __BuildCopyDocument(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string[]> bodydocumentIds = null, WorkflowExpression<bodyindexValuesInputItem[]> bodyindexValues = null)
         {
@@ -1391,7 +1368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> __BuildGetDocumentStatus(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string[]> body = null)
         {
@@ -1416,7 +1392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMergePDF(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string[]> body = null)
         {
@@ -1441,7 +1416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentReindexResponseItem[]> __BuildDocumentReindex(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string[]> bodydocumentIds = null, WorkflowExpression<bodyindexValuesInputItem[]> bodyindexValues = null)
         {
@@ -1485,7 +1459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentSearchResponse> __BuildDocumentSearch(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydrawerId = null, WorkflowExpression<bodyfilterindexValuesInputItem[]> bodyfilterindexValues = null, WorkflowExpression<int> bodynumberOfRows = null, WorkflowExpression<int> bodypageNumber = null, WorkflowExpression<string> bodysortField = null, WorkflowExpression<bodysortOrderInput> bodysortOrder = null)
         {
@@ -1565,7 +1538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> __BuildTaxsortDocument(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string[]> body = null)
         {
@@ -1590,7 +1562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentDeleteResponseItem[]> __BuildDocumentDelete(WorkflowExpression<string> documentId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1614,7 +1585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDocument(WorkflowExpression<string> documentId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1638,7 +1608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentHistoryResponse> __BuildGetDocumentHistory(WorkflowExpression<string> documentId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1662,7 +1631,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> __BuildGetDocumentIndexes(WorkflowExpression<string> documentId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1686,7 +1654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> __BuildPublishDocumentStatus(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyisPublished, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1720,7 +1687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDrawersResponseItem[]> __BuildGetDrawers(WorkflowExpression<string> xAuthorization = null)
         {
@@ -1743,7 +1709,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> __BuildGetDrawerIndexes(WorkflowExpression<string> drawerId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -1767,7 +1732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> __BuildGetFirmFlowDeliverableReport(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyaccountable = null, WorkflowExpression<string> bodyassignedOn = null, WorkflowExpression<string> bodyassignedTo = null, WorkflowExpression<string> bodyassignmentHistory = null, WorkflowExpression<string> bodycompletedBy = null, WorkflowExpression<string> bodycompletedOn = null, WorkflowExpression<string> bodycurrentDueDate = null, WorkflowExpression<string> bodycurrentStep = null, WorkflowExpression<string> bodydateExtended = null, WorkflowExpression<string> bodydaysAtStep = null, WorkflowExpression<string> bodydaysBetweenRoutings = null, WorkflowExpression<string> bodydrawerId = null, WorkflowExpression<string> bodyengagementType = null, WorkflowExpression<string> bodyinProcessOnly = null, WorkflowExpression<string[]> bodyindexes = null, WorkflowExpression<string[]> bodyinformationFields = null, WorkflowExpression<string> bodyoriginalDueDate = null, WorkflowExpression<string> bodypIC = null, WorkflowExpression<string> bodypageNumber = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyreceivedFrom = null, WorkflowExpression<string> bodyreceivedOn = null, WorkflowExpression<string> bodyresponsible = null, WorkflowExpression<string> bodyroutingDetails = null, WorkflowExpression<string> bodysentOn = null, WorkflowExpression<string> bodysentTo = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodytotalDaysAtStep = null, WorkflowExpression<string> bodytotalDaysInProcess = null, WorkflowExpression<string> bodyworkflow = null, WorkflowExpression<string> bodyworkflowDescription = null)
         {
@@ -2021,7 +1985,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateIndexesResponse> __BuildValidateIndexes(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydrawerId = null, WorkflowExpression<bodyindexesInputItem[]> bodyindexes = null)
         {
@@ -2065,7 +2028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> __BuildGetDynamicRulesForIndex(WorkflowExpression<string> indexId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -2089,7 +2051,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> __BuildIndexLookupListFind(WorkflowExpression<string> indexId, WorkflowExpression<string> xAuthorization = null, WorkflowExpression<bodyactionTypeInput> bodyactionType = null, WorkflowExpression<int> bodycount = null, WorkflowExpression<string> bodyindexValue = null, WorkflowExpression<bodysearchTypeInput> bodysearchType = null)
         {
@@ -2148,7 +2109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> __BuildGetListTypeIndexData(WorkflowExpression<string> indexId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -2172,7 +2132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChildIndexesResponseItem[]> __BuildGetChildIndexes(WorkflowExpression<string> indexId, WorkflowExpression<string> listId, WorkflowExpression<string> xAuthorization = null)
         {
@@ -2197,7 +2156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LoginResponse> __BuildLogin(WorkflowExpression<string> bodyloginName, WorkflowExpression<string> bodypassword)
         {
@@ -2230,7 +2188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LogoutResponse> __BuildLogout(WorkflowExpression<string> xAuthorization = null)
         {
@@ -2253,7 +2210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildValidateToken(WorkflowExpression<string> xAuthorization = null)
         {
@@ -2276,7 +2232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWorkflowResponse> __BuildCreateWorkflow(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydrawer = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodyfolderId = null, WorkflowExpression<string> bodyheadersclientName = null, WorkflowExpression<string> bodyheadersclientNumber = null, WorkflowExpression<string> bodyheadersengagementType = null, WorkflowExpression<string> bodyheaderspIC = null, WorkflowExpression<string> bodyheadersyear = null, WorkflowExpression<string> bodyheadersperiodEnd = null, WorkflowExpression<string> bodyfilingworkflowName = null, WorkflowExpression<string> bodyfilingdescription = null, WorkflowExpression<string> bodyfilingstatusName = null, WorkflowExpression<string> bodydeliverableaction = null, WorkflowExpression<string> bodydeliverablecurrentduedate = null, WorkflowExpression<string> bodydeliverableoriginalduedate = null, WorkflowExpression<string> bodydeliverableform = null, WorkflowExpression<string> bodydeliveryInstructionsdelivery = null, WorkflowExpression<string> bodydeliveryInstructionsdestination = null, WorkflowExpression<string> bodydeliveryInstructionssourceDocument = null, WorkflowExpression<string> bodynotesaction = null, WorkflowExpression<string> bodynotesnoteType = null, WorkflowExpression<string> bodynotesnote = null, WorkflowExpression<string> bodyinformationFieldsname = null, WorkflowExpression<string> bodyinformationFieldsvalue = null, WorkflowExpression<string> bodyroutingSummaryresponsibleField = null, WorkflowExpression<string> bodyroutingSummaryvalue = null)
         {
@@ -2544,7 +2499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> __BuildDeleteMasterDeliverable(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodydrawerName = null, WorkflowExpression<string[]> bodydeliverableNames = null)
         {
@@ -2595,7 +2549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteWorkflowsResponse> __BuildDeleteWorkflows(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<int[]> bodyfilingId = null)
         {
@@ -2632,7 +2585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EditMasterDeliverableResponse> __BuildEditMasterDeliverable(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodycurrentdeliverableName = null, WorkflowExpression<string> bodyupdatedeliverableName = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodyfirstExtension = null, WorkflowExpression<string> bodysecondExtension = null, WorkflowExpression<string> bodythirdExtension = null, WorkflowExpression<string> bodycalenderOrFiscal = null, WorkflowExpression<int> bodyextension = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodydrawerName = null)
         {
@@ -2732,7 +2684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EditWorkflowResponse> __BuildEditWorkflow(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<int> bodyfilingId = null, WorkflowExpression<string> bodyheadersclientName = null, WorkflowExpression<string> bodyheadersclientNumber = null, WorkflowExpression<string> bodyheadersengagementType = null, WorkflowExpression<string> bodyheaderspIC = null, WorkflowExpression<string> bodyheadersyear = null, WorkflowExpression<string> bodyheadersperiodEnd = null, WorkflowExpression<string> bodydeliverableaction = null, WorkflowExpression<string> bodydeliverablecurrentduedate = null, WorkflowExpression<string> bodydeliverableoriginalduedate = null, WorkflowExpression<string> bodydeliverableform = null, WorkflowExpression<string> bodynotesaction = null, WorkflowExpression<string> bodynotesnoteType = null, WorkflowExpression<string[]> bodynotesnoteid = null, WorkflowExpression<string> bodynotesnote = null, WorkflowExpression<string> bodyinformationFieldsname = null, WorkflowExpression<string> bodyinformationFieldsvalue = null, WorkflowExpression<string> bodydeliveryInstructionsdelivery = null, WorkflowExpression<string> bodydeliveryInstructionsdestination = null, WorkflowExpression<string> bodydeliveryInstructionssourceDocument = null, WorkflowExpression<string> bodyroutingSummaryresponsibleField = null, WorkflowExpression<string> bodyroutingSummaryvalue = null, WorkflowExpression<bool> bodyreindexDocs = null)
         {
@@ -2971,7 +2922,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMasterDeliverableResponse> __BuildGetMasterDeliverable(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<int> bodypageNumber = null, WorkflowExpression<int> bodypageSize = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodydrawerName = null)
         {
@@ -3029,7 +2979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TrackingReportByWorkflowResponse> __BuildTrackingReportByWorkflow(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydrawerId = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodyengagementType = null, WorkflowExpression<string> bodyworkflow = null, WorkflowExpression<string> bodycurrentStep = null, WorkflowExpression<string> bodypIC = null, WorkflowExpression<string> bodyassignedTo = null, WorkflowExpression<string> bodyassignedOn = null, WorkflowExpression<string> bodyworkflowDescription = null, WorkflowExpression<string> bodyinProcessOnly = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyresponsible = null, WorkflowExpression<string> bodyassignmentHistory = null, WorkflowExpression<string> bodyreceivedFrom = null, WorkflowExpression<string> bodyreceivedOn = null, WorkflowExpression<string> bodysentTo = null, WorkflowExpression<string> bodysentOn = null, WorkflowExpression<string> bodycompletedBy = null, WorkflowExpression<string> bodycompletedOn = null, WorkflowExpression<string> bodycurrentDueDate = null, WorkflowExpression<string> bodydaysAtStep = null, WorkflowExpression<string> bodytotalDaysAtStep = null, WorkflowExpression<string> bodydaysBetweenRoutings = null, WorkflowExpression<string> bodytotalDaysInProcess = null, WorkflowExpression<string> bodyaccountable = null, WorkflowExpression<string> bodyroutingDetails = null, WorkflowExpression<string> bodylastUpdated = null, WorkflowExpression<string[]> bodyinformationFields = null, WorkflowExpression<string[]> bodyindexes = null, WorkflowExpression<string> bodypageNumber = null)
         {
@@ -3276,7 +3225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddMasterDeliverableResponse> __BuildAddMasterDeliverable(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydeliverableName = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodyfirstExtension = null, WorkflowExpression<string> bodysecondExtension = null, WorkflowExpression<string> bodythirdExtension = null, WorkflowExpression<string> bodycalenderOrFiscal = null, WorkflowExpression<int> bodyextension = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodydrawerName = null)
         {
@@ -3369,7 +3317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RouteWorkflowV2Response> __BuildRouteWorkflow(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<int[]> bodyfilingId = null, WorkflowExpression<string[]> bodycurrentStep = null, WorkflowExpression<bool> bodycomplete = null, WorkflowExpression<string> bodycompletedDate = null, WorkflowExpression<string> bodynextStep = null, WorkflowExpression<string> bodyassignedTo = null, WorkflowExpression<string> bodyassignedDate = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyroutingNote = null, WorkflowExpression<bool> bodyemailNotify = null)
         {
@@ -3476,7 +3423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> __BuildTrackingReportByDeliverable(WorkflowExpression<string> xAuthorization = null, WorkflowExpression<string> bodydrawerId = null, WorkflowExpression<string> bodyserviceType = null, WorkflowExpression<string> bodyengagementType = null, WorkflowExpression<string> bodyworkflow = null, WorkflowExpression<string> bodycurrentStep = null, WorkflowExpression<string> bodypIC = null, WorkflowExpression<string> bodyassignedTo = null, WorkflowExpression<string> bodyassignedOn = null, WorkflowExpression<string> bodyworkflowDescription = null, WorkflowExpression<string> bodyinProcessOnly = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyreceivedOn = null, WorkflowExpression<string> bodycompletedOn = null, WorkflowExpression<string> bodysentOn = null, WorkflowExpression<string> bodyresponsible = null, WorkflowExpression<string> bodyassignmentHistory = null, WorkflowExpression<string> bodyreceivedFrom = null, WorkflowExpression<string> bodysentTo = null, WorkflowExpression<string> bodycompletedBy = null, WorkflowExpression<string> bodyaccountable = null, WorkflowExpression<string> bodycurrentDueDate = null, WorkflowExpression<string> bodyoriginalDueDate = null, WorkflowExpression<string> bodydateExtended = null, WorkflowExpression<string> bodydaysAtStep = null, WorkflowExpression<string> bodytotalDaysAtStep = null, WorkflowExpression<string> bodydaysBetweenRoutings = null, WorkflowExpression<string> bodytotalDaysInProcess = null, WorkflowExpression<string> bodyroutingDetails = null, WorkflowExpression<string> bodylastUpdated = null, WorkflowExpression<string[]> bodyinformationFields = null, WorkflowExpression<string[]> bodyindexes = null, WorkflowExpression<string> bodypageNumber = null)
         {

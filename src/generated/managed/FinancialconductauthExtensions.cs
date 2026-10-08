@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommonSearchResponse> __BuildCommonSearch(WorkflowExpression<string> q, WorkflowExpression<typeInput> type)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> __BuildIndividualsDetailsByIRN(WorkflowExpression<string> iRN)
         {
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmDetailsByFRNResponse> __BuildFirmDetailsByFRN(WorkflowExpression<string> fRN)
         {
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProductDetailsByPRNResponse> __BuildProductDetailsByPRN(WorkflowExpression<string> pRN)
         {
@@ -105,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubfundDetailsByPRNResponse> __BuildSubfundDetailsByPRN(WorkflowExpression<string> pRN)
         {
@@ -126,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> __BuildProductOtherNameDetailsByPRN(WorkflowExpression<string> pRN)
         {
@@ -147,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> __BuildIndividualDisciplinaryHistoryByIRN(WorkflowExpression<string> iRN)
         {
@@ -168,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> __BuildFirmOtherNamesByFRN(WorkflowExpression<string> fRN)
         {
@@ -189,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmAddressByFRNResponse> __BuildFirmAddressByFRN(WorkflowExpression<string> fRN)
         {
@@ -210,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmIndividualsByFRNResponse> __BuildFirmIndividualsByFRN(WorkflowExpression<string> fRN)
         {
@@ -231,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> __BuildFirmActivitiesAndPermissionsByFRN(WorkflowExpression<string> fRN)
         {
@@ -252,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> __BuildFirmRequirementsInvestmentTypesByFRNandREQREF(WorkflowExpression<string> fRN, WorkflowExpression<string> rEQREF)
         {
@@ -274,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> __BuildFirmRegulatorsByFRN(WorkflowExpression<string> fRN)
         {
@@ -295,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmPassportByFRNResponse> __BuildFirmPassportByFRN(WorkflowExpression<string> fRN)
         {
@@ -316,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmExclusionsByFRNResponse> __BuildFirmExclusionsByFRN(WorkflowExpression<string> fRN)
         {
@@ -337,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> __BuildFirmDisciplinaryHistoryByFRN(WorkflowExpression<string> fRN)
         {
@@ -358,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmRequirementsByFRNResponse> __BuildFirmRequirementsByFRN(WorkflowExpression<string> fRN)
         {
@@ -379,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmWaiverByFRNResponse> __BuildFirmWaiverByFRN(WorkflowExpression<string> fRN)
         {
@@ -400,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> __BuildFirmPassportPermissionByFRNandCountry(WorkflowExpression<string> fRN, WorkflowExpression<string> country)
         {

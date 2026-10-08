@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmissionEstimateResponse> __BuildEmissionEstimate(WorkflowExpression<string> bodyemissionFactoruuid = null, WorkflowExpression<string> bodyemissionFactoractivityId = null, WorkflowExpression<string> bodyemissionFactorsource = null, WorkflowExpression<string> bodyemissionFactorregion = null, WorkflowExpression<bool> bodyemissionFactorregionFallback = null, WorkflowExpression<string> bodyemissionFactoryear = null, WorkflowExpression<string> bodyemissionFactorlcaActivity = null, WorkflowExpression<string> bodyemissionFactorcalculationMethod = null, WorkflowExpression<int> bodyparametersenergy = null, WorkflowExpression<string> bodyparametersenergyUnit = null, WorkflowExpression<int> bodyparametersdata = null, WorkflowExpression<string> bodyparametersdataUnit = null, WorkflowExpression<int> bodyparametersdistance = null, WorkflowExpression<string> bodyparametersdistanceUnit = null, WorkflowExpression<int> bodyparametersmoney = null, WorkflowExpression<string> bodyparametersmoneyUnit = null, WorkflowExpression<int> bodyparametersnumber = null, WorkflowExpression<int> bodyparameterstime = null, WorkflowExpression<string> bodyparameterstimeUnit = null, WorkflowExpression<int> bodyparameterspassengers = null, WorkflowExpression<int> bodyparametersvolume = null, WorkflowExpression<string> bodyparametersvolumeUnit = null, WorkflowExpression<int> bodyparametersweight = null, WorkflowExpression<string> bodyparametersweightUnit = null)
         {
@@ -229,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmissionEstimateBulkResponse> __BuildEmissionEstimateBulk(WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -251,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TravelFlightResponse> __BuildTravelFlight(WorkflowExpression<bodylegsInputItem[]> bodylegs)
         {
@@ -281,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FreightFlightResponse> __BuildFreightFlight(WorkflowExpression<bodylegsInputItem[]> bodylegs)
         {
@@ -320,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComputeCPUResponse> __BuildComputeCPU(WorkflowExpression<string> provider, WorkflowExpression<int> bodycpuCount, WorkflowExpression<string> bodyregion, WorkflowExpression<int> bodycpuLoad, WorkflowExpression<int> bodyduration, WorkflowExpression<string> bodydurationUnit = null)
         {
@@ -367,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComputeStorageResponse> __BuildComputeStorage(WorkflowExpression<string> provider, WorkflowExpression<string> bodyregion, WorkflowExpression<bodystorageTypeInput> bodystorageType, WorkflowExpression<int> bodydata, WorkflowExpression<int> bodyduration, WorkflowExpression<string> bodydataUnit = null, WorkflowExpression<string> bodydurationUnit = null)
         {
@@ -421,7 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComputeMemoryResponse> __BuildComputeMemory(WorkflowExpression<string> provider, WorkflowExpression<string> bodyregion, WorkflowExpression<int> bodydata, WorkflowExpression<int> bodyduration, WorkflowExpression<string> bodydataUnit = null, WorkflowExpression<string> bodydurationUnit = null)
         {
@@ -472,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassificationResponse> __BuildClassification(WorkflowExpression<string> bodyclassificationclassificationType = null, WorkflowExpression<string> bodyclassificationclassificationCode = null, WorkflowExpression<string> bodyclassificationsource = null, WorkflowExpression<string> bodyclassificationregion = null, WorkflowExpression<bool> bodyclassificationregionFallback = null, WorkflowExpression<string> bodyclassificationyear = null, WorkflowExpression<string> bodyclassificationlcaActivity = null, WorkflowExpression<string> bodyclassificationcalculationMethod = null, WorkflowExpression<int> bodyparametersenergy = null, WorkflowExpression<string> bodyparametersenergyUnit = null, WorkflowExpression<int> bodyparametersdata = null, WorkflowExpression<string> bodyparametersdataUnit = null, WorkflowExpression<int> bodyparametersdistance = null, WorkflowExpression<string> bodyparametersdistanceUnit = null, WorkflowExpression<int> bodyparametersmoney = null, WorkflowExpression<string> bodyparametersmoneyUnit = null, WorkflowExpression<int> bodyparametersnumber = null, WorkflowExpression<int> bodyparameterstime = null, WorkflowExpression<string> bodyparameterstimeUnit = null, WorkflowExpression<int> bodyparameterspassengers = null, WorkflowExpression<int> bodyparametersvolume = null, WorkflowExpression<string> bodyparametersvolumeUnit = null, WorkflowExpression<int> bodyparametersweight = null, WorkflowExpression<string> bodyparametersweightUnit = null)
         {
@@ -683,7 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomResponse> __BuildCustom(WorkflowExpression<string> bodycustomActivitylabel = null, WorkflowExpression<string> bodycustomActivitysource = null, WorkflowExpression<string> bodycustomActivityregion = null, WorkflowExpression<bool> bodycustomActivityregionFallback = null, WorkflowExpression<string> bodycustomActivityyear = null, WorkflowExpression<string> bodycustomActivitylcaActivity = null, WorkflowExpression<string> bodycustomActivitycalculationMethod = null, WorkflowExpression<int> bodyparametersenergy = null, WorkflowExpression<string> bodyparametersenergyUnit = null, WorkflowExpression<int> bodyparametersdata = null, WorkflowExpression<string> bodyparametersdataUnit = null, WorkflowExpression<int> bodyparametersdistance = null, WorkflowExpression<string> bodyparametersdistanceUnit = null, WorkflowExpression<int> bodyparametersmoney = null, WorkflowExpression<string> bodyparametersmoneyUnit = null, WorkflowExpression<int> bodyparametersnumber = null, WorkflowExpression<int> bodyparameterstime = null, WorkflowExpression<string> bodyparameterstimeUnit = null, WorkflowExpression<int> bodyparameterspassengers = null, WorkflowExpression<int> bodyparametersvolume = null, WorkflowExpression<string> bodyparametersvolumeUnit = null, WorkflowExpression<int> bodyparametersweight = null, WorkflowExpression<string> bodyparametersweightUnit = null)
         {
@@ -887,7 +878,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomBatchResponse> __BuildCustomBatch(WorkflowExpression<bodyInputItem2[]> body = null)
         {
@@ -909,7 +899,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FactorsSearchResponse> __BuildFactorsSearch(WorkflowExpression<string> query = null, WorkflowExpression<string> uuid = null, WorkflowExpression<string> activityId = null, WorkflowExpression<string> id = null, WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null, WorkflowExpression<string> unitType = null, WorkflowExpression<int> page = null, WorkflowExpression<int> resultsPerPage = null)
         {
@@ -971,7 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SourcesResponse> __BuildSources(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {
@@ -1015,7 +1003,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<YearsResponse> __BuildYears(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {
@@ -1059,7 +1046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RegionsResponse> __BuildRegions(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {
@@ -1103,7 +1089,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CategoriesResponse> __BuildCategories(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {
@@ -1147,7 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SectorsResponse> __BuildSectors(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {
@@ -1191,7 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LifeCycleActivitiesResponse> __BuildLifeCycleActivities(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {
@@ -1235,7 +1218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnitTypesResponse> __BuildUnitTypes(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
         {

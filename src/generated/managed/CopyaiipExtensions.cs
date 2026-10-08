@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowsGetResponse> __BuildWorkflowsGet(WorkflowExpression<string> workflowId, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowPostResponse> __BuildWorkflow(WorkflowExpression<string> workflowId)
         {
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowGetResponse> __BuildWorkflowGet(WorkflowExpression<string> workflowId, WorkflowExpression<string> runId)
         {

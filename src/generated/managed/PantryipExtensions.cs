@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDetailsResponse> __BuildGetDetails(WorkflowExpression<string> pantryID)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContentsResponse> __BuildGetContents(WorkflowExpression<string> pantryID, WorkflowExpression<string> basketName)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDelete(WorkflowExpression<string> pantryID, WorkflowExpression<string> basketName)
         {
@@ -83,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateAndOrReplace(WorkflowExpression<string> pantryID, WorkflowExpression<string> basketName)
         {
@@ -105,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateContentsResponse> __BuildUpdateContents(WorkflowExpression<string> pantryID, WorkflowExpression<string> basketName)
         {

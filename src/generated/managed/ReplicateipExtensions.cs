@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictionPostResponse> __BuildPrediction(WorkflowExpression<string> bodyversion, WorkflowExpression<string> bodyinputtext = null, WorkflowExpression<string> bodyinputprompt = null, WorkflowExpression<string> bodyinputpromptStrength = null, WorkflowExpression<int> bodyinputwidth = null, WorkflowExpression<int> bodyinputheight = null, WorkflowExpression<string> bodyinputscale = null, WorkflowExpression<int> bodyinputnumOutputs = null, WorkflowExpression<int> bodyinputnumInferenceSteps = null, WorkflowExpression<string> bodyinputguidanceScale = null, WorkflowExpression<int> bodyinputseed = null, WorkflowExpression<string> bodywebhookCompleted = null)
         {
@@ -141,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictionGetResponse> __BuildPredictionGet(WorkflowExpression<string> predictionId)
         {
@@ -162,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictionCancelResponse> __BuildPredictionCancel(WorkflowExpression<string> predictionId)
         {
@@ -183,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelGetResponse> __BuildModelGet(WorkflowExpression<string> modelOwner, WorkflowExpression<string> modelName)
         {
@@ -205,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelListResponse> __BuildModelList(WorkflowExpression<string> collectionSlug)
         {

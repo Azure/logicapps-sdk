@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectListResponseItem[]> __BuildProjectList(WorkflowExpression<string> status)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectDetailsResponse> __BuildProjectDetails(WorkflowExpression<string> projectId)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SitesListResponseItem[]> __BuildSitesList(WorkflowExpression<string> projectId)
         {
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SpeciesListResponseItem[]> __BuildSpeciesList(WorkflowExpression<string> projectId)
         {
@@ -103,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SpeciesDetailsResponse> __BuildSpeciesDetails(WorkflowExpression<string> speciesId)
         {
@@ -124,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ForestDetailsResponse> __BuildForestDetails(WorkflowExpression<string> userId)
         {
@@ -145,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ForestTreeCountResponse> __BuildForestTreeCount(WorkflowExpression<string> userSlug, WorkflowExpression<string> period)
         {
@@ -167,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlantResponse> __BuildPlant(WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients = null, WorkflowExpression<int> bodyplanterId = null, WorkflowExpression<int> bodyspeciesId = null, WorkflowExpression<int> bodyquantity = null, WorkflowExpression<string> bodymessage = null)
         {
@@ -229,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodyresponsibleName = null, WorkflowExpression<string> bodyorganizationWebsite = null)
         {
@@ -298,7 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreeTemplateDetailsResponse> __BuildTreeTemplateDetails(WorkflowExpression<string> planterId)
         {
@@ -319,7 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTreeTemplateResponse> __BuildUpdateTreeTemplate(WorkflowExpression<string> planterId, WorkflowExpression<string> bodymessage = null)
         {
@@ -354,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuyCreditResponse> __BuildBuyCredit(WorkflowExpression<int> bodyplanterId = null, WorkflowExpression<int> bodyamount = null)
         {

@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CausesGetResponseItem[]> __BuildCausesGet(WorkflowExpression<string> userId, WorkflowExpression<int> page = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContributionsGetResponse> __BuildContributionsGet(WorkflowExpression<int> page = null)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DonationsGetResponse> __BuildDonationsGet(WorkflowExpression<string> userId, WorkflowExpression<int> page = null)
         {
@@ -106,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GiftsGetResponse> __BuildGiftsGet(WorkflowExpression<int> page = null)
         {
@@ -129,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NonProfitGetResponse> __BuildNonProfitGet(WorkflowExpression<string> ein)
         {

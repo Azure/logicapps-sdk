@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArraySortResponse> __BuildArraySort(WorkflowExpression<JToken[]> bodyarray)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayReverseResponse> __BuildArrayReverse(WorkflowExpression<JToken[]> bodyarray)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArraySortByPropertyResponse> __BuildArraySortByProperty(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName, WorkflowExpression<bool> bodydescending)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayFilterResponse> __BuildArrayFilter(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName, WorkflowExpression<bodycomparisonInput> bodycomparison, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<bodyvalueTypeInput> bodyvalueType = null)
         {
@@ -174,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayPrependResponse> __BuildArrayPrepend(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<object> bodyvalue, WorkflowExpression<bodyvalueTypeInput> bodyvalueType = null)
         {
@@ -224,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayAnyResponse> __BuildArrayAny(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName, WorkflowExpression<bodycomparisonInput> bodycomparison, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<bodyvalueTypeInput> bodyvalueType = null)
         {
@@ -284,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayEveryResponse> __BuildArrayEvery(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName, WorkflowExpression<bodycomparisonInput> bodycomparison, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<bodyvalueTypeInput> bodyvalueType = null)
         {
@@ -344,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayRemoveFirstResponse> __BuildArrayRemoveFirst(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName, WorkflowExpression<bodycomparisonInput> bodycomparison, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<bodyvalueTypeInput> bodyvalueType = null)
         {
@@ -404,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayGroupByResponse> __BuildArrayGroupBy(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName = null)
         {
@@ -441,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArrayFindFirstResponse> __BuildArrayFindFirst(WorkflowExpression<JToken[]> bodyarray, WorkflowExpression<string> bodypropertyName, WorkflowExpression<bodycomparisonInput> bodycomparison, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<bodyvalueTypeInput> bodyvalueType = null)
         {
@@ -501,7 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RoundResponse> __BuildRound(WorkflowExpression<double> bodynumber)
         {
@@ -531,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MathCeilResponse> __BuildMathCeil(WorkflowExpression<double> bodynumber)
         {
@@ -561,7 +549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MathFloorResponse> __BuildMathFloor(WorkflowExpression<double> bodynumber)
         {
@@ -591,7 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MathAverageResponse> __BuildMathAverage(WorkflowExpression<double[]> bodynumbers)
         {
@@ -621,7 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MathMedianResponse> __BuildMathMedian(WorkflowExpression<JToken[]> bodynumbers)
         {
@@ -651,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MathModeResponse> __BuildMathMode(WorkflowExpression<JToken[]> bodynumbers)
         {
@@ -681,7 +665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MathRandomResponse> __BuildMathRandom(WorkflowExpression<int> bodymaximum)
         {
@@ -711,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringReplaceAllResponse> __BuildStringReplaceAll(WorkflowExpression<string> bodysourceString, WorkflowExpression<string> bodysearchValue, WorkflowExpression<string> bodyreplaceValue)
         {
@@ -747,7 +729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringRegexReplaceResponse> __BuildStringRegexReplace(WorkflowExpression<string> bodysourceString, WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodyreplaceValue)
         {
@@ -783,7 +764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringCapitalizeResponse> __BuildStringCapitalize(WorkflowExpression<string> bodystring)
         {
@@ -813,7 +793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringTrimResponse> __BuildStringTrim(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodycharacters = null)
         {
@@ -850,7 +829,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringTrimStartResponse> __BuildStringTrimStart(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodycharacters = null)
         {
@@ -887,7 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringTrimEndResponse> __BuildStringTrimEnd(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodycharacters = null)
         {
@@ -924,7 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringSlugifyResponse> __BuildStringSlugify(WorkflowExpression<string> bodystring)
         {
@@ -954,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringWordsResponse> __BuildStringWords(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodydelimiter = null)
         {
@@ -991,7 +966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringWordCountResponse> __BuildStringWordCount(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodydelimiter = null)
         {
@@ -1028,7 +1002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringStripHtmlResponse> __BuildStringStripHtml(WorkflowExpression<string> bodystring)
         {
@@ -1058,7 +1031,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringCleanResponse> __BuildStringClean(WorkflowExpression<string> bodystring)
         {
@@ -1088,7 +1060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringCleanDiacriticsResponse> __BuildStringCleanDiacritics(WorkflowExpression<string> bodystring)
         {
@@ -1118,7 +1089,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringEscapeHtmlResponse> __BuildStringEscapeHtml(WorkflowExpression<string> bodystring)
         {
@@ -1148,7 +1118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringUnescapeHtmlResponse> __BuildStringUnescapeHtml(WorkflowExpression<string> bodystring)
         {
@@ -1178,7 +1147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringCountInstancesResponse> __BuildStringCountInstances(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodysubstring, WorkflowExpression<bool> bodyignoreCase = null)
         {
@@ -1228,7 +1196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringChopResponse> __BuildStringChop(WorkflowExpression<string> bodystring, WorkflowExpression<int> bodyinterval)
         {
@@ -1261,7 +1228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypesIsStringResponse> __BuildTypesIsString(WorkflowExpression<object> bodyvalue)
         {
@@ -1291,7 +1257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypesIsNumberResponse> __BuildTypesIsNumber(WorkflowExpression<object> bodyvalue, WorkflowExpression<bool> bodyincludeNumbersInStrings)
         {
@@ -1324,7 +1289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> __BuildTypesIsNullOrEmpty(WorkflowExpression<object> bodyvalue)
         {
@@ -1354,7 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypesIsArrayResponse> __BuildTypesIsArray(WorkflowExpression<object> bodyvalue)
         {
@@ -1384,7 +1347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypesIsObjectResponse> __BuildTypesIsObject(WorkflowExpression<object> bodyvalue)
         {
@@ -1414,7 +1376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateEmailResponse> __BuildValidateEmail(WorkflowExpression<string> bodyemail)
         {
@@ -1444,7 +1405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateRegexResponse> __BuildValidateRegex(WorkflowExpression<string> bodystring, WorkflowExpression<string> bodypattern)
         {

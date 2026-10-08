@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPagingWorkspaceCommentWorkspaceComment> __BuildGetWorkspaceItemComments(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> spaceId, WorkflowExpression<string> versionId = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse> __BuildAddWorkspaceItemComments(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> bodytext = null, WorkflowExpression<bodyannotationtypeInput> bodyannotationtype = null, WorkflowExpression<int> bodyannotationpage = null, WorkflowExpression<string> bodyannotationcolor = null, WorkflowExpression<SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[]> bodyannotationpoints = null)
         {
@@ -122,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse> __BuildAddReplyToComment(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId, WorkflowExpression<string> bodytext = null)
         {
@@ -160,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWorkspaceItemComment(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId)
         {
@@ -184,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWorkspaceItemCommentsReply(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId, WorkflowExpression<string> replyId)
         {
@@ -209,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildResolveWorkspaceItemComment(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId)
         {
@@ -233,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildCreateWorkspaceFolder(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -274,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildGetWorkspaceFolderDetails(WorkflowExpression<string> workspaceFolderId)
         {
@@ -295,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWorkspaceFolder(WorkflowExpression<string> workspaceFolderId)
         {
@@ -316,7 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildUpdateWorkspaceFolder(WorkflowExpression<string> workspaceFolderId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -358,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicCommonWorkSpaceContentManagerWsItemResp> __BuildGetWorkspaceFolderItems(WorkflowExpression<string> workspaceFolderId)
         {
@@ -379,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildCopyWorkspaceFolder(WorkflowExpression<string> workspaceFolderId, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -414,7 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildCreateWorkspaceContextualFolder(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodysystemType = null, WorkflowExpression<string> bodycontextType = null, WorkflowExpression<string> bodycontextTypePlural = null, WorkflowExpression<string> bodycontextId = null)
         {
@@ -476,7 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildCreateWorkSpaceFile(WorkflowExpression<string> metadata = null, WorkflowExpression<object> content = null)
         {
@@ -498,7 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildGetWorkspaceFileDetails(WorkflowExpression<string> workspaceContentId)
         {
@@ -519,7 +504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWorkspaceFile(WorkflowExpression<string> workspaceContentId)
         {
@@ -540,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildUpdateWorkspaceFile(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -582,7 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildCopyWorkspaceFile(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -617,7 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> __BuildDownloadWorkspaceFile(WorkflowExpression<string> workspaceContentId, WorkflowExpression<bool> redirect = null)
         {
@@ -642,7 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildCreateWorkspaceFileVersion(WorkflowExpression<string> workspaceContentId, WorkflowExpression<object> content = null)
         {
@@ -664,7 +644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> __BuildCreateWorkspaceUrl(WorkflowExpression<bool> openInNewWindow = null, WorkflowExpression<string> bodyurlurl = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -724,7 +703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI> __BuildGetWorkspaceUrlDetails(WorkflowExpression<string> workspaceContentId)
         {
@@ -745,7 +723,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWorkspaceUrl(WorkflowExpression<string> workspaceContentId)
         {
@@ -766,7 +743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> __BuildUpdateWorkspaceUrl(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyurlurl = null)
         {
@@ -823,7 +799,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> __BuildCopyWorkspaceUrl(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -858,7 +833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildGetWorkspaceItemDetails(WorkflowExpression<string> workspaceContentId)
         {
@@ -879,7 +853,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWorkspaceItem(WorkflowExpression<string> workspaceContentId)
         {
@@ -900,7 +873,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildUpdateWorkspaceItem(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -942,7 +914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildCopyWorkspaceItem(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyparentFolderId = null)
         {
@@ -977,7 +948,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]> __BuildGetWorkspaceItenMembers(WorkflowExpression<string> workspaceContentId)
         {
@@ -998,7 +968,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CollaboratorResponse> __BuildAddCollaboratorAsync(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyrole = null)
         {
@@ -1040,7 +1009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteCollaboratorAsync(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> memberId)
         {
@@ -1062,7 +1030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTransferOwnerAsync(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyownerId = null)
         {
@@ -1097,7 +1064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetCustomPropertiesByFileId(WorkflowExpression<string> fileId, WorkflowExpression<bool> includeInvisibledInDC = null)
         {

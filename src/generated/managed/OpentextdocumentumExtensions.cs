@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentRead> __BuildGetDocument(WorkflowExpression<string> id, WorkflowExpression<string> configurationSet)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<File> __BuildGetDocumentContent(WorkflowExpression<string> id)
         {
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentMetadataRead> __BuildGetDocumentProperties(WorkflowExpression<string> id, WorkflowExpression<string> configurationSet)
         {
@@ -104,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocumentContent(WorkflowExpression<string> id, WorkflowExpression<string> fileDtofileName, WorkflowExpression<string> fileDtofileContent)
         {
@@ -138,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateDocument(WorkflowExpression<string> configurationSet, WorkflowExpression<string> documentDtoparentID, WorkflowExpression<string> documentDtofilefileName, WorkflowExpression<string> documentDtofilefileContent, WorkflowExpression<string> documentDtometadatadisplayName, WorkflowExpression<object> documentDtometadatafields, WorkflowExpression<string> documentDtometadatadescription = null)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocument(WorkflowExpression<string> id, WorkflowExpression<string> configurationSet, WorkflowExpression<string> documentDtofilefileName, WorkflowExpression<string> documentDtofilefileContent, WorkflowExpression<string> documentDtometadatadisplayName, WorkflowExpression<object> documentDtometadatafields, WorkflowExpression<string> documentDtometadatadescription = null)
         {
@@ -268,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocumentProperties(WorkflowExpression<string> id, WorkflowExpression<string> configurationSet, WorkflowExpression<string> metadataDtodisplayName, WorkflowExpression<object> metadataDtofields, WorkflowExpression<string> metadataDtodescription = null)
         {

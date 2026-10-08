@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccountsDeleteResponse> __BuildAccountsDelete(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccountsGetResponse> __BuildAccountsGet(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccountsUpdateResponse> __BuildAccountsUpdate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyaccountTypeId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<bodyaccountClassInput> bodyaccountClass = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyhomePage = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodystateProvince = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -195,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccountsCreateResponse> __BuildAccountsCreate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyownerId, WorkflowExpression<string> bodyaccountTypeId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<bodyaccountClassInput> bodyaccountClass = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyhomePage = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodystateProvince = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -315,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsCreateResponse> __BuildContactsCreate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> bodylastName, WorkflowExpression<string> bodyownerId, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<bodygenderInput> bodygender = null, WorkflowExpression<string> bodycontactTypeId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystateProvince = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<bodyaccountRelationsInputItem[]> bodyaccountRelations = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -456,7 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsDeleteResponse> __BuildContactsDelete(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -480,7 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsGetResponse> __BuildContactsGet(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -504,7 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsUpdateResponse> __BuildContactsUpdate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bodygenderInput> bodygender = null, WorkflowExpression<string> bodycontactTypeId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystateProvince = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -647,7 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadsCreateResponse> __BuildLeadsCreate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyownerId, WorkflowExpression<string> bodyunitId, WorkflowExpression<string> bodycreated = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodyranking = null, WorkflowExpression<string> bodyleadTypeId = null, WorkflowExpression<string> bodystepId = null, WorkflowExpression<bodycontactRelationsInputItem[]> bodycontactRelations = null, WorkflowExpression<bodyaccountRelationsInputItem[]> bodyaccountRelations = null)
         {
@@ -735,7 +726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadsDeleteResponse> __BuildLeadsDelete(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -759,7 +749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadsGetResponse> __BuildLeadsGet(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -783,7 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadsUpdateResponse> __BuildLeadsUpdate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id, WorkflowExpression<string> bodycreated = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodyranking = null, WorkflowExpression<string> bodyleadTypeId = null, WorkflowExpression<string> bodystepId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<string> bodyownerId = null)
         {
@@ -870,7 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksCreateResponse> __BuildTasksCreate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodyunitId, WorkflowExpression<string> bodyownerId, WorkflowExpression<string> bodyactivityTypeId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<bodyaccountRelationsInputItem2[]> bodyaccountRelations = null, WorkflowExpression<bodycontactRelationsInputItem2[]> bodycontactRelations = null, WorkflowExpression<bodyleadRelationsInputItem[]> bodyleadRelations = null, WorkflowExpression<bodyopportunityRelationsInputItem[]> bodyopportunityRelations = null)
         {
@@ -972,7 +959,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksDeleteResponse> __BuildTasksDelete(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -996,7 +982,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksGetResponse> __BuildTasksGet(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -1020,7 +1005,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksUpdateResponse> __BuildTasksUpdate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyactivityTypeId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<bodystatusInput> bodystatus = null)
         {
@@ -1107,7 +1091,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunitiesCreateResponse> __BuildOpportunitiesCreate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyclosingDate, WorkflowExpression<string> bodyopptyTypeId, WorkflowExpression<string> bodystepId, WorkflowExpression<string> bodyownerId, WorkflowExpression<bodyaccountRelationsInputItem[]> bodyaccountRelations, WorkflowExpression<string> bodycreated = null, WorkflowExpression<double> bodyvaluebaseValue = null, WorkflowExpression<string> bodyvaluecurrencyId = null, WorkflowExpression<double> bodyvaluevalueForeign = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodyranking = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<bodycontactRelationsInputItem[]> bodycontactRelations = null)
         {
@@ -1219,7 +1202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunitiesDeleteResponse> __BuildOpportunitiesDelete(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -1243,7 +1225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunitiesGetResponse> __BuildOpportunitiesGet(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id)
         {
@@ -1267,7 +1248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunitiesUpdateResponse> __BuildOpportunitiesUpdate(WorkflowExpression<string> serviceUrl, WorkflowExpression<string> spaceId, WorkflowExpression<string> id, WorkflowExpression<string> bodycreated = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<double> bodyvaluebaseValue = null, WorkflowExpression<string> bodyvaluecurrencyId = null, WorkflowExpression<double> bodyvaluevalueForeign = null, WorkflowExpression<string> bodyclosingDate = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodyranking = null, WorkflowExpression<string> bodyopptyTypeId = null, WorkflowExpression<string> bodystepId = null, WorkflowExpression<string> bodyunitId = null, WorkflowExpression<string> bodyownerId = null)
         {

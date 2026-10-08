@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExportForm(WorkflowExpression<string> formId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodypages = null)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateForm(WorkflowExpression<bool> runCalculations = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<bool> bodyoverrideDefaultFormName = null, WorkflowExpression<string> bodytemplateId = null, WorkflowExpression<string> bodyassignmentid = null, WorkflowExpression<string> bodyassignmenttype = null, WorkflowExpression<string> bodyassignmenturl = null)
         {
@@ -149,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FormDto> __BuildGetForm(WorkflowExpression<string> id)
         {

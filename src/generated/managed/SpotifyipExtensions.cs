@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNewReleasesResponse> __BuildGetNewReleases(WorkflowExpression<string> country = null)
         {

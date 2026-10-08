@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComplaintsAllResponse> __BuildComplaintsAll(WorkflowExpression<string> createdDate = null, WorkflowExpression<string> createdDateFrom = null, WorkflowExpression<string> createdDateTo = null, WorkflowExpression<string> violationDate = null, WorkflowExpression<string> violationDateFrom = null, WorkflowExpression<string> violationDateTo = null, WorkflowExpression<string> state = null, WorkflowExpression<string> city = null, WorkflowExpression<int> areaCode = null, WorkflowExpression<bool> isRobocall = null, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<int> itemsPerPage = null, WorkflowExpression<int> offset = null)
         {
@@ -78,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComplaintIDResponse> __BuildComplaintID(WorkflowExpression<string> id)
         {

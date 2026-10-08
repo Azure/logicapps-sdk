@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodyn = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<double> bodyfrequencyPenalty = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<string[]> bodystop = null)
         {
@@ -140,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmbeddingsResponse> __BuildEmbeddings(WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyinput)
         {
@@ -173,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateImageResponse> __BuildCreateImage(WorkflowExpression<string> bodyprompt, WorkflowExpression<int> bodyn = null, WorkflowExpression<bodysizeInput> bodysize = null, WorkflowExpression<bodyresponseFormatInput> bodyresponseFormat = null)
         {
@@ -254,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompletionV2Response> __BuildCompletion(WorkflowExpression<bodyengineInput> bodyengine, WorkflowExpression<string> bodyprompt, WorkflowExpression<int> bodyn = null, WorkflowExpression<int> bodybestOf = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<double> bodyfrequencyPenalty = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<string[]> bodystop = null)
         {

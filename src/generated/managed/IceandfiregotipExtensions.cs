@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookGetResponseItem[]> __BuildBookGet(WorkflowExpression<string> name = null, WorkflowExpression<string> fromReleaseDate = null, WorkflowExpression<string> toReleaseDate = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookGetAResponse> __BuildBookGetA(WorkflowExpression<string> number)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CharacterGetResponseItem[]> __BuildCharacterGet(WorkflowExpression<string> name = null, WorkflowExpression<string> gender = null, WorkflowExpression<string> culture = null, WorkflowExpression<string> born = null, WorkflowExpression<string> died = null, WorkflowExpression<bool> isAlive = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -121,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CharacterGetAResponse> __BuildCharacterGetA(WorkflowExpression<string> id)
         {
@@ -142,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HouseGetResponseItem[]> __BuildHouseGet(WorkflowExpression<string> name = null, WorkflowExpression<string> region = null, WorkflowExpression<string> words = null, WorkflowExpression<bool> hasWords = null, WorkflowExpression<bool> hasTitles = null, WorkflowExpression<bool> hasSeats = null, WorkflowExpression<bool> hasDiedOut = null, WorkflowExpression<bool> hasAncestralWeapons = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -193,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HouseGetAResponse> __BuildHouseGetA(WorkflowExpression<string> id)
         {

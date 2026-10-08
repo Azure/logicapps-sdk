@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Survey> __BuildGetSurvey(WorkflowExpression<string> surveyId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SurveyMessageResponse> __BuildSendMessage(WorkflowExpression<string> surveyId, WorkflowExpression<string> collectorId, WorkflowExpression<string> messageId, WorkflowExpression<string> bodyscheduledDate = null)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetResponseDetailsResponse> __BuildGetResponseDetails(WorkflowExpression<string> surveyId, WorkflowExpression<string> responseId, WorkflowExpression<string> questionIds = null)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> __BuildGetResponseDetailsNoPages(WorkflowExpression<string> surveyId, WorkflowExpression<string> responseId, WorkflowExpression<string> questionIds = null)
         {

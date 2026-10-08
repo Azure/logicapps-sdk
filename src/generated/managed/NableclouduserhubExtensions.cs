@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUsersResponse> __BuildGetUsers(WorkflowExpression<string> filter)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGraphUserResponse> __BuildGetGraphUser(WorkflowExpression<string> organizationId, WorkflowExpression<string> microsoftObjectId)
         {
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteGraphUser(WorkflowExpression<string> organizationId, WorkflowExpression<string> microsoftObjectId)
         {
@@ -94,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPatchGraphUserPassword(WorkflowExpression<string> organizationId, WorkflowExpression<string> microsoftObjectId, WorkflowExpression<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowExpression<string> bodypasswordProfilepassword = null)
         {
@@ -155,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostGraphUserResponse> __BuildPostGraphUser(WorkflowExpression<string> organizationId, WorkflowExpression<bool> bodyaccountEnabled = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodymailNickname = null, WorkflowExpression<string> bodyuserPrincipalName = null, WorkflowExpression<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowExpression<string> bodypasswordProfilepassword = null)
         {
@@ -233,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserLicenseDetailsResponse> __BuildGetUserLicenseDetails(WorkflowExpression<string> organizationId, WorkflowExpression<string> microsoftObjectId)
         {
@@ -255,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetsubscribedSkusResponse> __BuildGetsubscribedSkus(WorkflowExpression<string> organizationId)
         {
@@ -276,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostUserLicenseResponse> __BuildPostUserLicense(WorkflowExpression<string> organizationId, WorkflowExpression<string> microsoftObjectId, WorkflowExpression<bodyaddLicensesInputItem[]> bodyaddLicenses = null, WorkflowExpression<JToken[]> bodyremoveLicenses = null)
         {
@@ -319,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupsResponse> __BuildGetGroups(WorkflowExpression<string> filter)
         {
@@ -342,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserGroupMembersResponse> __BuildUserGroupMembers(WorkflowExpression<string> organizationId, WorkflowExpression<string> userGroupId)
         {
@@ -365,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetADSecurityGroupsResponse> __BuildGetADSecurityGroups(WorkflowExpression<string> organizationId)
         {
@@ -387,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostGraphGroupResponse> __BuildPostGraphGroup(WorkflowExpression<string> organizationId, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string[]> bodygroupTypes = null, WorkflowExpression<bool> bodymailEnabled = null, WorkflowExpression<string> bodymailNickname = null, WorkflowExpression<bool> bodysecurityEnabled = null)
         {
@@ -457,7 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGraphDomainsResponse> __BuildGetGraphDomains(WorkflowExpression<string> organizationId)
         {
@@ -478,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteUserGroup(WorkflowExpression<string> organizationId, WorkflowExpression<string> userGroupId)
         {
@@ -500,7 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteUserGroupMember(WorkflowExpression<string> organizationId, WorkflowExpression<string> userGroupId, WorkflowExpression<string> userId)
         {
@@ -523,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostUserGroupMember(WorkflowExpression<string> organizationId, WorkflowExpression<string> userGroupId, WorkflowExpression<string> userId)
         {
@@ -546,7 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddGraphGroupMember(WorkflowExpression<string> organizationId, WorkflowExpression<string> microsoftObjectId, WorkflowExpression<string> bodyid)
         {
@@ -578,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveGraphGroupMember(WorkflowExpression<string> organizationId, WorkflowExpression<string> groupMicrosoftObjectId, WorkflowExpression<string> userMicrosoftObjectId)
         {
@@ -601,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubscriptionsResponse> __BuildGetSubscriptions(WorkflowExpression<string> partnerId, WorkflowExpression<string> customerId, WorkflowExpression<string> tenantId)
         {
@@ -624,7 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPatchSubscriptionQuantity(WorkflowExpression<string> partnerId, WorkflowExpression<string> customerId, WorkflowExpression<string> tenantId, WorkflowExpression<string> subscriptionId, WorkflowExpression<int> bodyquantity = null)
         {

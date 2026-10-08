@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> __BuildCommitteeCommitteeIdCandidatesHistory(WorkflowExpression<string> committeeId, WorkflowExpression<string> sortHideNull = null, WorkflowExpression<string> page = null, WorkflowExpression<string> sortNullsLast = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> sortNullOnly = null, WorkflowExpression<string> perPage = null, WorkflowExpression<string> electionFull = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationsLogResponse> __BuildOperationsLog(WorkflowExpression<string> formType, WorkflowExpression<string> reportYear, WorkflowExpression<string> sort, WorkflowExpression<string> maxReceiptDate, WorkflowExpression<string> reportType, WorkflowExpression<string> perPage, WorkflowExpression<string> candidateCommitteeId, WorkflowExpression<string> minReceiptDate, WorkflowExpression<string> minCoverageEndDate, WorkflowExpression<string> page, WorkflowExpression<string> statusNum, WorkflowExpression<string> minTransactionDataCompleteDate, WorkflowExpression<string> maxCoverageEndDate, WorkflowExpression<string> maxTransactionDataCompleteDate, WorkflowExpression<string> beginningImageNumber, WorkflowExpression<string> sortNullsLast = null, WorkflowExpression<string> sortNullOnly = null, WorkflowExpression<string> sortHideNull = null, WorkflowExpression<string> amendmentIndicator = null)
         {

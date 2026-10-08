@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetail> __BuildTafs(WorkflowExpression<string> stationId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetail> __BuildTaf(WorkflowExpression<string> stationId, WorkflowExpression<string> date, WorkflowExpression<string> time)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetail> __BuildRadarQueue(WorkflowExpression<string> host, WorkflowExpression<int> limit = null, WorkflowExpression<string> arrived = null, WorkflowExpression<string> created = null, WorkflowExpression<string> published = null, WorkflowExpression<string> station = null, WorkflowExpression<string> type = null, WorkflowExpression<string> feed = null, WorkflowExpression<int> resolution = null)
         {
@@ -107,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProblemDetail> __BuildRadarProfiler(WorkflowExpression<string> stationId, WorkflowExpression<string> time = null, WorkflowExpression<string> interval = null)
         {

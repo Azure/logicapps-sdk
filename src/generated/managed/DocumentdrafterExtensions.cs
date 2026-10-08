@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCreateWorkspaceResponse> __BuildGetCreateWorkspace(WorkflowExpression<string> siteUrl, WorkflowExpression<string> workspaceNameRoute, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> masterWorkSpace = null, WorkflowExpression<bool> copyStyling = null, WorkflowExpression<bool> copyFolders = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCreateFolderResponse> __BuildGetCreateFolder(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> folderName, WorkflowExpression<string> parentId)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCreateGroupResponse> __BuildGetCreateGroup(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> groupNamePath, WorkflowExpression<string> role = null)
         {
@@ -107,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCreateAccessFolderResponse> __BuildGetCreateAccessFolder(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> groupNamePath, WorkflowExpression<string> folderId)
         {
@@ -134,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCreateUserResponse> __BuildGetCreateUser(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> groupName, WorkflowExpression<string> email, WorkflowExpression<bool> sendInvite)
         {
@@ -163,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SaveStaticFileToFolderResponse> __BuildSaveStaticFileToFolder(WorkflowExpression<string> siteUrl, WorkflowExpression<string> folderId, WorkflowExpression<string> fileName, WorkflowExpression<string> fileBase64)
         {
@@ -188,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetExternalShareLink(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> scope, WorkflowExpression<int> expireDays, WorkflowExpression<string> createUser)
         {
@@ -218,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateQuestionnaireResponse> __BuildCreateQuestionnaire(WorkflowExpression<string> siteUrl, WorkflowExpression<string> workSpace, WorkflowExpression<string> templateId, WorkflowExpression<string> createUser)
         {
@@ -245,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteAllShareLinksOnDocument(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> createUser)
         {
@@ -271,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowAddShare(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> createUser, WorkflowExpression<string> groupOrMail, WorkflowExpression<bool> selectedQuestions = null)
         {
@@ -303,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowSetState(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> flowKey, WorkflowExpression<string> state, WorkflowExpression<string> createUser)
         {
@@ -333,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetVariablesForTemplate(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> workSpace, WorkflowExpression<string> templateId, WorkflowExpression<string> createUser)
         {
@@ -362,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> __BuildGetTagsForQuestionnaire(WorkflowExpression<string> siteUrl, WorkflowExpression<string> createUser, WorkflowExpression<string> documentId = null)
         {
@@ -389,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProcessJsonResponse> __BuildProcessJson(WorkflowExpression<string> siteUrl, WorkflowExpression<string> workSpace, WorkflowExpression<string> templateId, WorkflowExpression<string> createUser, WorkflowExpression<string> jsonData)
         {
@@ -417,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFlowInformation(WorkflowExpression<string> flowKey, WorkflowExpression<string> siteUrl)
         {
@@ -441,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentsResponse> __BuildGetDocuments(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> createUser, WorkflowExpression<outputFormatInput> outputFormat)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApplicationListDefinition> __BuildListApplications(WorkflowExpression<string> select = null, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<countInput> count = null, WorkflowExpression<string> expand = null, WorkflowExpression<int> top = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApplicationDefinition> __BuildGetApplication(WorkflowExpression<string> id)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApplicationOwnersDefinition> __BuildGetAppOwners(WorkflowExpression<string> id)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddSubscriptionResponse> __BuildAddSubscription(WorkflowExpression<string> bodyquickadd = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditSubscription(WorkflowExpression<string> streamId, WorkflowExpression<string> bodyt)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnsubscribeSubscription(WorkflowExpression<string> streamId)
         {
@@ -106,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveSubscriptionFromFolder(WorkflowExpression<string> streamId, WorkflowExpression<string> tagId)
         {
@@ -130,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddSubscriptionToFolder(WorkflowExpression<string> streamId, WorkflowExpression<string> tagId)
         {
@@ -154,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTag(WorkflowExpression<string> tagId)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnreadCount> __BuildGetUnreadCountForStream(WorkflowExpression<string> streamId)
         {
@@ -207,7 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreamContentsResponseItem[]> __BuildStreamContents(WorkflowExpression<string> streamId, WorkflowExpression<int> n = null)
         {

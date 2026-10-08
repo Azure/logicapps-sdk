@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileContentOutput> __BuildGetFileContent(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadFileContentOutput> __BuildUploadFileContent(WorkflowExpression<string> filePath, WorkflowExpression<bool> overWriteFileIfExists, WorkflowExpression<string> content = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildGetMetadata(WorkflowExpression<string> fileOrFolderPath)
         {
@@ -113,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFolderOutputItem[]> __BuildListFolder(WorkflowExpression<string> folderPath, WorkflowExpression<bool> filesOnly = null)
         {
@@ -144,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFileOutput> __BuildDeleteFile(WorkflowExpression<string> filePath, WorkflowExpression<bool> skipDelete = null)
         {
@@ -179,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFolderOutput> __BuildCreateFolder(WorkflowExpression<string> folderPath)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenameFileOutput> __BuildRenameFile(WorkflowExpression<string> filePath, WorkflowExpression<string> newFileName, WorkflowExpression<bool> fetchMetadata = null)
         {
@@ -241,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFileOutput> __BuildCopyFile(WorkflowExpression<string> sourceFilePath, WorkflowExpression<string> destinationFilePath, WorkflowExpression<bool> overWriteFileIfExists = null)
         {
@@ -274,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContentV2(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
         {
@@ -309,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> __BuildExtractArchive(WorkflowExpression<string> folderPath, WorkflowExpression<string> filePath = null, WorkflowExpression<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, WorkflowExpression<string> content = null)
         {
@@ -352,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFolder(WorkflowExpression<string> folderPath, WorkflowExpression<bool> recursiveDelete = null)
         {

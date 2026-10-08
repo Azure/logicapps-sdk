@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Library> __BuildPalibrariesAdd(WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<int> librarylibraryId = null, WorkflowExpression<int> libraryrepositoryId = null, WorkflowExpression<int> libraryrepositoryrepositoryId = null, WorkflowExpression<string> libraryrepositoryname = null, WorkflowExpression<string> libraryrepositorydescription = null, WorkflowExpression<int> libraryrepositoryrepositoryTypeId = null, WorkflowExpression<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, WorkflowExpression<string> libraryrepositoryrepositoryTypename = null, WorkflowExpression<string> libraryrepositoryrepositoryURI = null, WorkflowExpression<int> librarydocumentTypeId = null, WorkflowExpression<int> librarydocumentTypedocumentTypeId = null, WorkflowExpression<string> librarydocumentTypename = null, WorkflowExpression<string> librarydocumentTypedescription = null, WorkflowExpression<string> libraryname = null, WorkflowExpression<string> librarydescription = null, WorkflowExpression<bool> libraryocr = null)
         {
@@ -129,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Solution> __BuildPasolutionsGet(WorkflowExpression<string> solutionkey, WorkflowExpression<int> solutionid = null)
         {
@@ -154,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Solution[]> __BuildPasolutionsList(WorkflowExpression<int> solutionid = null)
         {
@@ -177,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Solution[]> __BuildPasolutionsDepartmentList(WorkflowExpression<string> departmentkey, WorkflowExpression<int> solutionid = null)
         {
@@ -202,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Solution> __BuildPasolutionsAdd(WorkflowExpression<int> solutionid = null, WorkflowExpression<int> solutionsolutionId = null, WorkflowExpression<string> solutionsolutionKey = null, WorkflowExpression<int> solutiondepartmentdepartmentId = null, WorkflowExpression<string> solutiondepartmentdepartmentKey = null, WorkflowExpression<int> solutiondepartmentcustomerId = null, WorkflowExpression<int> solutiondepartmentcustomercustomerId = null, WorkflowExpression<string> solutiondepartmentcustomercustomerKey = null, WorkflowExpression<string> solutiondepartmentcustomername = null, WorkflowExpression<string> solutiondepartmentname = null, WorkflowExpression<string> solutionname = null)
         {
@@ -260,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Solution> __BuildPasolutionsUpdate(WorkflowExpression<int> solutionid = null, WorkflowExpression<int> functionsolutionid = null, WorkflowExpression<int> solutionsolutionId = null, WorkflowExpression<string> solutionsolutionKey = null, WorkflowExpression<int> solutiondepartmentdepartmentId = null, WorkflowExpression<string> solutiondepartmentdepartmentKey = null, WorkflowExpression<int> solutiondepartmentcustomerId = null, WorkflowExpression<int> solutiondepartmentcustomercustomerId = null, WorkflowExpression<string> solutiondepartmentcustomercustomerKey = null, WorkflowExpression<string> solutiondepartmentcustomername = null, WorkflowExpression<string> solutiondepartmentname = null, WorkflowExpression<string> solutionname = null)
         {
@@ -321,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Document> __BuildPadocumentsAdd(WorkflowExpression<int> libraryid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<string> documentdocumentKey = null, WorkflowExpression<string> documentname = null, WorkflowExpression<int> documentfileSizeBytes = null, WorkflowExpression<int> documentstatus = null, WorkflowExpression<PropertyValue[]> documentpropertyValues = null, WorkflowExpression<string> documenturl = null)
         {
@@ -398,7 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentType> __BuildPadocumenttypesGet(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -426,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentType[]> __BuildPadocumenttypesList(WorkflowExpression<string> solutionkey, WorkflowExpression<int> solutionid = null)
         {
@@ -451,7 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Library> __BuildPadocumenttypesAdd(WorkflowExpression<string> solutionkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<int> librarylibraryId = null, WorkflowExpression<int> libraryrepositoryId = null, WorkflowExpression<int> libraryrepositoryrepositoryId = null, WorkflowExpression<string> libraryrepositoryname = null, WorkflowExpression<string> libraryrepositorydescription = null, WorkflowExpression<int> libraryrepositoryrepositoryTypeId = null, WorkflowExpression<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, WorkflowExpression<string> libraryrepositoryrepositoryTypename = null, WorkflowExpression<string> libraryrepositoryrepositoryURI = null, WorkflowExpression<int> librarydocumentTypeId = null, WorkflowExpression<int> librarydocumentTypedocumentTypeId = null, WorkflowExpression<string> librarydocumentTypename = null, WorkflowExpression<string> librarydocumentTypedescription = null, WorkflowExpression<string> libraryname = null, WorkflowExpression<string> librarydescription = null, WorkflowExpression<bool> libraryocr = null)
         {
@@ -561,7 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentType> __BuildPadocumenttypesUpdate(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<int> documentTypedocumentTypeId = null, WorkflowExpression<string> documentTypename = null, WorkflowExpression<string> documentTypedescription = null)
         {
@@ -617,7 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Library> __BuildPalibrariesGet(WorkflowExpression<int> libraryid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -645,7 +633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Library[]> __BuildPalibrariesList(WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -671,7 +658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Library[]> __BuildPalibrariesDocumenttypeList(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -699,7 +685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Library> __BuildPalibrariesUpdate(WorkflowExpression<int> libraryid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<int> librarylibraryId = null, WorkflowExpression<int> libraryrepositoryId = null, WorkflowExpression<int> libraryrepositoryrepositoryId = null, WorkflowExpression<string> libraryrepositoryname = null, WorkflowExpression<string> libraryrepositorydescription = null, WorkflowExpression<int> libraryrepositoryrepositoryTypeId = null, WorkflowExpression<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, WorkflowExpression<string> libraryrepositoryrepositoryTypename = null, WorkflowExpression<string> libraryrepositoryrepositoryURI = null, WorkflowExpression<int> librarydocumentTypeId = null, WorkflowExpression<int> librarydocumentTypedocumentTypeId = null, WorkflowExpression<string> librarydocumentTypename = null, WorkflowExpression<string> librarydocumentTypedescription = null, WorkflowExpression<string> libraryname = null, WorkflowExpression<string> librarydescription = null, WorkflowExpression<bool> libraryocr = null)
         {
@@ -812,7 +797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataType[]> __BuildPadatatypesList(WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -838,7 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPadocumentsLoadfile(WorkflowExpression<string> documentkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -866,7 +849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PropertyValue[]> __BuildPapropertyvaluesGet(WorkflowExpression<string> documentkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {
@@ -894,7 +876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PropertyValue[]> __BuildPapropertyvaluesUpdate(WorkflowExpression<string> documentkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<PropertyValue[]> propertyValueArray = null)
         {
@@ -924,7 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentProperty[]> __BuildPadocumentpropertiesList(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
         {

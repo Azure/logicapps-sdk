@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScrapeResponse> __BuildScrape(WorkflowExpression<string> url, WorkflowExpression<string> country = null, WorkflowExpression<bool> render = null, WorkflowExpression<string> selector = null, WorkflowExpression<int> timeout = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScrapeFormResponse> __BuildScrapeForm(WorkflowExpression<string> url, WorkflowExpression<string> country = null, WorkflowExpression<bool> render = null, WorkflowExpression<string> selector = null, WorkflowExpression<int> timeout = null, WorkflowExpression<string> body = null)
         {

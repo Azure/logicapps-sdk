@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> __BuildDeleteCompanySubscription(WorkflowExpression<string> subscriptionId)
         {
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCompanySubscriptionResponse> __BuildPostCompanySubscription(WorkflowExpression<string> bodyEvent, WorkflowExpression<string> bodyregistrationId, WorkflowExpression<string> bodykey, WorkflowExpression<string[]> bodyvalues, WorkflowExpression<string> bodycallbackUrl = null)
         {
@@ -119,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> __BuildValidateWebhookNotificationSignature(WorkflowExpression<string> messageSignature, WorkflowExpression<string> secretKey)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> __BuildDeleteCompanyRegistration(WorkflowExpression<string> registrationId = null)
         {

@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTableOutput> __BuildCreateTable(WorkflowExpression<string> tableName, WorkflowExpression<bool> failIfTableExists = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTablesOutput> __BuildListTables(WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> filter = null, WorkflowExpression<int> top = null)
         {
@@ -92,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTable(WorkflowExpression<string> tableName)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpsertEntity(WorkflowExpression<string> tableName, WorkflowExpression<object> entity, WorkflowExpression<bool> failIfEntityExists = null, WorkflowExpression<UpsertEntityInputUpdateModeType> updateMode = null)
         {
@@ -156,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateEntity(WorkflowExpression<string> tableName, WorkflowExpression<object> entity, WorkflowExpression<UpdateEntityInputUpdateModeType> updateMode = null, WorkflowExpression<string> ifMatch = null)
         {
@@ -195,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEntity(WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> ifMatch = null)
         {
@@ -230,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntityOutput> __BuildGetEntity(WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string[]> select = null)
         {
@@ -265,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryEntitiesOutput> __BuildQueryEntities(WorkflowExpression<string> tableName, WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> filter = null, WorkflowExpression<string[]> select = null, WorkflowExpression<int> top = null)
         {

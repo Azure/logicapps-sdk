@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaifoundryinference")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowExpression<string> apiVersion = null, WorkflowExpression<bodymessagesInputItem[]> bodymessages = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<string> bodymodel = null)
         {

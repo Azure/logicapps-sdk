@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> __BuildLibrebormeSearchCompany(WorkflowExpression<string> query, WorkflowExpression<string> page = null, WorkflowExpression<string> province = null)
         {

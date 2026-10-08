@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IssueResponse> __BuildCreateIssue(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> bodyissueTitle, WorkflowExpression<bodyissueTypeInput> bodyissueType, WorkflowExpression<bodypriorityInput> bodypriority, WorkflowExpression<string> bodycontentdescription = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycomponentcomponent = null, WorkflowExpression<string> bodymilestonemilestone = null, WorkflowExpression<string> bodyversionversion = null)
         {
@@ -123,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IssueResponse> __BuildGetIssueById(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> issueId)
         {
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApprovePullRequestResponse> __BuildApprovePullRequest(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> pullrequestId)
         {
@@ -169,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> __BuildDeclinePullRequest(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> pullrequestId)
         {
@@ -192,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> __BuildMergePullRequest(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> pullrequestId)
         {
@@ -215,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserResponse> __BuildGetUserById(WorkflowExpression<string> userId)
         {

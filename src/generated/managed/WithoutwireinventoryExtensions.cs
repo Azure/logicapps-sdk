@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWorkOrdersResponseItem[]> __BuildGetWorkOrders(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUpdateWorkOrderResponse> __BuildCreateUpdateWorkOrder(WorkflowExpression<bodyInputItem[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteOrderResponse> __BuildDeleteOrder(WorkflowExpression<bodyInputItem2[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetOrderCompleteResponse> __BuildSetOrderComplete(WorkflowExpression<bodyInputItem22[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -148,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetOrderStatusResponse> __BuildSetOrderStatus(WorkflowExpression<bodyInputItem222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -176,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAssignOrder(WorkflowExpression<bodyInputItem2222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInventoryResponseItem[]> __BuildGetInventory(WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> binNumber = null, WorkflowExpression<string> allocationSetName = null, WorkflowExpression<string> warehouseName = null, WorkflowExpression<string> coreValue = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -245,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInventoryRequestResponse> __BuildCreateInventoryRequest(WorkflowExpression<bodyInputItem22222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -273,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInventoryAdjustmentResponse> __BuildCreateInventoryAdjustment(WorkflowExpression<bodyInputItem222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -301,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteInboundRequestResponse> __BuildDeleteInboundRequest(WorkflowExpression<bodyInputItem2222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -331,7 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInboundRequestResponse> __BuildCreateInboundRequest(WorkflowExpression<bodyInputItem22222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -359,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateSite(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem222222222[]> body = null)
         {
@@ -385,7 +373,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateItemResponse> __BuildCreateItem(WorkflowExpression<bodyInputItem2222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -413,7 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInboundRequestResponseItem[]> __BuildGetInboundRequest(WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<pOStatusInput> pOStatus = null, WorkflowExpression<lineReceiptStatusInput> lineReceiptStatus = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> pONumber = null, WorkflowExpression<string> pOType = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -460,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InboundCompleteResponse> __BuildInboundComplete(WorkflowExpression<bodyInputItem22[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -488,7 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateLocationResponse> __BuildCreateLocation(WorkflowExpression<bodyInputItem22222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -516,7 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReceiptCompleteResponse> __BuildReceiptComplete(WorkflowExpression<bodyInputItem222222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -544,7 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSalesOrdersResponseItem[]> __BuildGetSalesOrders(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -588,7 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUpdateSalesOrderResponse> __BuildCreateUpdateSalesOrder(WorkflowExpression<bodyInputItem2222222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -616,7 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConsumeInventory(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem22222222222222[]> body = null)
         {
@@ -642,7 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBarcodeInfoResponse> __BuildGetBarcodeInfo(WorkflowExpression<string> barcode, WorkflowExpression<string> userName, WorkflowExpression<string> warehouse)
         {
@@ -668,7 +647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[]> __BuildSingleScanInventoryLookup(WorkflowExpression<string> barcode, WorkflowExpression<string> userName, WorkflowExpression<string> warehouse)
         {
@@ -694,7 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTransferOrdersResponseItem[]> __BuildGetTransferOrders(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -738,7 +715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUpdateTransferOrderResponse> __BuildCreateUpdateTransferOrder(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem222222222222222[]> body = null)
         {
@@ -764,7 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPurchaseOrderResponseItem[]> __BuildGetPurchaseOrder(WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<pOStatusInput> pOStatus = null, WorkflowExpression<lineReceiptStatusInput> lineReceiptStatus = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> pONumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -808,7 +783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePurchaseOrderResponse> __BuildCreatePurchaseOrder(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem2222222222222222[]> body = null)
         {
@@ -834,7 +808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetManufacturingOrderResponseItem[]> __BuildGetManufacturingOrder(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {
@@ -878,7 +851,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse> __BuildCreateUpdateManufacturingOrder(WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null, WorkflowExpression<bodyInputItem22222222222222222[]> body = null)
         {
@@ -906,7 +878,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInventoryAggregateResponseItem[]> __BuildGetInventoryAggregate(WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> warehouseName = null, WorkflowExpression<string> allocationSetName = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
         {

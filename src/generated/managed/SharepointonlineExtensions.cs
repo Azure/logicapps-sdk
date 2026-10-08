@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetAllTables(WorkflowExpression<string> dataset)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApproveHubSiteJoinResponse> __BuildApproveHubSiteJoin(WorkflowExpression<string> dataset, WorkflowExpression<string> joiningSiteId)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancelHubSiteJoinApproval(WorkflowExpression<string> dataset, WorkflowExpression<string> approvalCorrelationId = null)
         {
@@ -86,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SharingLinkPermission> __BuildCreateSharingLink(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> permissionlinkType, WorkflowExpression<string> permissionlinkScope, WorkflowExpression<string> permissionlinkExpiration = null)
         {
@@ -129,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCopyFile(WorkflowExpression<string> dataset, WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -159,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildCopyFileAsync(WorkflowExpression<string> dataset, WorkflowExpression<string> parametersfileToCopy, WorkflowExpression<string> parametersdestinationSiteAddress, WorkflowExpression<string> parametersdestinationFolder, WorkflowExpression<int> parametersifAnotherFileIsAlreadyThere)
         {
@@ -199,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildCopyFolderAsync(WorkflowExpression<string> dataset, WorkflowExpression<string> parametersfolderToCopy, WorkflowExpression<string> parametersdestinationSiteAddress, WorkflowExpression<string> parametersdestinationFolder, WorkflowExpression<int> parametersifAnotherFolderIsAlreadyThere)
         {
@@ -239,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildCreateFile(WorkflowExpression<string> dataset, WorkflowExpression<string> folderPath, WorkflowExpression<string> name, WorkflowExpression<string> body = null)
         {
@@ -267,7 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildGetFileMetadata(WorkflowExpression<string> dataset, WorkflowExpression<string> id)
         {
@@ -289,7 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadataResponse> __BuildUpdateFile(WorkflowExpression<string> dataset, WorkflowExpression<string> id, WorkflowExpression<string> body = null)
         {
@@ -313,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFile(WorkflowExpression<string> dataset, WorkflowExpression<string> id)
         {
@@ -335,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContent(WorkflowExpression<string> dataset, WorkflowExpression<string> id, WorkflowExpression<bool> inferContentType = null)
         {
@@ -361,7 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildListRootFolder(WorkflowExpression<string> dataset)
         {
@@ -382,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildListFolder(WorkflowExpression<string> dataset, WorkflowExpression<string> id)
         {
@@ -404,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildGetFileMetadataByPath(WorkflowExpression<string> dataset, WorkflowExpression<string> path)
         {
@@ -428,7 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContentByPath(WorkflowExpression<string> dataset, WorkflowExpression<string> path, WorkflowExpression<bool> inferContentType = null)
         {
@@ -456,7 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildGetFolderMetadata(WorkflowExpression<string> dataset, WorkflowExpression<string> id)
         {
@@ -479,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildGetFolderMetadataByPath(WorkflowExpression<string> dataset, WorkflowExpression<string> path)
         {
@@ -503,7 +485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHttpRequest(WorkflowExpression<string> dataset, WorkflowExpression<parametersmethodInput> parametersmethod, WorkflowExpression<string> parametersuri, WorkflowExpression<string> parametersbody = null)
         {
@@ -552,7 +533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildJoinHubSite(WorkflowExpression<string> dataset, WorkflowExpression<string> hubSiteId, WorkflowExpression<string> approvalToken = null, WorkflowExpression<string> approvalCorrelationId = null)
         {
@@ -581,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildMoveFileAsync(WorkflowExpression<string> dataset, WorkflowExpression<string> parametersfileToMove, WorkflowExpression<string> parametersdestinationSiteAddress, WorkflowExpression<string> parametersdestinationFolder, WorkflowExpression<int> parametersifAnotherFileIsAlreadyThere)
         {
@@ -621,7 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildMoveFolderAsync(WorkflowExpression<string> dataset, WorkflowExpression<string> parametersfolderToMove, WorkflowExpression<string> parametersdestinationSiteAddress, WorkflowExpression<string> parametersdestinationFolder, WorkflowExpression<int> parametersifAnotherFolderIsAlreadyThere)
         {
@@ -661,7 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNotifyHubSiteJoinApprovalStarted(WorkflowExpression<string> dataset, WorkflowExpression<string> approvalCorrelationId = null)
         {
@@ -685,7 +662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> dataset)
         {
@@ -706,7 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateNewDocumentSet(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> parametersdocumentSetPath, WorkflowExpression<string> parameterscontentTypeId, WorkflowExpression<object> parametersdynamicProperties = null)
         {
@@ -748,7 +723,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateNewFolder(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> parametersfolderPath, WorkflowExpression<string> view = null)
         {
@@ -783,7 +757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPListExpandedUser> __BuildSearchForUser(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> entityId, WorkflowExpression<string> searchValue, WorkflowExpression<string> view = null)
         {
@@ -811,7 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetFileItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> viewScopeOption = null, WorkflowExpression<string> view = null)
         {
@@ -851,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> viewScopeOption = null, WorkflowExpression<string> view = null)
         {
@@ -891,7 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<object> item = null, WorkflowExpression<string> view = null)
         {
@@ -918,7 +888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> view = null)
         {
@@ -944,7 +913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id)
         {
@@ -967,7 +935,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<object> item = null, WorkflowExpression<string> view = null)
         {
@@ -995,7 +962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApprovalData> __BuildCreateApprovalRequest(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<int> approvalType, WorkflowExpression<object> approvalSchema = null)
         {
@@ -1022,7 +988,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItemChanges(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> since, WorkflowExpression<string> until = null, WorkflowExpression<bool> includeDrafts = null, WorkflowExpression<string> view = null)
         {
@@ -1057,7 +1022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCheckInFile(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> parametercomments, WorkflowExpression<int> parametercheckInType)
         {
@@ -1093,7 +1057,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCheckOutFile(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id)
         {
@@ -1116,7 +1079,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDiscardFileCheckOut(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id)
         {
@@ -1139,7 +1101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildGetFileItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> view = null)
         {
@@ -1165,7 +1126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGrantAccess(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> parameterrecipients, WorkflowExpression<string> parameterroles, WorkflowExpression<string> parametermessage = null, WorkflowExpression<bool> parameternotifyRecipients = null)
         {
@@ -1215,7 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchFileItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<object> item = null, WorkflowExpression<string> view = null)
         {
@@ -1243,7 +1202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildPatchFileItemWithPredictedValues(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<string> parametersmodelId = null, WorkflowExpression<string> parameterspredictResult = null)
         {
@@ -1287,7 +1245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetApprovalStatusOutput> __BuildSetApprovalStatus(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id, WorkflowExpression<approvalActionInput> approvalAction, WorkflowExpression<string> comments = null, WorkflowExpression<string> entityTag = null)
         {
@@ -1320,7 +1277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnshareItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> id)
         {
@@ -1343,7 +1299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPListItemAttachment[]> __BuildGetItemAttachments(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> itemId)
         {
@@ -1366,7 +1321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPListItemAttachment> __BuildCreateAttachment(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> itemId, WorkflowExpression<string> displayName, WorkflowExpression<string> body = null)
         {
@@ -1393,7 +1347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAttachment(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> itemId, WorkflowExpression<string> attachmentId)
         {
@@ -1417,7 +1370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetAttachmentContent(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<int> itemId, WorkflowExpression<string> attachmentId)
         {
@@ -1441,7 +1393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildCreateContentAssemblyDocument(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> template, WorkflowExpression<object> item = null, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> fileName = null, WorkflowExpression<string> view = null)
         {
@@ -1475,7 +1426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Table[]> __BuildGetTableViews(WorkflowExpression<string> dataset, WorkflowExpression<string> table)
         {
@@ -1497,7 +1447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPBlobMetadataResponse> __BuildCreateAgreementsSolutionDocument(WorkflowExpression<string> dataset, WorkflowExpression<string> template, WorkflowExpression<object> item = null, WorkflowExpression<string> documentName = null, WorkflowExpression<string> table = null, WorkflowExpression<string> view = null)
         {
@@ -1530,7 +1479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildExtractFolder(WorkflowExpression<string> dataset, WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {

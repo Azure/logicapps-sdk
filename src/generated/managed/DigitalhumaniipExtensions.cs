@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnterpriseGetResponse> __BuildEnterpriseGet(WorkflowExpression<string> id)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectGetAResponse> __BuildProjectGetA(WorkflowExpression<string> id)
         {
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreePlantResponse> __BuildTreePlant(WorkflowExpression<int> bodytreeCount = null, WorkflowExpression<string> bodyenterpriseId = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<string> bodyuser = null)
         {
@@ -124,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreeCountResponse> __BuildTreeCount(WorkflowExpression<string> enterpriseId = null, WorkflowExpression<string> user = null)
         {
@@ -150,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreeDetailsResponse> __BuildTreeDetails(WorkflowExpression<string> uuidOfTreePlanted)
         {
@@ -171,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreeCountMonthResponse> __BuildTreeCountMonth(WorkflowExpression<string> id, WorkflowExpression<string> yYYYMM)
         {
@@ -193,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreeCountDatesResponse> __BuildTreeCountDates(WorkflowExpression<string> id, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate)
         {

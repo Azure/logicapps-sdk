@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildGetFileMetadata(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildUpdateFile(WorkflowExpression<string> id, WorkflowExpression<string> body = null)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFile(WorkflowExpression<string> id)
         {
@@ -83,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildGetFileMetadataByPath(WorkflowExpression<string> path)
         {
@@ -105,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContentByPath(WorkflowExpression<string> path, WorkflowExpression<bool> inferContentType = null)
         {
@@ -131,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContent(WorkflowExpression<string> id, WorkflowExpression<bool> inferContentType = null)
         {
@@ -156,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCreateFile(WorkflowExpression<string> folderPath, WorkflowExpression<string> name, WorkflowExpression<string> body = null)
         {
@@ -182,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCopyFile(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -210,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCopyDriveFile(WorkflowExpression<string> id, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -237,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildCopyDriveFileByPath(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -265,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildMoveFile(WorkflowExpression<string> id, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -292,7 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata> __BuildMoveFileByPath(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -320,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertFile(WorkflowExpression<string> id, WorkflowExpression<typeInput> type = null)
         {
@@ -345,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertFileByPath(WorkflowExpression<string> path, WorkflowExpression<typeInput> type = null)
         {
@@ -371,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Thumbnail> __BuildGetFileThumbnail(WorkflowExpression<string> id, WorkflowExpression<sizeInput> size)
         {
@@ -403,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildFindFiles(WorkflowExpression<string> query, WorkflowExpression<string> id, WorkflowExpression<findModeInput> findMode, WorkflowExpression<int> maxFileCount = null)
         {
@@ -432,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildFindFilesByPath(WorkflowExpression<string> query, WorkflowExpression<string> path, WorkflowExpression<findModeInput> findMode, WorkflowExpression<int> maxFileCount = null)
         {
@@ -462,7 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SharingLink> __BuildCreateShareLink(WorkflowExpression<string> id, WorkflowExpression<typeInput> type, WorkflowExpression<scopeInput> scope = null)
         {
@@ -489,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SharingLink> __BuildCreateShareLinkByPath(WorkflowExpression<string> path, WorkflowExpression<typeInput> type, WorkflowExpression<scopeInput> scope = null)
         {
@@ -517,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadata[]> __BuildExtractFolder(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
         {
@@ -545,7 +525,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobMetadataPage> __BuildListFolder(WorkflowExpression<string> id)
         {

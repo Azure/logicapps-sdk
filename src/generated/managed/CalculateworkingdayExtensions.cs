@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CombinedResponse> __BuildCombined(WorkflowExpression<string> date, WorkflowExpression<string> workingDays, WorkflowExpression<int> xWorkingDays, WorkflowExpression<string> nonWorkingDays = null, WorkflowExpression<string> country = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BasicNextWorkingDayResponse> __BuildBasicNextWorkingDay(WorkflowExpression<string> date)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NextWorkingDayResponse> __BuildNextWorkingDay(WorkflowExpression<string> date, WorkflowExpression<string> workingDays, WorkflowExpression<int> xWorkingDays, WorkflowExpression<string> nonWorkingDays = null)
         {
@@ -105,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DateDifferenceCalculatorResponse> __BuildDateDifferenceCalculator(WorkflowExpression<string> workingDays, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> nonWorkingDays = null)
         {
@@ -135,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> __BuildFirstAndLastWorkingDayOfMonth(WorkflowExpression<string> date, WorkflowExpression<string> workingDays)
         {
@@ -160,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsTodayAWorkingDayResponse> __BuildIsTodayAWorkingDay(WorkflowExpression<string> date, WorkflowExpression<string> workingDays)
         {
@@ -185,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DateInXWorkingDaysResponse> __BuildDateInXWorkingDays(WorkflowExpression<string> date, WorkflowExpression<string> workingDays, WorkflowExpression<int> xWorkingDays)
         {

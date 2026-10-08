@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFile(WorkflowExpression<string> output = null, WorkflowExpression<string> bodysummary = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyorganizerEmail = null, WorkflowExpression<string[]> bodyattendeesEmails = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<string> bodymeetingDate = null, WorkflowExpression<bool> bodyrecurring = null, WorkflowExpression<bodyrecurrencefrequencyInput> bodyrecurrencefrequency = null, WorkflowExpression<int> bodyrecurrencecount = null)
         {
@@ -140,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<URLPostResponse> __BuildURL(WorkflowExpression<string> output = null, WorkflowExpression<string> bodysummary = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyorganizerEmail = null, WorkflowExpression<string[]> bodyattendeesEmails = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<string> bodymeetingDate = null, WorkflowExpression<bool> bodyrecurring = null, WorkflowExpression<bodyrecurrencefrequencyInput> bodyrecurrencefrequency = null, WorkflowExpression<int> bodyrecurrencecount = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> __BuildAddGlobalSuppression(WorkflowExpression<string[]> recipientEmailsrecipientEmail = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteGlobalSuppression(WorkflowExpression<string> email)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildAddRecipientToList(WorkflowExpression<string> listId, WorkflowExpression<string> recipientId)
         {
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Bounce[]> __BuildGetBounce(WorkflowExpression<string> email)
         {
@@ -116,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteBounce(WorkflowExpression<string> email)
         {
@@ -137,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailIsUnsubscribedResponse> __BuildCheckEmailIsInUnsubscribesList(WorkflowExpression<string> email)
         {
@@ -158,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendEmail(WorkflowExpression<string> requestfrom, WorkflowExpression<string> requestto, WorkflowExpression<string> requestsubject, WorkflowExpression<string> requestemailBody, WorkflowExpression<EmailAttachment[]> requestattachment = null, WorkflowExpression<string> requestfromName = null, WorkflowExpression<string> requesttoNames = null, WorkflowExpression<string> requestcC = null, WorkflowExpression<string> requestcCNames = null, WorkflowExpression<string> requestbcc = null, WorkflowExpression<string> requestbCCNames = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocGroupEmbeddedInvites(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse> __BuildCreateDocGroupEmbeddedInvites(WorkflowExpression<string> id, WorkflowExpression<inviteinvitesInputItem[]> inviteinvites = null, WorkflowExpression<inviteadvancedInputItem[]> inviteadvanced = null, WorkflowExpression<inviteqESSignatureInput> inviteqESSignature = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse> __BuildGenerateDocGroupEmbeddedInviteLink(WorkflowExpression<string> id, WorkflowExpression<string> inviteId, WorkflowExpression<string> inviteemail, WorkflowExpression<int> invitelinkExpiration = null, WorkflowExpression<int> invitesessionExpiration = null)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEmbeddedInvites(WorkflowExpression<string> id)
         {
@@ -155,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> __BuildCreateEmbeddedInvites(WorkflowExpression<string> id, WorkflowExpression<inviteinvitesInputItem2[]> inviteinvites = null, WorkflowExpression<string> invitenameFormula = null, WorkflowExpression<inviteinviteAdvancedParametersInputItem[]> inviteinviteAdvancedParameters = null, WorkflowExpression<inviteqESSignatureInput> inviteqESSignature = null)
         {
@@ -211,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse> __BuildGenerateEmbeddedInviteLink(WorkflowExpression<string> id, WorkflowExpression<string> fieldInviteId, WorkflowExpression<int> invitelinkExpiration = null, WorkflowExpression<int> invitesessionExpiration = null)
         {
@@ -254,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentGroupsResponse> __BuildGetListDocGroups(WorkflowExpression<bool> template, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -282,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse> __BuildCreateDocGroupFromFiles(WorkflowExpression<string> bodydocumentGroupName, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null)
         {
@@ -319,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentGroupProperties> __BuildGetDocumentGroup(WorkflowExpression<string> docGroupId, WorkflowExpression<bool> template)
         {
@@ -342,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFromTemplateGroupResponse> __BuildCreateFromTemplateGroup(WorkflowExpression<string> docGroupId, WorkflowExpression<string> bodydocumentGroupName = null)
         {
@@ -377,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateGroupFieldValuesResponse> __BuildUpdateGroupFieldValues(WorkflowExpression<string> templateGroupId, WorkflowExpression<string> docGroupId, WorkflowExpression<object> fields = null)
         {
@@ -402,7 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateGroupSmartFieldValuesResponse> __BuildUpdateGroupSmartFieldValues(WorkflowExpression<string> templateGroupId, WorkflowExpression<string> docGroupId, WorkflowExpression<object> fields = null)
         {
@@ -427,7 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentProperties[]> __BuildGetListDoc(WorkflowExpression<bool> template = null, WorkflowExpression<bool> includeDefaultTemplate = null)
         {
@@ -454,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadDocumentResponse> __BuildUploadDocument(WorkflowExpression<object> file)
         {
@@ -475,7 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentProperties> __BuildGetDoc(WorkflowExpression<bool> template, WorkflowExpression<string> docId)
         {
@@ -498,7 +483,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteDocResponse> __BuildDeleteDoc(WorkflowExpression<string> docId)
         {
@@ -519,7 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFromTemplateResponse> __BuildCreateFromTemplate(WorkflowExpression<string> docId, WorkflowExpression<string> bodydocumentName = null)
         {
@@ -554,7 +537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSigningLinkResponse> __BuildCreateSigningLink(WorkflowExpression<string> docId, WorkflowExpression<object> fields = null)
         {
@@ -577,7 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendInvite(WorkflowExpression<bool> template, WorkflowExpression<string> templateId, WorkflowExpression<object> body = null)
         {
@@ -602,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendGroupInvite(WorkflowExpression<bool> template, WorkflowExpression<string> templateGroupId, WorkflowExpression<object> body = null)
         {
@@ -627,7 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendUserDefinedInvite(WorkflowExpression<string> docId, WorkflowExpression<bodyroleInputItem[]> bodyrole = null, WorkflowExpression<string> bodycC = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodyemailAllPartiesOnCompletion = null)
         {
@@ -690,7 +669,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCancelInvite(WorkflowExpression<string> docId)
         {
@@ -711,7 +689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadDocument(WorkflowExpression<string> docId, WorkflowExpression<string> mode = null)
         {
@@ -736,7 +713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPrefillSmartFields(WorkflowExpression<string> templateId, WorkflowExpression<string> docId, WorkflowExpression<object> fields = null)
         {
@@ -761,7 +737,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInviteStatusResponse> __BuildGetInviteStatus(WorkflowExpression<string> id)
         {
@@ -782,7 +757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentGroupInviteStatusResponse> __BuildGetDocumentGroupInviteStatus(WorkflowExpression<string> id)
         {
@@ -803,7 +777,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse> __BuildReplaceRecipientsInDocumentInvite(WorkflowExpression<string> id, WorkflowExpression<replaceToreplaceToInputItem[]> replaceToreplaceTo = null, WorkflowExpression<replaceToadvancedParametersInputItem[]> replaceToadvancedParameters = null)
         {
@@ -845,7 +818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> __BuildReplaceRecipientsInDocumentGroupInvite(WorkflowExpression<string> id, WorkflowExpression<string> inviteId, WorkflowExpression<string> replaceTostepID = null, WorkflowExpression<string> replaceTorecipientToReplace = null, WorkflowExpression<string> replaceTonewRecipient = null, WorkflowExpression<int> replaceToexpirationDays = null, WorkflowExpression<int> replaceToreminder = null, WorkflowExpression<replaceToinviteActionAttributesInputItem[]> replaceToinviteActionAttributes = null)
         {
@@ -926,7 +898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse> __BuildCreateEmbeddedInviteSettingsLink(WorkflowExpression<string> id, WorkflowExpression<inviteSettingstypeInput> inviteSettingstype = null, WorkflowExpression<string> inviteSettingsredirectUri = null, WorkflowExpression<int> inviteSettingslinkExpiration = null, WorkflowExpression<inviteSettingsredirectTargetInput> inviteSettingsredirectTarget = null)
         {
@@ -992,7 +963,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse> __BuildCreateDocGroupEmbeddedInviteSettingsLink(WorkflowExpression<string> id, WorkflowExpression<inviteSettingstypeInput> inviteSettingstype = null, WorkflowExpression<string> inviteSettingsredirectUri = null, WorkflowExpression<int> inviteSettingslinkExpiration = null, WorkflowExpression<inviteSettingsredirectTargetInput> inviteSettingsredirectTarget = null)
         {
@@ -1068,7 +1038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InviteToSignAllOptionsResponse> __BuildInviteToSignAllOptions(WorkflowExpression<string> id, WorkflowExpression<invitesignersInputItem[]> invitesigners = null, WorkflowExpression<invitesignerAdvancedPropertiesInputItem[]> invitesignerAdvancedProperties = null, WorkflowExpression<inviteviewersInputItem[]> inviteviewers = null, WorkflowExpression<inviteviewerAdvancedPropertiesInputItem[]> inviteviewerAdvancedProperties = null, WorkflowExpression<inviteapproversInputItem[]> inviteapprovers = null, WorkflowExpression<inviteapproverAdvancedPropertiesInputItem[]> inviteapproverAdvancedProperties = null, WorkflowExpression<string> invitefrom = null, WorkflowExpression<inviteemailGroupsInputItem[]> inviteemailGroups = null, WorkflowExpression<invitecCInputItem[]> invitecC = null, WorkflowExpression<invitecCStepsInputItem[]> invitecCSteps = null, WorkflowExpression<string> invitesubject = null, WorkflowExpression<string> invitemessage = null, WorkflowExpression<string> invitecCSubject = null, WorkflowExpression<string> invitecCMessage = null, WorkflowExpression<inviteqESSignatureInput> inviteqESSignature = null)
         {
@@ -1201,7 +1170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse> __BuildInviteToSignDocGroupAllOptions(WorkflowExpression<string> id, WorkflowExpression<inviteinviteStepsInputItem[]> inviteinviteSteps = null, WorkflowExpression<inviteinviteEmailsInputItem[]> inviteinviteEmails = null, WorkflowExpression<inviteemailGroupsInputItem2[]> inviteemailGroups = null, WorkflowExpression<invitecompletionEmailsInputItem[]> invitecompletionEmails = null, WorkflowExpression<bool> invitesignAsMerged = null, WorkflowExpression<int> inviteclientTimestamp = null, WorkflowExpression<invitecCInputItem[]> invitecC = null, WorkflowExpression<inviteqESSignatureInput> inviteqESSignature = null)
         {
@@ -1285,7 +1253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetDocFields(WorkflowExpression<string> templateId, WorkflowExpression<string> docId)
         {
@@ -1308,7 +1275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateFieldValuesV2Response> __BuildUpdateFieldValues(WorkflowExpression<string> templateId, WorkflowExpression<string> docId, WorkflowExpression<object> fields = null)
         {

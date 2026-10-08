@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindResponse> __BuildFind(WorkflowExpression<string> query, WorkflowExpression<string> format = null, WorkflowExpression<int> maxresults = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> dataset = null, WorkflowExpression<string> lr = null, WorkflowExpression<double> minmatch = null, WorkflowExpression<int> matchprecision = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostcodeResponse> __BuildPostcode(WorkflowExpression<string> postcode, WorkflowExpression<string> format = null, WorkflowExpression<int> maxresults = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> dataset = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null)
         {
@@ -111,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UPRNResponse> __BuildUPRN(WorkflowExpression<int> uprn, WorkflowExpression<string> format = null, WorkflowExpression<string> dataset = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null)
         {
@@ -148,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NearestResponse> __BuildNearest(WorkflowExpression<string> point, WorkflowExpression<int> radius = null, WorkflowExpression<string> format = null, WorkflowExpression<string> dataset = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null, WorkflowExpression<string> srs = null)
         {
@@ -191,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BBoxResponse> __BuildBBox(WorkflowExpression<string> bbox, WorkflowExpression<string> format = null, WorkflowExpression<int> maxresults = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> dataset = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null, WorkflowExpression<string> srs = null)
         {
@@ -237,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RadiusResponse> __BuildRadius(WorkflowExpression<string> point, WorkflowExpression<int> radius = null, WorkflowExpression<string> format = null, WorkflowExpression<int> maxresults = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> dataset = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null, WorkflowExpression<string> srs = null)
         {
@@ -287,7 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PolygonResponse> __BuildPolygon(WorkflowExpression<string> contentType, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodygeometry, WorkflowExpression<int> referencepoint = null, WorkflowExpression<int> maxresults = null, WorkflowExpression<string> dataset = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> fq = null, WorkflowExpression<string> outputSrs = null, WorkflowExpression<string> srs = null)
         {

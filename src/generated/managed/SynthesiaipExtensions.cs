@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideoListResponse> __BuildVideoList(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideoCreateResponse> __BuildVideoCreate(WorkflowExpression<bodyinputInputItem[]> bodyinput, WorkflowExpression<bool> bodytest = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyvisibility = null, WorkflowExpression<string> bodyctaSettingslabel = null, WorkflowExpression<string> bodyctaSettingsurl = null, WorkflowExpression<string> bodycallbackId = null, WorkflowExpression<string> bodysoundtrack = null)
         {
@@ -138,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideoStatusResponse> __BuildVideoStatus(WorkflowExpression<string> videoId)
         {
@@ -159,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoDelete(WorkflowExpression<string> videoId)
         {
@@ -180,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideoPatchResponse> __BuildVideoPatch(WorkflowExpression<string> videoId, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyctaSettingslabel = null, WorkflowExpression<string> bodyctaSettingsurl = null, WorkflowExpression<string> bodyvisibility = null)
         {
@@ -251,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateListResponse> __BuildTemplateList(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -277,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowExpression<string> templateId)
         {
@@ -298,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideoCreateTemplateResponse> __BuildVideoCreateTemplate(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyvisibility = null, WorkflowExpression<string> bodytemplateDataname = null, WorkflowExpression<bool> bodytest = null, WorkflowExpression<string> bodycallbackId = null)
         {

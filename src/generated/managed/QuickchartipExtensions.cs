@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChartPostResponse> __BuildChart(WorkflowExpression<string> bodychart, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<string> bodydevicePixelRatio = null, WorkflowExpression<string> bodybackgroundColor = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<bodyencodingInput> bodyencoding = null, WorkflowExpression<string> bodyversion = null)
         {
@@ -117,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChartURLResponse> __BuildChartURL(WorkflowExpression<string> bodychart, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<string> bodydevicePixelRatio = null, WorkflowExpression<string> bodybackgroundColor = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<bodyencodingInput> bodyencoding = null, WorkflowExpression<string> bodyversion = null)
         {
@@ -216,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChartTemplateResponse> __BuildChartTemplate(WorkflowExpression<string> chartId, WorkflowExpression<string> title = null, WorkflowExpression<string> labels = null, WorkflowExpression<string> data1 = null, WorkflowExpression<string> data2 = null)
         {
@@ -249,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRCodeResponse> __BuildQRCode(WorkflowExpression<string> text = null, WorkflowExpression<int> margin = null, WorkflowExpression<int> size = null, WorkflowExpression<string> dark = null, WorkflowExpression<string> light = null, WorkflowExpression<ecLevelInput> ecLevel = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> centerImageUrl = null, WorkflowExpression<double> centerImageSizeRatio = null, WorkflowExpression<int> centerImageWidth = null, WorkflowExpression<int> centerImageHeight = null)
         {
@@ -308,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphVizResponse> __BuildGraphViz(WorkflowExpression<string> bodygraph, WorkflowExpression<bodylayoutInput> bodylayout = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null)
         {
@@ -386,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WordCloudResponse> __BuildWordCloud(WorkflowExpression<string> text = null, WorkflowExpression<int> width = null, WorkflowExpression<int> height = null, WorkflowExpression<string> backgroundColor = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> fontFamily = null, WorkflowExpression<string> loadGoogleFonts = null, WorkflowExpression<int> fontScale = null, WorkflowExpression<scaleInput> scale = null, WorkflowExpression<int> padding = null, WorkflowExpression<int> rotation = null, WorkflowExpression<int> maxNumWords = null, WorkflowExpression<int> minWordLength = null, WorkflowExpression<@caseInput> @case = null, WorkflowExpression<string> colors = null, WorkflowExpression<bool> removeStopwords = null, WorkflowExpression<string> language = null, WorkflowExpression<bool> useWordList = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FacilitiesResponse> __BuildGetFacilities(WorkflowExpression<string> facilityIds = null, WorkflowExpression<string> zip = null, WorkflowExpression<string> state = null, WorkflowExpression<double> lat = null, WorkflowExpression<double> @long = null, WorkflowExpression<double> radius = null, WorkflowExpression<string> bbox = null, WorkflowExpression<double> visn = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> services = null, WorkflowExpression<bool> mobile = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FacilityReadResponse> __BuildGetFacilityById(WorkflowExpression<string> facilityId)
         {
@@ -98,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetailedServicesResponse> __BuildGetFacilityServicesById(WorkflowExpression<string> facilityId, WorkflowExpression<string> serviceIds = null, WorkflowExpression<string> serviceType = null)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetailedServiceResponse> __BuildGetFacilityServiceById(WorkflowExpression<string> facilityId, WorkflowExpression<string> serviceId)
         {
@@ -147,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FacilitiesIdsResponse> __BuildGetFacilityIds(WorkflowExpression<typeInput> type = null)
         {
@@ -170,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NearbyResponse> __BuildGetNearbyFacilities(WorkflowExpression<double> lat, WorkflowExpression<double> @long, WorkflowExpression<int> driveTime = null, WorkflowExpression<string> services = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {

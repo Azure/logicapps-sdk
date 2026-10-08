@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRadarsResponse> __BuildGetRadars(WorkflowExpression<string> radarCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRadarResponse> __BuildGetRadar(WorkflowExpression<string> radarCode, WorkflowExpression<string> select = null)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNearbyRadarResponse> __BuildGetNearbyRadar(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<dataSetInput> dataSet = null)
         {
@@ -107,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRadarRainfallResponse> __BuildGetRadarRainfall(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<string> radarCode = null, WorkflowExpression<dataSetInput> dataSet = null, WorkflowExpression<string> select = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
         {
@@ -151,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRadarDailySummariesResponse> __BuildGetRadarDailySummaries(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<dataSetInput> dataSet = null, WorkflowExpression<string> select = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
         {
@@ -196,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> __BuildGetRadarMonthlySummaries(WorkflowExpression<string> startMonth, WorkflowExpression<string> endMonth, WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<dataSetInput> dataSet = null, WorkflowExpression<string> select = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
         {

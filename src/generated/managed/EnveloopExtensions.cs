@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<string> bodytemplate = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodytemplateVariablesInputItem[]> bodytemplateVariables = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowExpression<string> templateName)
         {

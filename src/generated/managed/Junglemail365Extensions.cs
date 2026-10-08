@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsEmailsResponse> __BuildEmailsGet(WorkflowExpression<string> requestJobId, WorkflowExpression<requestEmailTypeInput> requestEmailType)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildJobApprove(WorkflowExpression<string> requestsecret, WorkflowExpression<string> requestcomments = null)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsCreateJobResponse> __BuildJobCreate(WorkflowExpression<requestrecipientSourceInput> requestrecipientSource, WorkflowExpression<string> requestsendingAccount, WorkflowExpression<string> requestnewsletterTitle, WorkflowExpression<string> requestoffice365Groups = null, WorkflowExpression<string> requestattachmentContent = null, WorkflowExpression<string> requestattachmentName = null, WorkflowExpression<string> requestemailAddresses = null, WorkflowExpression<string> requestemailContent = null, WorkflowExpression<requestemailContentTypeInput> requestemailContentType = null, WorkflowExpression<string> requestemailSubject = null, WorkflowExpression<string> requestexchangeGroups = null, WorkflowExpression<requestwhenToSendTypeInput> requestwhenToSendType = null, WorkflowExpression<string> requestwhenToSend = null, WorkflowExpression<string> requestrecipientEmailField = null, WorkflowExpression<string> requestrecipientListURL = null, WorkflowExpression<string> requestrecipientFilterView = null, WorkflowExpression<bool> requestremoveDuplicates = null, WorkflowExpression<bool> requestsendReport = null, WorkflowExpression<string> requesttimeZone = null, WorkflowExpression<string> requesttemplate = null, WorkflowExpression<bool> requesttrackClicks = null, WorkflowExpression<bool> requesttrackOpens = null)
         {
@@ -308,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsJob> __BuildJobGet(WorkflowExpression<string> requestJobId)
         {
@@ -330,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsJobsResponse> __BuildJobGetAll(WorkflowExpression<string> requestDateFrom = null, WorkflowExpression<string> requestDateTo = null, WorkflowExpression<int> requestLimit = null)
         {
@@ -359,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsJobReport> __BuildJobGetReport(WorkflowExpression<string> requestJobId)
         {
@@ -381,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildJobReject(WorkflowExpression<string> requestsecret, WorkflowExpression<string> requestcomments = null)
         {
@@ -418,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsTrackerLogResponse> __BuildTrackerLogGet(WorkflowExpression<string> requestJobId, WorkflowExpression<requestDataTypeInput> requestDataType)
         {
@@ -442,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JsUnsubscribesResponse> __BuildUnsubscribesGet(WorkflowExpression<string> requestJobId = null)
         {

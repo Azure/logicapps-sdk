@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MobileB2BResponse> __BuildMobileB2B(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyproductName, WorkflowExpression<bodyproviderInput> bodyprovider, WorkflowExpression<bodytransferTypeInput> bodytransferType, WorkflowExpression<bodycurrencyCodeInput> bodycurrencyCode, WorkflowExpression<double> bodyamount, WorkflowExpression<string> bodydestinationChannel, WorkflowExpression<string> bodydestinationAccount)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchWalletBalanceResponse> __BuildFetchWalletBalance(WorkflowExpression<string> username)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WalletTransferResponse> __BuildWalletTransfer(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyproductName, WorkflowExpression<int> bodytargetProductCode, WorkflowExpression<bodycurrencyCodeInput> bodycurrencyCode, WorkflowExpression<double> bodyamount)
         {
@@ -149,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchWalletTransactionsResponse> __BuildFetchWalletTransactions(WorkflowExpression<string> username, WorkflowExpression<int> pageNumber, WorkflowExpression<int> count, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
         {
@@ -181,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TopUpStashResponse> __BuildTopUpStash(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyproductName, WorkflowExpression<bodycurrencyCodeInput> bodycurrencyCode, WorkflowExpression<double> bodyamount)
         {
@@ -228,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchProductTransactionsResponse> __BuildFetchProductTransactions(WorkflowExpression<string> username, WorkflowExpression<string> productName, WorkflowExpression<int> pageNumber, WorkflowExpression<int> count, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<categoryInput> category = null, WorkflowExpression<providerInput> provider = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<sourceInput> source = null, WorkflowExpression<destinationInput> destination = null, WorkflowExpression<string> providerChannel = null)
         {
@@ -280,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MobileCheckoutResponse> __BuildMobileCheckout(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyproductName, WorkflowExpression<string> bodyphoneNumber, WorkflowExpression<bodycurrencyCodeInput> bodycurrencyCode, WorkflowExpression<double> bodyamount, WorkflowExpression<string> bodyproviderChannel = null)
         {
@@ -337,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MobileB2CResponse> __BuildMobileB2C(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyproductName, WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients)
         {

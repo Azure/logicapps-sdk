@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AgentResponse> __BuildRunVisionAgent(WorkflowExpression<agentNameInput> agentName, WorkflowExpression<string> payloadinputFileB64, WorkflowExpression<string> payloadexpectedText = null, WorkflowExpression<string> payloadobjectType = null, WorkflowExpression<string[]> payloadexpectedObjects = null)
         {

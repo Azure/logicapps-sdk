@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendAlertRequest(WorkflowExpression<string> bodyalertText, WorkflowExpression<string> bodyalertTitle, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<bool> bodyisMandatory = null, WorkflowExpression<bool> bodysendSMS = null)
         {
@@ -120,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InternalContent> __BuildCreateInternalNews(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedInternalContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null, WorkflowExpression<bool> bodyareCommentsAuthorized = null, WorkflowExpression<bool> bodyshouldNotifyUsers = null, WorkflowExpression<bool> bodyisMustReadContent = null)
         {
@@ -251,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExternalContent> __BuildCreateExternalContent(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedExternalContentCreation[]> bodycontents, WorkflowExpression<string> bodycontentUrl, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null, WorkflowExpression<bool> bodyisShareable = null, WorkflowExpression<bool> bodyisOfficialContent = null, WorkflowExpression<bool> bodyareCommentsAuthorized = null, WorkflowExpression<bool> bodyshouldNotifyUsers = null, WorkflowExpression<bool> bodyisMustReadContent = null)
         {
@@ -399,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CtaSuggestContent> __BuildCtaSuggestContentCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedBaseCtaContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
@@ -513,7 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CtaInvitationContent> __BuildCtaInvitationContentCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedBaseCtaContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
@@ -627,7 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CtaMobileContent> __BuildCtaMobileContentCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedBaseCtaContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
@@ -741,7 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CtaEventContent> __BuildCtaEventCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedCtaEventContentCreation[]> bodycontents, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodylink = null, WorkflowExpression<int> bodyawardedBonus = null, WorkflowExpression<bool> bodyshouldDisplayTitle = null, WorkflowExpression<bool> bodyshouldDisplayButton = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
@@ -883,7 +876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAssignBadgeToUser(WorkflowExpression<string> username, WorkflowExpression<string> bodybadgeId, WorkflowExpression<int> bodylevel)
         {
@@ -917,7 +909,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAssignCustomActionToUser(WorkflowExpression<string> username, WorkflowExpression<bodycontentsInputItem[]> bodycontents, WorkflowExpression<bool> bodyisEngaging = null, WorkflowExpression<bool> bodyisInternal = null, WorkflowExpression<int> bodypoints = null)
         {
@@ -978,7 +969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> __BuildGetBadgeLevels(WorkflowExpression<string> badgeId)
         {
@@ -999,7 +989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByStream(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<object> media)
         {
@@ -1021,7 +1010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByUrl(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<string> mediaUrl)
         {
@@ -1043,7 +1031,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByStreamByFolder(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<string> folderId, WorkflowExpression<object> media)
         {
@@ -1066,7 +1053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByUrlByFolder(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<string> folderId, WorkflowExpression<string> mediaUrl)
         {
@@ -1089,7 +1075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFoldersResponse> __BuildGetMediaDriveFolders(WorkflowExpression<string> culture = null)
         {

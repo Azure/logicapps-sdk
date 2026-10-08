@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BooksGetResponseItem[]> __BuildBooksGet(WorkflowExpression<string> graphId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinksGetResponseItem[]> __BuildLinksGet(WorkflowExpression<string> graphId)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkPostResponseItem[]> __BuildLink(WorkflowExpression<string> graphId, WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyupdatedAt = null, WorkflowExpression<string[]> bodyhighlights = null)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DailyNotePutResponse> __BuildDailyNotePut(WorkflowExpression<string> graphId, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodylistName = null)
         {
@@ -185,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotePostResponse> __BuildNote(WorkflowExpression<string> graphId, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodycontentMarkdown, WorkflowExpression<bool> bodypinned = null)
         {

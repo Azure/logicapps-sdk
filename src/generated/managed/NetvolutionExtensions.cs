@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetOrder(WorkflowExpression<string> contactId, WorkflowExpression<string> since)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetContactIDFromSuppressionList(WorkflowExpression<string> contactId, WorkflowExpression<string> listName)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutContactIDToSuppresionList(WorkflowExpression<string> contactId, WorkflowExpression<string> listName, WorkflowExpression<string> timeSpan)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendMail(WorkflowExpression<string> cdpContactId = null, WorkflowExpression<string> languageId = null, WorkflowExpression<string> emailTemplate = null)
         {
@@ -128,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckEventResponse> __BuildCheckEvent(WorkflowExpression<eventNameInput> eventName = null, WorkflowExpression<string> contactId = null, WorkflowExpression<string> since = null)
         {
@@ -157,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWishListResponse> __BuildGetWishList(WorkflowExpression<string> since)
         {

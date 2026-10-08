@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCorptaxEntityViews(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodyqualifiedviewName = null)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDataExchangeLookup(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<lookupTypeInput> lookupType, WorkflowExpression<bool> bodydetails, WorkflowExpression<string> bodylookupName = null)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEntityList(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<string> bodyperiodName = null, WorkflowExpression<string> bodyviewName = null)
         {
@@ -151,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildExportData(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodypackageName, WorkflowExpression<string> bodynamedContext = null, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<string> bodyinternationalTaxName = null, WorkflowExpression<string> bodyprovisionName = null)
         {
@@ -234,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildExportDataWithDataSource(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodynamedContext = null, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<string> bodyinternationalTaxName = null, WorkflowExpression<string> bodyprovisionName = null)
         {
@@ -317,7 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TriggerCartResponse> __BuildTriggerCart(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodycartName, WorkflowExpression<bodytypeOfActionInput> bodytypeOfAction, WorkflowExpression<string> bodynamedContext = null, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<string> bodyledgerName = null, WorkflowExpression<string> bodyisoCurrencyCode = null)
         {
@@ -403,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TriggerReturnResponse> __BuildTriggerReturn(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodyreturnName, WorkflowExpression<string> bodytypeOfAction)
         {
@@ -440,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DownloadContentsResponseItem[]> __BuildDownloadContents(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<typeOfActionInput> typeOfAction, WorkflowExpression<string> bodyreturnOrCartName)
         {
@@ -476,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckTriggerStatusResponse> __BuildCheckTriggerStatus(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<typeOfActionInput> typeOfAction, WorkflowExpression<string> bodyreturnOrCartName)
         {
@@ -512,7 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImportDataResponse> __BuildImportData(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodypackageName, WorkflowExpression<string> bodyfileContents, WorkflowExpression<string> bodyfileName, WorkflowExpression<bodyimportTransactionTypeInput> bodyimportTransactionType, WorkflowExpression<string> bodychartOfAccountsName, WorkflowExpression<bool> bodyrecognizeFunctionalCurrency, WorkflowExpression<bool> bodystopOnLookupErrors, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<bodyledgerAmountTypeInput> bodyledgerAmountType = null, WorkflowExpression<string> bodyfunctionalCurrencyValue = null)
         {
@@ -606,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCorptaxEfileGroups(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> filingGroup = null)
         {
@@ -633,7 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCorptaxEfilePackage(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> filingGroup, WorkflowExpression<bool> bodyefilePackageDetails, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodyform = null)
         {
@@ -683,7 +671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetJobHistoryResponse> __BuildGetJobHistory(WorkflowExpression<string> environmentName, WorkflowExpression<string> bodyjobToken, WorkflowExpression<bodyreportInput> bodyreport = null, WorkflowExpression<bodyreportFormatInput> bodyreportFormat = null)
         {
@@ -749,7 +736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetGmtDiagnostics(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodygmtSetting, WorkflowExpression<string> bodygmtDiagnosticName)
         {
@@ -786,7 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReturnCalculationDetails(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodyreturnName)
         {

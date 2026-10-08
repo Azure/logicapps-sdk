@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScanResponse> __BuildLaunchScan(WorkflowExpression<string> bodyartifact, WorkflowExpression<string[]> bodyscanOn = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScanResult> __BuildRetrieveScan(WorkflowExpression<string> scanID)
         {

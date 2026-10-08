@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HolidaysGetResponse> __BuildHolidaysGet(WorkflowExpression<string> country, WorkflowExpression<int> year, WorkflowExpression<int> month = null, WorkflowExpression<int> day = null, WorkflowExpression<string> language = null, WorkflowExpression<bool> before = null, WorkflowExpression<bool> after = null, WorkflowExpression<bool> @public = null, WorkflowExpression<string> timezone = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CountriesGetResponseItem[]> __BuildCountriesGet(WorkflowExpression<string> code = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPersonResponse> __BuildGetPerson(WorkflowExpression<string> searchEmail)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePersonResponse> __BuildCreatePerson(WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodysecondName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodymobile, WorkflowExpression<string> bodydateOfBirth, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodytown = null, WorkflowExpression<string> bodypostCode = null, WorkflowExpression<string> bodycountyName = null, WorkflowExpression<string> bodycountryName = null, WorkflowExpression<string> bodytitleName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodyhomeEmail = null, WorkflowExpression<string> bodyhomeTelephone = null, WorkflowExpression<string> bodytag = null, WorkflowExpression<string> bodymanagerEmail = null, WorkflowExpression<string> bodydepartmentName = null, WorkflowExpression<string> bodyroleName = null, WorkflowExpression<string> bodyknownAs = null, WorkflowExpression<string> bodyavatarURL = null, WorkflowExpression<int> bodytitleId = null, WorkflowExpression<int> bodycountyId = null, WorkflowExpression<int> bodycountryId = null, WorkflowExpression<int> bodygenderId = null, WorkflowExpression<int> bodynationalityId = null, WorkflowExpression<int> bodyethnicityId = null, WorkflowExpression<int> bodymaritalStatusId = null, WorkflowExpression<int> bodymanagerId = null, WorkflowExpression<int> bodydepartmentId = null, WorkflowExpression<int> bodyroleId = null, WorkflowExpression<int> bodymainSiteId = null, WorkflowExpression<bool> bodyemergencyContactConsent = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<int> bodyemergencyRelationshipId = null, WorkflowExpression<string> bodyemergencyContactTelephone = null, WorkflowExpression<string> bodyemergencyAddress = null, WorkflowExpression<string> bodynextOfKinName = null, WorkflowExpression<int> bodynextOfKinRelationshipId = null, WorkflowExpression<string> bodynextOfKinTelephone = null, WorkflowExpression<string> bodydialingCode = null, WorkflowExpression<string> bodyworkExtension = null, WorkflowExpression<string> bodytelephone = null, WorkflowExpression<string> bodypersonalMobile = null, WorkflowExpression<int> bodystatusId = null, WorkflowExpression<int> bodyemploymentTypeId = null, WorkflowExpression<int> bodycontractTypeId = null, WorkflowExpression<string> bodycontractExpiry = null, WorkflowExpression<int> bodyemploymentStatusId = null, WorkflowExpression<int> bodysecondaryEmploymentStatusId = null, WorkflowExpression<string> bodyemploymentNotes = null, WorkflowExpression<string> bodymedicalNotes = null, WorkflowExpression<bool> bodyisPersonalDataEnabled = null, WorkflowExpression<bool> bodyisContactDataEnabled = null, WorkflowExpression<bodytimeZoneInput> bodytimeZone = null)
         {
@@ -455,7 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetObjectivesResponse> __BuildGetObjectives(WorkflowExpression<string> searchTitle = null, WorkflowExpression<string> personEmail = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> closed = null, WorkflowExpression<objectiveTypeInput> objectiveType = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null, WorkflowExpression<string> activeAt = null)
         {
@@ -499,7 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateObjectiveByTemplateResponse> __BuildCreateObjectiveByTemplate(WorkflowExpression<int> bodyobjectiveTemplateId, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate, WorkflowExpression<string> bodypersonEmail = null, WorkflowExpression<int> bodypersonId = null, WorkflowExpression<string> bodydepartmentName = null, WorkflowExpression<int> bodydepartmentId = null, WorkflowExpression<string> bodymanagerEmail = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodymanagerId = null, WorkflowExpression<int> bodycompanyObjectiveId = null, WorkflowExpression<int> bodydepartmentObjectiveId = null)
         {
@@ -605,7 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateObjectiveResponse> __BuildCreateObjective(WorkflowExpression<int> bodycategoryId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate, WorkflowExpression<bodyvalueTypeInput> bodyvalueType, WorkflowExpression<string> bodytag = null, WorkflowExpression<string> bodymanagerEmail = null, WorkflowExpression<int> bodymanagerId = null, WorkflowExpression<string> bodypersonEmail = null, WorkflowExpression<int> bodypersonId = null, WorkflowExpression<string> bodydepartmentName = null, WorkflowExpression<int> bodydepartmentId = null, WorkflowExpression<int> bodycompanyObjectiveId = null, WorkflowExpression<int> bodydepartmentObjectiveId = null, WorkflowExpression<double> bodystartValue = null, WorkflowExpression<double> bodytarget = null, WorkflowExpression<bool> bodyallowAddProgress = null, WorkflowExpression<bodyrecurTypeInput> bodyrecurType = null, WorkflowExpression<int> bodyrecurInterval = null, WorkflowExpression<bool> bodycumulativeProgress = null, WorkflowExpression<bool> bodycontentSettingspush = null, WorkflowExpression<bool> bodycontentSettingssms = null, WorkflowExpression<bool> bodycontentSettingsemail = null, WorkflowExpression<bool> bodycontentSettingsteams = null, WorkflowExpression<bool> bodycontentSettingsinApp = null, WorkflowExpression<bool> bodycontentSettingsallowLikes = null, WorkflowExpression<bool> bodycontentSettingsallowComments = null, WorkflowExpression<bool> bodycontentSettingsallowImagesInComments = null, WorkflowExpression<bool> bodycontentSettingsallowDocuments = null)
         {
@@ -936,7 +931,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateObjectiveScoreResponse> __BuildUpdateObjectiveScore(WorkflowExpression<string> objectiveId, WorkflowExpression<double> bodyvalue, WorkflowExpression<string> bodydescription, WorkflowExpression<bool> bodyisIncrement = null)
         {
@@ -987,7 +981,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateArticleResponse> __BuildCreateArticle(WorkflowExpression<string> bodytitle, WorkflowExpression<bodypriorityInput> bodypriority, WorkflowExpression<bodyarticleTypeInput> bodyarticleType, WorkflowExpression<string> bodyhtmlContent, WorkflowExpression<string> bodytag, WorkflowExpression<string> bodymainImageUrl = null, WorkflowExpression<string> bodysummary = null, WorkflowExpression<int> bodychannelId = null, WorkflowExpression<bool> bodycontentSettingspush = null, WorkflowExpression<bool> bodycontentSettingssms = null, WorkflowExpression<bool> bodycontentSettingsemail = null, WorkflowExpression<bool> bodycontentSettingsinApp = null, WorkflowExpression<bool> bodycontentSettingsteams = null, WorkflowExpression<bool> bodycontentSettingsallowLikes = null, WorkflowExpression<bool> bodycontentSettingsallowComments = null, WorkflowExpression<bool> bodycontentSettingsallowImagesInComments = null, WorkflowExpression<string> bodypublicationDetailspinFromDate = null, WorkflowExpression<int> bodypublicationDetailspinDurationHours = null, WorkflowExpression<string> bodypublicationDetailsscheduledDateTime = null, WorkflowExpression<bool> bodypublicationDetailspublishImmediately = null, WorkflowExpression<int> bodypublicationDetailspublishAsUserId = null)
         {
@@ -1247,7 +1240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAlertResponse> __BuildCreateAlert(WorkflowExpression<string> bodytitle, WorkflowExpression<bodypriorityInput> bodypriority, WorkflowExpression<string> bodysummary = null, WorkflowExpression<bool> bodyeveryone = null, WorkflowExpression<string> bodyaudiencedepartmentTags = null, WorkflowExpression<string> bodyaudiencepeopleTags = null, WorkflowExpression<string> bodyaudiencegroupTags = null, WorkflowExpression<string> bodyaudiencesiteTags = null, WorkflowExpression<bool> bodycommunicationMethodspush = null, WorkflowExpression<bool> bodycommunicationMethodssms = null, WorkflowExpression<bool> bodycommunicationMethodsemail = null, WorkflowExpression<bool> bodycommunicationMethodsinApp = null, WorkflowExpression<bool> bodycommunicationMethodsteams = null)
         {
@@ -1433,7 +1425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodytitle, WorkflowExpression<int> bodyformId, WorkflowExpression<int> bodytaskGroupId, WorkflowExpression<int> bodypriorityId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<int> bodyassignedToId = null, WorkflowExpression<int> bodymanagerId = null, WorkflowExpression<string> bodyassignedToEmail = null, WorkflowExpression<string> bodymanagerEmail = null, WorkflowExpression<int> bodytaskIntervalId = null, WorkflowExpression<bool> bodycontentSettingspush = null, WorkflowExpression<bool> bodycontentSettingssms = null, WorkflowExpression<bool> bodycontentSettingsemail = null, WorkflowExpression<bool> bodycontentSettingsteams = null, WorkflowExpression<bool> bodycontentSettingsinApp = null, WorkflowExpression<bool> bodycontentSettingsallowLikes = null, WorkflowExpression<bool> bodycontentSettingsallowComments = null, WorkflowExpression<bool> bodycontentSettingsallowImagesInComments = null, WorkflowExpression<bool> bodycontentSettingsallowDocuments = null)
         {

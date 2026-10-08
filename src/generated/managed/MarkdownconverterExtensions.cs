@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToHtmlResponse> __BuildMarkdownToHtml(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToJsonResponse> __BuildMarkdownToJson(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToXmlResponse> __BuildMarkdownToXml(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -108,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToPlainTextResponse> __BuildMarkdownToPlainText(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -138,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToCsvResponse> __BuildMarkdownToCsv(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -168,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToLaTeXResponse> __BuildMarkdownToLaTeX(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -198,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> __BuildMarkdownToAdaptiveCard(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -228,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToYamlResponse> __BuildMarkdownToYaml(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -258,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToEmailResponse> __BuildMarkdownToEmail(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -288,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToSvgResponse> __BuildMarkdownToSvg(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -318,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToRssResponse> __BuildMarkdownToRss(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -348,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToWikiResponse> __BuildMarkdownToWiki(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -378,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToPngResponse> __BuildMarkdownToPng(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -408,7 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToChartResponse> __BuildMarkdownToChart(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -438,7 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToDiagramResponse> __BuildMarkdownToDiagram(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -468,7 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownStatsResponse> __BuildMarkdownStats(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -498,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToQrResponse> __BuildMarkdownToQr(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -528,7 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToJpegResponse> __BuildMarkdownToJpeg(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -558,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToBadgeResponse> __BuildMarkdownToBadge(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -588,7 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToInfographicResponse> __BuildMarkdownToInfographic(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -618,7 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToLogResponse> __BuildMarkdownToLog(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -648,7 +627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToMetricsResponse> __BuildMarkdownToMetrics(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -678,7 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToSyslogResponse> __BuildMarkdownToSyslog(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -708,7 +685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToJsDocResponse> __BuildMarkdownToJsDoc(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -738,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToXmlDocResponse> __BuildMarkdownToXmlDoc(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -768,7 +743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToReadmeResponse> __BuildMarkdownToReadme(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -798,7 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToChangelogResponse> __BuildMarkdownToChangelog(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -828,7 +801,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> __BuildMarkdownToTableOfContents(WorkflowExpression<string> bodymarkdownContent)
         {
@@ -858,7 +830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> __BuildMarkdownToStyledHtml(WorkflowExpression<string> bodymarkdownContent, WorkflowExpression<string> bodytheme = null)
         {

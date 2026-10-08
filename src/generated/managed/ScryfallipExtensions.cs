@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsSearchGetResponse> __BuildCardsSearchGet(WorkflowExpression<string> q, WorkflowExpression<uniqueInput> unique = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<bool> includeExtras = null, WorkflowExpression<bool> includeMultilingual = null, WorkflowExpression<bool> includeVariations = null, WorkflowExpression<int> page = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsNamedGetResponse> __BuildCardsNamedGet(WorkflowExpression<string> exact = null, WorkflowExpression<string> fuzzy = null, WorkflowExpression<string> set = null, WorkflowExpression<versionInput> version = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsAutocompleteGetResponse> __BuildCardsAutocompleteGet(WorkflowExpression<string> q, WorkflowExpression<bool> includeExtras = null)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsCollectionPostResponse> __BuildCardsCollection(WorkflowExpression<bodyidentifiersInputItem[]> bodyidentifiers = null)
         {
@@ -159,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsSetNumberGetResponse> __BuildCardsSetNumberGet(WorkflowExpression<string> code, WorkflowExpression<string> number)
         {
@@ -181,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsMultiverseGetResponse> __BuildCardsMultiverseGet(WorkflowExpression<string> id)
         {
@@ -202,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsMTGOGetResponse> __BuildCardsMTGOGet(WorkflowExpression<string> id)
         {
@@ -223,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsArenaGetResponse> __BuildCardsArenaGet(WorkflowExpression<string> id)
         {
@@ -244,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsTCGplayerGetResponse> __BuildCardsTCGplayerGet(WorkflowExpression<string> id)
         {
@@ -265,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsCardmarketGetResponse> __BuildCardsCardmarketGet(WorkflowExpression<string> id)
         {
@@ -286,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardsScryfallGetResponse> __BuildCardsScryfallGet(WorkflowExpression<string> id)
         {
@@ -316,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetGetResponse> __BuildSetGet(WorkflowExpression<string> code)
         {
@@ -337,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetsTCGplayerGetResponse> __BuildSetsTCGplayerGet(WorkflowExpression<string> id)
         {
@@ -358,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RulingsMultiverseGetResponse> __BuildRulingsMultiverseGet(WorkflowExpression<string> id)
         {
@@ -379,7 +365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RulingsMTGOGetResponse> __BuildRulingsMTGOGet(WorkflowExpression<string> id)
         {
@@ -400,7 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RulingsArenaGetResponse> __BuildRulingsArenaGet(WorkflowExpression<string> id)
         {

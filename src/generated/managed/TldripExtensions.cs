@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArticleHumanPostResponse> __BuildArticleHuman(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodyminLength = null, WorkflowExpression<int> bodymaxLength = null, WorkflowExpression<bool> bodyisDetailed = null)
         {
@@ -89,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArticlePostResponse> __BuildExtractArticle(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodynumSentences = null, WorkflowExpression<bool> bodyisDetailed = null)
         {
@@ -143,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextHumanPostResponse> __BuildTextHuman(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyminLength = null, WorkflowExpression<int> bodymaxLength = null)
         {
@@ -207,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractTextPostResponse> __BuildExtractText(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodynumSentences = null)
         {

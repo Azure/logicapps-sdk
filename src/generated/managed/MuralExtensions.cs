@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateNewMuralResponse> __BuildCreateNewMural(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<int> bodyroomId, WorkflowExpression<string> bodytitle = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateNewStickyNoteResponse> __BuildCreateNewStickyNote(WorkflowExpression<string> workspaceId, WorkflowExpression<string> roomId, WorkflowExpression<string> muralId, WorkflowExpression<bodyshapeInput> bodyshape, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodytitle = null)
         {

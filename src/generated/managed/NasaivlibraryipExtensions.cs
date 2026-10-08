@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> center = null, WorkflowExpression<string> description = null, WorkflowExpression<string> description508 = null, WorkflowExpression<string> keywords = null, WorkflowExpression<string> location = null, WorkflowExpression<string> mediaType = null, WorkflowExpression<string> nasaId = null, WorkflowExpression<int> page = null, WorkflowExpression<string> photographer = null, WorkflowExpression<string> secondaryCreator = null, WorkflowExpression<string> title = null, WorkflowExpression<int> yearStart = null, WorkflowExpression<int> yearEnd = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMediaAssetManifestResponse> __BuildGetMediaAssetManifest(WorkflowExpression<string> nasaId)
         {
@@ -101,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMediaAssetMetadataLocationResponse> __BuildGetMediaAssetMetadataLocation(WorkflowExpression<string> nasaId)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetVideoAssetCaptionsLocationResponse> __BuildGetVideoAssetCaptionsLocation(WorkflowExpression<string> nasaId)
         {
@@ -143,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMediaAlbumContentsResponse> __BuildGetMediaAlbumContents(WorkflowExpression<string> albumName, WorkflowExpression<int> page = null)
         {

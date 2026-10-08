@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicerss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildConvertTTS(WorkflowExpression<string> hl, WorkflowExpression<string> src, WorkflowExpression<cInput> c = null, WorkflowExpression<string> f = null, WorkflowExpression<string> v = null, WorkflowExpression<int> r = null, WorkflowExpression<bool> ssml = null, WorkflowExpression<bool> b64 = null)
         {

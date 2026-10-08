@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HaltesHits> __BuildSearchStops(WorkflowExpression<string> searchTerm, WorkflowExpression<string> huidigePositie = null, WorkflowExpression<int> startIndex = null, WorkflowExpression<int> maxAantalHits = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LijnRichtingHits> __BuildSearchLines(WorkflowExpression<string> searchTerm, WorkflowExpression<string> huidigePositie = null, WorkflowExpression<int> startIndex = null, WorkflowExpression<int> maxAantalHits = null)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocatiesHits> __BuildSearchLocations(WorkflowExpression<string> searchTerm, WorkflowExpression<string> huidigePositie = null, WorkflowExpression<int> startIndex = null, WorkflowExpression<int> maxAantalHits = null)
         {

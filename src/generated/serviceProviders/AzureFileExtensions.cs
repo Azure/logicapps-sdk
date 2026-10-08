@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFileOutput> __BuildCopyFile(WorkflowExpression<string> sourceFilePath, WorkflowExpression<string> destinationFilePath, WorkflowExpression<bool> overwrite = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> __BuildExtractArchive(WorkflowExpression<string> destinationFolderPath, WorkflowExpression<string> filePath = null, WorkflowExpression<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, WorkflowExpression<object> fileContent = null)
         {
@@ -96,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFileOutput> __BuildCreateFile(WorkflowExpression<string> folderPath, WorkflowExpression<string> fileName, WorkflowExpression<object> fileContent, WorkflowExpression<bool> overwrite = null)
         {
@@ -131,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<bool> __BuildDeleteFile(WorkflowExpression<string> fileId)
         {
@@ -156,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContent(WorkflowExpression<string> fileId, WorkflowExpression<bool> inferContentType = null)
         {
@@ -191,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContentV2(WorkflowExpression<string> fileId, WorkflowExpression<bool> inferContentType = null)
         {
@@ -226,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContentByPath(WorkflowExpression<string> fileId, WorkflowExpression<bool> inferContentType = null)
         {
@@ -261,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileMetadataOutput> __BuildGetFileMetadata(WorkflowExpression<string> fileId)
         {
@@ -286,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileMetadataByPathOutput> __BuildGetFileMetadataByPath(WorkflowExpression<string> filePath)
         {
@@ -311,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFolderOutputItem[]> __BuildListFolder(WorkflowExpression<string> folderId)
         {
@@ -336,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateFileOutput> __BuildUpdateFile(WorkflowExpression<string> fileId, WorkflowExpression<object> fileContent)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCompanyLogo(WorkflowExpression<jurisdictionCodeInput> jurisdictionCode, WorkflowExpression<string> companyNumber)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyDetail> __BuildGetCompany(WorkflowExpression<string> jurisdictionCode, WorkflowExpression<string> companyNumber, WorkflowExpression<string> language = null)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance> __BuildGetCompanyFinace(WorkflowExpression<jurisdictionCodeInput> jurisdictionCode, WorkflowExpression<string> companyNumber)
         {
@@ -87,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWeekOfYearResponse> __BuildGetWeekOfYear(WorkflowExpression<string> time, WorkflowExpression<ruleInput> rule, WorkflowExpression<firstDayOfWeekInput> firstDayOfWeek)
         {
@@ -113,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataFeedModelEntitiesAddress[]> __BuildAddressGeocode(WorkflowExpression<string> query, WorkflowExpression<string> language = null, WorkflowExpression<string> region = null)
         {
@@ -150,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetSalutation(WorkflowExpression<languageInput> language, WorkflowExpression<string> surname, WorkflowExpression<genderInput> gender, WorkflowExpression<string> title = null, WorkflowExpression<string> suffix = null)
         {
@@ -181,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataFeedModelEntitiesHolidays[]> __BuildGetHolidays(WorkflowExpression<string> countryIsoCode, WorkflowExpression<string> year)
         {

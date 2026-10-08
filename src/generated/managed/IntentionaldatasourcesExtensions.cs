@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleEntity> __BuildSingleEntity(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id = null, WorkflowExpression<string> oDataQuery = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleEntity> __BuildSingleEntityById(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id, WorkflowExpression<string> oDataQuery = null)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListEntity> __BuildListEntity(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id = null, WorkflowExpression<string> oDataQuery = null)
         {
@@ -106,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListEntity> __BuildListEntityById(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id, WorkflowExpression<string> oDataQuery = null)
         {

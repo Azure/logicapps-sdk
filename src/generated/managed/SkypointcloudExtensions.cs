@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntitiesResponseItem[]> __BuildGetEntities(WorkflowExpression<string> tenantId, WorkflowExpression<string> instanceId)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetItems(WorkflowExpression<string> tenantId, WorkflowExpression<string> instanceId, WorkflowExpression<string> entityName, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetItem(WorkflowExpression<string> tenantId, WorkflowExpression<string> instanceId, WorkflowExpression<string> entityName, WorkflowExpression<string> itemId)
         {

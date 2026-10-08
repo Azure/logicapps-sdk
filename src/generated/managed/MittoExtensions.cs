@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmsResponse> __BuildSmsRequest(WorkflowExpression<string> requestsender, WorkflowExpression<string> requesttext, WorkflowExpression<string> requestreceiver, WorkflowExpression<bool> requestisFlashSMS = null, WorkflowExpression<int> requestprotocolIdentifier = null, WorkflowExpression<string> requestcustomerReference = null, WorkflowExpression<bool> requestisTestSMS = null, WorkflowExpression<requesttextTypeInput> requesttextType = null, WorkflowExpression<string> requestuserDataHeader = null, WorkflowExpression<int> requestvalidityInMinutes = null)
         {
@@ -113,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmsBulkResponse> __BuildSmsBulkRequest(WorkflowExpression<string> requestsender, WorkflowExpression<string> requesttext, WorkflowExpression<string[]> requestreceivers, WorkflowExpression<bool> requestisFlashSMS = null, WorkflowExpression<int> requestprotocolIdentifier = null, WorkflowExpression<string> requestcustomerReference = null, WorkflowExpression<bool> requestisTestSMS = null, WorkflowExpression<requesttextTypeInput> requesttextType = null, WorkflowExpression<string> requestuserDataHeader = null, WorkflowExpression<int> requestvalidityInMinutes = null)
         {

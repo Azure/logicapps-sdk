@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindExpirationResponse> __BuildFindExpiration(WorkflowExpression<string> category = null, WorkflowExpression<string> email = null, WorkflowExpression<string> name = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateContact(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyemail = null)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenewExpirationResponse> __BuildRenewExpiration(WorkflowExpression<string> expirationItemId, WorkflowExpression<string> bodyexpirationDate = null, WorkflowExpression<string> bodydetails = null)
         {
@@ -133,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateExpirationItemResponse> __BuildCreateExpirationItem(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycategoryName = null, WorkflowExpression<string> bodyexpirationDate = null)
         {

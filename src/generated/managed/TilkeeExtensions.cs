@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectCreateResponse> __BuildProjectCreate(WorkflowExpression<string> bodyprojectid = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<bool> bodyprojectcanBeDownloaded = null, WorkflowExpression<bool> bodyprojectconsultable = null, WorkflowExpression<string> bodyprojectconsultableUntil = null, WorkflowExpression<string[]> bodyprojecttags = null, WorkflowExpression<JToken[]> bodyprojectcollaborators = null, WorkflowExpression<bool> bodyprojectisTemplate = null, WorkflowExpression<string> bodyprojectexternalId = null, WorkflowExpression<int> bodyprojectthemeid = null, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null, WorkflowExpression<bodypersonInputItem[]> bodyperson = null)
         {
@@ -168,7 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectListResponse> __BuildProjectList(WorkflowExpression<int> limit, WorkflowExpression<int> offset, WorkflowExpression<string> order, WorkflowExpression<bool> isTemplate, WorkflowExpression<bool> isOwner, WorkflowExpression<string> tags = null, WorkflowExpression<string> tagOperator = null, WorkflowExpression<string> search = null)
         {
@@ -210,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectGetResponse> __BuildProjectGet(WorkflowExpression<string> id)
         {
@@ -235,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectUpdateResponse> __BuildProjectUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyname = null, WorkflowExpression<bool> bodycanBeDownloaded = null, WorkflowExpression<bool> bodyconsultable = null, WorkflowExpression<string> bodyconsultableUntil = null, WorkflowExpression<string> bodyduration = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<bool> bodystarred = null, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<bodyverdictInput> bodyverdict = null, WorkflowExpression<JToken[]> bodycollaborators = null, WorkflowExpression<bool> bodyisTemplate = null, WorkflowExpression<int> bodyvcardId = null, WorkflowExpression<bool> bodyalertOn = null, WorkflowExpression<string[]> bodyemailCible = null, WorkflowExpression<int> bodythemeid = null)
         {
@@ -379,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccessLinkCreateResponse> __BuildAccessLinkCreate(WorkflowExpression<string> projectId, WorkflowExpression<bodyaccessLinkInputItem[]> bodyaccessLink = null)
         {
@@ -417,7 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddItemToProjectResponseItem[]> __BuildAddItemToProject(WorkflowExpression<string> projectId, WorkflowExpression<bodyitemsInputItem[]> bodyitems = null)
         {
@@ -457,7 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemListResponse> __BuildItemList(WorkflowExpression<int> limit, WorkflowExpression<int> offset, WorkflowExpression<string> tags = null, WorkflowExpression<string> tagOperator = null, WorkflowExpression<string> search = null)
         {
@@ -493,7 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemCreateResponseItem[]> __BuildItemCreate(WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -518,7 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectUploadInformationResponse> __BuildDirectUploadInformation(WorkflowExpression<string> filename, WorkflowExpression<string> originalFilename, WorkflowExpression<bool> checkExisting = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSubmitForm(WorkflowExpression<string> wPSITEURL, WorkflowExpression<string> formId, WorkflowExpression<object> query = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCF7FormsResponseItem[]> __BuildGetCF7Forms(WorkflowExpression<string> wPSITEURL)
         {

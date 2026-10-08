@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardGetResponse> __BuildCardGet(WorkflowExpression<string> deckId, WorkflowExpression<string> cards, WorkflowExpression<int> count = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShuffleGetResponse> __BuildShuffleGet(WorkflowExpression<int> deckCount = null, WorkflowExpression<string> cards = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReshuffleGetResponse> __BuildReshuffleGet(WorkflowExpression<string> deckId, WorkflowExpression<bool> remaining = null)
         {
@@ -94,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PileGetResponse> __BuildPileGet(WorkflowExpression<string> deckId, WorkflowExpression<string> pileName, WorkflowExpression<string> cards)
         {
@@ -118,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShufflePileGetResponse> __BuildShufflePileGet(WorkflowExpression<string> deckId, WorkflowExpression<string> pileName)
         {
@@ -140,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrawPileGetResponse> __BuildDrawPileGet(WorkflowExpression<string> deckId, WorkflowExpression<string> pileName, WorkflowExpression<int> count = null)
         {
@@ -165,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReturnGetResponse> __BuildReturnGet(WorkflowExpression<string> deckId, WorkflowExpression<string> cards)
         {

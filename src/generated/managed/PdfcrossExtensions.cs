@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMergePDF(WorkflowExpression<string[]> filesfileContent)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddWatermarkText(WorkflowExpression<string> filefileContent, WorkflowExpression<string> filewatermarkText)
         {
@@ -81,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddPassword(WorkflowExpression<string> filefileContent, WorkflowExpression<string> filepassword)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddImage(WorkflowExpression<string> filefileContent, WorkflowExpression<string> fileimageContent, WorkflowExpression<double> filepositionX, WorkflowExpression<double> filepositionY, WorkflowExpression<string> fileaddType, WorkflowExpression<double> filefromPage = null, WorkflowExpression<double> filetoPage = null)
         {

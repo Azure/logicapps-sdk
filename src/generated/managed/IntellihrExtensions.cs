@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleJob> __BuildEndJob(WorkflowExpression<string> id, WorkflowExpression<string> bodyendDate, WorkflowExpression<string> bodyturnoverType, WorkflowExpression<string> bodyturnoverReason = null)
         {

@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectCourierResponse> __BuildDetectCourier(WorkflowExpression<string> bodytrackingtrackingNumber = null)
         {
@@ -90,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTrackingResponse> __BuildCreateTracking(WorkflowExpression<string> bodytrackingslug = null, WorkflowExpression<string> bodytrackingtrackingNumber = null, WorkflowExpression<string> bodytrackingtitle = null, WorkflowExpression<JToken[]> bodytrackingsmses = null, WorkflowExpression<JToken[]> bodytrackingemails = null, WorkflowExpression<string> bodytrackingorderId = null, WorkflowExpression<string> bodytrackingorderIdPath = null, WorkflowExpression<string> bodytrackingcustomFieldsproductName = null, WorkflowExpression<string> bodytrackingcustomFieldsproductPrice = null, WorkflowExpression<string> bodytrackinglanguage = null, WorkflowExpression<string> bodytrackingorderPromisedDeliveryDate = null, WorkflowExpression<string> bodytrackingdeliveryType = null, WorkflowExpression<string> bodytrackingpickupLocation = null, WorkflowExpression<string> bodytrackingpickupNote = null)
         {
@@ -232,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetATrackingResponse> __BuildGetATracking(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {
@@ -255,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteATrackingResponse> __BuildDeleteATracking(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {
@@ -278,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateATrackingResponse> __BuildUpdateATracking(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber, WorkflowExpression<string> bodytrackingtitle = null, WorkflowExpression<string> bodytrackingnote = null)
         {
@@ -330,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> __BuildRetrackAnExpiredTracking(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {
@@ -353,7 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> __BuildMarkTrackingAsCompleted(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber, WorkflowExpression<bodyreasonInput> bodyreason = null)
         {
@@ -390,7 +383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTrackingNotificationResponse> __BuildGetTrackingNotification(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {
@@ -413,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddANotificationResponse> __BuildAddANotification(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {
@@ -467,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveANotificationResponse> __BuildRemoveANotification(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {
@@ -521,7 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLastCheckpointResponse> __BuildGetLastCheckpoint(WorkflowExpression<string> slug, WorkflowExpression<string> trackingNumber)
         {

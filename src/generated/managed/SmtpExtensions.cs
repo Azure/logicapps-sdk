@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendEmail(WorkflowExpression<string> emailMessagefrom = null, WorkflowExpression<string> emailMessageto = null, WorkflowExpression<string> emailMessagecC = null, WorkflowExpression<string> emailMessagesubject = null, WorkflowExpression<string> emailMessagebody = null, WorkflowExpression<string> emailMessagebcc = null, WorkflowExpression<emailMessageimportanceInput> emailMessageimportance = null, WorkflowExpression<string> emailMessagereadReceipt = null, WorkflowExpression<string> emailMessagedeliveryReceipt = null, WorkflowExpression<AttachmentV2[]> emailMessageattachments = null)
         {

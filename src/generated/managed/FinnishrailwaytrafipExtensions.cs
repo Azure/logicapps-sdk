@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSchedulesResponseItem[]> __BuildGetSchedules(WorkflowExpression<string> departureStation, WorkflowExpression<string> arrivalStation, WorkflowExpression<string> departureDate = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> __BuildGetArrivalsAndDepartures(WorkflowExpression<string> trainStation, WorkflowExpression<int> arrivingTrains = null, WorkflowExpression<int> departingTrains = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNewLeadSubmission(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodymobileNo = null, WorkflowExpression<string> bodysecondaryEmail = null, WorkflowExpression<int> bodylifecycleStageName = null)
         {

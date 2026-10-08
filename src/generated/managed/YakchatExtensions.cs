@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> bodyinboxEmail, WorkflowExpression<string> bodymessageText, WorkflowExpression<string> bodymessageTo)
         {

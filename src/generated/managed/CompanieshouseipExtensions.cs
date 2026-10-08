@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanyByNumberResponse> __BuildCompanyByNumber(WorkflowExpression<string> companyNumber)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPscResponse> __BuildListPsc(WorkflowExpression<string> companyNumber)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListStatementsPscResponse> __BuildListStatementsPsc(WorkflowExpression<string> companyNumber)
         {
@@ -81,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IndividualPscResponse> __BuildIndividualPsc(WorkflowExpression<string> companyNumber, WorkflowExpression<string> pCSId)
         {
@@ -103,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UKEstablishmentsResponse> __BuildUKEstablishments(WorkflowExpression<string> companyNumber)
         {
@@ -124,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> __BuildOfficerAppointmentByOfficerId(WorkflowExpression<string> officerId)
         {
@@ -145,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> __BuildFilingHistoryByNumberAndId(WorkflowExpression<string> companyNumber, WorkflowExpression<string> transactionId)
         {
@@ -167,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChargesByNumberResponse> __BuildChargesByNumber(WorkflowExpression<string> companyNumber)
         {
@@ -188,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> __BuildChargesByNumberAndChargeId(WorkflowExpression<string> companyNumber, WorkflowExpression<string> chargeId)
         {
@@ -210,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddressByNumberResponse> __BuildAddressByNumber(WorkflowExpression<string> companyNumber)
         {
@@ -231,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanyOfficersByNumberResponse> __BuildCompanyOfficersByNumber(WorkflowExpression<string> companyNumber)
         {
@@ -252,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> __BuildCompanyOfficersByNumberAndAppointmentId(WorkflowExpression<string> companyNumber, WorkflowExpression<string> appointmentId)
         {
@@ -274,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> __BuildFilingHistoryByCompNumber(WorkflowExpression<string> companyNumber)
         {

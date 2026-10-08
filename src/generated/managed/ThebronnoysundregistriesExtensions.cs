@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllSearchResponse> __BuildGetAllSearch(WorkflowExpression<string> navn = null, WorkflowExpression<string> fraRegistreringsdatoEnhetsregisteret = null, WorkflowExpression<string> tilRegistreringsdatoEnhetsregisteret = null, WorkflowExpression<bool> konkurs = null, WorkflowExpression<string> sort = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetByOrganizationNumberResponse> __BuildGetByOrganizationNumber(WorkflowExpression<string> orgnr)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntityRolesResponse> __BuildGetEntityRoles(WorkflowExpression<string> orgnr)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllSearchSubResponse> __BuildGetAllSearchSub(WorkflowExpression<string> navn = null, WorkflowExpression<string> sort = null)
         {
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> __BuildGetSubByOrganizationNumber(WorkflowExpression<string> orgnr)
         {
@@ -143,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntitiesUpdatesResponse> __BuildGetEntitiesUpdates(WorkflowExpression<string> dato = null, WorkflowExpression<int> oppdateringsid = null)
         {
@@ -169,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> __BuildGetSubEntitiesUpdates(WorkflowExpression<string> dato = null, WorkflowExpression<int> oppdateringsid = null)
         {

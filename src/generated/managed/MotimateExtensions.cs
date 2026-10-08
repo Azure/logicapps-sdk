@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserGetAllResponse> __BuildUserGetAll(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDeleteByIdResponse> __BuildUserDeleteById(WorkflowExpression<string> userId, WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PositionGetAllResponse> __BuildPositionGetAll(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PositionCreateResponse> __BuildPositionCreate(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -117,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PositionDeleteByIdResponse> __BuildPositionDeleteById(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<string> positionId)
         {
@@ -142,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PositionUpdateByIdResponse> __BuildPositionUpdateById(WorkflowExpression<string> positionId, WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<string> bodyimportId = null, WorkflowExpression<string> bodyname = null)
         {
@@ -188,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupGetAllResponse> __BuildGroupGetAll(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
         {
@@ -212,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupCreateResponse> __BuildGroupCreate(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -238,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupDeleteByIdResponse> __BuildGroupDeleteById(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<string> groupId)
         {
@@ -263,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TokenGetResponse> __BuildTokenGet(WorkflowExpression<string> subdomain, WorkflowExpression<string> username, WorkflowExpression<string> password, WorkflowExpression<string> clientId)
         {
@@ -292,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MeResponse> __BuildMe(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
         {

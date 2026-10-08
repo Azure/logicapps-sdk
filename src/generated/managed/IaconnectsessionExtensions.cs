@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMachineNameResponse> __BuildGetMachineName(WorkflowExpression<string> getMachineNameworkflow)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMachineDomainResponse> __BuildGetMachineDomain(WorkflowExpression<string> getMachineDomainworkflow)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRemoteSessionClientHostnameResponse> __BuildGetRemoteSessionClientHostname(WorkflowExpression<string> getRemoteSessionClientHostnameworkflow)
         {
@@ -108,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpandEnvironmentVariableResponse> __BuildExpandEnvironmentVariable(WorkflowExpression<string> expandEnvironmentVariableinputString, WorkflowExpression<string> expandEnvironmentVariableworkflow)
         {
@@ -141,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KillProcessResponse> __BuildKillProcess(WorkflowExpression<string> killProcessprocessName, WorkflowExpression<string> killProcessworkflow)
         {
@@ -174,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KillProcessIDResponse> __BuildKillProcessID(WorkflowExpression<int> killProcessIDprocessID, WorkflowExpression<string> killProcessIDworkflow)
         {
@@ -207,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessCountByNameResponse> __BuildGetProcessCountByName(WorkflowExpression<string> getProcessCountByNameprocessName, WorkflowExpression<string> getProcessCountByNameworkflow)
         {
@@ -240,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAgentProcessCountResponse> __BuildGetAgentProcessCount(WorkflowExpression<string> getAgentProcessCountworkflow)
         {
@@ -270,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KillAllOtherAgentsResponse> __BuildKillAllOtherAgents(WorkflowExpression<string> killAllOtherAgentsworkflow)
         {
@@ -300,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessByPIDResponse> __BuildGetProcessByPID(WorkflowExpression<int> getProcessByPIDprocessId, WorkflowExpression<string> getProcessByPIDworkflow)
         {
@@ -333,7 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessesResponse> __BuildGetProcesses(WorkflowExpression<string> getProcessesworkflow, WorkflowExpression<string> getProcessesprocessName = null, WorkflowExpression<bool> getProcessesgetProcessCommandLine = null)
         {
@@ -387,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunProcessResponse> __BuildRunProcess(WorkflowExpression<string> runProcessprocessName, WorkflowExpression<string> runProcessworkflow, WorkflowExpression<string> runProcessarguments = null, WorkflowExpression<string> runProcessworkingDirectory = null, WorkflowExpression<bool> runProcessuseShellExecute = null, WorkflowExpression<bool> runProcesscreateNoWindow = null, WorkflowExpression<runProcesswindowStyleInput> runProcesswindowStyle = null, WorkflowExpression<bool> runProcesswaitForProcess = null, WorkflowExpression<bool> runProcessredirectStandardOutput = null, WorkflowExpression<bool> runProcessredirectStandardError = null, WorkflowExpression<bool> runProcessredirectStandardErrorToOutput = null, WorkflowExpression<runProcessstandardOutputEncodingInput> runProcessstandardOutputEncoding = null, WorkflowExpression<runProcessstandardErrorEncodingInput> runProcessstandardErrorEncoding = null, WorkflowExpression<string> runProcessrunAsDomain = null, WorkflowExpression<string> runProcessrunAsUsername = null, WorkflowExpression<string> runProcessrunAsPassword = null, WorkflowExpression<bool> runProcessrunAsLoadUserProfile = null, WorkflowExpression<bool> runProcessrunAsElevate = null, WorkflowExpression<int> runProcesstimeoutInSeconds = null)
         {
@@ -639,7 +627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunPowerShellProcessResponse> __BuildRunPowerShellProcess(WorkflowExpression<string> runPowerShellProcessworkflow, WorkflowExpression<string> runPowerShellProcesspowerShellExecutable = null, WorkflowExpression<string> runPowerShellProcesspowerShellScriptFilePath = null, WorkflowExpression<string> runPowerShellProcesspowerShellScriptContents = null, WorkflowExpression<string> runPowerShellProcessworkingDirectory = null, WorkflowExpression<bool> runPowerShellProcesscreateNoWindow = null, WorkflowExpression<runPowerShellProcesswindowStyleInput> runPowerShellProcesswindowStyle = null, WorkflowExpression<bool> runPowerShellProcesswaitForProcess = null, WorkflowExpression<bool> runPowerShellProcessredirectStandardOutput = null, WorkflowExpression<bool> runPowerShellProcessredirectStandardError = null, WorkflowExpression<bool> runPowerShellProcessredirectStandardErrorToOutput = null, WorkflowExpression<runPowerShellProcessstandardOutputEncodingInput> runPowerShellProcessstandardOutputEncoding = null, WorkflowExpression<runPowerShellProcessstandardErrorEncodingInput> runPowerShellProcessstandardErrorEncoding = null, WorkflowExpression<string> runPowerShellProcessrunAsDomain = null, WorkflowExpression<string> runPowerShellProcessrunAsUsername = null, WorkflowExpression<string> runPowerShellProcessrunAsPassword = null, WorkflowExpression<bool> runPowerShellProcessrunAsLoadUserProfile = null, WorkflowExpression<bool> runPowerShellProcessrunAsElevate = null, WorkflowExpression<int> runPowerShellProcesstimeoutInSeconds = null, WorkflowExpression<string> runPowerShellProcesspowerShellScriptTempFolder = null)
         {
@@ -902,7 +889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetScreenResolutionResponse> __BuildGetScreenResolution(WorkflowExpression<string> getScreenResolutionworkflow)
         {
@@ -932,7 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetDefaultPrinter(WorkflowExpression<string> setDefaultPrinterdefaultPrinterName, WorkflowExpression<string> setDefaultPrinterworkflow)
         {
@@ -965,7 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDefaultPrinterResponse> __BuildGetDefaultPrinter(WorkflowExpression<string> getDefaultPrinterworkflow)
         {
@@ -995,7 +979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListOfPrintersResponse> __BuildGetListOfPrinters(WorkflowExpression<string> getListOfPrintersworkflow, WorkflowExpression<bool> getListOfPrinterslistLocalPrinters = null, WorkflowExpression<bool> getListOfPrinterslistNetworkPrinters = null, WorkflowExpression<bool> getListOfPrintersreturnDetailedInformation = null)
         {
@@ -1076,7 +1059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetMouseMultiplier(WorkflowExpression<string> setMouseMultiplierworkflow, WorkflowExpression<double> setMouseMultipliermouseXMultiplier = null, WorkflowExpression<double> setMouseMultipliermouseYMultiplier = null, WorkflowExpression<bool> setMouseMultiplierapplyToMouseEvent = null, WorkflowExpression<bool> setMouseMultiplierapplyToSetCursorPos = null, WorkflowExpression<bool> setMouseMultiplierapplyToCurrentMouseMoveMethod = null)
         {
@@ -1191,7 +1173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMouseMultiplierResponse> __BuildGetMouseMultiplier(WorkflowExpression<string> getMouseMultiplierworkflow)
         {
@@ -1221,7 +1202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveMouseToCoordinate(WorkflowExpression<int> moveMouseToCoordinatexCoord, WorkflowExpression<int> moveMouseToCoordinateyCoord, WorkflowExpression<string> moveMouseToCoordinateworkflow)
         {
@@ -1257,7 +1237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveMouseRelative(WorkflowExpression<int> moveMouseRelativexCoord, WorkflowExpression<int> moveMouseRelativeyCoord, WorkflowExpression<string> moveMouseRelativeworkflow)
         {
@@ -1293,7 +1272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftMouseButtonDown(WorkflowExpression<string> leftMouseButtonDownworkflow)
         {
@@ -1323,7 +1301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftMouseButtonUp(WorkflowExpression<string> leftMouseButtonUpworkflow)
         {
@@ -1353,7 +1330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftClickMouse(WorkflowExpression<string> leftClickMouseworkflow)
         {
@@ -1383,7 +1359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftClickMouseAtCoordinate(WorkflowExpression<int> leftClickMouseAtCoordinatexCoord, WorkflowExpression<int> leftClickMouseAtCoordinateyCoord, WorkflowExpression<string> leftClickMouseAtCoordinateworkflow)
         {
@@ -1419,7 +1394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftHoldMouse(WorkflowExpression<double> leftHoldMousesecondsToHold, WorkflowExpression<string> leftHoldMouseworkflow)
         {
@@ -1452,7 +1426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftHoldMouseAtCoordinate(WorkflowExpression<int> leftHoldMouseAtCoordinatexCoord, WorkflowExpression<int> leftHoldMouseAtCoordinateyCoord, WorkflowExpression<double> leftHoldMouseAtCoordinatesecondsToHold, WorkflowExpression<string> leftHoldMouseAtCoordinateworkflow)
         {
@@ -1491,7 +1464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightMouseButtonDown(WorkflowExpression<string> rightMouseButtonDownworkflow)
         {
@@ -1521,7 +1493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightMouseButtonUp(WorkflowExpression<string> rightMouseButtonUpworkflow)
         {
@@ -1551,7 +1522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightClickMouse(WorkflowExpression<string> rightClickMouseworkflow)
         {
@@ -1581,7 +1551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightClickMouseAtCoordinate(WorkflowExpression<int> rightClickMouseAtCoordinatexCoord, WorkflowExpression<int> rightClickMouseAtCoordinateyCoord, WorkflowExpression<string> rightClickMouseAtCoordinateworkflow)
         {
@@ -1617,7 +1586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightHoldMouse(WorkflowExpression<double> rightHoldMousesecondsToHold, WorkflowExpression<string> rightHoldMouseworkflow)
         {
@@ -1650,7 +1618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightHoldMouseAtCoordinate(WorkflowExpression<int> rightHoldMouseAtCoordinatexCoord, WorkflowExpression<int> rightHoldMouseAtCoordinateyCoord, WorkflowExpression<double> rightHoldMouseAtCoordinatesecondsToHold, WorkflowExpression<string> rightHoldMouseAtCoordinateworkflow)
         {
@@ -1689,7 +1656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleMouseButtonDown(WorkflowExpression<string> middleMouseButtonDownworkflow)
         {
@@ -1719,7 +1685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleMouseButtonUp(WorkflowExpression<string> middleMouseButtonUpworkflow)
         {
@@ -1749,7 +1714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleClickMouse(WorkflowExpression<string> middleClickMouseworkflow)
         {
@@ -1779,7 +1743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleClickMouseAtCoordinate(WorkflowExpression<int> middleClickMouseAtCoordinatexCoord, WorkflowExpression<int> middleClickMouseAtCoordinateyCoord, WorkflowExpression<string> middleClickMouseAtCoordinateworkflow)
         {
@@ -1815,7 +1778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleHoldMouse(WorkflowExpression<double> middleHoldMousesecondsToHold, WorkflowExpression<string> middleHoldMouseworkflow)
         {
@@ -1848,7 +1810,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleHoldMouseAtCoordinate(WorkflowExpression<int> middleHoldMouseAtCoordinatexCoord, WorkflowExpression<int> middleHoldMouseAtCoordinateyCoord, WorkflowExpression<double> middleHoldMouseAtCoordinatesecondsToHold, WorkflowExpression<string> middleHoldMouseAtCoordinateworkflow)
         {
@@ -1887,7 +1848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDoubleLeftClickMouse(WorkflowExpression<string> doubleLeftClickMouseworkflow, WorkflowExpression<int> doubleLeftClickMousedelayInMilliseconds = null)
         {
@@ -1934,7 +1894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDoubleLeftClickMouseAtCoordinate(WorkflowExpression<int> doubleLeftClickMouseAtCoordinatexCoord, WorkflowExpression<int> doubleLeftClickMouseAtCoordinateyCoord, WorkflowExpression<string> doubleLeftClickMouseAtCoordinateworkflow, WorkflowExpression<int> doubleLeftClickMouseAtCoordinatedelayInMilliseconds = null)
         {
@@ -1987,7 +1946,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeftMouseDragBetweenCoordinates(WorkflowExpression<int> leftMouseDragBetweenCoordinatesstartXCoord, WorkflowExpression<int> leftMouseDragBetweenCoordinatesstartYCoord, WorkflowExpression<int> leftMouseDragBetweenCoordinatesendXCoord, WorkflowExpression<int> leftMouseDragBetweenCoordinatesendYCoord, WorkflowExpression<string> leftMouseDragBetweenCoordinatesworkflow, WorkflowExpression<int> leftMouseDragBetweenCoordinatesnumberOfSteps = null, WorkflowExpression<double> leftMouseDragBetweenCoordinatestotalTimeInSeconds = null, WorkflowExpression<int> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, WorkflowExpression<int> leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, WorkflowExpression<int> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
@@ -2094,7 +2052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRightMouseDragBetweenCoordinates(WorkflowExpression<int> rightMouseDragBetweenCoordinatesstartXCoord, WorkflowExpression<int> rightMouseDragBetweenCoordinatesstartYCoord, WorkflowExpression<int> rightMouseDragBetweenCoordinatesendXCoord, WorkflowExpression<int> rightMouseDragBetweenCoordinatesendYCoord, WorkflowExpression<string> rightMouseDragBetweenCoordinatesworkflow, WorkflowExpression<int> rightMouseDragBetweenCoordinatesnumberOfSteps = null, WorkflowExpression<double> rightMouseDragBetweenCoordinatestotalTimeInSeconds = null, WorkflowExpression<int> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, WorkflowExpression<int> rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, WorkflowExpression<int> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
@@ -2201,7 +2158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMiddleMouseDragBetweenCoordinates(WorkflowExpression<int> middleMouseDragBetweenCoordinatesstartXCoord, WorkflowExpression<int> middleMouseDragBetweenCoordinatesstartYCoord, WorkflowExpression<int> middleMouseDragBetweenCoordinatesendXCoord, WorkflowExpression<int> middleMouseDragBetweenCoordinatesendYCoord, WorkflowExpression<string> middleMouseDragBetweenCoordinatesworkflow, WorkflowExpression<int> middleMouseDragBetweenCoordinatesnumberOfSteps = null, WorkflowExpression<double> middleMouseDragBetweenCoordinatestotalTimeInSeconds = null, WorkflowExpression<int> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, WorkflowExpression<int> middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, WorkflowExpression<int> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
@@ -2308,7 +2264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveMouseBetweenCoordinates(WorkflowExpression<int> moveMouseBetweenCoordinatesstartXCoord, WorkflowExpression<int> moveMouseBetweenCoordinatesstartYCoord, WorkflowExpression<int> moveMouseBetweenCoordinatesendXCoord, WorkflowExpression<int> moveMouseBetweenCoordinatesendYCoord, WorkflowExpression<string> moveMouseBetweenCoordinatesworkflow, WorkflowExpression<int> moveMouseBetweenCoordinatesnumberOfSteps = null, WorkflowExpression<double> moveMouseBetweenCoordinatestotalTimeInSeconds = null, WorkflowExpression<int> moveMouseBetweenCoordinatesmaximumMovementPixelJitter = null, WorkflowExpression<int> moveMouseBetweenCoordinatesmaximumEndPixelJitter = null, WorkflowExpression<int> moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
@@ -2415,7 +2370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTurnMouseWheel(WorkflowExpression<int> turnMouseWheelwheelTurns, WorkflowExpression<string> turnMouseWheelworkflow)
         {
@@ -2448,7 +2402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetCursorPos(WorkflowExpression<int> setCursorPosx, WorkflowExpression<int> setCursorPosy, WorkflowExpression<string> setCursorPosworkflow)
         {
@@ -2484,7 +2437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCursorPosResponse> __BuildGetCursorPos(WorkflowExpression<string> getCursorPosworkflow)
         {
@@ -2514,7 +2466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalibrateMouseEventResponse> __BuildCalibrateMouseEvent(WorkflowExpression<string> calibrateMouseEventworkflow, WorkflowExpression<int> calibrateMouseEventcalibrationSizeInPixels = null)
         {
@@ -2561,7 +2512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMouseMoveMethodResponse> __BuildGetMouseMoveMethod(WorkflowExpression<string> getMouseMoveMethodworkflow)
         {
@@ -2591,7 +2541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetMouseMoveMethod(WorkflowExpression<setMouseMoveMethodmouseMoveMethodInput> setMouseMoveMethodmouseMoveMethod, WorkflowExpression<string> setMouseMoveMethodworkflow)
         {
@@ -2624,7 +2573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWiggleMouse(WorkflowExpression<string> wiggleMouseworkflow, WorkflowExpression<int> wiggleMousexWiggle = null, WorkflowExpression<int> wiggleMouseyWiggle = null, WorkflowExpression<double> wiggleMousewiggleDelayInSeconds = null)
         {
@@ -2695,7 +2643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendKeyEvents(WorkflowExpression<string> sendKeyEventstext, WorkflowExpression<string> sendKeyEventsworkflow, WorkflowExpression<int> sendKeyEventsinterval = null, WorkflowExpression<bool> sendKeyEventsisPassword = null, WorkflowExpression<bool> sendKeyEventsdontInterpretSymbols = null)
         {
@@ -2779,7 +2726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendPasswordKeyEvents(WorkflowExpression<string> sendPasswordKeyEventspassword, WorkflowExpression<string> sendPasswordKeyEventsworkflow, WorkflowExpression<int> sendPasswordKeyEventsinterval = null, WorkflowExpression<bool> sendPasswordKeyEventsdontInterpretSymbols = null, WorkflowExpression<bool> sendPasswordKeyEventspasswordContainsStoredPassword = null)
         {
@@ -2863,7 +2809,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendKeys(WorkflowExpression<string> sendKeystext, WorkflowExpression<string> sendKeysworkflow, WorkflowExpression<int> sendKeysinterval = null, WorkflowExpression<bool> sendKeysisPassword = null, WorkflowExpression<bool> sendKeysdontInterpretSymbols = null)
         {
@@ -2947,7 +2892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendPasswordKeys(WorkflowExpression<string> sendPasswordKeyspassword, WorkflowExpression<string> sendPasswordKeysworkflow, WorkflowExpression<int> sendPasswordKeysinterval = null, WorkflowExpression<bool> sendPasswordKeysdontInterpretSymbols = null, WorkflowExpression<bool> sendPasswordKeyspasswordContainsStoredPassword = null)
         {
@@ -3031,7 +2975,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildClearClipboard(WorkflowExpression<string> clearClipboardworkflow)
         {
@@ -3061,7 +3004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetClipboardData(WorkflowExpression<string> setClipboardDataworkflow, WorkflowExpression<string> setClipboardDatanewClipboardData = null)
         {
@@ -3098,7 +3040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetClipboardDataResponse> __BuildGetClipboardData(WorkflowExpression<string> getClipboardDataworkflow)
         {
@@ -3128,7 +3069,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TakeScreenshotResponse> __BuildTakeScreenshot(WorkflowExpression<string> takeScreenshotworkflow, WorkflowExpression<bool> takeScreenshotfullscreen = null, WorkflowExpression<int> takeScreenshotleftXPixels = null, WorkflowExpression<int> takeScreenshottopYPixels = null, WorkflowExpression<int> takeScreenshotwidthPixels = null, WorkflowExpression<int> takeScreenshotheightPixels = null, WorkflowExpression<takeScreenshotimageFormatInput> takeScreenshotimageFormat = null, WorkflowExpression<bool> takeScreenshotuseDisplayDevice = null, WorkflowExpression<bool> takeScreenshotraiseExceptionOnError = null, WorkflowExpression<bool> takeScreenshothideAgent = null, WorkflowExpression<bool> takeScreenshotusePhysicalCoordinates = null, WorkflowExpression<int> takeScreenshotdisplayDeviceId = null)
         {
@@ -3285,7 +3225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEnvironmentInfoResponse> __BuildGetEnvironmentInfo(WorkflowExpression<string> getEnvironmentInfoworkflow)
         {
@@ -3315,7 +3254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsScreenReaderEnabledResponse> __BuildIsScreenReaderEnabled(WorkflowExpression<string> isScreenReaderEnabledworkflow)
         {
@@ -3345,7 +3283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetScreenReader(WorkflowExpression<string> setScreenReaderworkflow, WorkflowExpression<bool> setScreenReaderenableScreenReader = null)
         {
@@ -3392,7 +3329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetParentProcessIdResponse> __BuildGetParentProcessId(WorkflowExpression<int> getParentProcessIdprocessId, WorkflowExpression<string> getParentProcessIdworkflow)
         {
@@ -3425,7 +3361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessIdCommandLineResponse> __BuildGetProcessIdCommandLine(WorkflowExpression<int> getProcessIdCommandLineprocessId, WorkflowExpression<string> getProcessIdCommandLineworkflow)
         {
@@ -3458,7 +3393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLastInputInfoResponse> __BuildGetLastInputInfo(WorkflowExpression<string> getLastInputInfoworkflow)
         {
@@ -3488,7 +3422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeepSessionAliveResponse> __BuildKeepSessionAlive(WorkflowExpression<string> keepSessionAliveworkflow, WorkflowExpression<int> keepSessionAlivexWiggle = null, WorkflowExpression<int> keepSessionAliveyWiggle = null, WorkflowExpression<double> keepSessionAlivewiggleDelayInSeconds = null, WorkflowExpression<int> keepSessionAliveidleThresholdInSeconds = null, WorkflowExpression<int> keepSessionAliveidleCheckPeriodInSeconds = null, WorkflowExpression<int> keepSessionAlivetotalKeepaliveRuntimeInSeconds = null)
         {
@@ -3610,7 +3543,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StopKeepSessionAliveResponse> __BuildStopKeepSessionAlive(WorkflowExpression<string> stopKeepSessionAliveworkflow)
         {
@@ -3640,7 +3572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyFileToClipboardResponse> __BuildCopyFileToClipboard(WorkflowExpression<string> copyFileToClipboardfilepath, WorkflowExpression<string> copyFileToClipboardworkflow, WorkflowExpression<bool> copyFileToClipboardcut = null)
         {
@@ -3690,7 +3621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRemoteSessionInfoResponse> __BuildGetRemoteSessionInfo(WorkflowExpression<string> getRemoteSessionInfoworkflow)
         {
@@ -3720,7 +3650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GeneratePasswordResponse> __BuildGeneratePassword(WorkflowExpression<string> generatePasswordpasswordFormat, WorkflowExpression<string> generatePasswordworkflow, WorkflowExpression<int> generatePasswordminimumLength = null, WorkflowExpression<bool> generatePasswordreturnAsPlainText = null, WorkflowExpression<string> generatePasswordstorePasswordAsIdentifier = null, WorkflowExpression<string> generatePasswordsupportedSymbols = null, WorkflowExpression<bool> generatePasswordattemptUniquePasswords = null, WorkflowExpression<generatePasswordgenerateAtInput> generatePasswordgenerateAt = null, WorkflowExpression<int> generatePasswordminimumLowercase = null, WorkflowExpression<int> generatePasswordminimumUppercase = null, WorkflowExpression<int> generatePasswordminimumNumbers = null, WorkflowExpression<int> generatePasswordminimumSymbols = null)
         {
@@ -3893,7 +3822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStoredPasswordResponse> __BuildGetStoredPassword(WorkflowExpression<string> getStoredPasswordworkflow, WorkflowExpression<string> getStoredPasswordpasswordIdentifier = null)
         {
@@ -3930,7 +3858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpandPasswordStringResponse> __BuildExpandPasswordString(WorkflowExpression<string> expandPasswordStringworkflow, WorkflowExpression<string> expandPasswordStringinputString = null)
         {
@@ -3967,7 +3894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StorePasswordInAgentMemoryResponse> __BuildStorePasswordInAgentMemory(WorkflowExpression<string> storePasswordInAgentMemoryidentifier, WorkflowExpression<string> storePasswordInAgentMemorypassword, WorkflowExpression<string> storePasswordInAgentMemoryworkflow)
         {
@@ -4003,7 +3929,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeletePasswordInAgentMemoryResponse> __BuildDeletePasswordInAgentMemory(WorkflowExpression<string> deletePasswordInAgentMemoryworkflow, WorkflowExpression<bool> deletePasswordInAgentMemorydeleteAllPasswords = null, WorkflowExpression<string> deletePasswordInAgentMemoryidentifier = null)
         {
@@ -4057,7 +3982,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CredentialWriteResponse> __BuildCredentialWrite(WorkflowExpression<string> credentialWritecredentialAddress, WorkflowExpression<string> credentialWriteuserName, WorkflowExpression<string> credentialWritepassword, WorkflowExpression<credentialWritecredentialTypeInput> credentialWritecredentialType, WorkflowExpression<string> credentialWriteworkflow, WorkflowExpression<credentialWritecredentialPersistenceInput> credentialWritecredentialPersistence = null, WorkflowExpression<string> credentialWritesymmetricKey = null, WorkflowExpression<string> credentialWritestorePasswordAsIdentifier = null)
         {
@@ -4130,7 +4054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CredentialReadResponse> __BuildCredentialRead(WorkflowExpression<string> credentialReadcredentialAddress, WorkflowExpression<credentialReadcredentialTypeInput> credentialReadcredentialType, WorkflowExpression<string> credentialReadworkflow, WorkflowExpression<string> credentialReadsymmetricKey = null, WorkflowExpression<string> credentialReadstorePasswordAsIdentifier = null, WorkflowExpression<bool> credentialReaddontReturnPassword = null)
         {
@@ -4197,7 +4120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CredentialDeleteResponse> __BuildCredentialDelete(WorkflowExpression<string> credentialDeletecredentialAddress, WorkflowExpression<credentialDeletecredentialTypeInput> credentialDeletecredentialType, WorkflowExpression<string> credentialDeleteworkflow)
         {
@@ -4233,7 +4155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateRDPFileResponse> __BuildGenerateRDPFile(WorkflowExpression<string> generateRDPFileremoteAddress, WorkflowExpression<string> generateRDPFileoutputFolderPath, WorkflowExpression<string> generateRDPFilerDPFileName, WorkflowExpression<string> generateRDPFileworkflow, WorkflowExpression<bool> generateRDPFileoverwriteRDPFileIfAlreadyExists = null, WorkflowExpression<bool> generateRDPFiletrustRemoteComputer = null, WorkflowExpression<bool> generateRDPFilestoreCredentials = null, WorkflowExpression<string> generateRDPFileuserName = null, WorkflowExpression<string> generateRDPFilepassword = null, WorkflowExpression<generateRDPFilecredentialTypeInput> generateRDPFilecredentialType = null, WorkflowExpression<generateRDPFilecredentialPersistenceInput> generateRDPFilecredentialPersistence = null, WorkflowExpression<bool> generateRDPFileredirectPrinters = null, WorkflowExpression<bool> generateRDPFileredirectAllDrives = null, WorkflowExpression<bool> generateRDPFileredirectClipboard = null, WorkflowExpression<bool> generateRDPFilefullscreen = null, WorkflowExpression<int> generateRDPFiledesktopWidth = null, WorkflowExpression<int> generateRDPFiledesktopHeight = null, WorkflowExpression<bool> generateRDPFileuseMultiMonitor = null, WorkflowExpression<int> generateRDPFilesessionBPP = null, WorkflowExpression<bool> generateRDPFilesmartSizing = null)
         {
@@ -4524,7 +4445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LaunchRemoteDesktopSessionResponse> __BuildLaunchRemoteDesktopSession(WorkflowExpression<string> launchRemoteDesktopSessionrDPFilePath, WorkflowExpression<string> launchRemoteDesktopSessionworkflow, WorkflowExpression<bool> launchRemoteDesktopSessiontrustRemoteComputer = null)
         {
@@ -4574,7 +4494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsTCPPortRespondingResponse> __BuildIsTCPPortResponding(WorkflowExpression<string> isTCPPortRespondingremoteHost, WorkflowExpression<int> isTCPPortRespondingtCPPort, WorkflowExpression<string> isTCPPortRespondingworkflow, WorkflowExpression<int> isTCPPortRespondingtimeoutInSeconds = null)
         {
@@ -4627,7 +4546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnlockSessionResponse> __BuildUnlockSession(WorkflowExpression<string> unlockSessionunlockPassword, WorkflowExpression<bool> unlockSessiondetectIfLocked, WorkflowExpression<bool> unlockSessiondetectCredentialProvider, WorkflowExpression<string> unlockSessionworkflow, WorkflowExpression<bool> unlockSessionpasswordContainsStoredPassword = null, WorkflowExpression<int> unlockSessionsecondsToWaitForUnlock = null)
         {
@@ -4700,7 +4618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LockSessionResponse> __BuildLockSession(WorkflowExpression<string> lockSessionworkflow, WorkflowExpression<int> lockSessionlockAfterMinutesOfActionInactivity = null, WorkflowExpression<int> lockSessionsecondsToWaitAfterLock = null)
         {
@@ -4764,7 +4681,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsSessionLockedResponse> __BuildIsSessionLocked(WorkflowExpression<string> isSessionLockedworkflow)
         {
@@ -4794,7 +4710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGenericCredentialFromOrchestratorResponse> __BuildGetGenericCredentialFromOrchestrator(WorkflowExpression<string> getGenericCredentialFromOrchestratorfriendlyName = null, WorkflowExpression<bool> getGenericCredentialFromOrchestratorretrievePlainTextPassword = null)
         {
@@ -4845,7 +4760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrawRectangleOnScreenResponse> __BuildDrawRectangleOnScreen(WorkflowExpression<int> drawRectangleOnScreenrectangleLeftPixelXCoord, WorkflowExpression<int> drawRectangleOnScreenrectangleRightPixelXCoord, WorkflowExpression<int> drawRectangleOnScreenrectangleTopPixelYCoord, WorkflowExpression<int> drawRectangleOnScreenrectangleBottomPixelYCoord, WorkflowExpression<string> drawRectangleOnScreenworkflow, WorkflowExpression<string> drawRectangleOnScreenpenColour = null, WorkflowExpression<int> drawRectangleOnScreenpenThicknessPixels = null, WorkflowExpression<int> drawRectangleOnScreensecondsToDisplay = null, WorkflowExpression<bool> drawRectangleOnScreencoordinatesArePhysical = null)
         {
@@ -4955,7 +4869,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse> __BuildGetFailedActionErrorMessageFromPowerAutomateResultJSON(WorkflowExpression<string[]> getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, WorkflowExpression<string> getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = null)
         {
@@ -5002,7 +4915,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPixelColourAtCoordinateResponse> __BuildGetPixelColourAtCoordinate(WorkflowExpression<int> getPixelColourAtCoordinateleftXPixels, WorkflowExpression<int> getPixelColourAtCoordinatetopYPixels, WorkflowExpression<string> getPixelColourAtCoordinateworkflow, WorkflowExpression<bool> getPixelColourAtCoordinatehideAgent = null, WorkflowExpression<bool> getPixelColourAtCoordinateusePhysicalCoordinates = null)
         {
@@ -5072,7 +4984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConvertRectangleCoordinatesResponse> __BuildConvertRectangleCoordinates(WorkflowExpression<int> convertRectangleCoordinatesrectangleLeftPixelXCoord, WorkflowExpression<int> convertRectangleCoordinatesrectangleTopPixelYCoord, WorkflowExpression<int> convertRectangleCoordinatesrectangleRightPixelXCoord, WorkflowExpression<int> convertRectangleCoordinatesrectangleBottomPixelYCoord, WorkflowExpression<convertRectangleCoordinatesconversionTypeInput> convertRectangleCoordinatesconversionType, WorkflowExpression<string> convertRectangleCoordinatesworkflow)
         {
@@ -5117,7 +5028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageToWebAPIResponse> __BuildSendMessageToWebAPI(WorkflowExpression<string> sendMessageToWebAPIworkflow, WorkflowExpression<string> sendMessageToWebAPIuRL = null, WorkflowExpression<sendMessageToWebAPImethodInput> sendMessageToWebAPImethod = null, WorkflowExpression<int> sendMessageToWebAPItimeoutInSeconds = null, WorkflowExpression<string> sendMessageToWebAPIcontentType = null, WorkflowExpression<string> sendMessageToWebAPIaccept = null, WorkflowExpression<string> sendMessageToWebAPImessageBody = null, WorkflowExpression<sendMessageToWebAPItransmitEncodingInput> sendMessageToWebAPItransmitEncoding = null, WorkflowExpression<sendMessageToWebAPIresponseEncodingInput> sendMessageToWebAPIresponseEncoding = null, WorkflowExpression<int> sendMessageToWebAPIbufferSize = null, WorkflowExpression<sendMessageToWebAPIhTTPRequestHeadersListInputItem[]> sendMessageToWebAPIhTTPRequestHeadersList = null, WorkflowExpression<bool> sendMessageToWebAPInegotiateTLS10 = null, WorkflowExpression<bool> sendMessageToWebAPInegotiateTLS11 = null, WorkflowExpression<bool> sendMessageToWebAPInegotiateTLS12 = null, WorkflowExpression<bool> sendMessageToWebAPInegotiateTLS13 = null, WorkflowExpression<bool> sendMessageToWebAPIkeepAlive = null, WorkflowExpression<bool> sendMessageToWebAPIexpect100Continue = null, WorkflowExpression<bool> sendMessageToWebAPIreturnResponseHeaders = null, WorkflowExpression<bool> sendMessageToWebAPIrunAsThread = null, WorkflowExpression<bool> sendMessageToWebAPIwaitForThread = null, WorkflowExpression<int> sendMessageToWebAPIretrieveOutputDataFromThreadId = null)
         {
@@ -5447,7 +5357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksAddNewTaskResponse> __BuildTasksAddNewTask(WorkflowExpression<string> tasksAddNewTaskworkflow, WorkflowExpression<tasksAddNewTasksetAutomationNameInput> tasksAddNewTasksetAutomationName = null, WorkflowExpression<string> tasksAddNewTaskautomationName = null, WorkflowExpression<string> tasksAddNewTasktaskInputData = null, WorkflowExpression<string> tasksAddNewTaskprocessStage = null, WorkflowExpression<int> tasksAddNewTaskpriority = null, WorkflowExpression<int> tasksAddNewTasksLA = null, WorkflowExpression<bool> tasksAddNewTasktaskOnHold = null, WorkflowExpression<string> tasksAddNewTaskorganisation = null, WorkflowExpression<string> tasksAddNewTaskdepartment = null, WorkflowExpression<string> tasksAddNewTaskdescription = null, WorkflowExpression<string> tasksAddNewTasktags = null)
         {
@@ -5584,7 +5493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksAddNewDeferralResponse> __BuildTasksAddNewDeferral(WorkflowExpression<string> tasksAddNewDeferralworkflow, WorkflowExpression<tasksAddNewDeferralsetAutomationNameInput> tasksAddNewDeferralsetAutomationName = null, WorkflowExpression<string> tasksAddNewDeferralautomationName = null, WorkflowExpression<int> tasksAddNewDeferraldeferralTimeInMinutes = null, WorkflowExpression<string> tasksAddNewDeferraltaskInputData = null, WorkflowExpression<string> tasksAddNewDeferraldeferralStoredData = null, WorkflowExpression<string> tasksAddNewDeferralprocessStage = null, WorkflowExpression<int> tasksAddNewDeferralpriority = null, WorkflowExpression<bool> tasksAddNewDeferraltaskOnHold = null, WorkflowExpression<string> tasksAddNewDeferralorganisation = null, WorkflowExpression<string> tasksAddNewDeferraldepartment = null, WorkflowExpression<string> tasksAddNewDeferraldescription = null, WorkflowExpression<string> tasksAddNewDeferraltags = null)
         {
@@ -5728,7 +5636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksDeferExistingTaskResponse> __BuildTasksDeferExistingTask(WorkflowExpression<int> tasksDeferExistingTasktaskId, WorkflowExpression<int> tasksDeferExistingTaskdeferralTimeInMinutes = null, WorkflowExpression<string> tasksDeferExistingTaskdeferralStoredData = null, WorkflowExpression<string> tasksDeferExistingTaskprocessStage = null, WorkflowExpression<int> tasksDeferExistingTaskpriority = null, WorkflowExpression<bool> tasksDeferExistingTasktaskOnHold = null)
         {
@@ -5813,7 +5720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksDeferExistingTaskOperationResponse> __BuildTasksDeferExistingTaskOperation(WorkflowExpression<string> tasksDeferExistingTaskOperationoperationId, WorkflowExpression<int> tasksDeferExistingTaskOperationdeferralTimeInMinutes = null, WorkflowExpression<string> tasksDeferExistingTaskOperationdeferralStoredData = null, WorkflowExpression<string> tasksDeferExistingTaskOperationprocessStage = null, WorkflowExpression<int> tasksDeferExistingTaskOperationpriority = null)
         {
@@ -5881,7 +5787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksDeleteTaskResponse> __BuildTasksDeleteTask(WorkflowExpression<int> tasksDeleteTasktaskId, WorkflowExpression<bool> tasksDeleteTaskupdateSourceSystem = null)
         {
@@ -5928,7 +5833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksDeleteTaskOperationResponse> __BuildTasksDeleteTaskOperation(WorkflowExpression<string> tasksDeleteTaskOperationoperationId, WorkflowExpression<bool> tasksDeleteTaskOperationupdateSourceSystem = null)
         {
@@ -5975,7 +5879,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksGetAllTasksResponse> __BuildTasksGetAllTasks(WorkflowExpression<string> tasksGetAllTasksautomationName = null, WorkflowExpression<tasksGetAllTasksautomationTaskStatusInput> tasksGetAllTasksautomationTaskStatus = null, WorkflowExpression<string> tasksGetAllTasksfilterByPropertyQuery = null, WorkflowExpression<int> tasksGetAllTasksminutesUntilDeferralDate = null, WorkflowExpression<int> tasksGetAllTasksminimumPriorityLevel = null, WorkflowExpression<bool> tasksGetAllTaskssortByDeferralDate = null, WorkflowExpression<bool> tasksGetAllTasksretrieveOnHoldTasks = null, WorkflowExpression<int> tasksGetAllTasksskip = null, WorkflowExpression<int> tasksGetAllTasksmaxResults = null, WorkflowExpression<bool> tasksGetAllTasksexcludeTaskData = null)
         {
@@ -6122,7 +6025,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksGetTaskResponse> __BuildTasksGetTask(WorkflowExpression<int> tasksGetTasktaskId, WorkflowExpression<tasksGetTaskstatusChangeInput> tasksGetTaskstatusChange = null)
         {
@@ -6169,7 +6071,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksGetNextTaskResponse> __BuildTasksGetNextTask(WorkflowExpression<string> tasksGetNextTaskautomationName = null, WorkflowExpression<string[]> tasksGetNextTaskautomationNames = null, WorkflowExpression<int> tasksGetNextTaskminimumPriorityLevel = null, WorkflowExpression<tasksGetNextTaskstatusChangeInput> tasksGetNextTaskstatusChange = null, WorkflowExpression<int> tasksGetNextTaskminutesUntilDeferralDate = null, WorkflowExpression<bool> tasksGetNextTaskignoreSLA = null, WorkflowExpression<int[]> tasksGetNextTaskexcludeTaskIds = null)
         {
@@ -6275,7 +6176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksChangeTaskStatusResponse> __BuildTasksChangeTaskStatus(WorkflowExpression<int> tasksChangeTaskStatustaskId, WorkflowExpression<tasksChangeTaskStatusautomationTaskStatusInput> tasksChangeTaskStatusautomationTaskStatus = null, WorkflowExpression<bool> tasksChangeTaskStatustaskOnHold = null, WorkflowExpression<bool> tasksChangeTaskStatuseraseTaskInputData = null, WorkflowExpression<bool> tasksChangeTaskStatuseraseDeferralStoredData = null, WorkflowExpression<bool> tasksChangeTaskStatusupdateSourceSystem = null, WorkflowExpression<string> tasksChangeTaskStatustaskClosureReason = null)
         {
@@ -6387,7 +6287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksAddNoteResponse> __BuildTasksAddNote(WorkflowExpression<int> tasksAddNotetaskId, WorkflowExpression<string> tasksAddNotenoteText, WorkflowExpression<tasksAddNotenoteTypeInput> tasksAddNotenoteType = null, WorkflowExpression<string> tasksAddNotenoteTypeOther = null)
         {
@@ -6444,7 +6343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksAssignTaskResponse> __BuildTasksAssignTask(WorkflowExpression<int> tasksAssignTasktaskId, WorkflowExpression<string> tasksAssignTaskassignToUserId = null, WorkflowExpression<string> tasksAssignTaskassignToUserName = null, WorkflowExpression<string> tasksAssignTaskassignToGroupId = null, WorkflowExpression<string> tasksAssignTaskassignToGroupName = null, WorkflowExpression<bool> tasksAssignTaskremoveUserAssignmentIfBlank = null, WorkflowExpression<bool> tasksAssignTaskremoveGroupAssignmentIfBlank = null)
         {
@@ -6536,7 +6434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksSetOutputDataResponse> __BuildTasksSetOutputData(WorkflowExpression<int> tasksSetOutputDatataskId, WorkflowExpression<string> tasksSetOutputDatataskOutputData = null)
         {
@@ -6573,7 +6470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksAddNewTaskOperationResponse> __BuildTasksAddNewTaskOperation(WorkflowExpression<string> tasksAddNewTaskOperationautomationName = null, WorkflowExpression<string> tasksAddNewTaskOperationtaskInputData = null, WorkflowExpression<string> tasksAddNewTaskOperationprocessStage = null, WorkflowExpression<int> tasksAddNewTaskOperationpriority = null, WorkflowExpression<int> tasksAddNewTaskOperationsLA = null, WorkflowExpression<string> tasksAddNewTaskOperationorganisation = null, WorkflowExpression<string> tasksAddNewTaskOperationdepartment = null, WorkflowExpression<string> tasksAddNewTaskOperationdescription = null, WorkflowExpression<string> tasksAddNewTaskOperationtags = null)
         {
@@ -6673,7 +6569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksAddNewDeferralOperationResponse> __BuildTasksAddNewDeferralOperation(WorkflowExpression<string> tasksAddNewDeferralOperationautomationName = null, WorkflowExpression<int> tasksAddNewDeferralOperationdeferralTimeInMinutes = null, WorkflowExpression<string> tasksAddNewDeferralOperationtaskInputData = null, WorkflowExpression<string> tasksAddNewDeferralOperationdeferralStoredData = null, WorkflowExpression<string> tasksAddNewDeferralOperationprocessStage = null, WorkflowExpression<int> tasksAddNewDeferralOperationpriority = null, WorkflowExpression<string> tasksAddNewDeferralOperationorganisation = null, WorkflowExpression<string> tasksAddNewDeferralOperationdepartment = null, WorkflowExpression<string> tasksAddNewDeferralOperationdescription = null, WorkflowExpression<string> tasksAddNewDeferralOperationtags = null)
         {
@@ -6780,7 +6675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TasksGetTaskOperationResponse> __BuildTasksGetTaskOperation(WorkflowExpression<string> tasksGetTaskOperationoperationId)
         {
@@ -6810,7 +6704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetRemoteLoggingLevel(WorkflowExpression<int> setRemoteLoggingLevelloggingLevel, WorkflowExpression<string> setRemoteLoggingLevelworkflow)
         {
@@ -6843,7 +6736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRemoteLoggingLevelResponse> __BuildGetRemoteLoggingLevel(WorkflowExpression<string> getRemoteLoggingLevelworkflow)
         {
@@ -6873,7 +6765,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetLicenseCode(WorkflowExpression<string> setLicenseCodecustomerNETBIOSDomainName, WorkflowExpression<string> setLicenseCodecustomerDisplayName, WorkflowExpression<string> setLicenseCodevendorName, WorkflowExpression<string> setLicenseCodelicenseExpiryDate, WorkflowExpression<string> setLicenseCodeactivationCode, WorkflowExpression<string> setLicenseCodeworkflow, WorkflowExpression<bool> setLicenseCodestoreInRegistry = null)
         {
@@ -6935,7 +6826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetLicenseStringResponse> __BuildSetLicenseString(WorkflowExpression<string> setLicenseStringlicenseString, WorkflowExpression<string> setLicenseStringworkflow, WorkflowExpression<bool> setLicenseStringstoreInRegistry = null)
         {
@@ -6985,7 +6875,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLicenseStateResponse> __BuildGetLicenseState(WorkflowExpression<string> getLicenseStateworkflow)
         {
@@ -7015,7 +6904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetRSAGUITopmost(WorkflowExpression<string> setRSAGUITopmostworkflow, WorkflowExpression<bool> setRSAGUITopmosttopMost = null)
         {
@@ -7062,7 +6950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetRSAGUIOpacity(WorkflowExpression<double> setRSAGUIOpacityopacity, WorkflowExpression<string> setRSAGUIOpacityworkflow)
         {
@@ -7095,7 +6982,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetRSAGUIPosition(WorkflowExpression<int> setRSAGUIPositionx, WorkflowExpression<int> setRSAGUIPositiony, WorkflowExpression<string> setRSAGUIPositionworkflow)
         {
@@ -7131,7 +7017,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBringRSAGUIToFront(WorkflowExpression<string> bringRSAGUIToFrontworkflow, WorkflowExpression<bool> bringRSAGUIToFrontfocus = null, WorkflowExpression<bool> bringRSAGUIToFrontglobalLeftMouseClick = null)
         {
@@ -7195,7 +7080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDisconnectSession(WorkflowExpression<string> disconnectSessionworkflow, WorkflowExpression<int> disconnectSessionsecondsToWait = null, WorkflowExpression<bool> disconnectSessiondoNotDisconnectIfLocalAgent = null)
         {
@@ -7259,7 +7143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLogoffSession(WorkflowExpression<string> logoffSessionworkflow, WorkflowExpression<int> logoffSessionsecondsToWait = null)
         {
@@ -7306,7 +7189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCloseRSAServer(WorkflowExpression<string> closeRSAServerworkflow, WorkflowExpression<int> closeRSAServersecondsToWait = null)
         {
@@ -7353,7 +7235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetRPACommandTimeout(WorkflowExpression<int> setRPACommandTimeoutcommandTimeoutInSeconds, WorkflowExpression<string> setRPACommandTimeoutworkflow, WorkflowExpression<bool> setRPACommandTimeoutterminateTimedoutRPACommandThreads = null)
         {
@@ -7403,7 +7284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRunAlternativeIAConnect(WorkflowExpression<string> runAlternativeIAConnectfilename, WorkflowExpression<string> runAlternativeIAConnectworkflow, WorkflowExpression<string> runAlternativeIAConnectarguments = null, WorkflowExpression<bool> runAlternativeIAConnectloadIntoMemory = null)
         {
@@ -7460,7 +7340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunAlternativeIAConnectSentFromDirectorResponse> __BuildRunAlternativeIAConnectSentFromDirector(WorkflowExpression<string> runAlternativeIAConnectSentFromDirectorlocalFilename, WorkflowExpression<string> runAlternativeIAConnectSentFromDirectorworkflow, WorkflowExpression<string> runAlternativeIAConnectSentFromDirectorremoteFilename = null, WorkflowExpression<bool> runAlternativeIAConnectSentFromDirectorcompress = null, WorkflowExpression<string> runAlternativeIAConnectSentFromDirectorarguments = null, WorkflowExpression<bool> runAlternativeIAConnectSentFromDirectorpermitDowngrade = null, WorkflowExpression<bool> runAlternativeIAConnectSentFromDirectorskipVersionCheck = null, WorkflowExpression<bool> runAlternativeIAConnectSentFromDirectorloadIntoMemory = null, WorkflowExpression<bool> runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = null)
         {
@@ -7592,7 +7471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIAConnectAgentInfoResponse> __BuildGetIAConnectAgentInfo(WorkflowExpression<string> getIAConnectAgentInfoworkflow)
         {
@@ -7622,7 +7500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIAConnectAgentLogResponse> __BuildGetIAConnectAgentLog(WorkflowExpression<string> getIAConnectAgentLogworkflow, WorkflowExpression<bool> getIAConnectAgentLogcompress = null, WorkflowExpression<bool> getIAConnectAgentLogreturnLastCommandOnly = null, WorkflowExpression<bool> getIAConnectAgentLogsaveLogToFile = null, WorkflowExpression<bool> getIAConnectAgentLogplaceLogContentInDataItem = null, WorkflowExpression<string> getIAConnectAgentLoglocalSaveFolder = null, WorkflowExpression<bool> getIAConnectAgentLoguseAgentLogFilename = null, WorkflowExpression<string> getIAConnectAgentLoglocalSaveFilename = null, WorkflowExpression<int> getIAConnectAgentLogmaxBytesToRead = null)
         {
@@ -7768,7 +7645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildResetCommandStats(WorkflowExpression<string> resetCommandStatsworkflow)
         {
@@ -7798,7 +7674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllCommandStatsResponse> __BuildGetAllCommandStats(WorkflowExpression<string> getAllCommandStatsworkflow)
         {
@@ -7828,7 +7703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnableNextHopResponse> __BuildEnableNextHop(WorkflowExpression<string> enableNextHopworkflow, WorkflowExpression<string> enableNextHopnextHopDirectorAddress = null, WorkflowExpression<int> enableNextHopnextHopDirectorTCPPort = null, WorkflowExpression<bool> enableNextHopnextHopDirectorUsesHTTPS = null, WorkflowExpression<bool> enableNextHopnextHopDirectorAddressIsLocalhostname = null, WorkflowExpression<bool> enableNextHopnextHopDirectorAddressIsHostname = null, WorkflowExpression<bool> enableNextHopnextHopDirectorAddressIsFQDN = null, WorkflowExpression<bool> enableNextHopincrementNextHopDirectorTCPPortBySessionId = null, WorkflowExpression<bool> enableNextHopdisableBeforeEnable = null, WorkflowExpression<bool> enableNextHopcheckNextHopDirectorIsRunning = null, WorkflowExpression<bool> enableNextHopcheckNextHopAgentIsRunning = null, WorkflowExpression<bool> enableNextHopnextHopDirectorAddressIsNamedPipe = null)
         {
@@ -8035,7 +7909,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDisableNextHop(WorkflowExpression<string> disableNextHopworkflow)
         {
@@ -8065,7 +7938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNextHopStatusResponse> __BuildGetNextHopStatus(WorkflowExpression<string> getNextHopStatusworkflow, WorkflowExpression<bool> getNextHopStatuscheckNextHopDirectorIsRunning = null, WorkflowExpression<bool> getNextHopStatuscheckNextHopAgentIsRunning = null)
         {
@@ -8129,7 +8001,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WaitForNextHopSessionToConnectResponse> __BuildWaitForNextHopSessionToConnect(WorkflowExpression<string> waitForNextHopSessionToConnectworkflow, WorkflowExpression<string> waitForNextHopSessionToConnectnextHopDirectorAddress = null, WorkflowExpression<int> waitForNextHopSessionToConnectnextHopDirectorTCPPort = null, WorkflowExpression<bool> waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = null, WorkflowExpression<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = null, WorkflowExpression<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = null, WorkflowExpression<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = null, WorkflowExpression<bool> waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = null, WorkflowExpression<double> waitForNextHopSessionToConnectsecondsToWait = null, WorkflowExpression<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = null, WorkflowExpression<bool> waitForNextHopSessionToConnectdisableExistingNextHop = null)
         {
@@ -8319,7 +8190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildConfigureNextHopDirector(WorkflowExpression<string> configureNextHopDirectorworkflow, WorkflowExpression<bool> configureNextHopDirectorsOAPEnabled = null, WorkflowExpression<bool> configureNextHopDirectorrESTEnabled = null, WorkflowExpression<bool> configureNextHopDirectorwebServerEnabled = null, WorkflowExpression<bool> configureNextHopDirectordirectorIsLocalhostOnly = null, WorkflowExpression<int> configureNextHopDirectorsOAPTCPPort = null, WorkflowExpression<int> configureNextHopDirectorrESTTCPPort = null, WorkflowExpression<bool> configureNextHopDirectorsOAPUsesHTTPS = null, WorkflowExpression<bool> configureNextHopDirectorrESTUsesHTTPS = null, WorkflowExpression<bool> configureNextHopDirectorincrementDirectorTCPPortBySessionId = null, WorkflowExpression<bool> configureNextHopDirectorsOAPUsesUserAuthentication = null, WorkflowExpression<bool> configureNextHopDirectorrESTUsesUserAuthentication = null, WorkflowExpression<bool> configureNextHopDirectorcommandNamedPipeEnabled = null)
         {
@@ -8553,7 +8423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildResetNextHopDirectorSettings(WorkflowExpression<string> resetNextHopDirectorSettingsworkflow)
         {
@@ -8583,7 +8452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWorkflowCompleted(WorkflowExpression<string> workflowCompletedworkflow)
         {
@@ -8613,7 +8481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RaiseExceptionResponse> __BuildRaiseException(WorkflowExpression<string> raiseExceptioninputException = null, WorkflowExpression<string> raiseExceptionexceptionMessage = null)
         {
@@ -8654,7 +8521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateOrchestratorFlowStatsResultResponse> __BuildUpdateOrchestratorFlowStatsResult(WorkflowExpression<string> updateOrchestratorFlowStatsResultworkflow, WorkflowExpression<bool> updateOrchestratorFlowStatsResultflowLastActionSuccess = null, WorkflowExpression<string> updateOrchestratorFlowStatsResultflowLastActionErrorMessage = null, WorkflowExpression<int> updateOrchestratorFlowStatsResultflowLastActionCode = null)
         {
@@ -8705,7 +8571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLastFailedActionFromOrchestratorFlowStatsResponse> __BuildGetLastFailedActionFromOrchestratorFlowStats(WorkflowExpression<string> getLastFailedActionFromOrchestratorFlowStatsworkflow)
         {
@@ -8735,7 +8600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrchestratorFlowStatsResponse> __BuildGetOrchestratorFlowStats(WorkflowExpression<int> getOrchestratorFlowStatswithinLastNumberOfDays = null, WorkflowExpression<string> getOrchestratorFlowStatssearchFlowName = null, WorkflowExpression<bool> getOrchestratorFlowStatssearchFlowLastActionResult = null, WorkflowExpression<string> getOrchestratorFlowStatssearchFlowStartTimeStartWindow = null, WorkflowExpression<string> getOrchestratorFlowStatssearchFlowStartTimeEndWindow = null)
         {
@@ -8797,7 +8661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrchestratorWorkerAvailabilityStatsResponse> __BuildGetOrchestratorWorkerAvailabilityStats(WorkflowExpression<int> getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = null, WorkflowExpression<string> getOrchestratorWorkerAvailabilityStatssearchFlowName = null, WorkflowExpression<string> getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = null)
         {
@@ -8845,7 +8708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrchestratorWorkerFlowUsageHeatmapResponse> __BuildGetOrchestratorWorkerFlowUsageHeatmap(WorkflowExpression<string> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, WorkflowExpression<string> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, WorkflowExpression<int> getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = null, WorkflowExpression<string> getOrchestratorWorkerFlowUsageHeatmapworkerNames = null)
         {
@@ -8902,7 +8764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrchestratorLoginHistoryResponse> __BuildGetOrchestratorLoginHistory(WorkflowExpression<int> getOrchestratorLoginHistorywithinLastNumberOfDays = null, WorkflowExpression<string> getOrchestratorLoginHistorysearchByEmail = null, WorkflowExpression<string> getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = null, WorkflowExpression<string> getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = null)
         {
@@ -8957,7 +8818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetLocalLoggingLevel(WorkflowExpression<int> setLocalLoggingLevelloggingLevel, WorkflowExpression<string> setLocalLoggingLevelworkflow)
         {
@@ -8990,7 +8850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunCommandResponse> __BuildRunCommand(WorkflowExpression<string> runCommandcommandName, WorkflowExpression<string> runCommandworkflow, WorkflowExpression<string> runCommandinputJSON = null)
         {
@@ -9030,7 +8889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocalLoggingLevelResponse> __BuildGetLocalLoggingLevel(WorkflowExpression<string> getLocalLoggingLevelworkflow)
         {
@@ -9060,7 +8918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRemoteClientTypeResponse> __BuildGetRemoteClientType(WorkflowExpression<string> getRemoteClientTypeworkflow)
         {
@@ -9090,7 +8947,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIAConnectDirectorInfoResponse> __BuildGetIAConnectDirectorInfo(WorkflowExpression<string> getIAConnectDirectorInfoworkflow)
         {
@@ -9120,7 +8976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAvailableIAConnectSessionsResponse> __BuildGetAvailableIAConnectSessions(WorkflowExpression<string> getAvailableIAConnectSessionsworkflow)
         {
@@ -9150,7 +9005,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAttachToIAConnectSessionByName(WorkflowExpression<string> attachToIAConnectSessionByNameiAConnectSessionName, WorkflowExpression<string> attachToIAConnectSessionByNameworkflow, WorkflowExpression<bool> attachToIAConnectSessionByNamevirtualChannelMustBeConnected = null)
         {
@@ -9200,7 +9054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttachToTier1IAConnectSessionResponse> __BuildAttachToTier1IAConnectSession(WorkflowExpression<string> attachToTier1IAConnectSessionworkflow, WorkflowExpression<bool> attachToTier1IAConnectSessionvirtualChannelMustBeConnected = null)
         {
@@ -9247,7 +9100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttachToIAConnectSessionByIndexResponse> __BuildAttachToIAConnectSessionByIndex(WorkflowExpression<string> attachToIAConnectSessionByIndexworkflow, WorkflowExpression<attachToIAConnectSessionByIndexsearchIAConnectSessionTypeInput> attachToIAConnectSessionByIndexsearchIAConnectSessionType = null, WorkflowExpression<int> attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = null, WorkflowExpression<int> attachToIAConnectSessionByIndextimeToWaitInSeconds = null, WorkflowExpression<bool> attachToIAConnectSessionByIndexraiseExceptionIfTimedout = null, WorkflowExpression<bool> attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = null, WorkflowExpression<bool> attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = null)
         {
@@ -9349,7 +9201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttachToMostRecentIAConnectSessionResponse> __BuildAttachToMostRecentIAConnectSession(WorkflowExpression<string> attachToMostRecentIAConnectSessionworkflow, WorkflowExpression<attachToMostRecentIAConnectSessionsearchIAConnectSessionTypeInput> attachToMostRecentIAConnectSessionsearchIAConnectSessionType = null, WorkflowExpression<int> attachToMostRecentIAConnectSessiontimeToWaitInSeconds = null, WorkflowExpression<bool> attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = null, WorkflowExpression<bool> attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = null, WorkflowExpression<bool> attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = null)
         {
@@ -9444,7 +9295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDirectorUpTimeResponse> __BuildGetDirectorUpTime(WorkflowExpression<string> getDirectorUpTimeworkflow)
         {
@@ -9474,7 +9324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DoesIAConnectSessionExistByNameResponse> __BuildDoesIAConnectSessionExistByName(WorkflowExpression<string> doesIAConnectSessionExistByNameiAConnectSessionName, WorkflowExpression<string> doesIAConnectSessionExistByNameworkflow)
         {
@@ -9507,7 +9356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WaitForIAConnectSessionToCloseByNameResponse> __BuildWaitForIAConnectSessionToCloseByName(WorkflowExpression<string> waitForIAConnectSessionToCloseByNameiAConnectSessionName, WorkflowExpression<string> waitForIAConnectSessionToCloseByNameworkflow, WorkflowExpression<int> waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = null, WorkflowExpression<bool> waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = null, WorkflowExpression<bool> waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = null)
         {
@@ -9581,7 +9429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KillIAConnectSessionByNameResponse> __BuildKillIAConnectSessionByName(WorkflowExpression<string> killIAConnectSessionByNameiAConnectSessionName, WorkflowExpression<string> killIAConnectSessionByNameworkflow, WorkflowExpression<bool> killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = null)
         {
@@ -9631,7 +9478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetAgentGlobalCoordinateConfigurationResponse> __BuildSetAgentGlobalCoordinateConfiguration(WorkflowExpression<string> setAgentGlobalCoordinateConfigurationworkflow, WorkflowExpression<setAgentGlobalCoordinateConfigurationmultiMonitorFunctionalityInput> setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = null, WorkflowExpression<setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplierInput> setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = null, WorkflowExpression<setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplierInput> setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = null, WorkflowExpression<double> setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = null, WorkflowExpression<double> setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = null, WorkflowExpression<double> setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = null, WorkflowExpression<double> setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = null, WorkflowExpression<bool> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = null, WorkflowExpression<bool> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = null, WorkflowExpression<bool> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = null, WorkflowExpression<setAgentGlobalCoordinateConfigurationjavaCoordinateSystemInput> setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = null, WorkflowExpression<setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystemInput> setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = null)
         {
@@ -9865,7 +9711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAgentGlobalCoordinateConfigurationResponse> __BuildGetAgentGlobalCoordinateConfiguration(WorkflowExpression<string> getAgentGlobalCoordinateConfigurationworkflow)
         {
@@ -9895,7 +9740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAgentThreadStatusResponse> __BuildGetAgentThreadStatus(WorkflowExpression<int> getAgentThreadStatusthreadId, WorkflowExpression<string> getAgentThreadStatusworkflow, WorkflowExpression<bool> getAgentThreadStatusretrieveThreadOutputData = null, WorkflowExpression<bool> getAgentThreadStatusclearOutputDataFromMemoryOnceRead = null)
         {
@@ -9962,7 +9806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WaitForAgentThreadToCompleteSuccessfullyResponse> __BuildWaitForAgentThreadToCompleteSuccessfully(WorkflowExpression<int> waitForAgentThreadToCompleteSuccessfullythreadId, WorkflowExpression<int> waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, WorkflowExpression<string> waitForAgentThreadToCompleteSuccessfullyworkflow, WorkflowExpression<bool> waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = null, WorkflowExpression<bool> waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = null, WorkflowExpression<bool> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = null, WorkflowExpression<bool> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = null, WorkflowExpression<int> waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = null)
         {
@@ -10083,7 +9926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAgentThreadsResponse> __BuildGetAgentThreads(WorkflowExpression<string> getAgentThreadsworkflow, WorkflowExpression<getAgentThreadssortOrderInput> getAgentThreadssortOrder = null)
         {
@@ -10120,7 +9962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KillAgentThreadResponse> __BuildKillAgentThread(WorkflowExpression<int> killAgentThreadthreadId, WorkflowExpression<string> killAgentThreadworkflow)
         {
@@ -10153,7 +9994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteAgentThreadResponse> __BuildDeleteAgentThread(WorkflowExpression<string> deleteAgentThreadworkflow, WorkflowExpression<int> deleteAgentThreadthreadId = null, WorkflowExpression<bool> deleteAgentThreaddeleteAllAgentThreads = null, WorkflowExpression<bool> deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = null)
         {
@@ -10224,7 +10064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AllocateWorkerFromOrchestratorResponse> __BuildAllocateWorkerFromOrchestrator(WorkflowExpression<string> allocateWorkerFromOrchestratorworkflow, WorkflowExpression<string> allocateWorkerFromOrchestratorworkerTag = null, WorkflowExpression<string> allocateWorkerFromOrchestratorworkerName = null, WorkflowExpression<bool> allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = null)
         {
@@ -10285,7 +10124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetOrchestratorWorkerMaintenanceModeResponse> __BuildSetOrchestratorWorkerMaintenanceMode(WorkflowExpression<int> setOrchestratorWorkerMaintenanceModeworkerId = null, WorkflowExpression<string> setOrchestratorWorkerMaintenanceModeworkerName = null, WorkflowExpression<bool> setOrchestratorWorkerMaintenanceModemaintenanceMode = null)
         {
@@ -10353,7 +10191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOrchestratorOneTimeSecretResponse> __BuildCreateOrchestratorOneTimeSecret(WorkflowExpression<string> createOrchestratorOneTimeSecretfriendlyName, WorkflowExpression<string> createOrchestratorOneTimeSecretsecretValue = null, WorkflowExpression<string> createOrchestratorOneTimeSecretretrievalPhrase1 = null, WorkflowExpression<string> createOrchestratorOneTimeSecretretrievalPhrase2 = null, WorkflowExpression<int> createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = null, WorkflowExpression<bool> createOrchestratorOneTimeSecretsecretHasAStartDate = null, WorkflowExpression<string> createOrchestratorOneTimeSecretsecretStartDateTime = null, WorkflowExpression<int> createOrchestratorOneTimeSecrethoursUntilSecretStartTime = null, WorkflowExpression<bool> createOrchestratorOneTimeSecretsecretHasAnExpiryDate = null, WorkflowExpression<string> createOrchestratorOneTimeSecretsecretExpiryDateTime = null, WorkflowExpression<int> createOrchestratorOneTimeSecrethoursUntilSecretExpiry = null)
         {
@@ -10483,7 +10320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListOfOrchestratorWorkersResponse> __BuildGetListOfOrchestratorWorkers(WorkflowExpression<bool> getListOfOrchestratorWorkersonlyReturnLiveWorkers = null)
         {
@@ -10527,7 +10363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOrchestratorWorkerResponse> __BuildGetOrchestratorWorker(WorkflowExpression<int> getOrchestratorWorkersearchWorkerId = null, WorkflowExpression<string> getOrchestratorWorkersearchWorkerName = null)
         {
@@ -10586,7 +10421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileExistsResponse> __BuildFileExists(WorkflowExpression<string> fileExistsfilename, WorkflowExpression<string> fileExistsworkflow)
         {
@@ -10619,7 +10453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectoryExistsResponse> __BuildDirectoryExists(WorkflowExpression<string> directoryExistsdirectoryPath, WorkflowExpression<string> directoryExistsworkflow)
         {
@@ -10652,7 +10485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFile(WorkflowExpression<string> deleteFilefilename, WorkflowExpression<string> deleteFileworkflow)
         {
@@ -10685,7 +10517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDirectory(WorkflowExpression<string> deleteDirectorydirectoryPath, WorkflowExpression<string> deleteDirectoryworkflow, WorkflowExpression<bool> deleteDirectoryrecursive = null)
         {
@@ -10735,7 +10566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPurgeDirectory(WorkflowExpression<string> purgeDirectorydirectoryPath, WorkflowExpression<string> purgeDirectoryworkflow, WorkflowExpression<bool> purgeDirectoryrecursive = null, WorkflowExpression<bool> purgeDirectorydeleteTopLevel = null)
         {
@@ -10802,7 +10632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCopyFile(WorkflowExpression<string> copyFilesourceFilePath, WorkflowExpression<string> copyFiledestFilePath, WorkflowExpression<string> copyFileworkflow)
         {
@@ -10838,7 +10667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveFile(WorkflowExpression<string> moveFilesourceFilePath, WorkflowExpression<string> moveFiledestFilePath, WorkflowExpression<string> moveFileworkflow)
         {
@@ -10874,7 +10702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateDirectory(WorkflowExpression<string> createDirectorydirectoryPath, WorkflowExpression<string> createDirectoryworkflow, WorkflowExpression<bool> createDirectoryerrorIfAlreadyExists = null)
         {
@@ -10924,7 +10751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileSizeResponse> __BuildGetFileSize(WorkflowExpression<string> getFileSizefilename, WorkflowExpression<string> getFileSizeworkflow)
         {
@@ -10957,7 +10783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWriteTextFile(WorkflowExpression<string> writeTextFilefilename, WorkflowExpression<string> writeTextFileworkflow, WorkflowExpression<string> writeTextFiletextToWrite = null, WorkflowExpression<bool> writeTextFileappendExistingFile = null, WorkflowExpression<writeTextFileencodingInput> writeTextFileencoding = null, WorkflowExpression<bool> writeTextFilecreateFolderIfRequired = null)
         {
@@ -11038,7 +10863,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadAllTextFromFileResponse> __BuildReadAllTextFromFile(WorkflowExpression<string> readAllTextFromFilefilename, WorkflowExpression<string> readAllTextFromFileworkflow)
         {
@@ -11071,7 +10895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFilesResponse> __BuildGetFiles(WorkflowExpression<string> getFilesdirectoryPath, WorkflowExpression<string> getFilespatternsCSV, WorkflowExpression<string> getFilesworkflow)
         {
@@ -11107,7 +10930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFoldersResponse> __BuildGetFolders(WorkflowExpression<string> getFoldersdirectoryPath, WorkflowExpression<string> getFoldersworkflow)
         {
@@ -11140,7 +10962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFilesResponse> __BuildDeleteFiles(WorkflowExpression<string> deleteFilesdirectoryPath, WorkflowExpression<string> deleteFilesworkflow, WorkflowExpression<string> deleteFilespattern = null)
         {
@@ -11180,7 +11001,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDiskFreeSpaceResponse> __BuildGetDiskFreeSpace(WorkflowExpression<string> getDiskFreeSpacedriveLetter, WorkflowExpression<string> getDiskFreeSpaceworkflow)
         {
@@ -11213,7 +11033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListOfDrivesResponse> __BuildGetListOfDrives(WorkflowExpression<string> getListOfDrivesworkflow)
         {
@@ -11243,7 +11062,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectoryIsAccessibleResponse> __BuildDirectoryIsAccessible(WorkflowExpression<string> directoryIsAccessibledirectoryPath, WorkflowExpression<string> directoryIsAccessibleworkflow)
         {
@@ -11276,7 +11094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCSVTextAsCollectionResponse> __BuildGetCSVTextAsCollection(WorkflowExpression<string> getCSVTextAsCollectioncSVFilePath, WorkflowExpression<string> getCSVTextAsCollectionworkflow, WorkflowExpression<bool> getCSVTextAsCollectionfirstLineIsHeader = null, WorkflowExpression<bool> getCSVTextAsCollectiontrimHeaders = null, WorkflowExpression<bool> getCSVTextAsCollectionallowBlankRows = null, WorkflowExpression<bool> getCSVTextAsCollectionextendColumnsIfRequired = null)
         {
@@ -11377,7 +11194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WriteCollectionToCSVFileResponse> __BuildWriteCollectionToCSVFile(WorkflowExpression<string> writeCollectionToCSVFilecSVFilePath, WorkflowExpression<string> writeCollectionToCSVFileworkflow, WorkflowExpression<JToken[]> writeCollectionToCSVFileinputTable = null, WorkflowExpression<string> writeCollectionToCSVFileinputTableJSON = null, WorkflowExpression<writeCollectionToCSVFileoutputEncodingInput> writeCollectionToCSVFileoutputEncoding = null)
         {
@@ -11441,7 +11257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetOwnerOnFolder(WorkflowExpression<string> setOwnerOnFolderfolderPath, WorkflowExpression<string> setOwnerOnFolderuserIdentity, WorkflowExpression<string> setOwnerOnFolderworkflow)
         {
@@ -11477,7 +11292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetOwnerOnFile(WorkflowExpression<string> setOwnerOnFilefilePath, WorkflowExpression<string> setOwnerOnFileuserIdentity, WorkflowExpression<string> setOwnerOnFileworkflow)
         {
@@ -11513,7 +11327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPermissionToFolder(WorkflowExpression<string> addPermissionToFolderfolderPath, WorkflowExpression<string> addPermissionToFolderidentity, WorkflowExpression<addPermissionToFolderpermissionInput> addPermissionToFolderpermission, WorkflowExpression<string> addPermissionToFolderworkflow, WorkflowExpression<bool> addPermissionToFolderapplyToFolder = null, WorkflowExpression<bool> addPermissionToFolderapplyToSubFolders = null, WorkflowExpression<bool> addPermissionToFolderapplyToFiles = null, WorkflowExpression<bool> addPermissionToFolderdeny = null)
         {
@@ -11620,7 +11433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPermissionToFile(WorkflowExpression<string> addPermissionToFilefilePath, WorkflowExpression<string> addPermissionToFileidentity, WorkflowExpression<addPermissionToFilepermissionInput> addPermissionToFilepermission, WorkflowExpression<string> addPermissionToFileworkflow, WorkflowExpression<bool> addPermissionToFiledeny = null)
         {
@@ -11676,7 +11488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBreakFolderSecurityInheritance(WorkflowExpression<string> breakFolderSecurityInheritancefolderPath, WorkflowExpression<string> breakFolderSecurityInheritanceworkflow, WorkflowExpression<bool> breakFolderSecurityInheritanceconvertInheritedToExplicit = null)
         {
@@ -11726,7 +11537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEnableFolderSecurityInheritance(WorkflowExpression<string> enableFolderSecurityInheritancefolderPath, WorkflowExpression<string> enableFolderSecurityInheritanceworkflow)
         {
@@ -11759,7 +11569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFolderSecurityPermissionsResponse> __BuildGetFolderSecurityPermissions(WorkflowExpression<string> getFolderSecurityPermissionsfolderPath, WorkflowExpression<string> getFolderSecurityPermissionsworkflow)
         {
@@ -11792,7 +11601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileSecurityPermissionsResponse> __BuildGetFileSecurityPermissions(WorkflowExpression<string> getFileSecurityPermissionsfilePath, WorkflowExpression<string> getFileSecurityPermissionsworkflow)
         {
@@ -11825,7 +11633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveIdentityFromFolderSecurityResponse> __BuildRemoveIdentityFromFolderSecurity(WorkflowExpression<string> removeIdentityFromFolderSecurityfolderPath, WorkflowExpression<string> removeIdentityFromFolderSecurityidentityToRemove, WorkflowExpression<string> removeIdentityFromFolderSecurityworkflow)
         {
@@ -11861,7 +11668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveIdentityFromFileSecurityResponse> __BuildRemoveIdentityFromFileSecurity(WorkflowExpression<string> removeIdentityFromFileSecurityfilePath, WorkflowExpression<string> removeIdentityFromFileSecurityidentityToRemove, WorkflowExpression<string> removeIdentityFromFileSecurityworkflow)
         {
@@ -11897,7 +11703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCopyFileFromClientToServer(WorkflowExpression<string> copyFileFromClientToServerclientFilePath, WorkflowExpression<string> copyFileFromClientToServerserverFilePath, WorkflowExpression<string> copyFileFromClientToServerworkflow, WorkflowExpression<bool> copyFileFromClientToServercompress = null)
         {
@@ -11950,7 +11755,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReplaceVariableDataInINIFile(WorkflowExpression<string> replaceVariableDataInINIFileinputFilename, WorkflowExpression<string> replaceVariableDataInINIFileworkflow, WorkflowExpression<string> replaceVariableDataInINIFileoutputFilename = null, WorkflowExpression<string> replaceVariableDataInINIFilesearchSection = null, WorkflowExpression<string> replaceVariableDataInINIFilesearchVariable = null, WorkflowExpression<string> replaceVariableDataInINIFilereplaceData = null, WorkflowExpression<string> replaceVariableDataInINIFileinputFilenameEncoding = null, WorkflowExpression<bool> replaceVariableDataInINIFilecreateNewFileIfNotExists = null, WorkflowExpression<bool> replaceVariableDataInINIFilewriteSpaceBeforeEquals = null, WorkflowExpression<bool> replaceVariableDataInINIFilewriteSpaceAfterEquals = null)
         {
@@ -12069,7 +11873,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DownloadHTTPFileResponse> __BuildDownloadHTTPFile(WorkflowExpression<string> downloadHTTPFiledownloadURL, WorkflowExpression<string> downloadHTTPFileworkflow, WorkflowExpression<string> downloadHTTPFilesaveFilename = null, WorkflowExpression<bool> downloadHTTPFileoverwriteExistingFile = null, WorkflowExpression<bool> downloadHTTPFilepassthroughAuthentication = null, WorkflowExpression<string> downloadHTTPFileuserAgent = null, WorkflowExpression<string> downloadHTTPFileaccept = null, WorkflowExpression<bool> downloadHTTPFilesupportTLS10 = null, WorkflowExpression<bool> downloadHTTPFilesupportTLS11 = null, WorkflowExpression<bool> downloadHTTPFilesupportTLS12 = null, WorkflowExpression<bool> downloadHTTPFileautoDecompressDeflate = null, WorkflowExpression<bool> downloadHTTPFileautoDecompressGZIP = null, WorkflowExpression<bool> downloadHTTPFilereturnContentsAsString = null, WorkflowExpression<downloadHTTPFilereturnContentEncodingInput> downloadHTTPFilereturnContentEncoding = null)
         {
@@ -12296,7 +12099,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UnZIPFileResponse> __BuildUnZIPFile(WorkflowExpression<string> unZIPFilezIPFilename, WorkflowExpression<string> unZIPFileworkflow, WorkflowExpression<string> unZIPFileextractFolder = null, WorkflowExpression<bool> unZIPFileextractAllFilesToSingleFolder = null, WorkflowExpression<string> unZIPFileincludeFilesRegEx = null, WorkflowExpression<string> unZIPFileexcludeFilesRegEx = null)
         {
@@ -12367,7 +12169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddFileToZIP(WorkflowExpression<string> addFileToZIPsourceFilenameToAddToZIP, WorkflowExpression<string> addFileToZIPoutputZIPFilename, WorkflowExpression<string> addFileToZIPworkflow, WorkflowExpression<string> addFileToZIPaddFilenameToFolderInZIP = null, WorkflowExpression<string> addFileToZIPsourceFilenameToAddToZIPComment = null, WorkflowExpression<bool> addFileToZIPcompress = null, WorkflowExpression<bool> addFileToZIPaddToExistingZIPFile = null)
         {
@@ -12451,7 +12252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddFolderToZIPResponse> __BuildAddFolderToZIP(WorkflowExpression<string> addFolderToZIPsourceFolderToAddToZIP, WorkflowExpression<string> addFolderToZIPoutputZIPFilename, WorkflowExpression<string> addFolderToZIPworkflow, WorkflowExpression<string> addFolderToZIPaddFilesToFolderInZIP = null, WorkflowExpression<bool> addFolderToZIPcompress = null, WorkflowExpression<bool> addFolderToZIPaddToExistingZIPFile = null, WorkflowExpression<bool> addFolderToZIPincludeSubfolders = null, WorkflowExpression<string> addFolderToZIPincludeFilesRegEx = null, WorkflowExpression<string> addFolderToZIPexcludeFilesRegEx = null)
         {
@@ -12559,7 +12359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileContentsAsBase64Response> __BuildGetFileContentsAsBase64(WorkflowExpression<string> getFileContentsAsBase64filePath, WorkflowExpression<string> getFileContentsAsBase64workflow, WorkflowExpression<bool> getFileContentsAsBase64compress = null, WorkflowExpression<int> getFileContentsAsBase64maxFileSize = null)
         {

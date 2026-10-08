@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListMachines(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMachineResponse> __BuildGetMachine(WorkflowExpression<string> id)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListLocations(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocationResponse> __BuildGetLocation(WorkflowExpression<string> idOrName)
         {
@@ -112,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListLocationAreas(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -138,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocationAreaResponse> __BuildGetLocationArea(WorkflowExpression<string> idOrName)
         {
@@ -159,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListRegions(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -185,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRegionResponse> __BuildGetRegion(WorkflowExpression<string> idOrName)
         {
@@ -206,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListEncounterMethods(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -232,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEncounterResponse> __BuildGetEncounter(WorkflowExpression<string> idOrName)
         {
@@ -253,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListEncounterConditions(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -279,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEncounterConditionResponse> __BuildGetEncounterCondition(WorkflowExpression<string> idOrName)
         {
@@ -300,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListEncounterConditionValues(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -326,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEncounterConditionValueResponse> __BuildGetEncounterConditionValue(WorkflowExpression<string> idOrName)
         {
@@ -347,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListBerries(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -373,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBerryResponse> __BuildGetBerry(WorkflowExpression<string> idOrName)
         {
@@ -394,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListItems(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {

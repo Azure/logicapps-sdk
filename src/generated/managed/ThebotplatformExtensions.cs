@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SimpleTextMessageResponse> __BuildSimpleTextMessage(WorkflowExpression<bodydataattributesmessagesInputItem[]> bodydataattributesmessages = null, WorkflowExpression<string> bodydataattributesrecipient = null)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUserAttributeResponse> __BuildCreateUserAttribute(WorkflowExpression<string> bodydataattributesname = null, WorkflowExpression<bodydataattributesisPiiInput> bodydataattributesisPii = null)
         {
@@ -136,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetUserAttribute(WorkflowExpression<string> emailaddress, WorkflowExpression<bodydataattributesstateInputItem[]> bodydataattributesstate)
         {

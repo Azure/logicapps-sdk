@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildRunScriptProd(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> scriptId, WorkflowExpression<object> scriptParameters = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TableMetadata> __BuildCreateTable(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> tabletableRange, WorkflowExpression<string> tabletableName = null, WorkflowExpression<string> tablecolumnsNames = null)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateIdColumn(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> table, WorkflowExpression<string> idColumn = null)
         {
@@ -124,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<dateTimeFormatInput> dateTimeFormat = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null)
         {
@@ -173,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommentsList> __BuildGetComments(WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> source = null)
         {
@@ -199,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Comment> __BuildGetComment(WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> commentid, WorkflowExpression<string> source = null)
         {
@@ -226,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetItemResponse> __BuildGetItem(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> table, WorkflowExpression<string> idColumn, WorkflowExpression<string> id, WorkflowExpression<dateTimeFormatInput> dateTimeFormat = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null)
         {
@@ -263,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> table, WorkflowExpression<string> idColumn, WorkflowExpression<string> id)
         {
@@ -291,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildPatchItem(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> table, WorkflowExpression<string> idColumn, WorkflowExpression<string> id, WorkflowExpression<itemInput> item = null, WorkflowExpression<dateTimeFormatInput> dateTimeFormat = null)
         {
@@ -324,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllWorksheetsResponse> __BuildGetAllWorksheets(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null)
         {
@@ -354,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorksheetMetadata> __BuildCreateWorksheet(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> bodyname = null)
         {
@@ -392,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTablesResponse> __BuildGetTables(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null)
         {
@@ -422,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildAddRow(WorkflowExpression<string> source, WorkflowExpression<string> drive, WorkflowExpression<string> file, WorkflowExpression<string> table, WorkflowExpression<itemInput> item = null, WorkflowExpression<dateTimeFormatInput> dateTimeFormat = null)
         {

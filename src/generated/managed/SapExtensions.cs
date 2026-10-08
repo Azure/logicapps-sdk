@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RfcTransactionDetails> __BuildAddRfcToTransaction(WorkflowExpression<string> rfcName, WorkflowExpression<string> rfcGroupFilter = null, WorkflowExpression<bool> autoCommit = null, WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallBapiResponse> __BuildCallBapi(WorkflowExpression<string> businessObject, WorkflowExpression<string> method, WorkflowExpression<bool> autoCommit = null, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallRfcResponse> __BuildCallRfc(WorkflowExpression<string> rfcName, WorkflowExpression<string> rfcGroupFilter = null, WorkflowExpression<bool> autoCommit = null, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -137,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCallRfc3(WorkflowExpression<string> rfcName, WorkflowExpression<object> rfcInputs = null, WorkflowExpression<string> rfcGroupFilter = null, WorkflowExpression<bool> autoCommit = null, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null, WorkflowExpression<inputFormatInput> inputFormat = null, WorkflowExpression<returnFormatInput> returnFormat = null)
         {
@@ -185,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCloseSession(WorkflowExpression<string> sessionId)
         {
@@ -207,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BapiRet2> __BuildCommitBapiTransaction(WorkflowExpression<string> sessionId, WorkflowExpression<bool> wait = null, WorkflowExpression<bool> closeSession = null)
         {
@@ -237,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCommitRfcTransaction(WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null)
         {
@@ -263,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildConfirmTid(WorkflowExpression<string> tid)
         {
@@ -285,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RfcTransactionDetails> __BuildCreateRfcTransaction(WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null)
         {
@@ -320,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> __BuildGenerateSchemas(WorkflowExpression<string[]> sapActionUris = null, WorkflowExpression<string> fileNamePrefix = null)
         {
@@ -346,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdocStatusResponse> __BuildGetIdocStatus(WorkflowExpression<int> idocNumber)
         {
@@ -368,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RfcTransactionDetails> __BuildGetTransactionDetails(WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null)
         {
@@ -394,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdocNumbersList> __BuildGetTransactionIdocs(WorkflowExpression<directionInput> direction, WorkflowExpression<string> tId)
         {
@@ -418,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadTableResponse> __BuildReadTableVersion2(WorkflowExpression<string> inputParameterstableName, WorkflowExpression<string[]> inputParametersfieldsToRead = null, WorkflowExpression<string[]> inputParameterswhereFilters = null, WorkflowExpression<int> inputParametersstartingRowIndex = null, WorkflowExpression<int> inputParameterscountOfRowsToRead = null, WorkflowExpression<string> inputParametersfieldDelimiter = null)
         {
@@ -483,7 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BapiRet2> __BuildRollbackBapiTransaction(WorkflowExpression<string> sessionId, WorkflowExpression<bool> closeSession = null)
         {
@@ -509,7 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSend(WorkflowExpression<string> sapAction, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -536,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendIdocResponse> __BuildSendIDoc(WorkflowExpression<string> idocType, WorkflowExpression<string> releaseVersion = null, WorkflowExpression<recordTypesVersionInput> recordTypesVersion = null, WorkflowExpression<bool> confirmTid = null, WorkflowExpression<string> tid = null, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
         {
@@ -578,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendIdocResponse> __BuildSendIDocVersion2(WorkflowExpression<object> dynamicParameters = null, WorkflowExpression<idocFormatInput> idocFormat = null, WorkflowExpression<bool> confirmTid = null, WorkflowExpression<string> tid = null)
         {
@@ -611,7 +593,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscribeResponse> __BuildStartLongRunningRfc(WorkflowExpression<string> callRfcSubscriptionrfcCallParametersrFCName, WorkflowExpression<string> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, WorkflowExpression<string> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, WorkflowExpression<string> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, WorkflowExpression<bool> callRfcSubscriptionrfcCallParametersautoCommit = null, WorkflowExpression<string> callRfcSubscriptionrfcCallParametersqueueName = null, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> tId = null)
         {

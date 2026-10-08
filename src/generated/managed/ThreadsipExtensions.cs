@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadPostResponse> __BuildThread(WorkflowExpression<string> bodychannel = null, WorkflowExpression<string> bodychannelID = null, WorkflowExpression<string[]> bodyblocks = null)
         {
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadDeleteResponse> __BuildThreadDelete(WorkflowExpression<string> bodythreadID)
         {
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatPostResponse> __BuildChat(WorkflowExpression<string> bodychat = null, WorkflowExpression<string> bodychatID = null, WorkflowExpression<string> bodybody = null)
         {
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChatDeleteResponse> __BuildChatDelete(WorkflowExpression<string> bodymessageID = null)
         {
@@ -187,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilePostResponse> __BuildFile(WorkflowExpression<object> data = null)
         {

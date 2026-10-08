@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookListResponse> __BuildBookList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookGetResponse> __BuildBookGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookGetChaptersResponse> __BuildBookGetChapters(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -116,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MovieListResponse> __BuildMovieList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -148,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MovieGetResponse> __BuildMovieGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -181,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MovieGetQuoteResponse> __BuildMovieGetQuote(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -214,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CharacterListResponse> __BuildCharacterList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -246,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CharacterGetResponse> __BuildCharacterGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -279,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CharacterGetQuoteResponse> __BuildCharacterGetQuote(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -312,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QuoteListResponse> __BuildQuoteList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -344,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QuoteGetResponse> __BuildQuoteGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -377,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChapterListResponse> __BuildChapterList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {
@@ -409,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChapterGetResponse> __BuildChapterGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
         {

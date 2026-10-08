@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotebookResponse> __BuildGetNotebookExecution(WorkflowExpression<string> executionId, WorkflowExpression<bool> output, WorkflowExpression<bool> html, WorkflowExpression<bool> report = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotebookResponse> __BuildNotebookExecution(WorkflowExpression<bool> report = null, WorkflowExpression<string> parametersnotebook = null, WorkflowExpression<object> parametersparameters = null)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SynapseResponse> __BuildUploadToSynapse(WorkflowExpression<string> parametersnotebook = null, WorkflowExpression<object> parametersparameters = null)
         {

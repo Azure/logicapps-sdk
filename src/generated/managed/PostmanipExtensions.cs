@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWorkspacesResponse> __BuildListWorkspaces(WorkflowExpression<typeInput> type = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAWorkspaceResponse> __BuildCreateAWorkspace(WorkflowExpression<string> bodyworkspacename, WorkflowExpression<bodyworkspacetypeInput> bodyworkspacetype, WorkflowExpression<string> bodyworkspacedescription = null)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWorkspaceResponse> __BuildGetWorkspace(WorkflowExpression<string> workspaceId)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListEnvironmentsResponse> __BuildListEnvironments(WorkflowExpression<string> workspace = null)
         {
@@ -143,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEnvironmentResponse> __BuildGetEnvironment(WorkflowExpression<string> environmentId)
         {
@@ -164,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCollectionsResponse> __BuildListCollections(WorkflowExpression<string> workspace = null)
         {
@@ -187,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCollectionResponse> __BuildGetCollection(WorkflowExpression<string> collectionId, WorkflowExpression<string> accessKey = null)
         {
@@ -211,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImportOpenApiResponse> __BuildImportOpenApi(WorkflowExpression<string> workspace = null)
         {

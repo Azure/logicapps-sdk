@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseArticlesGet> __BuildFilteringArticles(WorkflowExpression<string> articleNumber = null, WorkflowExpression<string> gtin = null, WorkflowExpression<string> type = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseArticlesPost> __BuildCreateArticle(WorkflowExpression<string> bodyarticleNumber = null, WorkflowExpression<double> bodypricegrossPrice = null, WorkflowExpression<string> bodypriceleadingPrice = null, WorkflowExpression<double> bodypricenetPrice = null, WorkflowExpression<double> bodypricetaxRate = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodyunitName = null)
         {
@@ -150,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveAnArticleResponse> __BuildRetrieveAnArticle(WorkflowExpression<string> id)
         {
@@ -172,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAnArticle(WorkflowExpression<string> id)
         {
@@ -194,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseArticlesIdGet> __BuildUpdateAnArticle(WorkflowExpression<string> id, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodyunitName, WorkflowExpression<int> bodyversion, WorkflowExpression<string> bodyarticleNumber = null, WorkflowExpression<string> bodygtin = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<double> bodypricegrossPrice = null, WorkflowExpression<bodypriceleadingPriceInput> bodypriceleadingPrice = null, WorkflowExpression<double> bodypricenetPrice = null, WorkflowExpression<double> bodypricetaxRate = null, WorkflowExpression<string> bodytitle = null)
         {
@@ -307,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseContactsGet> __BuildRetrieveAllContacts(WorkflowExpression<int> number = null, WorkflowExpression<string> email = null, WorkflowExpression<string> name = null, WorkflowExpression<bool> vendor = null, WorkflowExpression<bool> customer = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
         {
@@ -372,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveContactResponse> __BuildRetrieveContact(WorkflowExpression<string> id)
         {
@@ -394,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseContactsIdPut> __BuildUpdateContact(WorkflowExpression<string> id)
         {
@@ -434,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseCreditNotesPost> __BuildCreateCreditNote(WorkflowExpression<bool> finalize, WorkflowExpression<string> precedingSalesVoucherId = null)
         {
@@ -468,7 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveCreditNoteResponse> __BuildRetrieveCreditNote(WorkflowExpression<string> id)
         {
@@ -490,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> __BuildRenderCreditNoteDocument(WorkflowExpression<string> id)
         {
@@ -512,7 +501,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseDeliveryNotesPost> __BuildCreateDeliveryNote(WorkflowExpression<string> precedingSalesVoucherId = null)
         {
@@ -544,7 +532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> __BuildRenderDeliveryNoteDocument(WorkflowExpression<string> deliveryNoteid)
         {
@@ -566,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> __BuildRetrieveDeliveryNote(WorkflowExpression<string> id)
         {
@@ -588,7 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> __BuildRetrieveDownPaymentInvoice(WorkflowExpression<string> id)
         {
@@ -611,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseDunningsPost> __BuildCreateDunning(WorkflowExpression<string> precedingSalesVoucherId = null)
         {
@@ -643,7 +627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveDunningResponse> __BuildRetrieveDunning(WorkflowExpression<string> dunningsid)
         {
@@ -665,7 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenderDunningDocumentResponse> __BuildRenderDunningDocument(WorkflowExpression<string> dunningsid)
         {
@@ -697,7 +679,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventSubscriptionResponse> __BuildRetrieveAEventSubscription(WorkflowExpression<string> subscriptionId)
         {
@@ -719,7 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEventSubscription(WorkflowExpression<string> subscriptionId)
         {
@@ -741,7 +721,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseFilesPost> __BuildUploadFileLexoffice(WorkflowExpression<object> file, WorkflowExpression<string> type)
         {
@@ -763,7 +742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildDownloadFileLexoffice(WorkflowExpression<string> fileId, WorkflowExpression<acceptInput> accept = null)
         {
@@ -788,7 +766,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseInvoicesPost> __BuildCreateInvoice(WorkflowExpression<bool> finalize, WorkflowExpression<string> precedingSalesVoucherId = null)
         {
@@ -822,7 +799,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveInvoiceResponse> __BuildRetrieveInvoice(WorkflowExpression<string> id)
         {
@@ -845,7 +821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenderInvoiceDocumentResponse> __BuildRenderInvoiceDocument(WorkflowExpression<string> id)
         {
@@ -867,7 +842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseOrderConfirmationsPost> __BuildCreateOrderConfirmation(WorkflowExpression<string> precedingSalesVoucherId = null)
         {
@@ -899,7 +873,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> __BuildRetrieveOrderConfirmation(WorkflowExpression<string> id)
         {
@@ -921,7 +894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> __BuildRenderOrderConfirmationDocument(WorkflowExpression<string> id)
         {
@@ -953,7 +925,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievePaymentInformationResponse> __BuildRetrievePaymentInformation(WorkflowExpression<string> voucherId)
         {
@@ -995,7 +966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseQuotationsPost> __BuildCreateQuotation(WorkflowExpression<bool> finalize)
         {
@@ -1026,7 +996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveQuotationResponse> __BuildRetrieveQuotation(WorkflowExpression<string> id)
         {
@@ -1049,7 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenderQuotationDocumentResponse> __BuildRenderQuotationDocument(WorkflowExpression<string> id)
         {
@@ -1071,7 +1039,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseRecurringTemplatesGet> __BuildRetrieveAllRecurringTemplates(WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
         {
@@ -1101,7 +1068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> __BuildRetrieveRecurringTemplate(WorkflowExpression<string> id)
         {
@@ -1124,7 +1090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseVoucherlistGet> __BuildRetrieveAndFilterVoucherlist(WorkflowExpression<voucherTypeInput> voucherType, WorkflowExpression<voucherStatusInput> voucherStatus, WorkflowExpression<bool> archived = null, WorkflowExpression<string> contactId = null, WorkflowExpression<string> voucherDateFrom = null, WorkflowExpression<string> voucherDateTo = null, WorkflowExpression<string> createdDateFrom = null, WorkflowExpression<string> createdDateTo = null, WorkflowExpression<string> updatedDateFrom = null, WorkflowExpression<string> updatedDateTo = null, WorkflowExpression<string> voucherNumber = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
         {
@@ -1188,7 +1153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseVouchersPost> __BuildCreateVoucher(WorkflowExpression<bodytaxTypeInput> bodytaxType, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bodyvoucherItemsInputItem[]> bodyvoucherItems, WorkflowExpression<string> bodycontactId = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyshippingDate = null, WorkflowExpression<double> bodytotalGrossAmount = null, WorkflowExpression<double> bodytotalTaxAmount = null, WorkflowExpression<bool> bodyuseCollectiveContact = null, WorkflowExpression<string> bodyvoucherDate = null, WorkflowExpression<string> bodyvoucherNumber = null, WorkflowExpression<bodyvoucherStatusInput> bodyvoucherStatus = null)
         {
@@ -1296,7 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveVoucherResponse> __BuildRetrieveVoucher(WorkflowExpression<string> id)
         {
@@ -1318,7 +1281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseVouchersIdPut> __BuildUpdateVoucher(WorkflowExpression<string> id, WorkflowExpression<bodytaxTypeInput> bodytaxType, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bodyvoucherItemsInputItem[]> bodyvoucherItems, WorkflowExpression<string> bodycontactId = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string[]> bodyfiles = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyshippingDate = null, WorkflowExpression<double> bodytotalGrossAmount = null, WorkflowExpression<double> bodytotalTaxAmount = null, WorkflowExpression<bool> bodyuseCollectiveContact = null, WorkflowExpression<int> bodyversion = null, WorkflowExpression<string> bodyvoucherDate = null, WorkflowExpression<string> bodyvoucherNumber = null, WorkflowExpression<bodyvoucherStatusInput> bodyvoucherStatus = null)
         {
@@ -1441,7 +1403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUploadFileVoucherLexoffice(WorkflowExpression<string> id, WorkflowExpression<object> file)
         {

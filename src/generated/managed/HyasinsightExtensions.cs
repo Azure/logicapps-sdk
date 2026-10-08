@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeviceGeoItem[]> __BuildMobileGeolocation(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SinkholeItem[]> __BuildSinkhole(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PassivednsItem[]> __BuildPassiveDNS(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DynamicdnsItem[]> __BuildDynamicDNS(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -114,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PassivehashItem[]> __BuildPassiveHash(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -138,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Sslcertificate> __BuildSSLCertificate(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -162,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisItem[]> __BuildWhois(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -186,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<C2attributionItem[]> __BuildC2Attribution(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -210,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SampleInformation> __BuildSampleInformation(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -234,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SampleItem[]> __BuildSample(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -258,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OsIndicatorsItem[]> __BuildOpenSourceIndicators(WorkflowExpression<indicatorTypeInput> indicatorType, WorkflowExpression<string> indicatorValue)
         {
@@ -282,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisCurrent> __BuildCurrentWhois(WorkflowExpression<string> bodyappliedFiltersdomain = null)
         {

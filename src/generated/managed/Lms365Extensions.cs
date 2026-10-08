@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildApproveEnrollmentRequest(WorkflowExpression<string> id, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnrollUserToCourseResponse> __BuildEnrollUserToCourse(WorkflowExpression<string> courseId, WorkflowExpression<string> bodyuserLoginName, WorkflowExpression<string> bodycourseSessionId = null, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRejectEnrollmentRequest(WorkflowExpression<string> id, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -121,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCourseCategoriesResponse> __BuildGetCourseCategories(WorkflowExpression<string> filter = null)
         {
@@ -144,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCourseCategoryResponse> __BuildCreateCourseCategory(WorkflowExpression<string> bodycategoryName, WorkflowExpression<string> bodycourseCatalogId, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -180,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCourseResponse> __BuildCreateCourse(WorkflowExpression<string> bodycourseCatalogId, WorkflowExpression<bodycoursetypeInput> bodycoursetype, WorkflowExpression<string> bodytrainingTitle, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodyculture, WorkflowExpression<string> bodyuICulture, WorkflowExpression<string> bodyurl, WorkflowExpression<bodycategoriesInputItem[]> bodycategories = null, WorkflowExpression<bodytagsInputItem[]> bodytags = null, WorkflowExpression<bodyenrollmentFlowInput> bodyenrollmentFlow = null, WorkflowExpression<string> bodysiteTemplate = null, WorkflowExpression<string[]> bodylearningModules = null, WorkflowExpression<string[]> bodyquizzes = null, WorkflowExpression<bool> bodyautoResolveUrlConflict = null, WorkflowExpression<string> bodycourseLayoutId = null, WorkflowExpression<bodycourseSessionEnrollmentTypeInput> bodycourseSessionEnrollmentType = null, WorkflowExpression<string[]> bodyteacherLogins = null, WorkflowExpression<string[]> bodytrainerLogins = null, WorkflowExpression<string> bodycertificateTemplateId = null, WorkflowExpression<string> bodycourseID = null, WorkflowExpression<string> bodyduration = null, WorkflowExpression<string> bodylongDescription = null, WorkflowExpression<bool> bodypublishingSettingsisEnabled = null, WorkflowExpression<string> bodypublishingSettingsstartDate = null, WorkflowExpression<string> bodypublishingSettingsendDate = null, WorkflowExpression<bool> bodyexpirySettingsisEnabled = null, WorkflowExpression<string> bodyexpirySettingsfixedDate = null, WorkflowExpression<string> bodyexpirySettingsdaysAfterCompletion = null, WorkflowExpression<bool> bodydueDateSettingsisEnabled = null, WorkflowExpression<string> bodydueDateSettingsfixedDate = null, WorkflowExpression<string> bodydueDateSettingsdaysAfterEnrollment = null, WorkflowExpression<bool> bodyshowInCatalog = null, WorkflowExpression<double> bodycontinuingEducationUnits = null, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<string> bodyfailedCourseId = null, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -461,7 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCourseInfoResponse> __BuildGetCourseInfo(WorkflowExpression<string> courseId, WorkflowExpression<string> expand = null)
         {
@@ -486,7 +479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCompleteEnrollmentById(WorkflowExpression<string> id, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -510,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRetakeEnrollmentById(WorkflowExpression<string> id, WorkflowExpression<string> bodycourseSessionId = null, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -548,7 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCourseTagsResponse> __BuildGetCourseTags(WorkflowExpression<string> filter = null)
         {
@@ -571,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCourseTagResponse> __BuildCreateCourseTag(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycourseCatalogId, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -607,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCourseProvisioningStatusResponse> __BuildGetCourseProvisioningStatus(WorkflowExpression<string> expand = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null)
         {
@@ -638,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCoursesFromCatalogResponse> __BuildGetCoursesFromCatalog(WorkflowExpression<string> courseCatalogId, WorkflowExpression<string> expand = null)
         {
@@ -663,7 +650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEnrollmentByIdResponse> __BuildGetEnrollmentById(WorkflowExpression<string> enrollmentId)
         {
@@ -684,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancelEnrollment(WorkflowExpression<string> enrollmentId, WorkflowExpression<string> bodycancellationMessage = null, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -722,7 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUsersResponse> __BuildGetUsers(WorkflowExpression<string> filter = null)
         {
@@ -746,7 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateCourseSession(WorkflowExpression<string> courseId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate, WorkflowExpression<bodytimeZoneInput> bodytimeZone, WorkflowExpression<string> bodyenrollmentDeadline = null, WorkflowExpression<string> bodyroomemailAddress = null, WorkflowExpression<string> bodyroomtitle = null, WorkflowExpression<string> bodyroomlocation = null, WorkflowExpression<bodyroomsourceInput> bodyroomsource = null, WorkflowExpression<string> bodymeetingUrl = null, WorkflowExpression<string> bodymaxAttendees = null, WorkflowExpression<string> lMS365UserId = null)
         {
@@ -856,7 +839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFileUpload(WorkflowExpression<string> fileUploadUrl, WorkflowExpression<object> file)
         {
@@ -878,7 +860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHttpRequest(WorkflowExpression<parametersmethodInput> parametersmethod, WorkflowExpression<string> parametersuri, WorkflowExpression<string> parametersbody = null)
         {

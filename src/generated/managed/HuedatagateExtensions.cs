@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huedatagate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildOdata(WorkflowExpression<string> query, WorkflowExpression<string> hostUrl, WorkflowExpression<string> roleId, WorkflowExpression<string> roleSecret)
         {

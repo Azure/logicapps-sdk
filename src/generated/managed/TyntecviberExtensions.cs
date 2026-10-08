@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendViberComplexV3Response> __BuildSendViberComplex(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodyrateType, WorkflowExpression<bodycontentcomponentsbodyInputItem[]> bodycontentcomponentsbody = null)
         {
@@ -81,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendViberFileV3Response> __BuildSendViberFile(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodymessagePurpose, WorkflowExpression<string> bodycontentfileurl, WorkflowExpression<string> bodycontentfilefilename, WorkflowExpression<string> bodycontentfilefiletype)
         {
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendViberImageV3Response> __BuildSendViberImage(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodyrateType, WorkflowExpression<string> bodycontentimageurl)
         {
@@ -205,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendViberTextV3Response> __BuildSendViberText(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodyrateType, WorkflowExpression<string> bodycontenttext = null)
         {
@@ -260,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatusCheckV3Response> __BuildStatusCheck(WorkflowExpression<string> messageId)
         {

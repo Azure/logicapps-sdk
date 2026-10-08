@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NumberLookupResponse> __BuildNumberLookup(WorkflowExpression<string> bodyrecipient)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OTPSendOTPResponse> __BuildOTPSendOTP(WorkflowExpression<string> bodyoriginator, WorkflowExpression<string> bodyrecipient, WorkflowExpression<string> bodycontent, WorkflowExpression<bodydataCodingInput> bodydataCoding, WorkflowExpression<string> bodyexpiry = null, WorkflowExpression<string> bodyretryDelay = null, WorkflowExpression<string> bodyretryCount = null, WorkflowExpression<string> bodyotpCodeLength = null, WorkflowExpression<bodyotpTypeInput> bodyotpType = null, WorkflowExpression<string> bodysuccessUrl = null, WorkflowExpression<string> bodyfailureUrl = null)
         {
@@ -144,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OTPResendOTPResponse> __BuildOTPResendOTP(WorkflowExpression<string> bodyotpId)
         {
@@ -174,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OTPVerifyOTPResponse> __BuildOTPVerifyOTP(WorkflowExpression<string> bodyotpCode, WorkflowExpression<string> bodyotpId = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadListByIdResponse> __BuildReadListById(WorkflowExpression<string> bodyvariablesid = null, WorkflowExpression<int> bodyvariablesskip = null, WorkflowExpression<int> bodyvariableslimit = null, WorkflowExpression<string> bodyvariablesprimarySponsorName = null)
         {
@@ -103,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadListByNameResponse> __BuildReadListByName(WorkflowExpression<string> bodyvariablesfilterByName = null, WorkflowExpression<int> bodyvariablesskip = null, WorkflowExpression<int> bodyvariableslimit = null)
         {
@@ -181,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse> __BuildReadAdditionalFieldDefinitionsAndValues(WorkflowExpression<string> bodyvariablesid = null, WorkflowExpression<int> bodyvariablesskip = null, WorkflowExpression<int> bodyvariableslimit = null)
         {
@@ -259,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse> __BuildAddOrUpdateAdditionalFieldValues(WorkflowExpression<string> bodyvariablesinputcontactId, WorkflowExpression<bodyvariablesinputadditionalFieldsInputItem[]> bodyvariablesinputadditionalFields)
         {
@@ -310,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadContactByIdResponse> __BuildReadContactById(WorkflowExpression<string> bodyvariablescontactid = null, WorkflowExpression<string> bodyvariableslistid = null)
         {
@@ -371,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> bodyvariablesinputlastName, WorkflowExpression<string> bodyvariablesinputfirstName = null, WorkflowExpression<string> bodyvariablesinputmiddleName = null, WorkflowExpression<string> bodyvariablesinputgoesBy = null, WorkflowExpression<string> bodyvariablesinputtitle = null, WorkflowExpression<string> bodyvariablesinputemailAddress = null, WorkflowExpression<string> bodyvariablesinputcompanyName = null, WorkflowExpression<string> bodyvariablesinputjobTitle = null, WorkflowExpression<string> bodyvariablesinputprimaryPhone = null, WorkflowExpression<bodyvariablesinputbusinessAddresscountryInput> bodyvariablesinputbusinessAddresscountry = null, WorkflowExpression<string> bodyvariablesinputbusinessAddressstreet = null, WorkflowExpression<string> bodyvariablesinputbusinessAddresscity = null, WorkflowExpression<string> bodyvariablesinputbusinessAddressadministrativeDivision = null, WorkflowExpression<string> bodyvariablesinputbusinessAddresspostalCode = null)
         {
@@ -518,7 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResponse> __BuildReadLists(WorkflowExpression<bodyvariableslistClassInput> bodyvariableslistClass = null, WorkflowExpression<int> bodyvariablesskip = null, WorkflowExpression<int> bodyvariableslimit = null, WorkflowExpression<string> bodyvariablesfilterByName = null)
         {
@@ -603,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddContactsToListsResponse> __BuildAddContactsToLists(WorkflowExpression<string[]> bodyvariableslistIds = null, WorkflowExpression<string[]> bodyvariablescontactIds = null)
         {
@@ -654,7 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveContactsfromListResponse> __BuildRemoveContactsfromList(WorkflowExpression<string[]> bodyvariablescontactIds = null, WorkflowExpression<string> bodyvariableslistId = null)
         {
@@ -705,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdatePersonContactResponse> __BuildUpdatePersonContact(WorkflowExpression<string> bodyvariablesinputid, WorkflowExpression<string> bodyvariablesinputlastName, WorkflowExpression<string> bodyvariablesinputtitle = null, WorkflowExpression<string> bodyvariablesinputfirstName = null, WorkflowExpression<string> bodyvariablesinputmiddleName = null, WorkflowExpression<string> bodyvariablesinputgoesBy = null, WorkflowExpression<string> bodyvariablesinputjobTitle = null, WorkflowExpression<string> bodyvariablesinputaddressstreet = null, WorkflowExpression<string> bodyvariablesinputaddresscity = null, WorkflowExpression<string> bodyvariablesinputaddressadministrativeDivision = null, WorkflowExpression<bodyvariablesinputaddresscountryInput> bodyvariablesinputaddresscountry = null, WorkflowExpression<string> bodyvariablesinputaddresspostalCode = null, WorkflowExpression<string> bodyvariablesinputemailelectronicAddress = null, WorkflowExpression<string> bodyvariablesinputprimaryPhonenumber = null, WorkflowExpression<string> bodyvariablesinputcompanyName = null)
         {
@@ -871,7 +861,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateActivityResponse> __BuildCreateActivity(WorkflowExpression<string> bodyvariablesinputtypeId, WorkflowExpression<string> bodyvariablesinputactivityDate, WorkflowExpression<string> bodyvariablesinputsubject, WorkflowExpression<string[]> bodyvariablesinputlinkedEntityIds, WorkflowExpression<string> bodyvariablesinputsummary = null)
         {
@@ -935,7 +924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchContactsResponse> __BuildSearchContacts(WorkflowExpression<string> bodyvariablesemailAddress = null, WorkflowExpression<string> bodyvariablesfirstName = null, WorkflowExpression<string> bodyvariableslastName = null)
         {
@@ -993,7 +981,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateActivityResponse> __BuildUpdateActivity(WorkflowExpression<string> bodyvariablesinputactivityId, WorkflowExpression<string> bodyvariablesinputtypeId, WorkflowExpression<string[]> bodyvariablesinputlinkedEntityIds, WorkflowExpression<string> bodyvariablesinputactivityDate = null, WorkflowExpression<string> bodyvariablesinputsubject = null, WorkflowExpression<string> bodyvariablesinputsummary = null)
         {

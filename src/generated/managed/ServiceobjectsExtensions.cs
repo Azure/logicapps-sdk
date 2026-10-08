@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AVIGetAddressInfoResponse> __BuildAVIGetAddressInfo(WorkflowExpression<string> address1 = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<string> address4 = null, WorkflowExpression<string> address5 = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> administrativeArea = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> country = null, WorkflowExpression<string> outputLanguage = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AGIPlaceSearchResponse> __BuildAGIPlaceSearch(WorkflowExpression<string> singleLine = null, WorkflowExpression<string> address1 = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<string> address4 = null, WorkflowExpression<string> address5 = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> administrativeArea = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> country = null, WorkflowExpression<string> boundaries = null, WorkflowExpression<string> maxResults = null, WorkflowExpression<string> searchType = null, WorkflowExpression<string> extras = null)
         {
@@ -130,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AGIReverseSearchResponse> __BuildAGIReverseSearch(WorkflowExpression<string> latitude = null, WorkflowExpression<string> longitude = null, WorkflowExpression<string> searchRadius = null, WorkflowExpression<string> country = null, WorkflowExpression<string> maxResults = null, WorkflowExpression<string> searchType = null)
         {
@@ -168,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> __BuildPE2IGetInternationalExchangeInfo(WorkflowExpression<string> phoneNumber = null, WorkflowExpression<string> country = null)
         {
@@ -194,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> __BuildLVIValidateLeadInternational(WorkflowExpression<string> fullName = null, WorkflowExpression<string> salutation = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> businessName = null, WorkflowExpression<string> businessDomain = null, WorkflowExpression<string> businessEIN = null, WorkflowExpression<string> address1 = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<string> address4 = null, WorkflowExpression<string> address5 = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> adminArea = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> country = null, WorkflowExpression<string> phone1 = null, WorkflowExpression<string> phone2 = null, WorkflowExpression<string> email = null, WorkflowExpression<string> iPAddress = null, WorkflowExpression<string> gender = null, WorkflowExpression<string> dateOfBirth = null, WorkflowExpression<string> uTCCaptureTime = null, WorkflowExpression<string> outputLanguage = null, WorkflowExpression<string> testType = null)
         {
@@ -289,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AV3GetBestMatchesResponse> __BuildAV3GetBestMatches(WorkflowExpression<string> businessName = null, WorkflowExpression<string> address = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> postalCode = null)
         {
@@ -327,7 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> __BuildIPAVGetLocationByIP(WorkflowExpression<string> iPAddress = null)
         {

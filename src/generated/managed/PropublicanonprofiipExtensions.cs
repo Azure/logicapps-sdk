@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> q = null, WorkflowExpression<int> page = null, WorkflowExpression<string> stateId = null, WorkflowExpression<int> nteeId = null, WorkflowExpression<int> cCodeId = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NonprofitGetResponse> __BuildNonprofitGet(WorkflowExpression<string> ein)
         {

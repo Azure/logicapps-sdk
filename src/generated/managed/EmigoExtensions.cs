@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> type)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FeedList> __BuildGetFeeds(WorkflowExpression<string> endpoint)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> type, WorkflowExpression<string> table)
         {
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FeedList> __BuildGetODataItems(WorkflowExpression<string> endpoint, WorkflowExpression<string> feed)
         {
@@ -104,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProductList> __BuildGetProductList(WorkflowExpression<string> idList = null, WorkflowExpression<string> select = null)
         {
@@ -130,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProduct> __BuildGetProductItem(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {
@@ -155,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOperationalUnitList> __BuildGetOperationalUnitList(WorkflowExpression<string> idList = null, WorkflowExpression<string> select = null)
         {
@@ -181,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOperationalUnit> __BuildGetOperationalUnitItem(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {
@@ -206,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendMessageOperationalUnit(WorkflowExpression<int> sendMessageidOperationalUnit, WorkflowExpression<string> sendMessagemessage)
         {

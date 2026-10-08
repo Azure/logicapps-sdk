@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApplicationNumberResponse> __BuildApplicationNumber(WorkflowExpression<string> applicationNumber = null, WorkflowExpression<string> marketingCategoryCode = null, WorkflowExpression<string> setid = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugClassResponse> __BuildDrugClass(WorkflowExpression<string> drugClassCode = null, WorkflowExpression<string> drugClassCodingSystem = null, WorkflowExpression<classCodeTypeInput> classCodeType = null, WorkflowExpression<string> className = null, WorkflowExpression<string> uniiCode = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {
@@ -95,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugNameResponse> __BuildDrugName(WorkflowExpression<string> drugName = null, WorkflowExpression<nameTypeInput> nameType = null, WorkflowExpression<string> manufacturer = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {
@@ -131,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NDCResponse> __BuildNDC(WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {
@@ -157,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RxCUIResponse> __BuildRxCUI(WorkflowExpression<rxttyInput> rxtty = null, WorkflowExpression<string> rxstring = null, WorkflowExpression<int> rxcui = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {
@@ -193,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPLAllResponse> __BuildSPLAll(WorkflowExpression<string> applicationNumber = null, WorkflowExpression<bool> boxedWarning = null, WorkflowExpression<deaScheduleCodeInput> deaScheduleCode = null, WorkflowExpression<string> doctype = null, WorkflowExpression<string> drugClassCode = null, WorkflowExpression<string> drugClassCodingSystem = null, WorkflowExpression<string> drugName = null, WorkflowExpression<nameTypeInput> nameType = null, WorkflowExpression<string> labeler = null, WorkflowExpression<string> manufacturer = null, WorkflowExpression<string> marketingCategoryCode = null, WorkflowExpression<string> ndc = null, WorkflowExpression<string> publishedDate = null, WorkflowExpression<publishedDateComparisonInput> publishedDateComparison = null, WorkflowExpression<string> rxcui = null, WorkflowExpression<string> uniiCode = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {
@@ -270,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPLHistoryResponse> __BuildSPLHistory(WorkflowExpression<string> sETID)
         {
@@ -291,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPLMediaResponse> __BuildSPLMedia(WorkflowExpression<string> sETID)
         {
@@ -312,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPLNDCResponse> __BuildSPLNDC(WorkflowExpression<string> sETID)
         {
@@ -333,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPLPackagingResponse> __BuildSPLPackaging(WorkflowExpression<string> sETID)
         {
@@ -354,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UNIIResponse> __BuildUNII(WorkflowExpression<string> activeMoiety = null, WorkflowExpression<string> drugClassCode = null, WorkflowExpression<string> drugClassCodingSystem = null, WorkflowExpression<string> rxcui = null, WorkflowExpression<string> uniiCode = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
         {

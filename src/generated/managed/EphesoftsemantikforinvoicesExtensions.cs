@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteSemantikWebhook(WorkflowExpression<string> configurationId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentUploadResponse> __BuildCreateDocumentUpload(WorkflowExpression<string> bodyfileName, WorkflowExpression<bodytypeInput> bodytype)
         {
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateDocumentUploadResponse> __BuildUpdateDocumentUpload(WorkflowExpression<string> uploadId, WorkflowExpression<bodystatusInput> bodystatus)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadCreatedResponse> __BuildCreateVendorUpload(WorkflowExpression<string> bodyfileName)
         {

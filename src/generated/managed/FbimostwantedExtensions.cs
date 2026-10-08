@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWantedResponse> __BuildListWanted(WorkflowExpression<posterClassificationInput> posterClassification = null, WorkflowExpression<string> title = null, WorkflowExpression<fieldOfficesInput> fieldOffices = null, WorkflowExpression<personClassificationInput> personClassification = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<int> page = null, WorkflowExpression<sortOnInput> sortOn = null, WorkflowExpression<sortOrderInput> sortOrder = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WantedPerson> __BuildGetWantedPerson(WorkflowExpression<string> id)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListArtCrimesResponse> __BuildListArtCrimes(WorkflowExpression<string> title = null, WorkflowExpression<string> crimeCategory = null, WorkflowExpression<string> maker = null, WorkflowExpression<string> referenceNumber = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<int> page = null, WorkflowExpression<sortOnInput> sortOn = null, WorkflowExpression<sortOrderInput> sortOrder = null)
         {
@@ -130,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArtCrime> __BuildGetArtCrime(WorkflowExpression<string> id)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendDocumentFromTemplateResponse> __BuildSendDocumentFromTemplate(WorkflowExpression<string> templateId, WorkflowExpression<bool> isSandbox, WorkflowExpression<string> title, WorkflowExpression<string> message = null, WorkflowExpression<string> cc = null, WorkflowExpression<string> brandId = null, WorkflowExpression<string> onBehalfOf = null, WorkflowExpression<int> expiryDays = null, WorkflowExpression<string> labels = null, WorkflowExpression<bool> hideDocumentId = null, WorkflowExpression<bool> enablePrintAndSign = null, WorkflowExpression<bool> enableReassign = null, WorkflowExpression<bool> enableAutoReminder = null, WorkflowExpression<object> signers = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDownloadDocument(WorkflowExpression<string> documentId, WorkflowExpression<string> onBehalfOf = null)
         {
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDownloadAuditTrail(WorkflowExpression<string> documentId, WorkflowExpression<string> onBehalfOf = null)
         {
@@ -130,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentPropertiesResponse> __BuildGetDocumentStatus(WorkflowExpression<string> documentId)
         {

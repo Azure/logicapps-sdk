@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilyws
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobilyws")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSendSMS(WorkflowExpression<string> apiKey, WorkflowExpression<string> numbers, WorkflowExpression<string> sender, WorkflowExpression<string> msg, WorkflowExpression<string> applicationType, WorkflowExpression<string> lang, WorkflowExpression<string> contentType)
         {

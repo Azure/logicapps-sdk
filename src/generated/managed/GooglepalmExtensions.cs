@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildListModels(WorkflowExpression<string> aPIVersion, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> pageToken = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetModel(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> name)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGenerateText(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> modelType, WorkflowExpression<string> modelName, WorkflowExpression<string> bodypromptprompt, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<int> bodycandidateCount = null, WorkflowExpression<int> bodymaxOutputTokens = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodytopK = null, WorkflowExpression<JToken[]> bodysafetySettings = null, WorkflowExpression<string[]> bodystopSequences = null)
         {
@@ -157,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGenerateMessage(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> model, WorkflowExpression<bodypromptmessagesInputItem[]> bodypromptmessages = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodytopK = null)
         {
@@ -222,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCountTextTokens(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> model, WorkflowExpression<string> bodyprompttext = null)
         {
@@ -266,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCountMessageTokens(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> model, WorkflowExpression<bodypromptmessagesInputItem[]> bodypromptmessages = null)
         {
@@ -310,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmbedTextResponse> __BuildEmbedText(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> model, WorkflowExpression<string> bodytext)
         {

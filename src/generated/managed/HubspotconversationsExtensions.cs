@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConversationsInboxesResponse> __BuildGetConversationsInboxes(WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> defaultPageLength = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetASingleThreadResponse> __BuildGetASingleThread(WorkflowExpression<string> threadId, WorkflowExpression<bool> archived = null, WorkflowExpression<string> property = null)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchivesAThread(WorkflowExpression<string> threadId)
         {
@@ -98,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAThreadResponse> __BuildUpdateAThread(WorkflowExpression<string> threadId, WorkflowExpression<bool> archived = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodyarchived = null)
         {
@@ -143,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> __BuildGetTheOriginalContentOfASingleMessage(WorkflowExpression<string> threadId, WorkflowExpression<string> messageId, WorkflowExpression<string> property = null)
         {
@@ -168,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> __BuildGetMessageHistoryForAThread(WorkflowExpression<string> threadId, WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> property = null)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChannelAccountsResponse> __BuildGetChannelAccounts(WorkflowExpression<string> channelId = null, WorkflowExpression<string> inboxId = null, WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> defaultPageLength = null)
         {
@@ -242,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetASingleChannelResponse> __BuildGetASingleChannel(WorkflowExpression<string> channelId)
         {
@@ -263,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetASingleMessageResponse> __BuildGetASingleMessage(WorkflowExpression<string> threadId, WorkflowExpression<string> messageId, WorkflowExpression<string> property = null)
         {
@@ -288,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChannelsResponse> __BuildGetChannels(WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> defaultPageLength = null)
         {
@@ -320,7 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetASingleActorResponse> __BuildGetASingleActor(WorkflowExpression<string> actorId, WorkflowExpression<string> property = null)
         {
@@ -344,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetThreadsResponse> __BuildGetThreads(WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> inboxId = null, WorkflowExpression<string> associatedContactId = null, WorkflowExpression<string> threadStatus = null, WorkflowExpression<string> latestMessageTimestampAfter = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> property = null)
         {
@@ -391,7 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetASingleChannelAccountResponse> __BuildGetASingleChannelAccount(WorkflowExpression<string> channelAccountId)
         {
@@ -412,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetASingleConversationsInboxResponse> __BuildGetASingleConversationsInbox(WorkflowExpression<string> inboxId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketItems> __BuildGetAllTickets(WorkflowExpression<string> expand = null, WorkflowExpression<string> select = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> count = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> __BuildCreateTicket(WorkflowExpression<string> bodyticketrequest, WorkflowExpression<string> bodyticketrequesterrequesterEmail, WorkflowExpression<int> bodyticketstatus, WorkflowExpression<int> bodyticketpriority, WorkflowExpression<int> bodyticketticketType, WorkflowExpression<string> bodyticketassigneeassigneeEmail, WorkflowExpression<int> bodyticketcategory = null, WorkflowExpression<int> bodyticketgroup = null, WorkflowExpression<string> bodyticketdueDate = null, WorkflowExpression<string> bodyticketresolutionDate = null)
         {
@@ -156,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> __BuildUpdateTicket(WorkflowExpression<int> bodyticketenterTikitId, WorkflowExpression<string> bodyticketassigneeassigneeEmail, WorkflowExpression<string> bodyticketchangeRequestInformation = null, WorkflowExpression<string> bodyticketrequesterrequesterEmail = null, WorkflowExpression<int> bodyticketstatus = null, WorkflowExpression<int> bodyticketcategory = null, WorkflowExpression<int> bodyticketpriority = null, WorkflowExpression<int> bodyticketticketType = null, WorkflowExpression<int> bodyticketgroup = null, WorkflowExpression<string> bodyticketdueDate = null, WorkflowExpression<string> bodyticketresolutionDate = null)
         {
@@ -277,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> __BuildGetOneTicket(WorkflowExpression<string> id, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null)
         {
@@ -306,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddCommentResponse> __BuildAddComment(WorkflowExpression<string> id, WorkflowExpression<string> bodycommentbody = null, WorkflowExpression<bool> bodycommentisPublic = null)
         {
@@ -357,7 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFileAttachedResponse> __BuildGetFileAttached(WorkflowExpression<string> id)
         {
@@ -378,7 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTasksResponse> __BuildGetTasks(WorkflowExpression<string> id, WorkflowExpression<string> lifecycle = null, WorkflowExpression<string> phase = null, WorkflowExpression<string> taskName = null, WorkflowExpression<string> assignee = null)
         {
@@ -412,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPowerAutomateTasksResponse> __BuildGetPowerAutomateTasks(WorkflowExpression<string> id, WorkflowExpression<string> lifecycle = null, WorkflowExpression<string> phase = null, WorkflowExpression<string> taskName = null)
         {
@@ -443,7 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> __BuildAddTask(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodylifecycle = null, WorkflowExpression<string> bodyphase = null, WorkflowExpression<string> bodyassignee = null)
         {
@@ -496,7 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> __BuildUpdateTask(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyassignee = null)
         {
@@ -539,7 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsPowerAutomateTask> __BuildUpdatePowerAutomateTask(WorkflowExpression<string> id, WorkflowExpression<string> bodystatusId = null)
         {
@@ -575,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetApprovalsResponse> __BuildGetApprovals(WorkflowExpression<string> id, WorkflowExpression<string> lifecycle = null, WorkflowExpression<string> phase = null, WorkflowExpression<string> approvalName = null, WorkflowExpression<string> approvers = null, WorkflowExpression<string> additionalDetails = null)
         {
@@ -612,7 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceDeskCoreModelsApprovals> __BuildUpdateApproval(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyadditionalDetails = null, WorkflowExpression<bodyrequiredByAllInput> bodyrequiredByAll = null, WorkflowExpression<string> bodyapprovers = null)
         {

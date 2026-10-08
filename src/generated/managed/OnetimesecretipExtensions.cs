@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateSecretResponse> __BuildGenerateSecret(WorkflowExpression<string> passphrase = null, WorkflowExpression<int> ttl = null, WorkflowExpression<string> recipient = null)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSecretResponse> __BuildCreateSecret(WorkflowExpression<string> secret, WorkflowExpression<string> ttl = null, WorkflowExpression<string> passphrase = null, WorkflowExpression<string> recipient = null)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveSecretResponse> __BuildRetrieveSecret(WorkflowExpression<string> sECRETKEY, WorkflowExpression<string> passphrase = null)
         {
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveMetadataResponse> __BuildRetrieveMetadata(WorkflowExpression<string> mETADATAKEY)
         {
@@ -123,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BurnASecretResponse> __BuildBurnASecret(WorkflowExpression<string> mETADATAKEY)
         {

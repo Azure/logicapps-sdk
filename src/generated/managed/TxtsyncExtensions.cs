@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SMS[]> __BuildSendSMS(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodyto)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SMS> __BuildSendBulkSMS(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodymessage, WorkflowExpression<string[]> bodyto = null, WorkflowExpression<string[]> bodytoTagName = null)
         {
@@ -107,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchContactResponseItem[]> __BuildSearchContact(WorkflowExpression<string> search)
         {
@@ -131,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddContactResponse> __BuildAddContact(WorkflowExpression<string> bodymobileNumber, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyexternalReference = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodypostcode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodycustom01 = null, WorkflowExpression<string> bodycustom02 = null, WorkflowExpression<string> bodycustom03 = null, WorkflowExpression<string> bodycustom04 = null, WorkflowExpression<string> bodycustom05 = null, WorkflowExpression<string> bodytagNames = null)
         {
@@ -282,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteContact(WorkflowExpression<string> id)
         {
@@ -305,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateContactResponse> __BuildUpdateContact(WorkflowExpression<string> id, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodymobileNumber = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyexternalReference = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodypostcode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodycustom01 = null, WorkflowExpression<string> bodycustom02 = null, WorkflowExpression<string> bodycustom03 = null, WorkflowExpression<string> bodycustom04 = null, WorkflowExpression<string> bodycustom05 = null, WorkflowExpression<bool> bodyallowSMS = null, WorkflowExpression<string> bodytagNames = null)
         {
@@ -468,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContactByExternalReferenceResponse> __BuildGetContactByExternalReference(WorkflowExpression<string> id)
         {
@@ -491,7 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteContactByExternalReference(WorkflowExpression<string> id)
         {
@@ -514,7 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUpdateContactByExternalReference(WorkflowExpression<string> id, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodymobileNumber = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyexternalReference = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodypostcode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodycustom01 = null, WorkflowExpression<string> bodycustom02 = null, WorkflowExpression<string> bodycustom03 = null, WorkflowExpression<string> bodycustom04 = null, WorkflowExpression<string> bodycustom05 = null, WorkflowExpression<bool> bodyallowSMS = null, WorkflowExpression<string> bodytagNames = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddBarcode(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocName, WorkflowExpression<string> bodytext, WorkflowExpression<bodybarcodeTypeInput> bodybarcodeType, WorkflowExpression<string> bodypages, WorkflowExpression<bodyalignXInput> bodyalignX, WorkflowExpression<bodyalignYInput> bodyalignY, WorkflowExpression<string> bodyheightInMM, WorkflowExpression<string> bodywidthInMM, WorkflowExpression<string> bodymarginXInMM, WorkflowExpression<string> bodymarginYInMM, WorkflowExpression<int> bodyopacity, WorkflowExpression<string> bodydisplayText = null, WorkflowExpression<bool> bodyisTextAbove = null)
         {
@@ -105,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreatebarcode(WorkflowExpression<bodybarcodeTypeInput> bodybarcodeType, WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodyhideText = null)
         {
@@ -155,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateEpcQrCode(WorkflowExpression<bodyepcQrCodeActionversionInput> bodyepcQrCodeActionversion = null, WorkflowExpression<bodyepcQrCodeActioncharacterSetInput> bodyepcQrCodeActioncharacterSet = null, WorkflowExpression<string> bodyepcQrCodeActionbic = null, WorkflowExpression<string> bodyepcQrCodeActionreceiverName = null, WorkflowExpression<string> bodyepcQrCodeActioniban = null, WorkflowExpression<double> bodyepcQrCodeActionamount = null, WorkflowExpression<string> bodyepcQrCodeActionpurpose = null, WorkflowExpression<string> bodyepcQrCodeActionremittanceReference = null, WorkflowExpression<string> bodyepcQrCodeActionremittanceText = null, WorkflowExpression<string> bodyepcQrCodeActioninformation = null)
         {
@@ -286,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateSwissQrBill(WorkflowExpression<bodycrAddressTypeInput> bodycrAddressType, WorkflowExpression<string> bodycrName, WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodyiban, WorkflowExpression<string> bodyamount = null, WorkflowExpression<string> bodyav1Parameters = null, WorkflowExpression<string> bodyav2Parameters = null, WorkflowExpression<string> bodybillingInfo = null, WorkflowExpression<string> bodycrCity = null, WorkflowExpression<string> bodycrPostalCode = null, WorkflowExpression<string> bodycrStreetOrAddressLine1 = null, WorkflowExpression<string> bodycrStreetOrAddressLine2 = null, WorkflowExpression<bodycurrencyInput> bodycurrency = null, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodylanguageTypeInput> bodylanguageType = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bodyreferenceTypeInput> bodyreferenceType = null, WorkflowExpression<bodyseperatorLineInput> bodyseperatorLine = null, WorkflowExpression<bodyudAddressTypeInput> bodyudAddressType = null, WorkflowExpression<string> bodyudCity = null, WorkflowExpression<string> bodyudName = null, WorkflowExpression<string> bodyudPostalCode = null, WorkflowExpression<string> bodyudStreetOrAddressLine1 = null, WorkflowExpression<string> bodyudStreetOrAddressLine2 = null, WorkflowExpression<string> bodyunstructuredMessage = null)
         {
@@ -530,7 +526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCustomAPI(WorkflowExpression<string> featurePath, WorkflowExpression<string> contentType, WorkflowExpression<string> body = null)
         {
@@ -555,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadBarcodesV1Response> __BuildReadBarcodes(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodybarcodeTypeInputItem[]> bodybarcodeType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<string> bodypages = null)
         {
@@ -620,7 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadBarcodesFromImageV1Response> __BuildReadBarcodesFromImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -665,7 +658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildReadSwissQrBill(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -710,7 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SplitDocByBarcodeV1Response> __BuildSplitDocByBarcode(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodybarcodeFilterInput> bodybarcodeFilter, WorkflowExpression<string> bodybarcodeString, WorkflowExpression<bodybarcodeTypeInput> bodybarcodeType, WorkflowExpression<bodysplitBarcodePageInput> bodysplitBarcodePage, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, WorkflowExpression<string> bodypdfRenderDpi = null, WorkflowExpression<bool> bodyisAsync = null)
         {

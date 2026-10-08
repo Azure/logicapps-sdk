@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateContactList(WorkflowExpression<string> listName)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<int> __BuildCreateContact(WorkflowExpression<string> listID, WorkflowExpression<string> email, WorkflowExpression<string> firstName = null, WorkflowExpression<string> middleName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> jobTitle = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> notes = null)
         {

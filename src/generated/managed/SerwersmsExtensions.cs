@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddBlacklistResponse> __BuildAddBlacklist(WorkflowExpression<string> bodyphone)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddContactResponse> __BuildAddContact(WorkflowExpression<string> bodyphone, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodytaxId = null)
         {
@@ -141,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSmsResponse> __BuildSendSms(WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodysender = null, WorkflowExpression<bool> bodyutf = null)
         {

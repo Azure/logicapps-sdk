@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildShipments(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyfromname = null, WorkflowExpression<string> bodyfromaddress = null, WorkflowExpression<string> bodyfromcity = null, WorkflowExpression<string> bodyfromzipCode = null, WorkflowExpression<string> bodyfromcountryCode = null, WorkflowExpression<string> bodyfromidNumber = null, WorkflowExpression<string> bodyfromstateCode = null, WorkflowExpression<string> bodyfromphone = null, WorkflowExpression<string> bodyfromemail = null, WorkflowExpression<string> bodyfromdistributionCenterId = null, WorkflowExpression<string> bodytoname = null, WorkflowExpression<string> bodytoaddress = null, WorkflowExpression<string> bodytocity = null, WorkflowExpression<string> bodytozipCode = null, WorkflowExpression<string> bodytocountryCode = null, WorkflowExpression<string> bodytoidNumber = null, WorkflowExpression<string> bodytostateCode = null, WorkflowExpression<string> bodytoobservations = null, WorkflowExpression<string> bodytophone = null, WorkflowExpression<string> bodytoemail = null, WorkflowExpression<string> bodytodistributionCenterId = null, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodyclientAdditionalInfocategory = null, WorkflowExpression<string> bodyserviceAttributescashOnDelivery = null, WorkflowExpression<string> bodyserviceCode = null, WorkflowExpression<string> bodydistributionCenterId = null, WorkflowExpression<string> bodycarrierCode = null, WorkflowExpression<string> bodyclientReference = null, WorkflowExpression<string> bodyshippingDate = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodytotalAmount = null, WorkflowExpression<string> bodycustomsinvoiceId = null, WorkflowExpression<string> bodybatchreference = null, WorkflowExpression<string> bodyestimatedDate = null, WorkflowExpression<bodyparcelsInputItem[]> bodyparcels = null)
         {
@@ -342,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLabel(WorkflowExpression<string> delivereaReference, WorkflowExpression<string> contentType, WorkflowExpression<string> accept)
         {
@@ -367,7 +365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DistributionCentersResponse> __BuildDistributionCenters(WorkflowExpression<string> contentType, WorkflowExpression<string> accept)
         {
@@ -391,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarriersInDistributionCenterResponse> __BuildCarriersInDistributionCenter(WorkflowExpression<string> distributionCenter, WorkflowExpression<string> contentType, WorkflowExpression<string> accept)
         {
@@ -416,7 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancelShipment(WorkflowExpression<string> delivereaReference, WorkflowExpression<string> contentType, WorkflowExpression<string> accept)
         {

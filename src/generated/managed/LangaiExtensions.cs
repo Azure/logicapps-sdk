@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyze(WorkflowExpression<string> bodytext, WorkflowExpression<string> bodyprojectId)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentsResponse> __BuildDocuments(WorkflowExpression<string> bodytext, WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodydate = null)
         {
@@ -118,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagsResponse> __BuildTags(WorkflowExpression<string> projectId)
         {

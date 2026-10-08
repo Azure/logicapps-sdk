@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilescanResponse> __BuildFilescan(WorkflowExpression<string> bodyfilename, WorkflowExpression<string> bodydata, WorkflowExpression<string> xApiKey = null, WorkflowExpression<string> xClientId = null)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailScanResponse> __BuildEmailScan(WorkflowExpression<string> bodyfilename, WorkflowExpression<string> bodydata, WorkflowExpression<string> xApiKey = null, WorkflowExpression<string> xClientId = null)
         {

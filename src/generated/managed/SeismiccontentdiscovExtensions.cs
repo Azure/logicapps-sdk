@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> __BuildGetPredictiveContentResultSet(WorkflowExpression<string> predictiveContentId, WorkflowExpression<string> contextId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> __BuildGetPredictiveSettings(WorkflowExpression<string> systemType = null, WorkflowExpression<string> contextType = null)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicSearchSearchResponse> __BuildQueryContent(WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> searchRequestBodyterm = null, WorkflowExpression<int> searchRequestBodyoptionspageSize = null, WorkflowExpression<searchRequestBodyoptionssearchFieldsInputItem[]> searchRequestBodyoptionssearchFields = null, WorkflowExpression<searchRequestBodyoptionsreturnFieldsInputItem[]> searchRequestBodyoptionsreturnFields = null, WorkflowExpression<SeismicSearchSortConstraint[]> searchRequestBodysort = null, WorkflowExpression<SeismicSearchConditionExpressionInfo[]> searchRequestBodyfiltercondition = null, WorkflowExpression<SeismicSearchFilterExpressionInfo[]> searchRequestBodyfilterfilter = null, WorkflowExpression<string> searchRequestBodyfilterOperator = null)
         {

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> __BuildListGroupsByDisplayNameSearch(WorkflowExpression<string> search = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListDirectGroupMembersResponse> __BuildListDirectGroupMembers(WorkflowExpression<string> groupId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null)
         {
@@ -92,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> __BuildGetMemberLicenseDetails(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupPropertiesResponse> __BuildGetGroupProperties(WorkflowExpression<string> groupId)
         {
@@ -138,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMemberGroupsResponse> __BuildGetMemberGroups(WorkflowExpression<string> memberId, WorkflowExpression<bool> bodysecurityEnabledOnly)
         {

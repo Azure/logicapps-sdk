@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> __BuildGetGestationalLimitsbyState(WorkflowExpression<stateInput> state)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> __BuildGetGestationalLimitsbyStatebyZip(WorkflowExpression<string> zipCode)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> __BuildGetInsuranceCoveragebyState(WorkflowExpression<stateInput> state)
         {
@@ -81,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> __BuildGetInsuranceCoveragebyZip(WorkflowExpression<string> zipCode)
         {
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMinorsInfobyStateResponse> __BuildGetMinorsInfobyState(WorkflowExpression<stateInput> state)
         {
@@ -123,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMinorsInfobyZipResponse> __BuildGetMinorsInfobyZip(WorkflowExpression<string> zipCode)
         {
@@ -144,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> __BuildGetWaitingPeriodsInfobyState(WorkflowExpression<stateInput> state)
         {
@@ -165,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> __BuildGetWaitingPeriodsInfobyZip(WorkflowExpression<string> zipCode)
         {

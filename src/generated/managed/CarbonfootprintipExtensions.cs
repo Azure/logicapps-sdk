@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AirQualityHealthIndexResponse> __BuildAirQualityHealthIndex(WorkflowExpression<string> o3, WorkflowExpression<string> nO2, WorkflowExpression<string> pM)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TreeEquivalentResponse> __BuildTreeEquivalent(WorkflowExpression<string> weight, WorkflowExpression<unitInput> unit)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse> __BuildTraditionalHydroToCarbonFootprint(WorkflowExpression<string> consumption, WorkflowExpression<locationInput> location)
         {
@@ -92,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse> __BuildCleanHydroToCarbonFootprint(WorkflowExpression<energyInput> energy, WorkflowExpression<string> consumption)
         {
@@ -116,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FuelToCO2eResponse> __BuildFuelToCO2e(WorkflowExpression<typeInput> type, WorkflowExpression<string> litres)
         {
@@ -140,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse> __BuildCarbonFootprintFromCarTravel(WorkflowExpression<string> distance, WorkflowExpression<vehicleInput> vehicle)
         {
@@ -164,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonFootprintFromFlightResponse> __BuildCarbonFootprintFromFlight(WorkflowExpression<string> distance, WorkflowExpression<typeInput> type)
         {
@@ -188,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse> __BuildCarbonFootprintFromMotorBike(WorkflowExpression<typeInput> type, WorkflowExpression<string> distance)
         {
@@ -212,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse> __BuildCarbonFootprintFromPublicTransit(WorkflowExpression<string> distance, WorkflowExpression<typeInput> type)
         {

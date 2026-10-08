@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateJobOutput> __BuildCreateJob(WorkflowExpression<object> subscriptionId, WorkflowExpression<object> resourceGroup, WorkflowExpression<object> automationAccount, WorkflowExpression<object> runbookName, WorkflowExpression<bool> waitForJob = null, WorkflowExpression<object> hybridAutomationWorkerGroup = null, WorkflowExpression<object> runbookParameters = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetJobStatusOutput> __BuildGetJobStatus(WorkflowExpression<object> subscriptionId, WorkflowExpression<object> resourceGroup, WorkflowExpression<object> automationAccount, WorkflowExpression<object> jobId)
         {
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetJobOutput(WorkflowExpression<object> subscriptionId, WorkflowExpression<object> resourceGroup, WorkflowExpression<object> automationAccount, WorkflowExpression<object> jobId)
         {

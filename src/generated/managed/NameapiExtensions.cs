@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseNameResponse> __BuildParseName(WorkflowExpression<JToken[]> bodyinputPersonpersonNamepersonNames, WorkflowExpression<bodyinputPersongenderInput> bodyinputPersongender = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectDeaResponse> __BuildDetectDea(WorkflowExpression<string> emailAddress)
         {

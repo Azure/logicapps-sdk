@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateActionCard(WorkflowExpression<string> organization, WorkflowExpression<string> bodycardname, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription, WorkflowExpression<object> bodydynamicproperties, WorkflowExpression<string> actiontype, WorkflowExpression<string> secondaryactiontype = null, WorkflowExpression<string> regardingobjecttype = null, WorkflowExpression<string> regardingobjectid = null, WorkflowExpression<string> ownerid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> expirydate = null)
         {
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateCustomActionDefinition(WorkflowExpression<string> organization, WorkflowExpression<string> entityname, WorkflowExpression<string> customaction, WorkflowExpression<object> body = null)
         {

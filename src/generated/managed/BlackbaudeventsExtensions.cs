@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventListEntry> __BuildListEvents(WorkflowExpression<string> category = null, WorkflowExpression<string> lookupId = null, WorkflowExpression<string> startDateFrom = null, WorkflowExpression<string> startDateTo = null, WorkflowExpression<bool> includeInactive = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> eventId = null, WorkflowExpression<string> name = null, WorkflowExpression<string> dateAdded = null, WorkflowExpression<string> lastModified = null)
         {
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedEvent> __BuildCreateEvent(WorkflowExpression<string> bodyeventName, WorkflowExpression<string> bodycategorycategory, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<string> bodylookupID = null, WorkflowExpression<int> bodycapacity = null, WorkflowExpression<double> bodygoal = null, WorkflowExpression<string> bodycampaignID = null, WorkflowExpression<string> bodyfundID = null, WorkflowExpression<bool> bodyinactive = null)
         {
@@ -185,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiEvent> __BuildGetEvent(WorkflowExpression<string> eventId)
         {
@@ -206,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditEvent(WorkflowExpression<string> eventId, WorkflowExpression<string> bodycategorycategory, WorkflowExpression<string> bodyeventName = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<string> bodylookupID = null, WorkflowExpression<int> bodycapacity = null, WorkflowExpression<double> bodygoal = null, WorkflowExpression<string> bodycampaignID = null, WorkflowExpression<string> bodyfundID = null, WorkflowExpression<bool> bodyinactive = null)
         {
@@ -329,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiEventAttachmentCollection> __BuildListEventAttachments(WorkflowExpression<string> eventId)
         {
@@ -350,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedEventAttachment> __BuildCreateEventAttachment(WorkflowExpression<string> eventId, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodyuRL = null, WorkflowExpression<string> bodyfileName = null, WorkflowExpression<string> bodyfileID = null, WorkflowExpression<string> bodythumbnailID = null, WorkflowExpression<string[]> bodytags = null)
         {
@@ -430,7 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditEventAttachment(WorkflowExpression<string> eventId, WorkflowExpression<string> attachmentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodyuRL = null, WorkflowExpression<string[]> bodytags = null)
         {
@@ -487,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventFee> __BuildListEventFees(WorkflowExpression<string> eventId)
         {
@@ -508,7 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedEventFee> __BuildCreateEventFee(WorkflowExpression<string> eventId, WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyfeeAmount, WorkflowExpression<double> bodycontributionAmount)
         {
@@ -545,7 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventParticipantOption> __BuildListEventParticipantOptions(WorkflowExpression<string> eventId)
         {
@@ -566,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedEventParticipantOption> __BuildCreateEventParticipantOption(WorkflowExpression<string> eventId, WorkflowExpression<string> bodyname, WorkflowExpression<bodyinputTypeInput> bodyinputType, WorkflowExpression<bool> bodyallowMultiSelect = null, WorkflowExpression<EventApiCreateParticipantOptionListOption[]> bodylistOptions = null)
         {
@@ -614,7 +603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantListEntry> __BuildListEventParticipants(WorkflowExpression<string> eventId, WorkflowExpression<rsvpStatusInput> rsvpStatus = null, WorkflowExpression<invitationStatusInput> invitationStatus = null, WorkflowExpression<string> participationLevel = null, WorkflowExpression<bool> attendedFilter = null, WorkflowExpression<bool> feesPaidFilter = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> isConstituentFilter = null, WorkflowExpression<bool> emailEligibleFilter = null, WorkflowExpression<bool> phoneCallEligibleFilter = null, WorkflowExpression<string> name = null, WorkflowExpression<string> dateAdded = null, WorkflowExpression<string> lastModified = null)
         {
@@ -675,7 +663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedParticipant> __BuildCreateParticipant(WorkflowExpression<string> eventId, WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodyparticipationLevelparticipationLevel, WorkflowExpression<string> bodyhostID = null, WorkflowExpression<bodyrSVPStatusInput> bodyrSVPStatus = null, WorkflowExpression<bool> bodyattended = null, WorkflowExpression<bodyinvitationStatusInput> bodyinvitationStatus = null, WorkflowExpression<int> bodyrSVPDateday = null, WorkflowExpression<int> bodyrSVPDatemonth = null, WorkflowExpression<int> bodyrSVPDateyear = null, WorkflowExpression<int> bodyinvitationDateday = null, WorkflowExpression<int> bodyinvitationDatemonth = null, WorkflowExpression<int> bodyinvitationDateyear = null, WorkflowExpression<string> bodysummaryNote = null)
         {
@@ -810,7 +797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditParticipantOption(WorkflowExpression<string> optionId, WorkflowExpression<string> bodyvalue)
         {
@@ -841,7 +827,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiParticipant> __BuildGetParticipant(WorkflowExpression<string> participantId)
         {
@@ -862,7 +847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditParticipant(WorkflowExpression<string> participantId, WorkflowExpression<string> bodyparticipationLevelparticipationLevel, WorkflowExpression<string> bodyconstituentID = null, WorkflowExpression<string> bodyhostID = null, WorkflowExpression<bodyrSVPStatusInput> bodyrSVPStatus = null, WorkflowExpression<bool> bodyattended = null, WorkflowExpression<bodyinvitationStatusInput> bodyinvitationStatus = null, WorkflowExpression<int> bodyrSVPDateday = null, WorkflowExpression<int> bodyrSVPDatemonth = null, WorkflowExpression<int> bodyrSVPDateyear = null, WorkflowExpression<int> bodyinvitationDateday = null, WorkflowExpression<int> bodyinvitationDatemonth = null, WorkflowExpression<int> bodyinvitationDateyear = null, WorkflowExpression<string> bodysummaryNote = null)
         {
@@ -1001,7 +985,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantDonation> __BuildListParticipantDonations(WorkflowExpression<string> participantId, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -1029,7 +1012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedParticipantDonation> __BuildCreateParticipantDonation(WorkflowExpression<string> participantId, WorkflowExpression<string> bodygiftID)
         {
@@ -1060,7 +1042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantFeePayment> __BuildListParticipantFeePayments(WorkflowExpression<string> participantId, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -1088,7 +1069,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment> __BuildCreateParticipantFeePayment(WorkflowExpression<string> participantId, WorkflowExpression<string> bodygiftID, WorkflowExpression<double> bodyappliedAmount)
         {
@@ -1122,7 +1102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantFee> __BuildListParticipantFees(WorkflowExpression<string> participantId, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -1150,7 +1129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedParticipantFee> __BuildCreateParticipantFee(WorkflowExpression<string> participantId, WorkflowExpression<string> bodyeventID, WorkflowExpression<string> bodyfee, WorkflowExpression<int> bodyquantity, WorkflowExpression<double> bodyfeeAmount, WorkflowExpression<double> bodycontributionAmount, WorkflowExpression<int> bodydateday = null, WorkflowExpression<int> bodydatemonth = null, WorkflowExpression<int> bodydateyear = null)
         {
@@ -1222,7 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantOption> __BuildListParticipantOptions(WorkflowExpression<string> participantId)
         {
@@ -1243,7 +1220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventApiCreatedParticipantOption> __BuildCreateParticipantOption(WorkflowExpression<string> participantId, WorkflowExpression<string> bodyeventID, WorkflowExpression<string> bodyoption, WorkflowExpression<object> bodyoptionValue)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRatesTaxesResponse> __BuildGetRatesTaxes(WorkflowExpression<string> bodyoriginAddressline1 = null, WorkflowExpression<string> bodyoriginAddressline2 = null, WorkflowExpression<string> bodyoriginAddressstate = null, WorkflowExpression<string> bodyoriginAddresscity = null, WorkflowExpression<string> bodyoriginAddresspostalCode = null, WorkflowExpression<string> bodyoriginAddresscountryAlpha2 = null, WorkflowExpression<string> bodydestinationAddressline1 = null, WorkflowExpression<string> bodydestinationAddressline2 = null, WorkflowExpression<string> bodydestinationAddressstate = null, WorkflowExpression<string> bodydestinationAddresscity = null, WorkflowExpression<string> bodydestinationAddresspostalCode = null, WorkflowExpression<string> bodydestinationAddresscountryAlpha2 = null, WorkflowExpression<string> bodyincoterms = null, WorkflowExpression<bool> bodyinsuranceisInsured = null, WorkflowExpression<int> bodyinsuranceinsuredAmount = null, WorkflowExpression<string> bodyinsuranceinsuredCurrency = null, WorkflowExpression<bool> bodycourierSelectionapplyShippingRules = null, WorkflowExpression<string> bodyshippingSettingsunitsweight = null, WorkflowExpression<string> bodyshippingSettingsunitsdimensions = null, WorkflowExpression<string> bodyshippingSettingsoutputCurrency = null, WorkflowExpression<bodyparcelsInputItem[]> bodyparcels = null)
         {
@@ -240,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAllShipmentsResponse> __BuildListAllShipments(WorkflowExpression<string> easyshipShipmentId = null, WorkflowExpression<string> platformOrderNumber = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> createdAtFrom = null, WorkflowExpression<string> createdAtTo = null, WorkflowExpression<string> confirmedAtFrom = null, WorkflowExpression<string> confirmAtTo = null, WorkflowExpression<string> labelGeneratedAtFrom = null, WorkflowExpression<string> labelGeneratedAtTo = null, WorkflowExpression<string> shipmentState = null, WorkflowExpression<string> pickupState = null, WorkflowExpression<string> deliveryState = null, WorkflowExpression<string> labelState = null, WorkflowExpression<string> warehouseState = null)
         {
@@ -305,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAShipmentResponse> __BuildCreateAShipment(WorkflowExpression<string> bodyoriginAddressline1 = null, WorkflowExpression<string> bodyoriginAddressline2 = null, WorkflowExpression<string> bodyoriginAddressstate = null, WorkflowExpression<string> bodyoriginAddresscity = null, WorkflowExpression<string> bodyoriginAddresspostalCode = null, WorkflowExpression<string> bodyoriginAddresscountryAlpha2 = null, WorkflowExpression<string> bodyoriginAddresscontactName = null, WorkflowExpression<string> bodyoriginAddresscompanyName = null, WorkflowExpression<string> bodyoriginAddresscontactPhone = null, WorkflowExpression<string> bodyoriginAddresscontactEmail = null, WorkflowExpression<string> bodysenderAddressline1 = null, WorkflowExpression<string> bodysenderAddressline2 = null, WorkflowExpression<string> bodysenderAddressstate = null, WorkflowExpression<string> bodysenderAddresscity = null, WorkflowExpression<string> bodysenderAddresspostalCode = null, WorkflowExpression<string> bodysenderAddresscountryAlpha2 = null, WorkflowExpression<string> bodysenderAddresscontactName = null, WorkflowExpression<string> bodysenderAddresscompanyName = null, WorkflowExpression<string> bodysenderAddresscontactPhone = null, WorkflowExpression<string> bodysenderAddresscontactEmail = null, WorkflowExpression<string> bodyreturnAddressline1 = null, WorkflowExpression<string> bodyreturnAddressline2 = null, WorkflowExpression<string> bodyreturnAddressstate = null, WorkflowExpression<string> bodyreturnAddresscity = null, WorkflowExpression<string> bodyreturnAddresspostalCode = null, WorkflowExpression<string> bodyreturnAddresscountryAlpha2 = null, WorkflowExpression<string> bodyreturnAddresscontactName = null, WorkflowExpression<string> bodyreturnAddresscompanyName = null, WorkflowExpression<string> bodyreturnAddresscontactPhone = null, WorkflowExpression<string> bodyreturnAddresscontactEmail = null, WorkflowExpression<string> bodydestinationAddressline1 = null, WorkflowExpression<string> bodydestinationAddressline2 = null, WorkflowExpression<string> bodydestinationAddressstate = null, WorkflowExpression<string> bodydestinationAddresscity = null, WorkflowExpression<string> bodydestinationAddresspostalCode = null, WorkflowExpression<string> bodydestinationAddresscountryAlpha2 = null, WorkflowExpression<string> bodydestinationAddresscontactName = null, WorkflowExpression<string> bodydestinationAddresscompanyName = null, WorkflowExpression<string> bodydestinationAddresscontactPhone = null, WorkflowExpression<string> bodydestinationAddresscontactEmail = null, WorkflowExpression<bool> bodysetAsResidential = null, WorkflowExpression<string> bodyconsigneeTaxId = null, WorkflowExpression<string> bodyeeiReference = null, WorkflowExpression<string> bodyincoterms = null, WorkflowExpression<bool> bodyinsuranceisInsured = null, WorkflowExpression<int> bodyinsuranceinsuredAmount = null, WorkflowExpression<string> bodyinsuranceinsuredCurrency = null, WorkflowExpression<string> bodyorderDataplatformName = null, WorkflowExpression<string> bodyorderDataplatformOrderNumber = null, WorkflowExpression<string[]> bodyorderDataorderTagList = null, WorkflowExpression<string> bodyorderDatasellerNotes = null, WorkflowExpression<string> bodyorderDatabuyerNotes = null, WorkflowExpression<string> bodycourierSelectionselectedCourierId = null, WorkflowExpression<bool> bodycourierSelectionallowCourierFallback = null, WorkflowExpression<bool> bodycourierSelectionapplyShippingRules = null, WorkflowExpression<string> bodyshippingSettingsunitsweight = null, WorkflowExpression<string> bodyshippingSettingsunitsdimensions = null, WorkflowExpression<string> bodyshippingSettingsprintingOptionsformat = null, WorkflowExpression<string> bodyshippingSettingsprintingOptionslabel = null, WorkflowExpression<string> bodyshippingSettingsprintingOptionscommercialInvoice = null, WorkflowExpression<string> bodyshippingSettingsprintingOptionspackingSlip = null, WorkflowExpression<bool> bodyshippingSettingsbuyLabel = null, WorkflowExpression<bool> bodyshippingSettingsbuyLabelSynchronous = null, WorkflowExpression<bodyparcelsInputItem[]> bodyparcels = null)
         {
@@ -868,7 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuyAShipmentLabelResponse> __BuildBuyAShipmentLabel(WorkflowExpression<bodyshipmentsInputItem[]> bodyshipments = null)
         {
@@ -902,7 +898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteAShipmentResponse> __BuildDeleteAShipment(WorkflowExpression<string> easyshipShipmentId)
         {
@@ -923,7 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAShipmentResponse> __BuildUpdateAShipment(WorkflowExpression<string> easyshipShipmentId, WorkflowExpression<string> bodydestinationCountryAlpha2 = null, WorkflowExpression<string> bodydestinationCity = null, WorkflowExpression<string> bodydestinationName = null, WorkflowExpression<string> bodydestinationAddressLine1 = null, WorkflowExpression<string> bodydestinationPhoneNumber = null, WorkflowExpression<bodyitemsInputItem[]> bodyitems = null, WorkflowExpression<string> bodyplatformName = null, WorkflowExpression<string> bodyplatformOrderNumber = null, WorkflowExpression<string> bodytaxesDutiesPaidBy = null, WorkflowExpression<bool> bodyisInsured = null, WorkflowExpression<string> bodyselectedCourierId = null, WorkflowExpression<int> bodydestinationPostalCode = null, WorkflowExpression<string> bodydestinationState = null, WorkflowExpression<string> bodydestinationAddressLine2 = null, WorkflowExpression<string> bodydestinationEmailAddress = null)
         {
@@ -1056,7 +1050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAShipmentResponse> __BuildGetAShipment(WorkflowExpression<string> easyshipShipmentId, WorkflowExpression<string> format = null, WorkflowExpression<string> label = null, WorkflowExpression<string> commercialInvoice = null, WorkflowExpression<string> packingSlip = null)
         {
@@ -1089,7 +1082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateWarehouseStateResponse> __BuildUpdateWarehouseState(WorkflowExpression<bodyshipmentsInputItem2[]> bodyshipments = null)
         {
@@ -1123,7 +1115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAvailablePickupSlotsResponse> __BuildGetAvailablePickupSlots(WorkflowExpression<string> courierId)
         {
@@ -1144,7 +1135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestAPickupResponse> __BuildRequestAPickup(WorkflowExpression<string> bodycourierId = null, WorkflowExpression<string> bodypreferredDate = null, WorkflowExpression<string> bodypreferredMaxTime = null, WorkflowExpression<string> bodypreferredMinTime = null, WorkflowExpression<string[]> bodyeasyshipShipmentIds = null)
         {
@@ -1206,7 +1196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCheckpointsResponse> __BuildGetCheckpoints(WorkflowExpression<string> easyshipShipmentId, WorkflowExpression<string> platformOrderNumber = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -1237,7 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStatusResponse> __BuildGetStatus(WorkflowExpression<string> easyshipShipmentId, WorkflowExpression<string> platformOrderNumber = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {

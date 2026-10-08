@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildImportAssemblyFromLocalFile(WorkflowExpression<string> importAssemblyFromLocalFilelocalAssemblyFilePath, WorkflowExpression<string> importAssemblyFromLocalFileassemblyName, WorkflowExpression<string> importAssemblyFromLocalFileworkflow, WorkflowExpression<bool> importAssemblyFromLocalFilecompress = null)
         {
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddAssemblySearchFolder(WorkflowExpression<string> addAssemblySearchFolderfolderPath, WorkflowExpression<string> addAssemblySearchFolderworkflow)
         {
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildClearAssemblySearchFolders(WorkflowExpression<string> clearAssemblySearchFoldersworkflow)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsPowerShellAutomationInstalledResponse> __BuildIsPowerShellAutomationInstalled(WorkflowExpression<string> isPowerShellAutomationInstalledworkflow)
         {
@@ -164,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsPowerShellModuleInstalledResponse> __BuildIsPowerShellModuleInstalled(WorkflowExpression<string> isPowerShellModuleInstalledpowerShellModuleName, WorkflowExpression<string> isPowerShellModuleInstalledworkflow)
         {
@@ -197,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunPowerShellAutomationScriptResponse> __BuildRunPowerShellAutomationScript(WorkflowExpression<string> runPowerShellAutomationScriptworkflow, WorkflowExpression<string> runPowerShellAutomationScriptpowerShellScriptContents = null, WorkflowExpression<string> runPowerShellAutomationScriptcomputerName = null, WorkflowExpression<bool> runPowerShellAutomationScriptisNoResultAnError = null, WorkflowExpression<bool> runPowerShellAutomationScriptreturnComplexTypes = null, WorkflowExpression<bool> runPowerShellAutomationScriptreturnBooleanAsBoolean = null, WorkflowExpression<bool> runPowerShellAutomationScriptreturnNumericAsDecimal = null, WorkflowExpression<bool> runPowerShellAutomationScriptreturnDateAsDate = null, WorkflowExpression<string> runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, WorkflowExpression<runPowerShellAutomationScriptauthenticationMechanismInput> runPowerShellAutomationScriptauthenticationMechanism = null, WorkflowExpression<int> runPowerShellAutomationScriptconnectionAttempts = null, WorkflowExpression<string> runPowerShellAutomationScriptusername = null, WorkflowExpression<string> runPowerShellAutomationScriptpassword = null, WorkflowExpression<bool> runPowerShellAutomationScriptrunScriptAsThread = null, WorkflowExpression<int> runPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, WorkflowExpression<int> runPowerShellAutomationScriptsecondsToWaitForThread = null, WorkflowExpression<bool> runPowerShellAutomationScriptscriptContainsStoredPassword = null, WorkflowExpression<bool> runPowerShellAutomationScriptlogVerboseOutput = null, WorkflowExpression<bool> runPowerShellAutomationScriptreturnSecureStrings = null, WorkflowExpression<string> runPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, WorkflowExpression<string> runPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, WorkflowExpression<runPowerShellAutomationScriptpowerShellCommandParametersInputItem[]> runPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
@@ -484,7 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPowerShellVersionResponse> __BuildGetPowerShellVersion(WorkflowExpression<string> getPowerShellVersionworkflow, WorkflowExpression<string> getPowerShellVersioncomputerName = null, WorkflowExpression<getPowerShellVersionauthenticationMechanismInput> getPowerShellVersionauthenticationMechanism = null, WorkflowExpression<int> getPowerShellVersionconnectionAttempts = null)
         {
@@ -545,7 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRegexMatchResponse> __BuildGetRegexMatch(WorkflowExpression<string> getRegexMatchtextToMatch, WorkflowExpression<string> getRegexMatchregex, WorkflowExpression<int> getRegexMatchsearchIndex = null, WorkflowExpression<bool> getRegexMatchcaseSensitive = null, WorkflowExpression<int> getRegexMatchregexTimeoutInSeconds = null)
         {
@@ -629,7 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRegexMatchesResponse> __BuildGetRegexMatches(WorkflowExpression<string> getRegexMatchestextToMatch, WorkflowExpression<string> getRegexMatchesregex, WorkflowExpression<int> getRegexMatchesmaximumMatches = null, WorkflowExpression<bool> getRegexMatchescaseSensitive = null, WorkflowExpression<bool> getRegexMatchestrimResults = null, WorkflowExpression<bool> getRegexMatchesremoveEmptyResults = null, WorkflowExpression<int> getRegexMatchesregexTimeoutInSeconds = null)
         {
@@ -747,7 +738,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRegexSplitResponse> __BuildGetRegexSplit(WorkflowExpression<string> getRegexSplittextToSplit, WorkflowExpression<string> getRegexSplitregex, WorkflowExpression<bool> getRegexSplitcaseSensitive = null, WorkflowExpression<bool> getRegexSplittrimResults = null, WorkflowExpression<bool> getRegexSplitremoveEmptyResults = null, WorkflowExpression<int> getRegexSplitregexTimeoutInSeconds = null)
         {
@@ -848,7 +838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRegexGroupMatchesResponse> __BuildGetRegexGroupMatches(WorkflowExpression<string> getRegexGroupMatchestextToMatch, WorkflowExpression<string> getRegexGroupMatchesregex, WorkflowExpression<string[]> getRegexGroupMatchesgroupsToRetrieve = null, WorkflowExpression<int> getRegexGroupMatchessearchIndex = null, WorkflowExpression<bool> getRegexGroupMatchescaseSensitive = null, WorkflowExpression<int> getRegexGroupMatchesregexTimeoutInSeconds = null)
         {
@@ -939,7 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse> __BuildCreateJSONFromInputVariables(WorkflowExpression<createJSONFromInputVariablesinputVariablesInputItem[]> createJSONFromInputVariablesinputVariables, WorkflowExpression<bool> createJSONFromInputVariablesreturnAsJSONTable)
         {
@@ -972,7 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse> __BuildGetJSONTableFromStringArray(WorkflowExpression<string[]> getJSONTableFromStringArrayinputArray, WorkflowExpression<string> getJSONTableFromStringArraycolumnName, WorkflowExpression<bool> getJSONTableFromStringArraydropEmptyItems = null)
         {
@@ -1022,7 +1009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilterJSONTableResponse> __BuildFilterJSONTable(WorkflowExpression<string> filterJSONTablejSONTable, WorkflowExpression<string> filterJSONTablefilter, WorkflowExpression<string> filterJSONTablesortColumnName = null, WorkflowExpression<bool> filterJSONTableascending = null, WorkflowExpression<string> filterJSONTablesortColumnName2 = null, WorkflowExpression<bool> filterJSONTableascending2 = null, WorkflowExpression<string> filterJSONTablesortColumnName3 = null, WorkflowExpression<bool> filterJSONTableascending3 = null)
         {
@@ -1127,7 +1113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilterTableResponse> __BuildFilterTable(WorkflowExpression<JToken[]> filterTableinputTable, WorkflowExpression<string> filterTablefilter, WorkflowExpression<string> filterTablesortColumnName = null, WorkflowExpression<bool> filterTableascending = null, WorkflowExpression<string> filterTablesortColumnName2 = null, WorkflowExpression<bool> filterTableascending2 = null, WorkflowExpression<string> filterTablesortColumnName3 = null, WorkflowExpression<bool> filterTableascending3 = null)
         {
@@ -1232,7 +1217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SortTableResponse> __BuildSortTable(WorkflowExpression<JToken[]> sortTableinputTable, WorkflowExpression<string> sortTablesortColumnName, WorkflowExpression<bool> sortTableascending, WorkflowExpression<string> sortTablesortColumnName2 = null, WorkflowExpression<bool> sortTableascending2 = null, WorkflowExpression<string> sortTablesortColumnName3 = null, WorkflowExpression<bool> sortTableascending3 = null)
         {
@@ -1316,7 +1300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SortJSONTableResponse> __BuildSortJSONTable(WorkflowExpression<string> sortJSONTablejSONTable, WorkflowExpression<string> sortJSONTablesortColumnName, WorkflowExpression<bool> sortJSONTableascending = null, WorkflowExpression<string> sortJSONTablesortColumnName2 = null, WorkflowExpression<bool> sortJSONTableascending2 = null, WorkflowExpression<string> sortJSONTablesortColumnName3 = null, WorkflowExpression<bool> sortJSONTableascending3 = null)
         {
@@ -1414,7 +1397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTableFromStringArrayResponse> __BuildGetTableFromStringArray(WorkflowExpression<string[]> getTableFromStringArrayinputArray, WorkflowExpression<string> getTableFromStringArraycolumnName, WorkflowExpression<bool> getTableFromStringArraydropEmptyItems = null)
         {
@@ -1464,7 +1446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTableFromJSONResponse> __BuildGetTableFromJSON(WorkflowExpression<string> getTableFromJSONjSONTable, WorkflowExpression<int> getTableFromJSONstartRowIndex, WorkflowExpression<int> getTableFromJSONnumberOfRowsToRetrieve = null, WorkflowExpression<int> getTableFromJSONstartColumnIndex = null, WorkflowExpression<string> getTableFromJSONstartColumnName = null, WorkflowExpression<int> getTableFromJSONnumberOfColumnsToRetrieve = null)
         {
@@ -1535,7 +1516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SortStringArrayResponse> __BuildSortStringArray(WorkflowExpression<string[]> sortStringArrayinputArray, WorkflowExpression<bool> sortStringArrayascending = null, WorkflowExpression<bool> sortStringArraycaseSensitive = null)
         {
@@ -1599,7 +1579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilterStringArrayResponse> __BuildFilterStringArray(WorkflowExpression<string[]> filterStringArrayinputArray, WorkflowExpression<string> filterStringArraycolumnName, WorkflowExpression<string> filterStringArrayfilter)
         {
@@ -1635,7 +1614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertRowInStringArrayResponse> __BuildInsertRowInStringArray(WorkflowExpression<string[]> insertRowInStringArrayinputArray, WorkflowExpression<int> insertRowInStringArrayrowIndex, WorkflowExpression<string> insertRowInStringArrayvalueToInsert = null)
         {
@@ -1675,7 +1653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertRowInTableResponse> __BuildInsertRowInTable(WorkflowExpression<JToken[]> insertRowInTableinputTable, WorkflowExpression<int> insertRowInTablerowIndex, WorkflowExpression<string> insertRowInTablerowToInsertJSON = null)
         {
@@ -1715,7 +1692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertRowInJSONTableResponse> __BuildInsertRowInJSONTable(WorkflowExpression<string> insertRowInJSONTablejSONTable, WorkflowExpression<int> insertRowInJSONTablerowIndex, WorkflowExpression<string> insertRowInJSONTablerowToInsertJSON = null)
         {
@@ -1755,7 +1731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse> __BuildInsertRowInJSONTableFromInputVariables(WorkflowExpression<string> insertRowInJSONTableFromInputVariablesjSONTable, WorkflowExpression<int> insertRowInJSONTableFromInputVariablesrowIndex, WorkflowExpression<insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItem[]> insertRowInJSONTableFromInputVariablesrowToInsertInputVariables)
         {
@@ -1791,7 +1766,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteItemsInStringArrayResponse> __BuildDeleteItemsInStringArray(WorkflowExpression<string[]> deleteItemsInStringArrayinputArray, WorkflowExpression<int> deleteItemsInStringArraystartItemIndex, WorkflowExpression<int> deleteItemsInStringArraynumberOfItemsToDelete)
         {
@@ -1827,7 +1801,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteRowsInTableResponse> __BuildDeleteRowsInTable(WorkflowExpression<JToken[]> deleteRowsInTableinputTable, WorkflowExpression<int> deleteRowsInTablestartRowIndex, WorkflowExpression<int> deleteRowsInTablenumberOfRowsToDelete)
         {
@@ -1863,7 +1836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteRowsInJSONTableResponse> __BuildDeleteRowsInJSONTable(WorkflowExpression<string> deleteRowsInJSONTablejSONTable, WorkflowExpression<int> deleteRowsInJSONTablestartRowIndex, WorkflowExpression<int> deleteRowsInJSONTablenumberOfRowsToDelete)
         {
@@ -1899,7 +1871,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenameColumnInTableResponse> __BuildRenameColumnInTable(WorkflowExpression<JToken[]> renameColumnInTableinputTable, WorkflowExpression<string> renameColumnInTablesourceColumnName, WorkflowExpression<string> renameColumnInTablenewColumnName)
         {
@@ -1935,7 +1906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RenameColumnInJSONTableResponse> __BuildRenameColumnInJSONTable(WorkflowExpression<string> renameColumnInJSONTablejSONTable, WorkflowExpression<string> renameColumnInJSONTablesourceColumnName, WorkflowExpression<string> renameColumnInJSONTablenewColumnName)
         {
@@ -1971,7 +1941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteColumnsInTableResponse> __BuildDeleteColumnsInTable(WorkflowExpression<JToken[]> deleteColumnsInTableinputTable, WorkflowExpression<int> deleteColumnsInTablenumberOfColumnsToDelete, WorkflowExpression<int> deleteColumnsInTablestartColumnIndex = null, WorkflowExpression<string> deleteColumnsInTablecolumnNameToDelete = null)
         {
@@ -2018,7 +1987,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse> __BuildDeleteColumnsInJSONTable(WorkflowExpression<string> deleteColumnsInJSONTablejSONTable, WorkflowExpression<int> deleteColumnsInJSONTablenumberOfColumnsToDelete, WorkflowExpression<int> deleteColumnsInJSONTablestartColumnIndex = null, WorkflowExpression<string> deleteColumnsInJSONTablecolumnNameToDelete = null)
         {
@@ -2065,7 +2033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStringArrayFromTableColumnResponse> __BuildGetStringArrayFromTableColumn(WorkflowExpression<JToken[]> getStringArrayFromTableColumninputTable, WorkflowExpression<int> getStringArrayFromTableColumncolumnIndex = null, WorkflowExpression<string> getStringArrayFromTableColumncolumnName = null)
         {
@@ -2109,7 +2076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse> __BuildGetStringArrayFromJSONTableColumn(WorkflowExpression<string> getStringArrayFromJSONTableColumnjSONTable, WorkflowExpression<int> getStringArrayFromJSONTableColumncolumnIndex = null, WorkflowExpression<string> getStringArrayFromJSONTableColumncolumnName = null)
         {
@@ -2153,7 +2119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStringFromJSONTableCellResponse> __BuildGetStringFromJSONTableCell(WorkflowExpression<string> getStringFromJSONTableCelljSONTable, WorkflowExpression<int> getStringFromJSONTableCellrowIndex = null, WorkflowExpression<int> getStringFromJSONTableCellcolumnIndex = null, WorkflowExpression<string> getStringFromJSONTableCellcolumnName = null, WorkflowExpression<bool> getStringFromJSONTableCellfallBackIfCellDoesNotExist = null, WorkflowExpression<string> getStringFromJSONTableCellfallbackValue = null)
         {
@@ -2228,7 +2193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStringBetweenResponse> __BuildGetStringBetween(WorkflowExpression<string> getStringBetweeninputString = null, WorkflowExpression<string> getStringBetweenstartSearchString = null, WorkflowExpression<string> getStringBetweenendSearchString = null, WorkflowExpression<bool> getStringBetweensearchLineByLine = null, WorkflowExpression<bool> getStringBetweenthrowExceptionIfNotFound = null, WorkflowExpression<bool> getStringBetweentrimResult = null, WorkflowExpression<bool> getStringBetweensearchIsRegularExpression = null, WorkflowExpression<bool> getStringBetweencaseSensitiveSearch = null)
         {
@@ -2361,7 +2325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LoadIAConnectLookupTableResponse> __BuildLoadIAConnectLookupTable(WorkflowExpression<string> loadIAConnectLookupTablepath, WorkflowExpression<bool> loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, WorkflowExpression<string> loadIAConnectLookupTableworkflow)
         {
@@ -2397,7 +2360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIAConnectLookupTableSummaryResponse> __BuildGetIAConnectLookupTableSummary(WorkflowExpression<string> getIAConnectLookupTableSummaryworkflow)
         {
@@ -2427,7 +2389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveIAConnectLookupTableResponse> __BuildRemoveIAConnectLookupTable(WorkflowExpression<string> removeIAConnectLookupTablelookupTableName, WorkflowExpression<string> removeIAConnectLookupTableworkflow)
         {
@@ -2460,7 +2421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveAllIAConnectLookupTablesResponse> __BuildRemoveAllIAConnectLookupTables(WorkflowExpression<string> removeAllIAConnectLookupTablesworkflow)
         {
@@ -2490,7 +2450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LookupValueFromIAConnectLookupTableResponse> __BuildLookupValueFromIAConnectLookupTable(WorkflowExpression<string> lookupValueFromIAConnectLookupTablelookupTableName, WorkflowExpression<string> lookupValueFromIAConnectLookupTablesearchResultValueColumnName, WorkflowExpression<string> lookupValueFromIAConnectLookupTableworkflow, WorkflowExpression<string> lookupValueFromIAConnectLookupTableinputDataJSON = null, WorkflowExpression<int> lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = null, WorkflowExpression<bool> lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = null)
         {
@@ -2567,7 +2526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LookupColumnsFromIAConnectLookupTableResponse> __BuildLookupColumnsFromIAConnectLookupTable(WorkflowExpression<string> lookupColumnsFromIAConnectLookupTablelookupTableName, WorkflowExpression<string> lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, WorkflowExpression<string> lookupColumnsFromIAConnectLookupTableworkflow, WorkflowExpression<string> lookupColumnsFromIAConnectLookupTableinputDataJSON = null, WorkflowExpression<bool> lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, WorkflowExpression<bool> lookupColumnsFromIAConnectLookupTablereturnBlankCells = null, WorkflowExpression<lookupColumnsFromIAConnectLookupTablereturnFormatInput> lookupColumnsFromIAConnectLookupTablereturnFormat = null)
         {
@@ -2661,7 +2619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveCharactersFromStringResponse> __BuildRemoveCharactersFromString(WorkflowExpression<string> removeCharactersFromStringinputString = null, WorkflowExpression<string> removeCharactersFromStringcharactersToRemoveFromInputString = null, WorkflowExpression<bool> removeCharactersFromStringremoveDiacriticsFromInputString = null, WorkflowExpression<bool> removeCharactersFromStringremoveNonAlphaNumericFromInputString = null, WorkflowExpression<bool> removeCharactersFromStringremoveNumericFromInputString = null, WorkflowExpression<bool> removeCharactersFromStringremoveLowercaseCharactersFromInputString = null, WorkflowExpression<bool> removeCharactersFromStringremoveUppercaseCharactersFromInputString = null)
         {
@@ -2787,7 +2744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetColumnFromIAConnectListResponse> __BuildGetColumnFromIAConnectList(WorkflowExpression<string> getColumnFromIAConnectListlistName, WorkflowExpression<int> getColumnFromIAConnectListsearchColumnIndex = null, WorkflowExpression<string> getColumnFromIAConnectListsearchColumnName = null, WorkflowExpression<bool> getColumnFromIAConnectListreturnBlankCells = null, WorkflowExpression<bool> getColumnFromIAConnectListfallBackIfListDoesNotExist = null, WorkflowExpression<string> getColumnFromIAConnectListfallbackValue = null, WorkflowExpression<getColumnFromIAConnectListreturnFormatInput> getColumnFromIAConnectListreturnFormat = null)
         {
@@ -2899,7 +2855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIAConnectListContentsResponse> __BuildGetIAConnectListContents(WorkflowExpression<string> getIAConnectListContentslistName, WorkflowExpression<getIAConnectListContentsreturnFormatInput> getIAConnectListContentsreturnFormat = null)
         {
@@ -2946,7 +2901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LookupDataCellsFromIAConnectLookupTableResponse> __BuildLookupDataCellsFromIAConnectLookupTable(WorkflowExpression<string> lookupDataCellsFromIAConnectLookupTablelookupTableName, WorkflowExpression<string> lookupDataCellsFromIAConnectLookupTableinputDataJSON = null, WorkflowExpression<bool> lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, WorkflowExpression<bool> lookupDataCellsFromIAConnectLookupTablereturnBlankCells = null, WorkflowExpression<lookupDataCellsFromIAConnectLookupTablereturnFormatInput> lookupDataCellsFromIAConnectLookupTablereturnFormat = null)
         {
@@ -3034,7 +2988,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIAConnectLookupTableContentsResponse> __BuildGetIAConnectLookupTableContents(WorkflowExpression<string> getIAConnectLookupTableContentslookupTableName, WorkflowExpression<getIAConnectLookupTableContentsreturnFormatInput> getIAConnectLookupTableContentsreturnFormat = null)
         {
@@ -3081,7 +3034,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse> __BuildUploadCSVToIAConnectLookupTable(WorkflowExpression<string> uploadCSVToIAConnectLookupTablelookupTableName, WorkflowExpression<string> uploadCSVToIAConnectLookupTablecSVData, WorkflowExpression<bool> uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = null)
         {
@@ -3131,7 +3083,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadCSVToIAConnectListResponse> __BuildUploadCSVToIAConnectList(WorkflowExpression<string> uploadCSVToIAConnectListlistName, WorkflowExpression<string> uploadCSVToIAConnectListcSVData, WorkflowExpression<bool> uploadCSVToIAConnectListcreateListIfNotExist = null)
         {
@@ -3181,7 +3132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConvertArrayToJSONResponse> __BuildConvertArrayToJSON(WorkflowExpression<JToken[]> convertArrayToJSONinputObject)
         {

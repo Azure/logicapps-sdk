@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Table> __BuildRunQuery(WorkflowExpression<string> query = null, WorkflowExpression<timerangeInput> timerange = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VisualizeResults> __BuildVisualizeQuery(WorkflowExpression<chartTypeInput> chartType, WorkflowExpression<string> query = null, WorkflowExpression<timerangeInput> timerange = null)
         {

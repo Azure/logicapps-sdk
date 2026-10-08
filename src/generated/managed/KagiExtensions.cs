@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SummarizePostResponse> __BuildSummarize(WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<bodyengineInput> bodyengine = null, WorkflowExpression<bodysummaryTypeInput> bodysummaryType = null, WorkflowExpression<bodytargetLanguageInput> bodytargetLanguage = null, WorkflowExpression<bool> bodycache = null)
         {
@@ -107,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FastGPTPostResponse> __BuildFastGPT(WorkflowExpression<string> bodyquery)
         {
@@ -137,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<int> limit = null)
         {
@@ -162,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnrichmentWebGetResponse> __BuildEnrichmentWebGet(WorkflowExpression<string> q)
         {
@@ -184,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnrichmentNewsGetResponse> __BuildEnrichmentNewsGet(WorkflowExpression<string> q)
         {
@@ -206,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmallWebGetResponse> __BuildSmallWebGet(WorkflowExpression<int> limit = null)
         {

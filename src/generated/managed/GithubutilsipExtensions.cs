@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostMarkdown(WorkflowExpression<string> bodytext, WorkflowExpression<string> xGitHubApiVersion = null, WorkflowExpression<bodymodeInput> bodymode = null, WorkflowExpression<string> bodycontext = null)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostMarkdownRaw(WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> xGitHubApiVersion = null, WorkflowExpression<string> body = null)
         {
@@ -116,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetZen(WorkflowExpression<string> xGitHubApiVersion = null)
         {
@@ -141,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<License[]> __BuildGetLicenses(WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<bool> featured = null, WorkflowExpression<string> xGitHubApiVersion = null)
         {
@@ -177,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LicenseAdvanced> __BuildGetLicense(WorkflowExpression<string> license, WorkflowExpression<string> xGitHubApiVersion = null)
         {
@@ -203,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CodeOfConduct[]> __BuildGetCodesOfConduct(WorkflowExpression<string> xGitHubApiVersion = null)
         {
@@ -228,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CodeOfConduct> __BuildGetCodeOfConduct(WorkflowExpression<string> codeOfConduct, WorkflowExpression<string> xGitHubApiVersion = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAndInviteMembersResponse> __BuildCreateAndInviteMembers(WorkflowExpression<int> bodysurveyId, WorkflowExpression<int> bodypanelId, WorkflowExpression<int> bodymessageTemplateId, WorkflowExpression<Member[]> bodymembers, WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<bodychannelInput> bodychannel = null, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodyscheduleDateTime = null, WorkflowExpression<bool> bodyasyncProcess = null, WorkflowExpression<string> bodyinterviewExpiryDate = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
         {
@@ -127,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateArtifactResponse> __BuildCreateArtifact(WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<string> bodypath = null)
         {
@@ -168,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateMembersResponse> __BuildCreateMembers(WorkflowExpression<int> bodypanelId, WorkflowExpression<Member[]> bodymembers, WorkflowExpression<string> bodytenant = null)
         {
@@ -208,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePanelResponse> __BuildCreatePanel(WorkflowExpression<int> bodyworkspaceId, WorkflowExpression<string> bodyname, WorkflowExpression<bodypanelTypeInput> bodypanelType = null)
         {
@@ -248,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSurveyResponse> __BuildCreateSurvey(WorkflowExpression<int> bodyworkspaceId, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodysurveyDefinitionallowMultipleParticipation, WorkflowExpression<bool> bodysurveyDefinitionallowNavigateBack, WorkflowExpression<bool> bodysurveyDefinitionrandomizeSections, WorkflowExpression<string> bodysurveyDefinitiondefaultLanguage, WorkflowExpression<string[]> bodysurveyDefinitionlanguages, WorkflowExpression<Section[]> bodysurveyDefinitionsections, WorkflowExpression<CustomVariable[]> bodysurveyDefinitioncustomVariables, WorkflowExpression<TranslationElement[]> bodysurveyDefinitionsurveyEndText, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, WorkflowExpression<bool> bodysurveyDefinitionallowSaveProgress = null, WorkflowExpression<bool> bodysurveyDefinitionenableAutoScroll = null, WorkflowExpression<bool> bodysurveyDefinitionenableCodeAccess = null, WorkflowExpression<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, WorkflowExpression<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, WorkflowExpression<int[]> bodysurveyDefinitionassociatedPanels = null, WorkflowExpression<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, WorkflowExpression<bool> bodysurveyDefinitionenablePanelSync = null, WorkflowExpression<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, WorkflowExpression<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, WorkflowExpression<string> bodysurveyDefinitionendDate = null, WorkflowExpression<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, WorkflowExpression<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, WorkflowExpression<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, WorkflowExpression<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
@@ -467,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWebHookResponse> __BuildCreateWebHook(WorkflowExpression<bodyeventTypeInput> bodyeventType = null, WorkflowExpression<string> bodyentityIdentifier = null, WorkflowExpression<string> bodysecurityToken = null, WorkflowExpression<string> bodywebHookUrl = null)
         {
@@ -522,7 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteArtifactResponse> __BuildDeleteArtifact(WorkflowExpression<string> bodypath = null, WorkflowExpression<string> bodyfilename = null, WorkflowExpression<int> bodyworkspaceId = null)
         {
@@ -570,7 +563,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteDistributorResponse> __BuildDeleteDistributor(WorkflowExpression<int> bodydistributorId, WorkflowExpression<bool> bodykeepInterviews = null)
         {
@@ -607,7 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteInterviewResponse> __BuildDeleteInterview(WorkflowExpression<string> bodyinterviewId = null, WorkflowExpression<int> bodysurveyId = null)
         {
@@ -648,7 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteMembersResponse> __BuildDeleteMembers(WorkflowExpression<int> bodypanelId, WorkflowExpression<int[]> bodypanelMembersIds, WorkflowExpression<bool> bodykeepInterviews = null)
         {
@@ -688,7 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeletePanelResponse> __BuildDeletePanel(WorkflowExpression<int> bodypanelId, WorkflowExpression<bool> bodykeepInterviews = null)
         {
@@ -725,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteSamplingProjectResponse> __BuildDeleteSamplingProject(WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<bool> bodykeepInterviews = null)
         {
@@ -766,7 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteSurveyResponse> __BuildDeleteSurvey(WorkflowExpression<int> bodysurveyId)
         {
@@ -796,7 +783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteWebHookResponse> __BuildDeleteWebHook(WorkflowExpression<string> bodywebHookId = null)
         {
@@ -830,7 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DownloadAnswersResponse> __BuildDownloadInterviewPdf(WorkflowExpression<string> tenant, WorkflowExpression<int> surveyId, WorkflowExpression<string> interviewId, WorkflowExpression<bool> showPartialCompleted = null, WorkflowExpression<string> locale = null, WorkflowExpression<string> timeZone = null, WorkflowExpression<bool> bodyisCancellationRequested = null, WorkflowExpression<bool> bodycanBeCanceled = null, WorkflowExpression<bool> bodywaitHandlesafeWaitHandleisInvalid = null, WorkflowExpression<bool> bodywaitHandlesafeWaitHandleisClosed = null)
         {
@@ -916,7 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteSendMailResponse> __BuildExecuteSendMail(WorkflowExpression<string> bodylanguage, WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<int> bodymessageTemplateId = null, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodytoName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
         {
@@ -1008,7 +992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> __BuildExecuteWorkflowTransition(WorkflowExpression<string> bodytargetState, WorkflowExpression<bodyworkflowInput> bodyworkflow = null, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<int> bodydistributorId = null, WorkflowExpression<int> bodyreminderId = null)
         {
@@ -1081,7 +1064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InviteMembersResponse> __BuildInviteMembers(WorkflowExpression<int> bodysurveyId, WorkflowExpression<int> bodypanelId, WorkflowExpression<int> bodymessageTemplateId, WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<int[]> bodymemberIds = null, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodyscheduleDateTime = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<bodychannelInput> bodychannel = null, WorkflowExpression<bool> bodyasyncProcess = null, WorkflowExpression<string> bodyinterviewExpiryDate = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
         {
@@ -1201,7 +1183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadArtifactListRequest> __BuildReadArtifactList(WorkflowExpression<string> bodypath = null, WorkflowExpression<int> bodyworkspaceId = null)
         {
@@ -1242,7 +1223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadBounceListResponseV3> __BuildReadBounceList(WorkflowExpression<int> bodysurveyId, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<int[]> bodydistributors = null, WorkflowExpression<bodyinvitationTypeInput> bodyinvitationType = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1344,7 +1324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadDistributorListResponse> __BuildReadDistributorList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1420,7 +1399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadIncentiveListResponse> __BuildReadIncentiveList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1482,7 +1460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> __BuildReadIncentiveTransactionList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1544,7 +1521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadInterviewDataResponse> __BuildReadInterview(WorkflowExpression<string> bodytenant, WorkflowExpression<string> bodyinterviewId, WorkflowExpression<int> bodysurveyId, WorkflowExpression<bool> bodyloadSurveyDefinition = null)
         {
@@ -1587,7 +1563,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> __BuildReadInterviewListCompact(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<string> bodytenant = null, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<string[]> bodyfieldsToDownload = null, WorkflowExpression<bool> bodyloadCodePlan = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1677,7 +1652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadInterviewListResponseV3> __BuildReadInterviewList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<string> bodytenant = null, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<string[]> bodyfieldsToDownload = null, WorkflowExpression<bool> bodyloadCodePlan = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1767,7 +1741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadMemberListResponse> __BuildReadMemberList(WorkflowExpression<int> bodypanelId, WorkflowExpression<bool> bodyinterviewsRequired, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<string> bodytenant = null, WorkflowExpression<string[]> bodyfieldsToDownload = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1849,7 +1822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadMessageTemplateListResponse> __BuildReadMessageTemplateList(WorkflowExpression<string> bodylanguage, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1921,7 +1893,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadOptOutListResponseV3> __BuildReadOptOutList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -1997,7 +1968,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadPanelDefinitionResponse> __BuildReadPanel(WorkflowExpression<int> bodypanelId, WorkflowExpression<string> bodytenant = null)
         {
@@ -2034,7 +2004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadSamplingProjectResponse> __BuildReadSamplingProject(WorkflowExpression<int> bodysamplingProjectId = null)
         {
@@ -2068,7 +2037,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadSurveyLinksResponse> __BuildReadSurveyLinks(WorkflowExpression<int> bodysurveyId = null)
         {
@@ -2102,7 +2070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadSurveyListResponse> __BuildReadSurveyList(WorkflowExpression<int> bodyworkspaceId, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -2167,7 +2134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadSurveyResponse> __BuildReadSurvey(WorkflowExpression<int> bodysurveyId, WorkflowExpression<string> bodytenant = null)
         {
@@ -2204,7 +2170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadWebHookListResponse> __BuildReadWebHookList(WorkflowExpression<bodyeventTypeInput> bodyeventType = null, WorkflowExpression<string> bodyentityIdentifier = null)
         {
@@ -2245,7 +2210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> __BuildReadWorkflowTransitions(WorkflowExpression<string> bodycurrentState, WorkflowExpression<bodyworkflowInput> bodyworkflow = null)
         {
@@ -2282,7 +2246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadWorkspaceListResponse> __BuildReadWorkspaceList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
@@ -2344,7 +2307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RedeemIncentiveCodeResponse> __BuildRedeemIncentiveCode(WorkflowExpression<int> bodyincentiveId)
         {
@@ -2374,7 +2336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemindMembersResponse> __BuildRemindMembers(WorkflowExpression<int> bodydistributorId, WorkflowExpression<int> bodymessageTemplateId, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodyscheduleDateTime = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<bodychannelInput> bodychannel = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
         {
@@ -2463,7 +2424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResetInterviewResponse> __BuildResetInterview(WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<string> bodyinterviewId = null)
         {
@@ -2504,7 +2464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateMembersResponse> __BuildUpdateMembers(WorkflowExpression<int> bodypanelId, WorkflowExpression<Member[]> bodymembers, WorkflowExpression<string> bodytenant = null)
         {
@@ -2544,7 +2503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WritePanelResponse> __BuildUpdatePanel(WorkflowExpression<int> bodypanelId, WorkflowExpression<string> bodytenant = null, WorkflowExpression<PanelMemberField[]> bodyaddedFields = null, WorkflowExpression<int[]> bodyremovedFields = null, WorkflowExpression<PanelMemberField[]> bodyrenamedFields = null)
         {
@@ -2602,7 +2560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateSurveyResponse> __BuildUpdateSurvey(WorkflowExpression<int> bodysurveyId, WorkflowExpression<bool> bodysurveyDefinitionallowMultipleParticipation, WorkflowExpression<bool> bodysurveyDefinitionallowNavigateBack, WorkflowExpression<bool> bodysurveyDefinitionrandomizeSections, WorkflowExpression<string> bodysurveyDefinitiondefaultLanguage, WorkflowExpression<string[]> bodysurveyDefinitionlanguages, WorkflowExpression<Section[]> bodysurveyDefinitionsections, WorkflowExpression<CustomVariable[]> bodysurveyDefinitioncustomVariables, WorkflowExpression<TranslationElement[]> bodysurveyDefinitionsurveyEndText, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, WorkflowExpression<string> bodysurveyName = null, WorkflowExpression<bool> bodysurveyDefinitionallowSaveProgress = null, WorkflowExpression<bool> bodysurveyDefinitionenableAutoScroll = null, WorkflowExpression<bool> bodysurveyDefinitionenableCodeAccess = null, WorkflowExpression<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, WorkflowExpression<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, WorkflowExpression<int[]> bodysurveyDefinitionassociatedPanels = null, WorkflowExpression<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, WorkflowExpression<bool> bodysurveyDefinitionenablePanelSync = null, WorkflowExpression<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, WorkflowExpression<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, WorkflowExpression<string> bodysurveyDefinitionendDate = null, WorkflowExpression<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, WorkflowExpression<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, WorkflowExpression<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, WorkflowExpression<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
@@ -2825,7 +2782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateWebHookResponse> __BuildUpdateWebHook(WorkflowExpression<string> bodywebHookId = null, WorkflowExpression<bodyeventTypeInput> bodyeventType = null, WorkflowExpression<string> bodyentityIdentifier = null, WorkflowExpression<string> bodysecurityToken = null, WorkflowExpression<string> bodywebHookUrl = null)
         {
@@ -2887,7 +2843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WriteOptOutListResponse> __BuildWriteOptOutList(WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<int> bodydistributorId = null, WorkflowExpression<EmailItem[]> bodyemails = null, WorkflowExpression<CellPhoneItem[]> bodycellPhones = null)
         {

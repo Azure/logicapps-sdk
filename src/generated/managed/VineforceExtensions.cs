@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyfromEmail = null, WorkflowExpression<string> bodytoEmail = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodypriorityTextInput> bodypriorityText = null, WorkflowExpression<string> bodyassociatedContactEmail = null, WorkflowExpression<bodyresourceAppNameInput> bodyresourceAppName = null, WorkflowExpression<string> bodyresourceAppUrl = null, WorkflowExpression<string> bodyresourceAppID = null, WorkflowExpression<string> bodyresourceAppData = null, WorkflowExpression<string> bodyreferenceId = null, WorkflowExpression<string> bodyreferenceData = null, WorkflowExpression<string> bodyreferenceSource = null, WorkflowExpression<string> bodyprojectName = null, WorkflowExpression<string> bodyprojectSectionName = null, WorkflowExpression<string> bodyprojectTags = null, WorkflowExpression<bodychecklistsInputItem[]> bodychecklists = null, WorkflowExpression<bodyfilesInputItem[]> bodyfiles = null)
         {
@@ -184,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertResponse> __BuildAlert(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodyalertToEmail, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodymessage, WorkflowExpression<bodyresourceNameInput> bodyresourceName = null, WorkflowExpression<string> bodyresourceUrl = null)
         {
@@ -237,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProjectResponse> __BuildCreateProject(WorkflowExpression<string> bodyprojectName, WorkflowExpression<string> bodycreatorEmail, WorkflowExpression<string> bodyapiKey, WorkflowExpression<bodyfilesInputItem2[]> bodyfiles, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodymembers = null, WorkflowExpression<string> bodysections = null, WorkflowExpression<string> bodyreferenceId = null, WorkflowExpression<string> bodyreferenceData = null, WorkflowExpression<string> bodyreferenceSource = null)
         {
@@ -349,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTaskResponse> __BuildUpdateTask(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodytaskID, WorkflowExpression<string> bodytoEmail, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyfromEmail = null, WorkflowExpression<bodytaskStatusInput> bodytaskStatus = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodypriorityTextInput> bodypriorityText = null, WorkflowExpression<string> bodyassociatedContactEmail = null, WorkflowExpression<bodyresourceAppNameInput> bodyresourceAppName = null, WorkflowExpression<string> bodyresourceAppUrl = null, WorkflowExpression<string> bodyresourceAppID = null, WorkflowExpression<string> bodyresourceAppData = null, WorkflowExpression<string> bodyreferenceId = null, WorkflowExpression<string> bodyreferenceData = null, WorkflowExpression<string> bodyreferenceSource = null, WorkflowExpression<string> bodyprojectName = null, WorkflowExpression<string> bodyprojectSectionName = null, WorkflowExpression<string> bodyprojectTags = null, WorkflowExpression<bodychecklistsInputItem[]> bodychecklists = null, WorkflowExpression<bodyfilesInputItem22[]> bodyfiles = null)
         {
@@ -521,7 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateContactNote(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodyownerEmail, WorkflowExpression<string> bodycontactEmail, WorkflowExpression<string> bodynotes)
         {
@@ -560,7 +555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateCompany(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodycompanyName, WorkflowExpression<string> bodyuserEmail, WorkflowExpression<string> bodystreet = null, WorkflowExpression<string> bodysuiteUnitNumber = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<string> bodycountryName = null, WorkflowExpression<string> bodytaxId = null, WorkflowExpression<string> bodysiteUrl = null)
         {
@@ -652,7 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodyownerEmailAddress, WorkflowExpression<string> bodycontactEmailAddress1, WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodycontactEmailAddress2 = null, WorkflowExpression<string> bodycontactEmailAddress3 = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodybirthDay = null, WorkflowExpression<int> bodybirthMonth = null, WorkflowExpression<int> bodybirthYear = null, WorkflowExpression<string> bodycontactType = null, WorkflowExpression<string> bodycompanyID1 = null, WorkflowExpression<string> bodycompanyID2 = null, WorkflowExpression<string> bodycompanyID3 = null, WorkflowExpression<string> bodyaccountNumber = null, WorkflowExpression<string> bodysocialSecurityNumber = null)
         {
@@ -782,7 +775,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateContactPhone(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodycontactEmail, WorkflowExpression<string> bodyuserEmail, WorkflowExpression<string> bodyphone, WorkflowExpression<bodyphoneTypeInput> bodyphoneType, WorkflowExpression<string> bodyextension = null)
         {
@@ -831,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateContactAddress(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodycontactEmail, WorkflowExpression<string> bodyuserEmail, WorkflowExpression<bodyaddressTypeInput> bodyaddressType, WorkflowExpression<string> bodystreet = null, WorkflowExpression<string> bodysuiteUnitNumber = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycountryName = null)
         {
@@ -912,7 +903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateContactFamily(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodycontactEmail, WorkflowExpression<string> bodyuserEmail, WorkflowExpression<string> bodyfirstName, WorkflowExpression<bodyrelationshipInput> bodyrelationship, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodybirthDate = null, WorkflowExpression<int> bodybirthMonth = null, WorkflowExpression<int> bodybirthYear = null, WorkflowExpression<string> bodycountryName = null)
         {
@@ -989,7 +979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContactFolderDetailsResponse> __BuildGetContactFolderDetails(WorkflowExpression<string> apiKey, WorkflowExpression<string> userEmail, WorkflowExpression<string> contactEmail)
         {
@@ -1015,7 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCompanyDetailExternalResponse> __BuildGetCompanyDetailExternal(WorkflowExpression<string> apiKey, WorkflowExpression<matchByInput> matchBy, WorkflowExpression<string> matchValue)
         {
@@ -1041,7 +1029,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskByResourceExtResponse> __BuildGetTaskByResourceExt(WorkflowExpression<string> apiKey, WorkflowExpression<string> resourceAppID)
         {
@@ -1065,7 +1052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskCommentExtResponse> __BuildCreateTaskCommentExt(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodyuserEmail, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodycomment)
         {
@@ -1104,7 +1090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateProjectResponse> __BuildUpdateProject(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodyprojectName, WorkflowExpression<string> bodycurrentUserEmail, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<string> bodyreferenceId = null, WorkflowExpression<string> bodyreferenceData = null, WorkflowExpression<string> bodyreferenceSource = null)
         {
@@ -1219,7 +1204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskExtResponse> __BuildGetTaskExt(WorkflowExpression<string> apiKey, WorkflowExpression<getByInput> getBy, WorkflowExpression<string> id, WorkflowExpression<string> source = null)
         {
@@ -1248,7 +1232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectExtResponse> __BuildGetProjectExt(WorkflowExpression<string> apiKey, WorkflowExpression<getByInput> getBy, WorkflowExpression<string> id, WorkflowExpression<string> source = null)
         {
@@ -1277,7 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectTemplatesExtResponse> __BuildGetProjectTemplatesExt(WorkflowExpression<string> apiKey, WorkflowExpression<string> userEmail)
         {
@@ -1301,7 +1283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectRolesExtResponse> __BuildGetProjectRolesExt(WorkflowExpression<string> apiKey, WorkflowExpression<string> userEmail, WorkflowExpression<roleTypeInput> roleType = null)
         {
@@ -1328,7 +1309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProjectFromTemplateExtResponse> __BuildCreateProjectFromTemplateExt(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodycreatorEmail, WorkflowExpression<string> bodyprojectName, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyclientName = null, WorkflowExpression<bodymembersInputItem[]> bodymembers = null, WorkflowExpression<bodyfilesLinksInputItem[]> bodyfilesLinks = null)
         {
@@ -1405,7 +1385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeletetaskResponse> __BuildDeletetask(WorkflowExpression<string> apiKey, WorkflowExpression<string> taskID)
         {

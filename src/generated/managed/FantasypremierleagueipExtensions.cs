@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ManagerUsersHistoryResponse> __BuildManagerUsersHistory(WorkflowExpression<string> managerId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> __BuildManagerUsersBasicInformation(WorkflowExpression<string> managerId)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GameWeekLiveDataResponse> __BuildGameWeekLiveData(WorkflowExpression<string> eventId)
         {
@@ -81,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlayersDetailedDataResponse> __BuildPlayersDetailedData(WorkflowExpression<string> elementId)
         {
@@ -120,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassicLeagueStandingsResponse> __BuildClassicLeagueStandings(WorkflowExpression<string> leagueId)
         {

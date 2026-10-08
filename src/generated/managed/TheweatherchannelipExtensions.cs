@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessSchema> __BuildGetConditions(WorkflowExpression<string> geocode, WorkflowExpression<unitsInput> units, WorkflowExpression<string> language, WorkflowExpression<formatInput> format)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessSchema> __BuildGetHeadlines(WorkflowExpression<string> geocode, WorkflowExpression<string> acceptHeader, WorkflowExpression<string> language, WorkflowExpression<formatInput> format)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessSchema> __BuildGetHistory(WorkflowExpression<string> geocode, WorkflowExpression<unitsInput> units, WorkflowExpression<string> language, WorkflowExpression<formatInput> format)
         {

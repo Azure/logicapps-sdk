@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlaylistEnableResponse> __BuildPlaylistEnable(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyid)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlaylistDisableResponse> __BuildPlaylistDisable(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyid)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlaylistExecuteResponse> __BuildPlaylistExecute(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyid)
         {

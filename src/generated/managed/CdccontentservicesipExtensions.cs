@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MediaSearchResponse> __BuildMediaSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> mediatypes = null, WorkflowExpression<string> name = null, WorkflowExpression<string> topic = null, WorkflowExpression<int> topicids = null, WorkflowExpression<string> audience = null, WorkflowExpression<string> languagename = null, WorkflowExpression<string> languageisocode = null, WorkflowExpression<string> sourcename = null, WorkflowExpression<string> sourceacronym = null, WorkflowExpression<string> sort = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<int> max = null, WorkflowExpression<int> pagenum = null, WorkflowExpression<int> offset = null)
         {
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MediaGetResponse> __BuildMediaGet(WorkflowExpression<string> mediaId, WorkflowExpression<string> sort = null, WorkflowExpression<string> order = null, WorkflowExpression<int> max = null, WorkflowExpression<int> pagenum = null, WorkflowExpression<int> offset = null)
         {
@@ -155,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagGetResponse> __BuildTagGet(WorkflowExpression<string> tAGID)
         {
@@ -176,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MediaTagResponse> __BuildMediaTag(WorkflowExpression<string> tAGID)
         {
@@ -197,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagRelatedResponse> __BuildTagRelated(WorkflowExpression<string> tAGID)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSets> __BuildPDNSIP(WorkflowExpression<string> ip, WorkflowExpression<string> max = null, WorkflowExpression<string> lastSeenAfter = null, WorkflowExpression<string> firstSeenBefore = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSets> __BuildPDNSRESOURCEDATA(WorkflowExpression<string> name, WorkflowExpression<string> type = null, WorkflowExpression<string> max = null, WorkflowExpression<string> lastSeenAfter = null, WorkflowExpression<string> firstSeenBefore = null)
         {
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSets> __BuildPDNSRESOURCEDATAHEX(WorkflowExpression<string> hex, WorkflowExpression<string> type = null, WorkflowExpression<string> max = null, WorkflowExpression<string> lastSeenAfter = null, WorkflowExpression<string> firstSeenBefore = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSets> __BuildPDNSNAME(WorkflowExpression<string> name, WorkflowExpression<string> type = null, WorkflowExpression<string> max = null, WorkflowExpression<string> lastSeenAfter = null, WorkflowExpression<string> firstSeenBefore = null)
         {
@@ -151,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SslCertWithHostPage> __BuildSSLBYHOST(WorkflowExpression<string> host)
         {
@@ -173,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SslCertPage> __BuildSSLBYSERIAL(WorkflowExpression<string> serial)
         {
@@ -195,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SslCert> __BuildSSLBYSHA1(WorkflowExpression<string> sha1)
         {
@@ -217,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SslCertHostPage> __BuildHOSTSBYSSLSHA1(WorkflowExpression<string> certSha1)
         {
@@ -239,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SslCertPage> __BuildSSLBYNAME(WorkflowExpression<string> name)
         {
@@ -261,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISIP(WorkflowExpression<string> address, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -289,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISDOMAIN(WorkflowExpression<string> domain, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -317,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISBYEMAIL(WorkflowExpression<string> email, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -345,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISBYNAME(WorkflowExpression<string> name, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -373,7 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISBYNAMESERVER(WorkflowExpression<string> nameserver, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -401,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISBYORGANIZATION(WorkflowExpression<string> org, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -429,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResult> __BuildWHOISBYPHONE(WorkflowExpression<string> phone, WorkflowExpression<string> exact = null, WorkflowExpression<string> maxResults = null)
         {
@@ -457,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostAttributeResult> __BuildTRACKERSHOST(WorkflowExpression<string> host, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -499,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostAttributeResult> __BuildTRACKERSDOMAIN(WorkflowExpression<string> domain, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -541,7 +523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostAttributeResult> __BuildTRACKERSIP(WorkflowExpression<string> address, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -583,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostPairsResult> __BuildHOSTPAIRSCHILD(WorkflowExpression<string> host, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -625,7 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostPairsResult> __BuildHOSTPAIRSPARENT(WorkflowExpression<string> host, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -667,7 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostComponentsResult> __BuildWEBCOMPONENTHOST(WorkflowExpression<string> host, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -709,7 +687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostComponentsResult> __BuildWEBCOMPONENTSDOMAIN(WorkflowExpression<string> domain, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -751,7 +728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostComponentsResult> __BuildWEBCOMPONENTSIP(WorkflowExpression<string> address, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -793,7 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostCookieResult> __BuildCOOKIESHOST(WorkflowExpression<string> host, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -835,7 +810,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HostCookieResult> __BuildCOOKIESIP(WorkflowExpression<string> address, WorkflowExpression<int> size = null, WorkflowExpression<int> page = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null, WorkflowExpression<int> beforeDay = null, WorkflowExpression<int> afterDay = null, WorkflowExpression<string> exact = null)
         {
@@ -877,7 +851,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildENRICHMENTHOST(WorkflowExpression<string> host, WorkflowExpression<bool> whois = null, WorkflowExpression<bool> hostDetails = null, WorkflowExpression<bool> ipDetails = null, WorkflowExpression<bool> linkedAssetCounts = null, WorkflowExpression<bool> recentPDNS = null, WorkflowExpression<bool> subDomainPDNS = null, WorkflowExpression<bool> openPorts = null, WorkflowExpression<bool> certificates = null)
         {
@@ -930,7 +903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildENRICHMENTIP(WorkflowExpression<string> ip, WorkflowExpression<bool> whois = null, WorkflowExpression<bool> hostDetails = null, WorkflowExpression<bool> linkedAssetCounts = null, WorkflowExpression<bool> openPorts = null, WorkflowExpression<bool> certificates = null)
         {

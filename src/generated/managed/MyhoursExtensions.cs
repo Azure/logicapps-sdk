@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Client> __BuildCreateClient(WorkflowExpression<string> bodyname)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Client[]> __BuildFindClient(WorkflowExpression<string> clientName)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Project> __BuildCreateProject(WorkflowExpression<string> bodyname, WorkflowExpression<int> bodyclientId = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<int> bodyautoAssignUserId = null)
         {
@@ -123,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Project> __BuildFindProject(WorkflowExpression<string> projectName)
         {
@@ -145,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectTask> __BuildCreateProjectTask(WorkflowExpression<int> projectId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodylistName = null, WorkflowExpression<string> bodydescription = null)
         {
@@ -201,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectTask> __BuildFindTask(WorkflowExpression<string> projectTaskName, WorkflowExpression<int> projectId)
         {
@@ -225,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Tag> __BuildCreateTag(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyhexColor)
         {
@@ -258,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Tag> __BuildFindTag(WorkflowExpression<string> tagName)
         {
@@ -280,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeLog> __BuildCreateLog(WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<int> bodyduration = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<int> bodyprojectId = null, WorkflowExpression<int> bodytaskId = null, WorkflowExpression<int> bodytagId = null)
         {
@@ -359,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActivityReportResponse> __BuildGetTimeLogs(WorkflowExpression<string> dateFrom, WorkflowExpression<string> dateTo)
         {

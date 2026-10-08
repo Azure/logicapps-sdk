@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAudioConvertToMp3(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> bitRate = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAudioConvertToM4a(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> bitRate = null)
         {
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAudioConvertToAac(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> bitRate = null)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAudioConvertToWav(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<double> sampleRate = null)
         {
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MediaInformation> __BuildVideoGetInfo(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null)
         {
@@ -150,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoConvertToWebm(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null)
         {
@@ -189,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoConvertToMov(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null)
         {
@@ -228,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoConvertToMp4(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null)
         {
@@ -267,7 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoConvertToGif(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<string> startTime = null, WorkflowExpression<string> timeSpan = null)
         {
@@ -309,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoResizeVideo(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null, WorkflowExpression<string> extension = null)
         {
@@ -348,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoResizeVideoSimple(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null, WorkflowExpression<string> extension = null)
         {
@@ -387,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideoCutVideo(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<string> startTime = null, WorkflowExpression<string> timeSpan = null)
         {
@@ -417,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SplitVideoResult> __BuildVideoSplitVideo(WorkflowExpression<string> splitTime, WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<string> timeSpan = null)
         {
@@ -446,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StillFramesResult> __BuildVideoConvertToStillFrames(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<double> framesPerSecond = null)
         {
@@ -479,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NsfwResult> __BuildVideoScanForNsfw(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<double> framesPerSecond = null)
         {

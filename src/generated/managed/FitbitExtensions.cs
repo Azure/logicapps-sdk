@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSleepGoalResponse> __BuildGetSleepGoal(WorkflowExpression<string> userId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSleepLogbyDateResponse> __BuildGetSleepLogbyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> __BuildGetSleepLogbyDateRange(WorkflowExpression<string> userId, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate)
         {
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSleepLogListResponse> __BuildGetSleepLogList(WorkflowExpression<string> userId, WorkflowExpression<string> afterDate = null, WorkflowExpression<string> beforeDate = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null)
         {
@@ -119,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActivityGoalsResponse> __BuildGetActivityGoals(WorkflowExpression<string> userId, WorkflowExpression<periodInput> period)
         {
@@ -141,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActivityLogListResponse> __BuildGetActivityLogList(WorkflowExpression<string> userId, WorkflowExpression<string> afterDate = null, WorkflowExpression<string> beforeDate = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetActivityTCX(WorkflowExpression<string> userId, WorkflowExpression<string> logId, WorkflowExpression<bool> includePartialTCX = null)
         {
@@ -201,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAcitivityTypeResponse> __BuildGetAcitivityType(WorkflowExpression<string> userId, WorkflowExpression<string> activityId)
         {
@@ -232,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDailyActivitySummaryResponse> __BuildGetDailyActivitySummary(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -254,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> __BuildGetFavoriteActivities(WorkflowExpression<string> userId)
         {
@@ -275,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> __BuildGetFrequentActivities(WorkflowExpression<string> userId)
         {
@@ -296,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLifetimeStatsResponse> __BuildGetLifetimeStats(WorkflowExpression<string> userId)
         {
@@ -317,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> __BuildGetRecentActivityTypes(WorkflowExpression<string> userId)
         {
@@ -338,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> __BuildGetActivityTimeSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<resourceInput> resource, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
         {
@@ -362,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBodyGoalsResponse> __BuildGetBodyGoals(WorkflowExpression<string> userId, WorkflowExpression<goalTypeInput> goalType)
         {
@@ -384,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBodyFattLogResponse> __BuildGetBodyFattLog(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -406,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWeightLogResponse> __BuildGetWeightLog(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -428,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> __BuildGetBodyTimeSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<resourceInput> resource, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
         {
@@ -452,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> __BuildGetBodyFatTimerSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
         {
@@ -475,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> __BuildGetWeightTimeSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
         {
@@ -498,7 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> __BuildGetBreathingRateSummarybyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -520,7 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> __BuildGetVO2MaxSummarybyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -542,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDevicesResponseItem[]> __BuildGetDevices(WorkflowExpression<string> userId)
         {
@@ -563,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAlarmsResponse> __BuildGetAlarms(WorkflowExpression<string> userId, WorkflowExpression<string> trackerId)
         {
@@ -585,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFriendsLeaderboardResponse> __BuildGetFriendsLeaderboard(WorkflowExpression<string> userId)
         {
@@ -606,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetHRVSummarybyDateResponse> __BuildGetHRVSummarybyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
         {
@@ -628,7 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBadgesResponse> __BuildGetBadges(WorkflowExpression<string> userId)
         {
@@ -649,7 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProfileResponse> __BuildGetProfile(WorkflowExpression<string> userId)
         {

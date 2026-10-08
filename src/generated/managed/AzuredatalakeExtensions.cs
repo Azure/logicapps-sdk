@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderResponse> __BuildListFiles(WorkflowExpression<string> account, WorkflowExpression<string> path = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationPerformed> __BuildCreateFolder(WorkflowExpression<string> account, WorkflowExpression<string> path)
         {
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAppendFileConcurrent(WorkflowExpression<string> account, WorkflowExpression<string> filepath, WorkflowExpression<appendModeInput> appendMode = null, WorkflowExpression<string> body = null)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildReadFile(WorkflowExpression<string> account, WorkflowExpression<string> filepath)
         {
@@ -124,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUploadFile(WorkflowExpression<string> account, WorkflowExpression<string> filepath, WorkflowExpression<bool> overwrite = null, WorkflowExpression<string> body = null)
         {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAppendFileSequential(WorkflowExpression<string> account, WorkflowExpression<string> filepath, WorkflowExpression<string> body = null, WorkflowExpression<int> offset = null)
         {
@@ -185,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationPerformed> __BuildDeleteFile(WorkflowExpression<string> account, WorkflowExpression<string> filepath)
         {

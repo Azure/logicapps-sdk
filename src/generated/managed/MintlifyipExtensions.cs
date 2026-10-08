@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocGenResponse> __BuildDocGen(WorkflowExpression<bodylanguageInput> bodylanguage, WorkflowExpression<string> bodycode, WorkflowExpression<bool> bodycommented = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<string> bodycontext = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LoginPostResponse> __BuildLogin(WorkflowExpression<string> bodyipAddress, WorkflowExpression<string> bodyuserAgent, WorkflowExpression<string> bodyidentityKey, WorkflowExpression<string> bodygeoCountry = null, WorkflowExpression<string> bodygeoCity = null, WorkflowExpression<string> bodyuserTimeOfDay = null)
         {

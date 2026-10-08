@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompletionPostResponse> __BuildCompletion(WorkflowExpression<bodymodelInput> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<double> bodytopK = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<double> bodyfrequencyPenalty = null)
         {

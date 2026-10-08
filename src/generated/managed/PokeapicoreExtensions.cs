@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListAbilities(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAbilityResponse> __BuildGetAbility(WorkflowExpression<string> idOrName)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListCharacteristics(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCharacteristicsResponse> __BuildGetCharacteristics(WorkflowExpression<string> id)
         {
@@ -112,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListGenders(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -138,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListGrowthRates(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -164,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGenderResponse> __BuildGetGender(WorkflowExpression<string> idOrName)
         {
@@ -185,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGrowthRatesResponse> __BuildGetGrowthRates(WorkflowExpression<string> idOrName)
         {
@@ -206,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListPokemon(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -232,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPokemonResponse> __BuildGetPokemon(WorkflowExpression<string> idOrName)
         {
@@ -253,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListTypes(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -279,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTypeResponse> __BuildGetType(WorkflowExpression<string> idOrName)
         {
@@ -300,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListEvolutionChains(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -326,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEvolutionChainResponse> __BuildGetEvolutionChain(WorkflowExpression<string> id)
         {
@@ -347,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResults> __BuildListEvolutionTriggers(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -373,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEvolutionTriggerResponse> __BuildGetEvolutionTrigger(WorkflowExpression<string> idOrName)
         {

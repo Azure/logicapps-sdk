@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugAdverseEventResponse> __BuildDrugAdverseEvent(WorkflowExpression<string> search = null, WorkflowExpression<int> limit = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugLabelingResponse> __BuildDrugLabeling(WorkflowExpression<string> search = null, WorkflowExpression<int> limit = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugNDCResponse> __BuildDrugNDC(WorkflowExpression<string> search = null, WorkflowExpression<int> limit = null)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugEnforcementResponse> __BuildDrugEnforcement(WorkflowExpression<string> search = null, WorkflowExpression<int> limit = null)
         {
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrugsFDAResponse> __BuildDrugsFDA(WorkflowExpression<string> search = null, WorkflowExpression<int> limit = null)
         {

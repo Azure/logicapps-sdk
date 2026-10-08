@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPEnableScripting(WorkflowExpression<string> sAPEnableScriptingworkflow, WorkflowExpression<bool> sAPEnableScriptingnotifyWhenScriptAttachesToGUI = null, WorkflowExpression<bool> sAPEnableScriptingnotifyWhenScriptOpensConnection = null, WorkflowExpression<bool> sAPEnableScriptingshowNativeWindowsDialogs = null)
         {
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPLaunchSAPGUIResponse> __BuildSAPLaunchSAPGUI(WorkflowExpression<string> sAPLaunchSAPGUIworkflow, WorkflowExpression<string> sAPLaunchSAPGUIsAPLogonEXE = null, WorkflowExpression<string> sAPLaunchSAPGUIsAPLogonArguments = null, WorkflowExpression<bool> sAPLaunchSAPGUIenableSAPScripting = null, WorkflowExpression<bool> sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI = null, WorkflowExpression<bool> sAPLaunchSAPGUInotifyWhenScriptOpensConnection = null, WorkflowExpression<bool> sAPLaunchSAPGUIshowNativeWindowsDialogs = null, WorkflowExpression<bool> sAPLaunchSAPGUIattachAfterLaunch = null, WorkflowExpression<double> sAPLaunchSAPGUIsecondsToWait = null, WorkflowExpression<string> sAPLaunchSAPGUIsAPProgId = null, WorkflowExpression<bool> sAPLaunchSAPGUIdisableSystemMessages = null)
         {
@@ -279,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPAttachToSAPGUIResponse> __BuildSAPAttachToSAPGUI(WorkflowExpression<string> sAPAttachToSAPGUIworkflow, WorkflowExpression<string> sAPAttachToSAPGUIsAPProgId = null, WorkflowExpression<bool> sAPAttachToSAPGUIdisableSystemMessages = null)
         {
@@ -343,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPDetachFromSAPGUI(WorkflowExpression<string> sAPDetachFromSAPGUIworkflow)
         {
@@ -373,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPGUIStatusResponse> __BuildSAPGetSAPGUIStatus(WorkflowExpression<string> sAPGetSAPGUIStatusworkflow)
         {
@@ -403,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPSessionsResponse> __BuildSAPGetSAPSessions(WorkflowExpression<string> sAPGetSAPSessionsworkflow)
         {
@@ -433,7 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPAttachToSessionResponse> __BuildSAPAttachToSession(WorkflowExpression<string> sAPAttachToSessionworkflow, WorkflowExpression<string> sAPAttachToSessionsearchConnectionName = null, WorkflowExpression<string> sAPAttachToSessionsearchSessionName = null)
         {
@@ -477,7 +470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPCloseSession(WorkflowExpression<string> sAPCloseSessionworkflow, WorkflowExpression<bool> sAPCloseSessioncloseAttachedSession = null, WorkflowExpression<string> sAPCloseSessionsearchConnectionName = null, WorkflowExpression<string> sAPCloseSessionsearchSessionName = null)
         {
@@ -538,7 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetAttachedSessionPropertiesResponse> __BuildSAPGetAttachedSessionProperties(WorkflowExpression<string> sAPGetAttachedSessionPropertiesworkflow)
         {
@@ -568,7 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPWaitForAttachedSessionNotBusyResponse> __BuildSAPWaitForAttachedSessionNotBusy(WorkflowExpression<double> sAPWaitForAttachedSessionNotBusysecondsToWait, WorkflowExpression<string> sAPWaitForAttachedSessionNotBusyworkflow, WorkflowExpression<bool> sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait = null)
         {
@@ -618,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPInputTextIntoSAPElement(WorkflowExpression<string> sAPInputTextIntoSAPElementsearchSAPElementId, WorkflowExpression<string> sAPInputTextIntoSAPElementworkflow, WorkflowExpression<string> sAPInputTextIntoSAPElementtextToInput = null, WorkflowExpression<bool> sAPInputTextIntoSAPElementreplaceExistingValue = null, WorkflowExpression<int> sAPInputTextIntoSAPElementinsertPosition = null)
         {
@@ -692,7 +681,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPInputPasswordIntoSAPElement(WorkflowExpression<string> sAPInputPasswordIntoSAPElementsearchSAPElementId, WorkflowExpression<string> sAPInputPasswordIntoSAPElementpasswordToInput, WorkflowExpression<string> sAPInputPasswordIntoSAPElementworkflow)
         {
@@ -728,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetElementPropertiesResponse> __BuildSAPGetElementProperties(WorkflowExpression<string> sAPGetElementPropertiessearchSAPElementId, WorkflowExpression<string> sAPGetElementPropertiesworkflow)
         {
@@ -761,7 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPWaitForElementIdResponse> __BuildSAPWaitForElementId(WorkflowExpression<string> sAPWaitForElementIdsearchSAPElementId, WorkflowExpression<string> sAPWaitForElementIdworkflow, WorkflowExpression<double> sAPWaitForElementIdsecondsToWait = null, WorkflowExpression<bool> sAPWaitForElementIdraiseExceptionIfElementNotFound = null)
         {
@@ -828,7 +814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPWaitForWindowResponse> __BuildSAPWaitForWindow(WorkflowExpression<string> sAPWaitForWindowsearchSAPWindowTitle, WorkflowExpression<string> sAPWaitForWindowworkflow, WorkflowExpression<bool> sAPWaitForWindowsearchIsRegularExpression = null, WorkflowExpression<bool> sAPWaitForWindowsearchIsCaseSensitive = null, WorkflowExpression<double> sAPWaitForWindowsecondsToWait = null, WorkflowExpression<bool> sAPWaitForWindowraiseExceptionIfElementNotFound = null)
         {
@@ -929,7 +914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetElementTextValueResponse> __BuildSAPGetElementTextValue(WorkflowExpression<string> sAPGetElementTextValuesearchSAPElementId, WorkflowExpression<string> sAPGetElementTextValueworkflow)
         {
@@ -962,7 +946,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressSAPElement(WorkflowExpression<string> sAPPressSAPElementsearchSAPElementId, WorkflowExpression<string> sAPPressSAPElementworkflow)
         {
@@ -995,7 +978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectSAPElement(WorkflowExpression<string> sAPSelectSAPElementsearchSAPElementId, WorkflowExpression<string> sAPSelectSAPElementworkflow)
         {
@@ -1028,7 +1010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPFocusSAPElement(WorkflowExpression<string> sAPFocusSAPElementsearchSAPElementId, WorkflowExpression<string> sAPFocusSAPElementworkflow)
         {
@@ -1061,7 +1042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPCheckSAPElement(WorkflowExpression<string> sAPCheckSAPElementsearchSAPElementId, WorkflowExpression<string> sAPCheckSAPElementworkflow, WorkflowExpression<bool> sAPCheckSAPElementcheckElement = null)
         {
@@ -1111,7 +1091,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPVisualiseSAPElement(WorkflowExpression<string> sAPVisualiseSAPElementsearchSAPElementId, WorkflowExpression<string> sAPVisualiseSAPElementworkflow, WorkflowExpression<bool> sAPVisualiseSAPElementvisualiseOn = null)
         {
@@ -1161,7 +1140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPDrawRectangleAroundSAPElement(WorkflowExpression<string> sAPDrawRectangleAroundSAPElementsearchSAPElementId, WorkflowExpression<string> sAPDrawRectangleAroundSAPElementworkflow, WorkflowExpression<string> sAPDrawRectangleAroundSAPElementpenColour = null, WorkflowExpression<int> sAPDrawRectangleAroundSAPElementpenThicknessPixels = null)
         {
@@ -1228,7 +1206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSendCommand(WorkflowExpression<string> sAPSendCommandsAPCommand, WorkflowExpression<string> sAPSendCommandworkflow)
         {
@@ -1261,7 +1238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPEnterTCode(WorkflowExpression<string> sAPEnterTCodesAPTCode, WorkflowExpression<string> sAPEnterTCodeworkflow)
         {
@@ -1294,7 +1270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSendVKey(WorkflowExpression<string> sAPSendVKeysearchSAPElementId, WorkflowExpression<int> sAPSendVKeysAPVKey, WorkflowExpression<string> sAPSendVKeyworkflow, WorkflowExpression<bool> sAPSendVKeydetectParentWindowElement = null)
         {
@@ -1347,7 +1322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSendEnterVKey(WorkflowExpression<string> sAPSendEnterVKeysearchSAPElementId, WorkflowExpression<string> sAPSendEnterVKeyworkflow, WorkflowExpression<bool> sAPSendEnterVKeydetectParentWindowElement = null)
         {
@@ -1397,7 +1371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPWindowRestore(WorkflowExpression<string> sAPWindowRestoresearchSAPElementId, WorkflowExpression<string> sAPWindowRestoreworkflow, WorkflowExpression<bool> sAPWindowRestoredetectParentWindowElement = null)
         {
@@ -1447,7 +1420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPWindowMaximise(WorkflowExpression<string> sAPWindowMaximisesearchSAPElementId, WorkflowExpression<string> sAPWindowMaximiseworkflow, WorkflowExpression<bool> sAPWindowMaximisedetectParentWindowElement = null)
         {
@@ -1497,7 +1469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPWindowMinimise(WorkflowExpression<string> sAPWindowMinimisesearchSAPElementId, WorkflowExpression<string> sAPWindowMinimiseworkflow, WorkflowExpression<bool> sAPWindowMinimisedetectParentWindowElement = null)
         {
@@ -1547,7 +1518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPWindowClose(WorkflowExpression<string> sAPWindowClosesearchSAPElementId, WorkflowExpression<string> sAPWindowCloseworkflow, WorkflowExpression<bool> sAPWindowClosedetectParentWindowElement = null)
         {
@@ -1597,7 +1567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPBringWindowToFront(WorkflowExpression<string> sAPBringWindowToFrontsearchSAPElementId, WorkflowExpression<string> sAPBringWindowToFrontworkflow, WorkflowExpression<bool> sAPBringWindowToFronttoggleWindow = null, WorkflowExpression<bool> sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPBringWindowToFronttoggleDelay = null, WorkflowExpression<bool> sAPBringWindowToFrontdetectParentWindowElement = null)
         {
@@ -1698,7 +1667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalLeftMouseClickOnSAPElement(WorkflowExpression<string> sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, WorkflowExpression<string> sAPGlobalLeftMouseClickOnSAPElementworkflow, WorkflowExpression<bool> sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalLeftMouseClickOnSAPElementtoggleWindow = null, WorkflowExpression<bool> sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalLeftMouseClickOnSAPElementtoggleDelay = null, WorkflowExpression<int> sAPGlobalLeftMouseClickOnSAPElementclickOffsetX = null, WorkflowExpression<int> sAPGlobalLeftMouseClickOnSAPElementclickOffsetY = null, WorkflowExpression<sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo = null)
         {
@@ -1857,7 +1825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalRightMouseClickOnSAPElement(WorkflowExpression<string> sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, WorkflowExpression<string> sAPGlobalRightMouseClickOnSAPElementworkflow, WorkflowExpression<bool> sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalRightMouseClickOnSAPElementtoggleWindow = null, WorkflowExpression<bool> sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalRightMouseClickOnSAPElementtoggleDelay = null, WorkflowExpression<int> sAPGlobalRightMouseClickOnSAPElementclickOffsetX = null, WorkflowExpression<int> sAPGlobalRightMouseClickOnSAPElementclickOffsetY = null, WorkflowExpression<sAPGlobalRightMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo = null)
         {
@@ -2016,7 +1983,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalMiddleMouseClickOnSAPElement(WorkflowExpression<string> sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, WorkflowExpression<string> sAPGlobalMiddleMouseClickOnSAPElementworkflow, WorkflowExpression<bool> sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow = null, WorkflowExpression<bool> sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay = null, WorkflowExpression<int> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX = null, WorkflowExpression<int> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY = null, WorkflowExpression<sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo = null)
         {
@@ -2175,7 +2141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalDoubleLeftMouseClickOnSAPElement(WorkflowExpression<string> sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, WorkflowExpression<string> sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, WorkflowExpression<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow = null, WorkflowExpression<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay = null, WorkflowExpression<int> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX = null, WorkflowExpression<int> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY = null, WorkflowExpression<sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo = null, WorkflowExpression<int> sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds = null)
         {
@@ -2351,7 +2316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalInputTextIntoSAPElement(WorkflowExpression<string> sAPGlobalInputTextIntoSAPElementsearchSAPElementId, WorkflowExpression<string> sAPGlobalInputTextIntoSAPElementworkflow, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementtoggleWindow = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalInputTextIntoSAPElementtoggleDelay = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, WorkflowExpression<string> sAPGlobalInputTextIntoSAPElementtextToInput = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementsendKeyEvents = null, WorkflowExpression<int> sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds = null, WorkflowExpression<int> sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds = null, WorkflowExpression<bool> sAPGlobalInputTextIntoSAPElementdontInterpretSymbols = null)
         {
@@ -2595,7 +2559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalInputPasswordIntoSAPElement(WorkflowExpression<string> sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, WorkflowExpression<string> sAPGlobalInputPasswordIntoSAPElementpasswordToInput, WorkflowExpression<string> sAPGlobalInputPasswordIntoSAPElementworkflow, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementtoggleWindow = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalInputPasswordIntoSAPElementtoggleDelay = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementsendKeyEvents = null, WorkflowExpression<int> sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds = null, WorkflowExpression<int> sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds = null, WorkflowExpression<bool> sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols = null)
         {
@@ -2835,7 +2798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetListSelectionByName(WorkflowExpression<string> sAPSetListSelectionByNamesearchSAPElementId, WorkflowExpression<string> sAPSetListSelectionByNamelistItemName, WorkflowExpression<string> sAPSetListSelectionByNameworkflow)
         {
@@ -2871,7 +2833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetListSelectionByKey(WorkflowExpression<string> sAPSetListSelectionByKeysearchSAPElementId, WorkflowExpression<string> sAPSetListSelectionByKeylistItemKey, WorkflowExpression<string> sAPSetListSelectionByKeyworkflow)
         {
@@ -2907,7 +2868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetListSelectionElementItemsResponse> __BuildSAPGetListSelectionElementItems(WorkflowExpression<string> sAPGetListSelectionElementItemssearchSAPElementId, WorkflowExpression<string> sAPGetListSelectionElementItemsworkflow)
         {
@@ -2940,7 +2900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetAllChildSAPElementPropertiesResponse> __BuildSAPGetAllChildSAPElementProperties(WorkflowExpression<string> sAPGetAllChildSAPElementPropertiessearchSAPElementId, WorkflowExpression<string> sAPGetAllChildSAPElementPropertiesworkflow, WorkflowExpression<int> sAPGetAllChildSAPElementPropertiesfirstItemToReturn = null, WorkflowExpression<int> sAPGetAllChildSAPElementPropertiesmaxItemsToReturn = null, WorkflowExpression<string> sAPGetAllChildSAPElementPropertiessearchSAPElementType = null, WorkflowExpression<int> sAPGetAllChildSAPElementPropertiesmaxTextLength = null)
         {
@@ -3031,7 +2990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse> __BuildSAPGetSAPSessionTopLevelSAPElementProperties(WorkflowExpression<string> sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, WorkflowExpression<int> sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn = null, WorkflowExpression<int> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn = null, WorkflowExpression<string> sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType = null, WorkflowExpression<int> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength = null)
         {
@@ -3119,7 +3077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPElementParentIdResponse> __BuildSAPGetSAPElementParentId(WorkflowExpression<string> sAPGetSAPElementParentIdsearchSAPElementId, WorkflowExpression<string> sAPGetSAPElementParentIdworkflow)
         {
@@ -3152,7 +3109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetElementPropertiesAsListResponse> __BuildSAPGetElementPropertiesAsList(WorkflowExpression<string> sAPGetElementPropertiesAsListsearchSAPElementId, WorkflowExpression<string> sAPGetElementPropertiesAsListworkflow, WorkflowExpression<int> sAPGetElementPropertiesAsListmaxTextLength = null)
         {
@@ -3202,7 +3158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPElementAtScreenCoordinateResponse> __BuildSAPGetSAPElementAtScreenCoordinate(WorkflowExpression<int> sAPGetSAPElementAtScreenCoordinatescreenX, WorkflowExpression<int> sAPGetSAPElementAtScreenCoordinatescreenY, WorkflowExpression<string> sAPGetSAPElementAtScreenCoordinateworkflow)
         {
@@ -3238,7 +3193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPOpenConnectionResponse> __BuildSAPOpenConnection(WorkflowExpression<string> sAPOpenConnectionworkflow, WorkflowExpression<string> sAPOpenConnectionsAPConnectionDescription = null, WorkflowExpression<string> sAPOpenConnectionsAPConnectionAddress = null, WorkflowExpression<bool> sAPOpenConnectionconnectSynchronous = null, WorkflowExpression<bool> sAPOpenConnectionconnectToSession = null)
         {
@@ -3316,7 +3270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPTablePropertiesResponse> __BuildSAPGetSAPTableProperties(WorkflowExpression<string> sAPGetSAPTablePropertiessearchSAPElementId, WorkflowExpression<string> sAPGetSAPTablePropertiesworkflow)
         {
@@ -3349,7 +3302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse> __BuildSAPGetSAPTableVisibleCellTextContentsAtIndex(WorkflowExpression<string> sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, WorkflowExpression<string> sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, WorkflowExpression<int> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, WorkflowExpression<int> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, WorkflowExpression<string> sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue = null)
         {
@@ -3433,7 +3385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse> __BuildSAPGetSAPTableVisibleCellPropertiesAtIndex(WorkflowExpression<string> sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, WorkflowExpression<string> sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, WorkflowExpression<int> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex = null, WorkflowExpression<int> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex = null)
         {
@@ -3500,7 +3451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetSAPTableVisibleCellTextContentsAtIndex(WorkflowExpression<string> sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, WorkflowExpression<string> sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, WorkflowExpression<int> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, WorkflowExpression<int> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, WorkflowExpression<string> sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput = null, WorkflowExpression<bool> sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue = null, WorkflowExpression<int> sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition = null)
         {
@@ -3608,7 +3558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPCheckSAPTableVisibleCellCheckboxAtIndex(WorkflowExpression<string> sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, WorkflowExpression<string> sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, WorkflowExpression<int> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex = null, WorkflowExpression<int> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex = null, WorkflowExpression<bool> sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement = null)
         {
@@ -3692,7 +3641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressSAPTableVisibleCellAtIndex(WorkflowExpression<string> sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, WorkflowExpression<string> sAPPressSAPTableVisibleCellAtIndexworkflow, WorkflowExpression<int> sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex = null, WorkflowExpression<int> sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex = null)
         {
@@ -3759,7 +3707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPScrollSAPTable(WorkflowExpression<string> sAPScrollSAPTablesearchSAPElementId, WorkflowExpression<string> sAPScrollSAPTableworkflow, WorkflowExpression<bool> sAPScrollSAPTablemoveHorizontalScrollbar = null, WorkflowExpression<int> sAPScrollSAPTablehorizontalScrollbarPosition = null, WorkflowExpression<bool> sAPScrollSAPTablemoveVerticalScrollbar = null, WorkflowExpression<int> sAPScrollSAPTableverticalScrollbarPosition = null)
         {
@@ -3840,7 +3787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetTableVisibleTextContentsResponse> __BuildSAPGetTableVisibleTextContents(WorkflowExpression<string> sAPGetTableVisibleTextContentssearchSAPElementId, WorkflowExpression<string> sAPGetTableVisibleTextContentsworkflow, WorkflowExpression<int> sAPGetTableVisibleTextContentsfirstVisibleRowToReturn = null, WorkflowExpression<int> sAPGetTableVisibleTextContentsmaxRowsToReturn = null, WorkflowExpression<int> sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn = null, WorkflowExpression<int> sAPGetTableVisibleTextContentsmaxColumnsToReturn = null, WorkflowExpression<bool> sAPGetTableVisibleTextContentsuseColumnHeadersFromTable = null, WorkflowExpression<bool> sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection = null, WorkflowExpression<string> sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex = null, WorkflowExpression<string> sAPGetTableVisibleTextContentscheckedElementValue = null)
         {
@@ -3999,7 +3945,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectSAPTableRow(WorkflowExpression<string> sAPSelectSAPTableRowsearchSAPElementId, WorkflowExpression<string> sAPSelectSAPTableRowworkflow, WorkflowExpression<int> sAPSelectSAPTableRowvisibleRowIndex = null, WorkflowExpression<bool> sAPSelectSAPTableRowselect = null)
         {
@@ -4066,7 +4011,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectSAPTableColumn(WorkflowExpression<string> sAPSelectSAPTableColumnsearchSAPElementId, WorkflowExpression<string> sAPSelectSAPTableColumnworkflow, WorkflowExpression<int> sAPSelectSAPTableColumnvisibleColumnIndex = null, WorkflowExpression<bool> sAPSelectSAPTableColumnselect = null)
         {
@@ -4133,7 +4077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetTreeNodesResponse> __BuildSAPGetTreeNodes(WorkflowExpression<string> sAPGetTreeNodessearchSAPElementId, WorkflowExpression<string> sAPGetTreeNodesworkflow, WorkflowExpression<string> sAPGetTreeNodesparentNodeKey = null, WorkflowExpression<bool> sAPGetTreeNodesprocessSubNodes = null)
         {
@@ -4190,7 +4133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPDoubleClickTreeItem(WorkflowExpression<string> sAPDoubleClickTreeItemsearchSAPElementId, WorkflowExpression<string> sAPDoubleClickTreeItemworkflow, WorkflowExpression<string> sAPDoubleClickTreeItemsearchNodeKey = null, WorkflowExpression<string> sAPDoubleClickTreeItemsearchNodePath = null, WorkflowExpression<string> sAPDoubleClickTreeItemsearchNodeText = null, WorkflowExpression<bool> sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPDoubleClickTreeItemsearchColumnName = null, WorkflowExpression<string> sAPDoubleClickTreeItemsearchColumnTitle = null, WorkflowExpression<bool> sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
@@ -4326,7 +4268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectTreeItem(WorkflowExpression<string> sAPSelectTreeItemsearchSAPElementId, WorkflowExpression<string> sAPSelectTreeItemworkflow, WorkflowExpression<string> sAPSelectTreeItemsearchNodeKey = null, WorkflowExpression<string> sAPSelectTreeItemsearchNodePath = null, WorkflowExpression<string> sAPSelectTreeItemsearchNodeText = null, WorkflowExpression<bool> sAPSelectTreeItemsearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPSelectTreeItemsearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPSelectTreeItemsearchColumnName = null, WorkflowExpression<string> sAPSelectTreeItemsearchColumnTitle = null, WorkflowExpression<bool> sAPSelectTreeItemsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPSelectTreeItemsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPSelectTreeItemselect = null, WorkflowExpression<bool> sAPSelectTreeItemdeselectAllFirst = null)
         {
@@ -4496,7 +4437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPExpandTreeNode(WorkflowExpression<string> sAPExpandTreeNodesearchSAPElementId, WorkflowExpression<string> sAPExpandTreeNodeworkflow, WorkflowExpression<string> sAPExpandTreeNodesearchNodeKey = null, WorkflowExpression<string> sAPExpandTreeNodesearchNodePath = null, WorkflowExpression<string> sAPExpandTreeNodesearchNodeText = null, WorkflowExpression<bool> sAPExpandTreeNodesearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPExpandTreeNodesearchNodeTextIsCaseSensitive = null, WorkflowExpression<bool> sAPExpandTreeNodeexpand = null)
         {
@@ -4601,7 +4541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPDeselectAllTreeNodes(WorkflowExpression<string> sAPDeselectAllTreeNodessearchSAPElementId, WorkflowExpression<string> sAPDeselectAllTreeNodesworkflow)
         {
@@ -4634,7 +4573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressKeyOnTree(WorkflowExpression<string> sAPPressKeyOnTreesearchSAPElementId, WorkflowExpression<string> sAPPressKeyOnTreekey, WorkflowExpression<string> sAPPressKeyOnTreeworkflow)
         {
@@ -4670,7 +4608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPOpenContextMenuOnTreeItem(WorkflowExpression<string> sAPOpenContextMenuOnTreeItemsearchSAPElementId, WorkflowExpression<string> sAPOpenContextMenuOnTreeItemworkflow, WorkflowExpression<string> sAPOpenContextMenuOnTreeItemsearchNodeKey = null, WorkflowExpression<string> sAPOpenContextMenuOnTreeItemsearchNodePath = null, WorkflowExpression<string> sAPOpenContextMenuOnTreeItemsearchNodeText = null, WorkflowExpression<bool> sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPOpenContextMenuOnTreeItemsearchColumnName = null, WorkflowExpression<string> sAPOpenContextMenuOnTreeItemsearchColumnTitle = null, WorkflowExpression<bool> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
@@ -4806,7 +4743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetTreeTextContentsResponse> __BuildSAPGetTreeTextContents(WorkflowExpression<string> sAPGetTreeTextContentssearchSAPElementId, WorkflowExpression<string> sAPGetTreeTextContentsworkflow, WorkflowExpression<int> sAPGetTreeTextContentsfirstRowToReturn = null, WorkflowExpression<int> sAPGetTreeTextContentsmaxRowsToReturn = null, WorkflowExpression<int> sAPGetTreeTextContentsfirstColumnToReturn = null, WorkflowExpression<int> sAPGetTreeTextContentsmaxColumnsToReturn = null, WorkflowExpression<bool> sAPGetTreeTextContentsuseColumnHeadersFromTree = null, WorkflowExpression<bool> sAPGetTreeTextContentsreturnRowIndexInOutputCollection = null, WorkflowExpression<string> sAPGetTreeTextContentsnameOfColumnToStoreRowIndex = null)
         {
@@ -4948,7 +4884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetTreeColumnWidth(WorkflowExpression<string> sAPSetTreeColumnWidthsearchSAPElementId, WorkflowExpression<string> sAPSetTreeColumnWidthworkflow, WorkflowExpression<string> sAPSetTreeColumnWidthsearchColumnName = null, WorkflowExpression<string> sAPSetTreeColumnWidthsearchColumnTitle = null, WorkflowExpression<bool> sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<int> sAPSetTreeColumnWidthcolumnWidthInPixels = null)
         {
@@ -5046,7 +4981,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressButtonOnTreeItem(WorkflowExpression<string> sAPPressButtonOnTreeItemsearchSAPElementId, WorkflowExpression<string> sAPPressButtonOnTreeItemworkflow, WorkflowExpression<string> sAPPressButtonOnTreeItemsearchNodeKey = null, WorkflowExpression<string> sAPPressButtonOnTreeItemsearchNodePath = null, WorkflowExpression<string> sAPPressButtonOnTreeItemsearchNodeText = null, WorkflowExpression<bool> sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPPressButtonOnTreeItemsearchColumnName = null, WorkflowExpression<string> sAPPressButtonOnTreeItemsearchColumnTitle = null, WorkflowExpression<bool> sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPPressButtonOnTreeItemforce = null)
         {
@@ -5199,7 +5133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPClickLinkOnTreeItem(WorkflowExpression<string> sAPClickLinkOnTreeItemsearchSAPElementId, WorkflowExpression<string> sAPClickLinkOnTreeItemworkflow, WorkflowExpression<string> sAPClickLinkOnTreeItemsearchNodeKey = null, WorkflowExpression<string> sAPClickLinkOnTreeItemsearchNodePath = null, WorkflowExpression<string> sAPClickLinkOnTreeItemsearchNodeText = null, WorkflowExpression<bool> sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPClickLinkOnTreeItemsearchColumnName = null, WorkflowExpression<string> sAPClickLinkOnTreeItemsearchColumnTitle = null, WorkflowExpression<bool> sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPClickLinkOnTreeItemforce = null)
         {
@@ -5352,7 +5285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPCheckTreeItem(WorkflowExpression<string> sAPCheckTreeItemsearchSAPElementId, WorkflowExpression<string> sAPCheckTreeItemworkflow, WorkflowExpression<string> sAPCheckTreeItemsearchNodeKey = null, WorkflowExpression<string> sAPCheckTreeItemsearchNodePath = null, WorkflowExpression<string> sAPCheckTreeItemsearchNodeText = null, WorkflowExpression<bool> sAPCheckTreeItemsearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPCheckTreeItemsearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPCheckTreeItemsearchColumnName = null, WorkflowExpression<string> sAPCheckTreeItemsearchColumnTitle = null, WorkflowExpression<bool> sAPCheckTreeItemsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPCheckTreeItemsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPCheckTreeItemcheckItem = null, WorkflowExpression<bool> sAPCheckTreeItemforce = null)
         {
@@ -5522,7 +5454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetTreeColumnHeadersResponse> __BuildSAPGetTreeColumnHeaders(WorkflowExpression<string> sAPGetTreeColumnHeaderssearchSAPElementId, WorkflowExpression<string> sAPGetTreeColumnHeadersworkflow)
         {
@@ -5555,7 +5486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetTreeItemPropertiesResponse> __BuildSAPGetTreeItemProperties(WorkflowExpression<string> sAPGetTreeItemPropertiessearchSAPElementId, WorkflowExpression<string> sAPGetTreeItemPropertiesworkflow, WorkflowExpression<string> sAPGetTreeItemPropertiessearchNodeKey = null, WorkflowExpression<string> sAPGetTreeItemPropertiessearchNodePath = null, WorkflowExpression<string> sAPGetTreeItemPropertiessearchNodeText = null, WorkflowExpression<bool> sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression = null, WorkflowExpression<bool> sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive = null, WorkflowExpression<string> sAPGetTreeItemPropertiessearchColumnName = null, WorkflowExpression<string> sAPGetTreeItemPropertiessearchColumnTitle = null, WorkflowExpression<bool> sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive = null)
         {
@@ -5691,7 +5621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetShellToolbarElementsResponse> __BuildSAPGetShellToolbarElements(WorkflowExpression<string> sAPGetShellToolbarElementssearchSAPElementId, WorkflowExpression<string> sAPGetShellToolbarElementsworkflow)
         {
@@ -5724,7 +5653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressShellToolbarElement(WorkflowExpression<string> sAPPressShellToolbarElementsearchSAPElementId, WorkflowExpression<string> sAPPressShellToolbarElementworkflow, WorkflowExpression<string> sAPPressShellToolbarElementsearchToolbarElementId = null, WorkflowExpression<string> sAPPressShellToolbarElementsearchToolbarElementText = null, WorkflowExpression<int> sAPPressShellToolbarElementsearchToolbarElementIndex = null, WorkflowExpression<bool> sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression = null, WorkflowExpression<bool> sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive = null)
         {
@@ -5822,7 +5750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressShellToolbarElementContextButton(WorkflowExpression<string> sAPPressShellToolbarElementContextButtonsearchSAPElementId, WorkflowExpression<string> sAPPressShellToolbarElementContextButtonworkflow, WorkflowExpression<string> sAPPressShellToolbarElementContextButtonsearchToolbarElementId = null, WorkflowExpression<string> sAPPressShellToolbarElementContextButtonsearchToolbarElementText = null, WorkflowExpression<int> sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex = null, WorkflowExpression<bool> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression = null, WorkflowExpression<bool> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive = null)
         {
@@ -5920,7 +5847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectShellToolbarMenuItem(WorkflowExpression<string> sAPSelectShellToolbarMenuItemsearchSAPElementId, WorkflowExpression<string> sAPSelectShellToolbarMenuItemworkflow, WorkflowExpression<string> sAPSelectShellToolbarMenuItemsearchToolbarElementId = null, WorkflowExpression<string> sAPSelectShellToolbarMenuItemsearchToolbarElementText = null, WorkflowExpression<int> sAPSelectShellToolbarMenuItemsearchToolbarElementIndex = null, WorkflowExpression<bool> sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression = null, WorkflowExpression<bool> sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive = null)
         {
@@ -6018,7 +5944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPGridViewPropertiesResponse> __BuildSAPGetSAPGridViewProperties(WorkflowExpression<string> sAPGetSAPGridViewPropertiessearchSAPElementId, WorkflowExpression<string> sAPGetSAPGridViewPropertiesworkflow)
         {
@@ -6051,7 +5976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPGridViewCellContentsAtIndexResponse> __BuildSAPGetSAPGridViewCellContentsAtIndex(WorkflowExpression<string> sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, WorkflowExpression<int> sAPGetSAPGridViewCellContentsAtIndexrowIndex, WorkflowExpression<string> sAPGetSAPGridViewCellContentsAtIndexworkflow, WorkflowExpression<string> sAPGetSAPGridViewCellContentsAtIndexsearchColumnName = null, WorkflowExpression<string> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
@@ -6135,7 +6059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse> __BuildSAPGetSAPGridViewCellPropertiesAtIndex(WorkflowExpression<string> sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, WorkflowExpression<int> sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, WorkflowExpression<string> sAPGetSAPGridViewCellPropertiesAtIndexworkflow, WorkflowExpression<string> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName = null, WorkflowExpression<string> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
@@ -6219,7 +6142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPDrawRectangleAroundSAPGridViewCellAtIndex(WorkflowExpression<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour = null, WorkflowExpression<int> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels = null)
         {
@@ -6337,7 +6259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalLeftClickSAPGridViewCellAtIndex(WorkflowExpression<string> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow = null, WorkflowExpression<bool> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay = null, WorkflowExpression<int> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX = null, WorkflowExpression<int> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY = null, WorkflowExpression<sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput> sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
@@ -6547,7 +6468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalRightClickSAPGridViewCellAtIndex(WorkflowExpression<string> sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow = null, WorkflowExpression<bool> sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay = null, WorkflowExpression<int> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX = null, WorkflowExpression<int> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY = null, WorkflowExpression<sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeToInput> sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
@@ -6757,7 +6677,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGlobalDoubleLeftClickSAPGridViewCellAtIndex(WorkflowExpression<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, WorkflowExpression<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, WorkflowExpression<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow = null, WorkflowExpression<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay = null, WorkflowExpression<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX = null, WorkflowExpression<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY = null, WorkflowExpression<sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null, WorkflowExpression<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds = null)
         {
@@ -6984,7 +6903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetSAPGridViewColumnHeadersResponse> __BuildSAPGetSAPGridViewColumnHeaders(WorkflowExpression<string> sAPGetSAPGridViewColumnHeaderssearchSAPElementId, WorkflowExpression<string> sAPGetSAPGridViewColumnHeadersworkflow)
         {
@@ -7017,7 +6935,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPClickSAPGridViewCellAtIndex(WorkflowExpression<string> sAPClickSAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPClickSAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPClickSAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPClickSAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPClickSAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
@@ -7101,7 +7018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPDoubleClickSAPGridViewCellAtIndex(WorkflowExpression<string> sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPDoubleClickSAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPDoubleClickSAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
@@ -7185,7 +7101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressSAPGridViewCellButtonAtIndex(WorkflowExpression<string> sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, WorkflowExpression<int> sAPPressSAPGridViewCellButtonAtIndexrowIndex, WorkflowExpression<string> sAPPressSAPGridViewCellButtonAtIndexworkflow, WorkflowExpression<string> sAPPressSAPGridViewCellButtonAtIndexsearchColumnName = null, WorkflowExpression<string> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
@@ -7269,7 +7184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPCheckSAPGridViewCellCheckboxAtIndex(WorkflowExpression<string> sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, WorkflowExpression<int> sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, WorkflowExpression<string> sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, WorkflowExpression<string> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName = null, WorkflowExpression<string> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement = null)
         {
@@ -7370,7 +7284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPModifySAPGridViewCellAtIndexResponse> __BuildSAPModifySAPGridViewCellAtIndex(WorkflowExpression<string> sAPModifySAPGridViewCellAtIndexsearchSAPElementId, WorkflowExpression<int> sAPModifySAPGridViewCellAtIndexrowIndex, WorkflowExpression<string> sAPModifySAPGridViewCellAtIndexworkflow, WorkflowExpression<string> sAPModifySAPGridViewCellAtIndexsearchColumnName = null, WorkflowExpression<string> sAPModifySAPGridViewCellAtIndexsearchColumnTitle = null, WorkflowExpression<bool> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<string> sAPModifySAPGridViewCellAtIndexnewValue = null)
         {
@@ -7461,7 +7374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetSAPGridViewCurrentRow(WorkflowExpression<string> sAPSetSAPGridViewCurrentRowsearchSAPElementId, WorkflowExpression<int> sAPSetSAPGridViewCurrentRowrowIndex, WorkflowExpression<string> sAPSetSAPGridViewCurrentRowworkflow)
         {
@@ -7497,7 +7409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPPressSAPGridViewColumnHeader(WorkflowExpression<string> sAPPressSAPGridViewColumnHeadersearchSAPElementId, WorkflowExpression<string> sAPPressSAPGridViewColumnHeaderworkflow, WorkflowExpression<string> sAPPressSAPGridViewColumnHeadersearchColumnName = null, WorkflowExpression<string> sAPPressSAPGridViewColumnHeadersearchColumnTitle = null, WorkflowExpression<bool> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive = null)
         {
@@ -7578,7 +7489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleRowResponse> __BuildSAPSetSAPGridViewFirstVisibleRow(WorkflowExpression<string> sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, WorkflowExpression<int> sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, WorkflowExpression<string> sAPSetSAPGridViewFirstVisibleRowworkflow)
         {
@@ -7614,7 +7524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectSAPGridViewRow(WorkflowExpression<string> sAPSelectSAPGridViewRowsearchSAPElementId, WorkflowExpression<int> sAPSelectSAPGridViewRowrowIndex, WorkflowExpression<string> sAPSelectSAPGridViewRowworkflow, WorkflowExpression<bool> sAPSelectSAPGridViewRowsetAsCurrentRow = null)
         {
@@ -7667,7 +7576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectSAPGridViewMultipleRows(WorkflowExpression<string> sAPSelectSAPGridViewMultipleRowssearchSAPElementId, WorkflowExpression<string> sAPSelectSAPGridViewMultipleRowsrowsToSelect, WorkflowExpression<string> sAPSelectSAPGridViewMultipleRowsworkflow)
         {
@@ -7703,7 +7611,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetSAPGridViewCurrentColumn(WorkflowExpression<string> sAPSetSAPGridViewCurrentColumnsearchSAPElementId, WorkflowExpression<string> sAPSetSAPGridViewCurrentColumnworkflow, WorkflowExpression<string> sAPSetSAPGridViewCurrentColumnsearchColumnName = null, WorkflowExpression<string> sAPSetSAPGridViewCurrentColumnsearchColumnTitle = null, WorkflowExpression<bool> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive = null)
         {
@@ -7784,7 +7691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSetSAPGridViewCurrentCell(WorkflowExpression<string> sAPSetSAPGridViewCurrentCellsearchSAPElementId, WorkflowExpression<int> sAPSetSAPGridViewCurrentCellrowIndex, WorkflowExpression<string> sAPSetSAPGridViewCurrentCellworkflow, WorkflowExpression<string> sAPSetSAPGridViewCurrentCellsearchColumnName = null, WorkflowExpression<string> sAPSetSAPGridViewCurrentCellsearchColumnTitle = null, WorkflowExpression<bool> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive = null)
         {
@@ -7868,7 +7774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectSAPGridViewColumn(WorkflowExpression<string> sAPSelectSAPGridViewColumnsearchSAPElementId, WorkflowExpression<string> sAPSelectSAPGridViewColumnworkflow, WorkflowExpression<string> sAPSelectSAPGridViewColumnsearchColumnName = null, WorkflowExpression<string> sAPSelectSAPGridViewColumnsearchColumnTitle = null, WorkflowExpression<bool> sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive = null, WorkflowExpression<bool> sAPSelectSAPGridViewColumnselectColumn = null, WorkflowExpression<bool> sAPSelectSAPGridViewColumnsetAsCurrentColumn = null, WorkflowExpression<bool> sAPSelectSAPGridViewColumnclearSelectionFirst = null)
         {
@@ -8000,7 +7905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGridViewSelectAll(WorkflowExpression<string> sAPGridViewSelectAllsearchSAPElementId, WorkflowExpression<string> sAPGridViewSelectAllworkflow)
         {
@@ -8033,7 +7937,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGridViewDeselectAll(WorkflowExpression<string> sAPGridViewDeselectAllsearchSAPElementId, WorkflowExpression<string> sAPGridViewDeselectAllworkflow)
         {
@@ -8066,7 +7969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleColumnResponse> __BuildSAPSetSAPGridViewFirstVisibleColumn(WorkflowExpression<string> sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, WorkflowExpression<string> sAPSetSAPGridViewFirstVisibleColumnworkflow, WorkflowExpression<string> sAPSetSAPGridViewFirstVisibleColumnsearchColumnName = null, WorkflowExpression<string> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle = null, WorkflowExpression<bool> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive = null)
         {
@@ -8147,7 +8049,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPGridViewOpenContextMenu(WorkflowExpression<string> sAPGridViewOpenContextMenusearchSAPElementId, WorkflowExpression<int> sAPGridViewOpenContextMenurowIndex, WorkflowExpression<string> sAPGridViewOpenContextMenuworkflow, WorkflowExpression<string> sAPGridViewOpenContextMenusearchColumnName = null, WorkflowExpression<string> sAPGridViewOpenContextMenusearchColumnTitle = null, WorkflowExpression<bool> sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive = null)
         {
@@ -8231,7 +8132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SAPGetGridViewTextContentsResponse> __BuildSAPGetGridViewTextContents(WorkflowExpression<string> sAPGetGridViewTextContentssearchSAPElementId, WorkflowExpression<string> sAPGetGridViewTextContentsworkflow, WorkflowExpression<int> sAPGetGridViewTextContentsfirstRowToReturn = null, WorkflowExpression<int> sAPGetGridViewTextContentsmaxRowsToReturn = null, WorkflowExpression<string> sAPGetGridViewTextContentsfirstSearchColumnName = null, WorkflowExpression<string> sAPGetGridViewTextContentsfirstSearchColumnTitle = null, WorkflowExpression<bool> sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression = null, WorkflowExpression<bool> sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive = null, WorkflowExpression<int> sAPGetGridViewTextContentsmaxColumnsToReturn = null, WorkflowExpression<bool> sAPGetGridViewTextContentsuseColumnHeadersFromTable = null, WorkflowExpression<bool> sAPGetGridViewTextContentsreturnRowIndexInOutputCollection = null, WorkflowExpression<string> sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex = null, WorkflowExpression<string> sAPGetGridViewTextContentscheckedElementValue = null)
         {
@@ -8421,7 +8321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectCalendarMonth(WorkflowExpression<string> sAPSelectCalendarMonthsearchSAPElementId, WorkflowExpression<int> sAPSelectCalendarMonthmonth, WorkflowExpression<int> sAPSelectCalendarMonthyear, WorkflowExpression<string> sAPSelectCalendarMonthworkflow)
         {
@@ -8460,7 +8359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectCalendarWeek(WorkflowExpression<string> sAPSelectCalendarWeeksearchSAPElementId, WorkflowExpression<int> sAPSelectCalendarWeekweek, WorkflowExpression<int> sAPSelectCalendarWeekyear, WorkflowExpression<string> sAPSelectCalendarWeekworkflow)
         {
@@ -8499,7 +8397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPSelectCalendarRange(WorkflowExpression<string> sAPSelectCalendarRangesearchSAPElementId, WorkflowExpression<string> sAPSelectCalendarRangefromDateYYYYMMDD, WorkflowExpression<string> sAPSelectCalendarRangetoDateYYYYMMDD, WorkflowExpression<string> sAPSelectCalendarRangeworkflow)
         {
@@ -8538,7 +8435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSAPFocusCalendarDate(WorkflowExpression<string> sAPFocusCalendarDatesearchSAPElementId, WorkflowExpression<string> sAPFocusCalendarDatedateYYYYMMDD, WorkflowExpression<string> sAPFocusCalendarDateworkflow)
         {

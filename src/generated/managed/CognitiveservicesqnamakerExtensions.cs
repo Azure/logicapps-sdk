@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateAnswerResponse> __BuildGenerateAnswer(WorkflowExpression<string> knowledgeBaseId, WorkflowExpression<string> serviceHost, WorkflowExpression<string> endpointKey, WorkflowExpression<string> bodyquestion, WorkflowExpression<int> bodytop = null)
         {
@@ -70,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> __BuildDownloadKnowledgeBaseOld(WorkflowExpression<string> knowledgeBaseId)
         {

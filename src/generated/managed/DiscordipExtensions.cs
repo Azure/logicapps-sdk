@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Webhook> __BuildExecuteWebhook(WorkflowExpression<string> webhookId, WorkflowExpression<string> webhookToken, WorkflowExpression<contentTypeInput> contentType = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodyavatarURL = null)
         {

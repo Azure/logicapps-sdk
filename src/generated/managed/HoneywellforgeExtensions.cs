@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseCaseResponse> __BuildCloseServiceCaseAtForge(WorkflowExpression<string> projectId, WorkflowExpression<string> serviceCaseNumber, WorkflowExpression<string> bodysiteId, WorkflowExpression<string> bodyresolutionText, WorkflowExpression<string> bodyworkOrderIDs = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyresolutionCode = null, WorkflowExpression<string> bodyrootCauseCode = null, WorkflowExpression<int> bodyserviceCaseClosedOn = null)
         {
@@ -100,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendEventToForge(WorkflowExpression<string> projectId, WorkflowExpression<string> bodyeventName, WorkflowExpression<string> bodyeventType, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodycorrelationID, WorkflowExpression<string> bodysource, WorkflowExpression<string> bodyconnectorID = null)
         {

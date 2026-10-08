@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGeneratePowerpointDoc(WorkflowExpression<string> generationInfodataMap, WorkflowExpression<string> generationInfofile = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGenerateWordDoc(WorkflowExpression<string> generationInfodataMap, WorkflowExpression<string> generationInfofile = null)
         {
@@ -92,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMergePowerpointDocuments(WorkflowExpression<string[]> documents = null)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMergeWordDocuments(WorkflowExpression<string[]> documents = null)
         {

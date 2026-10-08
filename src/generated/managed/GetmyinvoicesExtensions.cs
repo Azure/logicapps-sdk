@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> __BuildGetInvoiceFromGetMyInvoices(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyapiKey)
         {

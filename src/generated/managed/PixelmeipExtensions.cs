@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RedirectPostResponse> __BuildRedirect(WorkflowExpression<string> bodyurl, WorkflowExpression<string[]> bodypixelsIds = null, WorkflowExpression<string> bodydomain = null, WorkflowExpression<string> bodykey = null, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<string> bodycampaignId = null, WorkflowExpression<string> bodysubCampaignId = null, WorkflowExpression<bodydynamicUrlsInputItem[]> bodydynamicUrls = null)
         {
@@ -114,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RedirectPatchResponse> __BuildRedirectPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodykey, WorkflowExpression<string[]> bodytags = null)
         {
@@ -152,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRedirectDelete(WorkflowExpression<string> id)
         {

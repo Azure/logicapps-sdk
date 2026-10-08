@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleSearchResponse> __BuildTitleSearch(WorkflowExpression<int> query = null, WorkflowExpression<int> type = null, WorkflowExpression<int> genrelist = null, WorkflowExpression<string> countrylist = null, WorkflowExpression<int> startYear = null, WorkflowExpression<int> endYear = null, WorkflowExpression<string> audio = null, WorkflowExpression<string> audiosubtitleAndor = null, WorkflowExpression<string> subtitle = null, WorkflowExpression<string> countryAndorunique = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PeopleSearchResponse> __BuildPeopleSearch(WorkflowExpression<string> name = null, WorkflowExpression<int> netflixId = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -109,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeletedSearchResponse> __BuildDeletedSearch(WorkflowExpression<int> netflixId = null, WorkflowExpression<string> countryList = null, WorkflowExpression<string> date = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -162,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleDetailResponse> __BuildTitleDetail(WorkflowExpression<int> netflixid, WorkflowExpression<int> imdbid)
         {
@@ -186,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleCountryResponse> __BuildTitleCountry(WorkflowExpression<int> netflixid)
         {
@@ -208,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleGenreResponse> __BuildTitleGenre(WorkflowExpression<int> netflixid)
         {
@@ -230,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleEpisodeResponse> __BuildTitleEpisode(WorkflowExpression<int> netflixid, WorkflowExpression<int> seasonid, WorkflowExpression<int> episodeid = null)
         {
@@ -257,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleImageResponse> __BuildTitleImage(WorkflowExpression<int> netflixid, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -285,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TitleExpiringResponse> __BuildTitleExpiring(WorkflowExpression<int> countrylist, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {

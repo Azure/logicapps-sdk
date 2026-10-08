@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Convert2ModernPageResponse> __BuildConvert2ModernPage(WorkflowExpression<string> requestfileContent, WorkflowExpression<string> requestsiteUrl, WorkflowExpression<string> requestpageTitle, WorkflowExpression<string> requestauthor, WorkflowExpression<string> requestfolderPath = null, WorkflowExpression<string> requestbannerImageUrl = null)
         {
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Convert2NonModernPageResponse> __BuildConvert2NonModernPage(WorkflowExpression<string> requestfileContent)
         {
@@ -101,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportList2PDFResponse> __BuildExportList2PDF(WorkflowExpression<string> requestdocumentTitle, WorkflowExpression<string> requestdata, WorkflowExpression<string> requestfieldArray)
         {
@@ -137,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractWordImagesResponse> __BuildExtractWordImages(WorkflowExpression<string> requestfileContent)
         {
@@ -167,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PDFMergeResponse> __BuildPDFMerge(WorkflowExpression<string> requestfileContentArray)
         {
@@ -197,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WordMergeResponse> __BuildWordMerge(WorkflowExpression<string> requestfileContentArray)
         {
@@ -227,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WordtopdfResponse> __BuildWordtopdf(WorkflowExpression<string> requestfileContent, WorkflowExpression<string> requestfileName)
         {

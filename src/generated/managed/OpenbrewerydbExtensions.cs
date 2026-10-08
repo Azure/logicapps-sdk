@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RefBrewery> __BuildGetBrewery(WorkflowExpression<string> obdbId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RefBrewery[]> __BuildListBreweries(WorkflowExpression<string> byCity = null, WorkflowExpression<string> byCountry = null, WorkflowExpression<string> byDist = null, WorkflowExpression<string> byName = null, WorkflowExpression<string> byState = null, WorkflowExpression<string> byPostal = null, WorkflowExpression<byTypeInput> byType = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RefBrewery[]> __BuildGetRandom(WorkflowExpression<int> size = null)
         {
@@ -109,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RefBrewery[]> __BuildSearchBreweries(WorkflowExpression<string> query)
         {
@@ -131,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CountBreweriesResponse> __BuildCountBreweries(WorkflowExpression<string> byCity = null, WorkflowExpression<string> byCountry = null, WorkflowExpression<string> byName = null, WorkflowExpression<string> byState = null, WorkflowExpression<string> byPostal = null, WorkflowExpression<byTypeInput> byType = null)
         {

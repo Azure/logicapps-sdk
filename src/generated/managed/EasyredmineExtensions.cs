@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIssueResponse> __BuildCreateIssue(WorkflowExpression<string> issueissueprojectID = null, WorkflowExpression<string> issueissuepriorityID = null, WorkflowExpression<string> issueissuesubject = null, WorkflowExpression<string> issueissuedescription = null, WorkflowExpression<string> issueissuestartDate = null, WorkflowExpression<string> issueissuedueDate = null, WorkflowExpression<double> issueissueestimatedHours = null)
         {
@@ -102,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIssueResponse> __BuildGetIssue(WorkflowExpression<string> issueId)
         {
@@ -123,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUpdateIssue(WorkflowExpression<string> issueId, WorkflowExpression<string> issueissueprojectID = null, WorkflowExpression<string> issueissuepriorityID = null, WorkflowExpression<string> issueissuesubject = null, WorkflowExpression<string> issueissuedescription = null, WorkflowExpression<issueissuestatusInput> issueissuestatus = null, WorkflowExpression<string> issueissueassignToID = null, WorkflowExpression<string> issueissuestartDate = null, WorkflowExpression<string> issueissuedueDate = null, WorkflowExpression<double> issueissueestimatedHours = null)
         {
@@ -222,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProjectResponse> __BuildCreateProject(WorkflowExpression<string> projectprojectname = null, WorkflowExpression<string> projectprojectidentifier = null, WorkflowExpression<string> projectprojectdescription = null, WorkflowExpression<string> projectprojecthomepage = null, WorkflowExpression<string> projectprojectparentProjectID = null, WorkflowExpression<bool> projectprojectpublic = null, WorkflowExpression<bool> projectprojectinheritMembers = null)
         {
@@ -326,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectResponse> __BuildGetProject(WorkflowExpression<string> projectId)
         {
@@ -356,7 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserResponse> __BuildGetUser(WorkflowExpression<string> userId)
         {

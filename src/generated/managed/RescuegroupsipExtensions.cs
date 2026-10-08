@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreedResponse> __BuildBreed(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreedIDResponse> __BuildBreedID(WorkflowExpression<string> id)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreedSpeciesResponse> __BuildBreedSpecies(WorkflowExpression<string> species, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -92,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreedSpeciesIDResponse> __BuildBreedSpeciesID(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -119,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganizationResponse> __BuildOrganization(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -145,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganizationIDResponse> __BuildOrganizationID(WorkflowExpression<string> id)
         {
@@ -166,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnimalResponse> __BuildAnimal(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -192,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnimalStatusResponse> __BuildAnimalStatus(WorkflowExpression<string> status, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -219,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnimalIDResponse> __BuildAnimalID(WorkflowExpression<string> id)
         {
@@ -240,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganizationAnimalResponse> __BuildOrganizationAnimal(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -267,7 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganizationAnimalStatusResponse> __BuildOrganizationAnimalStatus(WorkflowExpression<string> id, WorkflowExpression<string> status, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {

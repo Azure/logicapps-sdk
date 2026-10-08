@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommandPostResponse> __BuildCommand(WorkflowExpression<string> bodyinputscommand = null, WorkflowExpression<string> bodyinputscontext = null, WorkflowExpression<int> bodyoptionsoutputCount = null, WorkflowExpression<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, WorkflowExpression<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, WorkflowExpression<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null, WorkflowExpression<bodyoptionscompletionTypeInput> bodyoptionscompletionType = null)
         {
@@ -160,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeepWritingPostResponse> __BuildKeepWriting(WorkflowExpression<bodyinputstypeInput> bodyinputstype = null, WorkflowExpression<string> bodyinputsvalue = null, WorkflowExpression<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, WorkflowExpression<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, WorkflowExpression<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null)
         {
@@ -287,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowExpression<string> templateId)
         {
@@ -308,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplatePostResponse> __BuildTemplate(WorkflowExpression<string> templateId, WorkflowExpression<int> bodyoptionsoutputCount = null, WorkflowExpression<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, WorkflowExpression<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, WorkflowExpression<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null)
         {
@@ -410,7 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KnowledgesGetResponse> __BuildKnowledgesGet(WorkflowExpression<int> page = null, WorkflowExpression<int> size = null)
         {
@@ -436,7 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KnowledgePostResponse> __BuildKnowledge(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyfile, WorkflowExpression<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
@@ -502,7 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KnowledgeGetResponse> __BuildKnowledgeGet(WorkflowExpression<string> knowledgeId)
         {
@@ -523,7 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KnowledgeDeleteResponse> __BuildKnowledgeDelete(WorkflowExpression<string> knowledgeId)
         {
@@ -544,7 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KnowledgePatchResponse> __BuildKnowledgePatch(WorkflowExpression<string> knowledgeId, WorkflowExpression<string> bodysettingsappVisibility = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyfile = null)
         {
@@ -618,7 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TonePostResponse> __BuildTone(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyvalue, WorkflowExpression<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
@@ -684,7 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ToneGetResponse> __BuildToneGet(WorkflowExpression<string> toneId)
         {
@@ -705,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TonePatchResponse> __BuildTonePatch(WorkflowExpression<string> toneId, WorkflowExpression<string> bodysettingsappVisibility = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyvalue = null)
         {
@@ -770,7 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ToneDeleteResponse> __BuildToneDelete(WorkflowExpression<string> toneId)
         {

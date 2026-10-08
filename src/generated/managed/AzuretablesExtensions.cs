@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertEntityResponse> __BuildCreateEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTableResponse> __BuildCreateTable(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName = null, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> xMsClientRequestId = null, WorkflowExpression<string> ifMatch = null)
         {
@@ -106,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTable(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -131,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntitiesResponse> __BuildGetEntities(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> xMsClientRequestId = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null)
         {
@@ -162,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntityResponse> __BuildGetEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> xMsClientRequestId = null, WorkflowExpression<string> select = null)
         {
@@ -192,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTableResponse> __BuildGetTable(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -217,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTablesResponse> __BuildGetTables(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -241,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildInsertMergeEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -275,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildInsertReplaceEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -309,7 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMergeEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> ifMatch, WorkflowExpression<string> xMsClientRequestId = null)
         {
@@ -345,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReplaceEntity(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> ifMatch, WorkflowExpression<string> xMsClientRequestId = null)
         {

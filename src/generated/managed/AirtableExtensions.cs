@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRecordsResponse> __BuildListRecords(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> filterByFormula = null, WorkflowExpression<int> maxRecords = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> view = null, WorkflowExpression<string> cellFormat = null, WorkflowExpression<string> timeZone = null, WorkflowExpression<string> userLocale = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateaRecordResponse> __BuildCreateaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table)
         {
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveaRecordResponse> __BuildRetrieveaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> recordID)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteaRecordResponse> __BuildDeleteaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> recordID)
         {
@@ -137,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateaRecordResponse> __BuildUpdateaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> recordID, WorkflowExpression<string> contentType = null)
         {

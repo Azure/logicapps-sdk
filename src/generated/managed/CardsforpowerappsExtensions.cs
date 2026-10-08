@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCardResult> __BuildCreateCardInstance(WorkflowExpression<string> cardId, WorkflowExpression<object> cardRequestinputs = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PowerCardDescription> __BuildGetCardDescription(WorkflowExpression<string> cardId)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateCardResponse> __BuildGenerateCard(WorkflowExpression<CardAction[]> generateCardRequestactions = null, WorkflowExpression<string> generateCardRequestdescription = null)
         {

@@ -80,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> __BuildGetCountryV2CountryCountryNameGet(WorkflowExpression<string> countryName)
         {
@@ -101,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> __BuildGetTimeSeriesV2TimeseriesCaseGet(WorkflowExpression<string> @case)
         {

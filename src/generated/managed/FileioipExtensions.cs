@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileListResponse> __BuildFileList(WorkflowExpression<string> search = null, WorkflowExpression<string> sort = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileUploadResponse> __BuildFileUpload(WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyexpires = null, WorkflowExpression<int> bodymaxDownloads = null, WorkflowExpression<bool> bodyautoDelete = null)
         {
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileUpdateResponse> __BuildFileUpdate(WorkflowExpression<string> key, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyexpires = null, WorkflowExpression<int> bodymaxDownloads = null, WorkflowExpression<bool> bodyautoDelete = null)
         {
@@ -161,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileDeleteResponse> __BuildFileDelete(WorkflowExpression<string> key)
         {

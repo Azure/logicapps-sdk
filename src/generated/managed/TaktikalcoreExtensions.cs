@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> __BuildGetSigningProcessActivityactivityProcessKeyGet(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> processKey, WorkflowExpression<string> user = null, WorkflowExpression<flowTypeInput> flowType = null, WorkflowExpression<int> take = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> flowKey = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> __BuildGetSigningProcessActivityForUseractivityuserGet(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> user = null, WorkflowExpression<string> processKey = null, WorkflowExpression<flowTypeInput> flowType = null, WorkflowExpression<int> take = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> flowKey = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> __BuildGetSigningProcessActivityByCompanyactivitycompanyGet(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<int> take = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> user = null, WorkflowExpression<flowTypeInput> flowType = null, WorkflowExpression<string> flowKey = null)
         {
@@ -139,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SealingResponse> __BuildSealingRequestsealing(WorkflowExpression<string> bodypdfDocument, WorkflowExpression<string> bodyflowKey, WorkflowExpression<string> bodyreason = null, WorkflowExpression<string> bodylanguageType = null)
         {
@@ -186,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SigningProcess> __BuildCancelSigningProcesssigningDelete(WorkflowExpression<string> processKey = null, WorkflowExpression<string> user = null)
         {
@@ -212,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SigningProcess> __BuildCreateSigningProcesssigning(WorkflowExpression<string> bodyflowKey, WorkflowExpression<string> bodypdfDocument = null, WorkflowExpression<string> bodypdfFileName = null, WorkflowExpression<CreateSignee[]> bodycreateSignees = null, WorkflowExpression<SigningAttachment[]> bodyattachments = null, WorkflowExpression<AttachmentReference[]> bodyattachmentReferences = null, WorkflowExpression<bool> bodyrequiresAuth = null, WorkflowExpression<bool> bodysignInOrder = null, WorkflowExpression<bodysignatureLocationInput> bodysignatureLocation = null, WorkflowExpression<string> bodyuser = null, WorkflowExpression<string> bodysequenceKey = null, WorkflowExpression<string> bodyactivityDisplayName = null, WorkflowExpression<bool> bodyflattenDocument = null, WorkflowExpression<string> bodyreminderRule = null)
         {
@@ -341,7 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSealingXmlRequestsealingxml(WorkflowExpression<string> bodyxmlDocument, WorkflowExpression<string> bodyflowKey)
         {
@@ -374,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SequentialSigning> __BuildCancelSequenceSigningsigningsequentialDelete(WorkflowExpression<string> sequenceKey, WorkflowExpression<string> user)
         {
@@ -398,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SequentialSigning> __BuildCreateSequentialSigningsigningsequential(WorkflowExpression<CreateSigningProcess[]> bodycreateSigningProcesses, WorkflowExpression<string> bodyuser, WorkflowExpression<bool> bodyrequiresAuth = null, WorkflowExpression<bool> bodysignInOrder = null)
         {
@@ -445,7 +436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartAuthResponse> __BuildAuthStartStart(WorkflowExpression<string> bodyflowKey, WorkflowExpression<bodyauthenticationContextTypeInput> bodyauthenticationContextType, WorkflowExpression<string> bodyssn = null, WorkflowExpression<string> bodyphoneNumber = null)
         {
@@ -492,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PollCustomer> __BuildAuthPollPoll(WorkflowExpression<string> bodyauthRequestId, WorkflowExpression<string> bodyflowKey, WorkflowExpression<bodylookupTypeInput> bodylookupType)
         {
@@ -528,7 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartAuthResponse> __BuildRequestToViewSequenceStartsequentialSequenceKeyauth(WorkflowExpression<string> sequenceKey, WorkflowExpression<string> bodysequenceKey, WorkflowExpression<string> bodyloginHint, WorkflowExpression<bodyauthenticationContextTypeInput> bodyauthenticationContextType)
         {
@@ -565,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SigningProcess> __BuildGetSigningProcessBySigneeProcessKeysigneeSigneeKeyGet(WorkflowExpression<string> processKey, WorkflowExpression<string> signeeKey, WorkflowExpression<string> userAgent = null)
         {
@@ -590,7 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Signee> __BuildUpdateSigneeProcessKeysigneeSigneeKeyCreate(WorkflowExpression<string> signeeKey, WorkflowExpression<string> processKey, WorkflowExpression<string> bodysigneeKey, WorkflowExpression<string> bodyprocessKey, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodyreason = null, WorkflowExpression<string> bodyuser = null)
         {

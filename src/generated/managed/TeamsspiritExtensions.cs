@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildApprove(WorkflowExpression<string> approvalID)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReject(WorkflowExpression<string> approvalID)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildArchiveTeam(WorkflowExpression<string> groupID, WorkflowExpression<bool> bodysharePointReadOnly)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTeam(WorkflowExpression<string> groupID)
         {
@@ -120,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildChangeTagValue(WorkflowExpression<string> groupID, WorkflowExpression<string> contentid = null, WorkflowExpression<string> contentvalue = null)
         {
@@ -162,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveAllUsersExeptOwners(WorkflowExpression<string> groupID)
         {
@@ -183,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveAllUsersExceptOneOwner(WorkflowExpression<string> groupID, WorkflowExpression<string> bodyownerId = null)
         {
@@ -218,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveGuests(WorkflowExpression<string> groupID)
         {
@@ -239,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveUser(WorkflowExpression<string> groupID, WorkflowExpression<string> bodyuserId = null)
         {
@@ -274,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildChangeRoleToMember(WorkflowExpression<string> groupID, WorkflowExpression<string> bodyuserId = null)
         {
@@ -309,7 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildChangeRoleToOwner(WorkflowExpression<string> groupID, WorkflowExpression<string> bodyuserId = null)
         {
@@ -344,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildExtendExpirationDate(WorkflowExpression<string> groupID, WorkflowExpression<string> bodyweeks = null)
         {
@@ -389,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetTagValue(WorkflowExpression<string> groupID, WorkflowExpression<string> tagID)
         {

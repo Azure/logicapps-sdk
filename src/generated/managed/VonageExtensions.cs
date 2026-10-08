@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VerifyRequestResponse> __BuildVerifyRequest(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> number, WorkflowExpression<string> brand, WorkflowExpression<string> country = null, WorkflowExpression<string> senderId = null, WorkflowExpression<codeLengthInput> codeLength = null, WorkflowExpression<lgInput> lg = null, WorkflowExpression<int> pinExpiry = null, WorkflowExpression<int> nextEventWait = null, WorkflowExpression<workflowIdInput> workflowId = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VerifyCheckResponse> __BuildVerifyCheck(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> requestId, WorkflowExpression<string> code)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BasicNumberInsightResponse> __BuildBasicNumberInsight(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> number, WorkflowExpression<string> country)
         {
@@ -104,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StandardNumberInsightResponse> __BuildStandardNumberInsight(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> number, WorkflowExpression<string> country, WorkflowExpression<string> cnam = null)
         {

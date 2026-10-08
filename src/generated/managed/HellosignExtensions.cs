@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestResponse> __BuildCreateRequest(WorkflowExpression<string> templateId, WorkflowExpression<testModeInput> testMode = null, WorkflowExpression<string> subject = null, WorkflowExpression<string> message = null, WorkflowExpression<string> signingRedirectUrl = null, WorkflowExpression<bool> allowDecline = null, WorkflowExpression<object> signers = null)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RequestResponse> __BuildGetRequest(WorkflowExpression<string> requestId)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancelRequest(WorkflowExpression<string> requestId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HASHHMACResponse> __BuildHASHHMAC(WorkflowExpression<bodyalgoInput> bodyalgo, WorkflowExpression<string> bodycontent, WorkflowExpression<string> bodykey)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PREGREPLACEResponse> __BuildPREGREPLACE(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodyreplacement = null)
         {
@@ -108,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MANUALResponse> __BuildMANUAL(WorkflowExpression<string> bodyfunction, WorkflowExpression<string> bodydata)
         {
@@ -143,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHTMLTOPDF(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodylandscape, WorkflowExpression<bodypagesizeInput> bodypagesize)
         {
@@ -184,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FILESTRINGResponse> __BuildFILESTRING(WorkflowExpression<string> bodysubject)
         {

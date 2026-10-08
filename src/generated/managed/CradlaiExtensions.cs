@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentDeprecatedResponse> __BuildCreateDocumentDeprecated(WorkflowExpression<string> name, WorkflowExpression<string> fileContent = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentMetadataResponse> __BuildGetDocumentMetadata(WorkflowExpression<string> documentId)
         {
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetDocument(WorkflowExpression<string> documentId)
         {
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> __BuildParseDocumentDeprecated(WorkflowExpression<string> requestmodel, WorkflowExpression<string> requestdocumentID, WorkflowExpression<requestpostprocessingtheOutputFormatInput> requestpostprocessingtheOutputFormat = null, WorkflowExpression<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, WorkflowExpression<bool> requestpreprocessingautoRotate = null, WorkflowExpression<int> requestpreprocessingmaxPages = null, WorkflowExpression<string> requestpreprocessingimageQuality = null)
         {
@@ -188,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateRunResponse> __BuildCreateRun(WorkflowExpression<string> agentId, WorkflowExpression<string> variables = null, WorkflowExpression<string> title = null, WorkflowExpression<string> document = null)
         {
@@ -218,7 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildValidate(WorkflowExpression<string> actionId, WorkflowExpression<string> xCradlSharedSecret)
         {
@@ -242,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> __BuildCreateExecutionDeprecated(WorkflowExpression<string> workflowId, WorkflowExpression<string> requestinputdocumentID, WorkflowExpression<string> requestinputtitle = null)
         {

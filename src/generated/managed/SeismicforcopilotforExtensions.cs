@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExternalRelatedRecordListResponseEnvelope> __BuildScpGetRelatedRecords(WorkflowExpression<recordTypeInput> recordType, WorkflowExpression<string> recordId, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<crmTypeInput> crmType = null, WorkflowExpression<string> crmOrgUrl = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActivityListResponseEnvelope> __BuildScpGetRelatedActivities(WorkflowExpression<recordTypeInput> recordType, WorkflowExpression<string> recordId, WorkflowExpression<string> startDateTime = null, WorkflowExpression<string> endDateTime = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<crmTypeInput> crmType = null, WorkflowExpression<string> crmOrgUrl = null)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesHighlightListResponseEnvelope> __BuildScpGetSalesHighlights(WorkflowExpression<recordTypeInput> recordType, WorkflowExpression<string> recordId, WorkflowExpression<string> crmType = null, WorkflowExpression<string> crmOrgUrl = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null)
         {
@@ -133,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailSummeryResponseEnvelope> __BuildScpGetEmailInsights(WorkflowExpression<string> emailContacts, WorkflowExpression<string> recordType = null, WorkflowExpression<string> recordId = null, WorkflowExpression<string> crmType = null, WorkflowExpression<string> crmOrgUrl = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null)
         {
@@ -173,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailDraftResponseEnvelope> __BuildScpGetContentSuggestions(WorkflowExpression<string> requestBodyresourceType, WorkflowExpression<string> xMsMessageId = null, WorkflowExpression<string> xMsConversationId = null, WorkflowExpression<string> requestBodyresourceDataplainTextBody = null, WorkflowExpression<string> requestBodyresourceDatafullHTMLBody = null, WorkflowExpression<string> requestBodyresourceDatasubject = null, WorkflowExpression<string> requestBodyresourceDatafrom = null, WorkflowExpression<string[]> requestBodyresourceDatato = null, WorkflowExpression<string[]> requestBodyresourceDatacC = null, WorkflowExpression<string[]> requestBodyresourceDatabCC = null, WorkflowExpression<string> requestBodyresourceDatasentDateTime = null, WorkflowExpression<string> requestBodyresourceDatatheGraphMessageId = null, WorkflowExpression<string> requestBodyresourceDatatheGraphConversationID = null, WorkflowExpression<string> requestBodyrecordType = null, WorkflowExpression<string> requestBodyrecordID = null, WorkflowExpression<string> requestBodycRMType = null, WorkflowExpression<string> requestBodycRMOrgURL = null, WorkflowExpression<string> requestBodyinputPrompt = null, WorkflowExpression<int> requestBodytop = null, WorkflowExpression<int> requestBodyskip = null)
         {

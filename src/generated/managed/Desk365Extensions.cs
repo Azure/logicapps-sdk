@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllTicketsResponse> __BuildGetAllTickets(WorkflowExpression<int> offset = null, WorkflowExpression<orderByInput> orderBy = null, WorkflowExpression<orderTypeInput> orderType = null, WorkflowExpression<string> updatedSince = null, WorkflowExpression<includeDescriptionInput> includeDescription = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTicketResponse> __BuildGetTicket(WorkflowExpression<int> ticketNumber = null)
         {
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTicketResponse> __BuildCreateTicket(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodyagent = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodytypeInput> bodytype = null)
         {
@@ -155,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTicketResponse> __BuildUpdateTicket(WorkflowExpression<int> ticketNumber, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodyassignTo = null, WorkflowExpression<string> bodycategory = null)
         {
@@ -234,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddNoteResponse> __BuildAddNote(WorkflowExpression<int> ticketNumber, WorkflowExpression<string> bodycontent, WorkflowExpression<string> bodyagentEmail = null, WorkflowExpression<string> bodynotifyAgent = null, WorkflowExpression<bodyprivateInput> bodyprivate = null)
         {

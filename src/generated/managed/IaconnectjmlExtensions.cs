@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunActiveDirectoryPowerShellAutomationScriptResponse> __BuildRunActiveDirectoryPowerShellAutomationScript(WorkflowExpression<string> runActiveDirectoryPowerShellAutomationScriptworkflow, WorkflowExpression<string> runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptisNoResultAnError = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate = null, WorkflowExpression<string> runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread = null, WorkflowExpression<int> runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, WorkflowExpression<int> runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword = null, WorkflowExpression<bool> runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput = null, WorkflowExpression<string> runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, WorkflowExpression<string> runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, WorkflowExpression<runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParametersInputItem[]> runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
@@ -243,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse> __BuildOpenActiveDirectoryPowerShellRunspaceWithCredentials(WorkflowExpression<string> openActiveDirectoryPowerShellRunspaceWithCredentialsusername, WorkflowExpression<string> openActiveDirectoryPowerShellRunspaceWithCredentialspassword, WorkflowExpression<string> openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow, WorkflowExpression<string> openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = null, WorkflowExpression<bool> openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = null, WorkflowExpression<int> openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = null)
         {
@@ -310,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseActiveDirectoryPowerShellRunspaceResponse> __BuildCloseActiveDirectoryPowerShellRunspace(WorkflowExpression<string> closeActiveDirectoryPowerShellRunspaceworkflow)
         {
@@ -340,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsActiveDirectoryPowerShellRunspaceOpenResponse> __BuildIsActiveDirectoryPowerShellRunspaceOpen(WorkflowExpression<string> isActiveDirectoryPowerShellRunspaceOpenworkflow)
         {
@@ -370,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse> __BuildOpenLocalPassthroughActiveDirectoryPowerShellRunspace(WorkflowExpression<string> openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow)
         {
@@ -400,7 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryAddADUserResponse> __BuildActiveDirectoryAddADUser(WorkflowExpression<string> activeDirectoryAddADUsername, WorkflowExpression<string> activeDirectoryAddADUserworkflow, WorkflowExpression<string> activeDirectoryAddADUseruserPrincipalName = null, WorkflowExpression<string> activeDirectoryAddADUsersamAccountName = null, WorkflowExpression<string> activeDirectoryAddADUsergivenName = null, WorkflowExpression<string> activeDirectoryAddADUsersurName = null, WorkflowExpression<string> activeDirectoryAddADUserpath = null, WorkflowExpression<string> activeDirectoryAddADUserdescription = null, WorkflowExpression<string> activeDirectoryAddADUserdisplayName = null, WorkflowExpression<string> activeDirectoryAddADUseraccountPassword = null, WorkflowExpression<bool> activeDirectoryAddADUseraccountPasswordIsStoredPassword = null, WorkflowExpression<bool> activeDirectoryAddADUserenabled = null, WorkflowExpression<bool> activeDirectoryAddADUserchangePasswordAtLogon = null, WorkflowExpression<bool> activeDirectoryAddADUsercannotChangePassword = null, WorkflowExpression<bool> activeDirectoryAddADUserpasswordNeverExpires = null, WorkflowExpression<string> activeDirectoryAddADUseraDServer = null)
         {
@@ -581,7 +575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetADUserByIdentityResponse> __BuildActiveDirectoryGetADUserByIdentity(WorkflowExpression<string> activeDirectoryGetADUserByIdentityworkflow, WorkflowExpression<string> activeDirectoryGetADUserByIdentityidentity = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentityfilterPropertyName = null, WorkflowExpression<activeDirectoryGetADUserByIdentityfilterPropertyComparisonInput> activeDirectoryGetADUserByIdentityfilterPropertyComparison = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentityfilterPropertyValue = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentitysearchOUBase = null, WorkflowExpression<bool> activeDirectoryGetADUserByIdentitysearchOUBaseSubtree = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentityproperties = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentityaDServer = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = null, WorkflowExpression<string> activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = null)
         {
@@ -708,7 +701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetOUFromUserDNResponse> __BuildActiveDirectoryGetOUFromUserDN(WorkflowExpression<string> activeDirectoryGetOUFromUserDNuserDN, WorkflowExpression<string> activeDirectoryGetOUFromUserDNworkflow)
         {
@@ -741,7 +733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetDomainFQDNFromDNResponse> __BuildActiveDirectoryGetDomainFQDNFromDN(WorkflowExpression<string> activeDirectoryGetDomainFQDNFromDNdN, WorkflowExpression<string> activeDirectoryGetDomainFQDNFromDNworkflow)
         {
@@ -774,7 +765,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetADGroupByIdentityResponse> __BuildActiveDirectoryGetADGroupByIdentity(WorkflowExpression<string> activeDirectoryGetADGroupByIdentityworkflow, WorkflowExpression<string> activeDirectoryGetADGroupByIdentityidentity = null, WorkflowExpression<string> activeDirectoryGetADGroupByIdentityfilterPropertyName = null, WorkflowExpression<activeDirectoryGetADGroupByIdentityfilterPropertyComparisonInput> activeDirectoryGetADGroupByIdentityfilterPropertyComparison = null, WorkflowExpression<string> activeDirectoryGetADGroupByIdentityfilterPropertyValue = null, WorkflowExpression<string> activeDirectoryGetADGroupByIdentitysearchOUBase = null, WorkflowExpression<bool> activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = null, WorkflowExpression<bool> activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = null, WorkflowExpression<string> activeDirectoryGetADGroupByIdentityaDServer = null)
         {
@@ -890,7 +880,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryAddADGroupMemberByIdentityResponse> __BuildActiveDirectoryAddADGroupMemberByIdentity(WorkflowExpression<string> activeDirectoryAddADGroupMemberByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryAddADGroupMemberByIdentityworkflow, WorkflowExpression<string> activeDirectoryAddADGroupMemberByIdentitygroupIdentity = null, WorkflowExpression<string> activeDirectoryAddADGroupMemberByIdentitygroupName = null, WorkflowExpression<string> activeDirectoryAddADGroupMemberByIdentityaDServer = null)
         {
@@ -944,7 +933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse> __BuildActiveDirectoryAddMultipleADGroupMembersByIdentity(WorkflowExpression<string> activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, WorkflowExpression<string> activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = null, WorkflowExpression<string> activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON = null, WorkflowExpression<bool> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd = null, WorkflowExpression<bool> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = null, WorkflowExpression<bool> activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = null, WorkflowExpression<string> activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = null)
         {
@@ -1046,7 +1034,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse> __BuildActiveDirectoryAddADUserToMultipleADGroupsByName(WorkflowExpression<string> activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, WorkflowExpression<string> activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, WorkflowExpression<string> activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON = null, WorkflowExpression<bool> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd = null, WorkflowExpression<bool> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = null, WorkflowExpression<string> activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = null, WorkflowExpression<int> activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = null)
         {
@@ -1134,7 +1121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetADUserGroupMembershipResponse> __BuildActiveDirectoryGetADUserGroupMembership(WorkflowExpression<string> activeDirectoryGetADUserGroupMembershipuserIdentity, WorkflowExpression<string> activeDirectoryGetADUserGroupMembershipworkflow, WorkflowExpression<string> activeDirectoryGetADUserGroupMembershipaDServer = null)
         {
@@ -1174,7 +1160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse> __BuildActiveDirectoryModifyADUserStringPropertyByIdentity(WorkflowExpression<string> activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryModifyADUserStringPropertyByIdentityworkflow, WorkflowExpression<activeDirectoryModifyADUserStringPropertyByIdentitypropertiesListInputItem[]> activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = null, WorkflowExpression<string> activeDirectoryModifyADUserStringPropertyByIdentityaDServer = null, WorkflowExpression<bool> activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = null)
         {
@@ -1238,7 +1223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse> __BuildActiveDirectoryModifyADUserBooleanPropertyByIdentity(WorkflowExpression<string> activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, WorkflowExpression<string> activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, WorkflowExpression<bool> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = null, WorkflowExpression<string> activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = null)
         {
@@ -1298,7 +1282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryModifyADUserPropertiesResponse> __BuildActiveDirectoryModifyADUserProperties(WorkflowExpression<string> activeDirectoryModifyADUserPropertiesuserIdentity, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesworkflow, WorkflowExpression<string> activeDirectoryModifyADUserPropertiescity = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiescompany = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiescountry = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiescountryString = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiescountryISO3166 = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesdepartment = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesdescription = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesdisplayName = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesemailAddress = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesgivenName = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertieshomePhone = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesinitials = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesiPPhone = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesmanager = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesmobilePhone = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesnotes = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesoffice = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesofficePhone = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiespostalCode = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesprofilePath = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesscriptPath = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesstate = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesstreetAddress = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiessurname = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiestitle = null, WorkflowExpression<string> activeDirectoryModifyADUserPropertiesaDServer = null)
         {
@@ -1513,7 +1496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryMoveADUserToOUByIdentityResponse> __BuildActiveDirectoryMoveADUserToOUByIdentity(WorkflowExpression<string> activeDirectoryMoveADUserToOUByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryMoveADUserToOUByIdentitytargetPath, WorkflowExpression<string> activeDirectoryMoveADUserToOUByIdentityworkflow, WorkflowExpression<string> activeDirectoryMoveADUserToOUByIdentityaDServer = null)
         {
@@ -1556,7 +1538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryClearADUserAccountExpirationResponse> __BuildActiveDirectoryClearADUserAccountExpiration(WorkflowExpression<string> activeDirectoryClearADUserAccountExpirationuserIdentity, WorkflowExpression<string> activeDirectoryClearADUserAccountExpirationworkflow, WorkflowExpression<string> activeDirectoryClearADUserAccountExpirationaDServer = null)
         {
@@ -1596,7 +1577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryDirSyncResponse> __BuildActiveDirectoryDirSync(WorkflowExpression<string> activeDirectoryDirSyncworkflow, WorkflowExpression<activeDirectoryDirSyncpolicyTypeInput> activeDirectoryDirSyncpolicyType = null, WorkflowExpression<string> activeDirectoryDirSynccomputerName = null, WorkflowExpression<int> activeDirectoryDirSyncmaxRetryAttempts = null, WorkflowExpression<int> activeDirectoryDirSyncsecondsBetweenRetries = null)
         {
@@ -1674,7 +1654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADUserByIdentityResponse> __BuildActiveDirectoryRemoveADUserByIdentity(WorkflowExpression<string> activeDirectoryRemoveADUserByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryRemoveADUserByIdentityworkflow, WorkflowExpression<bool> activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion = null, WorkflowExpression<bool> activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = null, WorkflowExpression<bool> activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = null, WorkflowExpression<string> activeDirectoryRemoveADUserByIdentityaDServer = null)
         {
@@ -1765,7 +1744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryResetADUserPasswordByIdentityResponse> __BuildActiveDirectoryResetADUserPasswordByIdentity(WorkflowExpression<string> activeDirectoryResetADUserPasswordByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryResetADUserPasswordByIdentitynewPassword, WorkflowExpression<string> activeDirectoryResetADUserPasswordByIdentityworkflow, WorkflowExpression<bool> activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword = null, WorkflowExpression<bool> activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties = null, WorkflowExpression<bool> activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon = null, WorkflowExpression<bool> activeDirectoryResetADUserPasswordByIdentitycannotChangePassword = null, WorkflowExpression<bool> activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = null, WorkflowExpression<bool> activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = null, WorkflowExpression<string> activeDirectoryResetADUserPasswordByIdentityaDServer = null)
         {
@@ -1910,7 +1888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse> __BuildActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentity(WorkflowExpression<string> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, WorkflowExpression<bool> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, WorkflowExpression<string> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, WorkflowExpression<string> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = null)
         {
@@ -1953,7 +1930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryDisableADUserByIdentityResponse> __BuildActiveDirectoryDisableADUserByIdentity(WorkflowExpression<string> activeDirectoryDisableADUserByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryDisableADUserByIdentityworkflow, WorkflowExpression<string> activeDirectoryDisableADUserByIdentityaDServer = null)
         {
@@ -1993,7 +1969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryEnableADUserByIdentityResponse> __BuildActiveDirectoryEnableADUserByIdentity(WorkflowExpression<string> activeDirectoryEnableADUserByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryEnableADUserByIdentityworkflow, WorkflowExpression<string> activeDirectoryEnableADUserByIdentityaDServer = null)
         {
@@ -2033,7 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse> __BuildActiveDirectorySetADUserHomeFolderByIdentity(WorkflowExpression<string> activeDirectorySetADUserHomeFolderByIdentityuserIdentity, WorkflowExpression<string> activeDirectorySetADUserHomeFolderByIdentityworkflow, WorkflowExpression<string> activeDirectorySetADUserHomeFolderByIdentityhomeDrive = null, WorkflowExpression<string> activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = null, WorkflowExpression<bool> activeDirectorySetADUserHomeFolderByIdentitycreateFolder = null, WorkflowExpression<string> activeDirectorySetADUserHomeFolderByIdentityaDServer = null)
         {
@@ -2104,7 +2078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryCloneADUserGroupsResponse> __BuildActiveDirectoryCloneADUserGroups(WorkflowExpression<string> activeDirectoryCloneADUserGroupssourceUserIdentity, WorkflowExpression<string> activeDirectoryCloneADUserGroupsdestinationUserIdentity, WorkflowExpression<string> activeDirectoryCloneADUserGroupsworkflow, WorkflowExpression<string> activeDirectoryCloneADUserGroupsaDServer = null)
         {
@@ -2147,7 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryCloneADUserPropertiesResponse> __BuildActiveDirectoryCloneADUserProperties(WorkflowExpression<string> activeDirectoryCloneADUserPropertiessourceUserIdentity, WorkflowExpression<string> activeDirectoryCloneADUserPropertiesdestinationUserIdentity, WorkflowExpression<string> activeDirectoryCloneADUserPropertiespropertiesToClone, WorkflowExpression<string> activeDirectoryCloneADUserPropertiesworkflow, WorkflowExpression<string> activeDirectoryCloneADUserPropertiesaDServer = null)
         {
@@ -2193,7 +2165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse> __BuildActiveDirectoryRemoveADUserFromMultipleADGroupsByName(WorkflowExpression<string> activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, WorkflowExpression<string> activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, WorkflowExpression<string> activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON = null, WorkflowExpression<bool> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove = null, WorkflowExpression<bool> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = null, WorkflowExpression<string> activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = null, WorkflowExpression<int> activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = null)
         {
@@ -2281,7 +2252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse> __BuildActiveDirectoryRemoveADUserFromAllGroups(WorkflowExpression<string> activeDirectoryRemoveADUserFromAllGroupsworkflow, WorkflowExpression<string> activeDirectoryRemoveADUserFromAllGroupsuserIdentity = null, WorkflowExpression<string> activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON = null, WorkflowExpression<bool> activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist = null, WorkflowExpression<string> activeDirectoryRemoveADUserFromAllGroupsaDServer = null, WorkflowExpression<bool> activeDirectoryRemoveADUserFromAllGroupsrunAsThread = null, WorkflowExpression<int> activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = null, WorkflowExpression<int> activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = null)
         {
@@ -2390,7 +2360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryCheckOUExistsResponse> __BuildActiveDirectoryCheckOUExists(WorkflowExpression<string> activeDirectoryCheckOUExistsoUIdentity, WorkflowExpression<string> activeDirectoryCheckOUExistsworkflow, WorkflowExpression<string> activeDirectoryCheckOUExistsaDServer = null)
         {
@@ -2430,7 +2399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse> __BuildActiveDirectoryRemoveADGroupMemberByGroupIdentity(WorkflowExpression<string> activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, WorkflowExpression<string> activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, WorkflowExpression<string> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = null, WorkflowExpression<string> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = null, WorkflowExpression<string> activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = null)
         {
@@ -2484,7 +2452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse> __BuildActiveDirectoryRemoveMultipleADGroupMembersByIdentity(WorkflowExpression<string> activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, WorkflowExpression<string> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = null, WorkflowExpression<string> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON = null, WorkflowExpression<bool> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove = null, WorkflowExpression<bool> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = null, WorkflowExpression<bool> activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = null, WorkflowExpression<string> activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = null)
         {
@@ -2586,7 +2553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryUnlockADAccountByIdentityResponse> __BuildActiveDirectoryUnlockADAccountByIdentity(WorkflowExpression<string> activeDirectoryUnlockADAccountByIdentityuserIdentity, WorkflowExpression<string> activeDirectoryUnlockADAccountByIdentityworkflow, WorkflowExpression<string> activeDirectoryUnlockADAccountByIdentityaDServer = null)
         {
@@ -2626,7 +2592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectorySetADServerResponse> __BuildActiveDirectorySetADServer(WorkflowExpression<string> activeDirectorySetADServerworkflow, WorkflowExpression<activeDirectorySetADServerpredefinedADServerChoiceInput> activeDirectorySetADServerpredefinedADServerChoice = null, WorkflowExpression<string> activeDirectorySetADServeraDServer = null)
         {
@@ -2680,7 +2645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetDomainInfoResponse> __BuildActiveDirectoryGetDomainInfo(WorkflowExpression<string> activeDirectoryGetDomainInfoworkflow, WorkflowExpression<string> activeDirectoryGetDomainInfoaDServer = null, WorkflowExpression<activeDirectoryGetDomainInfopredefinedIdentityInput> activeDirectoryGetDomainInfopredefinedIdentity = null, WorkflowExpression<string> activeDirectoryGetDomainInfoidentity = null)
         {
@@ -2741,7 +2705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryAddADGroupResponse> __BuildActiveDirectoryAddADGroup(WorkflowExpression<string> activeDirectoryAddADGroupname, WorkflowExpression<activeDirectoryAddADGroupgroupCategoryInput> activeDirectoryAddADGroupgroupCategory, WorkflowExpression<activeDirectoryAddADGroupgroupScopeInput> activeDirectoryAddADGroupgroupScope, WorkflowExpression<string> activeDirectoryAddADGroupworkflow, WorkflowExpression<string> activeDirectoryAddADGroupsamAccountName = null, WorkflowExpression<string> activeDirectoryAddADGrouppath = null, WorkflowExpression<string> activeDirectoryAddADGroupdescription = null, WorkflowExpression<string> activeDirectoryAddADGroupnotes = null, WorkflowExpression<string> activeDirectoryAddADGroupdisplayName = null, WorkflowExpression<string> activeDirectoryAddADGrouphomePage = null, WorkflowExpression<string> activeDirectoryAddADGroupmanagedBy = null, WorkflowExpression<bool> activeDirectoryAddADGroupprotectedFromAccidentalDeletion = null, WorkflowExpression<string> activeDirectoryAddADGroupaDServer = null)
         {
@@ -2853,7 +2816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryDoesADGroupExistResponse> __BuildActiveDirectoryDoesADGroupExist(WorkflowExpression<string> activeDirectoryDoesADGroupExistgroupIdentity, WorkflowExpression<string> activeDirectoryDoesADGroupExistworkflow, WorkflowExpression<string> activeDirectoryDoesADGroupExistaDServer = null)
         {
@@ -2893,7 +2855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupResponse> __BuildActiveDirectoryRemoveADGroup(WorkflowExpression<string> activeDirectoryRemoveADGroupgroupIdentity, WorkflowExpression<string> activeDirectoryRemoveADGroupworkflow, WorkflowExpression<bool> activeDirectoryRemoveADGroupdeleteEvenIfProtected = null, WorkflowExpression<bool> activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = null, WorkflowExpression<string> activeDirectoryRemoveADGroupaDServer = null)
         {
@@ -2967,7 +2928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryAddOUResponse> __BuildActiveDirectoryAddOU(WorkflowExpression<string> activeDirectoryAddOUname, WorkflowExpression<string> activeDirectoryAddOUworkflow, WorkflowExpression<string> activeDirectoryAddOUpath = null, WorkflowExpression<string> activeDirectoryAddOUdescription = null, WorkflowExpression<string> activeDirectoryAddOUdisplayName = null, WorkflowExpression<string> activeDirectoryAddOUmanagedBy = null, WorkflowExpression<bool> activeDirectoryAddOUprotectedFromAccidentalDeletion = null, WorkflowExpression<string> activeDirectoryAddOUstreetAddress = null, WorkflowExpression<string> activeDirectoryAddOUcity = null, WorkflowExpression<string> activeDirectoryAddOUstate = null, WorkflowExpression<string> activeDirectoryAddOUpostalCode = null, WorkflowExpression<string> activeDirectoryAddOUaDServer = null)
         {
@@ -3080,7 +3040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryRemoveOUResponse> __BuildActiveDirectoryRemoveOU(WorkflowExpression<string> activeDirectoryRemoveOUoUIdentity, WorkflowExpression<string> activeDirectoryRemoveOUworkflow, WorkflowExpression<bool> activeDirectoryRemoveOUdeleteEvenIfProtected = null, WorkflowExpression<bool> activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = null, WorkflowExpression<string> activeDirectoryRemoveOUaDServer = null)
         {
@@ -3154,7 +3113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse> __BuildActiveDirectorySetADUserAccountExpirationEndOfDate(WorkflowExpression<string> activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, WorkflowExpression<int> activeDirectorySetADUserAccountExpirationEndOfDateyear, WorkflowExpression<int> activeDirectorySetADUserAccountExpirationEndOfDatemonth, WorkflowExpression<int> activeDirectorySetADUserAccountExpirationEndOfDateday, WorkflowExpression<string> activeDirectorySetADUserAccountExpirationEndOfDateworkflow, WorkflowExpression<string> activeDirectorySetADUserAccountExpirationEndOfDateaDServer = null)
         {
@@ -3203,7 +3161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActiveDirectoryGetADGroupMembersResponse> __BuildActiveDirectoryGetADGroupMembers(WorkflowExpression<string> activeDirectoryGetADGroupMembersgroupIdentity, WorkflowExpression<string> activeDirectoryGetADGroupMembersworkflow, WorkflowExpression<bool> activeDirectoryGetADGroupMembersrecursive = null, WorkflowExpression<string> activeDirectoryGetADGroupMembersaDServer = null)
         {
@@ -3260,7 +3217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenExchangePowerShellRunspaceResponse> __BuildOpenExchangePowerShellRunspace(WorkflowExpression<string> openExchangePowerShellRunspaceexchangeServerFQDN, WorkflowExpression<string> openExchangePowerShellRunspaceworkflow, WorkflowExpression<string> openExchangePowerShellRunspaceusername = null, WorkflowExpression<string> openExchangePowerShellRunspacepassword = null, WorkflowExpression<bool> openExchangePowerShellRunspaceuseSSL = null, WorkflowExpression<openExchangePowerShellRunspaceconnectionMethodInput> openExchangePowerShellRunspaceconnectionMethod = null, WorkflowExpression<openExchangePowerShellRunspaceauthenticationMechanismInput> openExchangePowerShellRunspaceauthenticationMechanism = null, WorkflowExpression<bool> openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, WorkflowExpression<openExchangePowerShellRunspacecommandTypesToImportLocallyInput> openExchangePowerShellRunspacecommandTypesToImportLocally = null, WorkflowExpression<string> openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
         {
@@ -3399,7 +3355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsExchangePowerShellRunspaceOpenResponse> __BuildIsExchangePowerShellRunspaceOpen(WorkflowExpression<string> isExchangePowerShellRunspaceOpenworkflow, WorkflowExpression<bool> isExchangePowerShellRunspaceOpentestCommunications = null, WorkflowExpression<bool> isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
@@ -3463,7 +3418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunExchangePowerShellAutomationScriptResponse> __BuildRunExchangePowerShellAutomationScript(WorkflowExpression<string> runExchangePowerShellAutomationScriptworkflow, WorkflowExpression<string> runExchangePowerShellAutomationScriptpowerShellScriptContents = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptisNoResultAnError = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptreturnComplexTypes = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptreturnBooleanAsBoolean = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptreturnNumericAsDecimal = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptreturnDateAsDate = null, WorkflowExpression<string> runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptrunScriptAsThread = null, WorkflowExpression<int> runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId = null, WorkflowExpression<int> runExchangePowerShellAutomationScriptsecondsToWaitForThread = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptscriptContainsStoredPassword = null, WorkflowExpression<bool> runExchangePowerShellAutomationScriptlogVerboseOutput = null, WorkflowExpression<string> runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = null, WorkflowExpression<string> runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = null, WorkflowExpression<runExchangePowerShellAutomationScriptpowerShellCommandParametersInputItem[]> runExchangePowerShellAutomationScriptpowerShellCommandParameters = null)
         {
@@ -3688,7 +3642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseExchangePowerShellRunspaceResponse> __BuildCloseExchangePowerShellRunspace(WorkflowExpression<string> closeExchangePowerShellRunspaceworkflow)
         {
@@ -3718,7 +3671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetMailboxResponse> __BuildExchangeGetMailbox(WorkflowExpression<string> exchangeGetMailboxworkflow, WorkflowExpression<string> exchangeGetMailboxidentity = null, WorkflowExpression<string> exchangeGetMailboxfilterPropertyName = null, WorkflowExpression<exchangeGetMailboxfilterPropertyComparisonInput> exchangeGetMailboxfilterPropertyComparison = null, WorkflowExpression<string> exchangeGetMailboxfilterPropertyValue = null, WorkflowExpression<exchangeGetMailboxrecipientTypeDetailsInput> exchangeGetMailboxrecipientTypeDetails = null, WorkflowExpression<bool> exchangeGetMailboxnoResultIsAnException = null)
         {
@@ -3810,7 +3762,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeDoesMailboxExistResponse> __BuildExchangeDoesMailboxExist(WorkflowExpression<string> exchangeDoesMailboxExistworkflow, WorkflowExpression<string> exchangeDoesMailboxExistidentity = null, WorkflowExpression<string> exchangeDoesMailboxExistfilterPropertyName = null, WorkflowExpression<exchangeDoesMailboxExistfilterPropertyComparisonInput> exchangeDoesMailboxExistfilterPropertyComparison = null, WorkflowExpression<string> exchangeDoesMailboxExistfilterPropertyValue = null, WorkflowExpression<exchangeDoesMailboxExistrecipientTypeDetailsInput> exchangeDoesMailboxExistrecipientTypeDetails = null)
         {
@@ -3885,7 +3836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeAddDistributionGroupMemberResponse> __BuildExchangeAddDistributionGroupMember(WorkflowExpression<string> exchangeAddDistributionGroupMemberidentity, WorkflowExpression<string> exchangeAddDistributionGroupMembermember, WorkflowExpression<string> exchangeAddDistributionGroupMemberworkflow)
         {
@@ -3921,7 +3871,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeRemoveDistributionGroupMemberResponse> __BuildExchangeRemoveDistributionGroupMember(WorkflowExpression<string> exchangeRemoveDistributionGroupMemberidentity, WorkflowExpression<string> exchangeRemoveDistributionGroupMembermember, WorkflowExpression<string> exchangeRemoveDistributionGroupMemberworkflow, WorkflowExpression<bool> exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
         {
@@ -3974,7 +3923,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetDistributionGroupResponse> __BuildExchangeGetDistributionGroup(WorkflowExpression<string> exchangeGetDistributionGroupworkflow, WorkflowExpression<string> exchangeGetDistributionGroupidentity = null, WorkflowExpression<string> exchangeGetDistributionGroupfilterPropertyName = null, WorkflowExpression<exchangeGetDistributionGroupfilterPropertyComparisonInput> exchangeGetDistributionGroupfilterPropertyComparison = null, WorkflowExpression<string> exchangeGetDistributionGroupfilterPropertyValue = null, WorkflowExpression<bool> exchangeGetDistributionGroupnoResultIsAnException = null)
         {
@@ -4059,7 +4007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetDistributionGroupMembersResponse> __BuildExchangeGetDistributionGroupMembers(WorkflowExpression<string> exchangeGetDistributionGroupMembersidentity, WorkflowExpression<string> exchangeGetDistributionGroupMembersworkflow)
         {
@@ -4092,7 +4039,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetMailboxDistributionGroupMembershipResponse> __BuildExchangeGetMailboxDistributionGroupMembership(WorkflowExpression<string> exchangeGetMailboxDistributionGroupMembershipidentity, WorkflowExpression<string> exchangeGetMailboxDistributionGroupMembershipworkflow)
         {
@@ -4125,7 +4071,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeNewDistributionGroupResponse> __BuildExchangeNewDistributionGroup(WorkflowExpression<string> exchangeNewDistributionGroupname, WorkflowExpression<string> exchangeNewDistributionGroupworkflow, WorkflowExpression<string> exchangeNewDistributionGroupalias = null, WorkflowExpression<string> exchangeNewDistributionGroupdisplayName = null, WorkflowExpression<string> exchangeNewDistributionGroupnotes = null, WorkflowExpression<string> exchangeNewDistributionGroupmanagedBy = null, WorkflowExpression<string> exchangeNewDistributionGroupmembers = null, WorkflowExpression<string> exchangeNewDistributionGrouporganizationalUnit = null, WorkflowExpression<string> exchangeNewDistributionGroupprimarySmtpAddress = null, WorkflowExpression<exchangeNewDistributionGroupmemberDepartRestrictionInput> exchangeNewDistributionGroupmemberDepartRestriction = null, WorkflowExpression<exchangeNewDistributionGroupmemberJoinRestrictionInput> exchangeNewDistributionGroupmemberJoinRestriction = null, WorkflowExpression<bool> exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = null, WorkflowExpression<exchangeNewDistributionGrouptypeInput> exchangeNewDistributionGrouptype = null, WorkflowExpression<bool> exchangeNewDistributionGrouperrorIfGroupAlreadyExists = null)
         {
@@ -4292,7 +4237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeRemoveDistributionGroupResponse> __BuildExchangeRemoveDistributionGroup(WorkflowExpression<string> exchangeRemoveDistributionGroupidentity, WorkflowExpression<string> exchangeRemoveDistributionGroupworkflow, WorkflowExpression<bool> exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = null, WorkflowExpression<bool> exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = null)
         {
@@ -4359,7 +4303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeAddMailboxPermissionResponse> __BuildExchangeAddMailboxPermission(WorkflowExpression<string> exchangeAddMailboxPermissionidentity, WorkflowExpression<string> exchangeAddMailboxPermissionuser, WorkflowExpression<string> exchangeAddMailboxPermissionaccessRights, WorkflowExpression<string> exchangeAddMailboxPermissionworkflow, WorkflowExpression<bool> exchangeAddMailboxPermissionautoMapping = null)
         {
@@ -4415,7 +4358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeRemoveMailboxPermissionResponse> __BuildExchangeRemoveMailboxPermission(WorkflowExpression<string> exchangeRemoveMailboxPermissionidentity, WorkflowExpression<string> exchangeRemoveMailboxPermissionuser, WorkflowExpression<string> exchangeRemoveMailboxPermissionaccessRights, WorkflowExpression<string> exchangeRemoveMailboxPermissionworkflow)
         {
@@ -4454,7 +4396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeDisableMailboxResponse> __BuildExchangeDisableMailbox(WorkflowExpression<string> exchangeDisableMailboxidentity, WorkflowExpression<string> exchangeDisableMailboxworkflow)
         {
@@ -4487,7 +4428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeDisableRemoteMailboxResponse> __BuildExchangeDisableRemoteMailbox(WorkflowExpression<string> exchangeDisableRemoteMailboxidentity, WorkflowExpression<string> exchangeDisableRemoteMailboxworkflow)
         {
@@ -4520,7 +4460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeEnableMailboxResponse> __BuildExchangeEnableMailbox(WorkflowExpression<string> exchangeEnableMailboxidentity, WorkflowExpression<string> exchangeEnableMailboxworkflow, WorkflowExpression<string> exchangeEnableMailboxalias = null, WorkflowExpression<string> exchangeEnableMailboxdisplayName = null, WorkflowExpression<string> exchangeEnableMailboxlinkedDomainController = null, WorkflowExpression<string> exchangeEnableMailboxlinkedMasterAccount = null, WorkflowExpression<string> exchangeEnableMailboxdatabase = null, WorkflowExpression<string> exchangeEnableMailboxprimarySmtpAddress = null, WorkflowExpression<bool> exchangeEnableMailboxemailAddressPolicyEnabled = null)
         {
@@ -4602,7 +4541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeEnableRemoteMailboxResponse> __BuildExchangeEnableRemoteMailbox(WorkflowExpression<string> exchangeEnableRemoteMailboxidentity, WorkflowExpression<string> exchangeEnableRemoteMailboxworkflow, WorkflowExpression<string> exchangeEnableRemoteMailboxalias = null, WorkflowExpression<string> exchangeEnableRemoteMailboxdisplayName = null, WorkflowExpression<string> exchangeEnableRemoteMailboxremoteRoutingAddress = null, WorkflowExpression<string> exchangeEnableRemoteMailboxprimarySmtpAddress = null, WorkflowExpression<bool> exchangeEnableRemoteMailboxarchive = null, WorkflowExpression<bool> exchangeEnableRemoteMailboxemailAddressPolicyEnabled = null)
         {
@@ -4687,7 +4625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetRemoteMailboxResponse> __BuildExchangeGetRemoteMailbox(WorkflowExpression<string> exchangeGetRemoteMailboxworkflow, WorkflowExpression<string> exchangeGetRemoteMailboxidentity = null, WorkflowExpression<string> exchangeGetRemoteMailboxfilterPropertyName = null, WorkflowExpression<exchangeGetRemoteMailboxfilterPropertyComparisonInput> exchangeGetRemoteMailboxfilterPropertyComparison = null, WorkflowExpression<string> exchangeGetRemoteMailboxfilterPropertyValue = null, WorkflowExpression<bool> exchangeGetRemoteMailboxnoResultIsAnException = null)
         {
@@ -4772,7 +4709,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeDoesRemoteMailboxExistResponse> __BuildExchangeDoesRemoteMailboxExist(WorkflowExpression<string> exchangeDoesRemoteMailboxExistworkflow, WorkflowExpression<string> exchangeDoesRemoteMailboxExistidentity = null, WorkflowExpression<string> exchangeDoesRemoteMailboxExistfilterPropertyName = null, WorkflowExpression<exchangeDoesRemoteMailboxExistfilterPropertyComparisonInput> exchangeDoesRemoteMailboxExistfilterPropertyComparison = null, WorkflowExpression<string> exchangeDoesRemoteMailboxExistfilterPropertyValue = null)
         {
@@ -4840,7 +4776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeNewMailboxResponse> __BuildExchangeNewMailbox(WorkflowExpression<string> exchangeNewMailboxname, WorkflowExpression<string> exchangeNewMailboxuserPrincipalName, WorkflowExpression<string> exchangeNewMailboxworkflow, WorkflowExpression<string> exchangeNewMailboxfirstName = null, WorkflowExpression<string> exchangeNewMailboxlastName = null, WorkflowExpression<string> exchangeNewMailboxorganizationalUnit = null, WorkflowExpression<string> exchangeNewMailboxdisplayName = null, WorkflowExpression<string> exchangeNewMailboxalias = null, WorkflowExpression<string> exchangeNewMailboxprimarySmtpAddress = null, WorkflowExpression<string> exchangeNewMailboxsamAccountName = null, WorkflowExpression<string> exchangeNewMailboxpassword = null, WorkflowExpression<bool> exchangeNewMailboxaccountPasswordIsStoredPassword = null, WorkflowExpression<bool> exchangeNewMailboxresetPasswordOnNextLogon = null, WorkflowExpression<string> exchangeNewMailboxdatabase = null, WorkflowExpression<bool> exchangeNewMailboxsharedMailbox = null, WorkflowExpression<bool> exchangeNewMailboxemailAddressPolicyEnabled = null, WorkflowExpression<bool> exchangeNewMailboxarchive = null)
         {
@@ -5014,7 +4949,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeNewRemoteMailboxResponse> __BuildExchangeNewRemoteMailbox(WorkflowExpression<string> exchangeNewRemoteMailboxname, WorkflowExpression<string> exchangeNewRemoteMailboxuserPrincipalName, WorkflowExpression<string> exchangeNewRemoteMailboxworkflow, WorkflowExpression<string> exchangeNewRemoteMailboxfirstName = null, WorkflowExpression<string> exchangeNewRemoteMailboxlastName = null, WorkflowExpression<string> exchangeNewRemoteMailboxonPremisesOrganizationalUnit = null, WorkflowExpression<string> exchangeNewRemoteMailboxdisplayName = null, WorkflowExpression<string> exchangeNewRemoteMailboxremoteRoutingAddress = null, WorkflowExpression<string> exchangeNewRemoteMailboxalias = null, WorkflowExpression<string> exchangeNewRemoteMailboxprimarySmtpAddress = null, WorkflowExpression<string> exchangeNewRemoteMailboxsamAccountName = null, WorkflowExpression<string> exchangeNewRemoteMailboxpassword = null, WorkflowExpression<bool> exchangeNewRemoteMailboxaccountPasswordIsStoredPassword = null, WorkflowExpression<bool> exchangeNewRemoteMailboxresetPasswordOnNextLogon = null, WorkflowExpression<bool> exchangeNewRemoteMailboxsharedMailbox = null, WorkflowExpression<bool> exchangeNewRemoteMailboxemailAddressPolicyEnabled = null, WorkflowExpression<bool> exchangeNewRemoteMailboxarchive = null)
         {
@@ -5188,7 +5122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetADServerToViewEntireForestResponse> __BuildExchangeSetADServerToViewEntireForest(WorkflowExpression<bool> exchangeSetADServerToViewEntireForestviewEntireForest, WorkflowExpression<string> exchangeSetADServerToViewEntireForestworkflow)
         {
@@ -5221,7 +5154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetMailboxResponse> __BuildExchangeSetMailbox(WorkflowExpression<string> exchangeSetMailboxidentity, WorkflowExpression<string> exchangeSetMailboxworkflow, WorkflowExpression<bool> exchangeSetMailboxaccountDisabled = null, WorkflowExpression<string> exchangeSetMailboxalias = null, WorkflowExpression<string> exchangeSetMailboxdisplayName = null, WorkflowExpression<string> exchangeSetMailboxprimarySmtpAddress = null, WorkflowExpression<bool> exchangeSetMailboxhiddenFromAddressListsEnabled = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute1 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute2 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute3 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute4 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute5 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute6 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute7 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute8 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute9 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute10 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute11 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute12 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute13 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute14 = null, WorkflowExpression<string> exchangeSetMailboxcustomAttribute15 = null, WorkflowExpression<bool> exchangeSetMailboxemailAddressPolicyEnabled = null)
         {
@@ -5401,7 +5333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetMailboxEmailAddressesResponse> __BuildExchangeSetMailboxEmailAddresses(WorkflowExpression<string> exchangeSetMailboxEmailAddressesidentity, WorkflowExpression<string> exchangeSetMailboxEmailAddressesworkflow, WorkflowExpression<string> exchangeSetMailboxEmailAddressesalias = null, WorkflowExpression<string> exchangeSetMailboxEmailAddressesprimarySmtpAddress = null, WorkflowExpression<bool> exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled = null, WorkflowExpression<string[]> exchangeSetMailboxEmailAddressesemailAddressesToAddList = null, WorkflowExpression<bool> exchangeSetMailboxEmailAddressesreplaceEmailAddresses = null, WorkflowExpression<string[]> exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = null)
         {
@@ -5486,7 +5417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetMailboxEmailAddressesResponse> __BuildExchangeGetMailboxEmailAddresses(WorkflowExpression<string> exchangeGetMailboxEmailAddressesidentity, WorkflowExpression<string> exchangeGetMailboxEmailAddressesworkflow)
         {
@@ -5519,7 +5449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetRemoteMailboxEmailAddressesResponse> __BuildExchangeSetRemoteMailboxEmailAddresses(WorkflowExpression<string> exchangeSetRemoteMailboxEmailAddressesidentity, WorkflowExpression<string> exchangeSetRemoteMailboxEmailAddressesworkflow, WorkflowExpression<string> exchangeSetRemoteMailboxEmailAddressesalias = null, WorkflowExpression<string> exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress = null, WorkflowExpression<bool> exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled = null, WorkflowExpression<string[]> exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = null, WorkflowExpression<bool> exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = null, WorkflowExpression<string[]> exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = null)
         {
@@ -5604,7 +5533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeGetRemoteMailboxEmailAddressesResponse> __BuildExchangeGetRemoteMailboxEmailAddresses(WorkflowExpression<string> exchangeGetRemoteMailboxEmailAddressesidentity, WorkflowExpression<string> exchangeGetRemoteMailboxEmailAddressesworkflow)
         {
@@ -5637,7 +5565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeResetMailboxAttributesResponse> __BuildExchangeResetMailboxAttributes(WorkflowExpression<string> exchangeResetMailboxAttributesidentity, WorkflowExpression<string> exchangeResetMailboxAttributesworkflow, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute1 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute2 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute3 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute4 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute5 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute6 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute7 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute8 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute9 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute10 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute11 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute12 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute13 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute14 = null, WorkflowExpression<bool> exchangeResetMailboxAttributesresetCustomAttribute15 = null)
         {
@@ -5925,7 +5852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeResetRemoteMailboxAttributesResponse> __BuildExchangeResetRemoteMailboxAttributes(WorkflowExpression<string> exchangeResetRemoteMailboxAttributesidentity, WorkflowExpression<string> exchangeResetRemoteMailboxAttributesworkflow, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute1 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute2 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute3 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute4 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute5 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute6 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute7 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute8 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute9 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute10 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute11 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute12 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = null, WorkflowExpression<bool> exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = null)
         {
@@ -6213,7 +6139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetRemoteMailboxResponse> __BuildExchangeSetRemoteMailbox(WorkflowExpression<string> exchangeSetRemoteMailboxidentity, WorkflowExpression<string> exchangeSetRemoteMailboxworkflow, WorkflowExpression<string> exchangeSetRemoteMailboxalias = null, WorkflowExpression<string> exchangeSetRemoteMailboxdisplayName = null, WorkflowExpression<string> exchangeSetRemoteMailboxprimarySmtpAddress = null, WorkflowExpression<exchangeSetRemoteMailboxtypeInput> exchangeSetRemoteMailboxtype = null, WorkflowExpression<bool> exchangeSetRemoteMailboxhiddenFromAddressListsEnabled = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute1 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute2 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute3 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute4 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute5 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute6 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute7 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute8 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute9 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute10 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute11 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute12 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute13 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute14 = null, WorkflowExpression<string> exchangeSetRemoteMailboxcustomAttribute15 = null, WorkflowExpression<bool> exchangeSetRemoteMailboxemailAddressPolicyEnabled = null)
         {
@@ -6393,7 +6318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse> __BuildExchangeSetMailboxSendOnBehalfOfPermission(WorkflowExpression<string> exchangeSetMailboxSendOnBehalfOfPermissionidentity, WorkflowExpression<string> exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, WorkflowExpression<string> exchangeSetMailboxSendOnBehalfOfPermissionworkflow)
         {
@@ -6429,7 +6353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeAddADPermissionResponse> __BuildExchangeAddADPermission(WorkflowExpression<string> exchangeAddADPermissionidentity, WorkflowExpression<string> exchangeAddADPermissionuser, WorkflowExpression<string> exchangeAddADPermissionworkflow, WorkflowExpression<string> exchangeAddADPermissionaccessRights = null, WorkflowExpression<string> exchangeAddADPermissionextendedRights = null)
         {
@@ -6479,7 +6402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeSetMailboxAutoReplyConfigurationResponse> __BuildExchangeSetMailboxAutoReplyConfiguration(WorkflowExpression<string> exchangeSetMailboxAutoReplyConfigurationidentity, WorkflowExpression<exchangeSetMailboxAutoReplyConfigurationautoReplyStateInput> exchangeSetMailboxAutoReplyConfigurationautoReplyState, WorkflowExpression<string> exchangeSetMailboxAutoReplyConfigurationworkflow, WorkflowExpression<string> exchangeSetMailboxAutoReplyConfigurationinternalMessage = null, WorkflowExpression<exchangeSetMailboxAutoReplyConfigurationexternalAudienceInput> exchangeSetMailboxAutoReplyConfigurationexternalAudience = null, WorkflowExpression<string> exchangeSetMailboxAutoReplyConfigurationexternalMessage = null)
         {
@@ -6546,7 +6468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsAzureADv2PowerShellModuleInstalledResponse> __BuildIsAzureADv2PowerShellModuleInstalled(WorkflowExpression<string> isAzureADv2PowerShellModuleInstalledworkflow)
         {
@@ -6576,7 +6497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceResponse> __BuildOpenAzureADv2PowerShellRunspace(WorkflowExpression<string> openAzureADv2PowerShellRunspaceusername, WorkflowExpression<string> openAzureADv2PowerShellRunspacepassword, WorkflowExpression<string> openAzureADv2PowerShellRunspaceworkflow, WorkflowExpression<string> openAzureADv2PowerShellRunspacetenantId = null, WorkflowExpression<openAzureADv2PowerShellRunspaceaPIToUseInput> openAzureADv2PowerShellRunspaceaPIToUse = null, WorkflowExpression<string> openAzureADv2PowerShellRunspaceauthenticationScope = null)
         {
@@ -6653,7 +6573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse> __BuildOpenAzureADv2PowerShellRunspaceWithCertificate(WorkflowExpression<string> openAzureADv2PowerShellRunspaceWithCertificateapplicationId, WorkflowExpression<string> openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, WorkflowExpression<string> openAzureADv2PowerShellRunspaceWithCertificatetenantId, WorkflowExpression<string> openAzureADv2PowerShellRunspaceWithCertificateworkflow, WorkflowExpression<openAzureADv2PowerShellRunspaceWithCertificateaPIToUseInput> openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = null)
         {
@@ -6709,7 +6628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsAzureADv2PowerShellRunspaceOpenResponse> __BuildIsAzureADv2PowerShellRunspaceOpen(WorkflowExpression<string> isAzureADv2PowerShellRunspaceOpenworkflow, WorkflowExpression<bool> isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
@@ -6756,7 +6674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunAzureADv2PowerShellAutomationScriptResponse> __BuildRunAzureADv2PowerShellAutomationScript(WorkflowExpression<string> runAzureADv2PowerShellAutomationScriptworkflow, WorkflowExpression<string> runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptisNoResultAnError = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptreturnComplexTypes = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptreturnDateAsDate = null, WorkflowExpression<string> runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptrunScriptAsThread = null, WorkflowExpression<int> runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, WorkflowExpression<int> runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword = null, WorkflowExpression<bool> runAzureADv2PowerShellAutomationScriptlogVerboseOutput = null, WorkflowExpression<string> runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, WorkflowExpression<string> runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, WorkflowExpression<runAzureADv2PowerShellAutomationScriptpowerShellCommandParametersInputItem[]> runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = null)
         {
@@ -6981,7 +6898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseAzureADv2PowerShellRunspaceResponse> __BuildCloseAzureADv2PowerShellRunspace(WorkflowExpression<string> closeAzureADv2PowerShellRunspaceworkflow)
         {
@@ -7011,7 +6927,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADUsersResponse> __BuildAzureADv2GetAzureADUsers(WorkflowExpression<string> azureADv2GetAzureADUsersworkflow, WorkflowExpression<string> azureADv2GetAzureADUsersobjectId = null, WorkflowExpression<string> azureADv2GetAzureADUsersfilterPropertyName = null, WorkflowExpression<azureADv2GetAzureADUsersfilterPropertyComparisonInput> azureADv2GetAzureADUsersfilterPropertyComparison = null, WorkflowExpression<string> azureADv2GetAzureADUsersfilterPropertyValue = null, WorkflowExpression<bool> azureADv2GetAzureADUsersnoResultIsAnException = null, WorkflowExpression<string> azureADv2GetAzureADUserspropertiesToReturn = null)
         {
@@ -7103,7 +7018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2AddAzureADUserResponse> __BuildAzureADv2AddAzureADUser(WorkflowExpression<string> azureADv2AddAzureADUseruserPrincipalName, WorkflowExpression<bool> azureADv2AddAzureADUseraccountEnabled, WorkflowExpression<string> azureADv2AddAzureADUseraccountPassword, WorkflowExpression<string> azureADv2AddAzureADUserdisplayName, WorkflowExpression<string> azureADv2AddAzureADUsermailNickName, WorkflowExpression<string> azureADv2AddAzureADUserworkflow, WorkflowExpression<bool> azureADv2AddAzureADUseraccountPasswordIsStoredPassword = null, WorkflowExpression<string> azureADv2AddAzureADUserfirstName = null, WorkflowExpression<string> azureADv2AddAzureADUserlastName = null, WorkflowExpression<string> azureADv2AddAzureADUsercity = null, WorkflowExpression<string> azureADv2AddAzureADUsercompanyName = null, WorkflowExpression<string> azureADv2AddAzureADUsercountry = null, WorkflowExpression<string> azureADv2AddAzureADUserdepartment = null, WorkflowExpression<string> azureADv2AddAzureADUserfaxNumber = null, WorkflowExpression<string> azureADv2AddAzureADUserjobTitle = null, WorkflowExpression<string> azureADv2AddAzureADUsermobilePhone = null, WorkflowExpression<string> azureADv2AddAzureADUseroffice = null, WorkflowExpression<string> azureADv2AddAzureADUserphoneNumber = null, WorkflowExpression<string> azureADv2AddAzureADUserpostalCode = null, WorkflowExpression<string> azureADv2AddAzureADUserpreferredLanguage = null, WorkflowExpression<string> azureADv2AddAzureADUserstate = null, WorkflowExpression<string> azureADv2AddAzureADUserstreetAddress = null, WorkflowExpression<string> azureADv2AddAzureADUserusageLocation = null, WorkflowExpression<azureADv2AddAzureADUserageGroupInput> azureADv2AddAzureADUserageGroup = null, WorkflowExpression<azureADv2AddAzureADUserconsentProvidedForMinorInput> azureADv2AddAzureADUserconsentProvidedForMinor = null, WorkflowExpression<string> azureADv2AddAzureADUseremployeeId = null, WorkflowExpression<bool> azureADv2AddAzureADUserforceChangePasswordNextLogin = null, WorkflowExpression<bool> azureADv2AddAzureADUserenforceChangePasswordPolicy = null, WorkflowExpression<bool> azureADv2AddAzureADUserpasswordNeverExpires = null)
         {
@@ -7349,7 +7263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveAzureADUserResponse> __BuildAzureADv2RemoveAzureADUser(WorkflowExpression<string> azureADv2RemoveAzureADUserobjectId, WorkflowExpression<string> azureADv2RemoveAzureADUserworkflow, WorkflowExpression<bool> azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = null)
         {
@@ -7399,7 +7312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2ResetAzureADUserPasswordResponse> __BuildAzureADv2ResetAzureADUserPassword(WorkflowExpression<string> azureADv2ResetAzureADUserPassworduserPrincipalName, WorkflowExpression<string> azureADv2ResetAzureADUserPasswordnewPassword, WorkflowExpression<string> azureADv2ResetAzureADUserPasswordworkflow, WorkflowExpression<bool> azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = null)
         {
@@ -7486,7 +7398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserGroupMembershipResponse> __BuildAzureADv2GetAzureADUserGroupMembership(WorkflowExpression<string> azureADv2GetAzureADUserGroupMembershipobjectId, WorkflowExpression<string> azureADv2GetAzureADUserGroupMembershipworkflow, WorkflowExpression<string> azureADv2GetAzureADUserGroupMembershippropertiesToReturn = null)
         {
@@ -7526,7 +7437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2IsUserInAzureADUserGroupResponse> __BuildAzureADv2IsUserInAzureADUserGroup(WorkflowExpression<string> azureADv2IsUserInAzureADUserGroupobjectId, WorkflowExpression<string> azureADv2IsUserInAzureADUserGroupgroupObjectId, WorkflowExpression<string> azureADv2IsUserInAzureADUserGroupworkflow)
         {
@@ -7562,7 +7472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2AddUserToGroupResponse> __BuildAzureADv2AddUserToGroup(WorkflowExpression<string> azureADv2AddUserToGroupuserObjectId, WorkflowExpression<string> azureADv2AddUserToGroupgroupObjectId, WorkflowExpression<string> azureADv2AddUserToGroupworkflow, WorkflowExpression<bool> azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = null)
         {
@@ -7615,7 +7524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromGroupResponse> __BuildAzureADv2RemoveUserFromGroup(WorkflowExpression<string> azureADv2RemoveUserFromGroupuserObjectId, WorkflowExpression<string> azureADv2RemoveUserFromGroupgroupObjectId, WorkflowExpression<string> azureADv2RemoveUserFromGroupworkflow, WorkflowExpression<bool> azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = null)
         {
@@ -7668,7 +7576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2AddADUserToMultipleADGroupsResponse> __BuildAzureADv2AddADUserToMultipleADGroups(WorkflowExpression<string> azureADv2AddADUserToMultipleADGroupsuserObjectId, WorkflowExpression<string> azureADv2AddADUserToMultipleADGroupsworkflow, WorkflowExpression<string> azureADv2AddADUserToMultipleADGroupsgroupNamesJSON = null, WorkflowExpression<bool> azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd = null, WorkflowExpression<bool> azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = null, WorkflowExpression<bool> azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = null, WorkflowExpression<int> azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = null)
         {
@@ -7766,7 +7673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse> __BuildAzureADv2RemoveADUserFromMultipleADGroups(WorkflowExpression<string> azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, WorkflowExpression<string> azureADv2RemoveADUserFromMultipleADGroupsworkflow, WorkflowExpression<string> azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON = null, WorkflowExpression<bool> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove = null, WorkflowExpression<bool> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = null, WorkflowExpression<bool> azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = null, WorkflowExpression<int> azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = null)
         {
@@ -7864,7 +7770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromAllGroupsResponse> __BuildAzureADv2RemoveUserFromAllGroups(WorkflowExpression<string> azureADv2RemoveUserFromAllGroupsuserObjectId, WorkflowExpression<string> azureADv2RemoveUserFromAllGroupsworkflow, WorkflowExpression<bool> azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = null, WorkflowExpression<bool> azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = null, WorkflowExpression<int> azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = null)
         {
@@ -7938,7 +7843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADLicenseSKUsResponse> __BuildAzureADv2GetAzureADLicenseSKUs(WorkflowExpression<string> azureADv2GetAzureADLicenseSKUsworkflow, WorkflowExpression<azureADv2GetAzureADLicenseSKUsexpandPropertyInput> azureADv2GetAzureADLicenseSKUsexpandProperty = null)
         {
@@ -7985,7 +7889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2SetAzureADUserLicenseResponse> __BuildAzureADv2SetAzureADUserLicense(WorkflowExpression<string> azureADv2SetAzureADUserLicenseobjectId, WorkflowExpression<string> azureADv2SetAzureADUserLicenseworkflow, WorkflowExpression<string> azureADv2SetAzureADUserLicenselicenseToAdd = null, WorkflowExpression<azureADv2SetAzureADUserLicenselicensePlansChoiceInput> azureADv2SetAzureADUserLicenselicensePlansChoice = null, WorkflowExpression<string> azureADv2SetAzureADUserLicenselicensePlansCSV = null, WorkflowExpression<string> azureADv2SetAzureADUserLicenselicensesToRemoveCSV = null, WorkflowExpression<string> azureADv2SetAzureADUserLicenseusageLocation = null, WorkflowExpression<bool> azureADv2SetAzureADUserLicenselocalScope = null)
         {
@@ -8070,7 +7973,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserLicensesResponse> __BuildAzureADv2GetAzureADUserLicenses(WorkflowExpression<string> azureADv2GetAzureADUserLicensesobjectId, WorkflowExpression<string> azureADv2GetAzureADUserLicensesworkflow)
         {
@@ -8103,7 +8005,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserLicenseServicePlansResponse> __BuildAzureADv2GetAzureADUserLicenseServicePlans(WorkflowExpression<string> azureADv2GetAzureADUserLicenseServicePlansobjectId, WorkflowExpression<string> azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, WorkflowExpression<string> azureADv2GetAzureADUserLicenseServicePlansworkflow)
         {
@@ -8139,7 +8040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveAllAzureADUserLicenseResponse> __BuildAzureADv2RemoveAllAzureADUserLicense(WorkflowExpression<string> azureADv2RemoveAllAzureADUserLicenseobjectId, WorkflowExpression<string> azureADv2RemoveAllAzureADUserLicenseworkflow)
         {
@@ -8172,7 +8072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2SetAzureADUserResponse> __BuildAzureADv2SetAzureADUser(WorkflowExpression<string> azureADv2SetAzureADUserobjectId, WorkflowExpression<string> azureADv2SetAzureADUserworkflow, WorkflowExpression<string> azureADv2SetAzureADUserfirstName = null, WorkflowExpression<string> azureADv2SetAzureADUserlastName = null, WorkflowExpression<string> azureADv2SetAzureADUserdisplayName = null, WorkflowExpression<string> azureADv2SetAzureADUsercity = null, WorkflowExpression<string> azureADv2SetAzureADUsercompanyName = null, WorkflowExpression<string> azureADv2SetAzureADUsercountry = null, WorkflowExpression<string> azureADv2SetAzureADUserdepartment = null, WorkflowExpression<string> azureADv2SetAzureADUserfaxNumber = null, WorkflowExpression<string> azureADv2SetAzureADUserjobTitle = null, WorkflowExpression<string> azureADv2SetAzureADUsermobilePhone = null, WorkflowExpression<string> azureADv2SetAzureADUseroffice = null, WorkflowExpression<string> azureADv2SetAzureADUserphoneNumber = null, WorkflowExpression<string> azureADv2SetAzureADUserpostalCode = null, WorkflowExpression<string> azureADv2SetAzureADUserpreferredLanguage = null, WorkflowExpression<string> azureADv2SetAzureADUserstate = null, WorkflowExpression<string> azureADv2SetAzureADUserstreetAddress = null, WorkflowExpression<string> azureADv2SetAzureADUserusageLocation = null, WorkflowExpression<azureADv2SetAzureADUserageGroupInput> azureADv2SetAzureADUserageGroup = null, WorkflowExpression<azureADv2SetAzureADUserconsentProvidedForMinorInput> azureADv2SetAzureADUserconsentProvidedForMinor = null, WorkflowExpression<string> azureADv2SetAzureADUsermailNickName = null, WorkflowExpression<string> azureADv2SetAzureADUseremployeeId = null)
         {
@@ -8352,7 +8251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2ResetAzureADUserPropertiesResponse> __BuildAzureADv2ResetAzureADUserProperties(WorkflowExpression<string> azureADv2ResetAzureADUserPropertiesobjectId, WorkflowExpression<string> azureADv2ResetAzureADUserPropertiesworkflow, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetFirstName = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetLastName = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetCity = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetCompanyName = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetCountry = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetDepartment = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetFaxNumber = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetJobTitle = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetMobilePhone = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetOffice = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetPhoneNumber = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetPostalCode = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetPreferredLanguage = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetState = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetStreetAddress = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetUsageLocation = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetAgeGroup = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = null, WorkflowExpression<bool> azureADv2ResetAzureADUserPropertiesresetEmployeeId = null)
         {
@@ -8708,7 +8606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2SetAzureADUserManagerResponse> __BuildAzureADv2SetAzureADUserManager(WorkflowExpression<string> azureADv2SetAzureADUserManagerobjectId, WorkflowExpression<string> azureADv2SetAzureADUserManagerworkflow, WorkflowExpression<string> azureADv2SetAzureADUserManagermanager = null)
         {
@@ -8748,7 +8645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2NewSecurityGroupResponse> __BuildAzureADv2NewSecurityGroup(WorkflowExpression<string> azureADv2NewSecurityGroupdisplayName, WorkflowExpression<string> azureADv2NewSecurityGroupworkflow, WorkflowExpression<string> azureADv2NewSecurityGroupdescription = null, WorkflowExpression<bool> azureADv2NewSecurityGroupcheckGroupExists = null)
         {
@@ -8805,7 +8701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveSecurityGroupResponse> __BuildAzureADv2RemoveSecurityGroup(WorkflowExpression<string> azureADv2RemoveSecurityGroupgroupObjectId, WorkflowExpression<string> azureADv2RemoveSecurityGroupworkflow, WorkflowExpression<bool> azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = null)
         {
@@ -8855,7 +8750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2NewMicrosoft365GroupResponse> __BuildAzureADv2NewMicrosoft365Group(WorkflowExpression<string> azureADv2NewMicrosoft365GroupdisplayName, WorkflowExpression<string> azureADv2NewMicrosoft365Groupworkflow, WorkflowExpression<string> azureADv2NewMicrosoft365Groupdescription = null, WorkflowExpression<string> azureADv2NewMicrosoft365GroupmailNickname = null, WorkflowExpression<azureADv2NewMicrosoft365GroupgroupVisibilityInput> azureADv2NewMicrosoft365GroupgroupVisibility = null, WorkflowExpression<bool> azureADv2NewMicrosoft365GroupcheckGroupExists = null)
         {
@@ -8936,7 +8830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetGroupsResponse> __BuildAzureADv2GetGroups(WorkflowExpression<string> azureADv2GetGroupsworkflow, WorkflowExpression<string> azureADv2GetGroupsobjectId = null, WorkflowExpression<string> azureADv2GetGroupsfilterPropertyName = null, WorkflowExpression<azureADv2GetGroupsfilterPropertyComparisonInput> azureADv2GetGroupsfilterPropertyComparison = null, WorkflowExpression<string> azureADv2GetGroupsfilterPropertyValue = null, WorkflowExpression<bool> azureADv2GetGroupsnoResultIsAnException = null, WorkflowExpression<string> azureADv2GetGroupspropertiesToReturn = null)
         {
@@ -9028,7 +8921,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2EnableUserResponse> __BuildAzureADv2EnableUser(WorkflowExpression<string> azureADv2EnableUseruserObjectId, WorkflowExpression<string> azureADv2EnableUserworkflow)
         {
@@ -9061,7 +8953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2DisableUserResponse> __BuildAzureADv2DisableUser(WorkflowExpression<string> azureADv2DisableUseruserObjectId, WorkflowExpression<string> azureADv2DisableUserworkflow, WorkflowExpression<bool> azureADv2DisableUserrevokeUserRefreshTokens = null)
         {
@@ -9111,7 +9002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2AssignUserToRoleResponse> __BuildAzureADv2AssignUserToRole(WorkflowExpression<string> azureADv2AssignUserToRoleuserObjectId, WorkflowExpression<string> azureADv2AssignUserToRoleroleObjectId, WorkflowExpression<string> azureADv2AssignUserToRoleworkflow, WorkflowExpression<string> azureADv2AssignUserToRoledirectoryScopeId = null, WorkflowExpression<bool> azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = null)
         {
@@ -9181,7 +9071,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2AssignUserToMultipleRolesResponse> __BuildAzureADv2AssignUserToMultipleRoles(WorkflowExpression<string> azureADv2AssignUserToMultipleRolesuserObjectId, WorkflowExpression<string> azureADv2AssignUserToMultipleRolesworkflow, WorkflowExpression<string> azureADv2AssignUserToMultipleRolesrolesJSON = null, WorkflowExpression<bool> azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign = null, WorkflowExpression<bool> azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign = null, WorkflowExpression<string> azureADv2AssignUserToMultipleRolesdirectoryScopeId = null, WorkflowExpression<bool> azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = null, WorkflowExpression<bool> azureADv2AssignUserToMultipleRolescheckRoleIdsExist = null)
         {
@@ -9306,7 +9195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromMultipleRolesResponse> __BuildAzureADv2RemoveUserFromMultipleRoles(WorkflowExpression<string> azureADv2RemoveUserFromMultipleRolesuserObjectId, WorkflowExpression<string> azureADv2RemoveUserFromMultipleRolesworkflow, WorkflowExpression<string> azureADv2RemoveUserFromMultipleRolesrolesJSON = null, WorkflowExpression<string> azureADv2RemoveUserFromMultipleRolesdirectoryScopeId = null, WorkflowExpression<bool> azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = null, WorkflowExpression<bool> azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = null, WorkflowExpression<bool> azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = null)
         {
@@ -9414,7 +9302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2IsUserInRoleResponse> __BuildAzureADv2IsUserInRole(WorkflowExpression<string> azureADv2IsUserInRoleuserObjectId, WorkflowExpression<string> azureADv2IsUserInRoleroleObjectId, WorkflowExpression<string> azureADv2IsUserInRoleworkflow)
         {
@@ -9450,7 +9337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserRoleAssignmentsResponse> __BuildAzureADv2GetAzureADUserRoleAssignments(WorkflowExpression<string> azureADv2GetAzureADUserRoleAssignmentsobjectId, WorkflowExpression<string> azureADv2GetAzureADUserRoleAssignmentsworkflow, WorkflowExpression<bool> azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = null, WorkflowExpression<bool> azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = null)
         {
@@ -9517,7 +9403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromRoleResponse> __BuildAzureADv2RemoveUserFromRole(WorkflowExpression<string> azureADv2RemoveUserFromRoleuserObjectId, WorkflowExpression<string> azureADv2RemoveUserFromRoleroleObjectId, WorkflowExpression<string> azureADv2RemoveUserFromRoleworkflow, WorkflowExpression<string> azureADv2RemoveUserFromRoledirectoryScopeId = null)
         {
@@ -9570,7 +9455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromAllRolesResponse> __BuildAzureADv2RemoveUserFromAllRoles(WorkflowExpression<string> azureADv2RemoveUserFromAllRolesuserObjectId, WorkflowExpression<string> azureADv2RemoveUserFromAllRolesworkflow, WorkflowExpression<bool> azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = null, WorkflowExpression<bool> azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = null)
         {
@@ -9637,7 +9521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AzureADv2GetAzureADGroupMembersResponse> __BuildAzureADv2GetAzureADGroupMembers(WorkflowExpression<string> azureADv2GetAzureADGroupMembersgroupObjectId, WorkflowExpression<string> azureADv2GetAzureADGroupMembersworkflow, WorkflowExpression<string> azureADv2GetAzureADGroupMemberspropertiesToReturn = null, WorkflowExpression<string> azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = null)
         {
@@ -9684,7 +9567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenO365PowerShellRunspaceResponse> __BuildOpenO365PowerShellRunspace(WorkflowExpression<string> openO365PowerShellRunspaceoffice365Username, WorkflowExpression<string> openO365PowerShellRunspaceoffice365Password, WorkflowExpression<string> openO365PowerShellRunspaceworkflow, WorkflowExpression<string> openO365PowerShellRunspaceexchangeURL = null, WorkflowExpression<openO365PowerShellRunspaceconnectionMethodInput> openO365PowerShellRunspaceconnectionMethod = null, WorkflowExpression<bool> openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, WorkflowExpression<openO365PowerShellRunspacecommandTypesToImportLocallyInput> openO365PowerShellRunspacecommandTypesToImportLocally = null, WorkflowExpression<string> openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
         {
@@ -9785,7 +9667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenO365PowerShellRunspaceWithCertificateResponse> __BuildOpenO365PowerShellRunspaceWithCertificate(WorkflowExpression<string> openO365PowerShellRunspaceWithCertificateapplicationId, WorkflowExpression<string> openO365PowerShellRunspaceWithCertificatecertificateThumbprint, WorkflowExpression<string> openO365PowerShellRunspaceWithCertificateorganization, WorkflowExpression<string> openO365PowerShellRunspaceWithCertificateworkflow, WorkflowExpression<string> openO365PowerShellRunspaceWithCertificateexchangeURL = null, WorkflowExpression<openO365PowerShellRunspaceWithCertificateconnectionMethodInput> openO365PowerShellRunspaceWithCertificateconnectionMethod = null, WorkflowExpression<bool> openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = null, WorkflowExpression<openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocallyInput> openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = null, WorkflowExpression<string> openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = null)
         {
@@ -9889,7 +9770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsO365PowerShellRunspaceOpenResponse> __BuildIsO365PowerShellRunspaceOpen(WorkflowExpression<string> isO365PowerShellRunspaceOpenworkflow, WorkflowExpression<bool> isO365PowerShellRunspaceOpentestCommunications = null, WorkflowExpression<bool> isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
@@ -9953,7 +9833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunO365PowerShellAutomationScriptResponse> __BuildRunO365PowerShellAutomationScript(WorkflowExpression<string> runO365PowerShellAutomationScriptworkflow, WorkflowExpression<string> runO365PowerShellAutomationScriptpowerShellScriptContents = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptisNoResultAnError = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptreturnComplexTypes = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptreturnBooleanAsBoolean = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptreturnNumericAsDecimal = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptreturnDateAsDate = null, WorkflowExpression<string> runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptlocalScope = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptrunScriptAsThread = null, WorkflowExpression<int> runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, WorkflowExpression<int> runO365PowerShellAutomationScriptsecondsToWaitForThread = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptscriptContainsStoredPassword = null, WorkflowExpression<bool> runO365PowerShellAutomationScriptlogVerboseOutput = null, WorkflowExpression<string> runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, WorkflowExpression<string> runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, WorkflowExpression<runO365PowerShellAutomationScriptpowerShellCommandParametersInputItem[]> runO365PowerShellAutomationScriptpowerShellCommandParameters = null)
         {
@@ -10185,7 +10064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseO365PowerShellRunspaceResponse> __BuildCloseO365PowerShellRunspace(WorkflowExpression<string> closeO365PowerShellRunspaceworkflow)
         {
@@ -10215,7 +10093,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365GetO365MailboxResponse> __BuildO365GetO365Mailbox(WorkflowExpression<string> o365GetO365Mailboxworkflow, WorkflowExpression<string> o365GetO365Mailboxidentity = null, WorkflowExpression<string> o365GetO365MailboxfilterPropertyName = null, WorkflowExpression<o365GetO365MailboxfilterPropertyComparisonInput> o365GetO365MailboxfilterPropertyComparison = null, WorkflowExpression<string> o365GetO365MailboxfilterPropertyValue = null, WorkflowExpression<o365GetO365MailboxrecipientTypeDetailsInput> o365GetO365MailboxrecipientTypeDetails = null, WorkflowExpression<bool> o365GetO365MailboxnoResultIsAnException = null)
         {
@@ -10307,7 +10184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365AddMailboxPermissionResponse> __BuildO365AddMailboxPermission(WorkflowExpression<string> o365AddMailboxPermissionidentity, WorkflowExpression<string> o365AddMailboxPermissionuser, WorkflowExpression<string> o365AddMailboxPermissionaccessRights, WorkflowExpression<string> o365AddMailboxPermissionworkflow, WorkflowExpression<bool> o365AddMailboxPermissionautoMapping = null)
         {
@@ -10363,7 +10239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365RemoveMailboxPermissionResponse> __BuildO365RemoveMailboxPermission(WorkflowExpression<string> o365RemoveMailboxPermissionidentity, WorkflowExpression<string> o365RemoveMailboxPermissionuser, WorkflowExpression<string> o365RemoveMailboxPermissionaccessRights, WorkflowExpression<string> o365RemoveMailboxPermissionworkflow)
         {
@@ -10402,7 +10277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365AddDistributionGroupMemberResponse> __BuildO365AddDistributionGroupMember(WorkflowExpression<string> o365AddDistributionGroupMemberidentity, WorkflowExpression<string> o365AddDistributionGroupMembermember, WorkflowExpression<string> o365AddDistributionGroupMemberworkflow, WorkflowExpression<bool> o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
         {
@@ -10455,7 +10329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365GetO365DistributionGroupResponse> __BuildO365GetO365DistributionGroup(WorkflowExpression<string> o365GetO365DistributionGroupworkflow, WorkflowExpression<string> o365GetO365DistributionGroupidentity = null, WorkflowExpression<string> o365GetO365DistributionGroupfilterPropertyName = null, WorkflowExpression<o365GetO365DistributionGroupfilterPropertyComparisonInput> o365GetO365DistributionGroupfilterPropertyComparison = null, WorkflowExpression<string> o365GetO365DistributionGroupfilterPropertyValue = null, WorkflowExpression<bool> o365GetO365DistributionGroupnoResultIsAnException = null)
         {
@@ -10540,7 +10413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365NewO365DistributionGroupResponse> __BuildO365NewO365DistributionGroup(WorkflowExpression<string> o365NewO365DistributionGroupname, WorkflowExpression<string> o365NewO365DistributionGroupworkflow, WorkflowExpression<string> o365NewO365DistributionGroupalias = null, WorkflowExpression<string> o365NewO365DistributionGroupdisplayName = null, WorkflowExpression<string> o365NewO365DistributionGroupnotes = null, WorkflowExpression<string> o365NewO365DistributionGroupmanagedBy = null, WorkflowExpression<string> o365NewO365DistributionGroupmembers = null, WorkflowExpression<string> o365NewO365DistributionGrouporganizationalUnit = null, WorkflowExpression<string> o365NewO365DistributionGroupprimarySmtpAddress = null, WorkflowExpression<o365NewO365DistributionGroupmemberDepartRestrictionInput> o365NewO365DistributionGroupmemberDepartRestriction = null, WorkflowExpression<o365NewO365DistributionGroupmemberJoinRestrictionInput> o365NewO365DistributionGroupmemberJoinRestriction = null, WorkflowExpression<bool> o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = null, WorkflowExpression<o365NewO365DistributionGrouptypeInput> o365NewO365DistributionGrouptype = null)
         {
@@ -10680,7 +10552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365RemoveDistributionGroupResponse> __BuildO365RemoveDistributionGroup(WorkflowExpression<string> o365RemoveDistributionGroupidentity, WorkflowExpression<string> o365RemoveDistributionGroupworkflow, WorkflowExpression<bool> o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = null, WorkflowExpression<bool> o365RemoveDistributionGrouperrorIfGroupDoesNotExist = null)
         {
@@ -10747,7 +10618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365SetO365MailboxResponse> __BuildO365SetO365Mailbox(WorkflowExpression<string> o365SetO365Mailboxidentity, WorkflowExpression<string> o365SetO365Mailboxworkflow, WorkflowExpression<bool> o365SetO365MailboxaccountDisabled = null, WorkflowExpression<string> o365SetO365Mailboxalias = null, WorkflowExpression<string> o365SetO365MailboxdisplayName = null, WorkflowExpression<bool> o365SetO365MailboxhiddenFromAddressListsEnabled = null, WorkflowExpression<string> o365SetO365MailboxcustomAttribute1 = null, WorkflowExpression<string> o365SetO365MailboxcustomAttribute2 = null, WorkflowExpression<string> o365SetO365MailboxcustomAttribute3 = null, WorkflowExpression<string> o365SetO365MailboxcustomAttribute4 = null, WorkflowExpression<o365SetO365MailboxtypeInput> o365SetO365Mailboxtype = null)
         {
@@ -10843,7 +10713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365WaitForO365MailboxResponse> __BuildO365WaitForO365Mailbox(WorkflowExpression<string> o365WaitForO365Mailboxidentity, WorkflowExpression<int> o365WaitForO365MailboxnumberOfTimesToCheck, WorkflowExpression<int> o365WaitForO365MailboxsecondsBetweenTries, WorkflowExpression<string> o365WaitForO365Mailboxworkflow, WorkflowExpression<o365WaitForO365MailboxrecipientTypeDetailsInput> o365WaitForO365MailboxrecipientTypeDetails = null)
         {
@@ -10889,7 +10758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365SetO365MailboxAutoReplyConfigurationResponse> __BuildO365SetO365MailboxAutoReplyConfiguration(WorkflowExpression<string> o365SetO365MailboxAutoReplyConfigurationidentity, WorkflowExpression<o365SetO365MailboxAutoReplyConfigurationautoReplyStateInput> o365SetO365MailboxAutoReplyConfigurationautoReplyState, WorkflowExpression<string> o365SetO365MailboxAutoReplyConfigurationworkflow, WorkflowExpression<string> o365SetO365MailboxAutoReplyConfigurationinternalMessage = null, WorkflowExpression<o365SetO365MailboxAutoReplyConfigurationexternalAudienceInput> o365SetO365MailboxAutoReplyConfigurationexternalAudience = null, WorkflowExpression<string> o365SetO365MailboxAutoReplyConfigurationexternalMessage = null)
         {
@@ -10956,7 +10824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365RemoveDistributionGroupMemberResponse> __BuildO365RemoveDistributionGroupMember(WorkflowExpression<string> o365RemoveDistributionGroupMembergroupIdentity, WorkflowExpression<string> o365RemoveDistributionGroupMembermember, WorkflowExpression<string> o365RemoveDistributionGroupMemberworkflow, WorkflowExpression<bool> o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null, WorkflowExpression<bool> o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = null)
         {
@@ -11026,7 +10893,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365GetMailboxDistributionGroupMembershipResponse> __BuildO365GetMailboxDistributionGroupMembership(WorkflowExpression<string> o365GetMailboxDistributionGroupMembershipmailboxIdentity, WorkflowExpression<string> o365GetMailboxDistributionGroupMembershipworkflow, WorkflowExpression<string> o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = null)
         {
@@ -11066,7 +10932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365GetDistributionGroupMembersResponse> __BuildO365GetDistributionGroupMembers(WorkflowExpression<string> o365GetDistributionGroupMembersgroupIdentity, WorkflowExpression<string> o365GetDistributionGroupMembersworkflow, WorkflowExpression<string> o365GetDistributionGroupMemberspropertiesToRetrieveJSON = null)
         {
@@ -11106,7 +10971,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365RemoveMailboxFromAllDistributionGroupsResponse> __BuildO365RemoveMailboxFromAllDistributionGroups(WorkflowExpression<string> o365RemoveMailboxFromAllDistributionGroupsworkflow, WorkflowExpression<string> o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = null, WorkflowExpression<bool> o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck = null, WorkflowExpression<bool> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove = null, WorkflowExpression<bool> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove = null, WorkflowExpression<string> o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON = null, WorkflowExpression<bool> o365RemoveMailboxFromAllDistributionGroupsrunAsThread = null, WorkflowExpression<int> o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = null, WorkflowExpression<int> o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = null)
         {
@@ -11242,7 +11106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365NewMailboxResponse> __BuildO365NewMailbox(WorkflowExpression<string> o365NewMailboxmicrosoftOnlineServicesID, WorkflowExpression<string> o365NewMailboxname, WorkflowExpression<string> o365NewMailboxworkflow, WorkflowExpression<string> o365NewMailboxfirstName = null, WorkflowExpression<string> o365NewMailboxlastName = null, WorkflowExpression<string> o365NewMailboxinitials = null, WorkflowExpression<string> o365NewMailboxdisplayName = null, WorkflowExpression<string> o365NewMailboxalias = null, WorkflowExpression<string> o365NewMailboxprimarySmtpAddress = null, WorkflowExpression<string> o365NewMailboxpassword = null, WorkflowExpression<bool> o365NewMailboxaccountPasswordIsStoredPassword = null, WorkflowExpression<bool> o365NewMailboxresetPasswordOnNextLogon = null, WorkflowExpression<bool> o365NewMailboxarchive = null, WorkflowExpression<string> o365NewMailboxmailboxPlan = null, WorkflowExpression<string> o365NewMailboxmailboxRegion = null)
         {
@@ -11392,7 +11255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365NewSharedMailboxResponse> __BuildO365NewSharedMailbox(WorkflowExpression<string> o365NewSharedMailboxname, WorkflowExpression<string> o365NewSharedMailboxworkflow, WorkflowExpression<string> o365NewSharedMailboxfirstName = null, WorkflowExpression<string> o365NewSharedMailboxlastName = null, WorkflowExpression<string> o365NewSharedMailboxinitials = null, WorkflowExpression<string> o365NewSharedMailboxdisplayName = null, WorkflowExpression<string> o365NewSharedMailboxalias = null, WorkflowExpression<string> o365NewSharedMailboxprimarySmtpAddress = null, WorkflowExpression<bool> o365NewSharedMailboxarchive = null, WorkflowExpression<string> o365NewSharedMailboxmailboxRegion = null)
         {
@@ -11491,7 +11353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365EnableArchiveMailboxResponse> __BuildO365EnableArchiveMailbox(WorkflowExpression<string> o365EnableArchiveMailboxidentity, WorkflowExpression<string> o365EnableArchiveMailboxworkflow, WorkflowExpression<bool> o365EnableArchiveMailboxcheckIfArchiveExists = null, WorkflowExpression<string> o365EnableArchiveMailboxarchiveName = null, WorkflowExpression<bool> o365EnableArchiveMailboxautoExpandingArchive = null)
         {
@@ -11565,7 +11426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<O365DoesMailboxHaveAnArchiveResponse> __BuildO365DoesMailboxHaveAnArchive(WorkflowExpression<string> o365DoesMailboxHaveAnArchiveidentity, WorkflowExpression<string> o365DoesMailboxHaveAnArchiveworkflow)
         {
@@ -11598,7 +11458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JMLGetNextAvailableAccountNameResponse> __BuildJMLGetNextAvailableAccountName(WorkflowExpression<string> jMLGetNextAvailableAccountNameworkflow, WorkflowExpression<string> jMLGetNextAvailableAccountNamefirstName = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamemiddleName = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamelastName = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamefieldA = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamefieldB = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamefieldC = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamefieldD = null, WorkflowExpression<int> jMLGetNextAvailableAccountNamevariableMStartValue = null, WorkflowExpression<int> jMLGetNextAvailableAccountNamevariableNStartValue = null, WorkflowExpression<int> jMLGetNextAvailableAccountNamevariableXStartValue = null, WorkflowExpression<int> jMLGetNextAvailableAccountNamemaxAttempts = null, WorkflowExpression<bool> jMLGetNextAvailableAccountNamefallbackCausesRetest = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamenumbersNotToUse = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs = null, WorkflowExpression<bool> jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs = null, WorkflowExpression<bool> jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = null, WorkflowExpression<string> jMLGetNextAvailableAccountNamesequenceA1 = null, WorkflowExpression<jMLGetNextAvailableAccountNamepropertiesToCheckListInputItem[]> jMLGetNextAvailableAccountNamepropertiesToCheckList = null)
         {
@@ -11824,7 +11683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JMLConnectToJMLEnvironmentResponse> __BuildJMLConnectToJMLEnvironment(WorkflowExpression<string> jMLConnectToJMLEnvironmentworkflow, WorkflowExpression<string> jMLConnectToJMLEnvironmentfriendlyName = null, WorkflowExpression<bool> jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = null)
         {

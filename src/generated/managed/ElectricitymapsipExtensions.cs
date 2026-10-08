@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonForecastResponse> __BuildCarbonForecast(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonHistoryResponse> __BuildCarbonHistory(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null, WorkflowExpression<emissionFactorTypeInput> emissionFactorType = null, WorkflowExpression<bool> disableEstimations = null)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CarbonLatestResponse> __BuildCarbonLatest(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null, WorkflowExpression<emissionFactorTypeInput> emissionFactorType = null, WorkflowExpression<bool> disableEstimations = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreakdownHistoryResponse> __BuildBreakdownHistory(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null, WorkflowExpression<bool> disableEstimations = null)
         {
@@ -149,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreakdownLatestResponse> __BuildBreakdownLatest(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null, WorkflowExpression<bool> disableEstimations = null)
         {
@@ -181,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConsumptionForecastResponse> __BuildConsumptionForecast(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null)
         {
@@ -210,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreakdownForecastResponse> __BuildBreakdownForecast(WorkflowExpression<string> zone = null, WorkflowExpression<string> lon = null, WorkflowExpression<string> lat = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSMSSuccessResponseBody> __BuildSendInfobipSMS(WorkflowExpression<string> requestBodyrecipientSPhoneNumber, WorkflowExpression<string> requestBodymessage, WorkflowExpression<string> requestBodysenderSPhoneNumber = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VoiceCallSuccessResponseBody> __BuildMakeInfobipVoiceCall(WorkflowExpression<string> requestBodyrecipientSPhoneNumber, WorkflowExpression<string> requestBodymessage, WorkflowExpression<requestBodylanguageInput> requestBodylanguage, WorkflowExpression<string> requestBodycallerSPhoneNumber = null)
         {

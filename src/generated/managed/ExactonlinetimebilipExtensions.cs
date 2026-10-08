@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DivisionsResponse> __BuildGetDivisions(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmploymentInternalRatesResponse> __BuildGetEmploymentInternalRates(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourCostTypesResponse> __BuildGetHourCostTypes(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourEntryActivitiesByProjectResponse> __BuildGetHourEntryActivitiesByProject(WorkflowExpression<string> division, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -152,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourEntryRecentAccountsResponse> __BuildGetHourEntryRecentAccounts(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -185,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourEntryRecentAccountsByProjectResponse> __BuildGetHourEntryRecentAccountsByProject(WorkflowExpression<string> division, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -220,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourEntryRecentHourTypesResponse> __BuildGetHourEntryRecentHourTypes(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -253,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourEntryRecentHourTypesByProjectResponse> __BuildGetHourEntryRecentHourTypesByProject(WorkflowExpression<string> division, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -288,7 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourEntryRecentProjectsResponse> __BuildGetHourEntryRecentProjects(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -321,7 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HoursByDateResponse> __BuildGetHoursByDate(WorkflowExpression<string> checkDate, WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -356,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HoursByIdResponse> __BuildGetHoursById(WorkflowExpression<string> division, WorkflowExpression<string> entryId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -391,7 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourTypesResponse> __BuildGetHourTypes(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -424,7 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourTypesByDateResponse> __BuildGetHourTypesByDate(WorkflowExpression<string> checkDate, WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -459,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HourTypesByProjectAndDateResponse> __BuildGetHourTypesByProjectAndDate(WorkflowExpression<string> division, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -494,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> __BuildGetProjectRestrictionRebillings(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -527,7 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> __BuildPutProjectRestrictionRebillings(WorkflowExpression<string> division, WorkflowExpression<string> iD, WorkflowExpression<string> projectRestrictionRebillingscostTypeRebill, WorkflowExpression<string> projectRestrictionRebillingsproject, WorkflowExpression<string> projectRestrictionRebillingsiD = null, WorkflowExpression<string> projectRestrictionRebillingscostTypeRebillCode = null, WorkflowExpression<string> projectRestrictionRebillingscostTypeRebillDescription = null, WorkflowExpression<string> projectRestrictionRebillingscreated = null, WorkflowExpression<string> projectRestrictionRebillingscreator = null, WorkflowExpression<string> projectRestrictionRebillingscreatorFullName = null, WorkflowExpression<int> projectRestrictionRebillingsdivision = null, WorkflowExpression<string> projectRestrictionRebillingsmodified = null, WorkflowExpression<string> projectRestrictionRebillingsmodifier = null, WorkflowExpression<string> projectRestrictionRebillingsmodifierFullName = null, WorkflowExpression<string> projectRestrictionRebillingsprojectCode = null, WorkflowExpression<string> projectRestrictionRebillingsprojectDescription = null)
         {
@@ -647,7 +631,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> __BuildPostProjectRestrictionRebillings(WorkflowExpression<string> division, WorkflowExpression<string> projectRestrictionRebillingscostTypeRebill, WorkflowExpression<string> projectRestrictionRebillingsproject, WorkflowExpression<string> projectRestrictionRebillingsiD = null, WorkflowExpression<string> projectRestrictionRebillingscostTypeRebillCode = null, WorkflowExpression<string> projectRestrictionRebillingscostTypeRebillDescription = null, WorkflowExpression<string> projectRestrictionRebillingscreated = null, WorkflowExpression<string> projectRestrictionRebillingscreator = null, WorkflowExpression<string> projectRestrictionRebillingscreatorFullName = null, WorkflowExpression<int> projectRestrictionRebillingsdivision = null, WorkflowExpression<string> projectRestrictionRebillingsmodified = null, WorkflowExpression<string> projectRestrictionRebillingsmodifier = null, WorkflowExpression<string> projectRestrictionRebillingsmodifierFullName = null, WorkflowExpression<string> projectRestrictionRebillingsprojectCode = null, WorkflowExpression<string> projectRestrictionRebillingsprojectDescription = null)
         {
@@ -765,7 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> __BuildDeleteProjectRestrictionRebillings(WorkflowExpression<string> division, WorkflowExpression<string> iD)
         {
@@ -788,7 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecentCostsByNumberOfWeeksResponse> __BuildGetRecentCostsByNumberOfWeeks(WorkflowExpression<string> division, WorkflowExpression<int> numberOfWeeks, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -823,7 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecentHoursResponse> __BuildGetRecentHours(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -856,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecentHoursByNumberOfWeeksResponse> __BuildGetRecentHoursByNumberOfWeeks(WorkflowExpression<string> division, WorkflowExpression<int> numberOfWeeks, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -891,7 +870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingAccountDetailsResponse> __BuildGetTimeAndBillingAccountDetails(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -924,7 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingAccountDetailsByIDResponse> __BuildGetTimeAndBillingAccountDetailsByID(WorkflowExpression<string> accountId, WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -959,7 +936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingActivitiesAndExpensesResponse> __BuildGetTimeAndBillingActivitiesAndExpenses(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -992,7 +968,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryAccountsResponse> __BuildGetTimeAndBillingEntryAccounts(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1025,7 +1000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryAccountsByDateResponse> __BuildGetTimeAndBillingEntryAccountsByDate(WorkflowExpression<string> checkDate, WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1060,7 +1034,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryAccountsByProjectAndDateResponse> __BuildGetTimeAndBillingEntryAccountsByProjectAndDate(WorkflowExpression<string> division, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1095,7 +1068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryProjectsResponse> __BuildGetTimeAndBillingEntryProjects(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1128,7 +1100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryProjectsByAccountAndDateResponse> __BuildGetTimeAndBillingEntryProjectsByAccountAndDate(WorkflowExpression<string> accountId, WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1163,7 +1134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryProjectsByDateResponse> __BuildGetTimeAndBillingEntryProjectsByDate(WorkflowExpression<string> checkDate, WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1198,7 +1168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentAccountsResponse> __BuildGetTimeAndBillingEntryRecentAccounts(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1231,7 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse> __BuildGetTimeAndBillingEntryRecentActivitiesAndExpenses(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1264,7 +1232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentHourCostTypesResponse> __BuildGetTimeAndBillingEntryRecentHourCostTypes(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1297,7 +1264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentProjectsResponse> __BuildGetTimeAndBillingEntryRecentProjects(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1330,7 +1296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingItemDetailsResponse> __BuildGetTimeAndBillingItemDetails(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1363,7 +1328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingItemDetailsByIDResponse> __BuildGetTimeAndBillingItemDetailsByID(WorkflowExpression<string> division, WorkflowExpression<string> itemId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1398,7 +1362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingProjectDetailsResponse> __BuildGetTimeAndBillingProjectDetails(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1431,7 +1394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingProjectDetailsByIDResponse> __BuildGetTimeAndBillingProjectDetailsByID(WorkflowExpression<string> division, WorkflowExpression<string> projectId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1466,7 +1428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeAndBillingRecentProjectsResponse> __BuildGetTimeAndBillingRecentProjects(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1499,7 +1460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeCorrectionsResponse> __BuildGetTimeCorrections(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1532,7 +1492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeCorrectionsResponse> __BuildPutTimeCorrections(WorkflowExpression<string> division, WorkflowExpression<string> iD, WorkflowExpression<string> timeCorrectionsiD = null, WorkflowExpression<string> timeCorrectionscreated = null, WorkflowExpression<string> timeCorrectionscreator = null, WorkflowExpression<string> timeCorrectionscreatorFullName = null, WorkflowExpression<int> timeCorrectionsdivision = null, WorkflowExpression<string> timeCorrectionsmodified = null, WorkflowExpression<string> timeCorrectionsmodifier = null, WorkflowExpression<string> timeCorrectionsmodifierFullName = null, WorkflowExpression<string> timeCorrectionsnotes = null, WorkflowExpression<string> timeCorrectionsoriginalEntryId = null, WorkflowExpression<double> timeCorrectionsquantity = null)
         {
@@ -1639,7 +1598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeCorrectionsResponse> __BuildPostTimeCorrections(WorkflowExpression<string> division, WorkflowExpression<string> timeCorrectionsiD = null, WorkflowExpression<string> timeCorrectionscreated = null, WorkflowExpression<string> timeCorrectionscreator = null, WorkflowExpression<string> timeCorrectionscreatorFullName = null, WorkflowExpression<int> timeCorrectionsdivision = null, WorkflowExpression<string> timeCorrectionsmodified = null, WorkflowExpression<string> timeCorrectionsmodifier = null, WorkflowExpression<string> timeCorrectionsmodifierFullName = null, WorkflowExpression<string> timeCorrectionsnotes = null, WorkflowExpression<string> timeCorrectionsoriginalEntryId = null, WorkflowExpression<double> timeCorrectionsquantity = null)
         {
@@ -1744,7 +1702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeCorrectionsResponse> __BuildDeleteTimeCorrections(WorkflowExpression<string> division, WorkflowExpression<string> iD)
         {
@@ -1767,7 +1724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeTransactionsResponse> __BuildGetTimeTransactions(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -1800,7 +1756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeTransactionsResponse> __BuildPutTimeTransactions(WorkflowExpression<string> division, WorkflowExpression<string> iD, WorkflowExpression<string> timeTransactionsitem, WorkflowExpression<string> timeTransactionsproject, WorkflowExpression<double> timeTransactionsquantity, WorkflowExpression<string> timeTransactionsiD = null, WorkflowExpression<string> timeTransactionsaccount = null, WorkflowExpression<string> timeTransactionsaccountName = null, WorkflowExpression<string> timeTransactionsactivity = null, WorkflowExpression<string> timeTransactionsactivityDescription = null, WorkflowExpression<double> timeTransactionsamount = null, WorkflowExpression<double> timeTransactionsamountFC = null, WorkflowExpression<string> timeTransactionsattachment = null, WorkflowExpression<string> timeTransactionscreated = null, WorkflowExpression<string> timeTransactionscreator = null, WorkflowExpression<string> timeTransactionscreatorFullName = null, WorkflowExpression<string> timeTransactionscurrency = null, WorkflowExpression<string> timeTransactionsdate = null, WorkflowExpression<int> timeTransactionsdivision = null, WorkflowExpression<string> timeTransactionsdivisionDescription = null, WorkflowExpression<string> timeTransactionsemployee = null, WorkflowExpression<string> timeTransactionsendTime = null, WorkflowExpression<int> timeTransactionsentryNumber = null, WorkflowExpression<string> timeTransactionserrorText = null, WorkflowExpression<double> timeTransactionshourStatus = null, WorkflowExpression<string> timeTransactionsitemDescription = null, WorkflowExpression<bool> timeTransactionsitemDivisable = null, WorkflowExpression<string> timeTransactionsmodified = null, WorkflowExpression<string> timeTransactionsmodifier = null, WorkflowExpression<string> timeTransactionsmodifierFullName = null, WorkflowExpression<string> timeTransactionsnotes = null, WorkflowExpression<double> timeTransactionsprice = null, WorkflowExpression<double> timeTransactionspriceFC = null, WorkflowExpression<string> timeTransactionsprojectAccount = null, WorkflowExpression<string> timeTransactionsprojectAccountCode = null, WorkflowExpression<string> timeTransactionsprojectAccountName = null, WorkflowExpression<string> timeTransactionsprojectCode = null, WorkflowExpression<string> timeTransactionsprojectDescription = null, WorkflowExpression<bool> timeTransactionsskipValidation = null, WorkflowExpression<string> timeTransactionsstartTime = null, WorkflowExpression<string> timeTransactionssubscription = null, WorkflowExpression<string> timeTransactionssubscriptionAccount = null, WorkflowExpression<string> timeTransactionssubscriptionAccountCode = null, WorkflowExpression<string> timeTransactionssubscriptionAccountName = null, WorkflowExpression<string> timeTransactionssubscriptionDescription = null, WorkflowExpression<int> timeTransactionssubscriptionNumber = null, WorkflowExpression<double> timeTransactionstype = null)
         {
@@ -2133,7 +2088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeTransactionsResponse> __BuildPostTimeTransactions(WorkflowExpression<string> division, WorkflowExpression<string> timeTransactionsitem, WorkflowExpression<string> timeTransactionsproject, WorkflowExpression<double> timeTransactionsquantity, WorkflowExpression<string> timeTransactionsiD = null, WorkflowExpression<string> timeTransactionsaccount = null, WorkflowExpression<string> timeTransactionsaccountName = null, WorkflowExpression<string> timeTransactionsactivity = null, WorkflowExpression<string> timeTransactionsactivityDescription = null, WorkflowExpression<double> timeTransactionsamount = null, WorkflowExpression<double> timeTransactionsamountFC = null, WorkflowExpression<string> timeTransactionsattachment = null, WorkflowExpression<string> timeTransactionscreated = null, WorkflowExpression<string> timeTransactionscreator = null, WorkflowExpression<string> timeTransactionscreatorFullName = null, WorkflowExpression<string> timeTransactionscurrency = null, WorkflowExpression<string> timeTransactionsdate = null, WorkflowExpression<int> timeTransactionsdivision = null, WorkflowExpression<string> timeTransactionsdivisionDescription = null, WorkflowExpression<string> timeTransactionsemployee = null, WorkflowExpression<string> timeTransactionsendTime = null, WorkflowExpression<int> timeTransactionsentryNumber = null, WorkflowExpression<string> timeTransactionserrorText = null, WorkflowExpression<double> timeTransactionshourStatus = null, WorkflowExpression<string> timeTransactionsitemDescription = null, WorkflowExpression<bool> timeTransactionsitemDivisable = null, WorkflowExpression<string> timeTransactionsmodified = null, WorkflowExpression<string> timeTransactionsmodifier = null, WorkflowExpression<string> timeTransactionsmodifierFullName = null, WorkflowExpression<string> timeTransactionsnotes = null, WorkflowExpression<double> timeTransactionsprice = null, WorkflowExpression<double> timeTransactionspriceFC = null, WorkflowExpression<string> timeTransactionsprojectAccount = null, WorkflowExpression<string> timeTransactionsprojectAccountCode = null, WorkflowExpression<string> timeTransactionsprojectAccountName = null, WorkflowExpression<string> timeTransactionsprojectCode = null, WorkflowExpression<string> timeTransactionsprojectDescription = null, WorkflowExpression<bool> timeTransactionsskipValidation = null, WorkflowExpression<string> timeTransactionsstartTime = null, WorkflowExpression<string> timeTransactionssubscription = null, WorkflowExpression<string> timeTransactionssubscriptionAccount = null, WorkflowExpression<string> timeTransactionssubscriptionAccountCode = null, WorkflowExpression<string> timeTransactionssubscriptionAccountName = null, WorkflowExpression<string> timeTransactionssubscriptionDescription = null, WorkflowExpression<int> timeTransactionssubscriptionNumber = null, WorkflowExpression<double> timeTransactionstype = null)
         {
@@ -2464,7 +2418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeTransactionsResponse> __BuildDeleteTimeTransactions(WorkflowExpression<string> division, WorkflowExpression<string> iD)
         {
@@ -2487,7 +2440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectTimeCostTransactionsResponse> __BuildGetProjectTimeCostTransactions(WorkflowExpression<string> division, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {
@@ -2520,7 +2472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MeResponse> __BuildGetMe(WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<int> top = null)
         {

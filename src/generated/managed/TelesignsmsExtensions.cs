@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowExpression<string> bodyphoneNumber, WorkflowExpression<string> bodymessageText, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodymessageType = null, WorkflowExpression<string> bodysenderId = null)
         {

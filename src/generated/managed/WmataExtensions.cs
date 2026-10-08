@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNextBusesResponse> __BuildGetNextBuses(WorkflowExpression<string> stopID)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBusPositionsResponse> __BuildGetBusPositions(WorkflowExpression<string> routeID = null, WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null)
         {
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRouteDetailsResponse> __BuildGetRouteDetails(WorkflowExpression<string> routeID, WorkflowExpression<string> date = null)
         {
@@ -106,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBusRouteScheduleResponse> __BuildGetBusRouteSchedule(WorkflowExpression<string> routeID, WorkflowExpression<string> date = null)
         {
@@ -131,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBusStopScheduleResponse> __BuildGetBusStopSchedule(WorkflowExpression<string> stopID, WorkflowExpression<string> date = null)
         {
@@ -156,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBusStopsResponse> __BuildGetBusStops(WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null)
         {
@@ -185,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNextTrainsResponse> __BuildGetNextTrains(WorkflowExpression<string> stationCodes)
         {
@@ -215,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationParkingResponse> __BuildGetStationParking(WorkflowExpression<string> stationCode = null)
         {
@@ -238,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPathBetweenStationsResponse> __BuildGetPathBetweenStations(WorkflowExpression<string> fromStationCode, WorkflowExpression<string> toStationCode)
         {
@@ -262,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetJsonStationsResponse> __BuildGetJsonStations(WorkflowExpression<string> lineCode = null)
         {
@@ -285,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationEntrancesResponse> __BuildGetStationEntrances(WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null)
         {
@@ -314,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationInfoResponse> __BuildGetStationInfo(WorkflowExpression<string> stationCode)
         {
@@ -336,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationTimesResponse> __BuildGetStationTimes(WorkflowExpression<string> stationCode)
         {
@@ -358,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationToStationInfoResponse> __BuildGetStationToStationInfo(WorkflowExpression<string> fromStationCode, WorkflowExpression<string> toStationCode)
         {
@@ -412,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBusIncidentsResponse> __BuildGetBusIncidents(WorkflowExpression<string> route = null)
         {
@@ -435,7 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetElevatorIncidentsResponse> __BuildGetElevatorIncidents(WorkflowExpression<string> stationCode = null)
         {

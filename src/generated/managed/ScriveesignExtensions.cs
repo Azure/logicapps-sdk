@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetDocJson(WorkflowExpression<string> bodydocumentId)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetDocStatus(WorkflowExpression<string> bodydocumentId)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetPartyStatus(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyId)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdatePartyEmail(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyId, WorkflowExpression<string> bodypartyEmail)
         {
@@ -151,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendReminder(WorkflowExpression<string> bodydocumentId)
         {
@@ -182,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetDocumentPdfContent(WorkflowExpression<string> bodydocumentId)
         {
@@ -213,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildNewDocumentFromTemplate(WorkflowExpression<string> templateIdDynamic)
         {
@@ -234,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildStartSigning(WorkflowExpression<string> bodydocumentId)
         {
@@ -265,7 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocJson(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodydocumentJson)
         {
@@ -299,7 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdatePartiesFields(WorkflowExpression<string> templateIDDynamic, WorkflowExpression<object> dynamicTemplateSchema = null)
         {
@@ -322,7 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdatePartiesProperties(WorkflowExpression<string> templateIDDynamic, WorkflowExpression<object> dynamicTemplateMetaSchema = null)
         {
@@ -345,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSetFile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypdfContent)
         {
@@ -379,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildNewFromPdf(WorkflowExpression<string> bodypdfContent, WorkflowExpression<bodyauthorRoleInput> bodyauthorRole)
         {
@@ -413,7 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAppendFile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypdfContent)
         {
@@ -447,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancel(WorkflowExpression<string> bodydocumentId)
         {
@@ -478,7 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddParty(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyEmail, WorkflowExpression<bodypartyRoleInput> bodypartyRole, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodymobile = null, WorkflowExpression<string> bodypersonalNumber = null, WorkflowExpression<double> bodysignOrder = null, WorkflowExpression<bodydeliveryMethodInput> bodydeliveryMethod = null, WorkflowExpression<bodyauthenticationToViewInput> bodyauthenticationToView = null, WorkflowExpression<bodyauthenticationToViewArchivedInput> bodyauthenticationToViewArchived = null, WorkflowExpression<bodyauthenticationToSignInput> bodyauthenticationToSign = null, WorkflowExpression<bodyconfirmationInput> bodyconfirmation = null)
         {
@@ -642,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetAuthorAttachment(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyattachmentName, WorkflowExpression<bodyrequiredInput> bodyrequired, WorkflowExpression<bodyaddToSealedFileInput> bodyaddToSealedFile, WorkflowExpression<string> bodyfileId = null, WorkflowExpression<string> bodypdfContent = null)
         {

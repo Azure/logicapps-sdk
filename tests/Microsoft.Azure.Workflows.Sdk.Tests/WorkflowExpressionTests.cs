@@ -440,8 +440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             foreach (var method in methods)
             {
                 var entry = method.GetCustomAttribute<WorkflowExpressionFactoryAttribute>().EntryPoint;
-                Assert.Contains(method.DeclaringType.GetMethods(), candidate => candidate.Name == entry &&
-                    candidate.GetParameters().Length == method.GetParameters().Length);
+                var descriptors = method.DeclaringType.GetMethods()
+                    .Where(candidate => candidate.Name == entry &&
+                        candidate.GetParameters().Length == method.GetParameters().Length)
+                    .ToArray();
+                Assert.NotEmpty(descriptors);
+                Assert.All(descriptors, descriptor => Assert.Null(descriptor.GetCustomAttribute<ConnectorOperationAttribute>()));
             }
         }
 

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> __BuildAllBreachesAccount(WorkflowExpression<string> account, WorkflowExpression<bool> truncateResponse = null, WorkflowExpression<string> domain = null, WorkflowExpression<bool> includeUnverified = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PastesResponseItem[]> __BuildPastes(WorkflowExpression<string> account)
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BreachSingleResponse> __BuildBreachSingle(WorkflowExpression<string> name)
         {

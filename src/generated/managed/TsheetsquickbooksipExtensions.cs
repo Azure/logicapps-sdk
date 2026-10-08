@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetJobcodesResponse> __BuildGetJobcodes(WorkflowExpression<string> ids = null, WorkflowExpression<string> parentIds = null, WorkflowExpression<string> name = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<bool> customfields = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> modifiedSince = null, WorkflowExpression<supplementalDataInput> supplementalData = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null, WorkflowExpression<activeInput> active = null)
         {
@@ -74,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectsResponse> __BuildGetProjects(WorkflowExpression<string> ids = null, WorkflowExpression<string> jobcodeIds = null, WorkflowExpression<int> parentJobcodeId = null, WorkflowExpression<string> name = null, WorkflowExpression<activeInput> active = null, WorkflowExpression<bool> byJobcodeAssignment = null)
         {
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUsersResponse> __BuildGetUsers(WorkflowExpression<string> ids = null, WorkflowExpression<string> notIds = null, WorkflowExpression<string> employeeNumbers = null, WorkflowExpression<string> usernames = null, WorkflowExpression<string> groupIds = null, WorkflowExpression<string> notGroupIds = null, WorkflowExpression<string> payrollIds = null, WorkflowExpression<activeInput> active = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> modifiedSince = null, WorkflowExpression<supplementalDataInput> supplementalData = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
         {
@@ -180,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTimesheetsResponse> __BuildGetTimesheets(WorkflowExpression<string> ids = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> jobcodeIds = null, WorkflowExpression<string> payrollIds = null, WorkflowExpression<string> userIds = null, WorkflowExpression<string> groupIds = null, WorkflowExpression<onTheClockInput> onTheClock = null, WorkflowExpression<jobcodeTypeInput> jobcodeType = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> modifiedSince = null, WorkflowExpression<supplementalDataInput> supplementalData = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
         {
@@ -245,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNotificationsResponse> __BuildGetNotifications(WorkflowExpression<string> ids = null, WorkflowExpression<string> deliveryBefore = null, WorkflowExpression<string> deliveryAfter = null, WorkflowExpression<int> userId = null, WorkflowExpression<string> msgTrackingId = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
         {

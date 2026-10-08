@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AbEntryFindSchema> __BuildActionAbEntryFind(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AbEntryCreateSchema> __BuildActionAbEntryCreate(WorkflowExpression<applyActionToInput> applyActionTo, WorkflowExpression<object> body = null)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AbEntryUpdateSchema> __BuildActionAbEntryUpdate(WorkflowExpression<applyActionToInput> applyActionTo, WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AbEntryFindSchema> __BuildActionAbEntryFindOrCreate(WorkflowExpression<applyActionToInput> applyActionTo, WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -157,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AppointmentCreateSchema> __BuildActionAppointmentCreate(WorkflowExpression<linkWithTypeInput> linkWithType = null, WorkflowExpression<object> body = null)
         {
@@ -182,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AppointmentUpdateSchema> __BuildActionAppointmentUpdate(WorkflowExpression<object> body = null)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AppointmentCreateSchema> __BuildActionAppointmentFind(WorkflowExpression<object> body = null)
         {
@@ -226,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AppointmentCreateSchema> __BuildActionAppointmentDelete(WorkflowExpression<object> body = null)
         {
@@ -248,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PACaseView> __BuildActionCaseCreate(WorkflowExpression<object> body = null)
         {
@@ -270,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PACaseView> __BuildActionCaseUpdate(WorkflowExpression<object> body = null)
         {
@@ -292,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CaseFindOrCreateSchema> __BuildActionCaseFindOrCreate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -329,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HotlistTaskCreateSchema> __BuildActionHTaskCreate(WorkflowExpression<parentTypeInput> parentType, WorkflowExpression<object> body = null)
         {
@@ -353,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InteractionLogCreateSchema> __BuildActionInteractionCreate(WorkflowExpression<object> body = null)
         {
@@ -375,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadFindSchema> __BuildActionLeadFind(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -412,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadCreateSchema> __BuildActionLeadCreate(WorkflowExpression<object> body = null)
         {
@@ -434,7 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadUpdateSchema> __BuildActionLeadUpdate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -471,7 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadFindOrCreateSchema> __BuildActionLeadFindOrCreate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -508,7 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadConvertSchema> __BuildActionLeadConvert(WorkflowExpression<convertOptionInput> convertOption = null, WorkflowExpression<doNotCreateAContactInput> doNotCreateAContact = null, WorkflowExpression<doNotCreateAnOpportunityInput> doNotCreateAnOpportunity = null, WorkflowExpression<object> body = null)
         {
@@ -542,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NoteCreateSchema> __BuildActionNoteCreate(WorkflowExpression<parentTypeInput> parentType, WorkflowExpression<object> body = null)
         {
@@ -566,7 +547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunityFindSchema> __BuildActionOpportunityFind(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -603,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunityCreateSchema> __BuildActionOpportunityCreate(WorkflowExpression<object> body = null)
         {
@@ -625,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunityFindOrCreateSchema> __BuildActionOpportunityFindOrCreate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
         {
@@ -662,7 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpportunityUpdateSchema> __BuildActionOpportunityUpdate(WorkflowExpression<object> body = null)
         {
@@ -684,7 +661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PersonalTaskCreateSchema> __BuildActionPTaskCreate(WorkflowExpression<object> body = null)
         {
@@ -706,7 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserFindSchema> __BuildActionUserFind(WorkflowExpression<object> body = null)
         {

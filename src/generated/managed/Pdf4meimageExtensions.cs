@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCompressImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyimageTypeInput> bodyimageType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodycompressionLevelInput> bodycompressionLevel = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConvertImageFormat(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodycurrentImageFormatInput> bodycurrentImageFormat, WorkflowExpression<bodynewImageFormatInput> bodynewImageFormat, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -124,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCropImage(WorkflowExpression<schemaValInput> schemaVal = null, WorkflowExpression<object> operation = null)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCustomAPI(WorkflowExpression<string> featurePath, WorkflowExpression<string> body = null)
         {
@@ -174,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFlipImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyorientationTypeInput> bodyorientationType, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -222,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageExtractTextV1Response> __BuildImageExtractText(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyimageTypeExtractInput> bodyimageTypeExtract, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -270,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildRemoveExifTagsFromImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyimageTypeInput> bodyimageType, WorkflowExpression<string> bodydocumentname = null)
         {
@@ -318,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildResizeImage(WorkflowExpression<schemaValInput> schemaVal = null, WorkflowExpression<object> operation = null)
         {

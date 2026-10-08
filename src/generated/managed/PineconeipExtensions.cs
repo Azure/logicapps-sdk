@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VectorQueryPostResponse> __BuildVectorQuery(WorkflowExpression<bool> bodyincludeValues = null, WorkflowExpression<bool> bodyincludeMetadata = null, WorkflowExpression<int[]> bodysparseVectorindices = null, WorkflowExpression<int[]> bodysparseVectorvalues = null, WorkflowExpression<string> bodyNamespace = null, WorkflowExpression<int> bodytopK = null, WorkflowExpression<int[]> bodyvector = null, WorkflowExpression<string> bodyid = null)
         {
@@ -117,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVectorDelete(WorkflowExpression<bool> bodydeleteAll = null, WorkflowExpression<string[]> bodyids = null, WorkflowExpression<string> bodyNamespace = null)
         {
@@ -165,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VectorsGetResponse> __BuildVectorsGet(WorkflowExpression<string> ids, WorkflowExpression<string> @namespace = null)
         {
@@ -190,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVectorUpdate(WorkflowExpression<string> bodyid, WorkflowExpression<double[]> bodyvalues = null, WorkflowExpression<int[]> bodysparseValuesindices = null, WorkflowExpression<double[]> bodysparseValuesvalues = null, WorkflowExpression<string> bodyNamespace = null)
         {
@@ -256,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VectorUpsertPostResponse> __BuildVectorUpsert(WorkflowExpression<bodyvectorsInputItem[]> bodyvectors = null, WorkflowExpression<string> bodyNamespace = null)
         {
@@ -306,7 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCollectionCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodysource)
         {
@@ -339,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CollectionGetResponse> __BuildCollectionGet(WorkflowExpression<string> collectionName)
         {
@@ -360,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCollectionDelete(WorkflowExpression<string> collectionName)
         {
@@ -390,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildIndex(WorkflowExpression<string> bodyname, WorkflowExpression<int> bodydimension, WorkflowExpression<string> bodymetric = null, WorkflowExpression<int> bodypods = null, WorkflowExpression<int> bodyreplicas = null, WorkflowExpression<string> bodypodType = null, WorkflowExpression<string> bodysourceCollection = null)
         {
@@ -458,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IndexGetResponse> __BuildIndexGet(WorkflowExpression<string> indexName)
         {
@@ -479,7 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildIndexDelete(WorkflowExpression<string> indexName)
         {
@@ -500,7 +489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildIndexPatch(WorkflowExpression<string> indexName, WorkflowExpression<int> bodyreplicas = null, WorkflowExpression<string> bodypodType = null)
         {

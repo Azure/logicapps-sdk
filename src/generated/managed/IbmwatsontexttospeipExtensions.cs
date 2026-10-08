@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SynthesizeResponse> __BuildSynthesize(WorkflowExpression<string> bodytext, WorkflowExpression<voiceInput> voice = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PronunciationResponse> __BuildPronunciation(WorkflowExpression<voiceInput> voice = null, WorkflowExpression<string> text = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetVoiceResponse> __BuildGetVoice(WorkflowExpression<string> voice)
         {

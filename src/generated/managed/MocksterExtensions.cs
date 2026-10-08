@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAirlinesResponseItem[]> __BuildGetAirlines(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAnimalsResponseItem[]> __BuildGetAnimals(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetColorsResponseItem[]> __BuildGetColors(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCompaniesResponseItem[]> __BuildGetCompanies(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -131,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDatabasesResponseItem[]> __BuildGetDatabases(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -157,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDatesResponseItem[]> __BuildGetDates(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -186,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFinancesResponseItem[]> __BuildGetFinances(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -215,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGitsResponseItem[]> __BuildGetGits(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -244,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetHackersResponseItem[]> __BuildGetHackers(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -273,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRandomImagesResponseItem[]> __BuildGetRandomImages(WorkflowExpression<int> count = null, WorkflowExpression<int> width = null, WorkflowExpression<int> height = null, WorkflowExpression<categoryInput> category = null)
         {
@@ -305,7 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInternetResponseItem[]> __BuildGetInternet(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -331,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocationsResponseItem[]> __BuildGetLocations(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -360,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLoremsResponseItem[]> __BuildGetLorems(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -386,7 +373,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMusicsResponseItem[]> __BuildGetMusics(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -415,7 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNumbersResponseItem[]> __BuildGetNumbers(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -441,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPeopleResponseItem[]> __BuildGetPeople(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -470,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPhonesResponseItem[]> __BuildGetPhones(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -499,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProductsResponseItem[]> __BuildGetProducts(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -528,7 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSciencesResponseItem[]> __BuildGetSciences(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -554,7 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStringsResponseItem[]> __BuildGetStrings(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -580,7 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSystemsResponseItem[]> __BuildGetSystems(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -606,7 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetVehiclesResponseItem[]> __BuildGetVehicles(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {
@@ -635,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWordsResponseItem[]> __BuildGetWords(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
         {

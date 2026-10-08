@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APIAutocompleteSchoolResult> __BuildAutocompleteGetSchools(WorkflowExpression<string> q, WorkflowExpression<bool> qSearchCityStateName = null, WorkflowExpression<string> st = null, WorkflowExpression<levelInput> level = null, WorkflowExpression<double> boxLatitudeNW = null, WorkflowExpression<double> boxLongitudeNW = null, WorkflowExpression<double> boxLatitudeSE = null, WorkflowExpression<double> boxLongitudeSE = null, WorkflowExpression<int> returnCount = null)
         {
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APIDistrictList2> __BuildDistrictsGetAllDistricts2(WorkflowExpression<string> st, WorkflowExpression<string> q = null, WorkflowExpression<string> city = null, WorkflowExpression<string> zip = null, WorkflowExpression<double> nearLatitude = null, WorkflowExpression<double> nearLongitude = null, WorkflowExpression<string> boundaryAddress = null, WorkflowExpression<int> distanceMiles = null, WorkflowExpression<bool> isInBoundaryOnly = null, WorkflowExpression<double> boxLatitudeNW = null, WorkflowExpression<double> boxLongitudeNW = null, WorkflowExpression<double> boxLatitudeSE = null, WorkflowExpression<double> boxLongitudeSE = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<sortByInput> sortBy = null, WorkflowExpression<bool> includeUnrankedDistrictsInRankSort = null)
         {
@@ -134,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APIDistrict12> __BuildDistrictsGetDistrict2(WorkflowExpression<string> id)
         {
@@ -155,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APISchoolListRank2> __BuildRankingGet(WorkflowExpression<string> st, WorkflowExpression<int> year = null, WorkflowExpression<levelInput> level = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -188,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APIDistrictListRank2> __BuildDistrictRanking(WorkflowExpression<string> st, WorkflowExpression<int> year = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -218,7 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APISchoolList2> __BuildSchoolsGetAllSchools20(WorkflowExpression<string> st, WorkflowExpression<string> q = null, WorkflowExpression<bool> qSearchSchoolNameOnly = null, WorkflowExpression<string> districtID = null, WorkflowExpression<levelInput> level = null, WorkflowExpression<string> city = null, WorkflowExpression<string> zip = null, WorkflowExpression<bool> isMagnet = null, WorkflowExpression<bool> isCharter = null, WorkflowExpression<bool> isVirtual = null, WorkflowExpression<bool> isTitleI = null, WorkflowExpression<bool> isTitleISchoolwide = null, WorkflowExpression<double> nearLatitude = null, WorkflowExpression<double> nearLongitude = null, WorkflowExpression<string> nearAddress = null, WorkflowExpression<int> distanceMiles = null, WorkflowExpression<double> boundaryLatitude = null, WorkflowExpression<double> boundaryLongitude = null, WorkflowExpression<string> boundaryAddress = null, WorkflowExpression<bool> isInBoundaryOnly = null, WorkflowExpression<double> boxLatitudeNW = null, WorkflowExpression<double> boxLongitudeNW = null, WorkflowExpression<double> boxLatitudeSE = null, WorkflowExpression<double> boxLongitudeSE = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<sortByInput> sortBy = null, WorkflowExpression<bool> includeUnrankedSchoolsInRankSort = null)
         {
@@ -321,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<APISchool20Full> __BuildSchoolsGetSchool20(WorkflowExpression<string> id)
         {

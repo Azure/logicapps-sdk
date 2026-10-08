@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostcategoriesResponse> __BuildPostcategories(WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodychipColor = null, WorkflowExpression<string> bodymissionsId = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<int> bodyuserId = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyupdatedBy = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodysyncId = null)
         {
@@ -151,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetcategoriesIdResponse> __BuildGetcategoriesId(WorkflowExpression<string> id)
         {
@@ -172,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletecategoriesId(WorkflowExpression<string> id)
         {
@@ -193,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutcategoriesIdResponse> __BuildPutcategoriesId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodychipColor = null, WorkflowExpression<string> bodymissionsId = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<int> bodyuserId = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyupdatedBy = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodysyncId = null)
         {
@@ -319,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchcategoriesIdResponse> __BuildPatchcategoriesId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null)
         {
@@ -363,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostdepartmentsResponse> __BuildPostdepartments(WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyposition = null)
         {
@@ -404,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetdepartmentsIdResponse> __BuildGetdepartmentsId(WorkflowExpression<string> id)
         {
@@ -425,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletedepartmentsId(WorkflowExpression<string> id)
         {
@@ -446,7 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutdepartmentsIdResponse> __BuildPutdepartmentsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<int> bodyideasCount = null, WorkflowExpression<int> bodyprojectsCount = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<int> bodyuserId = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyupdatedBy = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodysyncId = null)
         {
@@ -572,7 +563,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchdepartmentsIdResponse> __BuildPatchdepartmentsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyposition = null)
         {
@@ -623,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostfunnelLanesResponse> __BuildPostfunnelLanes(WorkflowExpression<string> bodytitle = null)
         {
@@ -657,7 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetfunnelLanesIdResponse> __BuildGetfunnelLanesId(WorkflowExpression<string> id)
         {
@@ -678,7 +666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletefunnelLanesId(WorkflowExpression<string> id)
         {
@@ -699,7 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutfunnelLanesIdResponse> __BuildPutfunnelLanesId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyfunnelStageType = null, WorkflowExpression<int> bodystageType = null, WorkflowExpression<string> bodycolor = null, WorkflowExpression<int> bodydeadline = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodymodifiedBy = null, WorkflowExpression<int> bodyfunnelId = null, WorkflowExpression<int> bodyfunnelStatusId = null, WorkflowExpression<int> bodyownerId = null, WorkflowExpression<bool> bodyenableNotification = null, WorkflowExpression<int> bodyideasCount = null, WorkflowExpression<int> bodyprojectsCount = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodylink = null, WorkflowExpression<string> bodyfile = null, WorkflowExpression<bool> bodyshowInGraph = null, WorkflowExpression<bool> bodyshowInBubble = null, WorkflowExpression<int> bodyconfettiType = null, WorkflowExpression<string> bodyautomationOwnerId = null)
         {
@@ -874,7 +860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchfunnelLanesIdResponse> __BuildPatchfunnelLanesId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null)
         {
@@ -918,7 +903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostfunnels(WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyfunnelType = null)
         {
@@ -959,7 +943,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetfunnelsIdResponse> __BuildGetfunnelsId(WorkflowExpression<string> id)
         {
@@ -980,7 +963,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletefunnelsId(WorkflowExpression<string> id)
         {
@@ -1001,7 +983,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutfunnelsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<int> bodyuserId = null, WorkflowExpression<int> bodyfunnelType = null, WorkflowExpression<int> bodymodifiedBy = null, WorkflowExpression<int> bodyprivacySetting = null, WorkflowExpression<int> bodyownerId = null, WorkflowExpression<bool> bodyblockFunnelNotification = null, WorkflowExpression<int> bodyideasCount = null, WorkflowExpression<int> bodyprojectsCount = null, WorkflowExpression<bool> bodyhidden = null, WorkflowExpression<string> bodysetXAxis = null, WorkflowExpression<string> bodysetYAxis = null, WorkflowExpression<string> bodysetZAxis = null, WorkflowExpression<string> bodysetAxisColor = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<int> bodyprojectFunnelId = null, WorkflowExpression<string> bodyfromScript = null, WorkflowExpression<int> bodyuserPrivacySetting = null, WorkflowExpression<bool> bodyincludeInDashboard = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodysyncId = null)
         {
@@ -1183,7 +1164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchfunnelsIdResponse> __BuildPatchfunnelsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodyfunnelType = null)
         {
@@ -1234,7 +1214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostideas(WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<int> bodyfunnelId = null, WorkflowExpression<int> bodymissionId = null)
         {
@@ -1289,7 +1268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetideasIdeaIdTasksResponse> __BuildGetideasIdeaIdTasks(WorkflowExpression<string> ideaId)
         {
@@ -1310,7 +1288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostideasIdeaIdTasksResponse> __BuildPostideasIdeaIdTasks(WorkflowExpression<string> ideaId, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodystatus = null)
         {
@@ -1352,7 +1329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetideasId(WorkflowExpression<string> id)
         {
@@ -1373,7 +1349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteideasId(WorkflowExpression<string> id)
         {
@@ -1394,7 +1369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutideasId(WorkflowExpression<string> id, WorkflowExpression<int> bodyuserId = null, WorkflowExpression<int> bodyroundId = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<string> bodydevice = null, WorkflowExpression<string> bodybrowser = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodyscreenRes = null, WorkflowExpression<string> bodyuserIp = null, WorkflowExpression<int> bodycommentsCount = null, WorkflowExpression<int> bodyreviewScoresCount = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<int> bodystage = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodystatusId = null, WorkflowExpression<string> bodyposition = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<string> bodyideaCreator = null, WorkflowExpression<string> bodyideationIdeaCategoryId = null, WorkflowExpression<string> bodyboardIdeaCategoryId = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<int> bodyideaLikesCount = null, WorkflowExpression<bool> bodybookmark = null, WorkflowExpression<int> bodyideaScoresCount = null, WorkflowExpression<int> bodylikesCount = null, WorkflowExpression<string> bodyboardId = null, WorkflowExpression<string> bodymissionId = null, WorkflowExpression<string> bodycreatorName = null, WorkflowExpression<int> bodytagsCount = null, WorkflowExpression<string> bodyfunnelId = null, WorkflowExpression<string> bodyfunnelStageId = null, WorkflowExpression<string> bodyfunnelStatusId = null, WorkflowExpression<string> bodyideaDeadline = null, WorkflowExpression<bool> bodydeadlineNotification = null, WorkflowExpression<int> bodyideaViews = null, WorkflowExpression<string> bodyrevenue = null, WorkflowExpression<string> bodycost = null, WorkflowExpression<string> bodyprofit = null, WorkflowExpression<string> bodystatusName = null, WorkflowExpression<string> bodyideaScores = null, WorkflowExpression<string> bodyapprovedAt = null, WorkflowExpression<string> bodydeniedAt = null, WorkflowExpression<string> bodyadminComments = null, WorkflowExpression<bool> bodyisChild = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<int> bodyscoreCompleteScore = null, WorkflowExpression<int> bodyenrichmentScore = null, WorkflowExpression<int> bodyengagementScore = null, WorkflowExpression<int> bodyopportunityScore = null, WorkflowExpression<int> bodytrendScore = null, WorkflowExpression<string> bodycleanedText = null, WorkflowExpression<int> bodyduplicateIdeasCount = null, WorkflowExpression<string> bodysidekiqDuplicateIdeasCount = null, WorkflowExpression<string> bodyaiCreated = null, WorkflowExpression<string> bodyideaType = null, WorkflowExpression<string> bodyfromScript = null, WorkflowExpression<string> bodyembedding = null, WorkflowExpression<string> bodyreasonText = null, WorkflowExpression<string> bodycategoryText = null, WorkflowExpression<string> bodycanvassId = null, WorkflowExpression<string> bodybudgetTotal = null, WorkflowExpression<string> bodybudgetSpend = null, WorkflowExpression<string> bodybudgetResult = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodytagText = null, WorkflowExpression<string> bodyinnovationTypeId = null, WorkflowExpression<string> bodyinnovationTypeText = null, WorkflowExpression<string> bodysyncId = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodydescriptionEnriched = null)
         {
@@ -1976,7 +1950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPatchideasId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<int> bodyfunnelId = null)
         {
@@ -2034,7 +2007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostmissions(WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyhidden = null)
         {
@@ -2096,7 +2068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetmissionsIdResponse> __BuildGetmissionsId(WorkflowExpression<string> id)
         {
@@ -2117,7 +2088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletemissionsId(WorkflowExpression<string> id)
         {
@@ -2138,7 +2108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutmissionsIdResponse> __BuildPutmissionsId(WorkflowExpression<string> id, WorkflowExpression<int> bodyuserId = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bool> bodyisAnonymous = null, WorkflowExpression<string> bodyendingNote = null, WorkflowExpression<string> bodymissionPic = null, WorkflowExpression<int> bodyteamSize = null, WorkflowExpression<int> bodystatus = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<bool> bodyisTemplate = null, WorkflowExpression<int> bodyendDuration = null, WorkflowExpression<string> bodytoken = null, WorkflowExpression<bool> bodyisTryout = null, WorkflowExpression<int> bodytemplateType = null, WorkflowExpression<bool> bodyisOpen = null, WorkflowExpression<int> bodymissionType = null, WorkflowExpression<string> bodypublishedOnce = null, WorkflowExpression<string> bodyinboxQuestion = null, WorkflowExpression<string> bodyprivacySetting = null, WorkflowExpression<string> bodyagentProfile = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<bool> bodyenableReport = null, WorkflowExpression<int> bodyideasCount = null, WorkflowExpression<int> bodylikesCount = null, WorkflowExpression<int> bodycommentsCount = null, WorkflowExpression<string> bodyfunnelId = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<bool> bodyenableInboundEmail = null, WorkflowExpression<string> bodydepartmentName = null, WorkflowExpression<string> bodynotificationType = null, WorkflowExpression<string> bodynotificationFrequency = null, WorkflowExpression<string> bodynotificationText = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodymissionViews = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<string> bodyallowAiIdeas = null, WorkflowExpression<string> bodyaiMissionType = null, WorkflowExpression<string> bodyfromScript = null, WorkflowExpression<string> bodyideaAttachmentsAllowed = null, WorkflowExpression<string> bodyvideoLink = null, WorkflowExpression<string> bodyhidden = null, WorkflowExpression<string> bodyconfettiType = null, WorkflowExpression<string> bodyenable = null, WorkflowExpression<string> bodyaddAttachment = null, WorkflowExpression<string> bodyaddComment = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodysyncId = null, WorkflowExpression<string> bodyideaCustomFields = null)
         {
@@ -2552,7 +2521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchmissionsIdResponse> __BuildPatchmissionsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bool> bodyhidden = null)
         {
@@ -2610,7 +2578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostprojectsResponse> __BuildPostprojects(WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodyfunnelId = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null)
         {
@@ -2672,7 +2639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetprojectsIdResponse> __BuildGetprojectsId(WorkflowExpression<string> id)
         {
@@ -2693,7 +2659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteprojectsId(WorkflowExpression<string> id)
         {
@@ -2714,7 +2679,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutprojectsIdResponse> __BuildPutprojectsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodystatusId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodystageId = null, WorkflowExpression<string> bodyprojectManagerId = null, WorkflowExpression<string> bodybusinessOwnerId = null, WorkflowExpression<string> bodyprogress = null, WorkflowExpression<string> bodycompanyId = null, WorkflowExpression<string> bodycommentsCount = null, WorkflowExpression<string> bodyprojectScore = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyposition = null, WorkflowExpression<int> bodymodifiedBy = null, WorkflowExpression<int> bodytagsCount = null, WorkflowExpression<string> bodyfunnelId = null, WorkflowExpression<string> bodyfunnelStageId = null, WorkflowExpression<string> bodyfunnelStatusId = null, WorkflowExpression<string> bodystageDeadline = null, WorkflowExpression<string> bodydeadlineNotification = null, WorkflowExpression<string> bodystatusName = null, WorkflowExpression<string> bodyapprovedAt = null, WorkflowExpression<string> bodydeniedAt = null, WorkflowExpression<string> bodyamScores = null, WorkflowExpression<string> bodyprojectRevenue = null, WorkflowExpression<string> bodyprojectCost = null, WorkflowExpression<string> bodyprojectProfit = null, WorkflowExpression<string> bodyadminComments = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<string> bodyfromScript = null, WorkflowExpression<string> bodyreasonText = null, WorkflowExpression<string> bodycategoryText = null, WorkflowExpression<string> bodycanvassId = null, WorkflowExpression<string> bodybudgetTotal = null, WorkflowExpression<string> bodybudgetSpend = null, WorkflowExpression<string> bodybudgetResult = null, WorkflowExpression<string> bodytagText = null, WorkflowExpression<string> bodyestimatedTime = null, WorkflowExpression<string> bodytotalTimeSpend = null, WorkflowExpression<string> bodytotalTime = null, WorkflowExpression<string> bodyinnovationTypeId = null, WorkflowExpression<string> bodyinnovationTypeText = null, WorkflowExpression<string> bodysyncId = null, WorkflowExpression<string> bodyrecordUrl = null, WorkflowExpression<string> bodydescriptionEnriched = null, WorkflowExpression<string> bodycustomFieldValues = null)
         {
@@ -3114,7 +3078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchprojectsIdResponse> __BuildPatchprojectsId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null)
         {
@@ -3156,7 +3119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetprojectsProjectIdTasksResponse> __BuildGetprojectsProjectIdTasks(WorkflowExpression<string> projectId)
         {
@@ -3177,7 +3139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostprojectsProjectIdTasksResponse> __BuildPostprojectsProjectIdTasks(WorkflowExpression<string> projectId, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodystatus = null)
         {
@@ -3219,7 +3180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskBySyncIdResponse> __BuildGetTaskBySyncId(WorkflowExpression<string> syncId = null)
         {
@@ -3242,7 +3202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PosttasksResponse> __BuildPosttasks(WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodystatus = null)
         {
@@ -3283,7 +3242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GettasksIdResponse> __BuildGettasksId(WorkflowExpression<string> id)
         {
@@ -3304,7 +3262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletetasksId(WorkflowExpression<string> id)
         {
@@ -3325,7 +3282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PatchtasksIdResponse> __BuildPatchtasksId(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<int> bodystatus = null, WorkflowExpression<string> bodysyncId = null)
         {
@@ -3383,7 +3339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletetopicsId(WorkflowExpression<string> id)
         {
@@ -3413,7 +3368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostusersResponse> __BuildPostusers(WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<int> bodyposition = null)
         {
@@ -3491,7 +3445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetusersIdResponse> __BuildGetusersId(WorkflowExpression<string> id)
         {
@@ -3512,7 +3465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteusersId(WorkflowExpression<string> id)
         {
@@ -3533,7 +3485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutusersIdResponse> __BuildPutusersId(WorkflowExpression<string> id, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyprofilePic = null, WorkflowExpression<int> bodypoints = null, WorkflowExpression<int> bodycompanyId = null, WorkflowExpression<int> bodyuserRoleId = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<string> bodylastSignOutAt = null, WorkflowExpression<string> bodyposition = null, WorkflowExpression<bool> bodyprofileFlag = null, WorkflowExpression<string> bodyuserChecklist = null, WorkflowExpression<int> bodyideaLikesCount = null, WorkflowExpression<int> bodycommentsCount = null, WorkflowExpression<int> bodyxpPoints = null, WorkflowExpression<int> bodyideasCount = null, WorkflowExpression<string> bodyfunnelId = null, WorkflowExpression<int> bodylevel = null, WorkflowExpression<int> bodyxpLevel = null, WorkflowExpression<string> bodyprojectFunnelId = null, WorkflowExpression<string> bodychecklistScore = null, WorkflowExpression<string> bodyprovider = null, WorkflowExpression<string> bodyuid = null, WorkflowExpression<string> bodyemailSentAt = null, WorkflowExpression<bool> bodyblockAllNotification = null, WorkflowExpression<string> bodydbName = null, WorkflowExpression<string> bodydeptId = null, WorkflowExpression<string> bodydeptName = null, WorkflowExpression<string> bodymainImage = null, WorkflowExpression<string> bodytempImage = null, WorkflowExpression<string> bodyimageConfigs = null, WorkflowExpression<bool> bodyimageAutoGenerated = null, WorkflowExpression<string> bodyamAccount = null, WorkflowExpression<string> bodyuuid = null, WorkflowExpression<string> bodypasswordResetAttempts = null, WorkflowExpression<string> bodylastPasswordResetAt = null, WorkflowExpression<string> bodycustomDomain = null, WorkflowExpression<string> bodyuserRoleName = null, WorkflowExpression<int> bodytheme = null, WorkflowExpression<string> bodyuserType = null, WorkflowExpression<string> bodyviewSettings = null, WorkflowExpression<string> bodyreadManual = null, WorkflowExpression<string> bodyaddIdeaBox = null, WorkflowExpression<string> bodyvisitAgent = null, WorkflowExpression<string> bodyaddIdea = null, WorkflowExpression<string> bodyinvitePeople = null, WorkflowExpression<string> bodyaddBoardMission = null, WorkflowExpression<string> bodyaddProject = null, WorkflowExpression<string> bodycompletedChecklist = null)
         {

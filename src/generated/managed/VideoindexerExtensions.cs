@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUploadVideo(WorkflowExpression<string> videoUrl, WorkflowExpression<string> name, WorkflowExpression<privacyInput> privacy, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> metadata = null, WorkflowExpression<string> description = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> callbackUrl = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUploadVideoFileContent(WorkflowExpression<string> fileContent, WorkflowExpression<string> name, WorkflowExpression<privacyInput> privacy, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> metadata = null, WorkflowExpression<string> description = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> callbackUrl = null)
         {
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessingStateResponse> __BuildGetProcessingState(WorkflowExpression<string> id)
         {
@@ -126,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> face = null, WorkflowExpression<string> query = null, WorkflowExpression<string> searchInPublicAccount = null, WorkflowExpression<privacyInput> privacy = null, WorkflowExpression<textScopeInput> textScope = null, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> id = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> owner = null, WorkflowExpression<double> pageSize = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> externalId = null)
         {
@@ -182,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBreakdownResponse> __BuildGetBreakdown(WorkflowExpression<string> id, WorkflowExpression<languageInput> language = null)
         {
@@ -206,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteBreakdown(WorkflowExpression<string> id, WorkflowExpression<bool> deleteInsights = null)
         {
@@ -230,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetInsightsWidgetUrl(WorkflowExpression<string> id, WorkflowExpression<widgetTypeInput> widgetType = null)
         {
@@ -254,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetPlayerWidgetUrl(WorkflowExpression<string> id)
         {
@@ -275,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetVttUrl(WorkflowExpression<string> id, WorkflowExpression<languageInput> language = null)
         {
@@ -299,7 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetInsightsWidgetUrlByExternalId(WorkflowExpression<string> externalId, WorkflowExpression<widgetTypeInput> widgetType = null)
         {
@@ -333,7 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildReIndexBreakdown(WorkflowExpression<string> id, WorkflowExpression<string> callbackUrl = null)
         {
@@ -357,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildReIndexBreakdownByExternalId(WorkflowExpression<string> externalId, WorkflowExpression<string> callbackUrl = null)
         {
@@ -381,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateFaceName(WorkflowExpression<string> id, WorkflowExpression<double> faceId, WorkflowExpression<string> newName)
         {

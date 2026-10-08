@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartResponse> __BuildStart(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> kmID)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InjectResponse> __BuildInject(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildQuery(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID, WorkflowExpression<string> bodyrelationship, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyObject = null)
         {
@@ -113,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildResponse(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID, WorkflowExpression<bodyanswersInputItem[]> bodyanswers = null)
         {
@@ -150,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUndo(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID)
         {
@@ -180,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EvidenceResponse> __BuildEvidence(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> factID, WorkflowExpression<string> sessionID)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVersion(WorkflowExpression<environmentInput> environment)
         {

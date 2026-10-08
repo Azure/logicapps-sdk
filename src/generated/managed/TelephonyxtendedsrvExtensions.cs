@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRaw(WorkflowExpression<string> bodyuserID, WorkflowExpression<string> bodypath, WorkflowExpression<string> bodypayload = null, WorkflowExpression<acceptInput> accept = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserCallsResponseItem[]> __BuildUserCalls(WorkflowExpression<string> bodyuserId)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserProfileResponse> __BuildUserProfile(WorkflowExpression<string> bodyuserId)
         {
@@ -124,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCallRecording(WorkflowExpression<string> bodyaction, WorkflowExpression<string> bodycallId, WorkflowExpression<string> bodyuserId)
         {
@@ -160,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildToggleAgentACDState(WorkflowExpression<string> bodyagentACDState, WorkflowExpression<string> bodyuserID = null)
         {
@@ -198,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallNew(WorkflowExpression<string> bodyaddress, WorkflowExpression<string> bodyuserID = null)
         {
@@ -235,7 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallHold(WorkflowExpression<string> bodycallId, WorkflowExpression<string> bodyuserId = null)
         {
@@ -272,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallEnd(WorkflowExpression<string> bodycallId, WorkflowExpression<string> bodyuserId = null)
         {
@@ -309,7 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallTransfertoVoicemail(WorkflowExpression<string> bodycallId, WorkflowExpression<string> bodyuserId = null)
         {
@@ -346,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallTransfer(WorkflowExpression<string> bodycallId, WorkflowExpression<string> bodyaddress, WorkflowExpression<string> bodyuserId = null)
         {
@@ -386,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallAnswer(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodycallId = null)
         {

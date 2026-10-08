@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendSmsMessage(WorkflowExpression<bool> autoUnicode, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<int> bodylongMessageMaxParts, WorkflowExpression<string> bodyfrom = null)
         {

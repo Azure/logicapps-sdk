@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PDFDtoApiResult> __BuildCreatePDF(WorkflowExpression<string> version, WorkflowExpression<string> commandtemplateId, WorkflowExpression<string> commandpayload, WorkflowExpression<string> commandreferenceId = null)
         {

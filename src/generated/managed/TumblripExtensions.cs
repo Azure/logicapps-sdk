@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogGetResponse> __BuildBlogGet(WorkflowExpression<string> blogIdentifier)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlocksGetResponse> __BuildBlocksGet(WorkflowExpression<string> blogIdentifier)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostUnblock(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyblockedTumblelog = null, WorkflowExpression<bool> bodyanonymousOnly = null)
         {
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostBlock(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyblockedTumblelog = null, WorkflowExpression<string> bodypostId = null)
         {
@@ -144,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostsBlock(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyblockedTumblelogs = null, WorkflowExpression<bool> bodyforce = null)
         {
@@ -186,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogLikesGetResponse> __BuildBlogLikesGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null)
         {
@@ -219,7 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogFollowingGetResponse> __BuildBlogFollowingGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -246,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogFollowersGetResponse> __BuildBlogFollowersGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -273,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogFollowCheckGetResponse> __BuildBlogFollowCheckGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> query)
         {
@@ -296,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostsQueuedGetResponse> __BuildPostsQueuedGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> filter = null, WorkflowExpression<string> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -326,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostQueuedReorder(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodypostId = null, WorkflowExpression<string> bodyinsertAfter = null)
         {
@@ -368,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostQueuedShuffle(WorkflowExpression<string> blogIdentifier)
         {
@@ -389,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostDraftsGetResponse> __BuildPostDraftsGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<double> beforeId = null, WorkflowExpression<string> filter = null)
         {
@@ -416,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostSubmissionGetResponse> __BuildPostSubmissionGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> offset = null, WorkflowExpression<string> filter = null)
         {
@@ -443,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActivityFeedGetResponse> __BuildActivityFeedGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> types = null, WorkflowExpression<int> before = null, WorkflowExpression<bool> rollups = null)
         {
@@ -473,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCreatePostResponse> __BuildPostCreate(WorkflowExpression<string> blogIdentifier, WorkflowExpression<bodycontentInputItem[]> bodycontent = null, WorkflowExpression<bodylayoutInputItem[]> bodylayout = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypublishedOn = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodysourceUrl = null, WorkflowExpression<bool> bodysendToTwitter = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyinteractabilityReblog = null, WorkflowExpression<string> bodyparentTumblelogUuid = null, WorkflowExpression<int> bodyparentPostId = null, WorkflowExpression<string> bodyreblogKey = null, WorkflowExpression<bool> bodyhideTrail = null)
         {
@@ -606,7 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostRetrieveGetResponse> __BuildPostRetrieveGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> postId, WorkflowExpression<postFormatInput> postFormat = null)
         {
@@ -632,7 +615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostEditPutResponse> __BuildPostEditPut(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> postId, WorkflowExpression<bodycontentInputItem[]> bodycontent = null, WorkflowExpression<bodylayoutInputItem[]> bodylayout = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypublishedOn = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodysourceUrl = null, WorkflowExpression<bool> bodysendToTwitter = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyinteractabilityReblog = null, WorkflowExpression<string> bodyparentTumblelogUuid = null, WorkflowExpression<int> bodyparentPostId = null, WorkflowExpression<string> bodyreblogKey = null, WorkflowExpression<bool> bodyhideTrail = null)
         {
@@ -766,7 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostDeleteResponse> __BuildPostDelete(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyid)
         {
@@ -797,7 +778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostNotesGetResponse> __BuildPostNotesGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<double> id, WorkflowExpression<double> beforeTimestamp = null, WorkflowExpression<modeInput> mode = null)
         {
@@ -872,7 +852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogFollowPostResponse> __BuildBlogFollow(WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodyemail = null)
         {
@@ -913,7 +892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlogUnfollowPostResponse> __BuildBlogUnfollow(WorkflowExpression<string> bodyurl = null)
         {
@@ -947,7 +925,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostLike(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyreblogKey)
         {
@@ -980,7 +957,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPostUnlike(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyreblogKey)
         {
@@ -1013,7 +989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostTagGetResponseItem[]> __BuildPostTagGet(WorkflowExpression<string> tag, WorkflowExpression<int> before = null, WorkflowExpression<double> limit = null, WorkflowExpression<string> filter = null)
         {

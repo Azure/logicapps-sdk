@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurespeechpronuncia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSpeechRecognitionConversationCognitiveServices(WorkflowExpression<string> referenceText, WorkflowExpression<string> language, WorkflowExpression<string> audioContent = null, WorkflowExpression<gradingSystemInput> gradingSystem = null, WorkflowExpression<granularityInput> granularity = null, WorkflowExpression<dimensionInput> dimension = null, WorkflowExpression<bool> enableMiscue = null, WorkflowExpression<string> scenarioId = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddCommentResponseV2> __BuildAddComment(WorkflowExpression<string> taskId, WorkflowExpression<string> bodydatacomment = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskResponseV2> __BuildCompleteTask(WorkflowExpression<string> taskId)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectResponseV2> __BuildCreateProject(WorkflowExpression<string> workspace, WorkflowExpression<string> team = null, WorkflowExpression<string> projectdataprojectName = null, WorkflowExpression<string> projectdatadueDate = null, WorkflowExpression<bool> projectdatapublic = null, WorkflowExpression<projectdataprojectColorInput> projectdataprojectColor = null, WorkflowExpression<string> projectdataprojectNotes = null, WorkflowExpression<string> projectdataowner = null, WorkflowExpression<bool> projectdataarchive = null)
         {
@@ -191,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskResponseV2> __BuildCreateTask(WorkflowExpression<string> workspace, WorkflowExpression<string> projects, WorkflowExpression<string> taskdatataskName = null, WorkflowExpression<string> taskdataassignee = null, WorkflowExpression<string> taskdatadescription = null, WorkflowExpression<taskdataassigneeStatusInput> taskdataassigneeStatus = null, WorkflowExpression<bool> taskdatacompleted = null, WorkflowExpression<string> taskdatadueDate = null)
         {
@@ -282,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectResponseV2> __BuildGetProject(WorkflowExpression<string> projectId)
         {
@@ -303,7 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskResponseV2> __BuildGetTask(WorkflowExpression<string> taskId)
         {
@@ -324,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserResponseV2> __BuildGetUser(WorkflowExpression<string> userId)
         {
@@ -345,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListUsersResponseV2> __BuildListUsers(WorkflowExpression<string> workspaceId)
         {
@@ -366,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTeamsResponseV2> __BuildListWorkspaceTeams(WorkflowExpression<string> workspace)
         {

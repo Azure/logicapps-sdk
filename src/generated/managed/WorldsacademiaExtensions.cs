@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildGetAListCountriesInAContinent(WorkflowExpression<string> continentName)
         {
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> __BuildGetAllUniversitiesInACountryViaCountryName(WorkflowExpression<string> countryName)
         {
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> __BuildGetAllUniversitiesInACountryViaCountryCode(WorkflowExpression<string> countryCode)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllUniversityDetailsResponse> __BuildGetAllUniversityDetails(WorkflowExpression<string> universityName)
         {

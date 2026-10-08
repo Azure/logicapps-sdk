@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cxcardsbysurveyapp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cxcardsbysurveyapp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSurveyResponse> __BuildSendSurvey(WorkflowExpression<string> bodyapiKey, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodymobile = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodysalutation = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodylocale = null, WorkflowExpression<string> bodyRef = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyrecordType = null, WorkflowExpression<string> bodyrecordId = null, WorkflowExpression<string> bodyversionNumber = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileReputationSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<bool> extended = null, WorkflowExpression<bool> showHashes = null, WorkflowExpression<formatInput> format = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileReputationBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bool> extended = null, WorkflowExpression<bool> showHashes = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -116,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetHistoricalAvRecordsSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<bool> history = null, WorkflowExpression<formatInput> format = null)
         {
@@ -146,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetHistoricalAvRecordsBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bool> history = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -211,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileAnalysisSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
         {
@@ -237,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileAnalysisBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -295,7 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileAnalysisNonMaliciousSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue)
         {
@@ -317,7 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFileAnalysisNonMaliciousBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -375,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisMerged(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
         {
@@ -401,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisLatest(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
         {
@@ -427,7 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisSpecific(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<string> analysisId, WorkflowExpression<formatInput> format = null)
         {
@@ -454,7 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisArchiveMerged(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
         {
@@ -480,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisArchiveLatest(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
         {
@@ -506,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDownloadSample(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue)
         {
@@ -528,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetSampleDownloadStatus(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> contentType = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -594,7 +579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUploadSample(WorkflowExpression<string> sha1Value, WorkflowExpression<string> contentType)
         {
@@ -624,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUploadSampleMetadata(WorkflowExpression<string> sha1Value, WorkflowExpression<string> contentType, WorkflowExpression<string> subscribe = null, WorkflowExpression<string> body = null)
         {
@@ -652,7 +635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteSampleSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<string> deleteOn = null)
         {
@@ -677,7 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteSamplesBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string> bodyrlquerydeleteOn = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -742,7 +723,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReanalyzeSampleSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue)
         {
@@ -764,7 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReanalyzeSampleBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<formatInput> format = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -826,7 +805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSubscribeToReputationChanges(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -884,7 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnsubscribeFromReputationChanges(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
         {
@@ -942,7 +919,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetStartTimeForReputationChanges(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue)
         {
@@ -964,7 +940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetReputationDataChanges(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> events = null, WorkflowExpression<int> limit = null)
         {
@@ -994,7 +969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetContinuousReputationDataChanges(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> events = null)
         {
@@ -1023,7 +997,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSubmitSampleForDynamicAnalysis(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<string> bodyrlsha1 = null, WorkflowExpression<string> bodyrlurl = null, WorkflowExpression<string> bodyrlplatform = null, WorkflowExpression<bodyrlresponseFormatInput> bodyrlresponseFormat = null, WorkflowExpression<string> bodyrloptionalParameters = null)
         {
@@ -1104,7 +1077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSubmitArchiveForDynamicAnalysis(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<string> bodyrlsha1 = null, WorkflowExpression<string> bodyrlplatform = null, WorkflowExpression<string> bodyrlresponseFormat = null, WorkflowExpression<string> bodyrloptionalParameters = null)
         {
@@ -1168,7 +1140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildURIToHashSearchSha1FirstPage(WorkflowExpression<string> uriSha1, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> classification = null)
         {
@@ -1196,7 +1167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildURIToHashSearchSha1Paging(WorkflowExpression<string> uriSha1, WorkflowExpression<string> nextPageSha1, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> classification = null)
         {
@@ -1225,7 +1195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildURIToHashSearchTextPaging(WorkflowExpression<string> contentType, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> bodyrlqueryuri = null, WorkflowExpression<string> bodyrlquerynextPageSha1 = null)
         {
@@ -1288,7 +1257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetURLReport(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryurl = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
@@ -1346,7 +1314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildListFilesFromURL(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryurl = null, WorkflowExpression<string> bodyrlqueryanalysisId = null, WorkflowExpression<bool> bodyrlquerylastAnalysis = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<bool> bodyrlqueryextended = null, WorkflowExpression<string> bodyrlqueryclassification = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -1456,7 +1423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetLatestURLAnalysesFirst(WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
         {
@@ -1483,7 +1449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetLatestURLAnalysesPaging(WorkflowExpression<string> page, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
         {
@@ -1511,7 +1476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetTimestampedURLAnalysesFirst(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> startTime, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
         {
@@ -1540,7 +1504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetTimestampedURLAnalysesPaging(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> startTime, WorkflowExpression<string> page, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
         {
@@ -1570,7 +1533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAnalyzeURL(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryurl = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
@@ -1638,7 +1600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDomainReport(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
@@ -1706,7 +1667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildListFilesFromDomain(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<bool> bodyrlqueryextended = null, WorkflowExpression<string> bodyrlqueryclassification = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -1802,7 +1762,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetURLFromDomain(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -1884,7 +1843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDomainResolutions(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -1966,7 +1924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDomainRelatedDomains(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -2048,7 +2005,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetIPAddressReport(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
@@ -2116,7 +2072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildListFilesFromIPAddress(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<bool> bodyrlqueryextended = null, WorkflowExpression<string> bodyrlqueryclassification = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -2212,7 +2167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetURLFromIPAddress(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -2294,7 +2248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetIPAddressResolutions(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
         {
@@ -2376,7 +2329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDailyAPIUsageUser(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> date = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -2409,7 +2361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDailyAPIUsageCompany(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> date = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -2442,7 +2393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMonthlyAPIUsageUser(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> month = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -2475,7 +2425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMonthlyAPIUsageCompany(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> month = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
         {
@@ -2508,7 +2457,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDateRangeAPIUsageUser(WorkflowExpression<formatInput> format = null)
         {
@@ -2532,7 +2480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDateRangeAPIUsageCompany(WorkflowExpression<formatInput> format = null)
         {
@@ -2556,7 +2503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetActiveYARARulesets(WorkflowExpression<formatInput> format = null)
         {
@@ -2580,7 +2526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetAPIQuotaLimitsUser(WorkflowExpression<formatInput> format = null)
         {
@@ -2604,7 +2549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetAPIQuotaLimitsCompany(WorkflowExpression<formatInput> format = null)
         {
@@ -2628,7 +2572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNetworkReputationApi(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlquerynetworkLocationsInputItem[]> bodyrlquerynetworkLocations, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
@@ -2692,7 +2635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildListUserOverride(WorkflowExpression<string> format = null, WorkflowExpression<string> nextNetworkLocation = null)
         {
@@ -2719,7 +2661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNetworkReputationUserOverride(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]> bodyrlqueryuserOverrideoverrideNetworkLocations = null, WorkflowExpression<string> bodyrlresponseFormat = null)
         {
@@ -2795,7 +2736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetSpecificDynamicAnalysisReportForUrlSha1(WorkflowExpression<string> sha1Value, WorkflowExpression<string> specificReport, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> contentType = null)
         {
@@ -2825,7 +2765,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetSpecificDynamicAnalysisReportForUrlBase64(WorkflowExpression<string> base64Value, WorkflowExpression<string> specificReport, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> contentType = null)
         {
@@ -2855,7 +2794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisReportForUrlSha1(WorkflowExpression<string> sha1Value, WorkflowExpression<string> contentType = null)
         {
@@ -2880,7 +2818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDynamicAnalysisReportForUrlBase64(WorkflowExpression<string> base64Value, WorkflowExpression<string> contentType = null)
         {
@@ -2905,7 +2842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetYaraRulesetInformation(WorkflowExpression<string> rulesetName)
         {
@@ -2926,7 +2862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteYaraRuleset(WorkflowExpression<string> rulesetName)
         {
@@ -2947,7 +2882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetYaraRulesetText(WorkflowExpression<string> rulesetName)
         {
@@ -2968,7 +2902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetYaraMatchesFeed(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue, WorkflowExpression<formatInput> format = null)
         {
@@ -2994,7 +2927,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateYaraRuleset(WorkflowExpression<string> bodyrulesetName, WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodysampleAvailable, WorkflowExpression<string> contentType = null)
         {
@@ -3034,7 +2966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetYaraRetroHuntingStatus(WorkflowExpression<string> rulesetName)
         {
@@ -3055,7 +2986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetYaraRetroMatchesFeed(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue, WorkflowExpression<formatInput> format = null)
         {
@@ -3081,7 +3011,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildStartYaraRetroHunt(WorkflowExpression<string> bodyrulesetName, WorkflowExpression<string> contentType = null)
         {
@@ -3115,7 +3044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCancelYaraRetroHunt(WorkflowExpression<string> bodyrulesetName, WorkflowExpression<string> contentType = null)
         {
@@ -3149,7 +3077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAdvancedSearch(WorkflowExpression<bodyqueryInputItem[]> bodyquery, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<int> bodyrecordsPerPage = null, WorkflowExpression<int> bodypage = null, WorkflowExpression<string> bodysort = null, WorkflowExpression<string> contentType = null)
         {
@@ -3241,7 +3168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGroupByRha1SingleQuery(WorkflowExpression<string> rha1Type, WorkflowExpression<string> hashValue, WorkflowExpression<string> nextPageSha1, WorkflowExpression<string> contentType = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> extended = null, WorkflowExpression<classificationInput> classification = null)
         {
@@ -3282,7 +3208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildImportHashSimilarity(WorkflowExpression<string> hashValue, WorkflowExpression<string> contentType = null, WorkflowExpression<formatInput> format = null)
         {
@@ -3310,7 +3235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildImportHashSimilarityPaginated(WorkflowExpression<string> hashValue, WorkflowExpression<string> nextPageSha1, WorkflowExpression<string> contentType = null, WorkflowExpression<formatInput> format = null)
         {
@@ -3339,7 +3263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFileReputationUserOverride(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryoverrideSamplesInputItem[]> bodyrlqueryoverrideSamples = null, WorkflowExpression<bodyrlqueryremoveOverrideInputItem[]> bodyrlqueryremoveOverride = null)
         {
@@ -3397,7 +3320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFileReputationListUserOverrides(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> startHash = null, WorkflowExpression<formatInput> format = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> bodyuser, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodydevice = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodyhtmlInput> bodyhtml = null, WorkflowExpression<string> bodysound = null, WorkflowExpression<string> bodytimestamp = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodyurlTitle = null)
         {
@@ -116,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateKeyResponse> __BuildValidateKey(WorkflowExpression<string> bodyuser, WorkflowExpression<string> bodydevice = null)
         {

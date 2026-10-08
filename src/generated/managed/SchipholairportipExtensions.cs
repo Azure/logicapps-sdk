@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveFlightUsingGETResponse> __BuildRetrieveFlightUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<string> id)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse> __BuildRetrieveFlightsForDateOrPeriodUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<string> scheduleDate = null, WorkflowExpression<string> scheduleTime = null, WorkflowExpression<string> flightName = null, WorkflowExpression<flightDirectionInput> flightDirection = null, WorkflowExpression<string> airline = null, WorkflowExpression<int> airlineCode = null, WorkflowExpression<string> route = null, WorkflowExpression<bool> includedelays = null, WorkflowExpression<int> page = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> fromDateTime = null, WorkflowExpression<string> toDateTime = null, WorkflowExpression<string> searchDateTimeField = null, WorkflowExpression<string> fromScheduleDate = null, WorkflowExpression<string> toScheduleDate = null)
         {
@@ -121,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse> __BuildRetrieveAllAirlinesUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<int> page = null, WorkflowExpression<string> sort = null)
         {
@@ -156,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse> __BuildRetrieveAirlineUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<string> airline)
         {
@@ -184,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse> __BuildRetrieveAllAircraftTypesUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<string> iataMain = null, WorkflowExpression<string> iataSub = null, WorkflowExpression<int> page = null, WorkflowExpression<string> sort = null)
         {
@@ -225,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse> __BuildRetrieveAllDestinationsUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<int> page = null, WorkflowExpression<string> sort = null)
         {
@@ -260,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse> __BuildRetrieveDestinationUsingGET(WorkflowExpression<string> appId, WorkflowExpression<string> appKey, WorkflowExpression<string> resourceVersion, WorkflowExpression<string> iata)
         {

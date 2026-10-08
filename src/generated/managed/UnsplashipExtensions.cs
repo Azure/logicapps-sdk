@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Users> __BuildUserGet(WorkflowExpression<string> username, WorkflowExpression<int> w = null, WorkflowExpression<int> h = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Photos[]> __BuildUserGetPhotos(WorkflowExpression<string> username, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> orderBy = null)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Photos[]> __BuildUserGetLiked(WorkflowExpression<string> username, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> orderBy = null)
         {
@@ -105,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Collections[]> __BuildUserGetCollections(WorkflowExpression<string> username, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -132,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Photos[]> __BuildPhotoGetPage(WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> orderBy = null)
         {
@@ -161,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Photos[]> __BuildPhotoSearch(WorkflowExpression<string> query, WorkflowExpression<string> category)
         {
@@ -185,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Photo> __BuildPhotoGet(WorkflowExpression<string> id)
         {
@@ -206,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Photo> __BuildPhotoGetRandom(WorkflowExpression<string> collections = null, WorkflowExpression<string> topics = null, WorkflowExpression<string> username = null, WorkflowExpression<string> query = null, WorkflowExpression<orientationInput> orientation = null, WorkflowExpression<contentFilterInput> contentFilter = null)
         {

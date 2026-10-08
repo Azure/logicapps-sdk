@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPolicyResponse200> __BuildGetPolicy(WorkflowExpression<string> cUSTOMERNUMBER)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCustomerdetailsupdResponse200> __BuildPostCustomerDetailsupd(WorkflowExpression<int> postCustomerdetailsupdRequestlGCMAREAcARETURNCODE = null, WorkflowExpression<int> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, WorkflowExpression<int> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
@@ -174,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutCustomerdetailResponse200> __BuildPutCustomerDetail(WorkflowExpression<string> num, WorkflowExpression<string> firstname, WorkflowExpression<int> bodylGCMAREAcARETURNCODE = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcADOB = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, WorkflowExpression<int> bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
@@ -296,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCustomerDetailResponse> __BuildGetCustomerDetail(WorkflowExpression<string> num)
         {

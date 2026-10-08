@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProceduresList> __BuildGetStoredProcedures(WorkflowExpression<string> server, WorkflowExpression<string> database)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteProcedure(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> procedure, WorkflowExpression<object> parameters = null)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> server, WorkflowExpression<string> database)
         {
@@ -87,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -125,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<object> item = null)
         {
@@ -150,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -174,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -198,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<object> item = null)
         {
@@ -224,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecutePassThroughNativeQuery(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<object> queryactualParameters = null, WorkflowExpression<string> queryquery = null)
         {

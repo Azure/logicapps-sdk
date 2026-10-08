@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSmarpCreate(WorkflowExpression<string[]> bodychannelList, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<bool> bodyproposed = null, WorkflowExpression<bool> bodyshareable = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyurl = null)
         {

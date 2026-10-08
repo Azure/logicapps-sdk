@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PinResponse> __BuildListPinsFromBoard(WorkflowExpression<string> board)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoardResponseData> __BuildCreateBoard(WorkflowExpression<string> name, WorkflowExpression<string> description = null)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PinResponseData> __BuildCreatePin(WorkflowExpression<string> boardId, WorkflowExpression<string> description, WorkflowExpression<string> imageUrl, WorkflowExpression<string> sourceUrl = null)
         {
@@ -93,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PinResponseData> __BuildEditPin(WorkflowExpression<string> boardId, WorkflowExpression<string> pin, WorkflowExpression<string> description, WorkflowExpression<string> link = null, WorkflowExpression<string> secondBoard = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSpaceMemberResponse> __BuildCreateSpaceMember(WorkflowExpression<bool> bodyisModerator, WorkflowExpression<string> bodyroomId, WorkflowExpression<string> bodypersonEmail = null, WorkflowExpression<string> bodypersonId = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesResponse> __BuildGetMessages(WorkflowExpression<string> roomId, WorkflowExpression<string> mentionedPeople = null, WorkflowExpression<string> beforeMessage = null, WorkflowExpression<string> before = null, WorkflowExpression<int> max = null)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string[]> bodyfiles = null, WorkflowExpression<string> bodymarkdown = null, WorkflowExpression<string> bodyroomId = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodytoPersonEmail = null, WorkflowExpression<string> bodytoPersonId = null)
         {
@@ -168,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessageDetailsResponse> __BuildGetMessageDetails(WorkflowExpression<string> messageId)
         {
@@ -189,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPeopleResponse> __BuildGetPeople(WorkflowExpression<string> id = null, WorkflowExpression<string> email = null)
         {
@@ -224,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSpacesResponse> __BuildGetSpaces(WorkflowExpression<int> max = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<sortByInput> sortBy = null)
         {
@@ -254,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSpaceResponse> __BuildCreateSpace(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyteamId = null)
         {
@@ -291,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSpaceDetailResponse> __BuildGetSpaceDetail(WorkflowExpression<string> roomId)
         {
@@ -312,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTeamMemberResponse> __BuildCreateTeamMember(WorkflowExpression<bool> bodyisModerator, WorkflowExpression<string> bodyteamId, WorkflowExpression<string> bodypersonEmail = null, WorkflowExpression<string> bodypersonId = null)
         {

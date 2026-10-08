@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetClientsV1ResponseItem[]> __BuildGetClients(WorkflowExpression<string> workspaceId, WorkflowExpression<bool> archived = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> __BuildGetTimeEntriesForUser(WorkflowExpression<string> workspaceId, WorkflowExpression<string> userId, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> project = null, WorkflowExpression<string> task = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {

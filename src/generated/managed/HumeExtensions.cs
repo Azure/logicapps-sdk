@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobsGetResponseItem[]> __BuildJobsGet(WorkflowExpression<int> limit = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<whenInput> when = null, WorkflowExpression<string> timestampMs = null, WorkflowExpression<sortByInput> sortBy = null, WorkflowExpression<directionInput> direction = null)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobPostResponse> __BuildJob(WorkflowExpression<double> bodymodelsfacefpsPred = null, WorkflowExpression<double> bodymodelsfaceprobThreshold = null, WorkflowExpression<bool> bodymodelsfaceidentifyFaces = null, WorkflowExpression<int> bodymodelsfaceminFaceSize = null, WorkflowExpression<bool> bodymodelsfacesaveFaces = null, WorkflowExpression<string> bodymodelsprosodygranularity = null, WorkflowExpression<bool> bodymodelsprosodyidentifySpeakers = null, WorkflowExpression<int> bodymodelsprosodywindowlength = null, WorkflowExpression<int> bodymodelsprosodywindowstep = null, WorkflowExpression<string> bodymodelslanguagegranularity = null, WorkflowExpression<bool> bodymodelslanguageidentifySpeakers = null, WorkflowExpression<bool> bodymodelsneridentifySpeakers = null, WorkflowExpression<string> bodytranscriptionlanguage = null, WorkflowExpression<string[]> bodyurls = null, WorkflowExpression<string> bodycallbackUrl = null, WorkflowExpression<bool> bodynotify = null)
         {
@@ -251,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobPredictionsGetResponseItem[]> __BuildJobPredictionsGet(WorkflowExpression<string> id)
         {
@@ -272,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildJobArtifactsGet(WorkflowExpression<string> id)
         {
@@ -294,7 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobDetailsGetResponse> __BuildJobDetailsGet(WorkflowExpression<string> id)
         {

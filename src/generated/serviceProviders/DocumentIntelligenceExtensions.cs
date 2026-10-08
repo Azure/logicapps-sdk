@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnalyzeDocumentOutput> __BuildAnalyzeDocument(WorkflowExpression<AnalyzeDocumentInputModelIdType> modelId, WorkflowExpression<object> modelIdInputs = null)
         {

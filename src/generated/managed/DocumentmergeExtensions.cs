@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValuesDocumentMergeResponse> __BuildValuesDocumentMerge(WorkflowExpression<string> linkToItem, WorkflowExpression<string> preConfigTemplate = null, WorkflowExpression<string> source = null, WorkflowExpression<string> destination = null, WorkflowExpression<bool> saveAsPDF = null, WorkflowExpression<bool> saveAsPDFOnly = null, WorkflowExpression<bool> saveAsPDFA = null, WorkflowExpression<bool> displayImage = null, WorkflowExpression<string> outputFileName = null, WorkflowExpression<bool> overWrite = null, WorkflowExpression<bool> sendMail = null, WorkflowExpression<string> mailTemplate = null)
         {

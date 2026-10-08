@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListScheduledInfo[]> __BuildScheduledMessageInfo(WorkflowExpression<string> listScheduledRequestto = null)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse[]> __BuildSendMessage(WorkflowExpression<string> sendMessageRequestmessagesubject, WorkflowExpression<string> sendMessageRequestmessagefromEmail, WorkflowExpression<RecipientInfo[]> sendMessageRequestmessagesendTo, WorkflowExpression<string> sendMessageRequestmessagecontentOfTheMessage = null, WorkflowExpression<string> sendMessageRequestmessagefromName = null, WorkflowExpression<string> sendMessageRequestmessageextraHeaders = null, WorkflowExpression<bool> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, WorkflowExpression<bool> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, WorkflowExpression<string> sendMessageRequestmessageoptionalBCCAddress = null, WorkflowExpression<string> sendMessageRequestmessagecustomDomaingForTracking = null, WorkflowExpression<string[]> sendMessageRequestmessagetags = null, WorkflowExpression<AttachmentInfo[]> sendMessageRequestmessageattachments = null, WorkflowExpression<string> sendMessageRequestsendAt = null, WorkflowExpression<bool> sendMessageRequestenableAsyncTrueFalse = null, WorkflowExpression<string> sendMessageRequestdedicatedIpPoolName = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBaseline[]> __BuildListAssetsConfigurationBaseline(WorkflowExpression<string> baseUrl, WorkflowExpression<string> status = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBaseline> __BuildGetAssetsConfigurationBaseline(WorkflowExpression<string> baselineId, WorkflowExpression<string> baseUrl)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssetSearchResult> __BuildAssetsSearch(WorkflowExpression<string> baseUrl, WorkflowExpression<string> bodycontractId = null, WorkflowExpression<int> bodypageNumber = null, WorkflowExpression<int> bodypageSize = null, WorkflowExpression<string> bodymodifiedDategreaterThan = null, WorkflowExpression<string> bodymodifiedDatelessThan = null, WorkflowExpression<string> bodysortKey = null, WorkflowExpression<string> bodysortOrder = null, WorkflowExpression<string[]> bodyfilteredAssetClassCode = null)
         {
@@ -159,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDataResponseDoc> __BuildGetUserData(WorkflowExpression<string> baseUrl)
         {

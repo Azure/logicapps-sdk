@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGetEntityData(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<double> top = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetSchema(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity)
         {
@@ -81,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetSingleSchema(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<int> option = null)
         {
@@ -108,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
         {
@@ -134,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
         {
@@ -160,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
         {
@@ -186,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
         {

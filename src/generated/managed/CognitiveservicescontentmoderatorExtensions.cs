@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EvaluateImageResponse> __BuildEvaluateImage(WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateJobResponse> __BuildCreateJob(WorkflowExpression<string> teamName, WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> contentId, WorkflowExpression<string> workflowName, WorkflowExpression<string> contentcontentValue, WorkflowExpression<string> callBackEndpoint = null)
         {
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OCRResponse> __BuildOCR(WorkflowExpression<string> language, WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -108,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScreenTextResponse> __BuildScreenText(WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> language = null, WorkflowExpression<bool> autocorrect = null, WorkflowExpression<bool> pII = null, WorkflowExpression<string> listId = null, WorkflowExpression<bool> classify = null, WorkflowExpression<string> textContent = null)
         {
@@ -147,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindFacesResponse> __BuildFindFaces(WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -171,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectLanguageResponse> __BuildDetectLanguage(WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> textContent = null)
         {
@@ -195,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MatchImageResponse> __BuildMatchImage(WorkflowExpression<formatInput> format, WorkflowExpression<string> listId = null, WorkflowExpression<object> image = null)
         {
@@ -222,7 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildCreateReviews(WorkflowExpression<string> teamName, WorkflowExpression<string> subTeam = null, WorkflowExpression<bodyInputItem[]> body = null)
         {

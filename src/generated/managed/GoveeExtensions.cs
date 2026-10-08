@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunCommandOnDeviceResponse> __BuildRunCommandOnDevice(WorkflowExpression<string> bodydeviceMACAddress, WorkflowExpression<string> bodydeviceModel, WorkflowExpression<bodycmdcommandNameInput> bodycmdcommandName = null, WorkflowExpression<bodyturnInput> bodyturn = null, WorkflowExpression<int> bodybrightness = null, WorkflowExpression<int> bodycolorcolorRed = null, WorkflowExpression<int> bodycolorcolorGreen = null, WorkflowExpression<int> bodycolorcolorBlue = null, WorkflowExpression<int> bodycolorTemperature = null)
         {
@@ -116,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeviceInformationResponse> __BuildGetDeviceInformation(WorkflowExpression<string> device = null, WorkflowExpression<string> model = null)
         {

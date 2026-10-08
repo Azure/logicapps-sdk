@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ColorGetResponse> __BuildColorGet(WorkflowExpression<string> hex = null, WorkflowExpression<string> rgb = null, WorkflowExpression<string> hsl = null, WorkflowExpression<string> cmyk = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SchemeGetResponse> __BuildSchemeGet(WorkflowExpression<string> hex = null, WorkflowExpression<string> rgb = null, WorkflowExpression<string> hsl = null, WorkflowExpression<string> cmyk = null, WorkflowExpression<modeInput> mode = null, WorkflowExpression<int> count = null)
         {

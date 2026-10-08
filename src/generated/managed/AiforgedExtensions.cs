@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsUserViewModel> __BuildAccountGetCurrentUser(WorkflowExpression<string> xApiVersion)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAccountGetApiKey(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> __BuildClassesGet(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> __BuildClassesGetByProject(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> projectId = null)
         {
@@ -115,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> __BuildClassesGetByUser(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> projectId = null)
         {
@@ -143,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> __BuildDocumentGetDocument(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -168,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> __BuildDocumentGetHierarchy(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -193,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> __BuildDocumentDelete(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -218,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> __BuildDocumentGetPreviews(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stpdId = null)
         {
@@ -249,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> __BuildDocumentGetImages(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null, WorkflowExpression<int> stpdId = null)
         {
@@ -277,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildDocumentGetBlobById(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -302,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildDocumentDeleteBlob(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -327,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> __BuildDocumentClassify(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> stpdId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<object> file = null)
         {
@@ -356,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> __BuildDocumentExtractAndVerify(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> stpdId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<object> file = null)
         {
@@ -385,7 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> __BuildDocumentGetClassification(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> stpdId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<int> docId = null)
         {
@@ -416,7 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> __BuildParamDefGet(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -441,7 +425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> __BuildParamDefGetParentService(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null)
         {
@@ -466,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> __BuildParamDefGetHierachy(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<bool> includeCount = null, WorkflowExpression<bool> includeSettings = null, WorkflowExpression<bool> includeChildren = null)
         {
@@ -506,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> __BuildParametersGet(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> docId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<categoryInput> category = null, WorkflowExpression<groupingInput> grouping = null, WorkflowExpression<bool> includeverification = null)
         {
@@ -544,7 +525,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> __BuildParametersGetHierarchy(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> docId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<bool> includeverification = null)
         {
@@ -576,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> __BuildParametersDelete(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> paramid = null)
         {
@@ -601,7 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> __BuildParametersGetByVerification(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> verificationId = null)
         {
@@ -626,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocParamSummary[]> __BuildParametersGetSummary(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> projectId = null)
         {
@@ -651,7 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentExtraction[]> __BuildParametersExtract(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> docid = null)
         {
@@ -676,7 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel[]> __BuildProjectGetByUser(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null)
         {
@@ -701,7 +676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> __BuildProjectGetUserProject(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> projectId = null)
         {
@@ -729,7 +703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> __BuildProjectGetHierachies(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<int> groupId = null, WorkflowExpression<bool> includeCount = null, WorkflowExpression<bool> onlyServices = null, WorkflowExpression<bool> includeSettings = null, WorkflowExpression<bool> includeChildren = null)
         {
@@ -779,7 +752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> __BuildProjectGetByName(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<string> projectName = null)
         {
@@ -807,7 +779,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> __BuildProjectGetServices(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stlfilter = null, WorkflowExpression<string> enginefilter = null)
         {
@@ -841,7 +812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> __BuildServicesGet(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> stpdId = null)
         {
@@ -866,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSystemGetSystemDate(WorkflowExpression<string> xApiVersion)
         {
@@ -888,7 +857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSystemGetSystemInfo(WorkflowExpression<string> xApiVersion)
         {
@@ -910,7 +878,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDataTypeViewModel[]> __BuildSystemGetDataTypes(WorkflowExpression<string> xApiVersion)
         {
@@ -932,7 +899,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsEnumDataViewModel[]> __BuildSystemGetEnumData(WorkflowExpression<string> xApiVersion)
         {
@@ -954,7 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> __BuildVerificationGet(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> verificationId = null)
         {
@@ -979,7 +944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel[]> __BuildVerificationGetAll(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> docId = null, WorkflowExpression<int> parameterId = null)
         {
@@ -1007,7 +971,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> __BuildVerificationGetLatest(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> docId = null, WorkflowExpression<int> parameterId = null, WorkflowExpression<int> pdId = null)
         {
@@ -1038,7 +1001,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildVerificationGetShred(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> docId = null, WorkflowExpression<int> parId = null, WorkflowExpression<int> verificationId = null, WorkflowExpression<bool> inline = null)
         {
@@ -1076,7 +1038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> __BuildVerificationGetSummary(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<int> pdId = null, WorkflowExpression<bool> latestOnly = null)
         {
@@ -1111,7 +1072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> __BuildVerificationGetHeatmap(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<bool> latestOnly = null)
         {
@@ -1143,7 +1103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildDocumentGetBlob(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> id = null, WorkflowExpression<typeInput> type = null)
         {
@@ -1174,7 +1133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> __BuildDocumentGetData(WorkflowExpression<string> xApiVersion, WorkflowExpression<int> id = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> text = null, WorkflowExpression<int> blobid = null, WorkflowExpression<int> pageindex = null, WorkflowExpression<int> imagesCount = null)
         {
@@ -1217,7 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> __BuildDocumentGetExtended(WorkflowExpression<string> xApiVersion, WorkflowExpression<string> userId = null, WorkflowExpression<int> projectId = null, WorkflowExpression<int> stpdId = null, WorkflowExpression<usageInput> usage = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> classname = null, WorkflowExpression<string> filename = null, WorkflowExpression<string> filetype = null, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<int> masterid = null, WorkflowExpression<int> pageNo = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<sortDirectionInput> sortDirection = null, WorkflowExpression<string> comment = null, WorkflowExpression<string> result = null, WorkflowExpression<string> resultId = null, WorkflowExpression<int> resultIndex = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> docGuid = null)
         {

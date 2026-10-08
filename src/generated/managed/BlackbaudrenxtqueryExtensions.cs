@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryApiQueryExecutionJob> __BuildGetQueryJobStatus(WorkflowExpression<string> jobId, WorkflowExpression<includeReadUrlInput> includeReadUrl = null, WorkflowExpression<contentDispositionInput> contentDisposition = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryApiQuerySummaryCollection> __BuildListQueries(WorkflowExpression<int> queryTypeId = null, WorkflowExpression<int> category = null, WorkflowExpression<queryFormatInput> queryFormat = null, WorkflowExpression<string> searchText = null, WorkflowExpression<bool> myFavQueriesOnly = null, WorkflowExpression<bool> myQueriesOnly = null, WorkflowExpression<bool> mergedQueriesOnly = null, WorkflowExpression<listQueriesInput> listQueries = null, WorkflowExpression<sortColumnInput> sortColumn = null, WorkflowExpression<bool> sortDescending = null, WorkflowExpression<string> dateAdded = null, WorkflowExpression<string> addedBy = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> __BuildStartAdHocQueryExecutionJob(WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bodyformattingModeInput> bodyformattingMode = null, WorkflowExpression<string> bodyfilename = null)
         {
@@ -193,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> __BuildStartQueryExecutionJob(WorkflowExpression<int> bodytype, WorkflowExpression<int> bodyquery, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bodyformattingModeInput> bodyformattingMode = null, WorkflowExpression<bodysQLGenerationModeInput> bodysQLGenerationMode = null, WorkflowExpression<bool> bodyuseStaticQuery = null, WorkflowExpression<string> bodyfilename = null)
         {
@@ -295,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> __BuildStartRefreshStaticQueryExecutionJob(WorkflowExpression<int> bodytype, WorkflowExpression<int> bodyquery)
         {

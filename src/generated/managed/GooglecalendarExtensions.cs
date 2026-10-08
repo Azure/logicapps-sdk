@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalendarList> __BuildListCalendars(WorkflowExpression<minAccessRoleInput> minAccessRole = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalendarEventList> __BuildListEvents(WorkflowExpression<string> calendarId, WorkflowExpression<string> timeMin = null, WorkflowExpression<string> timeMax = null, WorkflowExpression<string> q = null)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEvent> __BuildCreateEvent(WorkflowExpression<string> calendarId, WorkflowExpression<string> newEventstartTime, WorkflowExpression<string> newEventendTime, WorkflowExpression<string> newEventtitle = null, WorkflowExpression<string> newEventdescription = null, WorkflowExpression<string> newEventlocation = null, WorkflowExpression<string> newEventattendees = null, WorkflowExpression<newEventstatusInput> newEventstatus = null, WorkflowExpression<bool> newEventisAllDay = null)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEvent> __BuildGetEvent(WorkflowExpression<string> calendarId, WorkflowExpression<string> eventId)
         {
@@ -169,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteEvent(WorkflowExpression<string> calendarId, WorkflowExpression<string> eventId)
         {
@@ -191,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEvent> __BuildUpdateEvent(WorkflowExpression<string> calendarId, WorkflowExpression<string> eventId, WorkflowExpression<string> updatedEventtitle = null, WorkflowExpression<string> updatedEventstartTime = null, WorkflowExpression<string> updatedEventendTime = null, WorkflowExpression<string> updatedEventdescription = null, WorkflowExpression<string> updatedEventlocation = null, WorkflowExpression<string> updatedEventattendees = null, WorkflowExpression<updatedEventstatusInput> updatedEventstatus = null, WorkflowExpression<bool> updatedEventisAllDay = null)
         {

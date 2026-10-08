@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateMeasure2Response> __BuildUpdateMeasure2(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyplanId, WorkflowExpression<double> bodymeasureValue, WorkflowExpression<string> measureId)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> __BuildUpdateMeasureHistoricalValue2(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyplanId, WorkflowExpression<string> measureId, WorkflowExpression<bodyhistoricalDataInputItem[]> bodyhistoricalData = null)
         {
@@ -96,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAction2Response> __BuildUpdateAction2(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyplanId, WorkflowExpression<double> bodyactionValue, WorkflowExpression<string> actionId)
         {

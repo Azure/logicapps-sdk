@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSmsResponse> __BuildSendSms(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodysourceNumber = null, WorkflowExpression<bool> bodydeliveryReport = null, WorkflowExpression<string> bodycallbackUrl = null, WorkflowExpression<bodymetadataInputItem[]> bodymetadata = null)
         {
@@ -98,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Message> __BuildGetMessageStatus(WorkflowExpression<string> messageId)
         {
@@ -119,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendRCS(WorkflowExpression<object> body = null)
         {

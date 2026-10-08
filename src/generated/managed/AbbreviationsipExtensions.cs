@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abbreviationsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AbbrGetResponse> __BuildAbbrGet(WorkflowExpression<string> term, WorkflowExpression<string> categoryid = null, WorkflowExpression<sortbyInput> sortby = null, WorkflowExpression<searchtypeInput> searchtype = null)
         {

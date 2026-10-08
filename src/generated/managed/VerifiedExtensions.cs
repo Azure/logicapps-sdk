@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostAuthenticateResponse> __BuildPostAuthenticate(WorkflowExpression<int> withoutIpLock)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Company> __BuildGetCompaniesCompanyId(WorkflowExpression<string> token, WorkflowExpression<string> companyId)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Recipient[]> __BuildGetEnvelopesEnvelopeIdRecipients(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostEnvelopesEnvelopeIdRecipients(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodygivenName, WorkflowExpression<string> bodyfamilyName, WorkflowExpression<bodylanguageInput> bodylanguage, WorkflowExpression<bodysigningMethodInput> bodysigningMethod, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyroleaction, WorkflowExpression<string> bodyrolelabel, WorkflowExpression<string> bodyrolename, WorkflowExpression<string> xNamespace = null, WorkflowExpression<bodynotificationMethodInput> bodynotificationMethod = null, WorkflowExpression<string> bodytelephone = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<bool> bodysecure = null, WorkflowExpression<bool> bodysms = null, WorkflowExpression<string> bodyssn = null, WorkflowExpression<string> bodybank = null)
         {
@@ -206,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Recipient> __BuildGetEnvelopesEnvelopeIdRecipientsRecipientId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> recipientId, WorkflowExpression<string> xNamespace = null)
         {
@@ -234,7 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutEnvelopesEnvelopeIdRecipientsRecipientId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> recipientId, WorkflowExpression<string> bodygivenName, WorkflowExpression<string> bodyfamilyName, WorkflowExpression<bodylanguageInput> bodylanguage, WorkflowExpression<bodysigningMethodInput> bodysigningMethod, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyroleaction, WorkflowExpression<string> bodyrolelabel, WorkflowExpression<string> bodyrolename, WorkflowExpression<string> xNamespace = null, WorkflowExpression<bodynotificationMethodInput> bodynotificationMethod = null, WorkflowExpression<string> bodytelephone = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<bool> bodysecure = null, WorkflowExpression<bool> bodysms = null, WorkflowExpression<string> bodyssn = null, WorkflowExpression<string> bodybank = null)
         {
@@ -350,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse> __BuildGetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> fileId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<bool> asObject = null)
         {
@@ -382,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Setting> __BuildGetCompaniesCompanyIdUsersUserIdSettings(WorkflowExpression<string> token, WorkflowExpression<string> companyId, WorkflowExpression<string> userId)
         {
@@ -407,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Envelope> __BuildGetEnvelopesEnvelopeId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null)
         {
@@ -434,7 +425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEnvelopesEnvelopeId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null)
         {
@@ -461,7 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutEnvelopesEnvelopeId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<bool> bodysequentialSigning = null, WorkflowExpression<string> bodygreeting = null, WorkflowExpression<string> bodyexpiration = null, WorkflowExpression<double> bodyautomaticReminders = null)
         {
@@ -523,7 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutEnvelopesEnvelopeIdPublishStatus(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<bool> bodypublished, WorkflowExpression<string> xNamespace = null)
         {
@@ -560,7 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> templateId, WorkflowExpression<string> xNamespace = null)
         {
@@ -596,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutEnvelopesEnvelopeIdAbortStatus(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodycomment = null)
         {
@@ -637,7 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<File[]> __BuildGetEnvelopesEnvelopeIdDocumentsDocumentIdFiles(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> xNamespace = null)
         {
@@ -665,7 +650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<File> __BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyfileType, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodyhash = null)
         {
@@ -713,7 +697,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserInfo> __BuildGetAuthUserinfo(WorkflowExpression<string> token)
         {
@@ -736,7 +719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> xNamespace = null)
         {
@@ -764,7 +746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutEnvelopesEnvelopeIdTrashStatus(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodycomment = null)
         {
@@ -805,7 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnvelopeDescriptorString[]> __BuildGetQueryEnvelopes(WorkflowExpression<string> token, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> filters = null, WorkflowExpression<int> from = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
         {
@@ -843,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnvelopeDescriptorString[]> __BuildGetSearchEnvelopes(WorkflowExpression<string> token, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> filters = null, WorkflowExpression<int> from = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
         {
@@ -881,7 +860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Descriptor[]> __BuildGetEnvelopeDescriptors(WorkflowExpression<string> token, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> filters = null)
         {
@@ -910,7 +888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFlowsFlowIdJobsEnvelopeIdResponse> __BuildGetFlowsFlowIdJobsEnvelopeId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> flowId, WorkflowExpression<string> xNamespace = null)
         {
@@ -938,7 +915,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Document> __BuildGetEnvelopesEnvelopeIdDocumentsDocumentId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> xNamespace = null)
         {
@@ -966,7 +942,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEnvelopesEnvelopeIdDocumentsDocumentId(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> documentId, WorkflowExpression<string> xNamespace = null)
         {
@@ -994,7 +969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse> __BuildPostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(WorkflowExpression<string> token, WorkflowExpression<string> envelopeDescriptorId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodysenderemail = null, WorkflowExpression<string> bodysendergivenName = null, WorkflowExpression<string> bodysenderfamilyName = null, WorkflowExpression<double> bodyautomaticReminders = null, WorkflowExpression<string> bodyexpiration = null, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null)
         {
@@ -1078,7 +1052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Document[]> __BuildGetEnvelopesEnvelopeIdDocuments(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null)
         {
@@ -1105,7 +1078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostEnvelopesEnvelopeIdDocuments(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodyname, WorkflowExpression<string> xNamespace = null, WorkflowExpression<int> bodydescriptorhash = null, WorkflowExpression<string> bodysource = null)
         {
@@ -1164,7 +1136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse> __BuildPostEnvelopesEnvelopeIdJobsGetSignLink(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodyrecipientid = null, WorkflowExpression<string> bodyredirectTo = null)
         {
@@ -1220,7 +1191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse> __BuildPostEnvelopeDescriptorsDefaultEnvelopes(WorkflowExpression<string> token, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodysenderemail = null, WorkflowExpression<string> bodysendergivenName = null, WorkflowExpression<string> bodysenderfamilyName = null, WorkflowExpression<double> bodyautomaticReminders = null, WorkflowExpression<string> bodyexpiration = null, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null)
         {
@@ -1303,7 +1273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Descriptor> __BuildGetEnvelopeDescriptorsDefault(WorkflowExpression<string> token, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> filters = null)
         {
@@ -1332,7 +1301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostEnvelopesEnvelopIdJobsSendNotification(WorkflowExpression<string> token, WorkflowExpression<string> envelopeId, WorkflowExpression<string> xNamespace = null, WorkflowExpression<string> bodyenvelopegreeting = null, WorkflowExpression<string> bodyrecipientid = null)
         {

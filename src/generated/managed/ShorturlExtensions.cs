@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildShortUrlCreateShortUrl(WorkflowExpression<string> longUrl, WorkflowExpression<baseDomainInput> baseDomain, WorkflowExpression<string> username, WorkflowExpression<string> licenseKey, WorkflowExpression<string> shortUrl = null, WorkflowExpression<string> generatedBy = null, WorkflowExpression<int> maxUses = null, WorkflowExpression<string> password = null, WorkflowExpression<string> expiryDate = null, WorkflowExpression<redirectionCodeInput> redirectionCode = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildShortUrlDeleteShortUrl(WorkflowExpression<string> shortUrl, WorkflowExpression<baseDomainInput> baseDomain, WorkflowExpression<string> username, WorkflowExpression<string> licenseKey)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildShortUrlGetAllShortUrls(WorkflowExpression<baseDomainInput> baseDomain, WorkflowExpression<string> username, WorkflowExpression<string> licenseKey, WorkflowExpression<string> generatedBy = null)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildShortUrlModifyShortUrl(WorkflowExpression<string> shortUrl, WorkflowExpression<baseDomainInput> baseDomain, WorkflowExpression<string> username, WorkflowExpression<string> licenseKey, WorkflowExpression<string> newLongUrl = null, WorkflowExpression<string> password = null, WorkflowExpression<int> maxUses = null, WorkflowExpression<string> expiryDate = null, WorkflowExpression<redirectionCodeInput> redirectionCode = null)
         {

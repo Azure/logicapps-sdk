@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> bodycontactName, WorkflowExpression<bodyrelationInput> bodyrelation, WorkflowExpression<bool> bodyisPrimary, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodyaddressLine3 = null, WorkflowExpression<string> bodyaddressCity = null, WorkflowExpression<string> bodyaddressState = null, WorkflowExpression<string> bodyaddressCountry = null, WorkflowExpression<string> bodyaddressPostalCode = null, WorkflowExpression<bodyphonesInputItem[]> bodyphones = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null)
         {
@@ -117,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteContactsResponse> __BuildDeleteContacts(WorkflowExpression<string[]> bodyitemIds)
         {
@@ -183,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateContactResponse> __BuildUpdateContact(WorkflowExpression<string> bodyitemId, WorkflowExpression<string> bodycontactName, WorkflowExpression<bodyrelationInput> bodyrelation, WorkflowExpression<bool> bodyisPrimary, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodyaddressLine3 = null, WorkflowExpression<string> bodyaddressCity = null, WorkflowExpression<string> bodyaddressState = null, WorkflowExpression<string> bodyaddressCountry = null, WorkflowExpression<string> bodyaddressPostalCode = null, WorkflowExpression<bodyphonesInputItem2[]> bodyphones = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null)
         {
@@ -285,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateUserResponse> __BuildUpdateUser(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodymobileCountry = null, WorkflowExpression<string> bodymobileArea = null, WorkflowExpression<string> bodymobileNumber = null)
         {

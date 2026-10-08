@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> __BuildSchoolHolidays(WorkflowExpression<int> rows = null, WorkflowExpression<string> output = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> __BuildSchoolHolidaysPerSchoolYear(WorkflowExpression<string> schoolyear, WorkflowExpression<string> output = null)
         {

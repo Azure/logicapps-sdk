@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDetailResponse> __BuildGetUser(WorkflowExpression<string> userId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemberListResponse> __BuildGetMembers(WorkflowExpression<string> group = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemberResponse> __BuildGetMember(WorkflowExpression<string> memberId)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttachmentResponse> __BuildGetAttachment(WorkflowExpression<string> attachId)
         {
@@ -111,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAttachment(WorkflowExpression<string> attachId)
         {
@@ -132,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttachmentListResponse> __BuildGetAttachments(WorkflowExpression<string> group = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -162,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostAttachment(WorkflowExpression<string> bodygroup, WorkflowExpression<string> bodypdfFile, WorkflowExpression<string> bodyfilename, WorkflowExpression<string> bodyuser = null, WorkflowExpression<string> bodydescription = null)
         {
@@ -212,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentFieldsResponseItem[]> __BuildGetDocumentFields(WorkflowExpression<string> docId)
         {
@@ -233,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildGetDocumentAuditLog(WorkflowExpression<string> docId)
         {
@@ -254,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildGetDocumentPdf(WorkflowExpression<string> docId)
         {
@@ -275,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> docId)
         {
@@ -296,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentResponseDetail> __BuildGetDocument(WorkflowExpression<string> docId)
         {
@@ -317,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateArchiveDocument(WorkflowExpression<string> docId, WorkflowExpression<string> email = null)
         {
@@ -341,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignerResponse> __BuildGetRecipient(WorkflowExpression<string> recipientId)
         {
@@ -362,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostSignerReminder(WorkflowExpression<string> recipientId, WorkflowExpression<string> bodytext = null)
         {
@@ -397,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetSignerLink(WorkflowExpression<string> recipientId)
         {
@@ -418,7 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSignerFieldsResponseItem[]> __BuildGetSignerFields(WorkflowExpression<string> recipientId)
         {
@@ -439,7 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSignerRejectionResponse> __BuildGetSignerRejection(WorkflowExpression<string> recipientId)
         {
@@ -460,7 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentListResponse> __BuildGetDocuments(WorkflowExpression<string> group, WorkflowExpression<string> archived = null, WorkflowExpression<string> email = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> status = null, WorkflowExpression<string> nosigners = null, WorkflowExpression<string> createdGt = null, WorkflowExpression<string> modifiedGt = null)
         {
@@ -507,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostDocument(WorkflowExpression<string> bodygroup, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytemplatepdf, WorkflowExpression<DocumentSignerPost[]> bodysigners, WorkflowExpression<int> bodysignatureType = null, WorkflowExpression<bool> bodyappendPdf = null, WorkflowExpression<bool> bodyautoArchive = null, WorkflowExpression<bool> bodydoEmail = null, WorkflowExpression<string> bodyccEmails = null, WorkflowExpression<bool> bodyconvertSenderToSigner = null, WorkflowExpression<string> bodypdfPassword = null, WorkflowExpression<bodypdfPasswordTypeInput> bodypdfPasswordType = null, WorkflowExpression<string> bodyredirect = null, WorkflowExpression<string> bodyreminders = null, WorkflowExpression<bool> bodyreturnSignerLinks = null, WorkflowExpression<bool> bodysignersInOrder = null, WorkflowExpression<bool> bodystrictFields = null, WorkflowExpression<string> bodytag = null, WorkflowExpression<string> bodytag1 = null, WorkflowExpression<string> bodytag2 = null, WorkflowExpression<string> bodyuser = null)
         {
@@ -741,7 +721,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplatePdfResponse> __BuildGetPdfTemplate(WorkflowExpression<string> pdfId)
         {
@@ -762,7 +741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetPdfTemplateEditLink(WorkflowExpression<string> pdfId, WorkflowExpression<bool> hideSenderFields = null, WorkflowExpression<string> cssBodyBackgroundcolor = null)
         {
@@ -789,7 +767,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemplatePdfListResponse> __BuildGetPdfTemplates(WorkflowExpression<string> group = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -819,7 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostPdfTemplate(WorkflowExpression<string> bodygroup, WorkflowExpression<string> bodypdfFile, WorkflowExpression<bool> bodyarchiveUponSend = null, WorkflowExpression<bool> bodyprocessTags = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyuser = null)
         {
@@ -890,7 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupListResponse> __BuildGetGroups(WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
         {

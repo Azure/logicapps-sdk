@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Place> __BuildGetPlaceById(WorkflowExpression<string> mapId, WorkflowExpression<string> placeId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletePlace(WorkflowExpression<string> mapId, WorkflowExpression<string> placeId)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Place> __BuildUpdatePlace(WorkflowExpression<string> mapId, WorkflowExpression<string> placeId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyaddress, WorkflowExpression<double> bodylatitude, WorkflowExpression<double> bodylongitude, WorkflowExpression<string> bodydescription = null)
         {
@@ -110,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Place[]> __BuildGetMapPlacesById(WorkflowExpression<string> mapId)
         {
@@ -131,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Place> __BuildCreateNewPlace(WorkflowExpression<string> mapId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyaddress, WorkflowExpression<double> bodylatitude, WorkflowExpression<double> bodylongitude, WorkflowExpression<string> bodydescription = null)
         {

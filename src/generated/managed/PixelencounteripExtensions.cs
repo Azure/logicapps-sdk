@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MonsterResponse> __BuildGetMonsterJson(WorkflowExpression<string> id)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMonstersResponse> __BuildListMonsters(WorkflowExpression<int> page = null, WorkflowExpression<int> startRange = null, WorkflowExpression<int> endRange = null)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MonsterResponse> __BuildGetRandomSvgMonster(WorkflowExpression<string> primaryColor = null, WorkflowExpression<fillTypeInput> fillType = null, WorkflowExpression<string> backgroundColor = null, WorkflowExpression<string> secondaryColor = null)
         {

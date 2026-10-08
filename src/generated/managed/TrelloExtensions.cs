@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Card[]> __BuildListCards(WorkflowExpression<string> boardId, WorkflowExpression<string> actions = null, WorkflowExpression<bool> attachments = null, WorkflowExpression<string> attachmentFields = null, WorkflowExpression<bool> stickers = null, WorkflowExpression<bool> members = null, WorkflowExpression<string> memeberFields = null, WorkflowExpression<bool> checkItemStates = null, WorkflowExpression<checklistsInput> checklists = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> since = null, WorkflowExpression<string> before = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<string> fields = null)
         {
@@ -78,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Card[]> __BuildListCardsSimple(WorkflowExpression<string> boardId)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardWithChecklists> __BuildGetCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> actions = null, WorkflowExpression<bool> actionsEntities = null, WorkflowExpression<bool> actionsDisplay = null, WorkflowExpression<int> actionsLimit = null, WorkflowExpression<string> actionFields = null, WorkflowExpression<string> actionMemberCreatorFields = null, WorkflowExpression<bool> attachments = null, WorkflowExpression<string> attachmentFields = null, WorkflowExpression<bool> members = null, WorkflowExpression<string> memberFields = null, WorkflowExpression<bool> membersVoted = null, WorkflowExpression<string> memberVotedFields = null, WorkflowExpression<bool> checkItemStates = null, WorkflowExpression<string> checkItemStateFields = null, WorkflowExpression<checklistsInput> checklists = null, WorkflowExpression<string> checklistFields = null, WorkflowExpression<bool> board = null, WorkflowExpression<string> boardFields = null, WorkflowExpression<bool> list = null, WorkflowExpression<string> listFields = null, WorkflowExpression<bool> stickers = null, WorkflowExpression<string> stickerFields = null, WorkflowExpression<string> fields = null)
         {
@@ -191,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId)
         {
@@ -214,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Board[]> __BuildListBoards(WorkflowExpression<string> filter = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> actions = null, WorkflowExpression<bool> actionsEntities = null, WorkflowExpression<int> actionsLimit = null, WorkflowExpression<actionsFormatInput> actionsFormat = null, WorkflowExpression<string> actionsSince = null, WorkflowExpression<string> actionFields = null, WorkflowExpression<string> memberships = null, WorkflowExpression<bool> organization = null, WorkflowExpression<string> organizationFields = null, WorkflowExpression<string> lists = null)
         {
@@ -279,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoardWithChecklists> __BuildGetBoard(WorkflowExpression<string> boardId, WorkflowExpression<string> actions = null, WorkflowExpression<bool> actionEntities = null, WorkflowExpression<bool> actionsDisplay = null, WorkflowExpression<actionsFormatInput> actionsFormat = null, WorkflowExpression<string> actionsSince = null, WorkflowExpression<int> actionsLimit = null, WorkflowExpression<string> actionFields = null, WorkflowExpression<bool> actionMember = null, WorkflowExpression<string> actionMemberFields = null, WorkflowExpression<bool> actionMemberCreator = null, WorkflowExpression<string> actionMemberCreatorFields = null, WorkflowExpression<cardsInput> cards = null, WorkflowExpression<string> cardFields = null, WorkflowExpression<bool> cardAttachments = null, WorkflowExpression<string> cardAttachmentFields = null, WorkflowExpression<cardChecklistsInput> cardChecklists = null, WorkflowExpression<bool> cardStickers = null, WorkflowExpression<boardStarsInput> boardStars = null, WorkflowExpression<labelsInput> labels = null, WorkflowExpression<string> labelFields = null, WorkflowExpression<int> labelsLimit = null, WorkflowExpression<listsInput> lists = null, WorkflowExpression<string> listFields = null, WorkflowExpression<string> memberships = null, WorkflowExpression<bool> membershipsMember = null, WorkflowExpression<string> membershipsMemberFields = null, WorkflowExpression<membersInput> members = null, WorkflowExpression<string> memberFields = null, WorkflowExpression<membersInvitedInput> membersInvited = null, WorkflowExpression<string> membersInvitedFields = null, WorkflowExpression<checklistsInput> checklists = null, WorkflowExpression<string> checklistFields = null, WorkflowExpression<bool> organization = null, WorkflowExpression<string> organizationFields = null, WorkflowExpression<string> organizationMemberships = null, WorkflowExpression<bool> myPerfs = null, WorkflowExpression<string> fields = null)
         {
@@ -411,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Board> __BuildUpdateBoard(WorkflowExpression<string> boardId, WorkflowExpression<string> boardboardName = null, WorkflowExpression<boardcreateDefaultListsInput> boardcreateDefaultLists = null, WorkflowExpression<string> boardboardDescription = null, WorkflowExpression<string> boardteamId = null, WorkflowExpression<boardpermissionLevelInput> boardpermissionLevel = null, WorkflowExpression<boardcommentPreferencesInput> boardcommentPreferences = null, WorkflowExpression<boardinvitationPreferencesInput> boardinvitationPreferences = null, WorkflowExpression<boarduseCardCoversInput> boarduseCardCovers = null, WorkflowExpression<boardbackgroundColorInput> boardbackgroundColor = null, WorkflowExpression<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, WorkflowExpression<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, WorkflowExpression<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
         {
@@ -523,7 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List[]> __BuildListLists(WorkflowExpression<string> boardId, WorkflowExpression<cardsInput> cards = null, WorkflowExpression<string> cardFields = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<string> fields = null)
         {
@@ -556,7 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List[]> __BuildListListsSimple(WorkflowExpression<string> boardId)
         {
@@ -577,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List> __BuildGetList(WorkflowExpression<string> boardId, WorkflowExpression<string> listId, WorkflowExpression<cardsInput> cards = null, WorkflowExpression<string> cardFields = null, WorkflowExpression<bool> board = null, WorkflowExpression<string> boardFields = null, WorkflowExpression<string> fields = null)
         {
@@ -615,7 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateListResponse> __BuildUpdateList(WorkflowExpression<string> boardId, WorkflowExpression<string> listId, WorkflowExpression<string> name = null, WorkflowExpression<closedInput> closed = null, WorkflowExpression<string> idBoard = null, WorkflowExpression<posInput> pos = null, WorkflowExpression<subscribedInput> subscribed = null)
         {
@@ -653,7 +642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetUserProfile(WorkflowExpression<string> fields = null)
         {
@@ -685,7 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Member[]> __BuildListTeamMembers(WorkflowExpression<string> teamId)
         {
@@ -706,7 +693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Member[]> __BuildListBoardMembers(WorkflowExpression<string> boardId)
         {
@@ -727,7 +713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoardLabel[]> __BuildListBoardLabels(WorkflowExpression<string> boardId)
         {
@@ -749,7 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Team> __BuildGetTeamForBoard(WorkflowExpression<string> boardId)
         {
@@ -770,7 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Member[]> __BuildListCardMembers(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId)
         {
@@ -793,7 +776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Comment[]> __BuildListCardComments(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId)
         {
@@ -816,7 +798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Comment> __BuildAddCommentToCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> commentcommentText = null)
         {
@@ -853,7 +834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Member[]> __BuildAddMemberToCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> memberId)
         {
@@ -878,7 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Board> __BuildCreateBoard(WorkflowExpression<string> boardboardName, WorkflowExpression<boardcreateDefaultListsInput> boardcreateDefaultLists = null, WorkflowExpression<string> boardboardDescription = null, WorkflowExpression<string> boardteamId = null, WorkflowExpression<boardpermissionLevelInput> boardpermissionLevel = null, WorkflowExpression<boardcommentPreferencesInput> boardcommentPreferences = null, WorkflowExpression<boardinvitationPreferencesInput> boardinvitationPreferences = null, WorkflowExpression<boarduseCardCoversInput> boarduseCardCovers = null, WorkflowExpression<boardbackgroundColorInput> boardbackgroundColor = null, WorkflowExpression<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, WorkflowExpression<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, WorkflowExpression<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
         {
@@ -985,7 +964,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateListResponse> __BuildCreateList(WorkflowExpression<string> listlistName, WorkflowExpression<string> listboardId, WorkflowExpression<listlistPositionInput> listlistPosition = null, WorkflowExpression<string> listlistSource = null)
         {
@@ -1032,7 +1010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Board> __BuildCloseBoard(WorkflowExpression<string> boardId)
         {
@@ -1053,7 +1030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Card> __BuildCreateCard(WorkflowExpression<string> boardId, WorkflowExpression<string> newCardparentListId, WorkflowExpression<string> newCardcardName, WorkflowExpression<string> newCardcardDescription = null, WorkflowExpression<newCardcardPositionInput> newCardcardPosition = null, WorkflowExpression<string[]> newCardmemberIds = null, WorkflowExpression<string[]> newCardlabelIds = null, WorkflowExpression<string> newCardsourceUrl = null, WorkflowExpression<string> newCardsourceFile = null, WorkflowExpression<string> newCardsourceCardId = null, WorkflowExpression<string> newCardpropertiesFromSourceCard = null, WorkflowExpression<string> newCarddueDate = null)
         {
@@ -1161,7 +1137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Card> __BuildUpdateCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> updateCardname, WorkflowExpression<string> updateCarddescription = null, WorkflowExpression<bool> updateCardisClosed = null, WorkflowExpression<string[]> updateCardmemberIds = null, WorkflowExpression<string> updateCardcoverAttachmentIds = null, WorkflowExpression<string> updateCardboardId = null, WorkflowExpression<string> updateCardlistId = null, WorkflowExpression<string> updateCardposition = null, WorkflowExpression<string> updateCarddueDate = null, WorkflowExpression<bool> updateCardsubscribedToCard = null)
         {

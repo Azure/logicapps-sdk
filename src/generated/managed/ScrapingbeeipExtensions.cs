@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HTMLResponse> __BuildHTML(WorkflowExpression<string> url, WorkflowExpression<bool> renderJs, WorkflowExpression<string> jsScenario = null, WorkflowExpression<int> wait = null, WorkflowExpression<string> waitFor = null, WorkflowExpression<bool> blockAds = null, WorkflowExpression<bool> blockResources = null, WorkflowExpression<int> windowWidth = null, WorkflowExpression<int> windowHeight = null, WorkflowExpression<bool> premiumProxy = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<bool> stealthProxy = null, WorkflowExpression<string> ownProxy = null, WorkflowExpression<string> extractRules = null, WorkflowExpression<bool> screenshot = null, WorkflowExpression<string> screenshotSelector = null, WorkflowExpression<bool> screenshotFullPage = null, WorkflowExpression<bool> returnPageSource = null, WorkflowExpression<int> sessionId = null, WorkflowExpression<int> timeout = null, WorkflowExpression<string> cookies = null, WorkflowExpression<deviceInput> device = null, WorkflowExpression<bool> customGoogle = null)
         {
@@ -116,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SimpleSearchResponse> __BuildSimpleSearch(WorkflowExpression<string> search, WorkflowExpression<string> countryCode = null, WorkflowExpression<int> nbResults = null, WorkflowExpression<int> page = null, WorkflowExpression<string> language = null, WorkflowExpression<string> extraParams = null)
         {

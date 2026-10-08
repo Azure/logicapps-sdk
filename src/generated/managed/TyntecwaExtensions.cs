@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TestPhoneNumberResponse> __BuildTestPhoneNumber(WorkflowExpression<string> whatsAppBusinessNumber)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTextResponse> __BuildSendWhatsAppText(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodycontenttext = null)
         {
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppContactResponse> __BuildSendWhatsAppContact(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<bodycontentcontactsInputItem[]> bodycontentcontacts = null)
         {
@@ -151,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppLocationResponse> __BuildSendWhatsAppLocation(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<double> bodycontentlocationlongitude = null, WorkflowExpression<double> bodycontentlocationlatitude = null, WorkflowExpression<string> bodycontentlocationname = null, WorkflowExpression<string> bodycontentlocationaddress = null)
         {
@@ -240,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> __BuildSendWhatsAppQuickReply(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<bodycontentinteractivecomponentsbuttonsInputItem[]> bodycontentinteractivecomponentsbuttons = null)
         {
@@ -384,7 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppProductListResponse> __BuildSendWhatsAppProductList(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductListcatalogId = null, WorkflowExpression<bodycontentinteractivecomponentsproductListsectionsInputItem[]> bodycontentinteractivecomponentsproductListsections = null)
         {
@@ -543,7 +537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppProductResponse> __BuildSendWhatsAppProduct(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductcatalogId = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductproductId = null)
         {
@@ -702,7 +695,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppListResponse> __BuildSendWhatsAppList(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentslisttitle = null, WorkflowExpression<bodycontentinteractivecomponentslistsectionsInputItem[]> bodycontentinteractivecomponentslistsections = null)
         {
@@ -861,7 +853,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendsWhatsAppImageResponse> __BuildSendsWhatsAppImage(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentimageurl = null, WorkflowExpression<string> bodycontentimagecaption = null)
         {
@@ -936,7 +927,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppVideoResponse> __BuildSendWhatsAppVideo(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentvideourl = null, WorkflowExpression<string> bodycontentvideocaption = null)
         {
@@ -1011,7 +1001,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppDocumentResponse> __BuildSendWhatsAppDocument(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentdocumenturl = null, WorkflowExpression<string> bodycontentdocumentcaption = null, WorkflowExpression<string> bodycontentdocumentfilename = null)
         {
@@ -1093,7 +1082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppAudioResponse> __BuildSendWhatsAppAudio(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentaudiourl = null)
         {
@@ -1161,7 +1149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppStickerResponse> __BuildSendWhatsAppSticker(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentstickerurl = null)
         {
@@ -1229,7 +1216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> __BuildSendWhatsAppTemplateText(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
@@ -1326,7 +1312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> __BuildSendWhatsAppTemplateLocation(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem2[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
@@ -1423,7 +1408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> __BuildSendWhatsAppTemplateImage(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem22[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
@@ -1520,7 +1504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> __BuildSendWhatsAppTemplateDocument(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem222[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
@@ -1617,7 +1600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> __BuildSendWhatsAppTemplateVideo(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodychannel = null, WorkflowExpression<string> bodycontentcontentType = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem2222[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
@@ -1724,7 +1706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> __BuildSendWhatsAppTemplateDynamicButton(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, WorkflowExpression<bodycontenttemplatecomponentsbuttonInputItem[]> bodycontenttemplatecomponentsbutton = null)
         {
@@ -1821,7 +1802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> __BuildSendWhatsAppTemplateQuickReply(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, WorkflowExpression<bodycontenttemplatecomponentsbuttonInputItem2[]> bodycontenttemplatecomponentsbutton = null)
         {
@@ -1918,7 +1898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatusCheckV3Response> __BuildStatusCheck(WorkflowExpression<string> messageId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateBoardResponse> __BuildCreateBoard(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCardResponse> __BuildCreateCard(WorkflowExpression<string> bodyboardId, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodylaneId = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<int> bodysize = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodyplannedStartDate = null, WorkflowExpression<string> bodyplannedFinishDate = null, WorkflowExpression<string> bodycardId = null, WorkflowExpression<bool> bodyisBlocked = null, WorkflowExpression<string> bodyblockReason = null, WorkflowExpression<string> bodyexternalLinkexternalLinkLabel = null, WorkflowExpression<string> bodyexternalLinkexternalLinkURL = null, WorkflowExpression<string[]> bodyassignees = null)
         {
@@ -190,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardResponse> __BuildGetCard(WorkflowExpression<string> cardId)
         {
@@ -211,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardResponse> __BuildUpdateCard(WorkflowExpression<string> cardId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodylaneId = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<int> bodysize = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodyplannedStartDateTime = null, WorkflowExpression<string> bodyplannedFinishDateTime = null, WorkflowExpression<string> bodycardId = null, WorkflowExpression<bool> bodyisBlocked = null, WorkflowExpression<string> bodyblockReason = null, WorkflowExpression<string> bodyexternalLinkexternalLinkLabel = null, WorkflowExpression<string> bodyexternalLinkexternalLinkURL = null, WorkflowExpression<string[]> bodyassignees = null)
         {
@@ -352,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CardResponse> __BuildDeleteCard(WorkflowExpression<string> cardId)
         {
@@ -373,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddCommentResponse> __BuildAddComment(WorkflowExpression<string> cardId, WorkflowExpression<string> bodycomment)
         {

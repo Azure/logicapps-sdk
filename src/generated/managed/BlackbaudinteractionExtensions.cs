@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionRead> __BuildListActions(WorkflowExpression<string> listId = null, WorkflowExpression<string> computedStatus = null, WorkflowExpression<string> statusCode = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> dateAdded = null, WorkflowExpression<string> lastModified = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiCreatedAction> __BuildCreateAction(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodydate, WorkflowExpression<bodycategoryInput> bodycategory, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodysummary = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<bool> bodycompleted = null, WorkflowExpression<string> bodycompletedOn = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodydirectionInput> bodydirection = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodyopportunityID = null, WorkflowExpression<bodyoutcomeInput> bodyoutcome = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<string> bodyauthor = null, WorkflowExpression<string[]> bodyfundraiserS = null)
         {
@@ -200,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiActionRead> __BuildGetAction(WorkflowExpression<string> actionId)
         {
@@ -221,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditAction(WorkflowExpression<string> actionId, WorkflowExpression<string> bodydate = null, WorkflowExpression<bodycategoryInput> bodycategory = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodysummary = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<bool> bodycompleted = null, WorkflowExpression<string> bodycompletedOn = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bodydirectionInput> bodydirection = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodyopportunityID = null, WorkflowExpression<bodyoutcomeInput> bodyoutcome = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<string[]> bodyfundraiserS = null)
         {
@@ -361,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionAttachmentRead> __BuildListActionAttachments(WorkflowExpression<string> actionId)
         {
@@ -382,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionCustomFieldRead> __BuildListActionCustomFields(WorkflowExpression<string> actionId)
         {
@@ -403,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment> __BuildCreateActionAttachment(WorkflowExpression<string> bodyactionID, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodyuRL = null, WorkflowExpression<string> bodyfileName = null, WorkflowExpression<string> bodyfileID = null, WorkflowExpression<string> bodythumbnailID = null, WorkflowExpression<string[]> bodytags = null)
         {
@@ -485,7 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditActionAttachment(WorkflowExpression<string> attachmentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodyuRL = null, WorkflowExpression<string[]> bodytags = null)
         {
@@ -541,7 +533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField> __BuildCreateActionCustomField(WorkflowExpression<string> bodyactionID, WorkflowExpression<string> bodycategory, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodycomment = null)
         {
@@ -595,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditActionCustomField(WorkflowExpression<string> customFieldId, WorkflowExpression<string> bodycategory = null, WorkflowExpression<object> bodyvalue = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodycomment = null)
         {
@@ -651,7 +641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionRead> __BuildListConstituentActions(WorkflowExpression<string> constituentId)
         {

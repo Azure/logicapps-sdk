@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadMeetingResponse> __BuildReadMeetings(WorkflowExpression<string> contentType = null, WorkflowExpression<string> password = null, WorkflowExpression<string> timezone = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAMeetingResponse> __BuildCreateAMeeting(WorkflowExpression<string> contentType, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodystart, WorkflowExpression<string> bodyend, WorkflowExpression<string> bodyagenda = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<bool> bodyenabledAutoRecordMeeting = null, WorkflowExpression<bool> bodyallowAnyUserToBeCoHost = null)
         {
@@ -151,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateAInvitee(WorkflowExpression<string> bodymeetingId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodycoHost = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodysendEmail = null, WorkflowExpression<string> bodypanelist = null)
         {
@@ -223,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAMeeting(WorkflowExpression<string> meetingId)
         {
@@ -244,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateAMeeting(WorkflowExpression<string> meetingId, WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyagenda = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<bool> bodyenabledAutoRecordMeeting = null, WorkflowExpression<bool> bodyallowAnyUserToBeCoHost = null, WorkflowExpression<bool> bodyenabledJoinBeforeHost = null, WorkflowExpression<bool> bodyenableConnectAudioBeforeHost = null, WorkflowExpression<int> bodyjoinBeforeHostMinutes = null, WorkflowExpression<bool> bodyexcludePassword = null, WorkflowExpression<bool> bodypublicMeeting = null, WorkflowExpression<int> bodyreminderTime = null, WorkflowExpression<string> bodyunlockedMeetingJoinSecurity = null, WorkflowExpression<bool> bodyenableAutomaticLock = null, WorkflowExpression<int> bodyautomaticLockMinutes = null, WorkflowExpression<bool> bodyallowFirstUserToBeCoHost = null, WorkflowExpression<bool> bodyallowAuthenticatedDevices = null, WorkflowExpression<bool> bodysendEmail = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodysiteUrl = null, WorkflowExpression<bool> bodymeetingOptionsenabledChat = null, WorkflowExpression<bool> bodymeetingOptionsenabledVideo = null, WorkflowExpression<bool> bodymeetingOptionsenabledPolling = null, WorkflowExpression<bool> bodymeetingOptionsenabledNote = null, WorkflowExpression<string> bodymeetingOptionsnoteType = null, WorkflowExpression<bool> bodymeetingOptionsenabledClosedCaptions = null, WorkflowExpression<bool> bodymeetingOptionsenabledFileTransfer = null, WorkflowExpression<bool> bodymeetingOptionsenabledUCFRichMedia = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledShareContent = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledSaveDocument = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledPrintDocument = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledAnnotate = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewParticipantList = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewThumbnails = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledRemoteControl = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewAnyDocument = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewAnyPage = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledContactOperatorPrivately = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledChatHost = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledChatPresenter = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledChatOtherParticipants = null, WorkflowExpression<string[]> bodyintegrationTags = null, WorkflowExpression<bool> bodyenabledBreakoutSessions = null, WorkflowExpression<bodytrackingCodesInputItem[]> bodytrackingCodes = null, WorkflowExpression<string> bodyaudioConnectionOptionsaudioConnectionType = null, WorkflowExpression<bool> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, WorkflowExpression<bool> bodyaudioConnectionOptionsenabledGlobalCallIn = null, WorkflowExpression<bool> bodyaudioConnectionOptionsenabledAudienceCallBack = null, WorkflowExpression<string> bodyaudioConnectionOptionsentryAndExitTone = null, WorkflowExpression<bool> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, WorkflowExpression<bool> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, WorkflowExpression<bool> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
         {

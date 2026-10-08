@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse[]> __BuildSearchGet(WorkflowExpression<string> query, WorkflowExpression<filterInput> filter = null, WorkflowExpression<int> take = null)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CaseResponse> __BuildCaseGet(WorkflowExpression<string> id)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CaseFieldsResponse> __BuildCaseFieldGet(WorkflowExpression<string> id)
         {
@@ -105,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildCasePrint(WorkflowExpression<string> id, WorkflowExpression<bool> bodyasynchronous = null, WorkflowExpression<bool> bodyuseCustom = null, WorkflowExpression<bodydisplayGalleryInput> bodydisplayGallery = null, WorkflowExpression<bodydisplayTextInput> bodydisplayText = null)
         {
@@ -161,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildCasePrintGet(WorkflowExpression<string> id, WorkflowExpression<string> requestId)
         {
@@ -183,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CaseReplyResponse> __BuildCaseReplyGet(WorkflowExpression<string> id)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CaseReplyResponse> __BuildCaseReply(WorkflowExpression<string> id, WorkflowExpression<bool> bodywithoutNotification, WorkflowExpression<string> bodymessage = null)
         {

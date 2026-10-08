@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMailResponse> __BuildSendMail(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyfromAddress, WorkflowExpression<string> bodytoAddress, WorkflowExpression<string> bodyccAddress = null, WorkflowExpression<string> bodybccAddress = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<bodyaskReceiptInput> bodyaskReceipt = null, WorkflowExpression<bodymailFormatInput> bodymailFormat = null, WorkflowExpression<bodyattachmentInputItem[]> bodyattachment = null)
         {
@@ -109,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SaveDraftResponse> __BuildSaveDraft(WorkflowExpression<string> accountId, WorkflowExpression<bodymodeInput> bodymode, WorkflowExpression<string> bodyfromAddress, WorkflowExpression<string> bodytoAddress, WorkflowExpression<string> bodyccAddress = null, WorkflowExpression<string> bodybccAddress = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<bodyaskReceiptInput> bodyaskReceipt = null, WorkflowExpression<bodymailFormatInput> bodymailFormat = null, WorkflowExpression<bodyattachmentInputItem[]> bodyattachment = null)
         {
@@ -195,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSenderDetailsResponse> __BuildGetSenderDetails(WorkflowExpression<string> accountId)
         {
@@ -216,7 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchMailResponse> __BuildSearchMail(WorkflowExpression<string> accountId, WorkflowExpression<int> start, WorkflowExpression<int> limit, WorkflowExpression<string> bodyentire = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodysender = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycc = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyfileName = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string> bodyfromDate = null, WorkflowExpression<string> bodytoDate = null, WorkflowExpression<bool> bodygroupResult = null, WorkflowExpression<string> bodyin = null, WorkflowExpression<string> bodylabel = null)
         {
@@ -339,7 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllFolderResponse> __BuildGetAllFolder(WorkflowExpression<string> accountId)
         {
@@ -360,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllLabelResponse> __BuildGetAllLabel(WorkflowExpression<string> accountId)
         {
@@ -381,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEmailContentResponse> __BuildGetEmailContent(WorkflowExpression<string> accountId, WorkflowExpression<string> messageId)
         {
@@ -404,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEmailAttachmentInfoResponse> __BuildGetEmailAttachmentInfo(WorkflowExpression<string> accountId, WorkflowExpression<string> messageId)
         {
@@ -426,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetEmailAttachmentContent(WorkflowExpression<string> accountId, WorkflowExpression<string> messageId, WorkflowExpression<string> attachmentId)
         {

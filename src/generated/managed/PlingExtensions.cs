@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendNotification(WorkflowExpression<string> profileId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodycontent, WorkflowExpression<string[]> bodyaudienceUsers)
         {
@@ -75,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplatesResponseItem[]> __BuildGetTemplates(WorkflowExpression<string> profileId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEnvelopeOutput> __BuildCreateEnvelope(WorkflowExpression<string> bodyenvelopeTitle = null, WorkflowExpression<string> bodyenvelopeLabel = null, WorkflowExpression<string> bodyenvelopeMessage = null, WorkflowExpression<bodyenvelopeModeInput> bodyenvelopeMode = null, WorkflowExpression<bodyenvelopeRoutingInput> bodyenvelopeRouting = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<string> bodytimestampFormat = null, WorkflowExpression<bodyenvelopeAttestationInput> bodyenvelopeAttestation = null, WorkflowExpression<string> bodysendername = null, WorkflowExpression<string> bodysenderemail = null, WorkflowExpression<string[]> bodyenvelopeTopics = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -146,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEnvelope(WorkflowExpression<string> envelopeId)
         {
@@ -167,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Envelope> __BuildGetEnvelope(WorkflowExpression<string> envelopeId)
         {
@@ -188,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Capture> __BuildGetCapture(WorkflowExpression<string> envelopeId, WorkflowExpression<string> captureKey)
         {
@@ -211,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartEnvelopeOutput> __BuildStartEnvelope(WorkflowExpression<string> envelopeId)
         {
@@ -232,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddDocumentOutput> __BuildAddDocument(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -283,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddDocumentOutput> __BuildAddDocumentDocx(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -334,7 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddDocumentOutput> __BuildAddTemplate(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string[]> bodytemplateData = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -392,7 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddTemplateData(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<string> bodyvalue = null)
         {
@@ -434,7 +425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPlaceSignature(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<double> bodyplaceHeight = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -513,7 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPlaceInitials(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<double> bodyplaceHeight = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -592,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPlaceTextInput(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<string> bodycaptureAs = null, WorkflowExpression<string> bodyhint = null, WorkflowExpression<string> bodyprompt = null, WorkflowExpression<bodyrequirementInput> bodyrequirement = null, WorkflowExpression<string> bodyformat = null, WorkflowExpression<string> bodyformatMessage = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -716,7 +704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPlaceText(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyvalue = null, WorkflowExpression<double> bodyfontSize = null, WorkflowExpression<string> bodyfontColor = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -802,7 +789,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPlaceRecipientCompletedDate(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -881,7 +867,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddPlaceEnvelopeCompletedDate(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -953,7 +938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddRecipientSignerOutput> __BuildAddRecipient(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodyrecipientName = null, WorkflowExpression<string> bodyrecipientEmail = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<bodyrecipientCeremonyCreationInput> bodyrecipientCeremonyCreation = null, WorkflowExpression<bodyrecipientDeliveryTypeInput> bodyrecipientDeliveryType = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -1025,7 +1009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Recipient> __BuildGetRecipient(WorkflowExpression<string> recipientId)
         {
@@ -1046,7 +1029,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateCeremonyEmailLink(WorkflowExpression<string> recipientId, WorkflowExpression<string> bodyredirectURL = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -1098,7 +1080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCeremonyCustomOutput> __BuildCreateCeremonyCustom(WorkflowExpression<string> recipientId, WorkflowExpression<string> bodyauthenticationauthenticationProvider = null, WorkflowExpression<string[]> bodyauthenticationauthenticationData = null, WorkflowExpression<string> bodyredirectURL = null, WorkflowExpression<string> bodyextraProperties = null)
         {
@@ -1164,7 +1145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Envelope> __BuildWaitEnvelope(WorkflowExpression<string> envelopeId)
         {
@@ -1185,7 +1165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Deliverable> __BuildGetDeliverable(WorkflowExpression<string> deliverableId)
         {

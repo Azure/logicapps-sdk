@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGenerateDataFromExistingSchema(WorkflowExpression<string> bodyschemaName = null, WorkflowExpression<string> bodyschemaJSON = null, WorkflowExpression<int> bodyrecordCount = null)
         {

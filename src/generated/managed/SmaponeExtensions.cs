@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataSourceModel> __BuildGETDataSource(WorkflowExpression<string> dataSourceId)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGETDataSourceDefinitionValues(WorkflowExpression<string> dataSourceId, WorkflowExpression<string> dataSourceVersion)
         {
@@ -87,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataSourceVersionModel> __BuildPUTDataSourceDefinitionValues(WorkflowExpression<string> dataSourceId, WorkflowExpression<string> dataSourceVersion, WorkflowExpression<JToken[]> values = null)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmapModel> __BuildGETSmap(WorkflowExpression<string> smapId)
         {
@@ -141,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataRecordApi[]> __BuildGETSmapDataFormat(WorkflowExpression<string> smapId, WorkflowExpression<formatInput> format, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<stateInput> state = null)
         {
@@ -170,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGETSmapDataReport(WorkflowExpression<string> smapId, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<stateInput> state = null)
         {
@@ -198,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataRecordApi[]> __BuildGETSmapVersionData(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<stateInput> state = null)
         {
@@ -231,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDELETESmapVersionData(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<stateInput> state = null)
         {
@@ -256,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataRecordApi> __BuildPOSTSmapsDataVersion(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> tasktitle, WorkflowExpression<string> taskuserEmail = null, WorkflowExpression<string> taskcomment = null, WorkflowExpression<bool> taskhasPriority = null)
         {
@@ -317,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGETSmapVersionDataReport(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<stateInput> state = null)
         {
@@ -346,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGETSmapVersionRecordReport(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId, WorkflowExpression<formatInput> format, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<bool> useDefault = null)
         {
@@ -378,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataRecordApi> __BuildGETSmapVersionRecordFormat(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> markAsExported = null)
         {
@@ -409,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDELETESmapVersionDataRecord(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId)
         {
@@ -432,7 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleFileValue[]> __BuildGETSmapVersionRecordFiles(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId)
         {
@@ -455,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGETSmapVersionRecordFile(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId, WorkflowExpression<string> fileId)
         {
@@ -479,7 +464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataRecordApi> __BuildPUTSmapVersionTaskState(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> taskId, WorkflowExpression<stateactionInput> stateaction = null, WorkflowExpression<string> stateuserEmail = null)
         {
@@ -523,7 +507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmapVersionModel> __BuildPUTSmapVersionsCurrentDataSourcesUpdate(WorkflowExpression<string> smapId, WorkflowExpression<bool> updateEditVersion = null)
         {
@@ -548,7 +531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmapVersionModel[]> __BuildGETSmapVersions(WorkflowExpression<string> smapId)
         {
@@ -569,7 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmapVersionModel> __BuildGETSmapVersion(WorkflowExpression<string> smapId, WorkflowExpression<string> version)
         {
@@ -591,7 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGETSmapVersionSchema(WorkflowExpression<string> smapId, WorkflowExpression<string> version)
         {

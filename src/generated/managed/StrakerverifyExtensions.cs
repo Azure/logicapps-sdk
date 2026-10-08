@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFile(WorkflowExpression<string> fileId)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetKeyResponse> __BuildCreateKey(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription = null)
         {
@@ -95,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetKeyResponse> __BuildGetKey(WorkflowExpression<string> keyId)
         {
@@ -116,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProjectResponse> __BuildCreateProject(WorkflowExpression<object> files, WorkflowExpression<string[]> languages, WorkflowExpression<string> workflowId, WorkflowExpression<string> title, WorkflowExpression<string> callbackUri)
         {
@@ -142,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowExpression<string> projectId)
         {
@@ -163,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSegmentResponse> __BuildGetSegments(WorkflowExpression<string> projectId, WorkflowExpression<string> fileId, WorkflowExpression<string> languageId, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -194,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildConfirmProject(WorkflowExpression<string> projectId)
         {
@@ -224,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWorkflowResponse> __BuildGetWorkflow(WorkflowExpression<string> workflowId)
         {

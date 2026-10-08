@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssistantsGetResponse> __BuildAssistantsGet(WorkflowExpression<string> openAIBeta)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssistantPostResponse> __BuildAssistant(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null, WorkflowExpression<string[]> bodyfileIds = null)
         {
@@ -123,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssistantGetResponse> __BuildAssistantGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> assistantId)
         {
@@ -146,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssistantDeleteResponse> __BuildAssistantDelete(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> assistantId)
         {
@@ -169,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilesGetResponse> __BuildFilesGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> assistantId)
         {
@@ -192,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilePostResponse> __BuildFile(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> assistantId, WorkflowExpression<string> bodyfileId)
         {
@@ -225,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileGetResponse> __BuildFileGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> assistantId, WorkflowExpression<string> fileId)
         {
@@ -249,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FileDeleteResponse> __BuildFileDelete(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> assistantId, WorkflowExpression<string> fileId)
         {
@@ -273,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadPostResponse> __BuildThread(WorkflowExpression<string> openAIBeta, WorkflowExpression<bodymessagesInputItem[]> bodymessages)
         {
@@ -305,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadGetResponse> __BuildThreadGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId)
         {
@@ -328,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadDeleteResponse> __BuildThreadDelete(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId)
         {
@@ -351,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadModifyPostResponse> __BuildThreadModify(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId)
         {
@@ -389,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessagesGetResponse> __BuildMessagesGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<int> limit = null, WorkflowExpression<string> order = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {
@@ -424,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId)
         {
@@ -447,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageModifyPostResponse> __BuildMessageModify(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> messageId)
         {
@@ -486,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageFileGetResponse> __BuildMessageFileGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> messageId, WorkflowExpression<string> fileId)
         {
@@ -511,7 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageFilesGetResponse> __BuildMessageFilesGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> messageId)
         {
@@ -535,7 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunsGetResponse> __BuildRunsGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<int> limit = null, WorkflowExpression<string> order = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {
@@ -570,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunPostResponse> __BuildRun(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyassistantId = null, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null)
         {
@@ -632,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunGetResponse> __BuildRunGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> runId)
         {
@@ -656,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunModifyPostResponse> __BuildRunModify(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> runId)
         {
@@ -695,7 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunToolOutputsPostResponse> __BuildRunToolOutputs(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> runId, WorkflowExpression<bodytoolOutputsInputItem[]> bodytoolOutputs = null)
         {
@@ -733,7 +711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunCancelPostResponse> __BuildRunCancel(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> runId)
         {
@@ -757,7 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreadRunPostResponse> __BuildThreadRun(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> bodyassistantId = null, WorkflowExpression<bodythreadmessagesInputItem[]> bodythreadmessages = null, WorkflowExpression<string> bodymodel = null, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null)
         {
@@ -837,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunStepGetResponse> __BuildRunStepGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> runId, WorkflowExpression<string> stepId)
         {
@@ -862,7 +837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunStepsGetResponse> __BuildRunStepsGet(WorkflowExpression<string> openAIBeta, WorkflowExpression<string> threadId, WorkflowExpression<string> runId, WorkflowExpression<int> limit = null, WorkflowExpression<string> order = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ahead")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAheadReceiveExternalActivity(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodymediaUrl = null, WorkflowExpression<bodysourceInput> bodysource = null)
         {

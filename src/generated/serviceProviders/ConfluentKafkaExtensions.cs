@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageOutput> __BuildSendMessage(WorkflowExpression<string> topicName, WorkflowExpression<object> message, WorkflowExpression<string> messageKey = null, WorkflowExpression<object> headers = null, WorkflowExpression<string> schemaSubjectName = null)
         {

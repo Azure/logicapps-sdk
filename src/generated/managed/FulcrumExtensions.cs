@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AttachmentsResponse> __BuildGetAllAttachments(WorkflowExpression<string> recordId = null, WorkflowExpression<string> formId = null, WorkflowExpression<string> ownerType = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<sortDirectionInput> sortDirection = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Attachment> __BuildGetSingleAttachment(WorkflowExpression<string> attachmentId)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudiosResponse> __BuildAudioGetAll(WorkflowExpression<string> recordId = null, WorkflowExpression<string> formId = null, WorkflowExpression<bool> newestFirst = null, WorkflowExpression<bool> processed = null, WorkflowExpression<bool> stored = null, WorkflowExpression<bool> uploaded = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAudioGetOriginalFile(WorkflowExpression<string> audioId)
         {
@@ -143,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PhotosResponse> __BuildPhotosGetAllMetadata(WorkflowExpression<string> recordId = null, WorkflowExpression<string> formId = null, WorkflowExpression<bool> newestFirst = null, WorkflowExpression<bool> processed = null, WorkflowExpression<bool> stored = null, WorkflowExpression<bool> uploaded = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -189,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPhotosGetSingleFile(WorkflowExpression<string> photoId)
         {
@@ -210,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SinglePhotoResponse> __BuildPhotosGetSingleMetadata(WorkflowExpression<string> photoId)
         {
@@ -231,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildQuery(WorkflowExpression<string> bodyq, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<string> bodytableName = null)
         {
@@ -283,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecordsResponse> __BuildRecordsGetAll(WorkflowExpression<bool> newestFirst = null, WorkflowExpression<string> boundingBox = null, WorkflowExpression<string> changesetId = null, WorkflowExpression<string> formId = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> clientCreatedBefore = null, WorkflowExpression<string> clientCreatedSince = null, WorkflowExpression<string> clientUpdatedBefore = null, WorkflowExpression<string> clientUpdatedSince = null, WorkflowExpression<string> createdBefore = null, WorkflowExpression<string> createdSince = null, WorkflowExpression<string> updatedBefore = null, WorkflowExpression<string> updatedSince = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -350,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildRecordsCreate(WorkflowExpression<object> bodyrecordgeometrycoordinates, WorkflowExpression<bodyrecordgeometrytypeInput> bodyrecordgeometrytype, WorkflowExpression<string> contentType = null, WorkflowExpression<bool> xSkipWorkflows = null, WorkflowExpression<bool> xSkipWebhooks = null, WorkflowExpression<string> bodyrecordassignedToId = null, WorkflowExpression<string> bodyrecordformId = null, WorkflowExpression<double> bodyrecordlatitude = null, WorkflowExpression<double> bodyrecordlongitude = null, WorkflowExpression<string> bodyrecordprojectId = null, WorkflowExpression<string> bodyrecordstatus = null)
         {
@@ -461,7 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildRecordsDelete(WorkflowExpression<string> recordId, WorkflowExpression<bool> xSkipWorkflows = null, WorkflowExpression<bool> xSkipWebhooks = null)
         {
@@ -490,7 +479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildRecordsGetSingle(WorkflowExpression<string> recordId)
         {
@@ -511,7 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleRecordResponse> __BuildRecordsPartialUpdate(WorkflowExpression<string> recordId, WorkflowExpression<object> bodyrecordgeometrycoordinates, WorkflowExpression<bodyrecordgeometrytypeInput> bodyrecordgeometrytype, WorkflowExpression<string> contentType = null, WorkflowExpression<bool> xSkipWorkflows = null, WorkflowExpression<bool> xSkipWebhooks = null, WorkflowExpression<string> bodyrecordassignedToId = null, WorkflowExpression<double> bodyrecordlatitude = null, WorkflowExpression<double> bodyrecordlongitude = null, WorkflowExpression<string> bodyrecordprojectId = null, WorkflowExpression<string> bodyrecordstatus = null)
         {
@@ -616,7 +603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRecordsUpdate(WorkflowExpression<string> recordId, WorkflowExpression<object> bodyrecordgeometrycoordinates, WorkflowExpression<bodyrecordgeometrytypeInput> bodyrecordgeometrytype, WorkflowExpression<string> contentType = null, WorkflowExpression<bool> xSkipWorkflows = null, WorkflowExpression<bool> xSkipWebhooks = null, WorkflowExpression<string> bodyrecordassignedToId = null, WorkflowExpression<string> bodyrecordformId = null, WorkflowExpression<double> bodyrecordlatitude = null, WorkflowExpression<double> bodyrecordlongitude = null, WorkflowExpression<string> bodyrecordprojectId = null, WorkflowExpression<string> bodyrecordstatus = null)
         {
@@ -728,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecordHistoryResponse> __BuildRecordsGetHistory(WorkflowExpression<string> recordId)
         {
@@ -749,7 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportResponse> __BuildReportsCreate(WorkflowExpression<string> bodyreportrecordId = null, WorkflowExpression<string> bodyreporttemplateId = null)
         {
@@ -798,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildReportsFile(WorkflowExpression<string> reportId)
         {
@@ -819,7 +802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignaturesResponse> __BuildSignaturesGetAll(WorkflowExpression<string> recordId = null, WorkflowExpression<string> formId = null, WorkflowExpression<bool> newestFirst = null, WorkflowExpression<bool> processed = null, WorkflowExpression<bool> stored = null, WorkflowExpression<bool> uploaded = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -865,7 +847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleSignatureResponse> __BuildSignaturesGetSingleMetadata(WorkflowExpression<string> signatureId)
         {
@@ -886,7 +867,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSignaturesGetSingleFile(WorkflowExpression<string> signatureId)
         {
@@ -907,7 +887,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SketchesResponse> __BuildSketchesGetAllMetadata(WorkflowExpression<string> recordId = null, WorkflowExpression<string> formId = null, WorkflowExpression<bool> newestFirst = null, WorkflowExpression<bool> processed = null, WorkflowExpression<bool> stored = null, WorkflowExpression<bool> uploaded = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -953,7 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSketchesGetSingleFile(WorkflowExpression<string> sketchId)
         {
@@ -974,7 +952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleSketchResponse> __BuildSketchesGetSingleMetadata(WorkflowExpression<string> sketchId)
         {
@@ -995,7 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideosResponse> __BuildVideosGetAll(WorkflowExpression<string> recordId = null, WorkflowExpression<string> formId = null, WorkflowExpression<bool> newestFirst = null, WorkflowExpression<bool> processed = null, WorkflowExpression<bool> stored = null, WorkflowExpression<bool> uploaded = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -1041,7 +1017,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVideosGetOriginalFile(WorkflowExpression<string> videoId)
         {

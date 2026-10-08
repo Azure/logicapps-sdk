@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LatestGetResponse> __BuildLatestGet(WorkflowExpression<string> q = null, WorkflowExpression<string> qInTitle = null, WorkflowExpression<string> country = null, WorkflowExpression<string> category = null, WorkflowExpression<string> language = null, WorkflowExpression<string> domain = null, WorkflowExpression<fullContentInput> fullContent = null, WorkflowExpression<imageInput> image = null, WorkflowExpression<videoInput> video = null, WorkflowExpression<string> page = null)
         {

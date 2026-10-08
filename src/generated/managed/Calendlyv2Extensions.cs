@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEventTypesResponse> __BuildGetEventTypes(WorkflowExpression<bool> active = null, WorkflowExpression<int> count = null, WorkflowExpression<string> pageToken = null, WorkflowExpression<bool> adminManaged = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInviteeNoShowResponse> __BuildCreateInviteeNoShow(WorkflowExpression<string> bodyinvitee)
         {
@@ -81,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEventTypeResponse> __BuildGetEventType(WorkflowExpression<string> uuid)
         {
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteInviteeNoShow(WorkflowExpression<string> uuid)
         {

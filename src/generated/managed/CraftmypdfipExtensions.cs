@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildCreate(WorkflowExpression<string> bodydata, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyexportType = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null, WorkflowExpression<bool> bodyisCmyk = null)
         {
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildCreateMerge(WorkflowExpression<JToken[]> bodytemplates, WorkflowExpression<string> bodyexportType = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null, WorkflowExpression<string> bodypaging = null)
         {
@@ -137,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseListTemplate> __BuildListTemplates(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -163,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> __BuildNewTemplateFrom(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyname = null)
         {
@@ -200,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseUpdateTemplate> __BuildUpdateTemplate(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyjson = null)
         {
@@ -244,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> __BuildDeleteTemplate(WorkflowExpression<string> templateId)
         {
@@ -266,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> __BuildCreateEditorSession(WorkflowExpression<string> bodytemplateId, WorkflowExpression<bool> bodycanSave = null, WorkflowExpression<bool> bodycanCreatePDF = null, WorkflowExpression<bool> bodycanViewSettings = null, WorkflowExpression<bool> bodycanPreview = null, WorkflowExpression<bool> bodycanEditJSON = null, WorkflowExpression<bool> bodycanShowHeader = null, WorkflowExpression<int> bodyjsonMode = null, WorkflowExpression<string> bodybackURL = null)
         {
@@ -360,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseListTransactions> __BuildListTransactions(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -395,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildMergePdfs(WorkflowExpression<JToken[]> bodyurls, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null)
         {
@@ -439,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildAddWatermark(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyfontSize = null, WorkflowExpression<int> bodyopacity = null, WorkflowExpression<int> bodyrotation = null, WorkflowExpression<string> bodyhexColor = null, WorkflowExpression<string> bodyfontFamily = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null)
         {

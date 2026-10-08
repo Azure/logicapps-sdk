@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCsvToJson(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCsvToText(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -106,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCsvToXml(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExcelToJson(WorkflowExpression<string> liquidTemplate = null, WorkflowExpression<string> excelFile = null)
         {
@@ -175,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExcelToText(WorkflowExpression<string> liquidTemplate = null, WorkflowExpression<string> excelFile = null)
         {
@@ -200,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExcelToXml(WorkflowExpression<string> liquidTemplate = null, WorkflowExpression<string> excelFile = null)
         {
@@ -225,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildJsonToJson(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -269,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildJsonToText(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -313,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildJsonToXml(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -357,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildXmlToJson(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -401,7 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildXmlToText(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -445,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildXmlToXml(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate = null, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -489,7 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildEdiToJson(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -529,7 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildEdiToText(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate, WorkflowExpression<string> bodylogFileName = null)
         {
@@ -569,7 +555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildXmlToXml11(WorkflowExpression<string> bodyinputString, WorkflowExpression<string> bodyliquidTemplate, WorkflowExpression<string> bodylogFileName = null)
         {

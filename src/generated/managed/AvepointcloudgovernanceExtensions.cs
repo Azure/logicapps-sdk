@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowGetOffice365Setting(WorkflowExpression<string> actionType, WorkflowExpression<object> body = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowUpdateOffice365Setting(WorkflowExpression<string> actionType, WorkflowExpression<object> body = null)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowGetRequestById(WorkflowExpression<string> serviceType, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestId)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFlowSubmitRequest(WorkflowExpression<string> serviceType, WorkflowExpression<string> serviceId, WorkflowExpression<string> delegateUserPrincipalName = null, WorkflowExpression<object> body = null)
         {
@@ -120,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowEditRequest(WorkflowExpression<string> serviceType, WorkflowExpression<string> serviceId, WorkflowExpression<string> id, WorkflowExpression<object> body = null)
         {
@@ -148,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowListWorkspace(WorkflowExpression<string> workspaceType = null, WorkflowExpression<string> primaryContact = null, WorkflowExpression<string> status = null, WorkflowExpression<string> urlorIdorEmail = null, WorkflowExpression<string> secondaryContact = null, WorkflowExpression<int> top = null, WorkflowExpression<string> nextLink = null)
         {
@@ -196,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFlowWorkspaceActions(WorkflowExpression<string> workspaceType, WorkflowExpression<string> workspaceAction, WorkflowExpression<object> body = null)
         {

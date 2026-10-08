@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateInspection(WorkflowExpression<string> bodyinspectionTemplateId, WorkflowExpression<string> bodybuilderId, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string[]> bodyprograms = null, WorkflowExpression<string[]> bodyraters = null, WorkflowExpression<string> bodysharePointSubscriberId = null, WorkflowExpression<string> bodyoutlookEventId = null, WorkflowExpression<string> bodyaddress1 = null, WorkflowExpression<string> bodyaddress2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyzip = null, WorkflowExpression<string> bodytimeZone = null)
         {

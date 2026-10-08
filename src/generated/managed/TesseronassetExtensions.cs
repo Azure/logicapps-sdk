@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddAssetResponse> __BuildAddAsset(WorkflowExpression<int> bodyassetTemplateId, WorkflowExpression<bodyfieldsInputItem[]> bodyfields, WorkflowExpression<int> bodyenterpriseId = null, WorkflowExpression<int> bodystatus = null, WorkflowExpression<string> bodyreferenceNumber = null, WorkflowExpression<int> bodydocumentationId = null, WorkflowExpression<string> bodydocumentationName = null, WorkflowExpression<string> bodyliveCycleName = null, WorkflowExpression<bodyattachmentsInputItem[]> bodyattachments = null)
         {
@@ -100,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAssetResponse> __BuildUpdateAsset(WorkflowExpression<int> bodyassetId, WorkflowExpression<int> bodyassetTemplateId, WorkflowExpression<bodyfieldsInputItem[]> bodyfields, WorkflowExpression<string> bodyreferenceNumber = null, WorkflowExpression<int> bodyenterpriseId = null, WorkflowExpression<int> bodydocumentationId = null, WorkflowExpression<string> bodydocumentationName = null, WorkflowExpression<int> bodystatus = null, WorkflowExpression<string> bodyliveCycleState = null, WorkflowExpression<bodyattachmentsInputItem[]> bodyattachments = null)
         {
@@ -185,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAssetSearchResponse> __BuildGetAssetSearch(WorkflowExpression<int> bodyskip, WorkflowExpression<int> bodypageSize, WorkflowExpression<int> bodyassetTemplateId, WorkflowExpression<string> bodysearch = null, WorkflowExpression<int> bodyenterpriseId = null, WorkflowExpression<int> bodydocumentationId = null, WorkflowExpression<int> bodyassetStatus = null, WorkflowExpression<bool> bodyisDeprecated = null, WorkflowExpression<string> bodylastUpdateDateStart = null, WorkflowExpression<string> bodylastUpdateDateEnd = null, WorkflowExpression<int> bodyresponseType = null, WorkflowExpression<bool> bodyincludeAccessAuditedFieldValues = null)
         {
@@ -284,7 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAssetInfoResponse> __BuildGetAssetInfo(WorkflowExpression<int> bodyassetId, WorkflowExpression<bool> bodyincludeAccessAuditedFieldValues = null, WorkflowExpression<int> bodyresponseType = null)
         {
@@ -328,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConfigResponse> __BuildGetConfig(WorkflowExpression<int> bodyassetTemplateId, WorkflowExpression<int> bodyenterpriseId = null)
         {

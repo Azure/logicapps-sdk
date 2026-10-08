@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTrusteesResponse> __BuildGetTrustees(WorkflowExpression<bodyobjectTypeInput> bodyobjectType, WorkflowExpression<string> bodyobjectId)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateDefaultSecurityResponse> __BuildUpdateDefaultSecurity(WorkflowExpression<bodyobjectTypeInput> bodyobjectType, WorkflowExpression<string> bodyobjectId, WorkflowExpression<string> bodydefaultSecurity)
         {
@@ -87,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdatePermissionsResponse> __BuildUpdatePermissions(WorkflowExpression<bodyobjectTypeInput> bodyobjectType, WorkflowExpression<string> bodyobjectId, WorkflowExpression<bodyaccessLevelInput> bodyaccessLevel, WorkflowExpression<string> bodyusers = null, WorkflowExpression<string> bodygroups = null)
         {
@@ -137,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPermissionsResponse> __BuildGetPermissions(WorkflowExpression<bodyobjectTypeInput> bodyobjectType, WorkflowExpression<string> bodyobjectId)
         {
@@ -170,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdatePermissionsResponse> __BuildCopyPermissions(WorkflowExpression<bodysourceObjectTypeInput> bodysourceObjectType, WorkflowExpression<string> bodysourceObjectId, WorkflowExpression<bodytargetObjectTypeInput> bodytargetObjectType, WorkflowExpression<string> bodytargetObjectId, WorkflowExpression<bodycopyTypeInput> bodycopyType, WorkflowExpression<bool> bodycopyDefaultSecurity)
         {
@@ -215,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> __BuildCreateWorkspace(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyname, WorkflowExpression<bodycreateChildrenInput> bodycreateChildren, WorkflowExpression<string> bodyowner = null, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodycustom1 = null, WorkflowExpression<string> bodycustom2 = null, WorkflowExpression<string> bodycustom3 = null, WorkflowExpression<string> bodycustom4 = null, WorkflowExpression<string> bodycustom5 = null, WorkflowExpression<string> bodycustom6 = null, WorkflowExpression<string> bodycustom7 = null, WorkflowExpression<string> bodycustom8 = null, WorkflowExpression<string> bodycustom9 = null, WorkflowExpression<string> bodycustom10 = null, WorkflowExpression<string> bodycustom11 = null, WorkflowExpression<string> bodycustom12 = null, WorkflowExpression<string> bodycustom13 = null, WorkflowExpression<string> bodycustom14 = null, WorkflowExpression<string> bodycustom15 = null, WorkflowExpression<string> bodycustom16 = null, WorkflowExpression<double> bodycustom17 = null, WorkflowExpression<double> bodycustom18 = null, WorkflowExpression<double> bodycustom19 = null, WorkflowExpression<double> bodycustom20 = null, WorkflowExpression<string> bodycustom21 = null, WorkflowExpression<string> bodycustom22 = null, WorkflowExpression<string> bodycustom23 = null, WorkflowExpression<string> bodycustom24 = null, WorkflowExpression<bool> bodycustom25 = null, WorkflowExpression<bool> bodycustom26 = null, WorkflowExpression<bool> bodycustom27 = null, WorkflowExpression<bool> bodycustom28 = null, WorkflowExpression<string> bodycustom29 = null, WorkflowExpression<string> bodycustom30 = null, WorkflowExpression<bool> bodyisExternalAsNormal = null, WorkflowExpression<string> bodyprojectCustom1 = null, WorkflowExpression<string> bodyprojectCustom2 = null, WorkflowExpression<string> bodyprojectCustom3 = null, WorkflowExpression<string> bodysubclass = null)
         {
@@ -530,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> __BuildUpdateWorkspace(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodycustom1 = null, WorkflowExpression<string> bodycustom2 = null, WorkflowExpression<string> bodycustom3 = null, WorkflowExpression<string> bodycustom4 = null, WorkflowExpression<string> bodycustom5 = null, WorkflowExpression<string> bodycustom6 = null, WorkflowExpression<string> bodycustom7 = null, WorkflowExpression<string> bodycustom8 = null, WorkflowExpression<string> bodycustom9 = null, WorkflowExpression<string> bodycustom10 = null, WorkflowExpression<string> bodycustom11 = null, WorkflowExpression<string> bodycustom12 = null, WorkflowExpression<string> bodycustom13 = null, WorkflowExpression<string> bodycustom14 = null, WorkflowExpression<string> bodycustom15 = null, WorkflowExpression<string> bodycustom16 = null, WorkflowExpression<double> bodycustom17 = null, WorkflowExpression<double> bodycustom18 = null, WorkflowExpression<double> bodycustom19 = null, WorkflowExpression<double> bodycustom20 = null, WorkflowExpression<string> bodycustom21 = null, WorkflowExpression<string> bodycustom22 = null, WorkflowExpression<string> bodycustom23 = null, WorkflowExpression<string> bodycustom24 = null, WorkflowExpression<bool> bodycustom25 = null, WorkflowExpression<bool> bodycustom26 = null, WorkflowExpression<bool> bodycustom27 = null, WorkflowExpression<bool> bodycustom28 = null, WorkflowExpression<string> bodycustom29 = null, WorkflowExpression<string> bodycustom30 = null, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bool> bodyisExternalAsNormal = null, WorkflowExpression<string> bodyprojectCustom1 = null, WorkflowExpression<string> bodyprojectCustom2 = null, WorkflowExpression<string> bodyprojectCustom3 = null, WorkflowExpression<string> bodysubclass = null)
         {
@@ -833,7 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetClassesResponse> __BuildGetClasses(WorkflowExpression<string> libraryId, WorkflowExpression<string> alias = null, WorkflowExpression<defaultSecurityInput> defaultSecurity = null, WorkflowExpression<string> description = null, WorkflowExpression<bool> echo = null, WorkflowExpression<bool> hipaa = null, WorkflowExpression<bool> indexable = null, WorkflowExpression<string> query = null, WorkflowExpression<bool> subclassRequired = null)
         {
@@ -879,7 +871,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSubclassesResponse> __BuildGetSubclasses(WorkflowExpression<string> libraryId, WorkflowExpression<string> classId, WorkflowExpression<string> alias = null, WorkflowExpression<defaultSecurityInput> defaultSecurity = null, WorkflowExpression<string> description = null, WorkflowExpression<bool> echo = null, WorkflowExpression<bool> hipaa = null, WorkflowExpression<string> query = null)
         {
@@ -921,7 +912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkspaceTemplatesResponseBody> __BuildGetWorkspaceTemplates(WorkflowExpression<string> libraryId, WorkflowExpression<string> custom1 = null, WorkflowExpression<string> custom2 = null, WorkflowExpression<string> custom3 = null, WorkflowExpression<string> custom4 = null, WorkflowExpression<string> custom5 = null, WorkflowExpression<string> custom6 = null, WorkflowExpression<string> custom7 = null, WorkflowExpression<string> custom8 = null, WorkflowExpression<string> custom9 = null, WorkflowExpression<string> custom10 = null, WorkflowExpression<string> custom11 = null, WorkflowExpression<string> custom12 = null, WorkflowExpression<double> custom17 = null, WorkflowExpression<double> custom18 = null, WorkflowExpression<double> custom19 = null, WorkflowExpression<double> custom20 = null, WorkflowExpression<string> custom21 = null, WorkflowExpression<string> custom22 = null, WorkflowExpression<string> custom23 = null, WorkflowExpression<string> custom24 = null, WorkflowExpression<string> custom21From = null, WorkflowExpression<string> custom21To = null, WorkflowExpression<string> custom21Relative = null, WorkflowExpression<string> custom22From = null, WorkflowExpression<string> custom22To = null, WorkflowExpression<string> custom22Relative = null, WorkflowExpression<string> custom23From = null, WorkflowExpression<string> custom23To = null, WorkflowExpression<string> custom23Relative = null, WorkflowExpression<string> custom24From = null, WorkflowExpression<string> custom24To = null, WorkflowExpression<string> custom24Relative = null, WorkflowExpression<bool> custom25 = null, WorkflowExpression<bool> custom26 = null, WorkflowExpression<bool> custom27 = null, WorkflowExpression<bool> custom28 = null, WorkflowExpression<string> custom29 = null, WorkflowExpression<string> custom30 = null)
         {
@@ -1057,7 +1047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditNVP(WorkflowExpression<bodyobjectTypeInput> bodyobjectType, WorkflowExpression<string> bodyobjectId)
         {
@@ -1098,7 +1087,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchFoldersResponseBody> __BuildSearchFolders(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodycontainerId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyworkspaceName = null)
         {
@@ -1170,7 +1158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> __BuildUploadDocument(WorkflowExpression<string> libraryId, WorkflowExpression<string> folderId, WorkflowExpression<bool> inheritProfileFromFolder, WorkflowExpression<object> file, WorkflowExpression<bool> keepLocked = null, WorkflowExpression<string> comment = null, WorkflowExpression<string> author = null, WorkflowExpression<string> @operator = null, WorkflowExpression<string> @class = null, WorkflowExpression<string> subclass = null, WorkflowExpression<defaultSecurityInput> defaultSecurity = null, WorkflowExpression<bool> isHipaa = null, WorkflowExpression<int> retainDays = null, WorkflowExpression<string> fileCreateDate = null, WorkflowExpression<string> fileEditDate = null, WorkflowExpression<string> custom1 = null, WorkflowExpression<string> custom2 = null, WorkflowExpression<string> custom3 = null, WorkflowExpression<string> custom4 = null, WorkflowExpression<string> custom5 = null, WorkflowExpression<string> custom6 = null, WorkflowExpression<string> custom7 = null, WorkflowExpression<string> custom8 = null, WorkflowExpression<string> custom9 = null, WorkflowExpression<string> custom10 = null, WorkflowExpression<string> custom11 = null, WorkflowExpression<string> custom12 = null, WorkflowExpression<string> custom13 = null, WorkflowExpression<string> custom14 = null, WorkflowExpression<string> custom15 = null, WorkflowExpression<string> custom16 = null, WorkflowExpression<double> custom17 = null, WorkflowExpression<double> custom18 = null, WorkflowExpression<double> custom19 = null, WorkflowExpression<double> custom20 = null, WorkflowExpression<string> custom21 = null, WorkflowExpression<string> custom22 = null, WorkflowExpression<string> custom23 = null, WorkflowExpression<string> custom24 = null, WorkflowExpression<bool> custom25 = null, WorkflowExpression<bool> custom26 = null, WorkflowExpression<bool> custom27 = null, WorkflowExpression<bool> custom28 = null, WorkflowExpression<string> custom29 = null, WorkflowExpression<string> custom30 = null)
         {
@@ -1236,7 +1223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> __BuildUpdateOrCreateNewDocVersion(WorkflowExpression<updateOrCreateInput> updateOrCreate, WorkflowExpression<string> documentId, WorkflowExpression<object> file, WorkflowExpression<bool> keepLocked = null, WorkflowExpression<string> comment = null, WorkflowExpression<string> name = null, WorkflowExpression<string> author = null, WorkflowExpression<string> @operator = null, WorkflowExpression<string> @class = null, WorkflowExpression<string> subclass = null, WorkflowExpression<defaultSecurityInput> defaultSecurity = null, WorkflowExpression<bool> isHipaa = null, WorkflowExpression<int> retainDays = null, WorkflowExpression<string> fileCreateDate = null, WorkflowExpression<string> fileEditDate = null, WorkflowExpression<string> custom1 = null, WorkflowExpression<string> custom2 = null, WorkflowExpression<string> custom3 = null, WorkflowExpression<string> custom4 = null, WorkflowExpression<string> custom5 = null, WorkflowExpression<string> custom6 = null, WorkflowExpression<string> custom7 = null, WorkflowExpression<string> custom8 = null, WorkflowExpression<string> custom9 = null, WorkflowExpression<string> custom10 = null, WorkflowExpression<string> custom11 = null, WorkflowExpression<string> custom12 = null, WorkflowExpression<string> custom13 = null, WorkflowExpression<string> custom14 = null, WorkflowExpression<string> custom15 = null, WorkflowExpression<string> custom16 = null, WorkflowExpression<double> custom17 = null, WorkflowExpression<double> custom18 = null, WorkflowExpression<double> custom19 = null, WorkflowExpression<double> custom20 = null, WorkflowExpression<string> custom21 = null, WorkflowExpression<string> custom22 = null, WorkflowExpression<string> custom23 = null, WorkflowExpression<string> custom24 = null, WorkflowExpression<bool> custom25 = null, WorkflowExpression<bool> custom26 = null, WorkflowExpression<bool> custom27 = null, WorkflowExpression<bool> custom28 = null, WorkflowExpression<string> custom29 = null, WorkflowExpression<string> custom30 = null)
         {
@@ -1302,7 +1288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<bool> bodylatest = null)
         {
@@ -1349,7 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserDetailsResponse> __BuildGetUserDetails(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyuserId)
         {
@@ -1382,7 +1366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> __BuildGetWorkspaceProfile(WorkflowExpression<string> bodyworkspaceId)
         {
@@ -1423,7 +1406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FullDocumentProfileResponseBody> __BuildGetDocumentProfile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<bool> bodylatest = null)
         {
@@ -1470,7 +1452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> __BuildUpdateDocumentProfile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyalias = null, WorkflowExpression<string> bodyauthor = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity = null, WorkflowExpression<bool> bodyisDeclared = null, WorkflowExpression<bool> bodyisHipaa = null, WorkflowExpression<string> bodyauditComment = null, WorkflowExpression<string> bodyClass = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyOperator = null, WorkflowExpression<int> bodyretainDays = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<string> bodycustom1 = null, WorkflowExpression<string> bodycustom2 = null, WorkflowExpression<string> bodycustom3 = null, WorkflowExpression<string> bodycustom4 = null, WorkflowExpression<string> bodycustom5 = null, WorkflowExpression<string> bodycustom6 = null, WorkflowExpression<string> bodycustom7 = null, WorkflowExpression<string> bodycustom8 = null, WorkflowExpression<string> bodycustom9 = null, WorkflowExpression<string> bodycustom10 = null, WorkflowExpression<string> bodycustom11 = null, WorkflowExpression<string> bodycustom12 = null, WorkflowExpression<string> bodycustom13 = null, WorkflowExpression<string> bodycustom14 = null, WorkflowExpression<string> bodycustom15 = null, WorkflowExpression<string> bodycustom16 = null, WorkflowExpression<double> bodycustom17 = null, WorkflowExpression<double> bodycustom18 = null, WorkflowExpression<double> bodycustom19 = null, WorkflowExpression<double> bodycustom20 = null, WorkflowExpression<string> bodycustom21 = null, WorkflowExpression<string> bodycustom22 = null, WorkflowExpression<string> bodycustom23 = null, WorkflowExpression<string> bodycustom24 = null, WorkflowExpression<bool> bodycustom25 = null, WorkflowExpression<bool> bodycustom26 = null, WorkflowExpression<bool> bodycustom27 = null, WorkflowExpression<bool> bodycustom28 = null, WorkflowExpression<string> bodycustom29 = null, WorkflowExpression<string> bodycustom30 = null)
         {
@@ -1794,7 +1775,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupMembersResponse> __BuildGetGroupMembers(WorkflowExpression<string> libraryId, WorkflowExpression<string> groupId, WorkflowExpression<logonStatusInput> logonStatus = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> preferredLibrary = null, WorkflowExpression<string> location = null)
         {
@@ -1831,7 +1811,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchWorkspacesResponseBody> __BuildSearchWorkspaces(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyanywhere = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<string> bodycustom1 = null, WorkflowExpression<string> bodycustom2 = null, WorkflowExpression<string> bodycustom3 = null, WorkflowExpression<string> bodycustom4 = null, WorkflowExpression<string> bodycustom5 = null, WorkflowExpression<string> bodycustom6 = null, WorkflowExpression<string> bodycustom7 = null, WorkflowExpression<string> bodycustom8 = null, WorkflowExpression<string> bodycustom9 = null, WorkflowExpression<string> bodycustom10 = null, WorkflowExpression<string> bodycustom11 = null, WorkflowExpression<string> bodycustom12 = null, WorkflowExpression<string> bodycustom13 = null, WorkflowExpression<string> bodycustom14 = null, WorkflowExpression<string> bodycustom15 = null, WorkflowExpression<string> bodycustom16 = null, WorkflowExpression<string> bodycustom17 = null, WorkflowExpression<string> bodycustom18 = null, WorkflowExpression<string> bodycustom19 = null, WorkflowExpression<string> bodycustom20 = null, WorkflowExpression<string> bodycustom21From = null, WorkflowExpression<string> bodycustom21To = null, WorkflowExpression<string> bodycustom22From = null, WorkflowExpression<string> bodycustom22To = null, WorkflowExpression<string> bodycustom23From = null, WorkflowExpression<string> bodycustom23To = null, WorkflowExpression<string> bodycustom24From = null, WorkflowExpression<string> bodycustom24To = null, WorkflowExpression<bool> bodycustom25 = null, WorkflowExpression<bool> bodycustom26 = null, WorkflowExpression<bool> bodycustom27 = null, WorkflowExpression<bool> bodycustom28 = null, WorkflowExpression<string> bodycustom29 = null, WorkflowExpression<string> bodycustom30 = null)
         {
@@ -2134,7 +2113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddDocumentReferenceResponse> __BuildAddDocumentReference(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyfolderId)
         {
@@ -2167,7 +2145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteDocumentReference(WorkflowExpression<string> documentId, WorkflowExpression<string> folderId)
         {
@@ -2191,7 +2168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveDocumentResponseBody> __BuildMoveDocument(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodydestinationFolderId, WorkflowExpression<bool> bodyupdateProfile = null, WorkflowExpression<bool> bodyupdateSecurity = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -2268,7 +2244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyDocumentResponse> __BuildCopyDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyfolderId)
         {
@@ -2301,7 +2276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateWorkflowState(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodystate, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodystatusMessage = null)
         {
@@ -2348,7 +2322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CoreEMPropertiesResponseBody> __BuildGetCoreEMPropertiesForDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<bool> bodylatest = null)
         {
@@ -2395,7 +2368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PromoteDocumentVersionResponseBody> __BuildPromoteDocumentVersion(WorkflowExpression<string> bodydocumentId, WorkflowExpression<int> bodyversion = null, WorkflowExpression<string> bodyjournalId = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyalias = null, WorkflowExpression<string> bodyauthor = null, WorkflowExpression<string> bodyClass = null, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity = null, WorkflowExpression<bool> bodyisDeclared = null, WorkflowExpression<bool> bodyisHipaa = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyOperator = null, WorkflowExpression<int> bodyretainDays = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<string> bodycustom1 = null, WorkflowExpression<string> bodycustom2 = null, WorkflowExpression<string> bodycustom3 = null, WorkflowExpression<string> bodycustom4 = null, WorkflowExpression<string> bodycustom5 = null, WorkflowExpression<string> bodycustom6 = null, WorkflowExpression<string> bodycustom7 = null, WorkflowExpression<string> bodycustom8 = null, WorkflowExpression<string> bodycustom9 = null, WorkflowExpression<string> bodycustom10 = null, WorkflowExpression<string> bodycustom11 = null, WorkflowExpression<string> bodycustom12 = null, WorkflowExpression<string> bodycustom13 = null, WorkflowExpression<string> bodycustom14 = null, WorkflowExpression<string> bodycustom15 = null, WorkflowExpression<string> bodycustom16 = null, WorkflowExpression<double> bodycustom17 = null, WorkflowExpression<double> bodycustom18 = null, WorkflowExpression<double> bodycustom19 = null, WorkflowExpression<double> bodycustom20 = null, WorkflowExpression<string> bodycustom21 = null, WorkflowExpression<string> bodycustom22 = null, WorkflowExpression<string> bodycustom23 = null, WorkflowExpression<string> bodycustom24 = null, WorkflowExpression<bool> bodycustom25 = null, WorkflowExpression<bool> bodycustom26 = null, WorkflowExpression<bool> bodycustom27 = null, WorkflowExpression<bool> bodycustom28 = null, WorkflowExpression<string> bodycustom29 = null, WorkflowExpression<string> bodycustom30 = null)
         {
@@ -2726,7 +2698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentVersionsResponse> __BuildGetDocumentVersions(WorkflowExpression<string> bodydocumentId)
         {
@@ -2756,7 +2727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CoreEMPropertiesResponseBody> __BuildSetCoreEMPropertiesForDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<bodyemPropertiesInputItem[]> bodyemProperties)
         {
@@ -2789,7 +2759,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchCoreEMTaxonomyNodeValuesResponse> __BuildSearchCoreEMTaxonomyNodeValues(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodytaxonomyProperty, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyquery = null, WorkflowExpression<bodyenabledStateInput> bodyenabledState = null, WorkflowExpression<bool> bodyincludePath = null, WorkflowExpression<string> bodychildrenOfSsid = null, WorkflowExpression<bool> bodyimmediateChildrenOnly = null)
         {
@@ -2894,7 +2863,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddDocumentHistoryEntryResponse> __BuildAddDocumentHistoryEntry(WorkflowExpression<string> bodydocumentId, WorkflowExpression<int> bodyactivityCode, WorkflowExpression<string> bodycomments = null, WorkflowExpression<int> bodyduration = null)
         {
@@ -2941,7 +2909,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchUsersResponse> __BuildSearchUsers(WorkflowExpression<string> email = null)
         {
@@ -2964,7 +2931,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteDocumentResponseBody> __BuildDeleteDocument(WorkflowExpression<string> documentId, WorkflowExpression<bool> deleteAllVersions)
         {
@@ -2988,7 +2954,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateDocumentRelation(WorkflowExpression<string> bodyprimaryDocumentId, WorkflowExpression<string> bodyrelatedDocumentId)
         {
@@ -3021,7 +2986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteDocumentRelation(WorkflowExpression<string> primaryDocumentId, WorkflowExpression<string> relatedDocumentId)
         {

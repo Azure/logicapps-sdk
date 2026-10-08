@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlignResponse> __BuildAlign(WorkflowExpression<string> productType, WorkflowExpression<string> productVersion, WorkflowExpression<string> sourceLanguage, WorkflowExpression<string> targetLanguage, WorkflowExpression<object> sourceFile, WorkflowExpression<object> targetFile)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildDownload(WorkflowExpression<downloadTypeInput> downloadType, WorkflowExpression<int> translationId)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RegenerateResponse> __BuildRegenerate(WorkflowExpression<int> translationId, WorkflowExpression<object> regenerateFile)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveResponse> __BuildRetrieve(WorkflowExpression<int> translationId)
         {
@@ -113,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TranslateResponse> __BuildTranslate(WorkflowExpression<string> productType, WorkflowExpression<string> productVersion, WorkflowExpression<string> sourceLanguage, WorkflowExpression<string> targetLanguage, WorkflowExpression<string> requestName, WorkflowExpression<translationTypeInput> translationType, WorkflowExpression<object> sourceFile, WorkflowExpression<bool> trainMTWithTM = null, WorkflowExpression<object> tmFile = null)
         {
@@ -142,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildAlignDownload(WorkflowExpression<string> filename)
         {

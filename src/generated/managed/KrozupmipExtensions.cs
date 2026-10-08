@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyUserProfileResponse> __BuildGetMyUserProfile(WorkflowExpression<string> accept)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyBoardsResponseItem[]> __BuildGetMyBoards(WorkflowExpression<string> accept)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyOwnedTreesResponseItem[]> __BuildGetMyOwnedTrees(WorkflowExpression<string> accept)
         {
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyAssignedBoardsResponseItem[]> __BuildGetMyAssignedBoards(WorkflowExpression<string> accept)
         {
@@ -106,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardGroupsResponseItem[]> __BuildGetBoardGroups(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -129,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyNotificationsResponse> __BuildGetMyNotifications(WorkflowExpression<string> accept)
         {
@@ -151,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyTasksAllResponse> __BuildGetMyTasksAll(WorkflowExpression<string> accept)
         {
@@ -173,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyTasksNewResponse> __BuildGetMyTasksNew(WorkflowExpression<string> accept)
         {
@@ -195,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyTasksOverdueResponse> __BuildGetMyTasksOverdue(WorkflowExpression<string> accept)
         {
@@ -217,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardListsResponseItem[]> __BuildGetBoardLists(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -240,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardCardsResponseItem[]> __BuildGetBoardCards(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -263,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListCardsResponseItem[]> __BuildGetListCards(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept)
         {
@@ -286,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListResponseItem[]> __BuildGetList(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept)
         {
@@ -309,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCardResponseItem[]> __BuildGetCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept)
         {
@@ -332,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetBoardMessages(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -355,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardMembersResponse> __BuildGetBoardMembers(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -378,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardRecordsResponseItem[]> __BuildGetBoardRecords(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -401,7 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListRecordsResponseItem[]> __BuildGetListRecords(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept)
         {
@@ -424,7 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTreeClientsResponse> __BuildGetTreeClients(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -447,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBoardHierarchyResponseItem[]> __BuildGetBoardHierarchy(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
         {
@@ -470,7 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionAddCardResponse> __BuildActionAddCard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodylistuuid)
         {
@@ -506,7 +485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionDeleteCardResponse> __BuildActionDeleteCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<int> bodyconfirmed)
         {
@@ -539,7 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionAddMessageToBoardResponse> __BuildActionAddMessageToBoard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodymessage)
         {
@@ -572,7 +549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionAddChecklistToCardResponse> __BuildActionAddChecklistToCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
         {
@@ -605,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionAddListResponse> __BuildActionAddList(WorkflowExpression<string> baordUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
         {
@@ -638,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionListRenameResponse> __BuildActionListRename(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
         {
@@ -671,7 +645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionBoardRenameResponse> __BuildActionBoardRename(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
         {
@@ -704,7 +677,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionAssignToCardResponse> __BuildActionAssignToCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
         {
@@ -740,7 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionAssignToBoardResponse> __BuildActionAssignToBoard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
         {
@@ -776,7 +747,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionUnassignFromCardResponse> __BuildActionUnassignFromCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
         {
@@ -812,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionUnassignFromBoardResponse> __BuildActionUnassignFromBoard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
         {
@@ -848,7 +817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionDeleteListResponse> __BuildActionDeleteList(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept, WorkflowExpression<int> bodyconfirm)
         {

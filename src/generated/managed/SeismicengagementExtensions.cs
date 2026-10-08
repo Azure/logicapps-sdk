@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> __BuildGetListOfDeliveryOptions(WorkflowExpression<bool> enabled = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> __BuildGetDeliveryOptionFormInputs(WorkflowExpression<string> deliveryOptionId)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeliverViaCustomDelivery(WorkflowExpression<string> bodydeliveryOption = null, WorkflowExpression<string> bodydeliveryOptionId = null, WorkflowExpression<SeismicDeliveryCustomDeliveryAdHocInput[]> bodyadHocInput = null, WorkflowExpression<SeismicDeliveryCustomDeliveryContent[]> bodycontent = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildSaveToWorkspace(WorkflowExpression<string> bodyworkspaceOptionsworkspaceFolderId = null, WorkflowExpression<SeismicDeliveryCustomDelContent[]> bodycontent = null)
         {
@@ -166,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> __BuildCreateLiveSendLink(WorkflowExpression<string[]> bodytags = null, WorkflowExpression<string> bodysettingsexpiresAt = null, WorkflowExpression<string> bodysettingspassword = null, WorkflowExpression<bool> bodysettingsallowDownload = null, WorkflowExpression<string> bodysettingsnotificationType = null, WorkflowExpression<bool> bodysettingssingleView = null, WorkflowExpression<SeismicLiveSendLiveSendLinkContent[]> bodycontent = null)
         {

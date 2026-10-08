@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProcessjobResponse> __BuildProcessjob(WorkflowExpression<string> applicationURL, WorkflowExpression<string> bodyprocess, WorkflowExpression<string> bodyaction, WorkflowExpression<string> bodycustomerCode, WorkflowExpression<bool> bodywaitForResult = null)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConsolidationjobResponse> __BuildConsolidationjob(WorkflowExpression<string> applicationURL, WorkflowExpression<string> bodyconsoCode, WorkflowExpression<string> bodycustomerCode, WorkflowExpression<bool> bodywaitForResult = null)
         {
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduledjobResponse> __BuildScheduledjob(WorkflowExpression<string> applicationURL, WorkflowExpression<string> bodyjobScheduleName, WorkflowExpression<string> bodycustomerCode, WorkflowExpression<bool> bodywaitForResult = null)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImportFileResponse> __BuildImportFile(WorkflowExpression<string> applicationURL, WorkflowExpression<string> bodyimportStructureCode, WorkflowExpression<string> bodycustomerCode, WorkflowExpression<string> bodybase64File, WorkflowExpression<bool> bodywaitForResult = null)
         {

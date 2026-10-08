@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAFolderResponse> __BuildCreateAFolder(WorkflowExpression<string> spaceId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyfolderName = null, WorkflowExpression<int> bodyorderIndex = null, WorkflowExpression<bool> bodyoverrideStatuses = null, WorkflowExpression<bool> bodyhiddenFolder = null, WorkflowExpression<string> bodytaskCount = null, WorkflowExpression<bool> bodyarchived = null, WorkflowExpression<JToken[]> bodystatuses = null, WorkflowExpression<string> bodypermissionLevel = null)
         {
@@ -126,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSpaceResponse> __BuildCreateSpace(WorkflowExpression<string> teamId, WorkflowExpression<string> bodyspaceName = null, WorkflowExpression<bool> bodymultipleAssignees = null, WorkflowExpression<bool> bodyfeaturesdueDatesdueDates = null, WorkflowExpression<bool> bodyfeaturesdueDatesstartDate = null, WorkflowExpression<bool> bodyfeaturesdueDatesremapDueDate = null, WorkflowExpression<bool> bodyfeaturesdueDatesremapClosedDueDate = null, WorkflowExpression<bool> bodyfeaturestimeTrackingtimeTracking = null, WorkflowExpression<bool> bodyfeaturestagstags = null, WorkflowExpression<bool> bodyfeaturestimeEstimatestimeEstimates = null, WorkflowExpression<bool> bodyfeatureschecklistschecklist = null, WorkflowExpression<bool> bodyfeaturescustomFieldscustomFields = null, WorkflowExpression<bool> bodyfeaturesremapDependenciesremapDependencies = null, WorkflowExpression<bool> bodyfeaturesdependencyWarningdependencyWarning = null, WorkflowExpression<bool> bodyfeaturesportfoliosportfolios = null)
         {
@@ -332,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAListResponse> __BuildCreateAList(WorkflowExpression<string> folderId, WorkflowExpression<string> bodyname = null, WorkflowExpression<int> bodyorderIndex = null, WorkflowExpression<bool> bodydueDate2 = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null)
         {

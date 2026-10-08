@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateCustomer(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateCustomer(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateWorkOrders(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem2[]> body = null)
         {
@@ -105,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateWorkOrders(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem2[]> body = null)
         {
@@ -134,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateItems(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem22[]> body = null)
         {
@@ -163,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateItems(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem22[]> body = null)
         {
@@ -192,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateInventory(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<string> warehouseRefNum = null, WorkflowExpression<bodyInputItem222[]> body = null)
         {
@@ -224,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateItemAdjustment(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<string> warehouseRefNum = null, WorkflowExpression<bodyInputItem2222[]> body = null)
         {
@@ -256,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateLocations(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<bodyInputItem22222[]> body = null)
         {
@@ -284,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateLocations(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<bodyInputItem22222[]> body = null)
         {
@@ -312,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateUsers(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<bodyInputItem222222[]> body = null)
         {
@@ -340,7 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateUsers(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> bodycompanyId = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodybusinessUnitCode = null, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodypayrollCode = null, WorkflowExpression<string> bodyplantId = null, WorkflowExpression<string> bodyempId = null, WorkflowExpression<string> bodymobileNumber = null, WorkflowExpression<string> bodyreportingManager = null, WorkflowExpression<string> bodyempType = null, WorkflowExpression<string> bodystateCode = null)
         {

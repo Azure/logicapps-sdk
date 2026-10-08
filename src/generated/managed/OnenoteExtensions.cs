@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSectionInNotebookResponse> __BuildCreateSectionInNotebook(WorkflowExpression<string> notebookKey, WorkflowExpression<string> bodynameOfTheNewSection = null)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Page> __BuildCreatePageInSection(WorkflowExpression<string> notebookKey, WorkflowExpression<string> sectionId, WorkflowExpression<string> pageContent = null)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPagesInSectionResponse> __BuildGetPagesInSection(WorkflowExpression<string> notebookKey, WorkflowExpression<string> sectionId)
         {
@@ -104,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Page> __BuildCreatePageInQuickNotes(WorkflowExpression<string> pageContent = null)
         {
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletePage(WorkflowExpression<string> notebookKey, WorkflowExpression<string> sectionId, WorkflowExpression<string> pageId)
         {
@@ -152,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetPageContent(WorkflowExpression<string> notebookKey, WorkflowExpression<string> sectionId, WorkflowExpression<string> pageId)
         {
@@ -179,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUpdatePageContent(WorkflowExpression<string> notebookKey, WorkflowExpression<string> sectionId, WorkflowExpression<string> pageId, WorkflowExpression<updatesInputItem[]> updates = null)
         {
@@ -216,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSectionsInNotebookResponse> __BuildGetSectionsInNotebook(WorkflowExpression<string> notebookKey)
         {

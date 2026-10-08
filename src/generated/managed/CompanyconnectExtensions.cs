@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildChoicePrompt(WorkflowExpression<string> requestprompt, WorkflowExpression<string> requestconversationReference, WorkflowExpression<string[]> requestchoices = null)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildConfirmPrompt(WorkflowExpression<string> requestprompt, WorkflowExpression<string> requestconversationReference, WorkflowExpression<string> requestyesText = null, WorkflowExpression<string> requestnoText = null)
         {
@@ -129,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildProactiveDialogStart(WorkflowExpression<string> id, WorkflowExpression<string> bodyupn)
         {
@@ -160,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReply(WorkflowExpression<string> messageActivitytext, WorkflowExpression<string> messageActivityconversationReference = null)
         {
@@ -197,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTextPrompt(WorkflowExpression<string> requestprompt, WorkflowExpression<string> requestconversationReference)
         {

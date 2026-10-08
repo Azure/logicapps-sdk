@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLibraryRolesResponse> __BuildGetLibraryRoles(WorkflowExpression<string> libraryId, WorkflowExpression<bool> isExternal = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLookupAliasesResponse> __BuildGetLookupAliases(WorkflowExpression<string> libraryId, WorkflowExpression<string> lookupFieldId, WorkflowExpression<string> parentAlias = null)
         {
@@ -73,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchCustomPropertyResponseBody> __BuildSearchCustomPropertyAliases(WorkflowExpression<string> libraryId, WorkflowExpression<string> lookupFieldId, WorkflowExpression<string> parentAlias = null, WorkflowExpression<string> alias = null, WorkflowExpression<string> description = null, WorkflowExpression<bool> hipaa = null, WorkflowExpression<enabledStateInput> enabledState = null)
         {
@@ -115,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateCustomOrPropertyLookup(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodylookupFieldId, WorkflowExpression<object> bodyaliasInfo)
         {
@@ -152,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> bodyfullName, WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyemail, WorkflowExpression<bool> bodyisExternal, WorkflowExpression<string> bodypreferredLibrary, WorkflowExpression<string> bodyrole, WorkflowExpression<bool> bodyignoreIfUserAlreadyExists, WorkflowExpression<bodypasswordCreateMethodInput> bodypasswordCreateMethod, WorkflowExpression<object> bodycreatePassword)
         {
@@ -207,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssignUserToLibraryResponse> __BuildAssignUserToLibrary(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodyrole, WorkflowExpression<bool> bodyisPreferredLibrary)
         {
@@ -247,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFolderResponseBody> __BuildAddFolder(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentId, WorkflowExpression<bodyparentTypeInput> bodyparentType, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity, WorkflowExpression<bodyinheritProfileFromWorkspaceInput> bodyinheritProfileFromWorkspace, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyClass = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<bool> bodyisExternalAsNormal = null, WorkflowExpression<object> bodyprofileProperties = null)
         {
@@ -349,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTabResponseBody> __BuildAddTab(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentId, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyowner = null)
         {
@@ -400,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMyMattersCategoriesResponse> __BuildGetMyMattersCategories(WorkflowExpression<string> userId)
         {
@@ -423,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> __BuildAddShortcutsToMyMattersAdmin(WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodycategoryId = null)
         {
@@ -464,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateCustomField(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodylookupFieldId, WorkflowExpression<object> bodyaliasInfo)
         {
@@ -501,7 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> __BuildGetRowsFromCSVDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodycolumnNames, WorkflowExpression<bool> bodylatest = null)
         {
@@ -552,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MoveFolderResponseBody> __BuildMoveFolder(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodydestinationId)
         {
@@ -586,7 +573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> __BuildUpdateFolder(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyClass = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<bool> bodyisExternalAsNormal = null, WorkflowExpression<object> bodyprofile = null)
         {

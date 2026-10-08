@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ETLJob> __BuildETLUpload(WorkflowExpression<string> modelIdPath, WorkflowExpression<string> templateId, WorkflowExpression<string> fileName, WorkflowExpression<string> file, WorkflowExpression<fileTypeInput> fileType, WorkflowExpression<fileEncodingInput> fileEncoding = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExportAttributes(WorkflowExpression<string> modelIdPath, WorkflowExpression<bool> lidsBodyshowHeader = null, WorkflowExpression<string> lidsBodymQLQueryString = null, WorkflowExpression<lidsBodyfileFormatInput> lidsBodyfileFormat = null, WorkflowExpression<lidsBodyfileEncodingInput> lidsBodyfileEncoding = null)
         {
@@ -137,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExportHierarchies(WorkflowExpression<string> modelIdPath, WorkflowExpression<bool> hierarchiesBodyshowHeader = null, WorkflowExpression<string> hierarchiesBodymQLQueryString = null, WorkflowExpression<hierarchiesBodyfileFormatInput> hierarchiesBodyfileFormat = null, WorkflowExpression<hierarchiesBodyfileEncodingInput> hierarchiesBodyfileEncoding = null, WorkflowExpression<bool> hierarchiesBodyexportMemberIDs = null)
         {
@@ -242,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExportValues(WorkflowExpression<string> modelIdPath, WorkflowExpression<bool> valuesBodyshowHeader = null, WorkflowExpression<string> valuesBodymQLQueryString = null, WorkflowExpression<valuesBodyfileFormatInput> valuesBodyfileFormat = null, WorkflowExpression<valuesBodyfileEncodingInput> valuesBodyfileEncoding = null, WorkflowExpression<bool> valuesBodyincludeExternalIDs = null, WorkflowExpression<bool> valuesBodynamedDimensions = null)
         {
@@ -364,7 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExportLIDs(WorkflowExpression<string> modelIdPath, WorkflowExpression<bool> lidsBodyshowHeader = null, WorkflowExpression<string> lidsBodymQLQueryString = null, WorkflowExpression<lidsBodyfileFormatInput> lidsBodyfileFormat = null, WorkflowExpression<lidsBodyfileEncodingInput> lidsBodyfileEncoding = null)
         {

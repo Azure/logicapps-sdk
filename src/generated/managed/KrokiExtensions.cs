@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DiagramPostResponse> __BuildDiagram(WorkflowExpression<libraryInput> library, WorkflowExpression<string> output, WorkflowExpression<string> bodydiagramSource, WorkflowExpression<string> bodydiagramOptionskey = null, WorkflowExpression<string> bodydiagramOptionsantialias = null, WorkflowExpression<string> bodydiagramOptionsnoTransparency = null, WorkflowExpression<string> bodydiagramOptionssize = null, WorkflowExpression<string> bodydiagramOptionsnoDoctype = null, WorkflowExpression<string> bodydiagramOptionstheme = null, WorkflowExpression<string> bodydiagramOptionssketch = null, WorkflowExpression<string> bodydiagramOptionslayout = null, WorkflowExpression<int> bodydiagramOptionsscale = null, WorkflowExpression<string> bodydiagramOptionsviewKey = null, WorkflowExpression<string> bodydiagramOptionsbackground = null, WorkflowExpression<string> bodydiagramOptionsfontFamily = null, WorkflowExpression<int> bodydiagramOptionsfontSize = null, WorkflowExpression<int> bodydiagramOptionsstrokeWidth = null)
         {

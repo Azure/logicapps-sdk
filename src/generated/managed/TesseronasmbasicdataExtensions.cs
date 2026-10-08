@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiEnterpriseGetEnterprisesResponse> __BuildApiEnterpriseGetEnterprises(WorkflowExpression<string> searchParam, WorkflowExpression<int> take, WorkflowExpression<int> skip = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetEnterpriseStatusResponse> __BuildSetEnterpriseStatus(WorkflowExpression<int> bodyenterpriseId, WorkflowExpression<int> bodystatusId)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiContactCreateContactResponse> __BuildApiContactCreateContact(WorkflowExpression<string> bodyenterpriseReferenceNumber, WorkflowExpression<string> bodyforeName, WorkflowExpression<string> bodysurName, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyformOfAddress = null, WorkflowExpression<string> bodyforeName2 = null, WorkflowExpression<string> bodysearchname = null, WorkflowExpression<string> bodyexternalNumber = null, WorkflowExpression<string> bodyinitials = null, WorkflowExpression<string> bodymemo = null, WorkflowExpression<string> bodyinfoOnTicketView = null, WorkflowExpression<string> bodyinfoOnServiceAssignment = null, WorkflowExpression<string> bodyinfoOnTicketCreate = null, WorkflowExpression<string> bodydepartmentName = null, WorkflowExpression<bool> bodyisVip = null, WorkflowExpression<int> bodyenterpriseContactType = null, WorkflowExpression<bool> bodyisAddressFromMainEnterprise = null, WorkflowExpression<string> bodyaddressstreet = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddresspostcode = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddressaddress3 = null, WorkflowExpression<string> bodyaddresspostbox = null, WorkflowExpression<string> bodyaddresscounty = null, WorkflowExpression<string> bodyaddresscountyShort = null, WorkflowExpression<string> bodyaddresscountryCode = null, WorkflowExpression<string> bodyaddresscountryName = null, WorkflowExpression<bodyphoneNumbersInputItem[]> bodyphoneNumbers = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null)
         {
@@ -322,7 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiContactUpdateContactResponse> __BuildApiContactUpdateContact(WorkflowExpression<string> bodyenterpriseReferenceNumber, WorkflowExpression<string> bodyforeName, WorkflowExpression<string> bodysurName, WorkflowExpression<string> bodycontactId = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyformOfAddress = null, WorkflowExpression<string> bodyforeName2 = null, WorkflowExpression<string> bodysearchname = null, WorkflowExpression<string> bodyexternalNumber = null, WorkflowExpression<string> bodyinitials = null, WorkflowExpression<string> bodymemo = null, WorkflowExpression<string> bodyinfoOnTicketView = null, WorkflowExpression<string> bodyinfoOnServiceAssignment = null, WorkflowExpression<string> bodyinfoOnTicketCreate = null, WorkflowExpression<string> bodydepartmentName = null, WorkflowExpression<bool> bodyisVip = null, WorkflowExpression<bool> bodyisAddressFromMainEnterprise = null, WorkflowExpression<string> bodyaddressstreet = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddresspostcode = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddressaddress3 = null, WorkflowExpression<string> bodyaddresspostbox = null, WorkflowExpression<string> bodyaddresscounty = null, WorkflowExpression<string> bodyaddresscountyShort = null, WorkflowExpression<string> bodyaddresscountryCode = null, WorkflowExpression<string> bodyaddresscountryName = null, WorkflowExpression<bodyphoneNumbersInputItem[]> bodyphoneNumbers = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null)
         {
@@ -565,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiContactGetContactsResponse> __BuildApiContactGetContacts(WorkflowExpression<int> take, WorkflowExpression<string> searchParam, WorkflowExpression<string> filter = null, WorkflowExpression<int> skip = null)
         {

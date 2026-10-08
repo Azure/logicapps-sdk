@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WeatherPointRequestResponse> __BuildWeatherPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> @params, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> source = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BioPointRequestResponse> __BuildBioPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> @params, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> source = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeExtremesPointRequestResponse> __BuildTimeExtremesPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> datum = null)
         {
@@ -121,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeSealLevelPointRequestResponse> __BuildTimeSealLevelPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> datum = null)
         {
@@ -163,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTideStationsAreaResponse> __BuildGetTideStationsArea(WorkflowExpression<string> box)
         {
@@ -185,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AstronomyPointRequestResponse> __BuildAstronomyPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> end = null, WorkflowExpression<string> start = null)
         {
@@ -215,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SolarPointRequestResponse> __BuildSolarPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> @params, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> source = null)
         {
@@ -250,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ElevationPointRequestResponse> __BuildElevationPointRequest(WorkflowExpression<double> lat, WorkflowExpression<double> lng)
         {

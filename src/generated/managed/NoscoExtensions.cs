@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIdeaResponse> __BuildGetIdea(WorkflowExpression<string> id)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdeasResponse> __BuildIdeas(WorkflowExpression<string> publishedAfter = null, WorkflowExpression<string> lastStageChangeAfter = null, WorkflowExpression<string> ideaboxId = null, WorkflowExpression<string> stageId = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<string> afterCursor = null, WorkflowExpression<int> limit = null)
         {

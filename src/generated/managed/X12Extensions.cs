@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateControlNumberResult[]> __BuildAddOrUpdateControlNumbers(WorkflowExpression<ReplicableControlNumberContent[]> controlNumberContents = null)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse> __BuildDecode(WorkflowExpression<bool> preserveInterchange = null, WorkflowExpression<bool> suspendInterchangeOnError = null, WorkflowExpression<string> body = null)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdiAgreementProperties> __BuildResolveAgreement(WorkflowExpression<string> body = null)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<X12BatchEncodeResponse> __BuildBatchEncodeResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<string> messagesToBatchbatchName = null, WorkflowExpression<string> messagesToBatchpartitionName = null, WorkflowExpression<BatchItem[]> messagesToBatchitems = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> replacementCharacter = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null)
         {
@@ -155,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdiEncodeResponse> __BuildEncodeResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> replacementCharacter = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<string> body = null, WorkflowExpression<string> iSA12 = null, WorkflowExpression<string> gS02 = null, WorkflowExpression<string> gS03 = null)
         {
@@ -203,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<X12EncodeV2Response> __BuildEncodeV2ResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> replacementCharacter = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<string> body = null, WorkflowExpression<string> gS02 = null, WorkflowExpression<string> gS03 = null)
         {
@@ -248,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<X12BatchEncodeResponse> __BuildBatchEncodeResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> senderQualifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> receiverQualifier, WorkflowExpression<string> messagesToBatchbatchName = null, WorkflowExpression<string> messagesToBatchpartitionName = null, WorkflowExpression<BatchItem[]> messagesToBatchitems = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> replacementCharacter = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null)
         {
@@ -319,7 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EdiEncodeResponse> __BuildEncodeResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> senderQualifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> receiverQualifier, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> replacementCharacter = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<string> body = null, WorkflowExpression<string> gS02 = null, WorkflowExpression<string> gS03 = null)
         {
@@ -370,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<X12EncodeV2Response> __BuildEncodeV2ResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> senderQualifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> receiverQualifier, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> replacementCharacter = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<string> body = null, WorkflowExpression<string> gS02 = null, WorkflowExpression<string> gS03 = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FeedItem[]> __BuildListFeedItems(WorkflowExpression<string> feedUrl, WorkflowExpression<string> since = null, WorkflowExpression<sincePropertyInput> sinceProperty = null)
         {

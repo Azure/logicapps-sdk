@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListStatesResponse> __BuildListStates(WorkflowExpression<string> country = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCitiesResponse> __BuildListCities(WorkflowExpression<string> state = null, WorkflowExpression<string> country = null)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CityResponse> __BuildGetDataByCoordinates(WorkflowExpression<string> lat = null, WorkflowExpression<string> lon = null)
         {
@@ -101,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CityResponse> __BuildGetDataByCity(WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> country = null)
         {

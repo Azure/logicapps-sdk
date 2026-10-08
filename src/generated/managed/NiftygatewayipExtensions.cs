@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NiftiesforUserResponse> __BuildNiftiesforUser(WorkflowExpression<string> username, WorkflowExpression<string> contractAddress = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NiftiesforCreatorResponse> __BuildNiftiesforCreator(WorkflowExpression<string> creatorProfileName, WorkflowExpression<int> limit, WorkflowExpression<int> offset)
         {

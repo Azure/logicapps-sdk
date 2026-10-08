@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> __BuildParseResumeStandardViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> __BuildParseResumeDetailViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
         {
@@ -84,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> __BuildParseResumeDetailViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseJDViaFileContentResponse> __BuildParseJDViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
         {
@@ -150,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> __BuildParseResumeStandardViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
         {
@@ -183,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseJDViaUrlResponse> __BuildParseJDViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
         {
@@ -216,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> __BuildParseResumeBasicViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
         {
@@ -249,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> __BuildParseResumeBasicViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
         {

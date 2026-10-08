@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreate(WorkflowExpression<string> data, WorkflowExpression<string> size = null, WorkflowExpression<charsetSourceInput> charsetSource = null, WorkflowExpression<charsetTargetInput> charsetTarget = null, WorkflowExpression<string> ecc = null, WorkflowExpression<string> color = null, WorkflowExpression<string> bgcolor = null, WorkflowExpression<int> margin = null, WorkflowExpression<int> qzone = null, WorkflowExpression<formatInput> format = null)
         {

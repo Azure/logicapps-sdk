@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateRecipientList(WorkflowExpression<string> recipientListidOfTheRecipientList = null, WorkflowExpression<string> recipientListnameOfTheRecipientList = null, WorkflowExpression<string> recipientListdescription = null, WorkflowExpression<string> recipientListemailAddressOfFirstRecipient = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildAddUserToRecipientList(WorkflowExpression<string> recipientListId, WorkflowExpression<string> addUserToRecipientListRequestrecipientaddressemailAddress, WorkflowExpression<string> addUserToRecipientListRequestrecipientaddressname = null)
         {
@@ -127,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDeleteUserFromRecipientList(WorkflowExpression<string> recipientListId, WorkflowExpression<string> deleteUserRequestemailAddress = null)
         {
@@ -162,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendEmailToRecipientList(WorkflowExpression<string> requestrecipientsrecipient, WorkflowExpression<string> requestcontenttemplate, WorkflowExpression<string> requestcampaignId = null)
         {
@@ -218,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSendEmailToRecipient(WorkflowExpression<string> requestcontenttemplate, WorkflowExpression<EmailRecipient[]> requestrecipients)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LogonResponse> __BuildLogon(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodytenantname = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> __BuildCloseTaskAndAssignToUsers(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessId, WorkflowExpression<string> bodyassignUserLoginNames, WorkflowExpression<string> bodytaskId = null, WorkflowExpression<string> bodycomment = null)
         {
@@ -114,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LogoffResponse> __BuildLogoff(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> __BuildGetDocumentProperties(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyculture = null)
         {
@@ -190,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> __BuildGetProcessProperties(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessId, WorkflowExpression<string> bodyculture = null)
         {
@@ -233,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContent(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyversionId = null, WorkflowExpression<string> bodydocumentDataId = null, WorkflowExpression<string> bodyrenditionId = null, WorkflowExpression<bool> bodyignoreHashValidation = null)
         {
@@ -307,7 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseProcessResponse> __BuildCloseProcess(WorkflowExpression<string> archiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessId, WorkflowExpression<string> bodycomment = null)
         {
@@ -349,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LogonWithHashedPasswordResponse> __BuildLogonWithHashedPassword(WorkflowExpression<string> archiveUrl, WorkflowExpression<string> bodyuserName, WorkflowExpression<string> bodypasswordHashed, WorkflowExpression<string> bodytenantName = null)
         {
@@ -391,7 +383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseTaskResponse> __BuildCloseTask(WorkflowExpression<string> archiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessId, WorkflowExpression<bool> bodyassignUsers, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodytaskId = null)
         {
@@ -443,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentResponse> __BuildGetDocument(WorkflowExpression<string> archiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentId)
         {
@@ -478,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessResponse> __BuildGetProcess(WorkflowExpression<string> archiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessId)
         {
@@ -513,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetFileContentConverted(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodytargetFormat, WorkflowExpression<string> bodyversionId = null, WorkflowExpression<string> bodydocumentDataId = null, WorkflowExpression<string> bodyrenditionId = null, WorkflowExpression<bool> bodyaddAnnotatins = null, WorkflowExpression<bool> bodyaddOverlay = null)
         {
@@ -607,7 +595,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProcessResponse> __BuildCreateProcess(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessTemplateName, WorkflowExpression<string> bodyprocessProperties = null, WorkflowExpression<string> bodycustomProperties = null, WorkflowExpression<string> bodydocumentIds = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyculture = null)
         {
@@ -692,7 +679,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserTableGetRecordsResponse> __BuildUserTableGetRecords(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyuserTable, WorkflowExpression<string> bodywhereClause = null, WorkflowExpression<string> bodyorderByClause = null, WorkflowExpression<bool> bodyaddColumnHeaders = null)
         {
@@ -749,7 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserTableImportDataResponse> __BuildUserTableImportData(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyuserTable, WorkflowExpression<string> bodyvalues, WorkflowExpression<bool> bodydeleteAllValues = null, WorkflowExpression<bool> bodyfirstRowContainsColumnHeaders = null)
         {
@@ -822,7 +807,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserTableCreateTableResponse> __BuildUserTableCreateTable(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyuserTable, WorkflowExpression<string> bodycolumnHeaders)
         {
@@ -861,7 +845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserTableDeleteRecordsResponse> __BuildUserTableDeleteRecords(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyuserTable, WorkflowExpression<string> bodywhereClause = null)
         {
@@ -904,7 +887,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> __BuildMergePDFDocumentsToVersion(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodydocumentIdToAppend, WorkflowExpression<bool> bodyforceUndoCheckout = null)
         {
@@ -950,7 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProcessSearchResponse> __BuildProcessSearch(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyconditions = null, WorkflowExpression<string> bodyresultProperties = null, WorkflowExpression<string> bodymaxSerchResults = null, WorkflowExpression<string> bodyculture = null)
         {
@@ -1021,7 +1002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserTableUpdateRowResponse> __BuildUserTableUpdateRow(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyuserTable, WorkflowExpression<string> bodyrowData)
         {
@@ -1060,7 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSelectionResponse> __BuildGetSelection(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyselectionId)
         {
@@ -1096,7 +1075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentV2Response> __BuildCreateDocument(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentTitle, WorkflowExpression<string> bodyfileContent, WorkflowExpression<string> bodyimportTemplate = null, WorkflowExpression<string> bodydocumentProperties = null, WorkflowExpression<string> bodyblog = null, WorkflowExpression<string> bodyculture = null, WorkflowExpression<string> bodyinfoStore = null, WorkflowExpression<string> bodylifeCycle = null, WorkflowExpression<string> bodyprotectionDomain = null, WorkflowExpression<bodyuploadMethodInput> bodyuploadMethod = null, WorkflowExpression<string> bodyoriginalFileFormat = null, WorkflowExpression<int> bodychunkSize = null)
         {
@@ -1235,7 +1213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentSearchV2Response> __BuildDocumentSearch(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyconditions = null, WorkflowExpression<string> bodymaxSerchResults = null, WorkflowExpression<string> bodyresultProperties = null, WorkflowExpression<string> bodyculture = null, WorkflowExpression<string> bodystores = null)
         {
@@ -1313,7 +1290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateDocumentV2Response> __BuildUpdateDocument(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodydocumentProperties = null, WorkflowExpression<string> bodyremoveDocumentProperties = null, WorkflowExpression<string> bodyculture = null, WorkflowExpression<string> bodyprotectionDomain = null, WorkflowExpression<string> bodyblog = null, WorkflowExpression<bodyuploadMethodInput> bodyuploadMethod = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<bool> bodyforceUndoCheckout = null, WorkflowExpression<int> bodychunkSize = null)
         {
@@ -1449,7 +1425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateProcessV2Response> __BuildUpdateProcess(WorkflowExpression<string> bodyarchiveUrl, WorkflowExpression<string> bodyconnectionId, WorkflowExpression<string> bodyprocessId, WorkflowExpression<string> bodyprocessProperties = null, WorkflowExpression<string> bodyremoveProcessProperties = null, WorkflowExpression<string> bodycustomProperties = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyassignUserLoginNames = null, WorkflowExpression<string> bodyaddDocumentIds = null, WorkflowExpression<string> bodyremoveDocumentIds = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodyculture = null, WorkflowExpression<bool> bodyforceUndoCheckout = null, WorkflowExpression<string> bodyprotectionDomain = null)
         {

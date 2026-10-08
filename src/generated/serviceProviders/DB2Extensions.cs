@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<DeleteRowOutput> __BuildDeleteRow(WorkflowExpression<string> table, WorkflowExpression<object> searchCondition)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<ExecuteNonQueryOutput> __BuildExecuteNonQuery(WorkflowExpression<string> statement, WorkflowExpression<object> sqlParameters = null)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildExecuteQuery(WorkflowExpression<string> query, WorkflowExpression<object> queryParameters = null)
         {
@@ -109,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTablesOutputItem[]> __BuildGetTables(WorkflowExpression<string> schema = null)
         {
@@ -138,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<InsertRowOutput> __BuildInsertRow(WorkflowExpression<string> table, WorkflowExpression<object> insertParameters)
         {
@@ -165,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildStoredProcedure(WorkflowExpression<string> procedureName, WorkflowExpression<object> procedureParameters = null)
         {
@@ -196,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<UpdateRowOutput> __BuildUpdateRow(WorkflowExpression<string> table, WorkflowExpression<object> updatedColumns, WorkflowExpression<object> searchCondition)
         {

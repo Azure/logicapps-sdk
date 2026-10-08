@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAgentResponse> __BuildCreateAgent(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname, WorkflowExpression<bodyloginStatusInput> bodyloginStatus = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodypermissionInput> bodypermission = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodymaxChatCounts = null)
         {
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteAgentResponse> __BuildDeleteAgent(WorkflowExpression<string> login)
         {
@@ -124,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TicketResponse> __BuildCreateTicket(WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodyrequesterrequesterSEmail = null, WorkflowExpression<string> bodyrequesterrequesterSName = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyassigneeassigneeId = null, WorkflowExpression<bodysourcesourceTypeInput> bodysourcesourceType = null, WorkflowExpression<string> bodysourcesourceURL = null)
         {
@@ -220,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TicketResponse> __BuildUpdateTicket(WorkflowExpression<string> ticketId, WorkflowExpression<string> bodyrequesterrequesterSEmail, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodyrequesterrequesterSName = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyassigneeassigneeId = null, WorkflowExpression<bodysourcesourceTypeInput> bodysourcesourceType = null, WorkflowExpression<string> bodysourcesourceURL = null)
         {
@@ -317,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TicketResponse> __BuildGetTicket(WorkflowExpression<string> ticketId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLearningContentResponse> __BuildGetLearningContent(WorkflowExpression<string> locale = null, WorkflowExpression<string> type = null, WorkflowExpression<string> uid = null, WorkflowExpression<string> lastModified = null, WorkflowExpression<string> popularity = null, WorkflowExpression<string> level = null, WorkflowExpression<string> role = null, WorkflowExpression<string> product = null, WorkflowExpression<string> subject = null)
         {

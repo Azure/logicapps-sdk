@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextImageAddPostResponse> __BuildTextImageAdd(WorkflowExpression<string> bodydataprompt = null, WorkflowExpression<string> bodydatanegprompt = null, WorkflowExpression<int> bodydatasamples = null, WorkflowExpression<int> bodydatasteps = null, WorkflowExpression<string> bodydataaspectRatio = null, WorkflowExpression<double> bodydataguidanceScale = null, WorkflowExpression<int> bodydataseed = null)
         {
@@ -104,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextImageStatusPostResponse> __BuildTextImageStatus(WorkflowExpression<string> bodyprocessId)
         {
@@ -134,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageImageAddPostResponse> __BuildImageImageAdd(WorkflowExpression<string> bodydataprompt = null, WorkflowExpression<string> bodydatanegprompt = null, WorkflowExpression<int> bodydatasteps = null, WorkflowExpression<double> bodydataguidanceScale = null, WorkflowExpression<string> bodydatainitImageUrl = null, WorkflowExpression<double> bodydatastrength = null, WorkflowExpression<int> bodydataseed = null)
         {
@@ -220,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageImageStatusPostResponse> __BuildImageImageStatus(WorkflowExpression<string> bodyprocessId)
         {
@@ -250,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageEditPostResponse> __BuildImageEdit(WorkflowExpression<string> bodydataprompt = null, WorkflowExpression<string> bodydatanegprompt = null, WorkflowExpression<int> bodydatasteps = null, WorkflowExpression<double> bodydataguidanceScale = null, WorkflowExpression<string> bodydatainitImageUrl = null, WorkflowExpression<double> bodydataimageGuidanceScale = null, WorkflowExpression<int> bodydataseed = null)
         {
@@ -336,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageEditStatusPostResponse> __BuildImageEditStatus(WorkflowExpression<string> bodyprocessId)
         {
@@ -366,7 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudioPostResponse> __BuildAudio(WorkflowExpression<string> bodydatafile = null, WorkflowExpression<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
         {
@@ -427,7 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudioStatusPostResponse> __BuildAudioStatus(WorkflowExpression<string> bodyprocessId)
         {

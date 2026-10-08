@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGet(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> tenantID, WorkflowExpression<string> environmentName, WorkflowExpression<aPINameInput> aPIName, WorkflowExpression<string> aPIVersion2, WorkflowExpression<string> companyID, WorkflowExpression<pluralAPINameInput> pluralAPIName, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> orderby = null)
         {

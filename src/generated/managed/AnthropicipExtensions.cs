@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<bodymodelInput> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodymaxTokens, WorkflowExpression<bool> bodythinkingtype = null, WorkflowExpression<int> bodythinkingbudgetTokens = null, WorkflowExpression<string[]> bodystopSequences = null, WorkflowExpression<string> bodysystem = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null, WorkflowExpression<int> bodytopK = null, WorkflowExpression<double> bodytopP = null)
         {

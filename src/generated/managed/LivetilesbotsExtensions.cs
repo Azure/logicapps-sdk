@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPromptString(WorkflowExpression<string> resumptionToken, WorkflowExpression<string> bodyprompt = null)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPromptNumber(WorkflowExpression<string> resumptionToken, WorkflowExpression<string> bodyprompt = null)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPromptForm(WorkflowExpression<string> resumptionToken, WorkflowExpression<bodyformFieldsInputItem[]> bodyformFields, WorkflowExpression<string> bodyprompt = null, WorkflowExpression<string> bodytitle = null)
         {
@@ -142,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPromptBoolean(WorkflowExpression<string> resumptionToken, WorkflowExpression<string> bodyprompt = null)
         {
@@ -180,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPromptChoice(WorkflowExpression<string> resumptionToken, WorkflowExpression<string> bodyprompt = null, WorkflowExpression<bodyoptionsInputItem[]> bodyoptions = null)
         {
@@ -225,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPromptFile(WorkflowExpression<string> resumptionToken, WorkflowExpression<string> bodyprompt = null, WorkflowExpression<string[]> bodycontentTypes = null)
         {
@@ -270,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostMessage(WorkflowExpression<string> resumptionToken, WorkflowExpression<string> bodymessage = null, WorkflowExpression<bodyattachmentsInputItem[]> bodyattachments = null)
         {
@@ -313,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowComplete(WorkflowExpression<string> resumptionToken)
         {

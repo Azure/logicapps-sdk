@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildReverseIP(WorkflowExpression<string> ip, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotNameserverIP(WorkflowExpression<string> nameserverIp, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildInvestigateDomain(WorkflowExpression<string> domain, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -111,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotMXIP(WorkflowExpression<string> mailserverIp, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -142,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildReverseEmail(WorkflowExpression<string> email, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -173,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildLoadSearchHash(WorkflowExpression<string> searchHash, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotSSLHash(WorkflowExpression<string> sslHash, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -235,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotRegistrantOrg(WorkflowExpression<string> registrantOrg, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -266,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotRegistrantName(WorkflowExpression<string> registrant, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -297,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildReverseEmailDomain(WorkflowExpression<string> emailDomain, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -328,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotSSLEmail(WorkflowExpression<string> sslEmail, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -359,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotNameserverHost(WorkflowExpression<string> nameserverHost, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -390,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildPivotMXHost(WorkflowExpression<string> mailserverHost, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -421,7 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildReturnTaggedAny(WorkflowExpression<string> taggedWithAny, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {
@@ -452,7 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvestigateResponse> __BuildReturnTaggedAll(WorkflowExpression<string> taggedWithAll, WorkflowExpression<bool> active = null, WorkflowExpression<string> createDate = null, WorkflowExpression<string> expirationDate = null)
         {

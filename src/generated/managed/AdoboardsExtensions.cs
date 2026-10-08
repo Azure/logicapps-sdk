@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListAccount> __BuildListAccounts(WorkflowExpression<string> memberId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Profile> __BuildGetProfile(WorkflowExpression<string> id)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListProject> __BuildListProjects(WorkflowExpression<string> account)
         {
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> __BuildListRootQueryFolders(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -104,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListWorkItemType> __BuildListWorkItemTypes(WorkflowExpression<string> account, WorkflowExpression<string> project)
         {
@@ -126,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> __BuildListWorkItems(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> ids)
         {
@@ -150,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> __BuildListQueriesInFolder(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> folderPath)
         {
@@ -173,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListJObject> __BuildGetQueryResults(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> queryId)
         {
@@ -196,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VstsListSubject> __BuildGetSubject(WorkflowExpression<string> account, WorkflowExpression<string> subjectQueryDetailssearchTerm, WorkflowExpression<string[]> subjectQueryDetailssubjectKind, WorkflowExpression<string> subjectQueryDetailsscopeDescriptor = null)
         {
@@ -237,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateWorkItem(WorkflowExpression<string> account, WorkflowExpression<string> id, WorkflowExpression<string> project, WorkflowExpression<int> workItempriority = null, WorkflowExpression<KeyValuePair[]> workItemotherFields = null)
         {

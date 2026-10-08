@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsResponse> __BuildGetStations(WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsAvailabilityResponse> __BuildGetStationsAvailability(WorkflowExpression<string> stationCode = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> select = null)
         {
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetNearbyWeatherStations(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<int> radius = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null)
         {
@@ -136,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationResponse> __BuildGetStation(WorkflowExpression<string> stationCode, WorkflowExpression<string> select = null)
         {
@@ -160,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> __BuildGetWeatherStationAvailability(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> select = null)
         {
@@ -190,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsBulletinsResponse> __BuildGetStationsBulletins(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null)
         {
@@ -235,7 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> __BuildGetWeatherStationsRainfall(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null)
         {
@@ -280,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetWeatherStationRainfallResponse> __BuildGetWeatherStationRainfall(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null)
         {
@@ -325,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> __BuildGetStationsExtremeConditions(WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null)
         {
@@ -366,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsExtremeEventsResponse> __BuildGetStationsExtremeEvents(WorkflowExpression<@operatorInput> @operator, WorkflowExpression<int> threshold, WorkflowExpression<propertyInput> property, WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<intervalInput> interval = null, WorkflowExpression<string> select = null)
         {
@@ -405,7 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsLatestDataResponse> __BuildGetStationsLatestData(WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null)
         {
@@ -440,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationBulletinsResponse> __BuildGetStationBulletins(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> stationCode, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -477,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationLatestDataResponse> __BuildGetStationLatestData(WorkflowExpression<string> stationCode, WorkflowExpression<string> select = null)
         {
@@ -501,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationMinuteDataResponse> __BuildGetStationMinuteData(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -538,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStations15minSummary(WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -583,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStations30minSummary(WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -628,7 +612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsHourlySummary(WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -673,7 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsDailySummary(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -718,7 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsMonthlySummary(WorkflowExpression<string> startMonth, WorkflowExpression<string> endMonth, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -763,7 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsYearlySummary(WorkflowExpression<string> startYear, WorkflowExpression<string> endYear, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -808,7 +788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStations15minSummaryTimeSeries(WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -853,7 +832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStations30minSummaryTimeSeries(WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -898,7 +876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsHourlySummaryTimeSeries(WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -943,7 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsDailySummaryTimeSeries(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -988,7 +964,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsMonthlySummaryTimeSeries(WorkflowExpression<string> startMonth, WorkflowExpression<string> endMonth, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -1033,7 +1008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsYearlySummaryTimeSeries(WorkflowExpression<string> startYear, WorkflowExpression<string> endYear, WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<bool> includeClosed = null, WorkflowExpression<string> select = null)
         {
@@ -1078,7 +1052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStation15minSummary(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -1115,7 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStation30minSummary(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -1152,7 +1124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationHourlySummary(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDateTime, WorkflowExpression<string> endDateTime, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -1189,7 +1160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationDailySummary(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -1226,7 +1196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationMonthlySummary(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {
@@ -1263,7 +1232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationYearlySummary(WorkflowExpression<string> stationCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
         {

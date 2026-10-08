@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IPEResponse> __BuildIPE(WorkflowExpression<string> ip, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DEResponse> __BuildDE(WorkflowExpression<string> domain, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UEResponse> __BuildUE(WorkflowExpression<string> url, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
         {
@@ -108,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HEResponse> __BuildHE(WorkflowExpression<string> hash, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
         {
@@ -138,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VulnEResponse> __BuildVulnE(WorkflowExpression<string> id, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
         {
@@ -168,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertRulesSearchResponse> __BuildAlertRulesSearch(WorkflowExpression<string> freetext = null, WorkflowExpression<int> limit = null)
         {
@@ -195,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertSearch> __BuildAlertNotSearch(WorkflowExpression<string> alertRule, WorkflowExpression<string> triggered = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> from = null)
         {
@@ -227,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertLookup> __BuildAlertNotLookup(WorkflowExpression<string> id)
         {
@@ -248,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlaybookAlertSearchItem[]> __BuildPlaybookAlertSearch(WorkflowExpression<string> bodylimit = null, WorkflowExpression<bodyentitiesInputItem[]> bodyentities = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null, WorkflowExpression<bodyprioritiesInputItem[]> bodypriorities = null, WorkflowExpression<bodycategoriesInputItem[]> bodycategories = null, WorkflowExpression<bodycreatedFromRelativeInput> bodycreatedFromRelative = null, WorkflowExpression<bodycreatedUntilRelativeInput> bodycreatedUntilRelative = null, WorkflowExpression<bodyupdatedFromRelativeInput> bodyupdatedFromRelative = null, WorkflowExpression<bodyupdatedUntilRelativeInput> bodyupdatedUntilRelative = null)
         {
@@ -338,7 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlaybookAlertLookup> __BuildPlaybookAlertLookup(WorkflowExpression<string> id)
         {
@@ -359,7 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectionRuleSearchResponse> __BuildDetectionRuleSearch(WorkflowExpression<bodytypesInputItem[]> bodytypes = null, WorkflowExpression<bodyentitiesInputItem[]> bodyentities = null, WorkflowExpression<string> bodycreatedbefore = null, WorkflowExpression<string> bodycreatedafter = null, WorkflowExpression<bodylimitInput> bodylimit = null)
         {
@@ -429,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RListDResponseItem[]> __BuildRListD(WorkflowExpression<pathInput> path)
         {
@@ -451,7 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SoarBulkLookupResponse> __BuildSoarBulkLookup(WorkflowExpression<string[]> bodyip = null, WorkflowExpression<string[]> bodyurl = null, WorkflowExpression<string[]> bodydomain = null, WorkflowExpression<string[]> bodyhash = null, WorkflowExpression<string[]> bodyvulnerability = null)
         {
@@ -513,7 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreatMapActorsResponse> __BuildThreatMapActors(WorkflowExpression<string[]> bodyactors, WorkflowExpression<string[]> bodycategories, WorkflowExpression<string[]> bodywatchlists)
         {
@@ -549,7 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreatMapMalwareResponse> __BuildThreatMapMalware(WorkflowExpression<string[]> bodymalware, WorkflowExpression<string[]> bodycategories, WorkflowExpression<string[]> bodywatchlists)
         {
@@ -585,7 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<STIXIndicatorsResponse> __BuildSTIXIndicators(WorkflowExpression<string[]> bodyactors = null, WorkflowExpression<string[]> bodycategories = null, WorkflowExpression<string[]> bodywatchlists = null, WorkflowExpression<int> bodytriggerScoreIp = null, WorkflowExpression<int> bodytriggerScoreUrl = null, WorkflowExpression<int> bodytriggerScoreDomain = null, WorkflowExpression<int> bodytriggerScoreHash = null, WorkflowExpression<int> bodyvalidUntilDeltaHours = null, WorkflowExpression<string> bodythreatHuntDescription = null)
         {
@@ -675,7 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<STIXMalwareIndicatorsResponse> __BuildSTIXMalwareIndicators(WorkflowExpression<string[]> bodymalware = null, WorkflowExpression<string[]> bodycategories = null, WorkflowExpression<string[]> bodywatchlists = null, WorkflowExpression<int> bodytriggerScoreIp = null, WorkflowExpression<int> bodytriggerScoreUrl = null, WorkflowExpression<int> bodytriggerScoreDomain = null, WorkflowExpression<int> bodytriggerScoreHash = null, WorkflowExpression<int> bodyvalidUntilDeltaHours = null, WorkflowExpression<string> bodythreatHuntDescription = null)
         {
@@ -765,7 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertSearchV2Response> __BuildAlertSearch(WorkflowExpression<string> triggered = null, WorkflowExpression<string> alertRule = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> from = null, WorkflowExpression<fieldsInput> fields = null)
         {
@@ -800,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertSearchIdV2Response> __BuildAlertSearchId(WorkflowExpression<string> id, WorkflowExpression<fieldsInput> fields = null)
         {

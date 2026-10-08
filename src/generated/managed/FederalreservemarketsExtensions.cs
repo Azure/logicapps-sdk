@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> __BuildGetTreasurySecuritiesOperationsByStatus(WorkflowExpression<operationInput> operation, WorkflowExpression<statusInput> status, WorkflowExpression<includeInput> include, WorkflowExpression<formatInput> format)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> __BuildGetSecuritiesLendingOperations(WorkflowExpression<operationInput> operation, WorkflowExpression<includeInput> include, WorkflowExpression<formatInput> format)
         {

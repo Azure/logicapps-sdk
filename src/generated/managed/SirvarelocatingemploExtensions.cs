@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRelocationPackageResponse> __BuildGetRelocationPackage(WorkflowExpression<string> relocationId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCounselorContactInformationResponse> __BuildGetCounselorContactInformation(WorkflowExpression<bool> includePicture, WorkflowExpression<string> relocationId)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> __BuildAskSirvaBotAboutTopic(WorkflowExpression<string> bodyrelocationId, WorkflowExpression<string> bodyquery, WorkflowExpression<bodytopicInput> bodytopic)
         {

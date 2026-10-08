@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResponse> __BuildCall(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyfrom, WorkflowExpression<string[]> bodyto, WorkflowExpression<bodyactionsInputItem[]> bodyactions)
         {

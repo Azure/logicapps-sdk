@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetParcelDetailsResponse> __BuildGetParcelDetails(WorkflowExpression<string> x, WorkflowExpression<string> y)
         {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetParcelMapResponse> __BuildGetParcelMap(WorkflowExpression<string> x, WorkflowExpression<string> y, WorkflowExpression<int> width, WorkflowExpression<int> height, WorkflowExpression<int> size, WorkflowExpression<bool> publication)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTilesResponse> __BuildGetId(WorkflowExpression<string> x1, WorkflowExpression<string> x2, WorkflowExpression<string> y1, WorkflowExpression<string> y2, WorkflowExpression<string> include)
         {

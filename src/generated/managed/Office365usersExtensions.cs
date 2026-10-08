@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateMyProfile(WorkflowExpression<string> bodyaboutMe = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string[]> bodyinterests = null, WorkflowExpression<string> bodymySite = null, WorkflowExpression<string[]> bodypastProjects = null, WorkflowExpression<string[]> bodyschools = null, WorkflowExpression<string[]> bodyskills = null)
         {
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateMyPhoto(WorkflowExpression<string> contentType, WorkflowExpression<string> body = null)
         {
@@ -118,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MyTrendingDocumentsResponse> __BuildMyTrendingDocuments(WorkflowExpression<string> filter = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null)
         {
@@ -147,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinklessEntityListResponseListPerson> __BuildRelevantPeople(WorkflowExpression<string> userId)
         {
@@ -168,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClientPhotoMetadata> __BuildUserPhotoMetadata(WorkflowExpression<string> userId)
         {
@@ -190,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TrendingDocumentsResponse> __BuildTrendingDocuments(WorkflowExpression<string> id, WorkflowExpression<string> filter = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<bool> fetchSensitivityLabelMetadata = null)
         {
@@ -220,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
         {
@@ -265,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DirectReportsV2Response> __BuildDirectReports(WorkflowExpression<string> id, WorkflowExpression<string> select = null, WorkflowExpression<int> top = null)
         {
@@ -292,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphUserV1> __BuildManager(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {
@@ -316,7 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphUserV1> __BuildMyProfile(WorkflowExpression<string> select = null)
         {
@@ -339,7 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityListResponseIReadOnlyListUser> __BuildSearchUser(WorkflowExpression<string> searchTerm = null, WorkflowExpression<int> top = null, WorkflowExpression<bool> isSearchTermRequired = null)
         {
@@ -369,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUserPhoto(WorkflowExpression<string> id)
         {
@@ -390,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphUserV1> __BuildUserProfile(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {

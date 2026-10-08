@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessPDFFile> __BuildPDF(WorkflowExpression<string> templateId, WorkflowExpression<string> exportType = null, WorkflowExpression<int> expiration = null, WorkflowExpression<string> outputHtml = null, WorkflowExpression<string> outputFormat = null, WorkflowExpression<string> filename = null, WorkflowExpression<string> imageResampleRes = null, WorkflowExpression<string> isCmyk = null, WorkflowExpression<int> cloudStorage = null, WorkflowExpression<string> meta = null, WorkflowExpression<string> async = null, WorkflowExpression<string> webhookUrl = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessImageFile> __BuildImage(WorkflowExpression<string> templateId, WorkflowExpression<int> expiration = null, WorkflowExpression<int> cloudStorage = null, WorkflowExpression<string> outputImageType = null, WorkflowExpression<string> meta = null)
         {
@@ -121,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessListObjects> __BuildObjectsGet(WorkflowExpression<string> limit = null, WorkflowExpression<string> offset = null, WorkflowExpression<string> templateId = null, WorkflowExpression<string> transactionType = null)
         {
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessDeleteObject> __BuildObjectDelete(WorkflowExpression<string> transactionRef)
         {
@@ -175,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessListTemplates> __BuildTemplatesGet(WorkflowExpression<string> limit = null, WorkflowExpression<string> offset = null, WorkflowExpression<string> format = null, WorkflowExpression<string> templateId = null, WorkflowExpression<string> groupName = null, WorkflowExpression<string> withLayerInfo = null)
         {
@@ -213,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessTemplate> __BuildTemplateGet(WorkflowExpression<string> templateId = null)
         {
@@ -236,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccess> __BuildTemplateUpdate(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodycss = null)
         {
@@ -280,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildPDFMerge(WorkflowExpression<string[]> bodyurls, WorkflowExpression<string> meta = null, WorkflowExpression<string> bodyexportType = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<int> bodycloudStorage = null)
         {

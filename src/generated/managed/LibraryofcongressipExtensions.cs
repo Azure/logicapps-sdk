@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> q, WorkflowExpression<string> fa = null, WorkflowExpression<int> c = null, WorkflowExpression<int> sp = null, WorkflowExpression<string> at = null, WorkflowExpression<string> sb = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CollectionResponse> __BuildCollection(WorkflowExpression<string> collection, WorkflowExpression<string> q, WorkflowExpression<string> fa = null, WorkflowExpression<int> c = null, WorkflowExpression<int> sp = null, WorkflowExpression<string> at = null, WorkflowExpression<string> sb = null)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FormatResponse> __BuildFormat(WorkflowExpression<formatInput> format, WorkflowExpression<string> q, WorkflowExpression<string> fa = null, WorkflowExpression<int> c = null, WorkflowExpression<int> sp = null, WorkflowExpression<string> at = null, WorkflowExpression<string> sb = null)
         {
@@ -131,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemResponse> __BuildItem(WorkflowExpression<string> identifier)
         {

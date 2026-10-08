@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddModelsResponseItem[]> __BuildAddModels(WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListModelsResponse> __BuildListModels(WorkflowExpression<string> dependenciesFor = null, WorkflowExpression<string> includeModelDefinition = null, WorkflowExpression<string> continuationToken = null)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteModel(WorkflowExpression<string> modelid)
         {
@@ -93,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetModelByIdResponse> __BuildGetModelById(WorkflowExpression<string> modelid, WorkflowExpression<string> includeModelDefinition = null)
         {
@@ -118,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateModel(WorkflowExpression<string> modelid, WorkflowExpression<string> bodyvalue = null)
         {
@@ -154,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TwinResult> __BuildGetTwinById(WorkflowExpression<string> twinid)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTwin(WorkflowExpression<string> twinid)
         {
@@ -198,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TwinResult> __BuildAddTwin(WorkflowExpression<string> twinid, WorkflowExpression<string> bodyvalue = null)
         {
@@ -234,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateTwin(WorkflowExpression<string> twinid, WorkflowExpression<string> bodyvalue = null)
         {
@@ -270,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetComponentResult> __BuildGetComponent(WorkflowExpression<string> twinid, WorkflowExpression<string> componentPath)
         {
@@ -293,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateComponent(WorkflowExpression<string> twinid, WorkflowExpression<string> componentPath, WorkflowExpression<string> bodyvalue = null)
         {
@@ -330,7 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TwinRelationship> __BuildGetRelationshipById(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId)
         {
@@ -353,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRelationship(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId)
         {
@@ -376,7 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TwinRelationship> __BuildAddRelationship(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId, WorkflowExpression<string> bodyvalue = null)
         {
@@ -413,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateRelationship(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId, WorkflowExpression<string> bodyvalue = null)
         {
@@ -450,7 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListIncomingRelationshipsResponse> __BuildListIncomingRelationships(WorkflowExpression<string> twinid, WorkflowExpression<string> continuationToken = null)
         {
@@ -475,7 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendTelemetry(WorkflowExpression<string> twinid, WorkflowExpression<string> messageId, WorkflowExpression<string> telemetrySourceTime = null, WorkflowExpression<string> bodyvalue = null)
         {
@@ -516,7 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendComponentTelemetry(WorkflowExpression<string> twinid, WorkflowExpression<string> componentPath, WorkflowExpression<string> messageId, WorkflowExpression<string> telemetrySourceTime = null, WorkflowExpression<string> bodyvalue = null)
         {
@@ -558,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRelationshipsResponse> __BuildListRelationships(WorkflowExpression<string> twinid, WorkflowExpression<string> continuationToken = null)
         {
@@ -583,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryResult> __BuildQueryTwins(WorkflowExpression<string> bodyquery = null, WorkflowExpression<string> bodycontinuationToken = null)
         {

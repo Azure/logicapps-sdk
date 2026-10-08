@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendcampaign(WorkflowExpression<string> campaignId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListsResponseModel> __BuildGetLists(WorkflowExpression<int> count = null, WorkflowExpression<int> offset = null)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateNewListResponseModel> __BuildNewlist(WorkflowExpression<string> newListRequestlistName, WorkflowExpression<string> newListRequestcontactcompanyName, WorkflowExpression<string> newListRequestcontactaddressLine1, WorkflowExpression<string> newListRequestcontactcity, WorkflowExpression<string> newListRequestcontactstate, WorkflowExpression<string> newListRequestcontactpostalCode, WorkflowExpression<string> newListRequestcontactcountryCode, WorkflowExpression<string> newListRequestcontactphoneNumber, WorkflowExpression<string> newListRequestpermissionReminder, WorkflowExpression<string> newListRequestcampaignDefaultssenderSName, WorkflowExpression<string> newListRequestcampaignDefaultssenderSEmailAddress, WorkflowExpression<string> newListRequestcampaignDefaultssubject, WorkflowExpression<newListRequestcampaignDefaultslanguageInput> newListRequestcampaignDefaultslanguage, WorkflowExpression<bool> newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, WorkflowExpression<string> newListRequestcontactaddressLine2 = null, WorkflowExpression<bool> newListRequestuseArchiveBar = null, WorkflowExpression<string> newListRequestnotifyOnSubscribe = null, WorkflowExpression<string> newListRequestnotifyOnUnsubscribe = null, WorkflowExpression<newListRequestvisibilityInput> newListRequestvisibility = null)
         {
@@ -195,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAddMembersBatchResponseModel> __BuildAddMembers(WorkflowExpression<string> listId, WorkflowExpression<NewMemberInListRequest[]> bodymembers, WorkflowExpression<bool> skipMergeValidation = null, WorkflowExpression<bool> skipDuplicateCheck = null, WorkflowExpression<bool> bodyupdateExisting = null)
         {
@@ -239,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllMembersResponseModel> __BuildGetListMembers(WorkflowExpression<string> listId, WorkflowExpression<int> count = null, WorkflowExpression<int> offset = null)
         {
@@ -268,7 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemberResponseModel> __BuildAddmember(WorkflowExpression<string> listId, WorkflowExpression<newMemberInListstatusInput> newMemberInListstatus, WorkflowExpression<string> newMemberInListemailAddress, WorkflowExpression<newMemberInListemailTypeInput> newMemberInListemailType = null, WorkflowExpression<string> newMemberInListmergeFieldsfirstName = null, WorkflowExpression<string> newMemberInListmergeFieldslastName = null, WorkflowExpression<string> newMemberInListlanguage = null, WorkflowExpression<bool> newMemberInListvIP = null, WorkflowExpression<double> newMemberInListlocationlatitude = null, WorkflowExpression<double> newMemberInListlocationlongitude = null)
         {
@@ -377,7 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignResponseModel> __BuildNewcampaign(WorkflowExpression<newCampaignRequestcampaignTypeInput> newCampaignRequestcampaignType, WorkflowExpression<string> newCampaignRequestrecipientslistId, WorkflowExpression<string> newCampaignRequestsettingscampaignSubjectLine, WorkflowExpression<string> newCampaignRequestsettingsfromName, WorkflowExpression<string> newCampaignRequestsettingsreplyToAddress, WorkflowExpression<int> newCampaignRequestrecipientssegmentOptssavedSegmentID = null, WorkflowExpression<string> newCampaignRequestrecipientssegmentOptsmatchType = null, WorkflowExpression<string> newCampaignRequestsettingstitle = null, WorkflowExpression<bool> newCampaignRequestsettingsconversation = null, WorkflowExpression<string> newCampaignRequestsettingstoName = null, WorkflowExpression<string> newCampaignRequestsettingsfolderID = null, WorkflowExpression<bool> newCampaignRequestsettingsauthentication = null, WorkflowExpression<bool> newCampaignRequestsettingsautoFooter = null, WorkflowExpression<bool> newCampaignRequestsettingsinlineCSS = null, WorkflowExpression<bool> newCampaignRequestsettingsautoTweet = null, WorkflowExpression<int[]> newCampaignRequestsettingsautoPostToFacebook = null, WorkflowExpression<bool> newCampaignRequestsettingsfacebookComments = null, WorkflowExpression<string> newCampaignRequestvariateSettingswinningCriteria = null, WorkflowExpression<int> newCampaignRequestvariateSettingswaitTime = null, WorkflowExpression<int> newCampaignRequestvariateSettingstestSize = null, WorkflowExpression<string[]> newCampaignRequestvariateSettingssubjectLines = null, WorkflowExpression<string[]> newCampaignRequestvariateSettingssendTimes = null, WorkflowExpression<string[]> newCampaignRequestvariateSettingsfromNames = null, WorkflowExpression<string[]> newCampaignRequestvariateSettingsreplyToAddresses = null, WorkflowExpression<bool> newCampaignRequesttrackingopens = null, WorkflowExpression<bool> newCampaignRequesttrackinghTMLClickTracking = null, WorkflowExpression<bool> newCampaignRequesttrackingplainTextClickTracking = null, WorkflowExpression<bool> newCampaignRequesttrackingmailChimpGoalTracking = null, WorkflowExpression<bool> newCampaignRequesttrackingeCommerce360Tracking = null, WorkflowExpression<string> newCampaignRequesttrackinggoogleAnalyticsTracking = null, WorkflowExpression<string> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, WorkflowExpression<bool> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, WorkflowExpression<bool> newCampaignRequesttrackingsalesforcesalesforceNote = null, WorkflowExpression<bool> newCampaignRequesttrackinghighrisehighriseCampaign = null, WorkflowExpression<bool> newCampaignRequesttrackinghighrisehighriseNote = null, WorkflowExpression<bool> newCampaignRequesttrackingcapsulecapsuleNote = null, WorkflowExpression<string> newCampaignRequestrssOptsfeedURL = null, WorkflowExpression<newCampaignRequestrssOptsfrequencyInput> newCampaignRequestrssOptsfrequency = null, WorkflowExpression<string> newCampaignRequestrssOptsconstrainRSSImages = null, WorkflowExpression<int> newCampaignRequestrssOptsschedulesendingHour = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendsunday = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendmonday = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendtuesday = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendwednesday = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendthursday = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendfriday = null, WorkflowExpression<bool> newCampaignRequestrssOptsscheduledailySendsaturday = null, WorkflowExpression<newCampaignRequestrssOptsscheduleweeklySendingDayInput> newCampaignRequestrssOptsscheduleweeklySendingDay = null, WorkflowExpression<double> newCampaignRequestrssOptsschedulemonthlySendingDay = null, WorkflowExpression<string> newCampaignRequestsocialCardimageURL = null, WorkflowExpression<string> newCampaignRequestsocialCardcampaignDescription = null, WorkflowExpression<string> newCampaignRequestsocialCardtitle = null)
         {
@@ -844,7 +837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemovemember(WorkflowExpression<string> listId, WorkflowExpression<string> memberEmail)
         {
@@ -867,7 +859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemberResponseModel> __BuildUpdatemember(WorkflowExpression<string> listId, WorkflowExpression<string> memberEmail, WorkflowExpression<updateMemberInListRequeststatusInput> updateMemberInListRequeststatus, WorkflowExpression<updateMemberInListRequestemailTypeInput> updateMemberInListRequestemailType = null, WorkflowExpression<string> updateMemberInListRequestmergeFieldsfirstName = null, WorkflowExpression<string> updateMemberInListRequestmergeFieldslastName = null, WorkflowExpression<string> updateMemberInListRequestlanguage = null, WorkflowExpression<bool> updateMemberInListRequestvIP = null, WorkflowExpression<double> updateMemberInListRequestlocationlatitude = null, WorkflowExpression<double> updateMemberInListRequestlocationlongitude = null)
         {

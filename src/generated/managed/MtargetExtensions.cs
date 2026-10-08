@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mtarget")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSmsResponse> __BuildSendSms(WorkflowExpression<string> msisdn, WorkflowExpression<string> msg, WorkflowExpression<string> sender = null, WorkflowExpression<int> serviceid = null, WorkflowExpression<string> timetosend = null, WorkflowExpression<string> remoteid = null)
         {

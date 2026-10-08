@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildListBundles(WorkflowExpression<string> search = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<statusInInput> statusIn = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> tagIn = null, WorkflowExpression<orderingInput> ordering = null)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListPersonsResponseItem[]> __BuildListPersons(WorkflowExpression<string> search = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWebhooksResponseItem[]> __BuildListWebhooks(WorkflowExpression<bool> enabled = null, WorkflowExpression<eventTypeInput> eventType = null)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> __BuildListWebhookDeliveries(WorkflowExpression<string> webhook = null, WorkflowExpression<string> webhookEvent = null, WorkflowExpression<eventTypeInput> eventType = null, WorkflowExpression<int> status = null, WorkflowExpression<string> date = null)
         {
@@ -149,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> __BuildListWebhookEvents(WorkflowExpression<string> webhook = null, WorkflowExpression<eventTypeInput> eventType = null, WorkflowExpression<int> status = null, WorkflowExpression<bool> success = null, WorkflowExpression<string> date = null)
         {
@@ -184,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> __BuildListWebhookExtraHeaders(WorkflowExpression<string> webhook = null, WorkflowExpression<eventTypeInput> eventType = null)
         {

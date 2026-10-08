@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Transaction> __BuildGetdetails(WorkflowExpression<string> transactionId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ErrorModel> __BuildDelete(WorkflowExpression<string> transactionId, WorkflowExpression<bool> bodysendNotifications = null, WorkflowExpression<string> bodyreason = null)
         {
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadpdf(WorkflowExpression<string> transactionId, WorkflowExpression<string> fileId)
         {
@@ -113,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadreceipt(WorkflowExpression<string> transactionId)
         {
@@ -134,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Transaction> __BuildCreate(WorkflowExpression<transactionlanguageInput> transactionlanguage = null, WorkflowExpression<bool> transactionseal = null, WorkflowExpression<transactionsignersInputItem[]> transactionsigners = null, WorkflowExpression<transactionreceiversInputItem[]> transactionreceivers = null, WorkflowExpression<string> transactionreference = null, WorkflowExpression<string> transactionpostbackUrl = null, WorkflowExpression<int> transactionsignRequestMode = null, WorkflowExpression<int> transactiondaysToExpire = null)
         {
@@ -255,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddfile(WorkflowExpression<string> transactionId, WorkflowExpression<string> fileId, WorkflowExpression<string> body = null)
         {
@@ -279,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ErrorModel> __BuildStart(WorkflowExpression<string> transactionId)
         {

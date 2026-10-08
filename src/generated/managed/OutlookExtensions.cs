@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClientReceiveMessage> __BuildGetEmail(WorkflowExpression<string> messageId, WorkflowExpression<bool> includeAttachments = null, WorkflowExpression<string> internetMessageId = null)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteEmail(WorkflowExpression<string> messageId)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClientReceiveMessageStringEnums> __BuildMove(WorkflowExpression<string> messageId, WorkflowExpression<string> folderPath)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlag(WorkflowExpression<string> messageId)
         {
@@ -111,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarkAsRead(WorkflowExpression<string> messageId)
         {
@@ -132,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetAttachment(WorkflowExpression<string> messageId, WorkflowExpression<string> attachmentId)
         {
@@ -154,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriptionResponse> __BuildSendMailWithOptions(WorkflowExpression<string> optionsEmailSubscriptionmessageto, WorkflowExpression<string> optionsEmailSubscriptionmessagesubject = null, WorkflowExpression<string> optionsEmailSubscriptionmessageuserOptions = null, WorkflowExpression<string> optionsEmailSubscriptionmessageheaderText = null, WorkflowExpression<string> optionsEmailSubscriptionmessageselectionText = null, WorkflowExpression<string> optionsEmailSubscriptionmessagebody = null, WorkflowExpression<optionsEmailSubscriptionmessageimportanceInput> optionsEmailSubscriptionmessageimportance = null, WorkflowExpression<ClientSendAttachment[]> optionsEmailSubscriptionmessageattachments = null, WorkflowExpression<bool> optionsEmailSubscriptionmessageuseOnlyHTMLMessage = null, WorkflowExpression<bool> optionsEmailSubscriptionmessagehideHTMLMessage = null, WorkflowExpression<bool> optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
@@ -314,7 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubscriptionResponse> __BuildSendApprovalMail(WorkflowExpression<string> approvalEmailSubscriptionmessageto, WorkflowExpression<string> approvalEmailSubscriptionmessagesubject = null, WorkflowExpression<string> approvalEmailSubscriptionmessageuserOptions = null, WorkflowExpression<string> approvalEmailSubscriptionmessageheaderText = null, WorkflowExpression<string> approvalEmailSubscriptionmessageselectionText = null, WorkflowExpression<string> approvalEmailSubscriptionmessagebody = null, WorkflowExpression<approvalEmailSubscriptionmessageimportanceInput> approvalEmailSubscriptionmessageimportance = null, WorkflowExpression<ClientSendAttachment[]> approvalEmailSubscriptionmessageattachments = null, WorkflowExpression<bool> approvalEmailSubscriptionmessageuseOnlyHTMLMessage = null, WorkflowExpression<bool> approvalEmailSubscriptionmessagehideHTMLMessage = null, WorkflowExpression<bool> approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
@@ -483,7 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCalendarDeleteItem(WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -514,7 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityListResponseContactResponse> __BuildContactGetItems(WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null)
         {
@@ -547,7 +537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactResponse> __BuildContactPostItem(WorkflowExpression<string> table, WorkflowExpression<string> itemgivenName, WorkflowExpression<string[]> itemhomePhones, WorkflowExpression<string> itemid = null, WorkflowExpression<string> itemparentFolderId = null, WorkflowExpression<string> itembirthday = null, WorkflowExpression<string> itemfileAs = null, WorkflowExpression<string> itemdisplayName = null, WorkflowExpression<string> iteminitials = null, WorkflowExpression<string> itemmiddleName = null, WorkflowExpression<string> itemnickname = null, WorkflowExpression<string> itemsurname = null, WorkflowExpression<string> itemtitle = null, WorkflowExpression<string> itemgeneration = null, WorkflowExpression<EmailAddress[]> itememailAddresses = null, WorkflowExpression<string[]> itemiMAddresses = null, WorkflowExpression<string> itemjobTitle = null, WorkflowExpression<string> itemcompanyName = null, WorkflowExpression<string> itemdepartment = null, WorkflowExpression<string> itemofficeLocation = null, WorkflowExpression<string> itemprofession = null, WorkflowExpression<string> itembusinessHomePage = null, WorkflowExpression<string> itemassistantName = null, WorkflowExpression<string> itemmanager = null, WorkflowExpression<string[]> itembusinessPhones = null, WorkflowExpression<string> itemmobilePhone = null, WorkflowExpression<string> itemhomeAddressstreet = null, WorkflowExpression<string> itemhomeAddresscity = null, WorkflowExpression<string> itemhomeAddressstate = null, WorkflowExpression<string> itemhomeAddresscountryOrRegion = null, WorkflowExpression<string> itemhomeAddresspostalCode = null, WorkflowExpression<string> itembusinessAddressstreet = null, WorkflowExpression<string> itembusinessAddresscity = null, WorkflowExpression<string> itembusinessAddressstate = null, WorkflowExpression<string> itembusinessAddresscountryOrRegion = null, WorkflowExpression<string> itembusinessAddresspostalCode = null, WorkflowExpression<string> itemotherAddressstreet = null, WorkflowExpression<string> itemotherAddresscity = null, WorkflowExpression<string> itemotherAddressstate = null, WorkflowExpression<string> itemotherAddresscountryOrRegion = null, WorkflowExpression<string> itemotherAddresspostalCode = null, WorkflowExpression<string> itemyomiCompanyName = null, WorkflowExpression<string> itemyomiGivenName = null, WorkflowExpression<string> itemyomiSurname = null, WorkflowExpression<string[]> itemcategories = null, WorkflowExpression<string> itemchangeKey = null, WorkflowExpression<string> itemcreatedTime = null, WorkflowExpression<string> itemlastModifiedTime = null)
         {
@@ -920,7 +909,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactResponse> __BuildContactGetItem(WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -942,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildContactDeleteItem(WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -964,7 +951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactResponse> __BuildContactPatchItem(WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<string> itemgivenName, WorkflowExpression<string[]> itemhomePhones, WorkflowExpression<string> itemid = null, WorkflowExpression<string> itemparentFolderId = null, WorkflowExpression<string> itembirthday = null, WorkflowExpression<string> itemfileAs = null, WorkflowExpression<string> itemdisplayName = null, WorkflowExpression<string> iteminitials = null, WorkflowExpression<string> itemmiddleName = null, WorkflowExpression<string> itemnickname = null, WorkflowExpression<string> itemsurname = null, WorkflowExpression<string> itemtitle = null, WorkflowExpression<string> itemgeneration = null, WorkflowExpression<EmailAddress[]> itememailAddresses = null, WorkflowExpression<string[]> itemiMAddresses = null, WorkflowExpression<string> itemjobTitle = null, WorkflowExpression<string> itemcompanyName = null, WorkflowExpression<string> itemdepartment = null, WorkflowExpression<string> itemofficeLocation = null, WorkflowExpression<string> itemprofession = null, WorkflowExpression<string> itembusinessHomePage = null, WorkflowExpression<string> itemassistantName = null, WorkflowExpression<string> itemmanager = null, WorkflowExpression<string[]> itembusinessPhones = null, WorkflowExpression<string> itemmobilePhone = null, WorkflowExpression<string> itemhomeAddressstreet = null, WorkflowExpression<string> itemhomeAddresscity = null, WorkflowExpression<string> itemhomeAddressstate = null, WorkflowExpression<string> itemhomeAddresscountryOrRegion = null, WorkflowExpression<string> itemhomeAddresspostalCode = null, WorkflowExpression<string> itembusinessAddressstreet = null, WorkflowExpression<string> itembusinessAddresscity = null, WorkflowExpression<string> itembusinessAddressstate = null, WorkflowExpression<string> itembusinessAddresscountryOrRegion = null, WorkflowExpression<string> itembusinessAddresspostalCode = null, WorkflowExpression<string> itemotherAddressstreet = null, WorkflowExpression<string> itemotherAddresscity = null, WorkflowExpression<string> itemotherAddressstate = null, WorkflowExpression<string> itemotherAddresscountryOrRegion = null, WorkflowExpression<string> itemotherAddresspostalCode = null, WorkflowExpression<string> itemyomiCompanyName = null, WorkflowExpression<string> itemyomiGivenName = null, WorkflowExpression<string> itemyomiSurname = null, WorkflowExpression<string[]> itemcategories = null, WorkflowExpression<string> itemchangeKey = null, WorkflowExpression<string> itemcreatedTime = null, WorkflowExpression<string> itemlastModifiedTime = null)
         {
@@ -1338,7 +1324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRespondToEvent(WorkflowExpression<string> eventId, WorkflowExpression<responseInput> response, WorkflowExpression<string> bodycomment = null, WorkflowExpression<bool> bodysendResponse = null)
         {
@@ -1391,7 +1376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildForwardEmail(WorkflowExpression<string> messageId, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodycomment = null)
         {
@@ -1429,7 +1413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> __BuildCalendarGetItem(WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -1451,7 +1434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalendarEventListClientReceive> __BuildCalendarGetItems(WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null)
         {
@@ -1484,7 +1466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> __BuildCalendarPatchItem(WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<string> itemsubject, WorkflowExpression<string> itemstartTime, WorkflowExpression<string> itemendTime, WorkflowExpression<itemtimeZoneInput> itemtimeZone = null, WorkflowExpression<string> itemrequiredAttendees = null, WorkflowExpression<string> itemoptionalAttendees = null, WorkflowExpression<string> itemresourceAttendees = null, WorkflowExpression<string> itembody = null, WorkflowExpression<string> itemlocation = null, WorkflowExpression<itemimportanceInput> itemimportance = null, WorkflowExpression<bool> itemisAllDayEvent = null, WorkflowExpression<itemrecurrenceInput> itemrecurrence = null, WorkflowExpression<string> itemrecurrenceEndTime = null, WorkflowExpression<int> itemnumberOfOccurrences = null, WorkflowExpression<int> itemreminder = null, WorkflowExpression<itemshowAsInput> itemshowAs = null, WorkflowExpression<bool> itemresponseRequested = null)
         {
@@ -1620,7 +1601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> __BuildCalendarPostItem(WorkflowExpression<string> table, WorkflowExpression<string> itemsubject, WorkflowExpression<string> itemstartTime, WorkflowExpression<string> itemendTime, WorkflowExpression<itemtimeZoneInput> itemtimeZone = null, WorkflowExpression<string> itemrequiredAttendees = null, WorkflowExpression<string> itemoptionalAttendees = null, WorkflowExpression<string> itemresourceAttendees = null, WorkflowExpression<string> itembody = null, WorkflowExpression<string> itemlocation = null, WorkflowExpression<itemimportanceInput> itemimportance = null, WorkflowExpression<bool> itemisAllDayEvent = null, WorkflowExpression<itemrecurrenceInput> itemrecurrence = null, WorkflowExpression<string> itemrecurrenceEndTime = null, WorkflowExpression<int> itemnumberOfOccurrences = null, WorkflowExpression<int> itemreminder = null, WorkflowExpression<itemshowAsInput> itemshowAs = null, WorkflowExpression<bool> itemresponseRequested = null)
         {
@@ -1755,7 +1735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BatchResponseClientReceiveMessage> __BuildGetEmails(WorkflowExpression<string> folderPath = null, WorkflowExpression<string> to = null, WorkflowExpression<string> cc = null, WorkflowExpression<string> toOrCc = null, WorkflowExpression<string> from = null, WorkflowExpression<importanceInput> importance = null, WorkflowExpression<bool> fetchOnlyWithAttachment = null, WorkflowExpression<string> subjectFilter = null, WorkflowExpression<bool> fetchOnlyUnread = null, WorkflowExpression<bool> includeAttachments = null, WorkflowExpression<string> searchQuery = null, WorkflowExpression<int> top = null)
         {
@@ -1818,7 +1797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> __BuildGetEventsCalendarView(WorkflowExpression<string> calendarId, WorkflowExpression<string> startDateTimeOffset, WorkflowExpression<string> endDateTimeOffset, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> search = null)
         {
@@ -1859,7 +1837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReplyTo(WorkflowExpression<string> messageId, WorkflowExpression<string> replyParametersto = null, WorkflowExpression<string> replyParameterscC = null, WorkflowExpression<string> replyParametersbCC = null, WorkflowExpression<string> replyParameterssubject = null, WorkflowExpression<string> replyParametersbody = null, WorkflowExpression<bool> replyParametersreplyAll = null, WorkflowExpression<replyParametersimportanceInput> replyParametersimportance = null, WorkflowExpression<ClientSendAttachment[]> replyParametersattachments = null)
         {
@@ -1943,7 +1920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendEmail(WorkflowExpression<string> emailMessageto, WorkflowExpression<string> emailMessagesubject, WorkflowExpression<string> emailMessagebody, WorkflowExpression<string> emailMessagefromSendAs = null, WorkflowExpression<string> emailMessagecC = null, WorkflowExpression<string> emailMessagebCC = null, WorkflowExpression<ClientSendAttachment[]> emailMessageattachments = null, WorkflowExpression<string> emailMessagereplyTo = null, WorkflowExpression<emailMessageimportanceInput> emailMessageimportance = null)
         {

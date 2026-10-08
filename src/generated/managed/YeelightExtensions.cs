@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SwitchResponseItem[]> __BuildSwitch(WorkflowExpression<string> bodydid = null, WorkflowExpression<bool> bodyon = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
         {
@@ -81,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ColorResponseItem[]> __BuildColor(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodyspectrumRGB = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
         {
@@ -136,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrightnessResponseItem[]> __BuildBrightness(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodybrightness = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
         {
@@ -191,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TemperatureResponseItem[]> __BuildTemperature(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodytemperature = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
         {
@@ -246,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryResponse> __BuildQuery(WorkflowExpression<string> bodydid = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
         {

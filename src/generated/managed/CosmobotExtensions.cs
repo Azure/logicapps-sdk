@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AskQuestionResponse> __BuildAskQuestion(WorkflowExpression<string> requestBodyquestion, WorkflowExpression<int> requestBodyscoreThreshold = null, WorkflowExpression<string> requestBodyuserEmail = null)
         {
@@ -70,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseTextResponse> __BuildParseText(WorkflowExpression<string> requestBodyinputText, WorkflowExpression<requestBodyoutputFormatInput> requestBodyoutputFormat)
         {
@@ -103,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TranslateResponse> __BuildTranslate(WorkflowExpression<string> requestBodytargetLanguageCode, WorkflowExpression<string> requestBodyinputText)
         {
@@ -136,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllTopicsResponse> __BuildGetAllTopics(WorkflowExpression<string> filterByExpert = null)
         {
@@ -159,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTopicResponse> __BuildGetTopic(WorkflowExpression<string> topicName)
         {
@@ -181,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllAnswersResponse> __BuildGetAllAnswers(WorkflowExpression<string> filterByTopic = null, WorkflowExpression<string> filterByShortDescription = null, WorkflowExpression<string> filterByQuestionText = null, WorkflowExpression<string> filterByAnswerText = null)
         {
@@ -213,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExpertsResponse> __BuildGetExperts(WorkflowExpression<string> topic)
         {
@@ -235,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddExpert(WorkflowExpression<string> requestBodytopic, WorkflowExpression<string> requestBodyexpertEmail)
         {
@@ -268,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveExpert(WorkflowExpression<string> requestBodyexpertEmail, WorkflowExpression<string> requestBodytopic = null)
         {
@@ -305,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddTopic(WorkflowExpression<string> requestBodyname, WorkflowExpression<string> requestBodydescription, WorkflowExpression<string[]> requestBodyexpertEmails)
         {
@@ -341,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenameTopic(WorkflowExpression<string> requestBodyname, WorkflowExpression<string> requestBodynewName)
         {
@@ -374,7 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddAnswer(WorkflowExpression<string> requestBodytopic, WorkflowExpression<string> requestBodyshortDescription, WorkflowExpression<string[]> requestBodyquestions, WorkflowExpression<string> requestBodyanswerText, WorkflowExpression<string> requestBodyuserEmail = null)
         {
@@ -420,7 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditAnswer(WorkflowExpression<string> requestBodyshortDescription, WorkflowExpression<string> requestBodynewTopic = null, WorkflowExpression<string> requestBodynewShortDescription = null, WorkflowExpression<string[]> requestBodynewQuestions = null, WorkflowExpression<string> requestBodynewAnswerText = null, WorkflowExpression<string> requestBodyuserEmail = null)
         {
@@ -485,7 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAnswer(WorkflowExpression<string> requestBodyshortDescription)
         {
@@ -515,7 +501,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddSubAnswer(WorkflowExpression<string> requestBodyshortDescription, WorkflowExpression<string> requestBodysubShortDescription, WorkflowExpression<string[]> requestBodysubQuestions, WorkflowExpression<string> requestBodysubAnswerText)
         {
@@ -554,7 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOpenTicketsResponse> __BuildGetOpenTickets(WorkflowExpression<int> filterByHoursSinceOpened = null, WorkflowExpression<int> filterByHoursSinceOpenedMax = null, WorkflowExpression<string> filterByTopic = null, WorkflowExpression<string> filterByExpertEmail = null)
         {
@@ -586,7 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenTicketQuestionResponse> __BuildOpenTicketQuestion(WorkflowExpression<string> requestBodyuserEmail, WorkflowExpression<string> requestBodyqueryText, WorkflowExpression<string> requestBodytopic = null)
         {
@@ -626,7 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenTicketFeedbackResponse> __BuildOpenTicketFeedback(WorkflowExpression<string> requestBodyuserEmail, WorkflowExpression<string> requestBodyqueryText, WorkflowExpression<string> requestBodyanswerShortDescription, WorkflowExpression<string> requestBodyfeedbackText)
         {
@@ -665,7 +647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCloseTicket(WorkflowExpression<string> requestBodyticketId, WorkflowExpression<string> requestBodyeditorEmail, WorkflowExpression<string> requestBodyeditorComment)
         {

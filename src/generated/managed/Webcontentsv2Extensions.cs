@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontentsv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildInvokeHttp(WorkflowExpression<requestmethodInput> requestmethod, WorkflowExpression<string> requesturlOfTheRequest, WorkflowExpression<string> requestbodyOfTheRequest = null)
         {

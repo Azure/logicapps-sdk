@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Application> __BuildPostApplication(WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<bool> bodyisFallbackPublicClient = null, WorkflowExpression<string[]> bodywebredirectUris = null, WorkflowExpression<bool> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, WorkflowExpression<bool> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
         {
@@ -104,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPatchApplication(WorkflowExpression<string> id)
         {
@@ -150,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PermissionGrant> __BuildPostPermissionGrant(WorkflowExpression<string> bodyclientId = null, WorkflowExpression<string> bodyconsentType = null, WorkflowExpression<string> bodyprincipalId = null, WorkflowExpression<string> bodyresourceId = null, WorkflowExpression<string> bodyscope = null)
         {
@@ -221,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserFlow> __BuildPostUserflow(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyuserFlowType = null, WorkflowExpression<int> bodyuserFlowTypeVersion = null)
         {
@@ -278,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserFlow> __BuildPostB2cUserflow(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyuserFlowType = null, WorkflowExpression<int> bodyuserFlowTypeVersion = null, WorkflowExpression<bool> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
         {
@@ -370,7 +365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServicePrinciple> __BuildPostServicePrinciple(WorkflowExpression<bool> bodyaccountEnabled = null, WorkflowExpression<string> bodyappId = null, WorkflowExpression<bool> bodyappRoleAssignmentRequired = null, WorkflowExpression<string[]> bodyreplyUrls = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccountResponse> __BuildAccountGetInfo(WorkflowExpression<string> accountId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactSearchRequestItem[]> __BuildContactSearch(WorkflowExpression<string> accountId, WorkflowExpression<string> phone)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactResponse> __BuildContactCreate(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactResponse> __BuildContactUpdate(WorkflowExpression<string> accountId, WorkflowExpression<string> contactid, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null)
         {
@@ -175,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PushCampaignResponse> __BuildCampaignPush(WorkflowExpression<string> accountId, WorkflowExpression<string[]> bodychannels, WorkflowExpression<string[]> bodytargets, WorkflowExpression<string> bodymessage, WorkflowExpression<bool> bodyexecute, WorkflowExpression<string[]> bodycontactListIds = null, WorkflowExpression<string[]> bodyexcludeListIds = null, WorkflowExpression<int> bodymediaId = null, WorkflowExpression<bool> bodyignoreSingleUse = null, WorkflowExpression<bool> bodyforceOptIn = null, WorkflowExpression<string[]> bodyschedules = null, WorkflowExpression<bool> bodyignoreInvalidTargets = null)
         {

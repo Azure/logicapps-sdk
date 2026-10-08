@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuditLog[]> __BuildGetTopicAuditTrailLogs(WorkflowExpression<string> repositoryId, WorkflowExpression<string> topicId, WorkflowExpression<int> logId = null, WorkflowExpression<int> range = null, WorkflowExpression<dataLanguageInput> dataLanguage = null)
         {

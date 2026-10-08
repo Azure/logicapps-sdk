@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddWorkingDaysResponse> __BuildAddWorkingDays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> increment, WorkflowExpression<bool> includeStart, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -70,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyze(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -126,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInfoDayResponse> __BuildGetInfoDay(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> date, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -167,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListNonWorkingDaysResponse> __BuildListNonWorkingDays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -210,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddWorkingHoursResponse> __BuildAddWorkingHours(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> startTime, WorkflowExpression<string> incrementTime, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -262,7 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddPublicHolidaysResponse> __BuildAddPublicHolidays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> increment, WorkflowExpression<bool> includeStart, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -314,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddWeekendDaysResponse> __BuildAddWeekendDays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> increment, WorkflowExpression<bool> includeStart, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
         {
@@ -366,7 +359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddressToConfigurationResponse> __BuildAddressToConfiguration(WorkflowExpression<string> address)
         {

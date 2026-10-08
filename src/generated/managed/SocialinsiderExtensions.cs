@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildProfileTimeBasedMetrics(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofile = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildProfileAggregatedMetrics(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofiles = null)
         {
@@ -128,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPosts(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofiles = null)
         {
@@ -183,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildStories(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string[]> bodyprofiles = null)
         {

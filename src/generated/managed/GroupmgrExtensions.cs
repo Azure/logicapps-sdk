@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupExtended> __BuildGroupMgrGroupApproval(WorkflowExpression<string> bodylistItemId, WorkflowExpression<bodyapprovedInput> bodyapproved)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupExtended> __BuildGroupMgrCreateGroup(WorkflowExpression<string> bodydisplayName, WorkflowExpression<string> bodyemail, WorkflowExpression<string[]> bodyowners, WorkflowExpression<string[]> bodymembers = null, WorkflowExpression<string> bodygroupType = null, WorkflowExpression<bodyisPublicInput> bodyisPublic = null, WorkflowExpression<bool> bodycreateTeam = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodycreatedBy = null)
         {
@@ -149,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupExtended> __BuildGroupMgrUpdateGroup(WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string[]> bodyowners = null, WorkflowExpression<string[]> bodymembers = null, WorkflowExpression<string> bodygroupType = null, WorkflowExpression<bodyisPublicInput> bodyisPublic = null, WorkflowExpression<bool> bodycreateTeam = null, WorkflowExpression<string> bodydescription = null)
         {
@@ -248,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGroupMgrDeleteGroup(WorkflowExpression<string> bodylistItemId)
         {
@@ -278,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGroupMgrArchiveGroup(WorkflowExpression<string> bodylistItemId, WorkflowExpression<bodyarchiveInput> bodyarchive)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAppendIDsToList(WorkflowExpression<bodylistTypeInput> bodylistType, WorkflowExpression<string> bodylist, WorkflowExpression<string[]> bodyiDS)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListApiCreatedList> __BuildCreateListFromIDs(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription, WorkflowExpression<bodylistTypeInput> bodylistType, WorkflowExpression<bodypermissionsInput> bodypermissions, WorkflowExpression<string[]> bodyiDS)
         {

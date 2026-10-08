@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictImageResponseV3> __BuildClassifyImage(WorkflowExpression<string> projectId, WorkflowExpression<string> publishedName, WorkflowExpression<string> image = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictImageResponseV3> __BuildClassifyImageUrl(WorkflowExpression<string> projectId, WorkflowExpression<string> publishedName, WorkflowExpression<string> bodyimageURL)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictImageResponseV3> __BuildDetectImage(WorkflowExpression<string> projectId, WorkflowExpression<string> publishedName, WorkflowExpression<string> image = null)
         {
@@ -98,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictImageResponseV3> __BuildDetectImageUrl(WorkflowExpression<string> projectId, WorkflowExpression<string> publishedName, WorkflowExpression<string> bodyimageURL)
         {

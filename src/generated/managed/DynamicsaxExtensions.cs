@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AxOnlineProcedureResult> __BuildExecuteProcedure(WorkflowExpression<string> dataset, WorkflowExpression<string> procedure, WorkflowExpression<object> parameters = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> apply = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<bool> crossCompany = null)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<object> item = null)
         {
@@ -109,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -132,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<object> item = null)
         {
@@ -180,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> dataset)
         {

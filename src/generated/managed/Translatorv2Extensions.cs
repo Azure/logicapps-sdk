@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildTranslate(WorkflowExpression<string> to, WorkflowExpression<string> bodytext, WorkflowExpression<string> from = null, WorkflowExpression<string> category = null, WorkflowExpression<textTypeInput> textType = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Language> __BuildDetect(WorkflowExpression<string> bodytext)
         {

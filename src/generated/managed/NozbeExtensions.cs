@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponse> __BuildGetTask(WorkflowExpression<string> taskId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<int> bodydueAt = null, WorkflowExpression<bool> bodyisAllDay = null, WorkflowExpression<bool> bodyisFollowed = null, WorkflowExpression<string> bodyresponsibleId = null)
         {
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCommentResponse> __BuildCreateComment(WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodybody = null, WorkflowExpression<bool> bodyisPinned = null)
         {
@@ -167,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectsResponseItem[]> __BuildGetProjects(WorkflowExpression<string> sortBy = null)
         {
@@ -192,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateReminderResponse> __BuildCreateReminder(WorkflowExpression<string> bodytaskId, WorkflowExpression<int> bodyremindAt, WorkflowExpression<bool> bodyisRelative, WorkflowExpression<bool> bodyisAllDay)
         {

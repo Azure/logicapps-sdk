@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSecureMessageResponse> __BuildSendSecureMessageAsync(WorkflowExpression<string> requestfrom, WorkflowExpression<string> v, WorkflowExpression<string> xAPIKey, WorkflowExpression<string> xAPISecret, WorkflowExpression<string[]> requestto = null, WorkflowExpression<string[]> requestcc = null, WorkflowExpression<string[]> requestbcc = null, WorkflowExpression<string> requestsubject = null, WorkflowExpression<Attachment[]> requestattachments = null, WorkflowExpression<string> requesthtmlBody = null, WorkflowExpression<string> requesttextBody = null)
         {
@@ -102,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TrackMessageResponse> __BuildTrackMessageAsync(WorkflowExpression<string> transactionId, WorkflowExpression<string> v, WorkflowExpression<string> xAPIKey, WorkflowExpression<string> xAPISecret)
         {
@@ -128,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRetractMessageAsync(WorkflowExpression<string> transactionId, WorkflowExpression<string> v, WorkflowExpression<string> xAPIKey, WorkflowExpression<string> xAPISecret)
         {

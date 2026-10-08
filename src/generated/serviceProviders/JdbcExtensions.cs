@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildRawQuery(WorkflowExpression<string> query, WorkflowExpression<object> queryParameters = null)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSchemaOutputItem[]> __BuildGetSchema(WorkflowExpression<string> tableName)
         {

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelPostResponse> __BuildPixel(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodypixelId, WorkflowExpression<string> bodypixelType)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelGetResponse> __BuildPixelGet(WorkflowExpression<string> pixelId)
         {
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPixelDelete(WorkflowExpression<string> pixelId)
         {
@@ -104,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelPutResponse> __BuildPixelPut(WorkflowExpression<string> pixelId, WorkflowExpression<int> bodyid = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypixelId = null, WorkflowExpression<string> bodypixelType = null)
         {
@@ -160,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkPostResponse> __BuildLink(WorkflowExpression<string> bodylongUrl, WorkflowExpression<string> bodydomain = null, WorkflowExpression<string> bodyexpireAtDatetime = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bool> bodypublicStats = null, WorkflowExpression<bodymetasmartUrlsInputItem[]> bodymetasmartUrls = null)
         {
@@ -233,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkGetResponse> __BuildLinkGet(WorkflowExpression<string> shortUrl = null)
         {
@@ -256,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildLinkDelete(WorkflowExpression<string> bodyshortUrl = null)
         {
@@ -290,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkPutResponse> __BuildLinkPut(WorkflowExpression<string> bodyshortUrl = null, WorkflowExpression<string> bodylongUrl = null, WorkflowExpression<string> bodydomain = null, WorkflowExpression<string> bodyshortId = null, WorkflowExpression<string> bodyexpireAtViews = null, WorkflowExpression<string> bodyexpireAtDatetime = null, WorkflowExpression<bool> bodypublicStats = null, WorkflowExpression<string> bodyqrCodeUrl = null, WorkflowExpression<string> bodyqrCodeBase64 = null, WorkflowExpression<int[]> bodytags = null, WorkflowExpression<int[]> bodypixels = null)
         {
@@ -394,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkExpandPostResponse> __BuildLinkExpand(WorkflowExpression<string> bodyshortUrl = null, WorkflowExpression<string> bodypassword = null)
         {
@@ -435,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinksGetResponse> __BuildLinksGet(WorkflowExpression<string> search = null, WorkflowExpression<string> tagIds = null, WorkflowExpression<string> pixelIds = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> domains = null)
         {
@@ -473,7 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildLinkBulk(WorkflowExpression<string> bodydomain = null, WorkflowExpression<bodylinksInputItem[]> bodylinks = null, WorkflowExpression<int[]> bodytags = null, WorkflowExpression<int[]> bodypixels = null)
         {
@@ -528,7 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatGetResponse> __BuildStatGet(WorkflowExpression<string> shortLink)
         {
@@ -559,7 +547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagPostResponse> __BuildTag(WorkflowExpression<string> bodytag)
         {
@@ -589,7 +576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagGetResponse> __BuildTagGet(WorkflowExpression<string> tagId)
         {
@@ -610,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildTagDelete(WorkflowExpression<string> tagId)
         {
@@ -631,7 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagPutResponse> __BuildTagPut(WorkflowExpression<string> tagId, WorkflowExpression<string> bodytag)
         {

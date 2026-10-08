@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Films[]> __BuildGetFilms(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Films[]> __BuildGetFilm(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<People[]> __BuildGetPeople(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
         {
@@ -94,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<People[]> __BuildGetPerson(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
         {
@@ -118,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Locations[]> __BuildGetLocations(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
         {
@@ -144,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Locations[]> __BuildGetLocation(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
         {
@@ -168,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Species[]> __BuildGetSpecies(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
         {
@@ -194,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Species[]> __BuildGetASpecies(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
         {
@@ -218,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Vehicles[]> __BuildGetVehicles(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
         {
@@ -244,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Vehicles[]> __BuildGetVehicle(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
         {

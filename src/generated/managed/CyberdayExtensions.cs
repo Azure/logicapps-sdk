@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddSystemResponse> __BuildAddSystem(WorkflowExpression<string> bodytitle = null)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddSystemAdvanced(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyfieldssystemNickname = null, WorkflowExpression<string> bodyfieldssystemOwner = null, WorkflowExpression<string> bodyfieldssystemAdministrator = null, WorkflowExpression<string> bodyfieldscostCenter = null, WorkflowExpression<string[]> bodyfieldslinkedSystems = null, WorkflowExpression<string> bodyfieldsdataSystemPurpose = null, WorkflowExpression<string[]> bodyfieldslinkedSystemProviders = null, WorkflowExpression<string> bodyfieldspartnerResponsibilityDetails = null)
         {

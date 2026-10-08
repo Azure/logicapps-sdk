@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsSearchSimpleResponse> __BuildContactsSearchSimple(WorkflowExpression<string> email = null, WorkflowExpression<int> groupID = null, WorkflowExpression<bool> suppressed = null, WorkflowExpression<bool> held = null, WorkflowExpression<int> page = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<sortDirectionInput> sortDirection = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsSearchResponse> __BuildContactsSearch(WorkflowExpression<int> bodygroupID = null, WorkflowExpression<bool> bodysuppressed = null, WorkflowExpression<bool> bodyheld = null, WorkflowExpression<JToken[]> bodycontactIDs = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<int> bodyuserID = null, WorkflowExpression<string> bodycustomerID = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodyfax = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodypurl = null, WorkflowExpression<string> bodyfields = null, WorkflowExpression<int> bodypage = null, WorkflowExpression<int> bodyrpp = null, WorkflowExpression<bodysortFieldInput> bodysortField = null, WorkflowExpression<bodysortDirectionInput> bodysortDirection = null)
         {
@@ -246,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsLookupResponse> __BuildContactsLookup(WorkflowExpression<string> email)
         {
@@ -268,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactsSaveResponse> __BuildContactsSave(WorkflowExpression<int> bodycontactID = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<int> bodyuserID = null, WorkflowExpression<string> bodycustomerID = null, WorkflowExpression<bool> bodysuppressed = null, WorkflowExpression<bool> bodyheld = null, WorkflowExpression<string> bodyoriginalSource = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodyfax = null, WorkflowExpression<string> bodyaddress1 = null, WorkflowExpression<string> bodyaddress2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodypurl = null, WorkflowExpression<string> bodydateOfBirth = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodymemo = null, WorkflowExpression<int[]> bodygroupIDs = null, WorkflowExpression<int[]> bodyremoveGroupIDs = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISetHLLAPIDLL(WorkflowExpression<string> hLLAPISetHLLAPIDLLdLLFilename, WorkflowExpression<string> hLLAPISetHLLAPIDLLworkflow, WorkflowExpression<string> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, WorkflowExpression<string> hLLAPISetHLLAPIDLLentryPointName = null, WorkflowExpression<bool> hLLAPISetHLLAPIDLLisEnhancedInterface = null, WorkflowExpression<bool> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, WorkflowExpression<bool> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
         {
@@ -116,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPIDispose(WorkflowExpression<string> hLLAPIDisposeworkflow)
         {
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPIConnect(WorkflowExpression<string> hLLAPIConnectsessionID, WorkflowExpression<string> hLLAPIConnectworkflow)
         {
@@ -179,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> __BuildHLLAPIGetConnectStatus(WorkflowExpression<string> hLLAPIGetConnectStatussessionID, WorkflowExpression<string> hLLAPIGetConnectStatusworkflow)
         {
@@ -212,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPIDisconnect(WorkflowExpression<string> hLLAPIDisconnectsessionID, WorkflowExpression<string> hLLAPIDisconnectworkflow)
         {
@@ -245,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISetCursorPos(WorkflowExpression<string> hLLAPISetCursorPossessionID, WorkflowExpression<int> hLLAPISetCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPISetCursorPoscursorColIndex, WorkflowExpression<string> hLLAPISetCursorPosworkflow)
         {
@@ -284,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> __BuildHLLAPIGetCursorPos(WorkflowExpression<string> hLLAPIGetCursorPossessionID, WorkflowExpression<string> hLLAPIGetCursorPosworkflow)
         {
@@ -317,7 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISendString(WorkflowExpression<string> hLLAPISendStringinputString, WorkflowExpression<string> hLLAPISendStringworkflow)
         {
@@ -350,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISendPassword(WorkflowExpression<string> hLLAPISendPasswordinputPassword, WorkflowExpression<string> hLLAPISendPasswordworkflow)
         {
@@ -383,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISendStringAtCursorPos(WorkflowExpression<string> hLLAPISendStringAtCursorPossessionID, WorkflowExpression<int> hLLAPISendStringAtCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPISendStringAtCursorPoscursorColIndex, WorkflowExpression<string> hLLAPISendStringAtCursorPosinputString, WorkflowExpression<string> hLLAPISendStringAtCursorPosworkflow)
         {
@@ -425,7 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISendPasswordAtCursorPos(WorkflowExpression<string> hLLAPISendPasswordAtCursorPossessionID, WorkflowExpression<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPISendPasswordAtCursorPoscursorColIndex, WorkflowExpression<string> hLLAPISendPasswordAtCursorPosinputPassword, WorkflowExpression<string> hLLAPISendPasswordAtCursorPosworkflow)
         {
@@ -467,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> __BuildHLLAPIReadScreenAtCursorPos(WorkflowExpression<string> hLLAPIReadScreenAtCursorPossessionID, WorkflowExpression<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPIReadScreenAtCursorPoscursorColIndex, WorkflowExpression<int> hLLAPIReadScreenAtCursorPosreadScreenLength, WorkflowExpression<string> hLLAPIReadScreenAtCursorPosworkflow)
         {
@@ -509,7 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> __BuildHLLAPIQuerySessionStatus(WorkflowExpression<string> hLLAPIQuerySessionStatusworkflow)
         {
@@ -539,7 +526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> __BuildHLLAPIReadScreenRows(WorkflowExpression<string> hLLAPIReadScreenRowssessionID, WorkflowExpression<int> hLLAPIReadScreenRowsstartRowIndex, WorkflowExpression<int> hLLAPIReadScreenRowsendRowIndex, WorkflowExpression<string> hLLAPIReadScreenRowsworkflow, WorkflowExpression<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, WorkflowExpression<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
@@ -592,7 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> __BuildHLLAPIIsKeyboardUnlocked(WorkflowExpression<string> hLLAPIIsKeyboardUnlockedworkflow)
         {
@@ -622,7 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> __BuildHLLAPIWaitForKeyboardUnlocked(WorkflowExpression<double> hLLAPIWaitForKeyboardUnlockedsecondsToWait, WorkflowExpression<string> hLLAPIWaitForKeyboardUnlockedworkflow, WorkflowExpression<double> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
         {
@@ -672,7 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> __BuildHLLAPIWaitForSystemReady(WorkflowExpression<double> hLLAPIWaitForSystemReadysecondsToWait, WorkflowExpression<string> hLLAPIWaitForSystemReadyworkflow, WorkflowExpression<double> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
         {
@@ -722,7 +705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPIPressReset(WorkflowExpression<string> hLLAPIPressResetworkflow)
         {
@@ -752,7 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPISearchForStringResponse> __BuildHLLAPISearchForString(WorkflowExpression<string> hLLAPISearchForStringsessionID, WorkflowExpression<string> hLLAPISearchForStringsearchString, WorkflowExpression<string> hLLAPISearchForStringworkflow, WorkflowExpression<bool> hLLAPISearchForStringsearchEntireScreen = null, WorkflowExpression<int> hLLAPISearchForStringsearchStartRowIndex = null, WorkflowExpression<int> hLLAPISearchForStringsearchStartColIndex = null)
         {
@@ -819,7 +800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPIWaitForStringResponse> __BuildHLLAPIWaitForString(WorkflowExpression<string> hLLAPIWaitForStringsessionID, WorkflowExpression<string> hLLAPIWaitForStringsearchString, WorkflowExpression<double> hLLAPIWaitForStringsecondsToWait, WorkflowExpression<string> hLLAPIWaitForStringworkflow, WorkflowExpression<bool> hLLAPIWaitForStringsearchEntireScreen = null, WorkflowExpression<int> hLLAPIWaitForStringsearchStartRowIndex = null, WorkflowExpression<int> hLLAPIWaitForStringsearchStartColIndex = null, WorkflowExpression<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
@@ -906,7 +886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPISetSessionParameter(WorkflowExpression<string> hLLAPISetSessionParameterparameter, WorkflowExpression<string> hLLAPISetSessionParameterworkflow)
         {
@@ -939,7 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildHLLAPIResetSystem(WorkflowExpression<string> hLLAPIResetSystemworkflow)
         {
@@ -969,7 +947,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> __BuildHLLAPICopyOperatorInformationArea(WorkflowExpression<string> hLLAPICopyOperatorInformationAreaworkflow)
         {

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CandidatesIdResponse> __BuildCandidatesId(WorkflowExpression<string> id)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobShortCodeResponse> __BuildJobShortCode(WorkflowExpression<string> shortcode)
         {
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobActivitiesResponse> __BuildJobActivities(WorkflowExpression<string> shortcode)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventsIdResponse> __BuildEventsId(WorkflowExpression<string> id)
         {
@@ -164,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostSubscriptionResponse> __BuildPostSubscription(WorkflowExpression<string> bodytarget = null, WorkflowExpression<string> bodyEvent = null, WorkflowExpression<string> bodyargsaccountId = null, WorkflowExpression<string> bodyargsstageSlug = null)
         {
@@ -246,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfferResponse> __BuildOffer(WorkflowExpression<string> id)
         {

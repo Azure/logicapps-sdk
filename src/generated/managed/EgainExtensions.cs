@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildKbSearch(WorkflowExpression<string> portalId, WorkflowExpression<string> q, WorkflowExpression<string> lang, WorkflowExpression<string> authToken, WorkflowExpression<string> baseUrl, WorkflowExpression<string> shortName, WorkflowExpression<string> acceptLanguage, WorkflowExpression<string> accept, WorkflowExpression<string> attribute = null, WorkflowExpression<int> pagenum = null, WorkflowExpression<int> pagesize = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGenerative(WorkflowExpression<string> q, WorkflowExpression<int> portalId, WorkflowExpression<string> languageCode, WorkflowExpression<string> authToken, WorkflowExpression<string> baseUrl, WorkflowExpression<string> shortName, WorkflowExpression<int> departmentId = null, WorkflowExpression<int> userId = null, WorkflowExpression<int> personalizationProfileId = null, WorkflowExpression<string> accept = null)
         {
@@ -106,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSearch(WorkflowExpression<string> portalId, WorkflowExpression<string> languageCode, WorkflowExpression<string> q, WorkflowExpression<string> authToken, WorkflowExpression<string> baseUrl, WorkflowExpression<string> shortName, WorkflowExpression<int> personalizationProfileId = null, WorkflowExpression<string> accept = null)
         {

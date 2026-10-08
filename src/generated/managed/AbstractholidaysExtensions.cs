@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractholidays")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListHolidaysResponseItem[]> __BuildListHolidays(WorkflowExpression<string> country, WorkflowExpression<string> year = null, WorkflowExpression<string> month = null, WorkflowExpression<string> day = null)
         {

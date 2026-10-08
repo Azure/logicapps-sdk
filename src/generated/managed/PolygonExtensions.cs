@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDailyOpenCloseResponse> __BuildGetDailyOpenClose(WorkflowExpression<string> stocksTicker, WorkflowExpression<string> date, WorkflowExpression<bool> adjusted = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTickersResponse> __BuildGetTickers(WorkflowExpression<string> ticker = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<marketInput> market = null, WorkflowExpression<string> exchange = null, WorkflowExpression<string> cusip = null, WorkflowExpression<string> cik = null, WorkflowExpression<string> date = null, WorkflowExpression<string> search = null, WorkflowExpression<bool> active = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTickerDetailsResponse> __BuildGetTickerDetails(WorkflowExpression<string> ticker, WorkflowExpression<string> date = null)
         {
@@ -123,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTickerEventsResponse> __BuildGetTickerEvents(WorkflowExpression<string> id, WorkflowExpression<string> types = null)
         {
@@ -147,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStockSplitsResponse> __BuildGetStockSplits(WorkflowExpression<string> ticker, WorkflowExpression<string> executionDate = null, WorkflowExpression<bool> reverseSplit = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<int> limit = null, WorkflowExpression<sortInput> sort = null)
         {
@@ -185,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStockDividendsResponse> __BuildGetStockDividends(WorkflowExpression<string> ticker, WorkflowExpression<string> exDividendDate = null, WorkflowExpression<string> recordDate = null, WorkflowExpression<string> declarationDate = null, WorkflowExpression<string> payDate = null, WorkflowExpression<frequencyInput> frequency = null, WorkflowExpression<double> cashAmount = null, WorkflowExpression<dividendTypeInput> dividendType = null)
         {
@@ -228,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStockFinancialDetailsResponse> __BuildGetStockFinancialDetails(WorkflowExpression<string> ticker = null, WorkflowExpression<string> cik = null, WorkflowExpression<string> companyName = null, WorkflowExpression<string> sic = null, WorkflowExpression<string> filingDate = null, WorkflowExpression<string> periodOfReportDate = null, WorkflowExpression<timeframeInput> timeframe = null, WorkflowExpression<bool> includeSources = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<int> limit = null, WorkflowExpression<sortInput> sort = null)
         {
@@ -281,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExchangesResponse> __BuildGetExchanges(WorkflowExpression<assetClassInput> assetClass = null, WorkflowExpression<localeInput> locale = null)
         {

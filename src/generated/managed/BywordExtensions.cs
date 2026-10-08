@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArticlePostResponse> __BuildArticle(WorkflowExpression<bodymodeInput> bodymode, WorkflowExpression<string> bodyinput, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodysubheadings = null, WorkflowExpression<bool> bodyundetectable = null, WorkflowExpression<string> bodytone = null, WorkflowExpression<int> bodylength = null)
         {
@@ -86,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArticleGetPostResponse> __BuildArticleGet(WorkflowExpression<string> bodyarticleID = null)
         {
@@ -120,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ArticlesPostResponseItem[]> __BuildArticles(WorkflowExpression<int> bodycursor = null)
         {

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateProjectResponse> __BuildCreateProject(WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyprojectdescription = null, WorkflowExpression<string> bodyprojectcategoryId = null, WorkflowExpression<string> bodyprojectcompanyId = null, WorkflowExpression<string> bodyprojectnewCompany = null, WorkflowExpression<string> bodyprojectstartDate = null, WorkflowExpression<string> bodyprojectendDate = null, WorkflowExpression<string> bodyprojecttags = null)
         {
@@ -117,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowExpression<string> projectId)
         {
@@ -138,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTasksResponse> __BuildListTasks(WorkflowExpression<string> projectId, WorkflowExpression<string> taskListId)
         {
@@ -161,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpsertTaskResponse> __BuildCreateTask(WorkflowExpression<string> projectId, WorkflowExpression<string> taskListId, WorkflowExpression<string> bodytodoItemname = null, WorkflowExpression<string> bodytodoItemdescription = null, WorkflowExpression<string> bodytodoItemprogress = null, WorkflowExpression<string> bodytodoItemassignTo = null, WorkflowExpression<string> bodytodoItemstartDate = null, WorkflowExpression<string> bodytodoItemdueDate = null, WorkflowExpression<string> bodytodoItemestimatedMinutes = null, WorkflowExpression<bodytodoItempriorityInput> bodytodoItempriority = null, WorkflowExpression<bool> bodytodoItemnotifyPeople = null, WorkflowExpression<bool> bodytodoItemisPrivate = null, WorkflowExpression<string> bodytodoItemtags = null)
         {
@@ -276,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTaskResponse> __BuildGetTask(WorkflowExpression<string> taskId)
         {
@@ -297,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpsertTaskResponse> __BuildUpdateTask(WorkflowExpression<string> taskId, WorkflowExpression<string> bodytodoItemname = null, WorkflowExpression<string> bodytodoItemdescription = null, WorkflowExpression<string> bodytodoItemprogress = null, WorkflowExpression<string> bodytodoItemassignTo = null, WorkflowExpression<string> bodytodoItemstartDate = null, WorkflowExpression<string> bodytodoItemdueDate = null, WorkflowExpression<string> bodytodoItemestimatedTime = null, WorkflowExpression<bodytodoItempriorityInput> bodytodoItempriority = null, WorkflowExpression<bool> bodytodoItemnotifyPeople = null, WorkflowExpression<bool> bodytodoItemisPrivate = null, WorkflowExpression<string> bodytodoItemtags = null)
         {
@@ -410,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteTaskResponse> __BuildDeleteTask(WorkflowExpression<string> taskId)
         {
@@ -431,7 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListUsersResponse> __BuildListUsers(WorkflowExpression<string> projectId)
         {
@@ -452,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> bodypersonemailAddress = null, WorkflowExpression<string> bodypersonfirstName = null, WorkflowExpression<string> bodypersonlastName = null, WorkflowExpression<string> bodypersoncompanyId = null, WorkflowExpression<string> bodypersonjobTitle = null, WorkflowExpression<string> bodypersonhome = null, WorkflowExpression<string> bodypersonmobile = null, WorkflowExpression<string> bodypersonoffice = null, WorkflowExpression<string> bodypersonofficeExtension = null, WorkflowExpression<string> bodypersonfax = null, WorkflowExpression<string> bodypersonusername = null)
         {
@@ -564,7 +555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserResponse> __BuildGetUser(WorkflowExpression<string> personId)
         {

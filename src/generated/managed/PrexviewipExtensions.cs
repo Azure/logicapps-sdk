@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TransformPostResponse> __BuildTransform(WorkflowExpression<bodyoutputInput> bodyoutput, WorkflowExpression<string> bodytemplate, WorkflowExpression<string> bodyxml = null, WorkflowExpression<string> bodyjson = null, WorkflowExpression<string> bodytemplateBackup = null, WorkflowExpression<string> bodynote = null)
         {

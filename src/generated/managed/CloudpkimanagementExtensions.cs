@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryCertificatesResponseItem[]> __BuildQueryCertificates(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<timevalidInput> timevalid = null, WorkflowExpression<string> important = null, WorkflowExpression<string> renewalstatus = null, WorkflowExpression<int> expiring = null, WorkflowExpression<string> subject = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> serialnumber = null, WorkflowExpression<string> ski = null, WorkflowExpression<string> aki = null, WorkflowExpression<string> keytype = null, WorkflowExpression<int> keylength = null, WorkflowExpression<string> owneremail = null)
         {
@@ -76,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCertificateResponse> __BuildGetCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> thumbprint)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateCertificateResponse> __BuildUpdateCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> thumbprint, WorkflowExpression<powerappsInput> powerapps, WorkflowExpression<bodyimportantInput> bodyimportant = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<bodyrenewalstatusInput> bodyrenewalstatus = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<string> bodyowneremail = null)
         {
@@ -174,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplateResponse> __BuildGetTemplate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> templateid)
         {
@@ -197,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTemplateResponse> __BuildUpdateTemplate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> templateid, WorkflowExpression<powerappsInput> powerapps, WorkflowExpression<bodyimportantInput> bodyimportant = null, WorkflowExpression<bodyrenewalstatusInput> bodyrenewalstatus = null, WorkflowExpression<bodyhiddenInput> bodyhidden = null, WorkflowExpression<string> bodyowneremail = null, WorkflowExpression<string> bodyautoapproveid = null)
         {
@@ -265,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryTemplatesResponseItem[]> __BuildQueryTemplates(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<statusInput> status = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<versionInput> version = null, WorkflowExpression<string> templateoid = null, WorkflowExpression<keytypeInput> keytype = null, WorkflowExpression<int> minMinkeylength = null, WorkflowExpression<int> maxMinkeylength = null, WorkflowExpression<int> minValidity = null, WorkflowExpression<int> maxValidity = null)
         {
@@ -314,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCRLResponse> __BuildGetCRL(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> crlid)
         {
@@ -337,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryCRLsResponseItem[]> __BuildQueryCRLs(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> crlid = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> issued = null, WorkflowExpression<int> expiring = null, WorkflowExpression<string> crlnumber = null, WorkflowExpression<string> crlnumberdecimal = null, WorkflowExpression<string> aki = null, WorkflowExpression<string> serialnumber = null)
         {
@@ -383,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryRequestsResponseItem[]> __BuildQueryRequests(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> source = null, WorkflowExpression<string> approverid = null, WorkflowExpression<string> approveremail = null, WorkflowExpression<string> submitterid = null, WorkflowExpression<string> submitteremail = null, WorkflowExpression<string> owneremail = null)
         {
@@ -426,7 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewRequestResponse> __BuildNewRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<powerappsInput> powerapps, WorkflowExpression<string> bodycsr, WorkflowExpression<string> bodytemplateid = null, WorkflowExpression<string> bodyowneremail = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<bodyurgentInput> bodyurgent = null, WorkflowExpression<bodyimportantInput> bodyimportant = null, WorkflowExpression<bodyrenewalInput> bodyrenewal = null, WorkflowExpression<string> bodypreviouscertificate = null, WorkflowExpression<bodyrenewalstatusInput> bodyrenewalstatus = null)
         {
@@ -573,7 +563,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRequestResponse> __BuildGetRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> requestid)
         {
@@ -596,7 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateRequestResponse> __BuildUpdateRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> requestid, WorkflowExpression<powerappsInput> powerapps, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bodyurgentInput> bodyurgent = null, WorkflowExpression<bodyimportantInput> bodyimportant = null, WorkflowExpression<bodyrenewalstatusInput> bodyrenewalstatus = null, WorkflowExpression<string> bodytemplateid = null, WorkflowExpression<string> bodyowneremail = null)
         {
@@ -681,7 +669,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryHooksResponseItem[]> __BuildQueryHooks(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<statusInput> status = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<@eventInput> @event = null)
         {
@@ -712,7 +699,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewHookResponse> __BuildNewHook(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<powerappsInput> powerapps, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bodyeventsInputItem[]> bodyevents, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodycallbackurl = null)
         {
@@ -763,7 +749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetHookResponse> __BuildGetHook(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> hookid)
         {
@@ -786,7 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteHook(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> hookid)
         {
@@ -809,7 +793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetPublishedCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> thumbprint)
         {
@@ -832,7 +815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPublishedTemplatesResponseItem[]> __BuildGetPublishedTemplates(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid)
         {
@@ -854,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConnectorActionResponse> __BuildGetConnectorAction(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, WorkflowExpression<string> connectoractionid)
         {
@@ -877,7 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActionsResponseItem[]> __BuildGetActions(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid)
         {

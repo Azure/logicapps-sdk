@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MakeAnnouncementResponse> __BuildMakeAnnouncement(WorkflowExpression<string> bodydeviceID, WorkflowExpression<string> bodytext = null, WorkflowExpression<bodyvoiceInput> bodyvoice = null, WorkflowExpression<bodylanguageInput> bodylanguage = null, WorkflowExpression<bodychimeInput> bodychime = null, WorkflowExpression<string> bodyaudio = null, WorkflowExpression<string> bodybackgroundAudio = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<bool> bodynoBackground = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<int> bodymediaWidth = null, WorkflowExpression<int> bodymediaHeight = null, WorkflowExpression<bodymediaScalingInput> bodymediaScaling = null, WorkflowExpression<bodymediaAlignmentInput> bodymediaAlignment = null, WorkflowExpression<int> bodymediaRadius = null, WorkflowExpression<string> bodyvideo = null, WorkflowExpression<int> bodyvideoRepeat = null, WorkflowExpression<string> bodyechoDotWithClockDisplay = null)
         {
@@ -167,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TriggerRoutineResponse> __BuildTriggerRoutine(WorkflowExpression<string> bodydeviceID)
         {
@@ -197,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TriggerFlowResponse> __BuildTriggerFlow(WorkflowExpression<int> bodyflowID)
         {

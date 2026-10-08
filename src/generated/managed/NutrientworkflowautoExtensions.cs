@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubmitFormResponse> __BuildSubmitForm(WorkflowExpression<string> processGuid, WorkflowExpression<string> processTaskGuid, WorkflowExpression<object> dynamicListSchema = null)
         {

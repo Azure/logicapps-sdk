@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetChromeBrowserVersionFromFileResponse> __BuildBrowserGetChromeBrowserVersionFromFile(WorkflowExpression<string> browserGetChromeBrowserVersionFromFileworkflow, WorkflowExpression<string> browserGetChromeBrowserVersionFromFilechromeBrowserEXE = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetChromeDriverFolderResponse> __BuildBrowserGetChromeDriverFolder(WorkflowExpression<string> browserGetChromeDriverFolderdirectoryPath, WorkflowExpression<string> browserGetChromeDriverFolderworkflow, WorkflowExpression<int> browserGetChromeDriverFolderchromeMajorVersion = null, WorkflowExpression<string> browserGetChromeDriverFolderchromeBrowserEXE = null)
         {
@@ -102,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserDownloadSuitableChromeDriverFromInternetResponse> __BuildBrowserDownloadSuitableChromeDriverFromInternet(WorkflowExpression<string> browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder, WorkflowExpression<string> browserDownloadSuitableChromeDriverFromInternetworkflow, WorkflowExpression<string> browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE = null, WorkflowExpression<bool> browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex = null, WorkflowExpression<string> browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL = null, WorkflowExpression<bool> browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex = null, WorkflowExpression<string> browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL = null, WorkflowExpression<bool> browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver = null)
         {
@@ -227,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserIsSuitableChromeDriverAvailableResponse> __BuildBrowserIsSuitableChromeDriverAvailable(WorkflowExpression<string> browserIsSuitableChromeDriverAvailableworkflow, WorkflowExpression<string> browserIsSuitableChromeDriverAvailablechromeDriverFolder = null, WorkflowExpression<string> browserIsSuitableChromeDriverAvailablechromeBrowserEXE = null)
         {
@@ -271,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserUploadNewChromeDriver(WorkflowExpression<string> browserUploadNewChromeDriverlocalChromeDriverFilePath, WorkflowExpression<string> browserUploadNewChromeDriverworkflow, WorkflowExpression<bool> browserUploadNewChromeDrivercompress = null, WorkflowExpression<int> browserUploadNewChromeDriverchromeBrowserMajorVersion = null, WorkflowExpression<string> browserUploadNewChromeDriverchromeDriverRootSaveFolder = null)
         {
@@ -335,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserOpenChromeResponse> __BuildBrowserOpenChrome(WorkflowExpression<string> browserOpenChromeworkflow, WorkflowExpression<string> browserOpenChromechromeDriverFolder = null, WorkflowExpression<bool> browserOpenChromekillExistingChromeDriver = null, WorkflowExpression<string> browserOpenChromeuserDataDir = null, WorkflowExpression<bool> browserOpenChromeprintToDefaultPrinter = null, WorkflowExpression<string> browserOpenChromedefaultDownloadDirectory = null, WorkflowExpression<bool> browserOpenChromedownloadPDFInsteadOfOpening = null, WorkflowExpression<string> browserOpenChromechromeDriverLogFilename = null, WorkflowExpression<string> browserOpenChromelocalChromeDriverFolder = null, WorkflowExpression<string> browserOpenChromechromeBrowserEXE = null, WorkflowExpression<bool> browserOpenChromeignoreCertificateErrors = null, WorkflowExpression<string> browserOpenChromeadditionalArguments = null, WorkflowExpression<bool> browserOpenChromedoNothingIfChromeInstanceAlreadyOpen = null)
         {
@@ -499,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCloseChrome(WorkflowExpression<string> browserCloseChromeworkflow, WorkflowExpression<bool> browserCloseChromepurgeDynamicUserDataDir = null, WorkflowExpression<bool> browserCloseChromepurgeStaticUserDataDir = null)
         {
@@ -563,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserOpenInternetExplorer(WorkflowExpression<string> browserOpenInternetExplorerworkflow, WorkflowExpression<string> browserOpenInternetExploreriEDriverFolder = null, WorkflowExpression<bool> browserOpenInternetExplorerkillExistingIEDriver = null, WorkflowExpression<bool> browserOpenInternetExplorerkillExistingIE = null, WorkflowExpression<bool> browserOpenInternetExplorercleanSession = null, WorkflowExpression<bool> browserOpenInternetExplorerenableNativeEvents = null, WorkflowExpression<string> browserOpenInternetExplorerwebDriverLogFile = null, WorkflowExpression<string> browserOpenInternetExplorerwebDriverLogLevel = null, WorkflowExpression<bool> browserOpenInternetExplorerdisableIEFirstRunCustomise = null, WorkflowExpression<string> browserOpenInternetExploreradditionalArguments = null)
         {
@@ -706,7 +698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCloseInternetExplorer(WorkflowExpression<string> browserCloseInternetExplorerworkflow, WorkflowExpression<bool> browserCloseInternetExplorerunloadIEDriver = null)
         {
@@ -753,7 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetChromiumEdgeDriverFolderResponse> __BuildBrowserGetChromiumEdgeDriverFolder(WorkflowExpression<string> browserGetChromiumEdgeDriverFolderdirectoryPath, WorkflowExpression<string> browserGetChromiumEdgeDriverFolderworkflow, WorkflowExpression<int> browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion = null, WorkflowExpression<string> browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE = null)
         {
@@ -800,7 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetChromiumEdgeBrowserVersionFromFileResponse> __BuildBrowserGetChromiumEdgeBrowserVersionFromFile(WorkflowExpression<string> browserGetChromiumEdgeBrowserVersionFromFileworkflow, WorkflowExpression<string> browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE = null)
         {
@@ -837,7 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserDownloadSuitableChromiumEdgeDriverFromInternetResponse> __BuildBrowserDownloadSuitableChromiumEdgeDriverFromInternet(WorkflowExpression<string> browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder, WorkflowExpression<string> browserDownloadSuitableChromiumEdgeDriverFromInternetworkflow, WorkflowExpression<string> browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE = null, WorkflowExpression<string> browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL = null)
         {
@@ -894,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserIsSuitableChromiumEdgeDriverAvailableResponse> __BuildBrowserIsSuitableChromiumEdgeDriverAvailable(WorkflowExpression<string> browserIsSuitableChromiumEdgeDriverAvailableworkflow, WorkflowExpression<string> browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder = null, WorkflowExpression<string> browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE = null)
         {
@@ -938,7 +925,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserUploadNewChromiumEdgeDriver(WorkflowExpression<string> browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath, WorkflowExpression<string> browserUploadNewChromiumEdgeDriverworkflow, WorkflowExpression<bool> browserUploadNewChromiumEdgeDrivercompress = null, WorkflowExpression<int> browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion = null, WorkflowExpression<string> browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder = null)
         {
@@ -1002,7 +988,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserOpenChromiumEdgeResponse> __BuildBrowserOpenChromiumEdge(WorkflowExpression<string> browserOpenChromiumEdgeworkflow, WorkflowExpression<string> browserOpenChromiumEdgechromiumEdgeDriverFolder = null, WorkflowExpression<string> browserOpenChromiumEdgeuserDataDir = null, WorkflowExpression<bool> browserOpenChromiumEdgekillExistingChromiumEdgeDriver = null, WorkflowExpression<bool> browserOpenChromiumEdgeprintToDefaultPrinter = null, WorkflowExpression<string> browserOpenChromiumEdgedefaultDownloadDirectory = null, WorkflowExpression<bool> browserOpenChromiumEdgedownloadPDFInsteadOfOpening = null, WorkflowExpression<string> browserOpenChromiumEdgechromiumEdgeDriverLogFilename = null, WorkflowExpression<string> browserOpenChromiumEdgelocalChromiumEdgeDriverFolder = null, WorkflowExpression<bool> browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage = null, WorkflowExpression<string> browserOpenChromiumEdgechromiumEdgeBrowserEXE = null, WorkflowExpression<bool> browserOpenChromiumEdgeignoreCertificateErrors = null, WorkflowExpression<string> browserOpenChromiumEdgeadditionalArguments = null, WorkflowExpression<bool> browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen = null)
         {
@@ -1183,7 +1168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCloseChromiumEdge(WorkflowExpression<string> browserCloseChromiumEdgeworkflow, WorkflowExpression<bool> browserCloseChromiumEdgepurgeDynamicUserDataDir = null, WorkflowExpression<bool> browserCloseChromiumEdgepurgeStaticUserDataDir = null)
         {
@@ -1247,7 +1231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserMaximise(WorkflowExpression<string> browserMaximiseworkflow)
         {
@@ -1277,7 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserMinimise(WorkflowExpression<string> browserMinimiseworkflow)
         {
@@ -1307,7 +1289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserFullscreen(WorkflowExpression<string> browserFullscreenworkflow)
         {
@@ -1337,7 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserNormaliseBrowser(WorkflowExpression<string> browserNormaliseBrowserworkflow, WorkflowExpression<int> browserNormaliseBrowserx = null, WorkflowExpression<int> browserNormaliseBrowsery = null, WorkflowExpression<int> browserNormaliseBrowserwidth = null, WorkflowExpression<int> browserNormaliseBrowserheight = null)
         {
@@ -1435,7 +1415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSetWindowSize(WorkflowExpression<int> browserSetWindowSizewidth, WorkflowExpression<int> browserSetWindowSizeheight, WorkflowExpression<string> browserSetWindowSizeworkflow)
         {
@@ -1471,7 +1450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSetWindowPosition(WorkflowExpression<int> browserSetWindowPositionx, WorkflowExpression<int> browserSetWindowPositiony, WorkflowExpression<string> browserSetWindowPositionworkflow)
         {
@@ -1507,7 +1485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSetTimeouts(WorkflowExpression<string> browserSetTimeoutsworkflow, WorkflowExpression<double> browserSetTimeoutselementWaitTimeoutSeconds = null, WorkflowExpression<double> browserSetTimeoutspageLoadTimeoutSeconds = null)
         {
@@ -1551,7 +1528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserNavigateToURLResponse> __BuildBrowserNavigateToURL(WorkflowExpression<string> browserNavigateToURLuRL, WorkflowExpression<string> browserNavigateToURLworkflow)
         {
@@ -1584,7 +1560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserRefreshPage(WorkflowExpression<string> browserRefreshPageworkflow)
         {
@@ -1614,7 +1589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserResetAllElementHandles(WorkflowExpression<string> browserResetAllElementHandlesworkflow)
         {
@@ -1644,7 +1618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserDoesElementExistResponse> __BuildBrowserDoesElementExist(WorkflowExpression<string> browserDoesElementExistworkflow, WorkflowExpression<double> browserDoesElementExistparentElementHandle = null, WorkflowExpression<double> browserDoesElementExistsearchElementHandle = null, WorkflowExpression<string> browserDoesElementExistsearchElementName = null, WorkflowExpression<string> browserDoesElementExistsearchElementID = null, WorkflowExpression<string> browserDoesElementExistsearchElementTagName = null, WorkflowExpression<string> browserDoesElementExistsearchElementXPath = null, WorkflowExpression<string> browserDoesElementExistsearchElementClassName = null, WorkflowExpression<string> browserDoesElementExistsearchElementCSSSelector = null, WorkflowExpression<double> browserDoesElementExistsearchElementIndex = null, WorkflowExpression<string> browserDoesElementExistsearchElementMatchValue = null, WorkflowExpression<string> browserDoesElementExistsearchElementMatchText = null, WorkflowExpression<string> browserDoesElementExistsearchElementType = null, WorkflowExpression<double> browserDoesElementExistsearchElementMinimumWidth = null, WorkflowExpression<double> browserDoesElementExistsearchElementMinimumHeight = null, WorkflowExpression<double> browserDoesElementExistsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserDoesElementExistsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserDoesElementExistsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserDoesElementExistsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -1887,7 +1860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserCreateHandleToElementResponse> __BuildBrowserCreateHandleToElement(WorkflowExpression<string> browserCreateHandleToElementworkflow, WorkflowExpression<double> browserCreateHandleToElementparentElementHandle = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementHandle = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementName = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementID = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementTagName = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementXPath = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementClassName = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementCSSSelector = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementIndex = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementMatchValue = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementMatchText = null, WorkflowExpression<string> browserCreateHandleToElementsearchElementType = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserCreateHandleToElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -2130,7 +2102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserCreateHandleToParentElementResponse> __BuildBrowserCreateHandleToParentElement(WorkflowExpression<string> browserCreateHandleToParentElementworkflow, WorkflowExpression<double> browserCreateHandleToParentElementparentElementHandle = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementHandle = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementName = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementID = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementTagName = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementXPath = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementClassName = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementCSSSelector = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementIndex = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementMatchValue = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementMatchText = null, WorkflowExpression<string> browserCreateHandleToParentElementsearchElementType = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserCreateHandleToParentElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -2373,7 +2344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetElementPropertiesResponse> __BuildBrowserGetElementProperties(WorkflowExpression<string> browserGetElementPropertiesworkflow, WorkflowExpression<double> browserGetElementPropertiesparentElementHandle = null, WorkflowExpression<double> browserGetElementPropertiessearchElementHandle = null, WorkflowExpression<string> browserGetElementPropertiessearchElementName = null, WorkflowExpression<string> browserGetElementPropertiessearchElementID = null, WorkflowExpression<string> browserGetElementPropertiessearchElementTagName = null, WorkflowExpression<string> browserGetElementPropertiessearchElementXPath = null, WorkflowExpression<string> browserGetElementPropertiessearchElementClassName = null, WorkflowExpression<string> browserGetElementPropertiessearchElementCSSSelector = null, WorkflowExpression<double> browserGetElementPropertiessearchElementIndex = null, WorkflowExpression<string> browserGetElementPropertiessearchElementMatchValue = null, WorkflowExpression<string> browserGetElementPropertiessearchElementMatchText = null, WorkflowExpression<string> browserGetElementPropertiessearchElementType = null, WorkflowExpression<double> browserGetElementPropertiessearchElementMinimumWidth = null, WorkflowExpression<double> browserGetElementPropertiessearchElementMinimumHeight = null, WorkflowExpression<double> browserGetElementPropertiessearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetElementPropertiessearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetElementPropertiessearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetElementPropertiessearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserGetElementPropertiesgetHTMLCode = null, WorkflowExpression<bool> browserGetElementPropertiesreturnElementHandle = null)
         {
@@ -2650,7 +2620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetMultipleElementPropertiesResponse> __BuildBrowserGetMultipleElementProperties(WorkflowExpression<string> browserGetMultipleElementPropertiesworkflow, WorkflowExpression<double> browserGetMultipleElementPropertiesparentElementHandle = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementName = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementID = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementTagName = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementXPath = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementClassName = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementCSSSelector = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementMatchValue = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementMatchText = null, WorkflowExpression<string> browserGetMultipleElementPropertiessearchElementType = null, WorkflowExpression<double> browserGetMultipleElementPropertiessearchElementMinimumWidth = null, WorkflowExpression<double> browserGetMultipleElementPropertiessearchElementMinimumHeight = null, WorkflowExpression<double> browserGetMultipleElementPropertiessearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetMultipleElementPropertiessearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetMultipleElementPropertiessearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetMultipleElementPropertiessearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesgetHTMLCode = null, WorkflowExpression<bool> browserGetMultipleElementPropertiescreateHandle = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnValue = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnText = null, WorkflowExpression<int> browserGetMultipleElementPropertiesmaxValueLength = null, WorkflowExpression<int> browserGetMultipleElementPropertiesmaxTextLength = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnIsDisplayed = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnCoordinates = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnDimensions = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnChildElementCount = null, WorkflowExpression<bool> browserGetMultipleElementPropertiesreturnParentTag = null, WorkflowExpression<int> browserGetMultipleElementPropertiesfirstItemToReturn = null, WorkflowExpression<int> browserGetMultipleElementPropertiesmaxItemsToReturn = null)
         {
@@ -3090,7 +3059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetElementParentPropertiesResponse> __BuildBrowserGetElementParentProperties(WorkflowExpression<string> browserGetElementParentPropertiesworkflow, WorkflowExpression<double> browserGetElementParentPropertiesparentElementHandle = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementHandle = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementName = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementID = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementTagName = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementXPath = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementClassName = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementCSSSelector = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementIndex = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementMatchValue = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementMatchText = null, WorkflowExpression<string> browserGetElementParentPropertiessearchElementType = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementMinimumWidth = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementMinimumHeight = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetElementParentPropertiessearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserGetElementParentPropertiesgetHTMLCode = null, WorkflowExpression<bool> browserGetElementParentPropertiescreateHandle = null)
         {
@@ -3367,7 +3335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetElementChildrenPropertiesResponse> __BuildBrowserGetElementChildrenProperties(WorkflowExpression<string> browserGetElementChildrenPropertiesworkflow, WorkflowExpression<double> browserGetElementChildrenPropertiesparentElementHandle = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementName = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementID = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementTagName = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementXPath = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementClassName = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementCSSSelector = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementMatchValue = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementMatchText = null, WorkflowExpression<string> browserGetElementChildrenPropertiessearchElementType = null, WorkflowExpression<double> browserGetElementChildrenPropertiessearchElementMinimumWidth = null, WorkflowExpression<double> browserGetElementChildrenPropertiessearchElementMinimumHeight = null, WorkflowExpression<double> browserGetElementChildrenPropertiessearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetElementChildrenPropertiessearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetElementChildrenPropertiessearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetElementChildrenPropertiessearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesgetHTMLCode = null, WorkflowExpression<bool> browserGetElementChildrenPropertiescreateHandle = null, WorkflowExpression<bool> browserGetElementChildrenPropertiessearchSubTree = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnValue = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnText = null, WorkflowExpression<int> browserGetElementChildrenPropertiesmaxValueLength = null, WorkflowExpression<int> browserGetElementChildrenPropertiesmaxTextLength = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnIsDisplayed = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnCoordinates = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnDimensions = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnChildElementCount = null, WorkflowExpression<bool> browserGetElementChildrenPropertiesreturnParentTag = null, WorkflowExpression<int> browserGetElementChildrenPropertiesfirstItemToReturn = null, WorkflowExpression<int> browserGetElementChildrenPropertiesmaxItemsToReturn = null)
         {
@@ -3824,7 +3791,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserInputTextIntoElementResponse> __BuildBrowserInputTextIntoElement(WorkflowExpression<string> browserInputTextIntoElementworkflow, WorkflowExpression<double> browserInputTextIntoElementparentElementHandle = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementHandle = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementName = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementID = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementTagName = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementXPath = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementClassName = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementCSSSelector = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementIndex = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementMatchValue = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementMatchText = null, WorkflowExpression<string> browserInputTextIntoElementsearchElementType = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserInputTextIntoElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<string> browserInputTextIntoElementtextToInput = null, WorkflowExpression<bool> browserInputTextIntoElementresetExistingValue = null, WorkflowExpression<int> browserInputTextIntoElementinsertPosition = null)
         {
@@ -4108,7 +4074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserInputTextIntoMultipleElements(WorkflowExpression<string> browserInputTextIntoMultipleElementsinputElementsJSON, WorkflowExpression<string> browserInputTextIntoMultipleElementsworkflow)
         {
@@ -4141,7 +4106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserPressCtrlKeyOnElement(WorkflowExpression<string> browserPressCtrlKeyOnElementcontrolKey, WorkflowExpression<string> browserPressCtrlKeyOnElementworkflow, WorkflowExpression<double> browserPressCtrlKeyOnElementparentElementHandle = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementHandle = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementName = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementID = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementTagName = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementXPath = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementClassName = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementIndex = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementMatchText = null, WorkflowExpression<string> browserPressCtrlKeyOnElementsearchElementType = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -4387,7 +4351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserClickElement(WorkflowExpression<string> browserClickElementworkflow, WorkflowExpression<double> browserClickElementparentElementHandle = null, WorkflowExpression<double> browserClickElementsearchElementHandle = null, WorkflowExpression<string> browserClickElementsearchElementName = null, WorkflowExpression<string> browserClickElementsearchElementID = null, WorkflowExpression<string> browserClickElementsearchElementTagName = null, WorkflowExpression<string> browserClickElementsearchElementXPath = null, WorkflowExpression<string> browserClickElementsearchElementClassName = null, WorkflowExpression<string> browserClickElementsearchElementCSSSelector = null, WorkflowExpression<double> browserClickElementsearchElementIndex = null, WorkflowExpression<string> browserClickElementsearchElementMatchValue = null, WorkflowExpression<string> browserClickElementsearchElementMatchText = null, WorkflowExpression<string> browserClickElementsearchElementType = null, WorkflowExpression<double> browserClickElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserClickElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserClickElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserClickElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserClickElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserClickElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -4630,7 +4593,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSubmitElement(WorkflowExpression<string> browserSubmitElementworkflow, WorkflowExpression<double> browserSubmitElementparentElementHandle = null, WorkflowExpression<double> browserSubmitElementsearchElementHandle = null, WorkflowExpression<string> browserSubmitElementsearchElementName = null, WorkflowExpression<string> browserSubmitElementsearchElementID = null, WorkflowExpression<string> browserSubmitElementsearchElementTagName = null, WorkflowExpression<string> browserSubmitElementsearchElementXPath = null, WorkflowExpression<string> browserSubmitElementsearchElementClassName = null, WorkflowExpression<string> browserSubmitElementsearchElementCSSSelector = null, WorkflowExpression<double> browserSubmitElementsearchElementIndex = null, WorkflowExpression<string> browserSubmitElementsearchElementMatchValue = null, WorkflowExpression<string> browserSubmitElementsearchElementMatchText = null, WorkflowExpression<string> browserSubmitElementsearchElementType = null, WorkflowExpression<double> browserSubmitElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserSubmitElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserSubmitElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserSubmitElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserSubmitElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserSubmitElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -4873,7 +4835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCheckElement(WorkflowExpression<string> browserCheckElementworkflow, WorkflowExpression<double> browserCheckElementparentElementHandle = null, WorkflowExpression<double> browserCheckElementsearchElementHandle = null, WorkflowExpression<string> browserCheckElementsearchElementName = null, WorkflowExpression<string> browserCheckElementsearchElementID = null, WorkflowExpression<string> browserCheckElementsearchElementTagName = null, WorkflowExpression<string> browserCheckElementsearchElementXPath = null, WorkflowExpression<string> browserCheckElementsearchElementClassName = null, WorkflowExpression<string> browserCheckElementsearchElementCSSSelector = null, WorkflowExpression<double> browserCheckElementsearchElementIndex = null, WorkflowExpression<string> browserCheckElementsearchElementMatchValue = null, WorkflowExpression<string> browserCheckElementsearchElementMatchText = null, WorkflowExpression<string> browserCheckElementsearchElementType = null, WorkflowExpression<double> browserCheckElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserCheckElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserCheckElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserCheckElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserCheckElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserCheckElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserCheckElementcheckElement = null)
         {
@@ -5133,7 +5094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCheckMultipleElements(WorkflowExpression<string> browserCheckMultipleElementsinputElementsJSON, WorkflowExpression<string> browserCheckMultipleElementsworkflow)
         {
@@ -5166,7 +5126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetSelectionPropertiesResponse> __BuildBrowserGetSelectionProperties(WorkflowExpression<string> browserGetSelectionPropertiesworkflow, WorkflowExpression<double> browserGetSelectionPropertiesparentElementHandle = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementHandle = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementName = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementID = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementTagName = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementXPath = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementClassName = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementCSSSelector = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementIndex = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementMatchValue = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementMatchText = null, WorkflowExpression<string> browserGetSelectionPropertiessearchElementType = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementMinimumWidth = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementMinimumHeight = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetSelectionPropertiessearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -5409,7 +5368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSelectSelection(WorkflowExpression<string> browserSelectSelectionworkflow, WorkflowExpression<double> browserSelectSelectionparentElementHandle = null, WorkflowExpression<double> browserSelectSelectionsearchElementHandle = null, WorkflowExpression<string> browserSelectSelectionsearchElementName = null, WorkflowExpression<string> browserSelectSelectionsearchElementID = null, WorkflowExpression<string> browserSelectSelectionsearchElementTagName = null, WorkflowExpression<string> browserSelectSelectionsearchElementXPath = null, WorkflowExpression<string> browserSelectSelectionsearchElementClassName = null, WorkflowExpression<string> browserSelectSelectionsearchElementCSSSelector = null, WorkflowExpression<double> browserSelectSelectionsearchElementIndex = null, WorkflowExpression<string> browserSelectSelectionsearchElementMatchValue = null, WorkflowExpression<string> browserSelectSelectionsearchElementMatchText = null, WorkflowExpression<string> browserSelectSelectionsearchElementType = null, WorkflowExpression<double> browserSelectSelectionsearchElementMinimumWidth = null, WorkflowExpression<double> browserSelectSelectionsearchElementMinimumHeight = null, WorkflowExpression<double> browserSelectSelectionsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserSelectSelectionsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserSelectSelectionsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserSelectSelectionsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<string> browserSelectSelectionvalueToSelect = null, WorkflowExpression<string> browserSelectSelectiontextToSelect = null, WorkflowExpression<double> browserSelectSelectionindexToSelect = null)
         {
@@ -5683,7 +5641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserDeselectSelection(WorkflowExpression<string> browserDeselectSelectionworkflow, WorkflowExpression<double> browserDeselectSelectionparentElementHandle = null, WorkflowExpression<double> browserDeselectSelectionsearchElementHandle = null, WorkflowExpression<string> browserDeselectSelectionsearchElementName = null, WorkflowExpression<string> browserDeselectSelectionsearchElementID = null, WorkflowExpression<string> browserDeselectSelectionsearchElementTagName = null, WorkflowExpression<string> browserDeselectSelectionsearchElementXPath = null, WorkflowExpression<string> browserDeselectSelectionsearchElementClassName = null, WorkflowExpression<string> browserDeselectSelectionsearchElementCSSSelector = null, WorkflowExpression<double> browserDeselectSelectionsearchElementIndex = null, WorkflowExpression<string> browserDeselectSelectionsearchElementMatchValue = null, WorkflowExpression<string> browserDeselectSelectionsearchElementMatchText = null, WorkflowExpression<string> browserDeselectSelectionsearchElementType = null, WorkflowExpression<double> browserDeselectSelectionsearchElementMinimumWidth = null, WorkflowExpression<double> browserDeselectSelectionsearchElementMinimumHeight = null, WorkflowExpression<double> browserDeselectSelectionsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserDeselectSelectionsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserDeselectSelectionsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserDeselectSelectionsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<string> browserDeselectSelectionvalueToDeselect = null, WorkflowExpression<string> browserDeselectSelectiontextToDeselect = null, WorkflowExpression<double> browserDeselectSelectionindexToDeselect = null)
         {
@@ -5957,7 +5914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserDeselectAllSelection(WorkflowExpression<string> browserDeselectAllSelectionworkflow, WorkflowExpression<double> browserDeselectAllSelectionparentElementHandle = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementHandle = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementName = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementID = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementTagName = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementXPath = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementClassName = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementCSSSelector = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementIndex = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementMatchValue = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementMatchText = null, WorkflowExpression<string> browserDeselectAllSelectionsearchElementType = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementMinimumWidth = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementMinimumHeight = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserDeselectAllSelectionsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -6200,7 +6156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetTableContentsResponse> __BuildBrowserGetTableContents(WorkflowExpression<string> browserGetTableContentsworkflow, WorkflowExpression<double> browserGetTableContentsparentElementHandle = null, WorkflowExpression<double> browserGetTableContentssearchElementHandle = null, WorkflowExpression<string> browserGetTableContentssearchElementName = null, WorkflowExpression<string> browserGetTableContentssearchElementID = null, WorkflowExpression<string> browserGetTableContentssearchElementTagName = null, WorkflowExpression<string> browserGetTableContentssearchElementXPath = null, WorkflowExpression<string> browserGetTableContentssearchElementClassName = null, WorkflowExpression<string> browserGetTableContentssearchElementCSSSelector = null, WorkflowExpression<double> browserGetTableContentssearchElementIndex = null, WorkflowExpression<string> browserGetTableContentssearchElementMatchValue = null, WorkflowExpression<string> browserGetTableContentssearchElementMatchText = null, WorkflowExpression<string> browserGetTableContentssearchElementType = null, WorkflowExpression<double> browserGetTableContentssearchElementMinimumWidth = null, WorkflowExpression<double> browserGetTableContentssearchElementMinimumHeight = null, WorkflowExpression<double> browserGetTableContentssearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetTableContentssearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetTableContentssearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetTableContentssearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<double> browserGetTableContentscreateColumnNamesFromRow = null, WorkflowExpression<bool> browserGetTableContentsmergeChildTables = null)
         {
@@ -6479,7 +6434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserScrollElementIntoView(WorkflowExpression<string> browserScrollElementIntoViewworkflow, WorkflowExpression<double> browserScrollElementIntoViewparentElementHandle = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementHandle = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementName = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementID = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementTagName = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementXPath = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementClassName = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementCSSSelector = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementIndex = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementMatchValue = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementMatchText = null, WorkflowExpression<string> browserScrollElementIntoViewsearchElementType = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementMinimumWidth = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementMinimumHeight = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserScrollElementIntoViewsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -6722,7 +6676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserExecuteJavaScriptResponse> __BuildBrowserExecuteJavaScript(WorkflowExpression<string> browserExecuteJavaScriptjavaScriptCode, WorkflowExpression<string> browserExecuteJavaScriptworkflow)
         {
@@ -6755,7 +6708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetElementBoundingRectResponse> __BuildBrowserGetElementBoundingRect(WorkflowExpression<string> browserGetElementBoundingRectworkflow, WorkflowExpression<double> browserGetElementBoundingRectparentElementHandle = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementHandle = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementName = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementID = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementTagName = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementXPath = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementClassName = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementCSSSelector = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementIndex = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementMatchValue = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementMatchText = null, WorkflowExpression<string> browserGetElementBoundingRectsearchElementType = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementMinimumWidth = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementMinimumHeight = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetElementBoundingRectsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -6998,7 +6950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserDrawRectangleAroundElement(WorkflowExpression<string> browserDrawRectangleAroundElementworkflow, WorkflowExpression<double> browserDrawRectangleAroundElementparentElementHandle = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementHandle = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementName = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementID = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementTagName = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementXPath = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementClassName = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementCSSSelector = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementIndex = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementMatchValue = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementMatchText = null, WorkflowExpression<string> browserDrawRectangleAroundElementsearchElementType = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserDrawRectangleAroundElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<string> browserDrawRectangleAroundElementpenColour = null, WorkflowExpression<int> browserDrawRectangleAroundElementpenThicknessPixels = null)
         {
@@ -7275,7 +7226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetBrowserParentWindowDetailsResponse> __BuildBrowserGetBrowserParentWindowDetails(WorkflowExpression<string> browserGetBrowserParentWindowDetailsworkflow, WorkflowExpression<int> browserGetBrowserParentWindowDetailsbrowserPID = null, WorkflowExpression<string> browserGetBrowserParentWindowDetailssearchDocumentElementClassName = null)
         {
@@ -7319,7 +7269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetElementScreenBoundingRectResponse> __BuildBrowserGetElementScreenBoundingRect(WorkflowExpression<string> browserGetElementScreenBoundingRectworkflow, WorkflowExpression<double> browserGetElementScreenBoundingRectparentElementHandle = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementHandle = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementName = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementID = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementTagName = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementXPath = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementClassName = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementCSSSelector = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementIndex = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementMatchValue = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementMatchText = null, WorkflowExpression<string> browserGetElementScreenBoundingRectsearchElementType = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementMinimumWidth = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementMinimumHeight = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -7562,7 +7511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserFocusElement(WorkflowExpression<string> browserFocusElementworkflow, WorkflowExpression<double> browserFocusElementparentElementHandle = null, WorkflowExpression<double> browserFocusElementsearchElementHandle = null, WorkflowExpression<string> browserFocusElementsearchElementName = null, WorkflowExpression<string> browserFocusElementsearchElementID = null, WorkflowExpression<string> browserFocusElementsearchElementTagName = null, WorkflowExpression<string> browserFocusElementsearchElementXPath = null, WorkflowExpression<string> browserFocusElementsearchElementClassName = null, WorkflowExpression<string> browserFocusElementsearchElementCSSSelector = null, WorkflowExpression<double> browserFocusElementsearchElementIndex = null, WorkflowExpression<string> browserFocusElementsearchElementMatchValue = null, WorkflowExpression<string> browserFocusElementsearchElementMatchText = null, WorkflowExpression<string> browserFocusElementsearchElementType = null, WorkflowExpression<double> browserFocusElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserFocusElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserFocusElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserFocusElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserFocusElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserFocusElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -7805,7 +7753,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserPressEnterOnElement(WorkflowExpression<string> browserPressEnterOnElementworkflow, WorkflowExpression<double> browserPressEnterOnElementparentElementHandle = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementHandle = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementName = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementID = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementTagName = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementXPath = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementClassName = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementIndex = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementMatchText = null, WorkflowExpression<string> browserPressEnterOnElementsearchElementType = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserPressEnterOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -8048,7 +7995,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserMouseLeftClickOnElement(WorkflowExpression<string> browserMouseLeftClickOnElementworkflow, WorkflowExpression<double> browserMouseLeftClickOnElementparentElementHandle = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementHandle = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementName = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementID = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementTagName = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementXPath = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementClassName = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementIndex = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementMatchText = null, WorkflowExpression<string> browserMouseLeftClickOnElementsearchElementType = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserMouseLeftClickOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserMouseLeftClickOnElementfocusFirst = null)
         {
@@ -8308,7 +8254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserMouseRightClickOnElement(WorkflowExpression<string> browserMouseRightClickOnElementworkflow, WorkflowExpression<double> browserMouseRightClickOnElementparentElementHandle = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementHandle = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementName = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementID = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementTagName = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementXPath = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementClassName = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementIndex = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementMatchText = null, WorkflowExpression<string> browserMouseRightClickOnElementsearchElementType = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserMouseRightClickOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserMouseRightClickOnElementfocusFirst = null)
         {
@@ -8568,7 +8513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserJavaScriptClickOnElement(WorkflowExpression<string> browserJavaScriptClickOnElementworkflow, WorkflowExpression<double> browserJavaScriptClickOnElementparentElementHandle = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementHandle = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementName = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementID = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementTagName = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementXPath = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementClassName = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementIndex = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementMatchText = null, WorkflowExpression<string> browserJavaScriptClickOnElementsearchElementType = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserJavaScriptClickOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -8811,7 +8755,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserExecuteJavaScriptOnElementResponse> __BuildBrowserExecuteJavaScriptOnElement(WorkflowExpression<string> browserExecuteJavaScriptOnElementjavaScriptToExecute, WorkflowExpression<string> browserExecuteJavaScriptOnElementworkflow, WorkflowExpression<double> browserExecuteJavaScriptOnElementparentElementHandle = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementHandle = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementName = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementID = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementTagName = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementXPath = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementClassName = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementIndex = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementMatchText = null, WorkflowExpression<string> browserExecuteJavaScriptOnElementsearchElementType = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -9057,7 +9000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserGlobalMouseLeftClickOnElement(WorkflowExpression<string> browserGlobalMouseLeftClickOnElementworkflow, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementparentElementHandle = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementHandle = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementName = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementID = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementTagName = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementXPath = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementClassName = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementIndex = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementMatchText = null, WorkflowExpression<string> browserGlobalMouseLeftClickOnElementsearchElementType = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<int> browserGlobalMouseLeftClickOnElementclickOffsetX = null, WorkflowExpression<int> browserGlobalMouseLeftClickOnElementclickOffsetY = null, WorkflowExpression<bool> browserGlobalMouseLeftClickOnElementfocusFirst = null)
         {
@@ -9331,7 +9273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserGlobalMouseRightClickOnElement(WorkflowExpression<string> browserGlobalMouseRightClickOnElementworkflow, WorkflowExpression<double> browserGlobalMouseRightClickOnElementparentElementHandle = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementHandle = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementName = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementID = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementTagName = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementXPath = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementClassName = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementIndex = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementMatchText = null, WorkflowExpression<string> browserGlobalMouseRightClickOnElementsearchElementType = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<int> browserGlobalMouseRightClickOnElementclickOffsetX = null, WorkflowExpression<int> browserGlobalMouseRightClickOnElementclickOffsetY = null, WorkflowExpression<bool> browserGlobalMouseRightClickOnElementfocusFirst = null)
         {
@@ -9605,7 +9546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserOpenNewTabResponse> __BuildBrowserOpenNewTab(WorkflowExpression<string> browserOpenNewTabworkflow, WorkflowExpression<string> browserOpenNewTabuRL = null, WorkflowExpression<bool> browserOpenNewTabswitchControlToNewTab = null)
         {
@@ -9659,7 +9599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetTabsResponse> __BuildBrowserGetTabs(WorkflowExpression<string> browserGetTabsworkflow)
         {
@@ -9689,7 +9628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSetTab(WorkflowExpression<string> browserSetTabworkflow, WorkflowExpression<string> browserSetTabtabName = null, WorkflowExpression<int> browserSetTabtabIndex = null)
         {
@@ -9733,7 +9671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCloseActiveTab(WorkflowExpression<string> browserCloseActiveTabworkflow)
         {
@@ -9763,7 +9700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSavePageToFile(WorkflowExpression<string> browserSavePageToFilesaveFilename, WorkflowExpression<string> browserSavePageToFileworkflow)
         {
@@ -9796,7 +9732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetPageTextResponse> __BuildBrowserGetPageText(WorkflowExpression<string> browserGetPageTextworkflow)
         {
@@ -9826,7 +9761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSwitchToFrameElement(WorkflowExpression<string> browserSwitchToFrameElementworkflow, WorkflowExpression<double> browserSwitchToFrameElementparentElementHandle = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementHandle = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementName = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementID = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementTagName = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementXPath = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementClassName = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementCSSSelector = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementIndex = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementMatchValue = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementMatchText = null, WorkflowExpression<string> browserSwitchToFrameElementsearchElementType = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserSwitchToFrameElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -10069,7 +10003,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetCurrentFrameWindowPixelCoordinateResponse> __BuildBrowserGetCurrentFrameWindowPixelCoordinate(WorkflowExpression<string> browserGetCurrentFrameWindowPixelCoordinateworkflow)
         {
@@ -10099,7 +10032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSwitchToParentFrameElement(WorkflowExpression<string> browserSwitchToParentFrameElementworkflow)
         {
@@ -10129,7 +10061,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSwitchToRootFrameElement(WorkflowExpression<string> browserSwitchToRootFrameElementworkflow)
         {
@@ -10159,7 +10090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserResetFrameStack(WorkflowExpression<string> browserResetFrameStackworkflow)
         {
@@ -10189,7 +10119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserClearElementTextResponse> __BuildBrowserClearElementText(WorkflowExpression<string> browserClearElementTextworkflow, WorkflowExpression<double> browserClearElementTextparentElementHandle = null, WorkflowExpression<double> browserClearElementTextsearchElementHandle = null, WorkflowExpression<string> browserClearElementTextsearchElementName = null, WorkflowExpression<string> browserClearElementTextsearchElementID = null, WorkflowExpression<string> browserClearElementTextsearchElementTagName = null, WorkflowExpression<string> browserClearElementTextsearchElementXPath = null, WorkflowExpression<string> browserClearElementTextsearchElementClassName = null, WorkflowExpression<string> browserClearElementTextsearchElementCSSSelector = null, WorkflowExpression<double> browserClearElementTextsearchElementIndex = null, WorkflowExpression<string> browserClearElementTextsearchElementMatchValue = null, WorkflowExpression<string> browserClearElementTextsearchElementMatchText = null, WorkflowExpression<string> browserClearElementTextsearchElementType = null, WorkflowExpression<double> browserClearElementTextsearchElementMinimumWidth = null, WorkflowExpression<double> browserClearElementTextsearchElementMinimumHeight = null, WorkflowExpression<double> browserClearElementTextsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserClearElementTextsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserClearElementTextsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserClearElementTextsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -10432,7 +10361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserCopySelectedTextOnElement(WorkflowExpression<string> browserCopySelectedTextOnElementworkflow, WorkflowExpression<double> browserCopySelectedTextOnElementparentElementHandle = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementHandle = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementName = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementID = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementTagName = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementXPath = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementClassName = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementIndex = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementMatchText = null, WorkflowExpression<string> browserCopySelectedTextOnElementsearchElementType = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserCopySelectedTextOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -10675,7 +10603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserInputPasswordIntoElement(WorkflowExpression<string> browserInputPasswordIntoElementpasswordToInput, WorkflowExpression<string> browserInputPasswordIntoElementworkflow, WorkflowExpression<double> browserInputPasswordIntoElementparentElementHandle = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementHandle = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementName = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementID = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementTagName = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementXPath = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementClassName = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementCSSSelector = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementIndex = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementMatchValue = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementMatchText = null, WorkflowExpression<string> browserInputPasswordIntoElementsearchElementType = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserInputPasswordIntoElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserInputPasswordIntoElementresetExistingValue = null, WorkflowExpression<bool> browserInputPasswordIntoElementpasswordContainsStoredPassword = null)
         {
@@ -10955,7 +10882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserPasteIntoElement(WorkflowExpression<string> browserPasteIntoElementworkflow, WorkflowExpression<double> browserPasteIntoElementparentElementHandle = null, WorkflowExpression<double> browserPasteIntoElementsearchElementHandle = null, WorkflowExpression<string> browserPasteIntoElementsearchElementName = null, WorkflowExpression<string> browserPasteIntoElementsearchElementID = null, WorkflowExpression<string> browserPasteIntoElementsearchElementTagName = null, WorkflowExpression<string> browserPasteIntoElementsearchElementXPath = null, WorkflowExpression<string> browserPasteIntoElementsearchElementClassName = null, WorkflowExpression<string> browserPasteIntoElementsearchElementCSSSelector = null, WorkflowExpression<double> browserPasteIntoElementsearchElementIndex = null, WorkflowExpression<string> browserPasteIntoElementsearchElementMatchValue = null, WorkflowExpression<string> browserPasteIntoElementsearchElementMatchText = null, WorkflowExpression<string> browserPasteIntoElementsearchElementType = null, WorkflowExpression<double> browserPasteIntoElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserPasteIntoElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserPasteIntoElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserPasteIntoElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserPasteIntoElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserPasteIntoElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -11198,7 +11124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserPrintCurrentPage(WorkflowExpression<string> browserPrintCurrentPageworkflow)
         {
@@ -11228,7 +11153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserScrollWindowByPixels(WorkflowExpression<string> browserScrollWindowByPixelsworkflow, WorkflowExpression<double> browserScrollWindowByPixelsx = null, WorkflowExpression<double> browserScrollWindowByPixelsy = null)
         {
@@ -11272,7 +11196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserScrollWindowToPixels(WorkflowExpression<string> browserScrollWindowToPixelsworkflow, WorkflowExpression<double> browserScrollWindowToPixelsx = null, WorkflowExpression<double> browserScrollWindowToPixelsy = null)
         {
@@ -11316,7 +11239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBrowserSelectAllOnElement(WorkflowExpression<string> browserSelectAllOnElementworkflow, WorkflowExpression<double> browserSelectAllOnElementparentElementHandle = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementHandle = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementName = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementID = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementTagName = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementXPath = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementClassName = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementCSSSelector = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementIndex = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementMatchValue = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementMatchText = null, WorkflowExpression<string> browserSelectAllOnElementsearchElementType = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementMinimumWidth = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementMinimumHeight = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserSelectAllOnElementsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
@@ -11559,7 +11481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserWaitForElementToExistResponse> __BuildBrowserWaitForElementToExist(WorkflowExpression<int> browserWaitForElementToExistsecondsToWait, WorkflowExpression<string> browserWaitForElementToExistworkflow, WorkflowExpression<double> browserWaitForElementToExistparentElementHandle = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementName = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementID = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementTagName = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementXPath = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementClassName = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementCSSSelector = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementIndex = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementMatchValue = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementMatchText = null, WorkflowExpression<string> browserWaitForElementToExistsearchElementType = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementMinimumWidth = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementMinimumHeight = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserWaitForElementToExistsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserWaitForElementToExistraiseExceptionIfElementNotFound = null, WorkflowExpression<bool> browserWaitForElementToExistuseExplicitWaitConditionsIfPossible = null, WorkflowExpression<bool> browserWaitForElementToExistwaitForSearchElementToBeDisplayed = null)
         {
@@ -11849,7 +11770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserWaitForElementToNotExistResponse> __BuildBrowserWaitForElementToNotExist(WorkflowExpression<int> browserWaitForElementToNotExistsecondsToWait, WorkflowExpression<string> browserWaitForElementToNotExistworkflow, WorkflowExpression<double> browserWaitForElementToNotExistparentElementHandle = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementHandle = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementName = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementID = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementTagName = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementXPath = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementClassName = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementCSSSelector = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementIndex = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementMatchValue = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementMatchText = null, WorkflowExpression<string> browserWaitForElementToNotExistsearchElementType = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementMinimumWidth = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementMinimumHeight = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementBoundingBoxLeft = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementBoundingBoxRight = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementBoundingBoxTop = null, WorkflowExpression<double> browserWaitForElementToNotExistsearchElementBoundingBoxBottom = null, WorkflowExpression<bool> browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox = null, WorkflowExpression<bool> browserWaitForElementToNotExistraiseExceptionIfElementStillExists = null, WorkflowExpression<bool> browserWaitForElementToNotExistsearchElementMustBeDisplayed = null)
         {
@@ -12129,7 +12049,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetWebElementAtScreenCoordinatesResponse> __BuildBrowserGetWebElementAtScreenCoordinates(WorkflowExpression<string> browserGetWebElementAtScreenCoordinatesworkflow, WorkflowExpression<int> browserGetWebElementAtScreenCoordinatesxCoord = null, WorkflowExpression<int> browserGetWebElementAtScreenCoordinatesyCoord = null, WorkflowExpression<bool> browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound = null)
         {
@@ -12210,7 +12129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetWebElementAtBrowserDocumentWindowCoordinatesResponse> __BuildBrowserGetWebElementAtBrowserDocumentWindowCoordinates(WorkflowExpression<string> browserGetWebElementAtBrowserDocumentWindowCoordinatesworkflow, WorkflowExpression<int> browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord = null, WorkflowExpression<int> browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord = null, WorkflowExpression<bool> browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound = null)
         {
@@ -12291,7 +12209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrowserGetWebElementPropertiesAsListResponse> __BuildBrowserGetWebElementPropertiesAsList(WorkflowExpression<int> browserGetWebElementPropertiesAsListelementHandle, WorkflowExpression<string> browserGetWebElementPropertiesAsListworkflow, WorkflowExpression<bool> browserGetWebElementPropertiesAsListgetHTMLCode = null, WorkflowExpression<bool> browserGetWebElementPropertiesAsListreturnValue = null, WorkflowExpression<bool> browserGetWebElementPropertiesAsListreturnText = null, WorkflowExpression<int> browserGetWebElementPropertiesAsListmaxValueLength = null, WorkflowExpression<int> browserGetWebElementPropertiesAsListmaxTextLength = null, WorkflowExpression<bool> browserGetWebElementPropertiesAsListreturnCoordinates = null, WorkflowExpression<bool> browserGetWebElementPropertiesAsListreturnParentTag = null)
         {
@@ -12443,7 +12360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsBrowserInstanceOpenResponse> __BuildIsBrowserInstanceOpen(WorkflowExpression<string> isBrowserInstanceOpenworkflow)
         {

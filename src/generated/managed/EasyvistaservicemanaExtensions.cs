@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FinishActionResponse> __BuildFinishAction(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> bodyendActiondescription = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAssetsListResponse> __BuildViewAssetsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -95,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAssetResponse> __BuildCreateAsset(WorkflowExpression<string> account, WorkflowExpression<bodyassetsInputItem[]> bodyassets = null)
         {
@@ -130,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAssetResponse> __BuildViewAsset(WorkflowExpression<string> account, WorkflowExpression<string> assetId)
         {
@@ -152,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAssetResponse> __BuildUpdateAsset(WorkflowExpression<string> account, WorkflowExpression<string> assetId, WorkflowExpression<string> bodybEFORELOANDEPARTMENTID = null, WorkflowExpression<string> bodybEFORELOANEMPLOYEEID = null, WorkflowExpression<string> bodybEFORELOANLOCATIONID = null, WorkflowExpression<string> bodybILLINGPERIODICITYINMONTH = null, WorkflowExpression<string> bodybUYBACKVALUE = null, WorkflowExpression<string> bodybUYBACKVALUECURID = null, WorkflowExpression<string> bodycATALOGID = null, WorkflowExpression<string> bodycHARGEBACK = null, WorkflowExpression<string> bodycHARGEBACKCURID = null, WorkflowExpression<string> bodycISTATUSID = null, WorkflowExpression<string> bodycIVERSION = null, WorkflowExpression<string> bodycMDEFAULTCHANGEID = null, WorkflowExpression<string> bodycONFIGURATIONID = null, WorkflowExpression<string> bodycRITICALLEVELID = null, WorkflowExpression<string> bodydELIVERYDATE = null, WorkflowExpression<string> bodydELIVERYNUMBER = null, WorkflowExpression<string> bodydEPARTMENTID = null, WorkflowExpression<string> bodydEPRECIATIONRULEID = null, WorkflowExpression<string> bodydHARDWAREGUID = null, WorkflowExpression<string> bodyeMPLOYEEID = null, WorkflowExpression<string> bodyeNDOFWARANTY = null, WorkflowExpression<string> bodyeNTRYDATE = null, WorkflowExpression<string> bodyeSTIMATEDPERCENTAGEUSE = null, WorkflowExpression<string> bodyeXPECTEDENDLENDDATE = null, WorkflowExpression<string> bodyeXPECTEDRETURNDATE = null, WorkflowExpression<string> bodyfALLENTERM = null, WorkflowExpression<string> bodyfIXEDASSETNUMBER = null, WorkflowExpression<string> bodyiNITIALSTART = null, WorkflowExpression<string> bodyiNSTALLATIONDATE = null, WorkflowExpression<string> bodyiNTERNALDELIVERYDATE = null, WorkflowExpression<string> bodyiNVOICENUMBER = null, WorkflowExpression<string> bodyiSDML = null, WorkflowExpression<string> bodylASTINTEGRATION = null, WorkflowExpression<string> bodylASTPHYSICALINVENTORY = null, WorkflowExpression<string> bodylASTUPDATE = null, WorkflowExpression<string> bodylICENSEVERSION = null, WorkflowExpression<string> bodylOCATIONID = null, WorkflowExpression<string> bodymAINTENANCECOST = null, WorkflowExpression<string> bodymAINTENANCECOSTCURID = null, WorkflowExpression<string> bodymAINUSAGEID = null, WorkflowExpression<string> bodymAXINSTALLS = null, WorkflowExpression<string> bodymONTHLYFIXEDCOST = null, WorkflowExpression<string> bodymONTHLYFIXEDCOSTCURID = null, WorkflowExpression<string> bodymONTHLYNETRENTAL = null, WorkflowExpression<string> bodymONTHLYNETRENTALCURID = null, WorkflowExpression<string> bodymONTHDURATION = null, WorkflowExpression<string> bodynETWORKIDENTIFIER = null, WorkflowExpression<string> bodynEXTDEPARTMENTID = null, WorkflowExpression<string> bodynEXTMAINTENANCEDATE = null, WorkflowExpression<string> bodynEXTSTATUSID = null, WorkflowExpression<string> bodynEXTUSERAPPLICATIONDATE = null, WorkflowExpression<string> bodynEXTUSERID = null, WorkflowExpression<string> bodynOTICE = null, WorkflowExpression<string> bodyoRDERDETAILSID = null, WorkflowExpression<string> bodyoRDERNUMBER = null, WorkflowExpression<string> bodypIPELINESTATUSID = null, WorkflowExpression<string> bodypOWERCONSUMPTIONWH = null, WorkflowExpression<string> bodypROCESSORCOUNT = null, WorkflowExpression<string> bodypROCESSORSOCKETCOUNT = null, WorkflowExpression<string> bodypURCHASEDATE = null, WorkflowExpression<string> bodypURCHASEPRICE = null, WorkflowExpression<string> bodypURCHASEPRICECURID = null, WorkflowExpression<string> bodypURCHASERATEID = null, WorkflowExpression<string> bodyrECYCLEDDATE = null, WorkflowExpression<string> bodyrECYCLINGPROVIDERID = null, WorkflowExpression<string> bodyrEFORMNUMBER = null, WorkflowExpression<string> bodyrEMOVEDDATE = null, WorkflowExpression<string> bodyrENEWALDECISIONID = null, WorkflowExpression<string> bodyrENEWALVALUE = null, WorkflowExpression<string> bodyrENEWALVALUECURID = null, WorkflowExpression<string> bodyrEPAIREDBYID = null, WorkflowExpression<string> bodyrESALESVALUE = null, WorkflowExpression<string> bodysCHEDULEDEND = null, WorkflowExpression<string> bodysDCATALOGID = null, WorkflowExpression<string> bodysERIALNUMBER = null, WorkflowExpression<string> bodysLAID = null, WorkflowExpression<string> bodysTATUSID = null, WorkflowExpression<string> bodysUPPLIERID = null, WorkflowExpression<string> bodytERM = null, WorkflowExpression<string> bodyuPDATECOVERAGETERM = null, WorkflowExpression<string> bodywARANTYTYPEID = null, WorkflowExpression<string> bodyassetLabel = null, WorkflowExpression<string> bodyassetTag = null, WorkflowExpression<string> bodyautomaticRenewal = null, WorkflowExpression<string> bodyavailabilitySlaId = null, WorkflowExpression<string> bodyavailableField1 = null, WorkflowExpression<string> bodyavailableField2 = null, WorkflowExpression<string> bodyavailableField3 = null, WorkflowExpression<string> bodyavailableField4 = null, WorkflowExpression<string> bodyavailableField5 = null, WorkflowExpression<string> bodyavailableField6 = null, WorkflowExpression<string> bodycommentAsset = null)
         {
@@ -825,7 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAssetLinksResponse> __BuildViewAssetLinks(WorkflowExpression<string> account, WorkflowExpression<string> assetId)
         {
@@ -847,7 +841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteAssetLink(WorkflowExpression<string> account, WorkflowExpression<string> assetId, WorkflowExpression<string> parentAssetId)
         {
@@ -870,7 +863,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAssetLinkResponse> __BuildCreateAssetLink(WorkflowExpression<string> account, WorkflowExpression<string> assetId, WorkflowExpression<string> parentAssetId, WorkflowExpression<string> bodycontractRow = null, WorkflowExpression<string> bodymonthlyPayment = null)
         {
@@ -914,7 +906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateAssetLinkResponse> __BuildUpdateAssetLink(WorkflowExpression<string> account, WorkflowExpression<string> assetId, WorkflowExpression<string> parentAssetId, WorkflowExpression<string> bodycontractRow = null, WorkflowExpression<string> bodymonthlyPayment = null)
         {
@@ -958,7 +949,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAssetLinkResponse> __BuildViewAssetLink(WorkflowExpression<string> account, WorkflowExpression<string> parentAssetId, WorkflowExpression<string> childAssetId)
         {
@@ -981,7 +971,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewCatalogAssetsListResponse> __BuildViewCatalogAssetsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -1014,7 +1003,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewCatalogAssetResponse> __BuildViewCatalogAsset(WorkflowExpression<string> account, WorkflowExpression<string> catalogId)
         {
@@ -1036,7 +1024,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewCatalogRequestsListResponse> __BuildViewCatalogRequestsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null)
         {
@@ -1066,7 +1053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewCatalogRequestsPathListResponse> __BuildViewCatalogRequestsPathList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -1099,7 +1085,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewCatalogRequestPathResponse> __BuildViewCatalogRequestPath(WorkflowExpression<string> account, WorkflowExpression<string> catalogId)
         {
@@ -1121,7 +1106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewCatalogRequestResponse> __BuildViewCatalogRequest(WorkflowExpression<string> account, WorkflowExpression<string> catalogId)
         {
@@ -1143,7 +1127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewConfigurationItemsListResponse> __BuildViewConfigurationItemsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -1176,7 +1159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewConfigurationItemResponse> __BuildViewConfigurationItem(WorkflowExpression<string> account, WorkflowExpression<string> ciId)
         {
@@ -1198,7 +1180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewConfigurationItemLinksResponse> __BuildViewConfigurationItemLinks(WorkflowExpression<string> account, WorkflowExpression<string> ciId)
         {
@@ -1220,7 +1201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewConfigurationItemLinkResponse> __BuildViewConfigurationItemLink(WorkflowExpression<string> account, WorkflowExpression<string> parentCiId, WorkflowExpression<string> childCiId)
         {
@@ -1243,7 +1223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteConfigurationItemLink(WorkflowExpression<string> account, WorkflowExpression<string> parentCiId, WorkflowExpression<string> childCiId)
         {
@@ -1266,7 +1245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> __BuildCreateConfigurationItemLink(WorkflowExpression<string> account, WorkflowExpression<string> parentCiId, WorkflowExpression<string> childCiId, WorkflowExpression<string> bodyrelationTypeID, WorkflowExpression<string> bodyblocking = null)
         {
@@ -1306,7 +1284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> __BuildUpdateConfigurationItemLink(WorkflowExpression<string> account, WorkflowExpression<string> parentCiId, WorkflowExpression<string> childCiId, WorkflowExpression<string> bodyblocking = null, WorkflowExpression<string> bodyrelationTypeID = null)
         {
@@ -1350,7 +1327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewEntitiesListResponse> __BuildViewEntitiesList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -1383,7 +1359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewEntityResponse> __BuildViewEntity(WorkflowExpression<string> account, WorkflowExpression<string> departmentId)
         {
@@ -1405,7 +1380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateDepartmentResponse> __BuildUpdateDepartment(WorkflowExpression<string> account, WorkflowExpression<string> departmentId, WorkflowExpression<string> bodypARENTDEPARTMENTID = null, WorkflowExpression<string> bodydEPARTMENTEN = null, WorkflowExpression<string> bodydEPARTMENTFR = null, WorkflowExpression<string> bodydEPARTMENTSP = null, WorkflowExpression<string> bodydEPARTMENTGE = null, WorkflowExpression<string> bodydEPARTMENTIT = null, WorkflowExpression<string> bodydEPARTMENTPO = null, WorkflowExpression<string> bodydEPARTMENTLABEL = null, WorkflowExpression<string> bodycOMMENTDEPARTMENT = null, WorkflowExpression<string> bodymANAGERID = null, WorkflowExpression<string> bodydEFAULTCOSTCENTERID = null, WorkflowExpression<string> bodysTARTDATE = null, WorkflowExpression<string> bodyeNDDATE = null, WorkflowExpression<string> bodyuRLMAP = null, WorkflowExpression<string> bodydEPARTMENTCODE = null, WorkflowExpression<string> bodylASTUPDATE = null, WorkflowExpression<string> bodylASTINTEGRATION = null, WorkflowExpression<string> bodycURRENCYID = null, WorkflowExpression<string> bodyaVAILABLEFIELD1 = null, WorkflowExpression<string> bodyaVAILABLEFIELD2 = null, WorkflowExpression<string> bodyaVAILABLEFIELD3 = null, WorkflowExpression<string> bodyaVAILABLEFIELD4 = null, WorkflowExpression<string> bodyaVAILABLEFIELD5 = null, WorkflowExpression<string> bodyaVAILABLEFIELD6 = null, WorkflowExpression<string> bodysLAID = null, WorkflowExpression<string> bodydEPARTMENTL1 = null, WorkflowExpression<string> bodydEPARTMENTL2 = null, WorkflowExpression<string> bodydEPARTMENTL3 = null, WorkflowExpression<string> bodydEPARTMENTL4 = null, WorkflowExpression<string> bodydEPARTMENTL5 = null, WorkflowExpression<string> bodydEPARTMENTL6 = null)
         {
@@ -1651,7 +1625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewEmployeesListResponse> __BuildViewEmployeesList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -1684,7 +1657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEmployeeResponse> __BuildCreateEmployee(WorkflowExpression<string> account, WorkflowExpression<bodyemployeesInputItem[]> bodyemployees = null)
         {
@@ -1719,7 +1691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewEmployeeResponse> __BuildViewEmployee(WorkflowExpression<string> account, WorkflowExpression<string> employeeId)
         {
@@ -1741,7 +1712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateEmployeeResponse> __BuildUpdateEmployee(WorkflowExpression<string> account, WorkflowExpression<string> employeeId, WorkflowExpression<string> bodyaPPROVEDTOVALIDATE = null, WorkflowExpression<string> bodyaVAILABILITYSTATUSID = null, WorkflowExpression<string> bodyaVAILABLEFIELD1 = null, WorkflowExpression<string> bodyaVAILABLEFIELD2 = null, WorkflowExpression<string> bodyaVAILABLEFIELD3 = null, WorkflowExpression<string> bodyaVAILABLEFIELD4 = null, WorkflowExpression<string> bodyaVAILABLEFIELD5 = null, WorkflowExpression<string> bodyaVAILABLEFIELD6 = null, WorkflowExpression<string> bodybEGINOFCONTRACT = null, WorkflowExpression<string> bodycELLULARNUMBER = null, WorkflowExpression<string> bodycHATLOGIN = null, WorkflowExpression<string> bodycIVILSTATUSID = null, WorkflowExpression<string> bodycOMMENTEMPLOYEE = null, WorkflowExpression<string> bodycOSTPERHOUR = null, WorkflowExpression<string> bodycOSTPERHOURCURID = null, WorkflowExpression<string> bodydEFAULTCOSTCENTERID = null, WorkflowExpression<string> bodydELEGATIONFROM = null, WorkflowExpression<string> bodydELEGATIONID = null, WorkflowExpression<string> bodydELEGATIONTO = null, WorkflowExpression<string> bodydEPARTMENTID = null, WorkflowExpression<string> bodyeNDOFCONTRACT = null, WorkflowExpression<string> bodyeMAIL = null, WorkflowExpression<string> bodyfAXNUMBER = null, WorkflowExpression<string> bodyfUNCTIONID = null, WorkflowExpression<string> bodyiCQNUMBER = null, WorkflowExpression<string> bodyiDENTIFICATION = null, WorkflowExpression<string> bodyiSAUTOMATICSTATUS = null, WorkflowExpression<string> bodyiTCORRESPONDENT = null, WorkflowExpression<string> bodylANGUAGEID = null, WorkflowExpression<string> bodylASTINTEGRATION = null, WorkflowExpression<string> bodylASTNAME = null, WorkflowExpression<string> bodylASTUPDATE = null, WorkflowExpression<string> bodylOCATIONID = null, WorkflowExpression<string> bodylOGIN = null, WorkflowExpression<string> bodymANAGERID = null, WorkflowExpression<string> bodymESSENGERSIGNNAME = null, WorkflowExpression<string> bodynOTIFICATIONTYPEID = null, WorkflowExpression<string> bodypASSWDLASTUPDATEUT = null, WorkflowExpression<string> bodypHONENUMBER = null, WorkflowExpression<string> bodypICTUREPATH = null, WorkflowExpression<string> bodysUPPLIERID = null, WorkflowExpression<string> bodyvALIDATORID = null, WorkflowExpression<string> bodyvIPLEVELID = null, WorkflowExpression<string> bodywAVEADDRESS = null)
         {
@@ -2078,7 +2048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewKnownErrorsListResponse> __BuildViewKnownErrorsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -2111,7 +2080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewKnownErrorsResponse> __BuildViewKnownErrors(WorkflowExpression<string> account, WorkflowExpression<string> kpId)
         {
@@ -2133,7 +2101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewLocationsListResponse> __BuildViewLocationsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -2166,7 +2133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewLocationResponse> __BuildViewLocation(WorkflowExpression<string> account, WorkflowExpression<string> locationId)
         {
@@ -2188,7 +2154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateLocationResponse> __BuildUpdateLocation(WorkflowExpression<string> account, WorkflowExpression<string> locationId, WorkflowExpression<string> bodypARENTLOCATIONID = null, WorkflowExpression<string> bodymANAGERID = null, WorkflowExpression<string> bodylOCATIONEN = null, WorkflowExpression<string> bodylOCATIONFR = null, WorkflowExpression<string> bodylOCATIONGE = null, WorkflowExpression<string> bodylOCATIONSP = null, WorkflowExpression<string> bodylOCATIONIT = null, WorkflowExpression<string> bodylOCATIONPO = null, WorkflowExpression<string> bodysTREETADDRESS1 = null, WorkflowExpression<string> bodysTREETADDRESS2 = null, WorkflowExpression<string> bodycITY = null, WorkflowExpression<string> bodypHONE = null, WorkflowExpression<string> bodyzIPCODE = null, WorkflowExpression<string> bodyfAX = null, WorkflowExpression<string> bodycOMMENTLOCATION = null, WorkflowExpression<string> bodyrEGIONZONEID = null, WorkflowExpression<string> bodycOUNTRYID = null, WorkflowExpression<string> bodysTATEID = null, WorkflowExpression<string> bodysTARTDATE = null, WorkflowExpression<string> bodyeNDDATE = null, WorkflowExpression<string> bodyuRLMAP = null, WorkflowExpression<string> bodydISCOVERYNAME = null, WorkflowExpression<string> bodylOCATIONCODE = null, WorkflowExpression<string> bodylASTUPDATE = null, WorkflowExpression<string> bodylASTINTEGRATION = null, WorkflowExpression<string> bodyiSDELIVERYADDRESS = null, WorkflowExpression<string> bodytIMEZONEID = null, WorkflowExpression<string> bodysTATUSID = null, WorkflowExpression<string> bodyaVAILABLEFIELD1 = null, WorkflowExpression<string> bodyaVAILABLEFIELD2 = null, WorkflowExpression<string> bodyaVAILABLEFIELD3 = null, WorkflowExpression<string> bodyaVAILABLEFIELD4 = null, WorkflowExpression<string> bodyaVAILABLEFIELD5 = null, WorkflowExpression<string> bodyaVAILABLEFIELD6 = null, WorkflowExpression<string> bodysLAID = null, WorkflowExpression<string> bodygMAPLAT = null, WorkflowExpression<string> bodygMAPLNG = null, WorkflowExpression<string> bodylOCATIONL1 = null, WorkflowExpression<string> bodylOCATIONL2 = null, WorkflowExpression<string> bodylOCATIONL3 = null, WorkflowExpression<string> bodylOCATIONL4 = null, WorkflowExpression<string> bodylOCATIONL5 = null, WorkflowExpression<string> bodylOCATIONL6 = null, WorkflowExpression<string> bodyeISMEETINGROOM = null, WorkflowExpression<string> bodyeCAPACITY = null, WorkflowExpression<string> bodyeWIFILOGIN = null)
         {
@@ -2539,7 +2504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewManufacturerListResponse> __BuildViewManufacturerList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -2569,7 +2533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewManufacturerResponse> __BuildViewManufacturer(WorkflowExpression<string> account, WorkflowExpression<string> manufacturerId)
         {
@@ -2591,7 +2554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewRequestsIncidentsListResponse> __BuildViewRequestsIncidentsList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -2624,7 +2586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateRequestIncidentResponse> __BuildCreateRequestIncident(WorkflowExpression<string> account, WorkflowExpression<bodyrequestsInputItem[]> bodyrequests = null)
         {
@@ -2659,7 +2620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewRequestIncidentResponse> __BuildViewRequestIncident(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber)
         {
@@ -2681,7 +2641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloseRequestIncidentResponse> __BuildCloseRequestIncident(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<bodyclosedInputItem[]> bodyclosed = null)
         {
@@ -2717,7 +2676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateRequestIncidentResponse> __BuildUpdateRequestIncident(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> bodyanalyticalChargeId = null, WorkflowExpression<string> bodyassetId = null, WorkflowExpression<string> bodyavailableField1 = null, WorkflowExpression<string> bodyavailableField2 = null, WorkflowExpression<string> bodyavailableField3 = null, WorkflowExpression<string> bodyavailableField4 = null, WorkflowExpression<string> bodyavailableField5 = null, WorkflowExpression<string> bodyavailableField6 = null, WorkflowExpression<string> bodybudgetPlanned = null, WorkflowExpression<string> bodycanBeDuplicated = null, WorkflowExpression<string> bodyciId = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodycontinuityPlanId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodycreationDateUt = null, WorkflowExpression<string> bodydelay = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodydynamicDetails = null, WorkflowExpression<string> bodyeffectiveChangeDateEnd = null, WorkflowExpression<string> bodyeffectiveChangeDateStart = null, WorkflowExpression<string> bodyendDateUt = null, WorkflowExpression<string> bodyestimatedNetPrice = null, WorkflowExpression<string> bodyexpectedDateUt = null, WorkflowExpression<string> bodyexpectedDuration = null, WorkflowExpression<string> bodyexpectedEndDateUt = null, WorkflowExpression<string> bodyexpectedStartDateUt = null, WorkflowExpression<string> bodyexternalReference = null, WorkflowExpression<string> bodyfirstCallResolution = null, WorkflowExpression<string> bodyhourPerDay = null, WorkflowExpression<string> bodyimpactId = null, WorkflowExpression<string> bodyimputationDate = null, WorkflowExpression<string> bodyisMajorIncident = null, WorkflowExpression<string> bodyisTemplate = null, WorkflowExpression<string> bodyknownProblemsId = null, WorkflowExpression<string> bodylastUpdate = null, WorkflowExpression<string> bodymark1 = null, WorkflowExpression<string> bodymark2 = null, WorkflowExpression<string> bodymaxResolutionDateUt = null, WorkflowExpression<string> bodymsProjectImportValidationWaiting = null, WorkflowExpression<string> bodynetPrice = null, WorkflowExpression<string> bodynetPriceCurId = null, WorkflowExpression<string> bodyoriginToolId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyowningGroupId = null, WorkflowExpression<string> bodyplannedChangeDateEnd = null, WorkflowExpression<string> bodyplannedChangeDateStart = null, WorkflowExpression<string> bodypmStatusId = null, WorkflowExpression<string> bodyprojectName = null, WorkflowExpression<string> bodyprojectStartDateUt = null, WorkflowExpression<string> bodyqty = null, WorkflowExpression<string> bodyreleaseId = null, WorkflowExpression<string> bodyrentalNetPrice = null, WorkflowExpression<string> bodyrentalNetPriceCurId = null, WorkflowExpression<string> bodyrequestOriginId = null, WorkflowExpression<string> bodyrequestedChangeDateEnd = null, WorkflowExpression<string> bodyrequestedChangeDateStart = null, WorkflowExpression<string> bodyrequestorId = null, WorkflowExpression<string> bodyrequestorIpAddress = null, WorkflowExpression<string> bodyrequestorPhone = null, WorkflowExpression<string> bodyriskAmount = null, WorkflowExpression<string> bodyriskDescription = null, WorkflowExpression<string> bodyriskLevelId = null, WorkflowExpression<string> bodyrootCauseId = null, WorkflowExpression<string> bodysubmitDateUt = null, WorkflowExpression<string> bodytimeUsedToSolveRequest = null, WorkflowExpression<string> bodytitle = null)
         {
@@ -3208,7 +3166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewRequestIncidentCommentResponse> __BuildViewRequestIncidentComment(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber)
         {
@@ -3230,7 +3187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRequestIncidentDocumentListResponse> __BuildGetRequestIncidentDocumentList(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber)
         {
@@ -3252,7 +3208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse> __BuildUploadAndAttachADocumentToARequestIncident(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments)
         {
@@ -3284,7 +3239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RestartRequestIncidentResponse> __BuildRestartRequestIncident(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> bodycomment = null, WorkflowExpression<int> bodydoneById = null)
         {
@@ -3327,7 +3281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuspendRequestIncidentResponse> __BuildSuspendRequestIncident(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodydoneById = null)
         {
@@ -3370,7 +3323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> bodyactionTypeId, WorkflowExpression<string> bodyelapsedTime = null, WorkflowExpression<string> bodyavailableField1 = null, WorkflowExpression<string> bodyavailableField2 = null, WorkflowExpression<string> bodyavailableField3 = null, WorkflowExpression<string> bodyavailableField4 = null, WorkflowExpression<string> bodyavailableField5 = null, WorkflowExpression<string> bodyavailableField6 = null, WorkflowExpression<string> bodycontractualCost = null, WorkflowExpression<string> bodycreationDateUt = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyendDateUt = null, WorkflowExpression<string> bodygroupMail = null, WorkflowExpression<string> bodygroupName = null, WorkflowExpression<string> bodystartDateUt = null, WorkflowExpression<string> bodytimeCost = null)
         {
@@ -3507,7 +3459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewSlasListResponse> __BuildViewSlasList(WorkflowExpression<string> account, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> maxRows = null)
         {
@@ -3540,7 +3491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewSlaResponse> __BuildViewSla(WorkflowExpression<string> account, WorkflowExpression<string> slaId)
         {
@@ -3562,7 +3512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAllAtributesAssetsResponse> __BuildViewAllAtributesAssets(WorkflowExpression<string> account)
         {
@@ -3583,7 +3532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateLinkBetweenAttributandAsset(WorkflowExpression<string> account, WorkflowExpression<string> assetId, WorkflowExpression<string> characteristicId)
         {
@@ -3606,7 +3554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateanAttributeofanAssetResponse> __BuildUpdateanAttributeofanAsset(WorkflowExpression<string> account, WorkflowExpression<string> assetId, WorkflowExpression<string> characteristicId, WorkflowExpression<string> bodydATA1 = null, WorkflowExpression<string> bodydATA2 = null)
         {
@@ -3650,7 +3597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCIResponse> __BuildCreateCI(WorkflowExpression<bodyassetsInputItem2[]> bodyassets = null)
         {
@@ -3684,7 +3630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCIunavailabilityResponse> __BuildCreateCIunavailability(WorkflowExpression<string> ciId)
         {
@@ -3705,7 +3650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EndCIunavailabilityResponse> __BuildEndCIunavailability(WorkflowExpression<string> ciId)
         {
@@ -3726,7 +3670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewlinksimpactonCIResponse> __BuildViewlinksimpactonCI(WorkflowExpression<string> ciId)
         {
@@ -3747,7 +3690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewlinksimpactbyCIResponse> __BuildViewlinksimpactbyCI(WorkflowExpression<string> ciId)
         {
@@ -3768,7 +3710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewTicketStatusListResponse> __BuildViewTicketStatusList(WorkflowExpression<string> account)
         {
@@ -3789,7 +3730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListProblemsAttachedTicketsResponse> __BuildViewListProblemsAttachedTickets(WorkflowExpression<string> account)
         {
@@ -3810,7 +3750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListProblemsAttachedATicketsResponse> __BuildViewListProblemsAttachedATickets(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber)
         {
@@ -3832,7 +3771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListTicketsAttachedtoaProblemResponse> __BuildViewListTicketsAttachedtoaProblem(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber)
         {
@@ -3854,7 +3792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListQuestionsResponse> __BuildViewListQuestions(WorkflowExpression<string> account)
         {
@@ -3875,7 +3812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListQuestionsWithResponseResponse> __BuildViewListQuestionsWithResponse(WorkflowExpression<string> account)
         {
@@ -3896,7 +3832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewaQuestionResponse> __BuildViewaQuestion(WorkflowExpression<string> account, WorkflowExpression<string> questionId)
         {
@@ -3918,7 +3853,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAllResponsesListQuestionsofaTicketResponse> __BuildViewAllResponsesListQuestionsofaTicket(WorkflowExpression<string> account, WorkflowExpression<string> requestId)
         {
@@ -3940,7 +3874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewResponseQuestionTicketResponse> __BuildViewResponseQuestionTicket(WorkflowExpression<string> account, WorkflowExpression<string> requestId, WorkflowExpression<string> questionId)
         {
@@ -3963,7 +3896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateResponseQuestionTicketResponse> __BuildCreateResponseQuestionTicket(WorkflowExpression<string> account, WorkflowExpression<string> requestId, WorkflowExpression<string> questionId, WorkflowExpression<string> bodyrESULT = null, WorkflowExpression<string> bodyrESULTSTRINGEN = null, WorkflowExpression<string> bodyrESULTSTRINGFR = null, WorkflowExpression<string> bodyrESULTSTRINGSP = null, WorkflowExpression<string> bodyrESULTSTRINGGE = null, WorkflowExpression<string> bodyrESULTSTRINGIT = null, WorkflowExpression<string> bodyrESULTSTRINGPO = null, WorkflowExpression<string> bodyrESULTDATE = null, WorkflowExpression<string> bodyrESULTNUMBER = null, WorkflowExpression<string> bodyrESULTBIT = null, WorkflowExpression<string> bodyrESULTORDER = null, WorkflowExpression<string> bodyrESULTSTRINGL1 = null, WorkflowExpression<string> bodyrESULTSTRINGL2 = null, WorkflowExpression<string> bodyrESULTSTRINGL3 = null, WorkflowExpression<string> bodyrESULTSTRINGL4 = null, WorkflowExpression<string> bodyrESULTSTRINGL5 = null, WorkflowExpression<string> bodyrESULTSTRINGL6 = null, WorkflowExpression<string> bodyqUESTIONDISPLAYED = null, WorkflowExpression<string> bodydOCUMENTID = null, WorkflowExpression<string> bodyqUESTIONREQUIRED = null, WorkflowExpression<string> bodyiSCONDITIONNAL = null, WorkflowExpression<string> bodyrESULTDURATION = null, WorkflowExpression<string> bodysYSQUESTIONNAIREID = null, WorkflowExpression<string> bodyoRIGINTOOLID = null, WorkflowExpression<string> bodylASTQUESTIONNAIRE = null)
         {
@@ -4168,7 +4100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse> __BuildUpdateResponseQuestionTicket(WorkflowExpression<string> account, WorkflowExpression<string> requestId, WorkflowExpression<string> questionId, WorkflowExpression<string> bodyrESULT = null, WorkflowExpression<string> bodyrESULTSTRINGEN = null, WorkflowExpression<string> bodyrESULTSTRINGFR = null, WorkflowExpression<string> bodyrESULTSTRINGSP = null, WorkflowExpression<string> bodyrESULTSTRINGGE = null, WorkflowExpression<string> bodyrESULTSTRINGIT = null, WorkflowExpression<string> bodyrESULTSTRINGPO = null, WorkflowExpression<string> bodyrESULTDATE = null, WorkflowExpression<string> bodyrESULTNUMBER = null, WorkflowExpression<string> bodyrESULTBIT = null, WorkflowExpression<string> bodyrESULTORDER = null, WorkflowExpression<string> bodyrESULTSTRINGL1 = null, WorkflowExpression<string> bodyrESULTSTRINGL2 = null, WorkflowExpression<string> bodyrESULTSTRINGL3 = null, WorkflowExpression<string> bodyrESULTSTRINGL4 = null, WorkflowExpression<string> bodyrESULTSTRINGL5 = null, WorkflowExpression<string> bodyrESULTSTRINGL6 = null, WorkflowExpression<string> bodyqUESTIONDISPLAYED = null, WorkflowExpression<string> bodydOCUMENTID = null, WorkflowExpression<string> bodyqUESTIONREQUIRED = null, WorkflowExpression<string> bodyiSCONDITIONNAL = null, WorkflowExpression<string> bodyrESULTDURATION = null, WorkflowExpression<string> bodysYSQUESTIONNAIREID = null, WorkflowExpression<string> bodyoRIGINTOOLID = null, WorkflowExpression<string> bodylASTQUESTIONNAIRE = null)
         {
@@ -4373,7 +4304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListQuestionnairesResponse> __BuildViewListQuestionnaires(WorkflowExpression<string> account)
         {
@@ -4394,7 +4324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewQuestionnaireResponse> __BuildViewQuestionnaire(WorkflowExpression<string> account, WorkflowExpression<string> questionnaireId)
         {
@@ -4416,7 +4345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListProblemsResponse> __BuildViewListProblems(WorkflowExpression<string> account)
         {
@@ -4437,7 +4365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewProblemResponse> __BuildViewProblem(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber)
         {
@@ -4459,7 +4386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListNewsResponse> __BuildViewListNews(WorkflowExpression<string> account)
         {
@@ -4480,7 +4406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateNewsResponse> __BuildCreateNews(WorkflowExpression<string> account)
         {
@@ -4501,7 +4426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewNewsResponse> __BuildViewNews(WorkflowExpression<string> account, WorkflowExpression<string> documentId)
         {
@@ -4523,7 +4447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateNewsResponse> __BuildUpdateNews(WorkflowExpression<string> account, WorkflowExpression<string> documentId)
         {
@@ -4545,7 +4468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewListActionsResponse> __BuildViewListActions(WorkflowExpression<string> account)
         {
@@ -4566,7 +4488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateActionTicketResponse> __BuildCreateActionTicket(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> bodyaCTIONNUMBER = null, WorkflowExpression<string> bodyaSSETID = null, WorkflowExpression<string> bodypARENTACTIONID = null, WorkflowExpression<string> bodysUPPLIERID = null, WorkflowExpression<string> bodydONEBYID = null, WorkflowExpression<string> bodyvALIDATORID = null, WorkflowExpression<string> bodyaCTIONLABELEN = null, WorkflowExpression<string> bodytABLENAME = null, WorkflowExpression<string> bodyfIELDNAME = null, WorkflowExpression<string> bodyoLDVALUE = null, WorkflowExpression<string> bodynEWVALUE = null, WorkflowExpression<string> bodydELETEACTION = null, WorkflowExpression<string> bodyaUTOMATICACTION = null, WorkflowExpression<string> bodypROCESSSTEPID = null, WorkflowExpression<string> bodyrEQUESTID = null, WorkflowExpression<string> bodydESCRIPTION = null, WorkflowExpression<string> bodynETCHARGE = null, WorkflowExpression<string> bodynETCHARGECURID = null, WorkflowExpression<string> bodyrESOLUTION = null, WorkflowExpression<string> bodylOCATIONID = null, WorkflowExpression<string> bodysUPPORTSTAFFID = null, WorkflowExpression<string> bodycONTACTID = null, WorkflowExpression<string> bodyeXPECTEDENDDATEUT = null, WorkflowExpression<string> bodycOMMENT = null, WorkflowExpression<string> bodysTARTDATEUT = null, WorkflowExpression<string> bodyeNDDATEUT = null, WorkflowExpression<string> bodyrENEWALDATEUT = null, WorkflowExpression<string> bodyeXPECTEDSTARTDATEUT = null, WorkflowExpression<string> bodycREATIONDATEUT = null, WorkflowExpression<string> bodyaPPLICATIONDATEUT = null, WorkflowExpression<string> bodywIZARDGUID = null, WorkflowExpression<string> bodygROUPID = null, WorkflowExpression<string> bodyaCTIONLABELFR = null, WorkflowExpression<string> bodyaCTIONLABELSP = null, WorkflowExpression<string> bodyaCTIONLABELGE = null, WorkflowExpression<string> bodyaCTIONLABELIT = null, WorkflowExpression<string> bodyaCTIONLABELPO = null, WorkflowExpression<string> bodykNOWNPROBLEMID = null, WorkflowExpression<string> bodymAXINTERVENTIONDATEUT = null, WorkflowExpression<string> bodyeLAPSEDTIME = null, WorkflowExpression<string> bodypRIORITYID = null, WorkflowExpression<string> bodytAXID = null, WorkflowExpression<string> bodysTATUSIDONCREATE = null, WorkflowExpression<string> bodysTATUSIDONTERMINATE = null, WorkflowExpression<string> bodyaCTIONTYPEID = null, WorkflowExpression<string> bodydELAY = null, WorkflowExpression<string> bodyaVAILABLEFIELD1 = null, WorkflowExpression<string> bodyaVAILABLEFIELD2 = null, WorkflowExpression<string> bodyaVAILABLEFIELD3 = null, WorkflowExpression<string> bodyaVAILABLEFIELD4 = null, WorkflowExpression<string> bodyaVAILABLEFIELD5 = null, WorkflowExpression<string> bodyaVAILABLEFIELD6 = null, WorkflowExpression<string> bodytIMEUSEDTOCOMPLETEACTION = null, WorkflowExpression<string> bodycONTRACTUALCOST = null, WorkflowExpression<string> bodycONTRACTUALCOSTCURID = null, WorkflowExpression<string> bodytIMECOST = null, WorkflowExpression<string> bodytIMECOSTCURID = null, WorkflowExpression<string> bodyoRIGINACTIONID = null, WorkflowExpression<string> bodywORKFLOWVALUE = null, WorkflowExpression<string> bodycONTINUITYPLANID = null, WorkflowExpression<string> bodycATEGORYTESTID = null, WorkflowExpression<string> bodywORKFLOWID = null, WorkflowExpression<string> bodyeXITVALUE = null, WorkflowExpression<string> bodymAXRESOLUTIONDATEUT = null, WorkflowExpression<string> bodypERCENTCOMPLETE = null, WorkflowExpression<string> bodyeXPECTEDDURATION = null, WorkflowExpression<string> bodywBSTASK = null, WorkflowExpression<string> bodytASKPERSONCOSTPERHOUR = null, WorkflowExpression<string> bodytASKPLANNEDBUDGET = null, WorkflowExpression<string> bodyeSTIMATEDNETCHARGE = null, WorkflowExpression<string> bodypREVIOUSSIBLINGID = null, WorkflowExpression<string> bodyaCTIONLABELL1 = null, WorkflowExpression<string> bodyaCTIONLABELL2 = null, WorkflowExpression<string> bodyaCTIONLABELL3 = null, WorkflowExpression<string> bodyaCTIONLABELL4 = null, WorkflowExpression<string> bodyaCTIONLABELL5 = null, WorkflowExpression<string> bodyaCTIONLABELL6 = null, WorkflowExpression<string> bodyhISTORYID = null, WorkflowExpression<string> bodytOTRUNC = null, WorkflowExpression<string> bodysTAGEID = null, WorkflowExpression<string> bodyiSLOCKEDPROGRESSPOINT = null, WorkflowExpression<string> bodyoRIGINTOOLID = null, WorkflowExpression<string> bodylASTUPDATE = null, WorkflowExpression<string> bodyeLASTDATESUPDATE = null, WorkflowExpression<string> bodybILLEDTIME = null, WorkflowExpression<string> bodyiSBILLINGREVIEWED = null)
         {
@@ -5197,7 +5118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewAllAtributesofanAssetsResponse> __BuildViewAllAtributesofanAssets(WorkflowExpression<string> account, WorkflowExpression<string> assetId)
         {
@@ -5219,7 +5139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> account, WorkflowExpression<string> rfcNumber, WorkflowExpression<string> documentId)
         {
@@ -5242,7 +5161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateCIResponse> __BuildUpdateCI(WorkflowExpression<string> account, WorkflowExpression<string> ciId, WorkflowExpression<string> bodyassetLabel = null, WorkflowExpression<string> bodypurchasePrice = null, WorkflowExpression<string> bodyautomaticRenewal = null, WorkflowExpression<string> bodyestimatedPercentageUse = null, WorkflowExpression<string> bodyinstallationDate = null, WorkflowExpression<string> bodyavailableField1 = null, WorkflowExpression<string> bodycommentAsset = null)
         {

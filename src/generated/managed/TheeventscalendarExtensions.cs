@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEventsResponse> __BuildCreateEvents(WorkflowExpression<int> bodyauthor = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyexcerpt = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<bool> bodyallDay = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<string> bodycost = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<bool> bodyshowMap = null, WorkflowExpression<bool> bodyshowMapLink = null, WorkflowExpression<bool> bodyhideFromListings = null, WorkflowExpression<bool> bodysticky = null, WorkflowExpression<bool> bodyfeatured = null, WorkflowExpression<string> bodycategories = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodyvenue = null, WorkflowExpression<string> bodyorganizer = null)
         {

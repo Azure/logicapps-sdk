@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Feedback> __BuildSendFeedbackRequest(WorkflowExpression<string> bodyfeedbackSubject, WorkflowExpression<string> bodyfeedbackProvider, WorkflowExpression<string> bodyrequestNote, WorkflowExpression<string> bodytemplateTitle, WorkflowExpression<double> bodydueDays, WorkflowExpression<bool> bodyisPrivate)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Feedback> __BuildSendExternalFeedbackRequest(WorkflowExpression<string> bodyfeedbackSubject, WorkflowExpression<string> bodyexternalEmail, WorkflowExpression<string> bodyproviderName, WorkflowExpression<string> bodyrequestNote, WorkflowExpression<string> bodytemplateTitle, WorkflowExpression<double> bodydueDays, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<bool> bodyisAnonymous)
         {
@@ -114,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Goal> __BuildGetGoal(WorkflowExpression<string> goalId)
         {
@@ -136,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Goal[]> __BuildGetGoals(WorkflowExpression<string> userOID = null, WorkflowExpression<string> userUPN = null, WorkflowExpression<string> search = null, WorkflowExpression<string> selectedLabels = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> skip = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
         {
@@ -180,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Goal> __BuildUpdateGoal(WorkflowExpression<string> bodygoalID, WorkflowExpression<string> bodynewProgressValue, WorkflowExpression<bodyupdaterTypeInput> bodyupdaterType, WorkflowExpression<string> bodysystemName, WorkflowExpression<string> bodyupdateComment = null, WorkflowExpression<string> bodynewStatus = null)
         {
@@ -233,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Goal> __BuildCreateGoal(WorkflowExpression<string> bodygoalTitle, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodydueDate, WorkflowExpression<string> bodygoalType, WorkflowExpression<object> bodygoalOwner, WorkflowExpression<string> bodygoalCreator, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<string> bodyprogressFormat, WorkflowExpression<string> bodycurrencyCode, WorkflowExpression<double> bodyinitialValue, WorkflowExpression<double> bodytargetValue, WorkflowExpression<string> bodyparentGoalID, WorkflowExpression<bool> bodynotifyOwner)
         {
@@ -302,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Goal> __BuildAddCommentGoal(WorkflowExpression<string> commentidOfTheGoal, WorkflowExpression<string> commentobjectIdOrUserPrincipalNameOfTheCommenter, WorkflowExpression<string> commentcommentItself)
         {
@@ -338,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecognitionResponse> __BuildGetRecognition(WorkflowExpression<string> recognitionId)
         {
@@ -359,7 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecognitionResponse[]> __BuildGetRecognitions(WorkflowExpression<string[]> bodyrecipientsToSearch, WorkflowExpression<string> bodyrecognitionTitle, WorkflowExpression<string> bodyupdateDate, WorkflowExpression<string> bodycreationDate)
         {
@@ -398,7 +389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecognitionCreateResponse> __BuildCreateRecognition(WorkflowExpression<string> bodyrecognitionSender, WorkflowExpression<string[]> bodyrecognitionRecipients, WorkflowExpression<string> bodybadgeTitle, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<string> bodyrecognitionMessage)
         {
@@ -440,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildGetTask(WorkflowExpression<string> taskId)
         {
@@ -461,7 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject[]> __BuildGetTasks(WorkflowExpression<string> userOID = null, WorkflowExpression<string> userUPN = null, WorkflowExpression<string> search = null, WorkflowExpression<double> limit = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
         {
@@ -502,7 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<User> __BuildGetUser(WorkflowExpression<string> userMail)
         {
@@ -524,7 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateUser(WorkflowExpression<string> bodyuserEmail = null, WorkflowExpression<bodyuserAttributesInputItem[]> bodyuserAttributes = null)
         {

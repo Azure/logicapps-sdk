@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListCloudPCsResponse> __BuildListCloudPCs(WorkflowExpression<selectInput> select = null, WorkflowExpression<string> filter = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetACloudPCObjectResponse> __BuildGetACloudPCObject(WorkflowExpression<string> cloudPcId, WorkflowExpression<selectInput> select = null)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoteActions(WorkflowExpression<string> cloudPcId, WorkflowExpression<remoteActionInput> remoteAction, WorkflowExpression<string> bodycloudPcSnapshotId = null, WorkflowExpression<string> bodydisplayName = null)
         {
@@ -111,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
         {
@@ -156,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAssignAProvisioningPolicyToAGroup(WorkflowExpression<string> id, WorkflowExpression<bodyassignmentsInputItem[]> bodyassignments)
         {
@@ -188,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateAProvisioningPolicyV1Response> __BuildCreateAProvisioningPolicy(WorkflowExpression<string> bodydisplayName, WorkflowExpression<string> bodydescription, WorkflowExpression<bodydomainJoinConfigurationsInputItem[]> bodydomainJoinConfigurations, WorkflowExpression<string> bodyimageId, WorkflowExpression<string> bodyimageDisplayName, WorkflowExpression<bodyimageTypeInput> bodyimageType, WorkflowExpression<bodyprovisioningTypeInput> bodyprovisioningType, WorkflowExpression<bool> bodyenableSingleSignOn = null, WorkflowExpression<string> bodywindowsSettinglocale = null, WorkflowExpression<string> bodymicrosoftManagedDesktopmanagedType = null, WorkflowExpression<string> bodymicrosoftManagedDesktopprofile = null)
         {
@@ -289,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteAProvisioningPolicy(WorkflowExpression<string> id)
         {
@@ -310,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAProvisioningPolicyV1Response> __BuildGetAProvisioningPolicy(WorkflowExpression<string> id, WorkflowExpression<selectInput> select = null, WorkflowExpression<string> expand = null)
         {
@@ -338,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProvisioningPoliciesV1Response> __BuildGetProvisioningPolicies(WorkflowExpression<selectInput> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null)
         {
@@ -368,7 +359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateAProvisioningPolicy(WorkflowExpression<string> id, WorkflowExpression<string> bodyautopatchautopatchGroupId = null, WorkflowExpression<string> bodyautopilotConfigurationdevicePreparationProfileId = null, WorkflowExpression<int> bodyautopilotConfigurationapplicationTimeoutInMinutes = null, WorkflowExpression<bool> bodyautopilotConfigurationonFailureDeviceAccessDenied = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<bodydomainJoinConfigurationsInputItem[]> bodydomainJoinConfigurations = null, WorkflowExpression<bool> bodyenableSingleSignOn = null, WorkflowExpression<string> bodyimageDisplayName = null, WorkflowExpression<string> bodyimageId = null, WorkflowExpression<string> bodyimageType = null, WorkflowExpression<string> bodymicrosoftManagedDesktopmanagedType = null, WorkflowExpression<string> bodymicrosoftManagedDesktopprofile = null, WorkflowExpression<string> bodywindowsSettinglocale = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRegisterWebhookV2New(WorkflowExpression<string> workspaceId, WorkflowExpression<string> contractId)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse> __BuildSignContractFromProvidedFileV2New(WorkflowExpression<string> workspaceId, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent, WorkflowExpression<bodypeopleInputItem[]> bodypeople, WorkflowExpression<string> bodycontractNumber = null, WorkflowExpression<bodylanguageInput> bodylanguage = null, WorkflowExpression<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, WorkflowExpression<string> bodysettingsautosignByProposer = null, WorkflowExpression<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
         {
@@ -133,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse> __BuildSignContractFromProvidedFileV2NewWait(WorkflowExpression<string> workspaceId, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent, WorkflowExpression<bodypeopleInputItem2[]> bodypeople, WorkflowExpression<string> bodycontractNumber = null, WorkflowExpression<bodylanguageInput> bodylanguage = null, WorkflowExpression<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, WorkflowExpression<string> bodysettingsautosignByProposer = null, WorkflowExpression<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
         {
@@ -218,7 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContractDetailV2Response> __BuildGetContractDetail(WorkflowExpression<string> workspaceId, WorkflowExpression<string> contractId)
         {
@@ -241,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetContractPdf(WorkflowExpression<string> workspaceId, WorkflowExpression<string> contractId)
         {
@@ -264,7 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetRevisionListPdf(WorkflowExpression<string> workspaceId, WorkflowExpression<string> bodycontractID = null)
         {
@@ -300,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplatesV2Response> __BuildGetTemplates(WorkflowExpression<string> workspaceId)
         {
@@ -331,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2Response> __BuildSignContractFromProvidedFile(WorkflowExpression<string> workspaceId, WorkflowExpression<int> bodysignatureSignerPage, WorkflowExpression<string> bodysignerEMail, WorkflowExpression<bodysignerTypeInput> bodysignerType, WorkflowExpression<string> bodycontractSignDate, WorkflowExpression<string> bodyauthorEMail, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodycontractName, WorkflowExpression<string> bodysignerPhone, WorkflowExpression<string> bodyfile, WorkflowExpression<string> bodysignerSurname, WorkflowExpression<string> bodysignerFirstName, WorkflowExpression<int> bodysignatureSignerX, WorkflowExpression<bool> bodysignerShouldSign, WorkflowExpression<int> bodysignatureSignerY, WorkflowExpression<bool> bodyauthorShouldSign, WorkflowExpression<int> bodysignatureAuthorPage = null, WorkflowExpression<string> bodysignerDateOfBirth = null, WorkflowExpression<string> bodysignerStreet = null, WorkflowExpression<string> bodysignerVATID = null, WorkflowExpression<string> bodysignerCity = null, WorkflowExpression<string> bodysignerCompanyName = null, WorkflowExpression<int> bodysignatureAuthorX = null, WorkflowExpression<string> bodysignerCompanyID = null, WorkflowExpression<string> bodysignerZIP = null, WorkflowExpression<int> bodysignatureAuthorY = null, WorkflowExpression<string> bodycontractNumber = null, WorkflowExpression<string> bodycontractSignLocation = null)
         {
@@ -503,7 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SignContractFromTemplateV2Response> __BuildSignContractFromTemplate(WorkflowExpression<string> workspaceId, WorkflowExpression<bodypersonTypeInput> bodypersonType, WorkflowExpression<string> bodyemailSigner, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodycontractName, WorkflowExpression<bool> bodynegotiatorSign, WorkflowExpression<bool> bodyproposerSign, WorkflowExpression<string> bodyemailAuthor, WorkflowExpression<string> bodystreet = null, WorkflowExpression<string> bodylastnameSigner = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodydic = null, WorkflowExpression<object> bodyparameters = null, WorkflowExpression<string> bodyic = null, WorkflowExpression<string> bodysignDate = null, WorkflowExpression<string> bodysignPlace = null, WorkflowExpression<string> bodyfirstnameSigner = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodyphoneSigner = null, WorkflowExpression<string> bodydateOfBirth = null, WorkflowExpression<string> bodyzipCode = null, WorkflowExpression<string> bodycontractNumber = null)
         {

@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendRabbitMQMessageOutput> __BuildSendRabbitMQMessage(WorkflowExpression<string> queueName, WorkflowExpression<object> message, WorkflowExpression<string> exchangeName = null, WorkflowExpression<string> routingKey = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateQueueOutput> __BuildCreateQueue(WorkflowExpression<object> queueName, WorkflowExpression<bool> durable, WorkflowExpression<string> exchangeName, WorkflowExpression<CreateQueueInputExchangeTypeType> exchangeType, WorkflowExpression<string> bindingKey)
         {
@@ -92,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCompleteMessage(WorkflowExpression<int> deliveryTag, WorkflowExpression<string> consumerTag, WorkflowExpression<CompleteMessageInputAcknowledgementType> acknowledgement, WorkflowExpression<bool> requeueOnReject = null)
         {

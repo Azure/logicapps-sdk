@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Message> __BuildSendMessage(WorkflowExpression<string> sendMessageRequestfrom, WorkflowExpression<string> sendMessageRequestto, WorkflowExpression<string> sendMessageRequestbody, WorkflowExpression<string[]> sendMessageRequestmediaUrl = null, WorkflowExpression<string> sendMessageRequeststatusCallback = null, WorkflowExpression<string> sendMessageRequestmessagingServiceSid = null, WorkflowExpression<string> sendMessageRequestapplicationSid = null, WorkflowExpression<string> sendMessageRequestmaxPrice = null, WorkflowExpression<string> sendMessageRequestvalidityPeriod = null)
         {
@@ -96,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Message> __BuildGetMessage(WorkflowExpression<string> messageId)
         {
@@ -117,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageListV2> __BuildListMessages(WorkflowExpression<string> to = null, WorkflowExpression<string> from = null, WorkflowExpression<string> dateSent = null, WorkflowExpression<int> pageSize = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocationBundle> __BuildGetLocation(WorkflowExpression<string> Id = null, WorkflowExpression<string> identifier = null, WorkflowExpression<string> address = null, WorkflowExpression<string> addressCity = null, WorkflowExpression<string> addressState = null, WorkflowExpression<string> addressPostalcode = null, WorkflowExpression<string> name = null, WorkflowExpression<string> LastUpdated = null, WorkflowExpression<int> page = null, WorkflowExpression<int> Count = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Location> __BuildGetLocationById(WorkflowExpression<string> id)
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OrganizationBundle> __BuildListOrganizations(WorkflowExpression<string> Id = null, WorkflowExpression<string> identifier = null, WorkflowExpression<string> address = null, WorkflowExpression<string> addressCity = null, WorkflowExpression<string> addressState = null, WorkflowExpression<string> addressPostalcode = null, WorkflowExpression<string> name = null, WorkflowExpression<string> LastUpdated = null, WorkflowExpression<int> page = null, WorkflowExpression<int> Count = null)
         {
@@ -139,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Organization> __BuildGetOrganizationById(WorkflowExpression<string> id)
         {
@@ -160,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PractitionerBundle> __BuildListPractitioners(WorkflowExpression<string> Id = null, WorkflowExpression<string> identifier = null, WorkflowExpression<string> family = null, WorkflowExpression<string> given = null, WorkflowExpression<string> name = null, WorkflowExpression<string> LastUpdated = null, WorkflowExpression<int> page = null, WorkflowExpression<int> Count = null)
         {
@@ -204,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Practitioner> __BuildGetPractitionerById(WorkflowExpression<string> id)
         {
@@ -225,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PractitionerRoleBundle> __BuildListPractitionerRoles(WorkflowExpression<string> Id = null, WorkflowExpression<string> practitionerIdentifier = null, WorkflowExpression<string> practitionerName = null, WorkflowExpression<string> LastUpdated = null, WorkflowExpression<int> page = null, WorkflowExpression<int> Count = null)
         {
@@ -263,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PractitionerRole> __BuildGetPractitionerRoleById(WorkflowExpression<string> id)
         {

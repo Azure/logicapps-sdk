@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostList> __BuildListPosts(WorkflowExpression<string> blogId, WorkflowExpression<string> status = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Post> __BuildCreate(WorkflowExpression<string> blogId, WorkflowExpression<string> posttitle, WorkflowExpression<string> postcontent, WorkflowExpression<string[]> postlabels = null, WorkflowExpression<bool> isDraft = null)
         {
@@ -96,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Post> __BuildGet(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Post> __BuildEdit(WorkflowExpression<string> blogId, WorkflowExpression<string> postId, WorkflowExpression<string> posttitle = null, WorkflowExpression<string> postcontent = null, WorkflowExpression<string[]> postlabels = null)
         {
@@ -168,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDelete(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
         {
@@ -190,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Post> __BuildPublish(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
         {
@@ -212,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Post> __BuildRevert(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
         {

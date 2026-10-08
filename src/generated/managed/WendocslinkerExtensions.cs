@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PublishDocxResponse> __BuildPublishDocx(WorkflowExpression<string> requestBodydocName = null, WorkflowExpression<string> requestBodydocumentTemplateData = null, WorkflowExpression<string> requestBodyjsonData = null, WorkflowExpression<string> requestBodylogLevel = null, WorkflowExpression<string> requestBodylanguage = null, WorkflowExpression<string> requestBodycountry = null, WorkflowExpression<string> requestBodyclientType = null)
         {
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PublishPDFResponse> __BuildPublishPDF(WorkflowExpression<string> requestBodydocName = null, WorkflowExpression<string> requestBodydocumentTemplateData = null, WorkflowExpression<string> requestBodyjsonData = null, WorkflowExpression<string> requestBodylogLevel = null, WorkflowExpression<string> requestBodylanguage = null, WorkflowExpression<string> requestBodycountry = null, WorkflowExpression<string> requestBodyclientType = null)
         {
@@ -170,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PublishHtmlResponse> __BuildPublishHtml(WorkflowExpression<string> requestBodydocName = null, WorkflowExpression<string> requestBodydocumentTemplateData = null, WorkflowExpression<string> requestBodyjsonData = null, WorkflowExpression<string> requestBodylogLevel = null, WorkflowExpression<string> requestBodylanguage = null, WorkflowExpression<string> requestBodycountry = null, WorkflowExpression<string> requestBodyclientType = null)
         {

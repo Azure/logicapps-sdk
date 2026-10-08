@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListHolidaysResponse> __BuildListHolidays(WorkflowExpression<string> country, WorkflowExpression<string> year, WorkflowExpression<string> day = null, WorkflowExpression<string> month = null, WorkflowExpression<string> location = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> language = null)
         {

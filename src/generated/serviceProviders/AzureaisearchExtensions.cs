@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildIndexDocuments(WorkflowExpression<string> indexName, WorkflowExpression<JToken[]> documents)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildIndexDocument(WorkflowExpression<string> indexName, WorkflowExpression<object> document)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildVectorSearch(WorkflowExpression<string> indexName, WorkflowExpression<VectorSearchInputSearchVectorType> searchVector, WorkflowExpression<int> kNearestNeighbors, WorkflowExpression<string> search = null, WorkflowExpression<VectorSearchInputSearchModeType> searchMode = null, WorkflowExpression<string> filter = null)
         {
@@ -121,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildIntegratedVectorSearch(WorkflowExpression<string> indexName, WorkflowExpression<string> searchText, WorkflowExpression<int> kNearestNeighbors, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<JToken[]> vectorizedSearchFields = null, WorkflowExpression<JToken[]> selectFields = null)
         {
@@ -174,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeleteDocument(WorkflowExpression<string> indexName, WorkflowExpression<object> document)
         {
@@ -201,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeleteDocuments(WorkflowExpression<string> indexName, WorkflowExpression<JToken[]> documents)
         {
@@ -228,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildMergeDocument(WorkflowExpression<string> indexName, WorkflowExpression<object> document)
         {
@@ -255,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> __BuildKnowledgeAgentRetrieval(WorkflowExpression<string> indexName, WorkflowExpression<string> agentName, WorkflowExpression<KnowledgeAgentRetrievalInputAgentMessageContentTypeItem[]> agentMessageContent)
         {

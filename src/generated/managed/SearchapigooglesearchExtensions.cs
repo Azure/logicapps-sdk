@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<deviceInput> device = null, WorkflowExpression<string> location = null, WorkflowExpression<string> uule = null, WorkflowExpression<string> googleDomain = null, WorkflowExpression<string> gl = null, WorkflowExpression<string> hl = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> cr = null, WorkflowExpression<nfprInput> nfpr = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<safeInput> safe = null, WorkflowExpression<int> num = null, WorkflowExpression<int> page = null)
         {

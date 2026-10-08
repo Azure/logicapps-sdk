@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> __BuildES00DocumentsInfo(WorkflowExpression<string> routeid)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> __BuildES00DocumentsInfoByEntityGid(WorkflowExpression<string> routeid)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildES00DocumentsBlobDataByGid(WorkflowExpression<string> routeid, WorkflowExpression<string> webapitoken = null)
         {
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildES00DocumentsDownloadBlobDataByGID(WorkflowExpression<string> routeid, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
         {
@@ -111,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildES00DocumentsGetES00Blob(WorkflowExpression<string> routeid, WorkflowExpression<string> extType = null, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
         {
@@ -141,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildES00DocumentsGetES00BlobFromObject(WorkflowExpression<string> routeid, WorkflowExpression<string> keyid, WorkflowExpression<int> typeid, WorkflowExpression<string> extType = null, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
         {
@@ -175,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildES00DocumentsPostBodyToES00Blob(WorkflowExpression<string> blobInfogID = null, WorkflowExpression<string> blobInfoobjectID = null, WorkflowExpression<string> blobInfokeyID = null, WorkflowExpression<int> blobInfotypeID = null, WorkflowExpression<string> blobInfoext = null, WorkflowExpression<string> blobInfotextBody = null, WorkflowExpression<bool> blobInfoisNew = null)
         {
@@ -251,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> __BuildES00DocumentsGetBodyFromES00Blob(WorkflowExpression<string> routeid, WorkflowExpression<string> keyid = null, WorkflowExpression<int> typeid = null)
         {
@@ -278,7 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildES00DocumentsDeleteES00Document(WorkflowExpression<string> paramsgID = null, WorkflowExpression<string> paramscode = null, WorkflowExpression<string> paramstitle = null, WorkflowExpression<string> paramsdescription = null, WorkflowExpression<string> paramscaption = null, WorkflowExpression<string> paramseDate = null, WorkflowExpression<string> paramsfType = null, WorkflowExpression<string> paramstableID = null, WorkflowExpression<string> paramstableName = null, WorkflowExpression<string> paramsfGID = null, WorkflowExpression<string> paramsfDetailLineGID = null, WorkflowExpression<string> paramsuNCPath = null, WorkflowExpression<string> paramsoriginalPath = null, WorkflowExpression<string> paramsoriginalFN = null, WorkflowExpression<string> paramsfDocCategoryCode = null, WorkflowExpression<string> paramsfDocGroupCode = null, WorkflowExpression<string> paramsfCompanyCode = null, WorkflowExpression<string> paramsfDocumentCategoryCode = null, WorkflowExpression<string> paramsfDocumentLocationCode = null, WorkflowExpression<string> paramseSDModified = null, WorkflowExpression<string> paramseSUModified = null, WorkflowExpression<string> paramseSDCreated = null, WorkflowExpression<string> paramseSUCreated = null, WorkflowExpression<bool> paramsisBLOB = null, WorkflowExpression<bool> paramsingoing = null, WorkflowExpression<string> paramsfRLSNodeGID = null, WorkflowExpression<int> paramsbLOBDATALength = null, WorkflowExpression<string> paramsbLOBDATA = null)
         {
@@ -501,7 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> __BuildES00DocumentsAddOrUpdateAttachedDocument(WorkflowExpression<string> inDocgID = null, WorkflowExpression<string> inDoccode = null, WorkflowExpression<string> inDoctitle = null, WorkflowExpression<string> inDocdescription = null, WorkflowExpression<string> inDoccaption = null, WorkflowExpression<string> inDoceDate = null, WorkflowExpression<string> inDocfType = null, WorkflowExpression<string> inDoctableID = null, WorkflowExpression<string> inDoctableName = null, WorkflowExpression<string> inDocfGID = null, WorkflowExpression<string> inDocfDetailLineGID = null, WorkflowExpression<string> inDocuNCPath = null, WorkflowExpression<string> inDocoriginalPath = null, WorkflowExpression<string> inDocoriginalFN = null, WorkflowExpression<string> inDocfDocCategoryCode = null, WorkflowExpression<string> inDocfDocGroupCode = null, WorkflowExpression<string> inDocfCompanyCode = null, WorkflowExpression<string> inDocfDocumentCategoryCode = null, WorkflowExpression<string> inDocfDocumentLocationCode = null, WorkflowExpression<string> inDoceSDModified = null, WorkflowExpression<string> inDoceSUModified = null, WorkflowExpression<string> inDoceSDCreated = null, WorkflowExpression<string> inDoceSUCreated = null, WorkflowExpression<bool> inDocisBLOB = null, WorkflowExpression<bool> inDocingoing = null, WorkflowExpression<string> inDocfRLSNodeGID = null, WorkflowExpression<int> inDocbLOBDATALength = null, WorkflowExpression<string> inDocbLOBDATA = null)
         {
@@ -724,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESAsset2FetchWebAsset(WorkflowExpression<string> routeId, WorkflowExpression<bool> base64 = null, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
         {
@@ -754,7 +743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESAsset2DownloadAsset(WorkflowExpression<string> routeId, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
         {
@@ -781,7 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> __BuildESBudgetESBGBudgetSheet(WorkflowExpression<string> pK)
         {
@@ -802,7 +789,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESCollaborationBroadcastMessage(WorkflowExpression<string[]> msgrecipients = null, WorkflowExpression<string> msgmessage = null)
         {
@@ -843,7 +829,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESCollaborationSendEmail(WorkflowExpression<string> msgfromEmailAddr = null, WorkflowExpression<string> msgtoEmailAddr = null, WorkflowExpression<string> msgsubject = null, WorkflowExpression<string> msgbody = null)
         {
@@ -898,7 +883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildESCollaborationSendSMS(WorkflowExpression<string> msgbody = null, WorkflowExpression<string[]> msgrecipients = null, WorkflowExpression<string[]> msgusers = null)
         {
@@ -946,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> __BuildESCollaborationSendViberMessage(WorkflowExpression<string[]> msgrecipients = null, WorkflowExpression<string> msgdateToSend = null, WorkflowExpression<int> msgexpiresInSecs = null, WorkflowExpression<string> msgexpiryText = null, WorkflowExpression<string> msgfReferenceID = null, WorkflowExpression<bool> msgcallback = null, WorkflowExpression<string> msgbody = null, WorkflowExpression<string> msgimage = null, WorkflowExpression<string> msgbuttonAction = null, WorkflowExpression<string> msgbuttonCaption = null, WorkflowExpression<string> msgsMSFallbacksMSText = null)
         {
@@ -1066,7 +1049,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESCollaborationCreateRFARequest(WorkflowExpression<string> rFARequestid, WorkflowExpression<string> rFARequestcode, WorkflowExpression<string> rFARequestrequestedBy, WorkflowExpression<bool> rFARequestisExternal, WorkflowExpression<rFARequestpriorityInput> rFARequestpriority = null, WorkflowExpression<string> rFARequestrequestClass = null, WorkflowExpression<string> rFARequestrequestCategory = null, WorkflowExpression<double> rFARequestnumericValue = null, WorkflowExpression<string> rFARequesttitle = null, WorkflowExpression<string[]> rFARequestrecipientUsers = null, WorkflowExpression<string[]> rFARequestrecipientGroups = null, WorkflowExpression<string> rFARequestrecipienteMail = null, WorkflowExpression<string> rFARequestrecipientPhone = null, WorkflowExpression<string> rFARequestrequestedOnUTC = null, WorkflowExpression<string> rFARequestexpiresOnUTC = null, WorkflowExpression<string> rFARequesttriggeredOn = null)
         {
@@ -1209,7 +1191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESCollaborationRespondToRFARequest(WorkflowExpression<string> rFAResponseid, WorkflowExpression<string> rFAResponsecode, WorkflowExpression<string> rFAResponseresponseBy, WorkflowExpression<string> rFAResponseresponseOrigin, WorkflowExpression<string> rFAResponseresponseOnUTC, WorkflowExpression<string> rFAResponseresponseComments = null)
         {
@@ -1258,7 +1239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> __BuildESCollaborationFetchRequest(WorkflowExpression<string> requestID)
         {
@@ -1280,7 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildESRPCPingServer(WorkflowExpression<string> routeid)
         {
@@ -1301,7 +1280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESTestEBSConnectionTest(WorkflowExpression<string> routeid)
         {
@@ -1322,7 +1300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESEntityDeleteEntityByID(WorkflowExpression<string> entityID, WorkflowExpression<string> pK)
         {
@@ -1346,7 +1323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESEntityDeleteEntityByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string> pK)
         {
@@ -1370,7 +1346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESEntityUpdateEntityByID(WorkflowExpression<string> entityID, WorkflowExpression<string> pK)
         {
@@ -1401,7 +1376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildESEntityUpdateEntityByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string> pK)
         {
@@ -1432,7 +1406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> __BuildESEntityCreateEntityByID(WorkflowExpression<string> entityID)
         {
@@ -1461,7 +1434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> __BuildESEntityCreateEntityByType(WorkflowExpression<entityTypeInput> entityType)
         {
@@ -1490,7 +1462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> __BuildESEntityEntityByID(WorkflowExpression<string> entityID, WorkflowExpression<string> pK)
         {
@@ -1514,7 +1485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> __BuildESEntityEntityByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string> pK)
         {
@@ -1538,7 +1508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESEntityEntitiesByID(WorkflowExpression<string> entityID, WorkflowExpression<string[]> fetchOptionsselectFields = null, WorkflowExpression<string[]> fetchOptionsorderByFields = null, WorkflowExpression<int> fetchOptionspage = null, WorkflowExpression<int> fetchOptionspageSize = null)
         {
@@ -1623,7 +1592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESEntityEntitiesByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string[]> fetchOptionsselectFields = null, WorkflowExpression<string[]> fetchOptionsorderByFields = null, WorkflowExpression<int> fetchOptionspage = null, WorkflowExpression<int> fetchOptionspageSize = null)
         {
@@ -1708,7 +1676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESEntityEntityAutomationNew(WorkflowExpression<string> entity, WorkflowExpression<string> operation)
         {
@@ -1739,7 +1706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESEntityEntityAutomationUpdate(WorkflowExpression<string> entity, WorkflowExpression<string> field, WorkflowExpression<string> id, WorkflowExpression<string> operation)
         {
@@ -1774,7 +1740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESEntityEntityAutomationUpdateByCode(WorkflowExpression<string> entity, WorkflowExpression<string> id, WorkflowExpression<string> operation)
         {
@@ -1807,7 +1772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> __BuildESFinancialsESFIDocumentTrade(WorkflowExpression<string> pK)
         {
@@ -1828,7 +1792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> __BuildESFinancialsESFIItemExpenses(WorkflowExpression<string> pK)
         {
@@ -1849,7 +1812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> __BuildESFinancialsESFICreditor(WorkflowExpression<string> pK)
         {
@@ -1870,7 +1832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> __BuildESFinancialsESFIDocumentCash(WorkflowExpression<string> pK)
         {
@@ -1891,7 +1852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> __BuildESFinancialsESMMStockOrderPlan(WorkflowExpression<string> pK)
         {
@@ -1912,7 +1872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> __BuildESFinancialsESFISupplier(WorkflowExpression<string> pK)
         {
@@ -1933,7 +1892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> __BuildESFinancialsESFIItemExpense(WorkflowExpression<string> pK)
         {
@@ -1954,7 +1912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> __BuildESFinancialsESFISalesPerson(WorkflowExpression<string> pK)
         {
@@ -1975,7 +1932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> __BuildESFinancialsESFIPaymentMethod(WorkflowExpression<string> pK)
         {
@@ -1996,7 +1952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> __BuildESFinancialsESFIItem(WorkflowExpression<string> pK)
         {
@@ -2017,7 +1972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> __BuildESFinancialsESFISpecialAccount(WorkflowExpression<string> pK)
         {
@@ -2038,7 +1992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> __BuildESFinancialsESFIDocumentStock(WorkflowExpression<string> pK)
         {
@@ -2059,7 +2012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> __BuildESFinancialsESFINote(WorkflowExpression<string> pK)
         {
@@ -2080,7 +2032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> __BuildESFinancialsESFITradeAccountContract(WorkflowExpression<string> pK)
         {
@@ -2101,7 +2052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> __BuildESFinancialsESFIVoucher(WorkflowExpression<string> pK)
         {
@@ -2122,7 +2072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> __BuildESFinancialsESFICustomer(WorkflowExpression<string> pK)
         {
@@ -2143,7 +2092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> __BuildESFinancialsESFIDebtor(WorkflowExpression<string> pK)
         {
@@ -2164,7 +2112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> __BuildESFinancialsESFIPricelist(WorkflowExpression<string> pK)
         {
@@ -2185,7 +2132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> __BuildESFinancialsESFIItemService(WorkflowExpression<string> pK)
         {
@@ -2206,7 +2152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> __BuildESFinancialsESFICashAccount(WorkflowExpression<string> pK)
         {
@@ -2227,7 +2172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> __BuildESFinancialsESFIDocumentAdjustment(WorkflowExpression<string> pK)
         {
@@ -2248,7 +2192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> __BuildESFinancialsESFITradeAccount(WorkflowExpression<string> pK)
         {
@@ -2269,7 +2212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> __BuildESFixedAssetESFAFixedAsset(WorkflowExpression<string> pK)
         {
@@ -2290,7 +2232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> __BuildESGlobalObjectsESGOPerson(WorkflowExpression<string> pK)
         {
@@ -2311,7 +2252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> __BuildESGlobalObjectsES00Device(WorkflowExpression<string> pK)
         {
@@ -2332,7 +2272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> __BuildESGlobalObjectsESGOWebUser(WorkflowExpression<string> pK)
         {
@@ -2353,7 +2292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> __BuildESGlobalObjectsESGOUser(WorkflowExpression<string> pK)
         {
@@ -2374,7 +2312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> __BuildESBusinessHookGet(WorkflowExpression<string> hookID)
         {
@@ -2395,7 +2332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> __BuildESPodHookGet(WorkflowExpression<string> hookID)
         {
@@ -2416,7 +2352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> __BuildESRFAHookGet(WorkflowExpression<string> hookID)
         {
@@ -2437,7 +2372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> __BuildESHookGet(WorkflowExpression<string> hookID)
         {
@@ -2458,7 +2392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> __BuildESSystemHookGet(WorkflowExpression<string> hookID)
         {
@@ -2479,7 +2412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> __BuildESMachineLearningESMLModel(WorkflowExpression<string> pK)
         {
@@ -2500,7 +2432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> __BuildESMaterialManagementESMMSerialNumber(WorkflowExpression<string> pK)
         {
@@ -2521,7 +2452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> __BuildESMaterialManagementESMMCatalogueItem(WorkflowExpression<string> pK)
         {
@@ -2542,7 +2472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> __BuildESMaterialManagementESMMStorageLocation(WorkflowExpression<string> pK)
         {
@@ -2563,7 +2492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> __BuildESMaterialManagementESMMStockItem(WorkflowExpression<string> pK)
         {
@@ -2584,7 +2512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> __BuildESMaterialManagementESMMCommercialProfile(WorkflowExpression<string> pK)
         {
@@ -2605,7 +2532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> __BuildESMaterialManagementESMMSortiment(WorkflowExpression<string> pK)
         {
@@ -2626,7 +2552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> __BuildESMaterialManagementESMMLot(WorkflowExpression<string> pK)
         {
@@ -2647,7 +2572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> __BuildESMaterialManagementESMMProductionPlan(WorkflowExpression<string> pK)
         {
@@ -2668,7 +2592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESDeviceFetchDeviceInfo(WorkflowExpression<string> deviceCode)
         {
@@ -2689,7 +2612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> __BuildESRPCFetchPropertySet(WorkflowExpression<string> routeId)
         {
@@ -2710,7 +2632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScale> __BuildESRPCFetchESScale(WorkflowExpression<string> routeId)
         {
@@ -2731,7 +2652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> __BuildESRPCPublicQueryLayout(WorkflowExpression<string> routeId)
         {
@@ -2752,7 +2672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESRPCGetPQData(WorkflowExpression<string> routeId, WorkflowExpression<int> pqOptionsPage = null, WorkflowExpression<int> pqOptionsPageSize = null, WorkflowExpression<bool> pqOptionsWithCount = null)
         {
@@ -2782,7 +2701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildESRPCFIImportDocument(WorkflowExpression<string> inputXMLAsString = null)
         {
@@ -2804,7 +2722,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESRPCGetPQData2(WorkflowExpression<string> routeId, WorkflowExpression<int> pqOptionsPage = null, WorkflowExpression<int> pqOptionsPageSize = null, WorkflowExpression<bool> pqOptionsWithCount = null)
         {
@@ -2841,7 +2758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildESRPCLog(WorkflowExpression<string> iD, WorkflowExpression<string> description = null, WorkflowExpression<severityInput> severity = null)
         {
@@ -2869,7 +2785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> __BuildESRPCFetchCompanyParam(WorkflowExpression<string> routeId)
         {
@@ -2890,7 +2805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildESRPCParameterValue(WorkflowExpression<string> routeId)
         {
@@ -2911,7 +2825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> __BuildESRPCFetchCompanyParams(WorkflowExpression<string> routeId)
         {
@@ -2932,7 +2845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> __BuildESRPCExecuteScrollerCommand(WorkflowExpression<string> eSScrollerCommandscrollerID, WorkflowExpression<string> eSScrollerCommandcommandID, WorkflowExpression<string> eSScrollerCommandscrollerDatasetJson = null, WorkflowExpression<bool> eSScrollerCommandrequiresTransaction = null, WorkflowExpression<bool> eSScrollerCommandonlyPrepareTargetDatasets = null, WorkflowExpression<bool> eSScrollerCommandreturnTargetDatasets = null, WorkflowExpression<bool> eSScrollerCommandreturnScrollerDataset = null, WorkflowExpression<bool> eSScrollerCommandreturnEntersoftDatasets = null)
         {
@@ -3039,7 +2951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> __BuildESRPCExecuteCommand(WorkflowExpression<string> eSCommandInscrollerID, WorkflowExpression<string> eSCommandIncommandID)
         {
@@ -3088,7 +2999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> __BuildESRPCExecuteFormCommand(WorkflowExpression<string> formCommandentityID = null, WorkflowExpression<string> formCommandcommandID = null, WorkflowExpression<string> formCommandentityDatasetJson = null, WorkflowExpression<string> formCommandentityGID = null, WorkflowExpression<string[]> formCommandentityGIDs = null, WorkflowExpression<string> formCommandentityCode = null, WorkflowExpression<string[]> formCommandentityCodes = null, WorkflowExpression<string> formCommandentityScrollerID = null, WorkflowExpression<bool> formCommandrequiresTransaction = null, WorkflowExpression<bool> formCommandcreateNewEmptySourceEntity = null, WorkflowExpression<bool> formCommandonlyPrepareTargetDatasets = null, WorkflowExpression<bool> formCommandreturnSourceDatasets = null, WorkflowExpression<bool> formCommandreturnTargetDatasets = null, WorkflowExpression<bool> formCommandreturnMap = null, WorkflowExpression<bool> formCommandreturnEntersoftDatasets = null)
         {
@@ -3260,7 +3170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGETESRPCEbsService2(WorkflowExpression<string> routeId)
         {
@@ -3281,7 +3190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPOSTESRPCEbsService2(WorkflowExpression<string> routeId)
         {
@@ -3302,7 +3210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> __BuildESTaskManagementESTMMobileTaskType(WorkflowExpression<string> pK)
         {
@@ -3323,7 +3230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> __BuildESTaskManagementESTMServiceRequest(WorkflowExpression<string> pK)
         {
@@ -3344,7 +3250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> __BuildESTaskManagementESTMRFMModel(WorkflowExpression<string> pK)
         {
@@ -3365,7 +3270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> __BuildESTaskManagementESTMNewsletterRecipient(WorkflowExpression<string> pK)
         {
@@ -3386,7 +3290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> __BuildESTaskManagementESTMInteraction(WorkflowExpression<string> pK)
         {
@@ -3407,7 +3310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> __BuildESTaskManagementESTMObjectRating(WorkflowExpression<string> pK)
         {
@@ -3428,7 +3330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> __BuildESTaskManagementESTMTask(WorkflowExpression<string> pK)
         {
@@ -3449,7 +3350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> __BuildESTaskManagementESTMResource(WorkflowExpression<string> pK)
         {
@@ -3470,7 +3370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> __BuildESTaskManagementESTMCampaign(WorkflowExpression<string> pK)
         {
@@ -3491,7 +3390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> __BuildESTaskManagementESTMSMActivity(WorkflowExpression<string> pK)
         {
@@ -3512,7 +3410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> __BuildESTaskManagementESTMOpportunity(WorkflowExpression<string> pK)
         {
@@ -3533,7 +3430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> __BuildESWarehouseManagementESWMTransportAction(WorkflowExpression<string> pK)
         {
@@ -3554,7 +3450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> __BuildESWarehouseManagementESWMAction(WorkflowExpression<string> pK)
         {
@@ -3575,7 +3470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> __BuildESWarehouseManagementESWMShipment(WorkflowExpression<string> pK)
         {
@@ -3596,7 +3490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> __BuildESWarehouseManagementESWMWorkPackage(WorkflowExpression<string> pK)
         {
@@ -3617,7 +3510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> __BuildESWarehouseManagementESWMRequest(WorkflowExpression<string> pK)
         {
@@ -3638,7 +3530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> __BuildESWarehouseManagementESWMContainer(WorkflowExpression<string> pK)
         {
@@ -3659,7 +3550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> __BuildESWorkInProgressESWPTaskRequest(WorkflowExpression<string> pK)
         {
@@ -3680,7 +3570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> __BuildESWorkInProgressESWPWorkPackage(WorkflowExpression<string> pK)
         {
@@ -3701,7 +3590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> __BuildESWorkInProgressESWPActualTask(WorkflowExpression<string> pK)
         {

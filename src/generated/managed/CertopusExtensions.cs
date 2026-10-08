@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCredentialResponse> __BuildCreateCredential(WorkflowExpression<string> bodyorganisationId, WorkflowExpression<string> bodyeventId, WorkflowExpression<string> bodycategoryId, WorkflowExpression<bool> bodygenerate = null, WorkflowExpression<bool> bodypublish = null, WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients = null)
         {

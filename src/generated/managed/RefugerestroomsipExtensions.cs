@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RestroomsByDateResponseItem[]> __BuildRestroomsByDate(WorkflowExpression<int> day, WorkflowExpression<int> month, WorkflowExpression<int> year, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> ada = null, WorkflowExpression<bool> unisex = null, WorkflowExpression<bool> updated = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> __BuildRestroomsByLocation(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> ada = null, WorkflowExpression<bool> unisex = null)
         {
@@ -101,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RestroomsSearchResponseItem[]> __BuildRestroomsSearch(WorkflowExpression<string> query, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> ada = null, WorkflowExpression<bool> unisex = null)
         {
@@ -138,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RestroomsResponseItem[]> __BuildRestrooms(WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> ada = null, WorkflowExpression<bool> unisex = null)
         {

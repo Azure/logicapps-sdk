@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentimentClassifierResponseItem[]> __BuildSentimentClassifier(WorkflowExpression<bodydataInputItem[]> bodydata = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PIIScrubberResponse> __BuildPIIScrubber(WorkflowExpression<string> bodydata = null, WorkflowExpression<string> bodyentityList = null)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> __BuildKeyPhraseExtractor(WorkflowExpression<string> bodytext = null, WorkflowExpression<int> bodykeyphrasesCount = null, WorkflowExpression<double> bodydiversityThreshold = null, WorkflowExpression<double> bodyaliasThreshold = null)
         {

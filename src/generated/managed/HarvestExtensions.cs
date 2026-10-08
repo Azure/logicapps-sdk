@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddNewContact(WorkflowExpression<int> bodycontactclientId = null, WorkflowExpression<string> bodycontactfirstName = null, WorkflowExpression<string> bodycontactlastName = null, WorkflowExpression<string> bodycontactemail = null, WorkflowExpression<string> bodycontactofficePhone = null, WorkflowExpression<string> bodycontactmobilePhone = null, WorkflowExpression<string> bodycontactfax = null, WorkflowExpression<string> bodycontacttitle = null)
         {
@@ -126,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddNewClient(WorkflowExpression<string> bodyclientname = null, WorkflowExpression<string> bodyclientcurrency = null, WorkflowExpression<string> bodyclientcurrencySymbol = null, WorkflowExpression<string> bodyclientdetails = null)
         {
@@ -189,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateUser(WorkflowExpression<string> bodyuseremail = null, WorkflowExpression<bool> bodyuserisAdmin = null, WorkflowExpression<string> bodyuserfirstName = null, WorkflowExpression<string> bodyuserlastName = null, WorkflowExpression<bool> bodyuserisContractor = null, WorkflowExpression<string> bodyuserphone = null, WorkflowExpression<double> bodyuserhourlyRate = null, WorkflowExpression<string> bodyuserdepartment = null, WorkflowExpression<double> bodyusercostRate = null)
         {
@@ -289,7 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> __BuildUpdateTimeEntry(WorkflowExpression<string> dAYENTRYID, WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodystartedDateTime = null, WorkflowExpression<string> bodyendedDateTime = null, WorkflowExpression<string> bodydate = null)
         {
@@ -351,7 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> __BuildCreateTimeEntry(WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodynotes = null, WorkflowExpression<int> bodyhours = null, WorkflowExpression<string> bodydate = null)
         {
@@ -414,7 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTimeEntry(WorkflowExpression<string> dAYENTRYID)
         {
@@ -435,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddUserToProject(WorkflowExpression<string> projectId, WorkflowExpression<int> bodyuseruserId = null)
         {
@@ -478,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> __BuildGetTimeEntry(WorkflowExpression<string> dAYENTRYID)
         {
@@ -508,7 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserByIDResponse> __BuildGetUser(WorkflowExpression<string> uSERID)
         {

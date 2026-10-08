@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<string> bodytoken = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<bodyagreeTermsOfServiceInput> bodyagreeTermsOfService = null, WorkflowExpression<bodynotMinorInput> bodynotMinor = null, WorkflowExpression<string> bodythanksCode = null)
         {
@@ -108,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TokenPutResponse> __BuildTokenPut(WorkflowExpression<string> bodynewToken, WorkflowExpression<string> bodythanksCode = null)
         {
@@ -145,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProfilePutResponse> __BuildProfilePut(WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodygravatarIconEmail = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodyaboutURL = null, WorkflowExpression<string[]> bodycontributeURLs = null, WorkflowExpression<string> bodypinnedGraphID = null)
         {
@@ -230,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphDeleteResponse> __BuildGraphDelete(WorkflowExpression<string> graphID)
         {
@@ -252,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphPostResponse> __BuildGraph(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyunit, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bodycolorInput> bodycolor, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodyselfSufficient = null, WorkflowExpression<bool> bodyisSecret = null, WorkflowExpression<bool> bodypublishOptionalData = null)
         {
@@ -322,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphPutResponse> __BuildGraphPut(WorkflowExpression<string> graphID, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyunit = null, WorkflowExpression<bodycolorInput> bodycolor = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodyselfSufficient = null, WorkflowExpression<bool> bodyisSecret = null, WorkflowExpression<bool> bodypublishOptionalData = null)
         {
@@ -420,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphGetResponse> __BuildGraphGet(WorkflowExpression<string> graphID)
         {
@@ -442,7 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphSVGGetResponse> __BuildGraphSVGGet(WorkflowExpression<string> graphID, WorkflowExpression<string> date = null, WorkflowExpression<modeInput> mode = null, WorkflowExpression<appearanceInput> appearance = null)
         {
@@ -473,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelsGetResponse> __BuildPixelsGet(WorkflowExpression<string> graphID, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null, WorkflowExpression<bool> withBody = null)
         {
@@ -504,7 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatsGetResponse> __BuildStatsGet(WorkflowExpression<string> graphID)
         {
@@ -526,7 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelPostResponse> __BuildPixel(WorkflowExpression<string> graphID, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodyquantity)
         {
@@ -569,7 +558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelGetResponse> __BuildPixelGet(WorkflowExpression<string> graphID, WorkflowExpression<string> yyyyMMdd)
         {
@@ -593,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelDeleteResponse> __BuildPixelDelete(WorkflowExpression<string> graphID, WorkflowExpression<string> yyyyMMdd)
         {
@@ -617,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelPutResponse> __BuildPixelPut(WorkflowExpression<string> graphID, WorkflowExpression<string> yyyyMMdd)
         {
@@ -641,7 +627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelRetinaGetResponse> __BuildPixelRetinaGet(WorkflowExpression<string> graphID, WorkflowExpression<string> yyyyMMdd)
         {
@@ -665,7 +650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelIncrementPutResponse> __BuildPixelIncrementPut(WorkflowExpression<string> graphID = null)
         {
@@ -689,7 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelDecrementPutResponse> __BuildPixelDecrementPut(WorkflowExpression<string> graphID = null)
         {
@@ -713,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelAddPutResponse> __BuildPixelAddPut(WorkflowExpression<string> graphID, WorkflowExpression<int> bodyquantity = null)
         {
@@ -749,7 +731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelSubtractPutResponse> __BuildPixelSubtractPut(WorkflowExpression<string> graphID, WorkflowExpression<int> bodyquantity = null)
         {

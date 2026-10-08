@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItemByExternalId(WorkflowExpression<string> table, WorkflowExpression<string> externalIdField, WorkflowExpression<string> externalId)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableAccount(WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableUser(WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -155,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableCase(WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -190,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableOpportunity(WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -225,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableProduct2(WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -260,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableContact(WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
         {
@@ -295,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> table, WorkflowExpression<string> id)
         {
@@ -317,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteSoqlQuery(WorkflowExpression<string> queryParameterssOQLQuery)
         {
@@ -355,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllJobsResponse> __BuildGetAllJobs(WorkflowExpression<concurrenyModeInput> concurrenyMode = null, WorkflowExpression<bool> isPkChunkingEnabled = null, WorkflowExpression<jobTypeInput> jobType = null, WorkflowExpression<string> queryLocator = null)
         {
@@ -388,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUploadJobData(WorkflowExpression<string> jobId, WorkflowExpression<string> body = null)
         {
@@ -411,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckJobResponse> __BuildGetJobInfo(WorkflowExpression<string> jobId)
         {
@@ -432,7 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobInfo> __BuildCloseJob(WorkflowExpression<string> jobId, WorkflowExpression<bodystateInput> bodystate)
         {
@@ -463,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteJob(WorkflowExpression<string> jobId)
         {
@@ -484,7 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetJobRecordResults(WorkflowExpression<string> jobId, WorkflowExpression<resultTypeInput> resultType)
         {
@@ -507,7 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SOSLSearchQueryResponse> __BuildExecuteSOSLQuery(WorkflowExpression<string> q)
         {
@@ -529,7 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
         {
@@ -574,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MCPQueryResponse> __BuildMcpSalesforceManagement(WorkflowExpression<string> queryRequestjsonrpc = null, WorkflowExpression<string> queryRequestid = null, WorkflowExpression<string> queryRequestmethod = null, WorkflowExpression<string> sessionId = null)
         {
@@ -649,7 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateJobResponse> __BuildCreateJob(WorkflowExpression<string> parametersobject, WorkflowExpression<parametersoperationInput> parametersoperation, WorkflowExpression<string> parameterscolumnDelimiter = null, WorkflowExpression<string> parametersexternalIDFieldName = null, WorkflowExpression<string> parameterslineEnding = null, WorkflowExpression<string> parameterscontentType = null)
         {
@@ -710,7 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {
@@ -735,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<object> item = null, WorkflowExpression<string> select = null)
         {
@@ -762,7 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPatchItemByExternalId(WorkflowExpression<string> table, WorkflowExpression<string> externalIdField, WorkflowExpression<string> externalId, WorkflowExpression<object> item = null)
         {
@@ -787,7 +764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> table, WorkflowExpression<object> item = null)
         {

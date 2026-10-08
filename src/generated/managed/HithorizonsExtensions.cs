@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanyDetailResultApiResponse> __BuildCompanyGet(WorkflowExpression<string> hitHorizonsId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanySearchResponseApiResponse> __BuildCompanySearch(WorkflowExpression<string> dUNSNumber = null, WorkflowExpression<string> companyName = null, WorkflowExpression<string> nationalId = null, WorkflowExpression<string> addressUnstructured = null, WorkflowExpression<string> addressStreet = null, WorkflowExpression<string> city = null, WorkflowExpression<string> stateProvince = null, WorkflowExpression<string> country = null, WorkflowExpression<bool> showBranches = null, WorkflowExpression<string> companyTypes = null, WorkflowExpression<int> maxResults = null)
         {
@@ -95,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CompanySearchResponseApiResponse> __BuildCompanySearchUnstructured(WorkflowExpression<string> ids = null, WorkflowExpression<string> name = null, WorkflowExpression<string> address = null, WorkflowExpression<bool> showBranches = null, WorkflowExpression<string> companyTypes = null, WorkflowExpression<int> maxResults = null)
         {

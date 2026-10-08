@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FormGetResponse> __BuildFormGet(WorkflowExpression<string> formId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildForm(WorkflowExpression<string> bodyformId = null, WorkflowExpression<string> bodytemplateFormId = null, WorkflowExpression<bodystepsInputItem[]> bodysteps = null, WorkflowExpression<bodynavigationRulesInputItem[]> bodynavigationRules = null)
         {
@@ -111,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserSessionGetResponse> __BuildUserSessionGet(WorkflowExpression<string> userId, WorkflowExpression<string> formKey)
         {
@@ -133,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null)
         {
@@ -170,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUserDelete(WorkflowExpression<string> id)
         {
@@ -191,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserFieldsGetResponseItem[]> __BuildUserFieldsGet(WorkflowExpression<string> id = null)
         {
@@ -214,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserFieldPostResponse> __BuildUserField(WorkflowExpression<string> id, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<string> bodyvalue = null)
         {

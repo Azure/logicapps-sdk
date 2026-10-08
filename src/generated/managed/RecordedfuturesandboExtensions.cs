@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetReportResponse> __BuildGetReport(WorkflowExpression<string> sandboxToken, WorkflowExpression<string> sampleID)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSummaryResponse> __BuildGetSummary(WorkflowExpression<string> sandboxToken, WorkflowExpression<string> sampleID)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubmitUrlSampleResponse> __BuildSubmitUrlSample(WorkflowExpression<string> sandboxToken, WorkflowExpression<string> bodyurl = null)
         {
@@ -100,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubmitFileSampleResponse> __BuildSubmitFileSample(WorkflowExpression<string> sandboxToken, WorkflowExpression<object> file, WorkflowExpression<string> password = null, WorkflowExpression<string> userTags = null)
         {

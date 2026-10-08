@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEmployeeResponseItem[]> __BuildGetEmployee(WorkflowExpression<string> filter = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddEmployee(WorkflowExpression<string> bodyxEmail, WorkflowExpression<string> bodyxFirstName, WorkflowExpression<string> bodyxLastName, WorkflowExpression<string> bodyxAddress1 = null, WorkflowExpression<string> bodyxCity = null, WorkflowExpression<string> bodyxPersonalEmail = null, WorkflowExpression<string> bodyxRecordStatus = null, WorkflowExpression<string> bodyxStartDate = null, WorkflowExpression<string> bodyxState = null, WorkflowExpression<string> bodyxZipCode = null, WorkflowExpression<string> bodyxEmployeeNumber = null, WorkflowExpression<string> bodyxEmploymentStatusLookup = null, WorkflowExpression<string> bodyxLocationLookup = null, WorkflowExpression<string> bodyxPositionLookup = null, WorkflowExpression<string> bodyxDivisionLookup = null, WorkflowExpression<string> bodyxDepartmentLookup = null)
         {
@@ -179,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateEmployee(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyxAddress1 = null, WorkflowExpression<string> bodyxCity = null, WorkflowExpression<string> bodyxEmail = null, WorkflowExpression<string> bodyxFirstName = null, WorkflowExpression<string> bodyxLastName = null, WorkflowExpression<string> bodyxPersonalEmail = null, WorkflowExpression<string> bodyxRecordStatus = null, WorkflowExpression<string> bodyxStartDate = null, WorkflowExpression<string> bodyxState = null, WorkflowExpression<string> bodyxZipCode = null, WorkflowExpression<string> bodyxEmployeeNumber = null, WorkflowExpression<string> bodyxEmploymentStatusLookup = null, WorkflowExpression<string> bodyxLocationLookup = null, WorkflowExpression<string> bodyxPositionLookup = null, WorkflowExpression<string> bodyxDivisionLookup = null, WorkflowExpression<string> bodyxDepartmentLookup = null)
         {
@@ -321,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDepartmentResponseItem[]> __BuildGetDepartment(WorkflowExpression<string> filter = null)
         {
@@ -345,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLocationResponseItem[]> __BuildGetLocation(WorkflowExpression<string> filter = null)
         {
@@ -369,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPositionResponseItem[]> __BuildGetPosition(WorkflowExpression<string> filter = null)
         {
@@ -393,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDivisionResponseItem[]> __BuildGetDivision(WorkflowExpression<string> filter = null)
         {
@@ -417,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> __BuildGetEmploymentStatus(WorkflowExpression<string> filter = null)
         {

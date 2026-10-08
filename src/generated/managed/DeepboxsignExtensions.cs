@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Document> __BuildUploadDocument(WorkflowExpression<object> data, WorkflowExpression<object> file)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Document> __BuildGetDocumentDetails(WorkflowExpression<string> documentId)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Observer> __BuildAddObserver(WorkflowExpression<string> documentId, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<bool> bodyisAdmin = null, WorkflowExpression<string> bodylanguage = null)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveObserver(WorkflowExpression<string> documentId, WorkflowExpression<string> observerId)
         {
@@ -139,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Signee[]> __BuildGetSignees(WorkflowExpression<string> documentId)
         {
@@ -160,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Signee> __BuildAddSignee(WorkflowExpression<string> documentId, WorkflowExpression<double> bodyautographPositionheight = null, WorkflowExpression<int> bodyautographPositionpageNumber = null, WorkflowExpression<double> bodyautographPositionwidth = null, WorkflowExpression<double> bodyautographPositionx = null, WorkflowExpression<double> bodyautographPositiony = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodysignFieldName = null, WorkflowExpression<int> bodysignOrder = null)
         {
@@ -266,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Signee> __BuildGetSignee(WorkflowExpression<string> documentId, WorkflowExpression<string> signeeId)
         {
@@ -288,7 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveSignee(WorkflowExpression<string> documentId, WorkflowExpression<string> signeeId)
         {
@@ -310,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Signee> __BuildUpdateSignee(WorkflowExpression<string> documentId, WorkflowExpression<string> signeeId, WorkflowExpression<double> bodyautographPositionheight = null, WorkflowExpression<int> bodyautographPositionpageNumber = null, WorkflowExpression<double> bodyautographPositionwidth = null, WorkflowExpression<double> bodyautographPositionx = null, WorkflowExpression<double> bodyautographPositiony = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<int> bodysignOrder = null)
         {
@@ -410,7 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildResendInvitation(WorkflowExpression<string> documentId, WorkflowExpression<string> signeeId)
         {
@@ -432,7 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildStartSignatureProcess(WorkflowExpression<string> documentId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocxCommentsResponse> __BuildEditDocumentDocxGetComments(WorkflowExpression<string> reqConfiginputFileBytes = null, WorkflowExpression<string> reqConfiginputFileUrl = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Base64DetectResponse> __BuildEditTextBase64Detect(WorkflowExpression<string> requestbase64ContentToDetect = null)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Base64EncodeResponse> __BuildEditTextBase64Encode(WorkflowExpression<string> requestcontentToEncode = null)
         {
@@ -127,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Base64DecodeResponse> __BuildEditTextBase64Decode(WorkflowExpression<string> requestbase64ContentToDecode = null)
         {
@@ -161,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextEncodingDetectResponse> __BuildEditTextTextEncodingDetect(WorkflowExpression<object> inputFile)
         {
@@ -182,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindStringSimpleResponse> __BuildEditTextFindSimple(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requesttargetString = null)
         {
@@ -223,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindStringRegexResponse> __BuildEditTextFindRegex(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requesttargetRegex = null, WorkflowExpression<bool> requestmatchCase = null)
         {
@@ -271,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReplaceStringSimpleResponse> __BuildEditTextReplaceSimple(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requesttargetString = null, WorkflowExpression<string> requestreplaceWithString = null)
         {
@@ -319,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReplaceStringRegexResponse> __BuildEditTextReplaceRegex(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requestregularExpressionString = null, WorkflowExpression<string> requestreplaceWithString = null)
         {
@@ -367,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectLineEndingsResponse> __BuildEditTextDetectLineEndings(WorkflowExpression<object> inputFile)
         {
@@ -388,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChangeLineEndingResponse> __BuildEditTextChangeLineEndings(WorkflowExpression<string> lineEndingType, WorkflowExpression<object> inputFile)
         {
@@ -411,7 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveHtmlFromTextResponse> __BuildEditTextRemoveHtml(WorkflowExpression<string> requesttextContainingHtml = null)
         {
@@ -445,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> __BuildEditTextRemoveAllWhitespace(WorkflowExpression<string> requesttextContainingWhitespace = null)
         {
@@ -479,7 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> __BuildEditTextTrimWhitespace(WorkflowExpression<string> requesttextContainingWhitespace = null)
         {
@@ -513,7 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentValidationResult> __BuildValidateDocumentExecutableValidation(WorkflowExpression<object> inputFile)
         {
@@ -534,7 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ViewerResponse> __BuildViewerToolsCreateSimple(WorkflowExpression<object> inputFile)
         {
@@ -555,7 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildZipArchiveZipCreate(WorkflowExpression<object> inputFile1, WorkflowExpression<object> inputFile2 = null, WorkflowExpression<object> inputFile3 = null, WorkflowExpression<object> inputFile4 = null, WorkflowExpression<object> inputFile5 = null, WorkflowExpression<object> inputFile6 = null, WorkflowExpression<object> inputFile7 = null, WorkflowExpression<object> inputFile8 = null, WorkflowExpression<object> inputFile9 = null, WorkflowExpression<object> inputFile10 = null)
         {
@@ -585,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildZipArchiveZipCreateAdvanced(WorkflowExpression<ZipFile[]> requestfilesInZip = null, WorkflowExpression<ZipDirectory[]> requestdirectoriesInZip = null)
         {
@@ -626,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ZipExtractResponse> __BuildZipArchiveZipExtract(WorkflowExpression<object> inputFile)
         {
@@ -647,7 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildZipArchiveZipEncryptAdvanced(WorkflowExpression<string> encryptionRequestinputFileContents = null, WorkflowExpression<string> encryptionRequestpassword = null, WorkflowExpression<string> encryptionRequestencryptionAlgorithm = null)
         {
@@ -695,7 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildZipArchiveZipDecrypt(WorkflowExpression<object> inputFile, WorkflowExpression<string> zipPassword)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CertificationOutput> __BuildCertifyFile(WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<bodycertificateLanguageInput> bodycertificateLanguage = null, WorkflowExpression<double> bodytimeZoneOffset = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bool> bodysandboxMode = null)
         {
@@ -90,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CertificationOutput> __BuildCertifyHash(WorkflowExpression<string> bodyhash = null, WorkflowExpression<bodycertificateLanguageInput> bodycertificateLanguage = null, WorkflowExpression<double> bodytimeZoneOffset = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bool> bodysandboxMode = null)
         {

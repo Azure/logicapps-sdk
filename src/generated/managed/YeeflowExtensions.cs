@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddItemResponse> __BuildAddItem(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<object> bodydata = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetItemResponse> __BuildGetItem(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string> id)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteItemResponse> __BuildDeleteItem(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string> id)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateItemResponse> __BuildUpdateItem(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string> id, WorkflowExpression<int> bodyrowVersion = null, WorkflowExpression<object> bodydata = null)
         {
@@ -148,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetListFieldsResponse> __BuildGetListFields(WorkflowExpression<string> application, WorkflowExpression<string> listID)
         {
@@ -171,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartWorkflowResponse> __BuildStartWorkflow(WorkflowExpression<string> application, WorkflowExpression<string> key, WorkflowExpression<string> bodyapplicantID = null, WorkflowExpression<object> bodyvariables = null)
         {
@@ -216,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAgentDefinitionResponse> __BuildGetAgentDefinition(WorkflowExpression<string> application, WorkflowExpression<string> agentID)
         {
@@ -239,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunAgentResponse> __BuildRunAgent(WorkflowExpression<string> application, WorkflowExpression<string> agentID, WorkflowExpression<object> body = null)
         {
@@ -264,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryItemsResponse> __BuildQueryItems(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string[]> bodyfields = null, WorkflowExpression<ListDataWhereRequest[]> bodyfilters = null, WorkflowExpression<bodysortsInputItem[]> bodysorts = null, WorkflowExpression<int> bodypageNumber = null, WorkflowExpression<int> bodypageSize = null)
         {
@@ -349,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddItemFileResponse> __BuildAddItemFile(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string> id, WorkflowExpression<string> fileName, WorkflowExpression<string> fieldID = null, WorkflowExpression<string> body = null)
         {
@@ -380,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadFileResponse> __BuildUploadFile(WorkflowExpression<string> fileName, WorkflowExpression<string> body = null)
         {
@@ -404,7 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFilePropertyResponse> __BuildGetFileProperty(WorkflowExpression<string> fieldValue = null)
         {
@@ -426,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFileContent(WorkflowExpression<string> id)
         {
@@ -447,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddLibraryFileResponse> __BuildAddLibraryFile(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string> fileName, WorkflowExpression<string> path = null, WorkflowExpression<string> body = null)
         {
@@ -477,7 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetLibraryFile(WorkflowExpression<string> application, WorkflowExpression<string> listID, WorkflowExpression<string> id)
         {

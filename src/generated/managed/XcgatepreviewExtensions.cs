@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LoginAuthResponse> __BuildLoginAuth(WorkflowExpression<string> host = null, WorkflowExpression<string> bodycompanyCd = null, WorkflowExpression<string> bodyuserCd = null, WorkflowExpression<string> bodypassword = null)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionFindResponse> __BuildActionFind(WorkflowExpression<string> host = null, WorkflowExpression<string> bodycompanyCd = null, WorkflowExpression<string> bodyuserUCd = null, WorkflowExpression<string> bodyauthKey = null, WorkflowExpression<string[]> bodyreportCdList = null, WorkflowExpression<string> bodyfindstatement = null, WorkflowExpression<bodyfindstatementListInputItem[]> bodyfindstatementList = null, WorkflowExpression<bodysortListInputItem[]> bodysortList = null, WorkflowExpression<string> bodypageSize = null, WorkflowExpression<string> bodypageNo = null, WorkflowExpression<bodyrequestListInputItem[]> bodyrequestList = null, WorkflowExpression<string> bodyenableEpoch = null)
         {
@@ -184,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionGetResponse> __BuildActionGet(WorkflowExpression<string> host = null, WorkflowExpression<string> bodycompanyCd = null, WorkflowExpression<string> bodyuserUCd = null, WorkflowExpression<string> bodyauthKey = null, WorkflowExpression<string> bodyreportCd = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytrxCdx = null, WorkflowExpression<string> bodyenableEpoch = null)
         {

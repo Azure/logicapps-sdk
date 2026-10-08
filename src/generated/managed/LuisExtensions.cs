@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PredictResponse> __BuildGetPredictions(WorkflowExpression<string> appId, WorkflowExpression<string> q, WorkflowExpression<string> desiredIntent = null, WorkflowExpression<string> versionId = null)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> __BuildGetTopScoringMatchingEntity(WorkflowExpression<string> appId, WorkflowExpression<string> desiredEntity, WorkflowExpression<string> versionId = null, WorkflowExpression<string> luisPredictionObject = null)
         {

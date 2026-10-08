@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateDocument(WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodyparentID, WorkflowExpression<string> bodymetadatadisplayName, WorkflowExpression<string> bodyfilefileName, WorkflowExpression<string> bodyfilefileContent, WorkflowExpression<string> bodymetadatadescription = null, WorkflowExpression<bodymetadatafieldsInputItem[]> bodymetadatafields = null)
         {
@@ -88,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocument(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodymetadatadisplayName, WorkflowExpression<string> bodyfilefileName, WorkflowExpression<string> bodyfilefileContent, WorkflowExpression<string> bodymetadatadescription = null, WorkflowExpression<bodymetadatafieldsInputItem[]> bodymetadatafields = null)
         {
@@ -156,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocumentProperties(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodydisplayName, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodyfieldsInputItem[]> bodyfields = null)
         {
@@ -202,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocumentContent(WorkflowExpression<string> id, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
         {
@@ -236,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnreserveDocument(WorkflowExpression<string> id)
         {
@@ -257,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReserveDocument(WorkflowExpression<string> id)
         {
@@ -278,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentResponse> __BuildGetDocument(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey)
         {
@@ -300,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentPropertiesResponse> __BuildGetDocumentProperties(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey)
         {
@@ -322,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentContentResponse> __BuildGetDocumentContent(WorkflowExpression<string> id)
         {
@@ -343,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentVersionContentResponse> __BuildGetDocumentVersionContent(WorkflowExpression<string> id, WorkflowExpression<string> versionId)
         {
@@ -365,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> id)
         {
@@ -386,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocumentVersion(WorkflowExpression<string> id, WorkflowExpression<string> versionId)
         {
@@ -408,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Version[]> __BuildGetDocumentVersions(WorkflowExpression<string> id)
         {
@@ -429,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveDocument(WorkflowExpression<string> id, WorkflowExpression<string> parentId)
         {
@@ -451,7 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCopyDocument(WorkflowExpression<string> id, WorkflowExpression<string> parentId)
         {
@@ -473,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateFolder(WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentID, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodyfieldsInputItem[]> bodyfields = null)
         {
@@ -521,7 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateFolder(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodyfieldsInputItem[]> bodyfields = null)
         {
@@ -567,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFolderResponse> __BuildGetFolder(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey)
         {
@@ -589,7 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFolder(WorkflowExpression<string> id)
         {
@@ -610,7 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultItem[]> __BuildGetFolderChildren(WorkflowExpression<string> id)
         {
@@ -631,7 +611,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultItem[]> __BuildSimpleSearch(WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodyname)
         {
@@ -662,7 +641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultItem[]> __BuildAdvancedSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodylimit = null)
         {
@@ -706,7 +684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildExecuteWebReport(WorkflowExpression<string> id, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -729,7 +706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCreateBusinessWorkspace(WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodyparentID, WorkflowExpression<string> bodytemplateID, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodyfieldsInputItem[]> bodyfields = null)
         {
@@ -777,7 +753,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TrusteeRead[]> __BuildGetItemTrustees(WorkflowExpression<string> id)
         {
@@ -798,7 +773,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddTrustees(WorkflowExpression<string> id, WorkflowExpression<TrusteeWrite[]> body = null)
         {
@@ -821,7 +795,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateTrustees(WorkflowExpression<string> id, WorkflowExpression<TrusteeWrite[]> body = null)
         {
@@ -844,7 +817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveTrustees(WorkflowExpression<string> id, WorkflowExpression<string[]> body = null)
         {
@@ -867,7 +839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBusinessWorkspaceResponse> __BuildGetBusinessWorkspace(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey)
         {
@@ -889,7 +860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateBusinessWorkspace(WorkflowExpression<string> id, WorkflowExpression<string> configurationKey, WorkflowExpression<string> bodyname, WorkflowExpression<bodyfieldsInputItem[]> bodyfields = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListedScorecards> __BuildGetScorecards(WorkflowExpression<string> groupid)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatedScorecard> __BuildCreateScorecard(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardname, WorkflowExpression<string> scorecarddescription = null)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchedGoals> __BuildGetMultipleGoals(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateGoalResponse> __BuildCreateGoal(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalname, WorkflowExpression<string> goalowner = null, WorkflowExpression<string> goalcurrentValue = null, WorkflowExpression<string> goaltargetValue = null, WorkflowExpression<goalstatusInput> goalstatus = null, WorkflowExpression<string> goalstartDate = null, WorkflowExpression<string> goalcompletionDate = null, WorkflowExpression<string> goalnote = null, WorkflowExpression<string> goalparentGoalId = null)
         {
@@ -202,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchedGoal> __BuildGetGoal(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId)
         {
@@ -227,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateGoal(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalname = null, WorkflowExpression<string> goalowner = null, WorkflowExpression<double> goalcurrentValue = null, WorkflowExpression<double> goaltargetValue = null, WorkflowExpression<goalstatusInput> goalstatus = null, WorkflowExpression<string> goalstartDate = null, WorkflowExpression<string> goalcompletionDate = null)
         {
@@ -317,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryExecutionResults> __BuildExecuteDatasetQuery(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid, WorkflowExpression<string> specificationqueryText, WorkflowExpression<bool> specificationserializerSettingsnullsIncluded = null, WorkflowExpression<string> specificationimpersonateUser = null)
         {
@@ -382,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteDatasetQueriesJson(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid)
         {
@@ -412,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddRows(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid, WorkflowExpression<string> tablename, WorkflowExpression<object> payload = null)
         {
@@ -438,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGoalValueCheckinNote(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalCheckin, WorkflowExpression<string> note = null)
         {
@@ -465,7 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGoalValueCheckin(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> checkindate, WorkflowExpression<double> checkinvalue = null, WorkflowExpression<checkinstatusInput> checkinstatus = null, WorkflowExpression<string> checkinnote = null)
         {
@@ -530,7 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGoalCheckinsResponse> __BuildGetGoalCheckins(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId)
         {
@@ -555,7 +543,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateGoalCheckin(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalCheckin, WorkflowExpression<double> checkinvalue = null, WorkflowExpression<checkinstatusInput> checkinstatus = null)
         {
@@ -611,7 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGoalCheckinResponse> __BuildGetGoalCheckin(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalCheckin)
         {
@@ -637,7 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRefreshDataset(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid)
         {
@@ -660,7 +645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildInitiateExportToFileForPbiReports(WorkflowExpression<string> groupid, WorkflowExpression<string> reportid, WorkflowExpression<exportPayloadPowerBIReportformatInput> exportPayloadPowerBIReportformat, WorkflowExpression<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, WorkflowExpression<bool> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, WorkflowExpression<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, WorkflowExpression<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, WorkflowExpression<ExportFilter[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, WorkflowExpression<ExportReportPage[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, WorkflowExpression<EffectiveIdentity[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
         {
@@ -765,7 +749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildInitiateExportToFileForPaginatedReports(WorkflowExpression<string> groupid, WorkflowExpression<string> reportid, WorkflowExpression<exportPayloadPaginatedReportformatInput> exportPayloadPaginatedReportformat, WorkflowExpression<EffectiveIdentity[]> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, WorkflowExpression<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
         {

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CourseSummaryResponse> __BuildListCourses(WorkflowExpression<string> publishedFrom = null, WorkflowExpression<string> publishedTo = null, WorkflowExpression<double> priceFrom = null, WorkflowExpression<double> priceTo = null, WorkflowExpression<bool> isNew = null, WorkflowExpression<string> moreToken = null)
         {
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InstructorSummaryResponse> __BuildListInstructors(WorkflowExpression<string> moreToken = null)
         {
@@ -87,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MyCoursesResponse> __BuildListMyCourses(WorkflowExpression<string> moreToken = null)
         {
@@ -110,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdeaSummaryResponse> __BuildListIdeas(WorkflowExpression<string> moreToken = null)
         {
@@ -133,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CourseDetail> __BuildGetCourse(WorkflowExpression<string> id)
         {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddIdeaVote(WorkflowExpression<string> ideaID)
         {
@@ -177,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InstructorDetail> __BuildGetInstructor(WorkflowExpression<string> id = null)
         {
@@ -200,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> query)
         {

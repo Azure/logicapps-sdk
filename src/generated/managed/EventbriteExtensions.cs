@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEventResponse> __BuildCreateEvent(WorkflowExpression<string> organizationId, WorkflowExpression<string> eventNameHtml, WorkflowExpression<string> eventDescriptionHtml, WorkflowExpression<string> eventStartUtc, WorkflowExpression<string> eventEndUtc, WorkflowExpression<eventStartTimezoneInput> eventStartTimezone, WorkflowExpression<eventEndTimezoneInput> eventEndTimezone, WorkflowExpression<eventCurrencyInput> eventCurrency, WorkflowExpression<string> eventOrganizerId = null, WorkflowExpression<string> eventVenueId = null, WorkflowExpression<string> eventCategoryId = null, WorkflowExpression<string> eventPassword = null, WorkflowExpression<string> eventCapacity = null, WorkflowExpression<bool> eventShareable = null, WorkflowExpression<bool> eventInviteOnly = null, WorkflowExpression<bool> eventOnlineEvent = null, WorkflowExpression<bool> eventListed = null, WorkflowExpression<bool> eventHideStartDate = null, WorkflowExpression<bool> eventHideEndDate = null, WorkflowExpression<bool> eventShowRemaining = null)
         {
@@ -89,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEventResponse> __BuildUpdateEvent(WorkflowExpression<string> organizationId, WorkflowExpression<string> id, WorkflowExpression<eventStartTimezoneInput> eventStartTimezone, WorkflowExpression<eventEndTimezoneInput> eventEndTimezone, WorkflowExpression<eventCurrencyInput> eventCurrency, WorkflowExpression<string> eventNameHtml = null, WorkflowExpression<string> eventDescriptionHtml = null, WorkflowExpression<string> eventStartUtc = null, WorkflowExpression<string> eventEndUtc = null, WorkflowExpression<string> eventOrganizerId = null, WorkflowExpression<string> eventVenueId = null, WorkflowExpression<string> eventCategoryId = null, WorkflowExpression<string> eventPassword = null, WorkflowExpression<string> eventCapacity = null, WorkflowExpression<bool> eventShareable = null, WorkflowExpression<bool> eventInviteOnly = null, WorkflowExpression<bool> eventOnlineEvent = null, WorkflowExpression<bool> eventListed = null, WorkflowExpression<bool> eventHideStartDate = null, WorkflowExpression<bool> eventHideEndDate = null, WorkflowExpression<bool> eventShowRemaining = null)
         {

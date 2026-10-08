@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLiveDocsLiveDocVersionResp> __BuildGetLiveDocInputs(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentVersionId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp> __BuildSubmitLiveDocGeneration(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentVersionId, WorkflowExpression<bodyoutputsInputItem[]> bodyoutputs, WorkflowExpression<JToken[]> bodyadHocInputs = null)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenResultResp> __BuildGetLiveDocGenerationStatus(WorkflowExpression<string> generatedLivedocId)
         {
@@ -100,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SeismicLiveDocsDownloadLocationResp> __BuildDownloadGeneratedLiveDoc(WorkflowExpression<string> generatedLivedocId, WorkflowExpression<string> outputId, WorkflowExpression<bool> redirect = null)
         {

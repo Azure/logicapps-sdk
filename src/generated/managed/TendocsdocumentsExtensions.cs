@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AiCompareResponse> __BuildAiCompare(WorkflowExpression<string> requestsourceDocumentfirstFile = null, WorkflowExpression<string> requestcomparisonDocumentsecondFile = null, WorkflowExpression<requestconfigurationprofessionInput> requestconfigurationprofession = null)
         {
@@ -98,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AiSummaryResponse> __BuildAiSummary(WorkflowExpression<string> requestdocumentfile = null, WorkflowExpression<int> requestconfigurationtargetWordCount = null)
         {
@@ -163,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AiTemplateBuilderResponse> __BuildAiTemplateBuilder(WorkflowExpression<string> requestdescribeTheDocument1000Chars)
         {
@@ -209,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConversionConvert(WorkflowExpression<string> requestdocumentfile = null, WorkflowExpression<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
@@ -274,7 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDocumentJsonTemplate(WorkflowExpression<string> requesttemplatetemplateFile = null, WorkflowExpression<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
@@ -347,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDocumentTemplate(WorkflowExpression<string> requesttemplatetemplateFile = null, WorkflowExpression<requestimageInputItem[]> requestimage = null, WorkflowExpression<requestdocumentInputItem[]> requestdocument = null, WorkflowExpression<requesttableInputItem[]> requesttable = null, WorkflowExpression<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
@@ -441,7 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InstancesResponse> __BuildEnvelopesInstances(WorkflowExpression<string> requestdocumentTitle, WorkflowExpression<string> requestdocumentIntroduction, WorkflowExpression<string> requestrecipientEmail, WorkflowExpression<string> requestrecipientFirstName, WorkflowExpression<string> requestrecipientLastName, WorkflowExpression<string> requestexpiryDate, WorkflowExpression<bool> requestsignatureRequired, WorkflowExpression<string> requestorgansiationTitle, WorkflowExpression<string> requestorganisationEmail, WorkflowExpression<string> requestorganisationOwner, WorkflowExpression<string> requestdocumentpDFDocument = null, WorkflowExpression<string> requestdocumentLogo = null, WorkflowExpression<string> requestcheckbox = null, WorkflowExpression<string> requestorganisationWebsite = null, WorkflowExpression<string> requestorganisationPhone = null, WorkflowExpression<string> requestoragnisationOwnerTitle = null, WorkflowExpression<bool> requestcomments = null, WorkflowExpression<string> requestprojectID = null, WorkflowExpression<string> requestcompleteButtonLabel = null, WorkflowExpression<string> requestcompleteDocumentLabel = null, WorkflowExpression<string> requestincompleteDocumentLabel = null)
         {

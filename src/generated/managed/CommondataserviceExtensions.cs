@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityItemList> __BuildListRecords(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> fetchXml = null, WorkflowExpression<int> top = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<string> partitionId = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateRecord(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<object> item = null)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetItemCodeless(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> partitionId = null)
         {
@@ -128,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRecord(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<string> partitionId = null)
         {
@@ -155,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateRecord(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<object> item = null)
         {
@@ -183,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateEntityFileImageFieldContent(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<string> fileImageFieldName, WorkflowExpression<string> xMsFileName, WorkflowExpression<string> item = null)
         {
@@ -213,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetEntityFileImageFieldContent(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<string> fileImageFieldName, WorkflowExpression<string> size = null)
         {
@@ -242,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPerformUnboundAction(WorkflowExpression<string> organization, WorkflowExpression<string> actionName, WorkflowExpression<object> item = null)
         {
@@ -267,7 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPerformBoundAction(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> actionName, WorkflowExpression<string> recordId, WorkflowExpression<object> item = null)
         {
@@ -294,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAssociateEntities(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<string> associationEntityRelationship, WorkflowExpression<string> itemrelateWith)
         {
@@ -329,7 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDisassociateEntities(WorkflowExpression<string> organization, WorkflowExpression<string> entityName, WorkflowExpression<string> recordId, WorkflowExpression<string> associationEntityRelationship, WorkflowExpression<string> id)
         {
@@ -356,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchOutput> __BuildGetRelevantRows(WorkflowExpression<string> organization, WorkflowExpression<string> searchRequestsearchTerm, WorkflowExpression<string> searchRequestsearchType = null, WorkflowExpression<string> searchRequestsearchMode = null, WorkflowExpression<int> searchRequestrowCount = null, WorkflowExpression<string> searchRequestrowFilter = null, WorkflowExpression<string[]> searchRequesttableFilter = null, WorkflowExpression<string[]> searchRequestsortBy = null, WorkflowExpression<string[]> searchRequestfacetQuery = null, WorkflowExpression<int> searchRequestskipRows = null, WorkflowExpression<bool> searchRequestreturnRowCount = null)
         {

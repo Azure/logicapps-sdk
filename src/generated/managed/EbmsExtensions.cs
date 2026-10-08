@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCreateProduct(WorkflowExpression<string> bodytREEID, WorkflowExpression<string> bodyiD = null, WorkflowExpression<double> bodycTYPE = null, WorkflowExpression<string> bodydESCR1 = null, WorkflowExpression<string> bodydESCR2 = null, WorkflowExpression<string> bodydESCR3 = null, WorkflowExpression<string> bodytYPE = null, WorkflowExpression<string> bodymEMO = null, WorkflowExpression<string> bodyuPC = null, WorkflowExpression<string> bodymFG = null, WorkflowExpression<string> bodymFGPART = null, WorkflowExpression<string> bodypRIVENDOR = null, WorkflowExpression<string> bodyeACHUNIT = null, WorkflowExpression<double> bodywEIGHT = null, WorkflowExpression<double> bodycOST = null, WorkflowExpression<double> bodybASE = null, WorkflowExpression<string> bodyeXTERNALID = null)
         {
@@ -160,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildUpdateProduct(WorkflowExpression<string> productId, WorkflowExpression<string> bodydESCR1 = null, WorkflowExpression<string> bodydESCR2 = null, WorkflowExpression<string> bodydESCR3 = null, WorkflowExpression<string> bodytYPE = null, WorkflowExpression<string> bodymEMO = null, WorkflowExpression<string> bodyuPC = null, WorkflowExpression<string> bodymFG = null, WorkflowExpression<string> bodymFGPART = null, WorkflowExpression<string> bodypRIVENDOR = null, WorkflowExpression<string> bodyeACHUNIT = null, WorkflowExpression<double> bodywEIGHT = null, WorkflowExpression<double> bodycOST = null, WorkflowExpression<double> bodybASE = null, WorkflowExpression<string> bodyeXTERNALID = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildAggregate(WorkflowExpression<bodyaggregationTypeInput> bodyaggregationType, WorkflowExpression<string[]> bodyaggregateBy, WorkflowExpression<string[]> bodyaggregateOn, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -106,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildCartesianJoin(WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -186,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildConcatenate(WorkflowExpression<string> bodyfield, WorkflowExpression<string> bodyseparator = null, WorkflowExpression<bool> bodyignoreEmpty = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -282,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCSharpEvaluate(WorkflowExpression<string> bodyexpression)
         {
@@ -312,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCSharpScriptExecute(WorkflowExpression<string> bodyscript, WorkflowExpression<string[]> bodyclassDefinitions = null)
         {
@@ -357,7 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildCsvToJson(WorkflowExpression<string> bodydata, WorkflowExpression<bool> bodyheaderRow = null, WorkflowExpression<string> bodyrowSeparator = null, WorkflowExpression<string> bodydelimiter = null, WorkflowExpression<string> bodyescapeCharacter = null, WorkflowExpression<bodyencodingInput> bodyencoding = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -467,7 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDistinct(WorkflowExpression<string[]> bodyfields, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -549,7 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildExpert(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -617,7 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildFilterObjectArray(WorkflowExpression<string> bodyfilter, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -654,7 +645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildFlattenObjectArray(WorkflowExpression<string> bodydelimiter, WorkflowExpression<bool> bodybalancedOutput, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -739,7 +729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGetDataSchema(WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -818,7 +807,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGZipCompress(WorkflowExpression<string> bodydata)
         {
@@ -848,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGZipDecompress(WorkflowExpression<string> bodydata)
         {
@@ -878,7 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildJoin(WorkflowExpression<bodyjoinTypeInput> bodyjoinType, WorkflowExpression<string[]> bodyjoinFields, WorkflowExpression<string[]> bodyfields, WorkflowExpression<bool> bodyforceFullyQualifiedFieldNames = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -1006,7 +992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildJsonToTable(WorkflowExpression<string> bodypath = null, WorkflowExpression<bool> bodybalancedOutput = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -1100,7 +1085,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildJsonToText(WorkflowExpression<bool> bodyheaderRow = null, WorkflowExpression<string> bodyrowSeparator = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -1193,7 +1177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildJsonToCsv(WorkflowExpression<bool> bodyheaderRow = null, WorkflowExpression<string> bodyrowSeparator = null, WorkflowExpression<string> bodyescapeCharacter = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -1293,7 +1276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildJsonPropertiesToNameValuePairArray(WorkflowExpression<object> bodydata)
         {
@@ -1323,7 +1305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LevenshteinDistanceResponse> __BuildLevenshteinDistance(WorkflowExpression<string> bodybaseValue, WorkflowExpression<string[]> bodycomparisonValues, WorkflowExpression<double> bodysettingsratioThreshold = null, WorkflowExpression<bodysettingsapplyRatioThresholdToInput> bodysettingsapplyRatioThresholdTo = null, WorkflowExpression<bodysettingsratioSelectionTypeInput> bodysettingsratioSelectionType = null, WorkflowExpression<bodysettingstokenSortTypeInput> bodysettingstokenSortType = null, WorkflowExpression<bool> bodysettingscaseSensitive = null, WorkflowExpression<bool> bodysettingsremoveWhitespace = null, WorkflowExpression<bool> bodysettingsremoveSpecialCharacters = null)
         {
@@ -1413,7 +1394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildParquetToJson(WorkflowExpression<string> bodydata, WorkflowExpression<bool> bodyvalidateOnly = null, WorkflowExpression<int> bodyskip = null, WorkflowExpression<int> bodytake = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -1509,7 +1489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildRegexMatches(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodydata, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -1587,7 +1566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSimpleConcatenate(WorkflowExpression<string[]> bodydata, WorkflowExpression<string> bodyseparator = null, WorkflowExpression<bool> bodyignoreEmpty = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<bodysortOrderInput> bodysortOrder = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -1675,7 +1653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSimpleDistinct(WorkflowExpression<string> bodyfield, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<bodysortOrderInput> bodysortOrder = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -1756,7 +1733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildSortObjectArray(WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -1798,7 +1774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildSplit(WorkflowExpression<JToken[]> bodysplits, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -1880,7 +1855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildTextToJson(WorkflowExpression<string> bodydata, WorkflowExpression<bool> bodyheaderRow = null, WorkflowExpression<string> bodyrowSeparator = null, WorkflowExpression<string> bodydelimiter = null, WorkflowExpression<bodyencodingInput> bodyencoding = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null)
         {
@@ -1983,7 +1957,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildTransform(WorkflowExpression<bool> bodypreserveAllProperties = null, WorkflowExpression<string> bodyfilter = null, WorkflowExpression<string> bodyadvancedOptionscultureName = null, WorkflowExpression<string[]> bodyadvancedOptionsisBoolean = null, WorkflowExpression<JToken[]> bodydata = null)
         {
@@ -2077,7 +2050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildXmlToJson(WorkflowExpression<string> bodydata, WorkflowExpression<string> bodyprimaryLoopAtElement = null, WorkflowExpression<bodysubLoopAtElementsInputItem[]> bodysubLoopAtElements = null)
         {
@@ -2129,7 +2101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ZipArchiveDecompressResponseItem[]> __BuildZipArchiveDecompress(WorkflowExpression<string> bodydata, WorkflowExpression<bool> bodygetFileContents, WorkflowExpression<string> bodyfilter = null)
         {

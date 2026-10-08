@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Table> __BuildQueryData(WorkflowExpression<string> subscriptions, WorkflowExpression<string> resourcegroups, WorkflowExpression<resourcetypeInput> resourcetype, WorkflowExpression<string> resourcename, WorkflowExpression<string> timerange, WorkflowExpression<string> query = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VisualizeResults> __BuildVisualizeQuery(WorkflowExpression<string> subscriptions, WorkflowExpression<string> resourcegroups, WorkflowExpression<resourcetypeInput> resourcetype, WorkflowExpression<string> resourcename, WorkflowExpression<string> timerange, WorkflowExpression<visTypeInput> visType, WorkflowExpression<string> query = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInstantPackageResponse> __BuildCreateInstantPackage(WorkflowExpression<string> bodydocument = null, WorkflowExpression<bodydocumentLanguageInput> bodydocumentLanguage = null, WorkflowExpression<string> bodydocumentName = null, WorkflowExpression<string> bodyexternalPackageData = null, WorkflowExpression<string> bodyinitiator = null, WorkflowExpression<Stakeholder[]> bodystakeholders = null, WorkflowExpression<string> bodycallBackUrl = null, WorkflowExpression<string> bodycorrelationId = null, WorkflowExpression<string> bodydocumentGroupCode = null, WorkflowExpression<string> bodythemeCode = null, WorkflowExpression<bool> bodydownloadUnsignedFiles = null, WorkflowExpression<bool> bodyreassignEnabled = null, WorkflowExpression<int> bodyactionUrlExpirationPeriodInDays = null, WorkflowExpression<string> bodyexpiryTimestamp = null, WorkflowExpression<string> bodyexternalDocumentReference = null, WorkflowExpression<string> bodyexternalPackageReference = null, WorkflowExpression<string> bodyf2FRedirectUrl = null, WorkflowExpression<string> bodynotificationCallBackUrl = null, WorkflowExpression<string> bodypdfErrorHandling = null, WorkflowExpression<string> bodyrepresentation = null, WorkflowExpression<string> bodyrepresentationType = null, WorkflowExpression<string> bodysigningTemplateCode = null, WorkflowExpression<string> bodytargetType = null)
         {
@@ -226,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PackageListResponse> __BuildPackageList(WorkflowExpression<string> continuationToken = null, WorkflowExpression<int> maxQuantity = null, WorkflowExpression<string> sortField = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<string> createdBeforeDate = null, WorkflowExpression<string> status = null, WorkflowExpression<string> createdAfterDate = null)
         {
@@ -270,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreatePackageResponse> __BuildCreatePackage(WorkflowExpression<string> contentType, WorkflowExpression<string> bodyinitiator = null, WorkflowExpression<string> bodypackageName = null, WorkflowExpression<string> bodycallBackUrl = null, WorkflowExpression<string> bodycorrelationId = null, WorkflowExpression<string> bodydocumentGroupCode = null, WorkflowExpression<string> bodythemeCode = null, WorkflowExpression<bool> bodydownloadUnsignedFiles = null, WorkflowExpression<bool> bodyreassignEnabled = null, WorkflowExpression<int> bodyactionUrlExpirationPeriodInDays = null, WorkflowExpression<string> bodyexpiryTimestamp = null, WorkflowExpression<string> bodyexternalPackageReference = null, WorkflowExpression<string> bodyexternalPackageData = null, WorkflowExpression<string> bodyf2FRedirectUrl = null, WorkflowExpression<string> bodynotificationCallBackUrl = null)
         {
@@ -397,7 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddDocumentToPackageResponse> __BuildAddDocumentToPackage(WorkflowExpression<string> packageId, WorkflowExpression<string> bodydocument = null, WorkflowExpression<string> bodydocumentLanguage = null, WorkflowExpression<string> bodydocumentName = null, WorkflowExpression<SigningField[]> bodysigningFields = null, WorkflowExpression<string> bodycorrelationId = null, WorkflowExpression<string> bodydocumentType = null, WorkflowExpression<string> bodyexternalDocumentReference = null, WorkflowExpression<ErrorHandlingResponse[]> bodypdfErrorHandling = null, WorkflowExpression<string> bodyrepresentation = null, WorkflowExpression<string> bodyrepresentationType = null, WorkflowExpression<string> bodytargetType = null)
         {
@@ -502,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSigningLocationsResponse> __BuildGetSigningLocations(WorkflowExpression<string> id)
         {
@@ -523,7 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PackageStatusInfo> __BuildGetPackageStatus(WorkflowExpression<string> id)
         {
@@ -544,7 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PackageStatusInfo> __BuildSetPackageStatus(WorkflowExpression<string> id, WorkflowExpression<string> bodystatus = null)
         {
@@ -579,7 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSkipSigners(WorkflowExpression<string> packageId)
         {
@@ -600,7 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadPackage(WorkflowExpression<string> id)
         {
@@ -621,7 +612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadDocumentFromPackage(WorkflowExpression<string> id, WorkflowExpression<string> documentId)
         {
@@ -643,7 +633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildExpiryTimeStamp(WorkflowExpression<string> id, WorkflowExpression<string> bodyexpiryTimestamp = null)
         {
@@ -678,7 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendPackageReminders(WorkflowExpression<string> packageId)
         {
@@ -699,7 +687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeletePackage(WorkflowExpression<string> id)
         {
@@ -720,7 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetProcessInformation(WorkflowExpression<string> id, WorkflowExpression<bodystakeholdersInputItem[]> bodystakeholders = null)
         {
@@ -755,7 +741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Content> __BuildPackageAuditProof(WorkflowExpression<string> packageId)
         {
@@ -776,7 +761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Content> __BuildPackageAuditProofDoc(WorkflowExpression<string> packageId, WorkflowExpression<string> documentId)
         {
@@ -798,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Content> __BuildPackageCorrelationAuditProof(WorkflowExpression<string> correlationId)
         {
@@ -819,7 +802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Content> __BuildDocumentCorrelationAuditProof(WorkflowExpression<string> correlationId)
         {
@@ -840,7 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildProofExternalSource(WorkflowExpression<string> packageId, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyipAddress = null)
         {

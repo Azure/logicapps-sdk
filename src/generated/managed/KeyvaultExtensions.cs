@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyMetadataCollection> __BuildListKeyVersions(WorkflowExpression<string> keyName)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyMetadata> __BuildGetKeyMetadata(WorkflowExpression<string> keyName)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyMetadata> __BuildGetKeyVersionMetadata(WorkflowExpression<string> keyName, WorkflowExpression<string> keyVersion)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyEncryptOutput> __BuildEncryptData(WorkflowExpression<string> keyName, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputrawData)
         {
@@ -124,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyEncryptOutput> __BuildEncryptDataWithVersion(WorkflowExpression<string> keyName, WorkflowExpression<string> keyVersion, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputrawData)
         {
@@ -159,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyDecryptOutput> __BuildDecryptData(WorkflowExpression<string> keyName, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputencryptedData)
         {
@@ -193,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<KeyDecryptOutput> __BuildDecryptDataWithVersion(WorkflowExpression<string> keyName, WorkflowExpression<string> keyVersion, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputencryptedData)
         {
@@ -237,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SecretMetadataCollection> __BuildListSecretVersions(WorkflowExpression<string> secretName)
         {
@@ -258,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SecretMetadata> __BuildGetSecretMetadata(WorkflowExpression<string> secretName)
         {
@@ -279,7 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SecretMetadata> __BuildGetSecretVersionMetadata(WorkflowExpression<string> secretName, WorkflowExpression<string> secretVersion)
         {
@@ -301,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Secret> __BuildGetSecret(WorkflowExpression<string> secretName)
         {
@@ -322,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Secret> __BuildGetSecretVersion(WorkflowExpression<string> secretName, WorkflowExpression<string> secretVersion)
         {

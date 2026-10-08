@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LookupResponse> __BuildCredentialLookup(WorkflowExpression<string[]> bodyfilterauthorizationProtocols = null, WorkflowExpression<string[]> bodyfilterauthorizationTechnologies = null, WorkflowExpression<string> bodyfilterbreachPropertiesdate = null, WorkflowExpression<string> bodyfilterbreachPropertiesname = null, WorkflowExpression<string> bodyfilterdumpPropertiesdate = null, WorkflowExpression<string> bodyfilterdumpPropertiesname = null, WorkflowExpression<string> bodyfilterexfiltrationDateGte = null, WorkflowExpression<string> bodyfilterfirstDownloadedGte = null, WorkflowExpression<string> bodyfilterlatestDownloadedGte = null, WorkflowExpression<string[]> bodyfiltermalwareFamilies = null, WorkflowExpression<bodyfilterpropertiesInputItem[]> bodyfilterproperties = null, WorkflowExpression<bodyfilterusernamePropertiesInputItem[]> bodyfilterusernameProperties = null, WorkflowExpression<string> bodyorganizationId = null, WorkflowExpression<string[]> bodysubjects = null, WorkflowExpression<DomainLogin[]> bodysubjectsLogin = null, WorkflowExpression<string[]> bodysubjectsSha1 = null)
         {

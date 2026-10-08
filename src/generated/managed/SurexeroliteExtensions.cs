@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetInvoicesResponse> __BuildGetInvoices(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> where = null, WorkflowExpression<string> statuses = null, WorkflowExpression<string> iDs = null, WorkflowExpression<string> invoiceNumbers = null, WorkflowExpression<string> contactIDs = null, WorkflowExpression<bool> summaryOnly = null, WorkflowExpression<int> page = null)
         {
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostInvoiceResponse> __BuildPostInvoice(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> bodytype, WorkflowExpression<bodylineItemsInputItem[]> bodylineItems, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<string> bodycontactcontactID = null, WorkflowExpression<string> bodylineAmountTypes = null, WorkflowExpression<string> bodyinvoiceNumber = null, WorkflowExpression<string> bodycurrencyCode = null, WorkflowExpression<double> bodycurrencyRate = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyexpectedPaymentDate = null)
         {
@@ -186,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContactsResponse> __BuildGetContacts(WorkflowExpression<string> xeroTenantId, WorkflowExpression<string> where = null, WorkflowExpression<string> iDs = null, WorkflowExpression<bool> summaryOnly = null, WorkflowExpression<int> page = null, WorkflowExpression<bool> includeArchived = null, WorkflowExpression<string> searchTerm = null)
         {
@@ -227,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostContactsResponse> __BuildPostContacts(WorkflowExpression<string> xeroTenantId, WorkflowExpression<bodycontactsInputItem[]> bodycontacts)
         {

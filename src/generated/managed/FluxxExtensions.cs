@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<object> __BuildDownloadDocument(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCustomAction(WorkflowExpression<string> endpoint, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadDocumentResponse> __BuildUploadDocument(WorkflowExpression<object> content, WorkflowExpression<string> dataOwnerModelModelType, WorkflowExpression<int> dataOwnerModelId, WorkflowExpression<string> dataContentType, WorkflowExpression<int> dataCreatedById)
         {
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelResponse> __BuildCreateRecord(WorkflowExpression<string> typeId, WorkflowExpression<object> bodydata = null)
         {
@@ -127,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelArrayResponse> __BuildFindRecords(WorkflowExpression<string> typeId, WorkflowExpression<object> bodydata = null, WorkflowExpression<int> currentPage = null, WorkflowExpression<int> perPage = null)
         {
@@ -172,7 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelArrayResponse> __BuildFindOrCreateRecord(WorkflowExpression<string> typeId, WorkflowExpression<object> bodydata = null, WorkflowExpression<int> currentPage = null, WorkflowExpression<int> perPage = null)
         {
@@ -217,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelResponse> __BuildFindRecord(WorkflowExpression<string> typeId, WorkflowExpression<string> id)
         {
@@ -241,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelResponse> __BuildUpdateRecord(WorkflowExpression<string> typeId, WorkflowExpression<string> id, WorkflowExpression<object> bodydata = null)
         {

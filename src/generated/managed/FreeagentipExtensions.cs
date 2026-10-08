@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteContact(WorkflowExpression<string> contactId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContactResponse> __BuildGetContact(WorkflowExpression<string> contactId)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateContact(WorkflowExpression<string> contactId, WorkflowExpression<bool> bodycontactcontactNameOnInvoices = null, WorkflowExpression<int> bodycontactdefaultPaymentTermsInDays = null, WorkflowExpression<string> bodycontactlocale = null, WorkflowExpression<string> bodycontactcountry = null)
         {
@@ -124,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteInvoice(WorkflowExpression<string> id)
         {
@@ -145,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShowInvoiceResponse> __BuildShowInvoice(WorkflowExpression<string> id)
         {
@@ -166,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateInvoice(WorkflowExpression<string> id, WorkflowExpression<string> bodyinvoicedatedOn = null, WorkflowExpression<string> bodyinvoicedueOn = null, WorkflowExpression<string> bodyinvoicecurrency = null, WorkflowExpression<string> bodyinvoiceexchangeRate = null, WorkflowExpression<string> bodyinvoicestatus = null, WorkflowExpression<bodyinvoiceinvoiceItemsInputItem[]> bodyinvoiceinvoiceItems = null)
         {
@@ -253,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> bodycontactfirstName = null, WorkflowExpression<string> bodycontactlastName = null, WorkflowExpression<string> bodycontactorganisationName = null, WorkflowExpression<string> bodycontactemail = null, WorkflowExpression<string> bodycontacttelephone = null, WorkflowExpression<string> bodycontactmobile = null, WorkflowExpression<string> bodycontactaddress1 = null, WorkflowExpression<string> bodycontactaddress2 = null, WorkflowExpression<string> bodycontactaddress3 = null, WorkflowExpression<string> bodycontacttown = null, WorkflowExpression<string> bodycontactregion = null, WorkflowExpression<string> bodycontactpostcode = null, WorkflowExpression<string> bodycontactcountry = null)
         {
@@ -397,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInvoiceResponse> __BuildCreateInvoice(WorkflowExpression<string> bodyinvoicecontact = null, WorkflowExpression<string> bodyinvoicedatedOn = null, WorkflowExpression<string> bodyinvoicedueOn = null, WorkflowExpression<string> bodyinvoicecurrency = null, WorkflowExpression<bool> bodyinvoiceomitHeader = null, WorkflowExpression<bool> bodyinvoicealwaysShowBICAndIBAN = null, WorkflowExpression<int> bodyinvoicepaymentTermsInDays = null)
         {
@@ -481,7 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShowRecurringInvoiceResponse> __BuildShowRecurringInvoice(WorkflowExpression<string> id)
         {
@@ -502,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarkInvoiceAsCancelled(WorkflowExpression<string> id)
         {
@@ -523,7 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarkInvoiceAsDraft(WorkflowExpression<string> id)
         {
@@ -544,7 +533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarkInvoiceAsScheduled(WorkflowExpression<string> id)
         {
@@ -565,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMarkInvoiceAsSent(WorkflowExpression<string> id)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyrecipients = null, WorkflowExpression<string> bodyconcatenation = null, WorkflowExpression<string> bodyoriginator = null, WorkflowExpression<string> bodytest = null)
         {

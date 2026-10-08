@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSimpleSMSResponse> __BuildSendSimpleSMS(WorkflowExpression<string> mSISDN, WorkflowExpression<string> messageData, WorkflowExpression<string> originator = null, WorkflowExpression<int> lifeTime = null, WorkflowExpression<string> deferredDeliveryTime = null, WorkflowExpression<string> transactionReferenceNumber = null)
         {

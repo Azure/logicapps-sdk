@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDopplerSecretsListSecrets(WorkflowExpression<string> projectName, WorkflowExpression<string> configName, WorkflowExpression<bool> includeDynamicSecrets = null, WorkflowExpression<bool> includeManagedSecrets = null)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerSecretsUpdateSecretResponse> __BuildDopplerSecretsUpdateSecret(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyconfig)
         {
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerSecretsRetrieveSecretResponse> __BuildDopplerSecretsRetrieveSecret(WorkflowExpression<string> project, WorkflowExpression<string> config, WorkflowExpression<string> name)
         {
@@ -117,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDopplerSecretsDeleteSecret(WorkflowExpression<string> project, WorkflowExpression<string> config, WorkflowExpression<string> name)
         {
@@ -143,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDopplerSecretsUpdateSecretNote(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyconfig, WorkflowExpression<string> bodysecret, WorkflowExpression<string> bodynote)
         {
@@ -182,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigListConfigResponse> __BuildDopplerConfigListConfig(WorkflowExpression<string> project, WorkflowExpression<int> page, WorkflowExpression<int> perPage)
         {
@@ -208,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigCreateConfigResponse> __BuildDopplerConfigCreateConfig(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyenvironment, WorkflowExpression<string> bodyname)
         {
@@ -244,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigRetrieveConfigResponse> __BuildDopplerConfigRetrieveConfig(WorkflowExpression<string> project, WorkflowExpression<string> config = null)
         {
@@ -269,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigUpdateConfigNameResponse> __BuildDopplerConfigUpdateConfigName(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyconfig, WorkflowExpression<string> bodyname)
         {
@@ -305,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigCloneConfigResponse> __BuildDopplerConfigCloneConfig(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyconfig, WorkflowExpression<string> bodyname)
         {
@@ -341,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigLockConfigResponse> __BuildDopplerConfigLockConfig(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyconfig)
         {
@@ -374,7 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerConfigUnlockConfigResponse> __BuildDopplerConfigUnlockConfig(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyconfig)
         {
@@ -407,7 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectsListResponse> __BuildDopplerProjectsList(WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -435,7 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectsCreateResponse> __BuildDopplerProjectsCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription)
         {
@@ -468,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectsRetrieveResponse> __BuildDopplerProjectsRetrieve(WorkflowExpression<string> project)
         {
@@ -490,7 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectsUpdateResponse> __BuildDopplerProjectsUpdate(WorkflowExpression<string> bodyproject, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription)
         {
@@ -535,7 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectRolesRetrieveResponse> __BuildDopplerProjectRolesRetrieve(WorkflowExpression<string> role)
         {
@@ -556,7 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDopplerProjectRolesDelete(WorkflowExpression<string> role)
         {
@@ -577,7 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectMembersListResponse> __BuildDopplerProjectMembersList(WorkflowExpression<string> project, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
         {
@@ -607,7 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectMembersAddResponse> __BuildDopplerProjectMembersAdd(WorkflowExpression<string> project, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodyslug, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string[]> bodyenvironments = null)
         {
@@ -656,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse> __BuildDopplerProjectMembersRetrieve(WorkflowExpression<typeInput> type, WorkflowExpression<string> slug, WorkflowExpression<string> project)
         {
@@ -680,7 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildDopplerProjectMembersDelete(WorkflowExpression<string> type, WorkflowExpression<string> slug, WorkflowExpression<string> project)
         {
@@ -704,7 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse> __BuildDopplerProjectMembersUpdate(WorkflowExpression<string> type, WorkflowExpression<string> slug, WorkflowExpression<string> project, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string[]> bodyenvironments = null)
         {

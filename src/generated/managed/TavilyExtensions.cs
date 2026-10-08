@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchPostResponse> __BuildSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<bodytopicInput> bodytopic = null, WorkflowExpression<bodysearchDepthInput> bodysearchDepth = null, WorkflowExpression<int> bodychunksPerSource = null, WorkflowExpression<int> bodymaxResults = null, WorkflowExpression<bodytimeRangeInput> bodytimeRange = null, WorkflowExpression<int> bodydays = null, WorkflowExpression<bool> bodyincludeAnswer = null, WorkflowExpression<bool> bodyincludeRawContent = null, WorkflowExpression<bool> bodyincludeImages = null, WorkflowExpression<bool> bodyincludeImageDescriptions = null, WorkflowExpression<string[]> bodyincludeDomains = null, WorkflowExpression<string[]> bodyexcludeDomains = null)
         {
@@ -202,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractPostResponse> __BuildExtract(WorkflowExpression<string> bodyurls, WorkflowExpression<bool> bodyincludeImages = null, WorkflowExpression<bodyextractDepthInput> bodyextractDepth = null)
         {
@@ -266,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CrawlPostResponse> __BuildCrawl(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodymaxDepth = null, WorkflowExpression<int> bodymaxBreadth = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<string[]> bodyselectPaths = null, WorkflowExpression<string[]> bodyselectDomains = null, WorkflowExpression<string[]> bodyexcludePaths = null, WorkflowExpression<string[]> bodyexcludeDomains = null, WorkflowExpression<bool> bodyallowExternal = null, WorkflowExpression<bool> bodyincludeImages = null, WorkflowExpression<string[]> bodycategories = null, WorkflowExpression<bodyextractDepthInput> bodyextractDepth = null)
         {
@@ -430,7 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MapPostResponse> __BuildMap(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodymaxDepth = null, WorkflowExpression<int> bodymaxBreadth = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<string[]> bodyselectPaths = null, WorkflowExpression<string[]> bodyselectDomains = null, WorkflowExpression<string[]> bodyexcludePaths = null, WorkflowExpression<string[]> bodyexcludeDomains = null, WorkflowExpression<bool> bodyallowExternal = null, WorkflowExpression<bodycategoriesInputItem[]> bodycategories = null)
         {

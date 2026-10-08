@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExchangeData> __BuildGetExchanges(WorkflowExpression<regionInput> region, WorkflowExpression<string> fileId)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<URLExchangeData> __BuildGetExchangesUsinglink(WorkflowExpression<string> fileId)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AECData> __BuildGetAECDesigns(WorkflowExpression<regionInput> region, WorkflowExpression<string> fileId)
         {
@@ -88,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AECData> __BuildGetAECDesignsUsinglink(WorkflowExpression<string> fileId)
         {
@@ -110,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphQLParametersResponse> __BuildGetFilteredPropertiesCodeBehind(WorkflowExpression<regionInput> region, WorkflowExpression<string> fileId, WorkflowExpression<getlatestInput> getlatest, WorkflowExpression<filterByInput> filterBy, WorkflowExpression<string> filterValue = null, WorkflowExpression<string> parameterfilterValue = null, WorkflowExpression<selectedUnitTypeInput> selectedUnitType = null, WorkflowExpression<string> selectedUnit = null)
         {
@@ -151,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphQLParametersResponse> __BuildGetFilteredPropertiesUsingLink(WorkflowExpression<string> fileId, WorkflowExpression<filterByInput> filterBy, WorkflowExpression<string> filterValue = null, WorkflowExpression<string> parameterfilterValue = null, WorkflowExpression<selectedUnitTypeInput> selectedUnitType = null, WorkflowExpression<string> selectedUnit = null)
         {
@@ -188,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> __BuildGetFilteredPropertiesCodeBehindAEC(WorkflowExpression<regionInput> region, WorkflowExpression<string> fileId, WorkflowExpression<filterByInput> filterBy, WorkflowExpression<string> filterValue = null, WorkflowExpression<string> parameterfilterValue = null, WorkflowExpression<selectedUnitTypeInput> selectedUnitType = null, WorkflowExpression<string> selectedUnit = null)
         {
@@ -227,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> __BuildGetFilteredPropertiesAECUsingLink(WorkflowExpression<string> fileId, WorkflowExpression<filterByInput> filterBy, WorkflowExpression<string> filterValue = null, WorkflowExpression<string> parameterfilterValue = null, WorkflowExpression<selectedUnitTypeInput> selectedUnitType = null, WorkflowExpression<string> selectedUnit = null)
         {
@@ -264,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> __BuildGetAECpropertyDefinitionsUsingLink(WorkflowExpression<string> fileId)
         {
@@ -286,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> __BuildGetDXpropertyDefinitionsUsingLink(WorkflowExpression<string> fileId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProspectsGetResponseItem[]> __BuildProspectsGet(WorkflowExpression<string> search = null, WorkflowExpression<string> activity = null, WorkflowExpression<string> campaignId = null, WorkflowExpression<bool> campaignsDetail = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildProspectsDelete(WorkflowExpression<int> id = null, WorkflowExpression<int> campaignsId = null)
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProspectsPostResponse> __BuildProspects(WorkflowExpression<bodyupdateInput> bodyupdate = null, WorkflowExpression<bodyforceInput> bodyforce = null, WorkflowExpression<bodyprospectsInputItem[]> bodyprospects = null)
         {
@@ -137,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProspectsCampaignPostResponse> __BuildProspectsCampaign(WorkflowExpression<int> bodycampaigncampaignId = null, WorkflowExpression<bodyupdateInput> bodyupdate = null, WorkflowExpression<bodyforceInput> bodyforce = null, WorkflowExpression<bodyprospectsInputItem2[]> bodyprospects = null)
         {
@@ -200,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignsGetResponseItem[]> __BuildCampaignsGet(WorkflowExpression<statusInput> status = null, WorkflowExpression<int> id = null)
         {

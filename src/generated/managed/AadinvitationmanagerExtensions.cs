@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aadinvitationmanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateInvitationResponse> __BuildCreateInvitation(WorkflowExpression<string> bodyinvitedUserDisplayName = null, WorkflowExpression<string> bodyinvitedUserEmailAddress = null, WorkflowExpression<bodyinvitedUserMessageInfoccRecipientsInputItem[]> bodyinvitedUserMessageInfoccRecipients = null, WorkflowExpression<string> bodyinvitedUserMessageInfocustomizedMessageBody = null, WorkflowExpression<string> bodyinvitedUserMessageInfomessageLanguage = null, WorkflowExpression<string> bodyinvitedUserType = null, WorkflowExpression<string> bodyinviteRedirectUrl = null, WorkflowExpression<bool> bodyresetRedemption = null, WorkflowExpression<bool> bodysendInvitationMessage = null)
         {

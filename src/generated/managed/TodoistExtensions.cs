@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskV2> __BuildCreateItem(WorkflowExpression<string> newItemtitle, WorkflowExpression<string> newItemprojectId = null, WorkflowExpression<string> newItemdueDate = null, WorkflowExpression<int> newItempriority = null, WorkflowExpression<string> newItemparentId = null, WorkflowExpression<int> newItemchildOrder = null)
         {
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LabelV4> __BuildCreateLabel(WorkflowExpression<string> newLabelname, WorkflowExpression<string> newLabelcolor = null, WorkflowExpression<int> newLabelorder = null)
         {
@@ -127,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectV4> __BuildCreateProject(WorkflowExpression<string> newProjectname, WorkflowExpression<string> newProjectcolor = null, WorkflowExpression<string> newProjectparentId = null, WorkflowExpression<bool> newProjectisFavorite = null)
         {
@@ -187,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskV2[]> __BuildListItemsByProject(WorkflowExpression<string> projectId)
         {
@@ -227,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProjectV4> __BuildShareProject(WorkflowExpression<string> projectId, WorkflowExpression<string> shareProjectemail)
         {
@@ -259,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateItem(WorkflowExpression<string> projectId, WorkflowExpression<string> id, WorkflowExpression<string> changeItemtitle, WorkflowExpression<int> changeItempriority = null)
         {
@@ -300,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateLabel(WorkflowExpression<string> id, WorkflowExpression<string> changeLabelname = null, WorkflowExpression<string> changeLabelcolor = null, WorkflowExpression<int> changeLabelorder = null)
         {
@@ -350,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateProject(WorkflowExpression<string> id, WorkflowExpression<string> changeProjectname, WorkflowExpression<string> changeProjectcolor = null, WorkflowExpression<bool> changeProjectisFavorite = null)
         {

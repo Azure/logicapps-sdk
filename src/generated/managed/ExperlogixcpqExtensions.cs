@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildGetConfigurationXml(WorkflowExpression<string> type, WorkflowExpression<string> id)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildCreateConfigurationFromCopy(WorkflowExpression<string> reqtargetId, WorkflowExpression<string> reqsourceId, WorkflowExpression<string> reqtype, WorkflowExpression<int[]> reqlineItemIds = null)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildUpdateConfiguration(WorkflowExpression<string> reqid, WorkflowExpression<string> reqtype, WorkflowExpression<string> reqconfigurationXml)
         {
@@ -121,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildCreateConfiguration(WorkflowExpression<string> reqid, WorkflowExpression<string> reqtype, WorkflowExpression<string> reqconfigurationXml)
         {

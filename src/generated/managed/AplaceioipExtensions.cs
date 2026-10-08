@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<string> sessionId = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> countries = null, WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null, WorkflowExpression<string> lang = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PIPGetResponse> __BuildPIPGet(WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null)
         {

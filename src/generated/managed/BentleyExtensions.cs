@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BadRequestObjectResult> __BuildUploadFile(WorkflowExpression<string> connectedProjectId, WorkflowExpression<string> federatedRepositoryId, WorkflowExpression<string> documentIdentifier, WorkflowExpression<string> xBsFileName, WorkflowExpression<string> fileContent = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BadRequestObjectResult> __BuildSynchronizeDocumentAttributes(WorkflowExpression<string> connection, WorkflowExpression<string> documentIdentifier, WorkflowExpression<attributeSynchronizationModeldirectionInput> attributeSynchronizationModeldirection)
         {

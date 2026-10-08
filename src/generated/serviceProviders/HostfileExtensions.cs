@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateFileContentsOutput> __BuildGenerateFileContents(WorkflowExpression<string> hidx, WorkflowExpression<string> schema, WorkflowExpression<JToken[]> rows)
         {
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseFileContentsOutput> __BuildParseFileContents(WorkflowExpression<string> hidx, WorkflowExpression<string> schema, WorkflowExpression<string> contents)
         {

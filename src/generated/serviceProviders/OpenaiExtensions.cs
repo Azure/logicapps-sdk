@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetArrayEmbeddingsOutput> __BuildGetArrayEmbeddings(WorkflowExpression<string> deploymentId, WorkflowExpression<JToken[]> input)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSingleEmbeddingOutput> __BuildGetSingleEmbedding(WorkflowExpression<string> deploymentId, WorkflowExpression<string> input)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChatCompletionsOutput> __BuildGetChatCompletions(WorkflowExpression<string> deploymentId, WorkflowExpression<GetChatCompletionsInputMessagesTypeItem[]> messages, WorkflowExpression<double> temperature = null, WorkflowExpression<double> topP = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
         {
@@ -135,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> __BuildGetMultipleChatCompletions(WorkflowExpression<string> deploymentId, WorkflowExpression<GetMultipleChatCompletionsInputMessagesTypeItem[]> messages, WorkflowExpression<double> temperature = null, WorkflowExpression<double> topP = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<int> n = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
         {
@@ -206,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCompletionOutput> __BuildGetCompletion(WorkflowExpression<string> deploymentId, WorkflowExpression<string[]> prompts, WorkflowExpression<double> temperature = null, WorkflowExpression<string[]> stopSequences = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
         {
@@ -267,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> __BuildGetChatCompletionsUsingPromptTemplate(WorkflowExpression<string> deploymentId, WorkflowExpression<string> promptTemplateInput, WorkflowExpression<double> temperature = null, WorkflowExpression<object> promptTemplateInputVariables = null, WorkflowExpression<double> topP = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CurrentTime> __BuildGetCurrentTime(WorkflowExpression<string> timeZone)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CurrentTime> __BuildGetCurrentTimeByTimezone(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CurrentTime> __BuildGetCurrentTimeByIp(WorkflowExpression<string> ipAddress)
         {
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeZoneData> __BuildGetTimezone(WorkflowExpression<string> timeZone)
         {
@@ -117,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeZoneData> __BuildGetTimezoneByCoordinate(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude)
         {
@@ -141,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeZoneData> __BuildGetTimezoneByIp(WorkflowExpression<string> ipAddress)
         {
@@ -163,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Conversion> __BuildConvertTime(WorkflowExpression<string> bodyfromTimeZone, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodytoTimeZone, WorkflowExpression<bodydstAmbiguityInput> bodydstAmbiguity)
         {
@@ -202,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Translation> __BuildLocalizeTime(WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodylanguageCode)
         {
@@ -235,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DayOfTheWeekResult> __BuildConvertTimeToDay(WorkflowExpression<string> date)
         {
@@ -256,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Calculation> __BuildIncrementByTimespan(WorkflowExpression<string> bodytimeZone, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodytimeSpan, WorkflowExpression<bodydstAmbiguityInput> bodydstAmbiguity)
         {
@@ -295,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Calculation> __BuildDecrementByTimespan(WorkflowExpression<string> bodytimeZone, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodytimeSpan, WorkflowExpression<bodydstAmbiguityInput> bodydstAmbiguity)
         {

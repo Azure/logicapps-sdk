@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetViolationsResponse> __BuildGetViolations(WorkflowExpression<string> workspaceId, WorkflowExpression<string> environmentId, WorkflowExpression<string> checkId)
         {

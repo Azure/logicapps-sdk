@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentPolicyResult> __BuildApplyRules(WorkflowExpression<string> bodyinputFile = null, WorkflowExpression<PolicyRule[]> bodyrules = null, WorkflowExpression<string> bodyrecognitionMode = null)
         {
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentQuestionAnswersResult> __BuildAnswerQuestions(WorkflowExpression<string> bodyinputFile = null, WorkflowExpression<DocumentQuestionBoolean[]> bodyquestionsYesNo = null, WorkflowExpression<DocumentQuestionMultipleChoice[]> bodyquestionsMultipleChoice = null, WorkflowExpression<DocumentQuestionFreeResponse[]> bodyquestionsFreeResponse = null, WorkflowExpression<string> bodyrecognitionMode = null)
         {
@@ -128,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractTextResponse> __BuildExtractText(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -152,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractFieldsResponse> __BuildExtractFields(WorkflowExpression<string> fieldNames = null, WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -179,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractFieldsAdvancedResponse> __BuildExtractFieldsAdvanced(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<string> bodyinputFile = null, WorkflowExpression<FieldToExtract[]> bodyfieldsToExtract = null, WorkflowExpression<int> bodymaximumPagesProcessed = null, WorkflowExpression<string> bodypreprocessing = null, WorkflowExpression<string> bodyresultCrossCheck = null, WorkflowExpression<double> bodyrotateImageDegrees = null)
         {
@@ -251,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractTablesResponse> __BuildExtractTables(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -275,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractBarcodesAiResponse> __BuildExtractBarcodes(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -299,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractFieldsAndTablesResponse> __BuildExtractAllFieldsAndTables(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<string> preprocessing = null, WorkflowExpression<object> inputFile = null)
         {
@@ -326,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentClassificationResult> __BuildExtractClassification(WorkflowExpression<string> categories = null, WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -353,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentAdvancedClassificationResult> __BuildExtractClassificationAdvanced(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<string> bodyinputFile = null, WorkflowExpression<DocumentCategories[]> bodycategories = null, WorkflowExpression<string> bodypreprocessing = null, WorkflowExpression<string> bodyresultCrossCheck = null, WorkflowExpression<int> bodymaximumPagesProcessed = null, WorkflowExpression<double> bodyrotateImageDegrees = null)
         {
@@ -425,7 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SummarizeDocumentResponse> __BuildExtractSummary(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -449,7 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> __BuildExtractTextFromDocumentBatchJob(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -473,7 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> __BuildExtractFieldsFromDocumentAdvancedBatchJob(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<string> bodyinputFile = null, WorkflowExpression<FieldToExtract[]> bodyfieldsToExtract = null, WorkflowExpression<int> bodymaximumPagesProcessed = null, WorkflowExpression<string> bodypreprocessing = null, WorkflowExpression<string> bodyresultCrossCheck = null, WorkflowExpression<double> bodyrotateImageDegrees = null)
         {
@@ -545,7 +532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> __BuildExtractAllFieldsAndTablesFromDocumentBatchJob(WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -569,7 +555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> __BuildExtractClassificationFromDocumentBatchJob(WorkflowExpression<string> categories = null, WorkflowExpression<string> recognitionMode = null, WorkflowExpression<object> inputFile = null)
         {
@@ -596,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractDocumentJobStatusResult> __BuildGetAsyncJobStatus(WorkflowExpression<string> asyncJobID = null)
         {

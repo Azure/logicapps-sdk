@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebUrlResponse> __BuildFlowV1SharePointFlowJobsCreateSiteFromTemplate(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requesttitle, WorkflowExpression<string> requesttemplate, WorkflowExpression<string> requestleafURL, WorkflowExpression<string> requestdescription = null, WorkflowExpression<int> requestlcid = null, WorkflowExpression<bool> requestinheritPermissions = null, WorkflowExpression<bool> requestinheritNavigation = null, WorkflowExpression<bool> requestonTopNavigation = null, WorkflowExpression<bool> requestonQuickLaunch = null)
         {
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsChangePermissions(WorkflowExpression<actionTypeInput> actionType, WorkflowExpression<targetInput> target, WorkflowExpression<object> request = null)
         {
@@ -125,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsActivateFeature(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestfeatureID, WorkflowExpression<bool> requestforce = null)
         {
@@ -165,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsDeactivateFeature(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestfeatureID, WorkflowExpression<bool> requestforce = null)
         {
@@ -205,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsCreateListOrLibrary(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requesttitle, WorkflowExpression<string> requesttemplate, WorkflowExpression<string> requestpartialURL = null, WorkflowExpression<string> requestdescription = null, WorkflowExpression<bool> requestonQuickLaunch = null)
         {
@@ -262,7 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsSetDefaultSiteGroup(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<requestgroupTypeInput> requestgroupType, WorkflowExpression<string> requestgroupName)
         {
@@ -298,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentInfoResponse> __BuildFlowV1SharePointFlowJobsCopyDocumentFromLibrary(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsourceURL, WorkflowExpression<string> requestdestinationURL)
         {
@@ -334,7 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentInfoResponse> __BuildFlowV1SharePointFlowJobsMoveDocumentFromLibrary(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsourceURL, WorkflowExpression<string> requestdestinationURL)
         {
@@ -370,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsRemoveDocumentByUrl(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestdocumentURL)
         {
@@ -403,7 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentSetInfoResponse> __BuildFlowV1SharePointFlowJobsCreateDocumentSet(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestdocumentSetName, WorkflowExpression<string> requesttargetList, WorkflowExpression<string> requestcontentType = null)
         {
@@ -446,7 +436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentSetInfoResponse> __BuildFlowV1SharePointFlowJobsCopyDocumentSet(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsourceURL, WorkflowExpression<string> requestdestinationURL)
         {
@@ -482,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentSetInfoResponse> __BuildFlowV1SharePointFlowJobsMoveDocumentSet(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsourceURL, WorkflowExpression<string> requestdestinationURL)
         {
@@ -518,7 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderInfoResponse> __BuildFlowV1SharePointFlowJobsCreateFolderByUrl(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestfolderURL)
         {
@@ -551,7 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderInfoResponse> __BuildFlowV1SharePointFlowJobsCreateFolderInList(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requesttargetList, WorkflowExpression<string> requestfolderPath)
         {
@@ -587,7 +573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsRemoveFolderByUrl(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestfolderURL)
         {
@@ -620,7 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderInfoResponse> __BuildFlowV1SharePointFlowJobsCopyFolderFromLibrary(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsourceURL, WorkflowExpression<string> requestdestinationURL)
         {
@@ -656,7 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderInfoResponse> __BuildFlowV1SharePointFlowJobsMoveFolderFromLibrary(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsourceURL, WorkflowExpression<string> requestdestinationURL)
         {
@@ -692,7 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentInfoResponse> __BuildFlowV1SharePointFlowJobsCheckInDocument(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestdocumentURL, WorkflowExpression<string> requestcomment = null)
         {
@@ -732,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentInfoResponse> __BuildFlowV1SharePointFlowJobsCheckOutDocument(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestdocumentURL)
         {
@@ -765,7 +746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebUrlResponse> __BuildFlowV1SharePointFlowJobsCreateModernSite(WorkflowExpression<siteTypeInput> siteType, WorkflowExpression<object> request = null)
         {
@@ -789,7 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebUrlResponse> __BuildFlowV1SharePointFlowJobsApplySiteDesign(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestsiteDesign)
         {
@@ -822,7 +801,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsCreateSharePointGroup(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestgroupDescription = null, WorkflowExpression<string> requestgroupOwner = null)
         {
@@ -869,7 +847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsRemoveSharePointGroup(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName)
         {
@@ -902,7 +879,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsUpdateSharePointGroupProperties(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestpropertiestitle = null, WorkflowExpression<string> requestpropertiesdescription = null, WorkflowExpression<string> requestpropertiesowner = null, WorkflowExpression<bool> requestpropertiesallowMembersEditMembership = null, WorkflowExpression<bool> requestpropertiesallowRequestToJoinLeave = null, WorkflowExpression<bool> requestpropertiesautoAcceptRequestToJoinLeave = null, WorkflowExpression<bool> requestpropertiesonlyAllowMembersViewMembership = null, WorkflowExpression<string> requestpropertiesrequestToJoinLeaveEmailSetting = null)
         {
@@ -999,7 +975,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupExistResponse> __BuildFlowV1SharePointFlowJobsCheckSharePointGroupExists(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName)
         {
@@ -1032,7 +1007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsAddUserToSharePointGroup(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestuser, WorkflowExpression<bool> requestsendEmail = null)
         {
@@ -1075,7 +1049,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsRemoveUserFromSharePointGroup(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestuser)
         {
@@ -1111,7 +1084,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSPGroupMembersResponse> __BuildFlowV1SharePointFlowJobsGetSharePointGroupMembers(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName)
         {
@@ -1144,7 +1116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserExistsResponse> __BuildFlowV1SharePointFlowJobsUserExistInSharePointGroup(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestuser)
         {
@@ -1180,7 +1151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsUpdateSharePointSiteProperties(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestpropertiestitle = null, WorkflowExpression<string> requestpropertiesdescription = null, WorkflowExpression<bool> requestpropertiesquickLaunchEnabled = null, WorkflowExpression<bool> requestpropertiestreeViewEnabled = null, WorkflowExpression<string> requestpropertiessiteLogoURL = null, WorkflowExpression<string> requestpropertiesalternateCssURL = null, WorkflowExpression<string> requestpropertiesassociatedMemberGroup = null, WorkflowExpression<string> requestpropertiesassociatedOwnerGroup = null, WorkflowExpression<string> requestpropertiesassociatedVisitorGroup = null, WorkflowExpression<bool> requestpropertiescontainsConfidentialInfo = null, WorkflowExpression<string> requestpropertiescustomMasterURL = null, WorkflowExpression<bool> requestpropertiesenableMinimalDownload = null, WorkflowExpression<bool> requestpropertiesisMultilingual = null, WorkflowExpression<string> requestpropertiesmasterURL = null, WorkflowExpression<bool> requestpropertiesmembersCanShare = null, WorkflowExpression<bool> requestpropertiesnoCrawl = null, WorkflowExpression<bool> requestpropertiesoverwriteTranslationsOnChange = null, WorkflowExpression<string> requestpropertiesrequestAccessEmail = null, WorkflowExpression<bool> requestpropertiessaveSiteAsTemplateEnabled = null, WorkflowExpression<string> requestpropertiesserverRelativeURL = null, WorkflowExpression<bool> requestpropertiessyndicationEnabled = null, WorkflowExpression<int> requestpropertiesuIVersion = null)
         {
@@ -1372,7 +1342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsDeleteSharePointSite(WorkflowExpression<string> requestsharePointSiteURL)
         {
@@ -1402,7 +1371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SPSiteOptionValueResponse> __BuildFlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestoptionName)
         {
@@ -1435,7 +1403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsInviteExternalUserToSharePoint(WorkflowExpression<targetInput> target, WorkflowExpression<object> request = null)
         {
@@ -1459,7 +1426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFileUrlsResponse> __BuildFlowV1SharePointFlowJobsCopyAttachmentsToUrl(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<int> requestitemID, WorkflowExpression<string> requestdestinationFolderURL, WorkflowExpression<bool> requestoverwrite = null)
         {
@@ -1505,7 +1471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListFileUrlsResponse> __BuildFlowV1SharePointFlowJobsMoveAttachmentsToUrl(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<int> requestitemID, WorkflowExpression<string> requestdestinationFolderURL, WorkflowExpression<bool> requestoverwrite = null)
         {
@@ -1551,7 +1516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsAddContentTypeToSharePointList(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<string> requestcontentTypeName, WorkflowExpression<bool> requestmakeItDefault = null)
         {
@@ -1594,7 +1558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListItemIdResponse> __BuildFlowV1SharePointFlowJobsCopyListItemToSharePointList(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<string> requestitemID, WorkflowExpression<string> requestdestinationListURL, WorkflowExpression<bool> requestcopyAttachments = null)
         {
@@ -1640,7 +1603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListItemIdResponse> __BuildFlowV1SharePointFlowJobsMoveListItemToSharePointList(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<string> requestitemID, WorkflowExpression<string> requestdestinationListURL, WorkflowExpression<bool> requestmoveAttachments = null)
         {
@@ -1686,7 +1648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowGuidResponse> __BuildFlowV1SharePointFlowJobsStartListWorkflow(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestworkflowName, WorkflowExpression<string> requestlistURL, WorkflowExpression<int> requestitemID)
         {
@@ -1733,7 +1694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowGuidResponse> __BuildFlowV1SharePointFlowJobsStartSiteWorkflow(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestworkflowName)
         {
@@ -1774,7 +1734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowV1SharePointFlowJobsGetItemsByCamlQuery(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<string> requestcAMLQuery, WorkflowExpression<string> requestfolderURL = null)
         {
@@ -1817,7 +1776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VersionsHistoryResponse> __BuildFlowV1SharePointFlowJobsGetVersionsHistory(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistURL, WorkflowExpression<int> requestitemID, WorkflowExpression<string> requestfieldName)
         {
@@ -1856,7 +1814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsProvisionPnPTemplate(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requesttemplateContent, WorkflowExpression<bool> requestoverwriteSystemPropertyBagValues = null, WorkflowExpression<bool> requestignoreDuplicateDataRowErrors = null, WorkflowExpression<bool> requestclearNavigation = null, WorkflowExpression<bool> requestprovisionContentTypesToSubWebs = null, WorkflowExpression<bool> requestprovisionFieldsToSubWebs = null, WorkflowExpression<string> requesthandlers = null, WorkflowExpression<string> requestexcludeHandlers = null, WorkflowExpression<string> requestparameters = null)
         {
@@ -1945,7 +1902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsProvisionPnPTenantTemplate(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requesttemplateContent, WorkflowExpression<bool> requestoverwriteSystemPropertyBagValues = null, WorkflowExpression<bool> requestignoreDuplicateDataRowErrors = null, WorkflowExpression<bool> requestclearNavigation = null, WorkflowExpression<bool> requestprovisionContentTypesToSubWebs = null, WorkflowExpression<bool> requestprovisionFieldsToSubWebs = null, WorkflowExpression<string> requesthandlers = null, WorkflowExpression<string> requestexcludeHandlers = null, WorkflowExpression<string> requestparameters = null)
         {
@@ -2034,7 +1990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsAddSiteNavigation(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<requestlocationInput> requestlocation, WorkflowExpression<string> requesttitle, WorkflowExpression<string> requestparent = null, WorkflowExpression<string> requesturl = null, WorkflowExpression<bool> requestprepend = null)
         {
@@ -2091,7 +2046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsRemoveSiteNavigation(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<requestlocationInput> requestlocation, WorkflowExpression<string> requesttitle, WorkflowExpression<string> requestparent = null)
         {
@@ -2134,7 +2088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsUpdateListItem(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistName, WorkflowExpression<string> requestitemIDOrURL)
         {
@@ -2178,7 +2131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsDeclareDocumentAsRecord(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistName, WorkflowExpression<string> requestitemIDOrURL)
         {
@@ -2214,7 +2166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFlowV1SharePointFlowJobsUndeclareDocumentAsRecord(WorkflowExpression<string> requestsharePointSiteURL, WorkflowExpression<string> requestlistName, WorkflowExpression<string> requestitemIDOrURL)
         {
@@ -2250,7 +2201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowV1SharePointFlowJobsParseCsv(WorkflowExpression<string> requestcontentOfCSVDocument, WorkflowExpression<string> requestheaders, WorkflowExpression<requestdelimiterInput> requestdelimiter = null, WorkflowExpression<requestlocaleInput> requestlocale = null, WorkflowExpression<int> requestlimit = null, WorkflowExpression<bool> requestskipFirstLine = null)
         {
@@ -2321,7 +2271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFlowV1SharePointFlowJobsRegExpMatch(WorkflowExpression<string> requestpattern, WorkflowExpression<string> requesttext)
         {
@@ -2354,7 +2303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringResultResponse> __BuildFlowV1SharePointFlowJobsRegExpReplace(WorkflowExpression<string> requestpattern, WorkflowExpression<string> requesttext, WorkflowExpression<string> requestreplacement = null)
         {
@@ -2394,7 +2342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BooleanResultResponse> __BuildFlowV1SharePointFlowJobsRegExpTest(WorkflowExpression<string> requestpattern, WorkflowExpression<string> requesttext)
         {

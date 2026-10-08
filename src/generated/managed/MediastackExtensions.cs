@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListNewsResponse> __BuildListNews(WorkflowExpression<string> sources = null, WorkflowExpression<string> categories = null, WorkflowExpression<string> countries = null, WorkflowExpression<string> languages = null, WorkflowExpression<string> keywords = null, WorkflowExpression<string> date = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSourcesResponse> __BuildListSources(WorkflowExpression<string> search, WorkflowExpression<string> countries = null, WorkflowExpression<string> languages = null, WorkflowExpression<string> categories = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {

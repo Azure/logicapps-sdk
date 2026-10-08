@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScheduleResponse> __BuildGetSchedule(WorkflowExpression<string> teamId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTimesOffResponse> __BuildListTimesOff(WorkflowExpression<string> teamId, WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<int> top = null)
         {
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeOffResponse> __BuildCreateTimeOff(WorkflowExpression<string> teamId, WorkflowExpression<string> requestuserID, WorkflowExpression<string> requestvaluetimeOffReason = null, WorkflowExpression<string> requestvaluestartTime = null, WorkflowExpression<string> requestvalueendTime = null, WorkflowExpression<requestvaluethemeInput> requestvaluetheme = null)
         {
@@ -146,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeOffResponse> __BuildGetTimeOff(WorkflowExpression<string> teamId, WorkflowExpression<string> timeOffId)
         {
@@ -168,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTimeOff(WorkflowExpression<string> teamId, WorkflowExpression<string> timeOffId)
         {
@@ -190,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListShiftsResponse> __BuildListShifts(WorkflowExpression<string> teamId, WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<int> top = null)
         {
@@ -220,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShiftResponse> __BuildCreateShift(WorkflowExpression<string> teamId, WorkflowExpression<string> requestuserID, WorkflowExpression<string> requestschedulingGroupID = null, WorkflowExpression<string> requestvaluedisplayName = null, WorkflowExpression<string> requestvaluenotes = null, WorkflowExpression<string> requestvaluestartTime = null, WorkflowExpression<string> requestvalueendTime = null, WorkflowExpression<requestvaluethemeInput> requestvaluetheme = null, WorkflowExpression<requestvalueactivitiesInputItem[]> requestvalueactivities = null)
         {
@@ -318,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShiftResponse> __BuildGetShift(WorkflowExpression<string> teamId, WorkflowExpression<string> shiftId)
         {
@@ -340,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteShift(WorkflowExpression<string> teamId, WorkflowExpression<string> shiftId)
         {
@@ -362,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOpenShiftsResponse> __BuildListOpenShifts(WorkflowExpression<string> teamId, WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<int> top = null)
         {
@@ -392,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenShiftResponse> __BuildCreateOpenShift(WorkflowExpression<string> teamId, WorkflowExpression<string> requestsharedOpenShiftstartTime, WorkflowExpression<string> requestsharedOpenShiftendTime, WorkflowExpression<int> requestsharedOpenShiftopenSlotCount, WorkflowExpression<string> requestschedulingGroupID = null, WorkflowExpression<string> requestsharedOpenShiftdisplayName = null, WorkflowExpression<string> requestsharedOpenShiftnotes = null, WorkflowExpression<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, WorkflowExpression<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
         {
@@ -482,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenShiftResponse> __BuildGetOpenShift(WorkflowExpression<string> teamId, WorkflowExpression<string> openShiftId)
         {
@@ -504,7 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenShiftResponse> __BuildUpdateOpenShift(WorkflowExpression<string> teamId, WorkflowExpression<string> openShiftId, WorkflowExpression<string> requestsharedOpenShiftstartTime, WorkflowExpression<string> requestsharedOpenShiftendTime, WorkflowExpression<int> requestsharedOpenShiftopenSlotCount, WorkflowExpression<string> requestschedulingGroupID = null, WorkflowExpression<string> requestsharedOpenShiftdisplayName = null, WorkflowExpression<string> requestsharedOpenShiftnotes = null, WorkflowExpression<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, WorkflowExpression<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
         {
@@ -595,7 +582,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteOpenShift(WorkflowExpression<string> teamId, WorkflowExpression<string> openShiftId)
         {
@@ -617,7 +603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTimeOffReasonsResponse> __BuildListTimeOffReasons(WorkflowExpression<string> teamId, WorkflowExpression<int> top = null)
         {
@@ -641,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSchedulingGroupsResponse> __BuildListSchedulingGroups(WorkflowExpression<string> teamId, WorkflowExpression<int> top = null)
         {
@@ -665,7 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SchedulingGroupResponse> __BuildGetSchedulingGroup(WorkflowExpression<string> teamId, WorkflowExpression<string> schedulingGroupId)
         {
@@ -687,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTimeOffRequestsResponse> __BuildListTimeOffRequests(WorkflowExpression<string> teamId, WorkflowExpression<int> top = null, WorkflowExpression<stateInput> state = null)
         {
@@ -714,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimeOffRequestResponse> __BuildGetTimeOffShiftRequest(WorkflowExpression<string> teamId, WorkflowExpression<string> timeOffRequestId)
         {
@@ -736,7 +717,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTimeOffRequestApprove(WorkflowExpression<string> teamId, WorkflowExpression<string> timeOffRequestId, WorkflowExpression<string> requestmessageFromManager = null)
         {
@@ -772,7 +752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTimeOffRequestDecline(WorkflowExpression<string> teamId, WorkflowExpression<string> timeOffRequestId, WorkflowExpression<string> requestmessageFromManager = null)
         {
@@ -808,7 +787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOfferShiftRequestsResponse> __BuildListOfferShiftRequests(WorkflowExpression<string> teamId, WorkflowExpression<int> top = null, WorkflowExpression<stateInput> state = null)
         {
@@ -835,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfferShiftRequestResponse> __BuildGetOfferShiftRequest(WorkflowExpression<string> teamId, WorkflowExpression<string> offerShiftRequestId)
         {
@@ -857,7 +834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildOfferShiftRequestApprove(WorkflowExpression<string> teamId, WorkflowExpression<string> offerShiftRequestId, WorkflowExpression<string> requestmessageFromRecipientManager = null)
         {
@@ -893,7 +869,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildOfferShiftRequestDecline(WorkflowExpression<string> teamId, WorkflowExpression<string> offerShiftRequestId, WorkflowExpression<string> requestmessageFromRecipientManager = null)
         {
@@ -929,7 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSwapShiftsChangeRequestsResponse> __BuildListSwapShiftsChangeRequests(WorkflowExpression<string> teamId, WorkflowExpression<int> top = null, WorkflowExpression<stateInput> state = null)
         {
@@ -956,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SwapShiftsChangeRequestResponse> __BuildGetSwapShiftsChangeRequest(WorkflowExpression<string> teamId, WorkflowExpression<string> swapShiftsChangeRequestId)
         {
@@ -978,7 +951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSwapShiftsChangeRequestApprove(WorkflowExpression<string> teamId, WorkflowExpression<string> swapShiftsChangeRequestId, WorkflowExpression<string> requestmessageFromRecipientManager = null)
         {
@@ -1014,7 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSwapShiftsChangeRequestDecline(WorkflowExpression<string> teamId, WorkflowExpression<string> swapShiftsChangeRequestId, WorkflowExpression<string> requestmessageFromRecipientManager = null)
         {
@@ -1050,7 +1021,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOpenShiftChangeRequestsResponse> __BuildListOpenShiftChangeRequests(WorkflowExpression<string> teamId, WorkflowExpression<int> top = null, WorkflowExpression<stateInput> state = null)
         {
@@ -1077,7 +1047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OpenShiftChangeRequestResponse> __BuildGetOpenShiftChangeRequest(WorkflowExpression<string> teamId, WorkflowExpression<string> openShiftChangeRequestId)
         {
@@ -1099,7 +1068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildOpenShiftChangeRequestApprove(WorkflowExpression<string> teamId, WorkflowExpression<string> openShiftChangeRequestId, WorkflowExpression<string> requestmessageFromManager = null)
         {
@@ -1135,7 +1103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildOpenShiftChangeRequestDecline(WorkflowExpression<string> teamId, WorkflowExpression<string> openShiftChangeRequestId, WorkflowExpression<string> requestmessageFromManager = null)
         {
@@ -1171,7 +1138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListOpenShiftsCrossTeamResponse> __BuildListOpenShiftsCrossTeam(WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<int> top = null)
         {
@@ -1200,7 +1166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListShiftsCrossTeamResponse> __BuildListShiftsCrossTeam(WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<string> assignedToUserName = null, WorkflowExpression<int> top = null)
         {
@@ -1232,7 +1197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListTimesOffCrossTeamResponse> __BuildListTimesOffCrossTeam(WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<string> assignedToUserName = null, WorkflowExpression<int> top = null)
         {

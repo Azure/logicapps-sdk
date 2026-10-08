@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientextractfromp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildExtractText(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<string> inputPdfDatapageRange = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -95,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientextractfromp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildExtractKeyValuePairs(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<string> inputPdfDataoCRLanguage = null, WorkflowExpression<inputPdfDatadPIInput> inputPdfDatadPI = null, WorkflowExpression<inputPdfDatakVPOutputFormatInput> inputPdfDatakVPOutputFormat = null, WorkflowExpression<string> inputPdfDatapageRange = null, WorkflowExpression<inputPdfDataautorotateInput> inputPdfDataautorotate = null, WorkflowExpression<inputPdfDatatrimSymbolsInput> inputPdfDatatrimSymbols = null, WorkflowExpression<inputPdfDataincludeKeyBoundingBoxInput> inputPdfDataincludeKeyBoundingBox = null, WorkflowExpression<inputPdfDataincludeValueBoundingBoxInput> inputPdfDataincludeValueBoundingBox = null, WorkflowExpression<inputPdfDataincludePageNumberInput> inputPdfDataincludePageNumber = null, WorkflowExpression<inputPdfDataincludeConfidenceInput> inputPdfDataincludeConfidence = null, WorkflowExpression<int> inputPdfDataconfidenceThreshold = null, WorkflowExpression<inputPdfDataincludeTypeInput> inputPdfDataincludeType = null, WorkflowExpression<string> inputPdfDataexpectedKeys = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -366,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientextractfromp")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OcrOperationResponse> __BuildOcrText(WorkflowExpression<string> inputDatasourceFileName, WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatalanguageInput> inputDatalanguage = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<string> inputDatawidth = null, WorkflowExpression<string> inputDataheight = null, WorkflowExpression<string> inputDatapageNumber = null, WorkflowExpression<inputDataperformanceInput> inputDataperformance = null, WorkflowExpression<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, WorkflowExpression<string> inputDatacharacters = null, WorkflowExpression<bool> inputDatausePagination = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {

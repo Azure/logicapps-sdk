@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<PutMessageOutput> __BuildPutMessage(WorkflowExpression<string> queueName, WorkflowExpression<string> message, WorkflowExpression<string> timeToLive = null, WorkflowExpression<string> visibilityTimeout = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesOutputItem[]> __BuildGetMessages(WorkflowExpression<string> queueName, WorkflowExpression<int> messageCount = null, WorkflowExpression<string> visibilityTimeout = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeleteMessage(WorkflowExpression<string> queueName, WorkflowExpression<string> messageId, WorkflowExpression<string> popReceipt)
         {
@@ -129,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildPutQueue(WorkflowExpression<string> queueName)
         {
@@ -154,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListQueuesOutput> __BuildListQueues(WorkflowExpression<string> prefix = null, WorkflowExpression<int> maxCount = null, WorkflowExpression<string> continuationToken = null)
         {

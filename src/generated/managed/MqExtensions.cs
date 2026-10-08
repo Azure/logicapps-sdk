@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildRead(WorkflowExpression<string> optionsqueue = null, WorkflowExpression<string> optionsmessageId = null, WorkflowExpression<string> optionscorrelationId = null, WorkflowExpression<string> optionsgroupId = null, WorkflowExpression<string> optionsmessageToken = null, WorkflowExpression<double> optionsoffset = null, WorkflowExpression<double> optionslogicalSequenceNumber = null, WorkflowExpression<optionsincludeInfoInput> optionsincludeInfo = null, WorkflowExpression<string> optionstimeout = null)
         {
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildReadAll(WorkflowExpression<string> optionsqueue = null, WorkflowExpression<string> optionsmessageId = null, WorkflowExpression<string> optionscorrelationId = null, WorkflowExpression<string> optionsgroupId = null, WorkflowExpression<string> optionsmessageToken = null, WorkflowExpression<double> optionsoffset = null, WorkflowExpression<double> optionslogicalSequenceNumber = null, WorkflowExpression<optionsincludeInfoInput> optionsincludeInfo = null, WorkflowExpression<string> optionstimeout = null, WorkflowExpression<double> optionsbatchSize = null)
         {
@@ -225,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildReceive(WorkflowExpression<string> optionsqueue = null, WorkflowExpression<string> optionsmessageId = null, WorkflowExpression<string> optionscorrelationId = null, WorkflowExpression<string> optionsgroupId = null, WorkflowExpression<string> optionsmessageToken = null, WorkflowExpression<double> optionsoffset = null, WorkflowExpression<double> optionslogicalSequenceNumber = null, WorkflowExpression<optionsincludeInfoInput> optionsincludeInfo = null, WorkflowExpression<string> optionstimeout = null)
         {
@@ -325,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildReceiveAll(WorkflowExpression<string> optionsqueue = null, WorkflowExpression<string> optionsmessageId = null, WorkflowExpression<string> optionscorrelationId = null, WorkflowExpression<string> optionsgroupId = null, WorkflowExpression<string> optionsmessageToken = null, WorkflowExpression<double> optionsoffset = null, WorkflowExpression<double> optionslogicalSequenceNumber = null, WorkflowExpression<optionsincludeInfoInput> optionsincludeInfo = null, WorkflowExpression<string> optionstimeout = null, WorkflowExpression<double> optionsbatchSize = null)
         {
@@ -432,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item> __BuildDelete(WorkflowExpression<string> optionsqueue = null, WorkflowExpression<string> optionsmessageId = null, WorkflowExpression<string> optionscorrelationId = null, WorkflowExpression<string> optionsgroupId = null, WorkflowExpression<string> optionsmessageToken = null, WorkflowExpression<double> optionsoffset = null, WorkflowExpression<double> optionslogicalSequenceNumber = null, WorkflowExpression<optionsincludeInfoInput> optionsincludeInfo = null, WorkflowExpression<string> optionstimeout = null)
         {
@@ -532,7 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemsList> __BuildDeleteAll(WorkflowExpression<string> optionsqueue = null, WorkflowExpression<string> optionsmessageId = null, WorkflowExpression<string> optionscorrelationId = null, WorkflowExpression<string> optionsgroupId = null, WorkflowExpression<string> optionsmessageToken = null, WorkflowExpression<double> optionsoffset = null, WorkflowExpression<double> optionslogicalSequenceNumber = null, WorkflowExpression<optionsincludeInfoInput> optionsincludeInfo = null, WorkflowExpression<string> optionstimeout = null, WorkflowExpression<double> optionsbatchSize = null)
         {
@@ -639,7 +633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendResponse> __BuildSend(WorkflowExpression<string> messagemessage, WorkflowExpression<string> messagequeue = null, WorkflowExpression<messagemessageTypeInput> messagemessageType = null, WorkflowExpression<string> messagecorrelationId = null, WorkflowExpression<string> messagemessageId = null, WorkflowExpression<string> messagereplyToQueue = null, WorkflowExpression<string> messagereplyToQueueManager = null, WorkflowExpression<double> messagecodeCharSetId = null, WorkflowExpression<double> messageoffset = null, WorkflowExpression<string> messageformat = null)
         {

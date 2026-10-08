@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> __BuildUploadFormSubmissionAsNewFile(WorkflowExpression<string> workspaceId, WorkflowExpression<string> folderId, WorkflowExpression<string> requestBodytextContent = null, WorkflowExpression<string> requestBodydescription = null, WorkflowExpression<string> requestBodytitle = null)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetFile(WorkflowExpression<string> fileId)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteFolderResponse> __BuildDeleteFolder(WorkflowExpression<string> folderId)
         {
@@ -111,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Folder> __BuildCreateFolder(WorkflowExpression<string> folderId, WorkflowExpression<string> requestBodytitle, WorkflowExpression<string> requestBodydescription = null)
         {
@@ -149,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadFileResponse> __BuildUploadFile(WorkflowExpression<string> workspaceId, WorkflowExpression<string> folderId, WorkflowExpression<string> requestBodyfileContent = null, WorkflowExpression<string> requestBodydescription = null, WorkflowExpression<string> requestBodytitle = null)
         {
@@ -200,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskObject> __BuildMarkTaskComplete(WorkflowExpression<string> taskId)
         {
@@ -221,7 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWorkspaceTaskResponse> __BuildCreateWorkspaceTask(WorkflowExpression<string> workspaceId, WorkflowExpression<string> requestBodytitle, WorkflowExpression<string> requestBodyassignee = null, WorkflowExpression<string> requestBodydescription = null, WorkflowExpression<string> requestBodydueDate = null, WorkflowExpression<string> requestBodyfileID = null, WorkflowExpression<string> requestBodytaskID = null, WorkflowExpression<string> requestBodystatus = null)
         {

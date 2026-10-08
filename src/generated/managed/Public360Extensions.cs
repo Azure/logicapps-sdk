@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFileResponse> __BuildCreateFile(WorkflowExpression<string> hosturl, WorkflowExpression<string> bodyparametertitle = null, WorkflowExpression<string> bodyparameterdocumentNumber = null, WorkflowExpression<int> bodyparameterdocumentRecno = null, WorkflowExpression<string> bodyparameterformat = null, WorkflowExpression<string> bodyparameterbase64Data = null, WorkflowExpression<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
@@ -97,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentResponse> __BuildCreateDocument(WorkflowExpression<string> hosturl, WorkflowExpression<string> bodyparametertitle = null, WorkflowExpression<string> bodyparametercaseNumber = null, WorkflowExpression<string> bodyparameterdefaultValueSet = null, WorkflowExpression<string> bodyparameterunofficialTitle = null, WorkflowExpression<string> bodyparameterresponsiblePersonEmail = null, WorkflowExpression<string> bodyparametercategory = null, WorkflowExpression<string> bodyparameterstatus = null, WorkflowExpression<string> bodyparameterarchive = null, WorkflowExpression<string> bodyparameternotes = null, WorkflowExpression<bodyparametercontactsInputItem[]> bodyparametercontacts = null, WorkflowExpression<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
@@ -211,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCaseResponse> __BuildCreateCase(WorkflowExpression<string> hosturl, WorkflowExpression<string> bodyparametertitle = null, WorkflowExpression<string> bodyparameterdefaultValueSet = null, WorkflowExpression<string> bodyparameterunofficialTitle = null, WorkflowExpression<string> bodyparametercaseType = null, WorkflowExpression<string> bodyparameterresponsiblePersonEmail = null, WorkflowExpression<string> bodyparameterresponsiblePersonIdNumber = null, WorkflowExpression<string> bodyparameterresponsibleEnterpriseNumber = null, WorkflowExpression<int> bodyparameterprogressPlanId = null, WorkflowExpression<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {

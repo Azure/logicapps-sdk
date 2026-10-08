@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AMObjectsExpandedApiResponse> __BuildGetObjects(WorkflowExpression<int> top = null, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderBy = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommonUsersApiResponse> __BuildGetUsers(WorkflowExpression<int> top = null, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderBy = null)
         {

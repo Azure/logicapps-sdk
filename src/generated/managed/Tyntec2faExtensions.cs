@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendOTPResponse> __BuildSendOTP(WorkflowExpression<string> number, WorkflowExpression<string> text = null, WorkflowExpression<int> pinLength = null, WorkflowExpression<viaInput> via = null, WorkflowExpression<int> applicationId = null, WorkflowExpression<string> language = null, WorkflowExpression<string> country = null, WorkflowExpression<string> otpCode = null, WorkflowExpression<string> sender = null, WorkflowExpression<string> caller = null)
         {
@@ -68,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteOTPResponse> __BuildDeleteOTP(WorkflowExpression<string> otpID)
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResendOTPResponse> __BuildResendOTP(WorkflowExpression<string> otpID, WorkflowExpression<viaInput> via = null, WorkflowExpression<string> sender = null, WorkflowExpression<string> caller = null)
         {
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatusOTPResponse> __BuildStatusOTP(WorkflowExpression<string> otpID)
         {
@@ -141,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VerifyOTPResponse> __BuildVerifyOTP(WorkflowExpression<string> otpID, WorkflowExpression<int> otpCode = null)
         {

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> messageto = null, WorkflowExpression<string> messagefrom = null, WorkflowExpression<string> messagebody = null, WorkflowExpression<string> messagecampaign = null, WorkflowExpression<string> messagereference = null, WorkflowExpression<string> messagedate = null)
         {

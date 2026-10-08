@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWorkflowRunResponse> __BuildCreateWorkflowRun(WorkflowExpression<string> bodyworkflowID, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydueDate = null)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SimpleUser> __BuildGetUser(WorkflowExpression<string> userId)
         {
@@ -79,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkflowRunResponse> __BuildUpdateWorkflowRun(WorkflowExpression<string> workflowRunId, WorkflowExpression<string> bodyname, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodydueDate, WorkflowExpression<bool> bodyshared)
         {
@@ -119,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindWorkflowRunsResponse> __BuildFindWorkflowRuns(WorkflowExpression<string> workflowId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string[]> bodyassignees = null, WorkflowExpression<object> bodyformFields = null)
         {
@@ -168,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildListFormFieldValues(WorkflowExpression<string> workflowRunId, WorkflowExpression<string> workflowId, WorkflowExpression<string> taskId = null)
         {
@@ -194,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> __BuildUpdateFormFieldValuesWithWorkflowId(WorkflowExpression<string> workflowId, WorkflowExpression<string> workflowRunId, WorkflowExpression<object> body = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateIdeaResponse> __BuildCreateIdea(WorkflowExpression<int> bodystormid, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodydata, WorkflowExpression<bodycolorInput> bodycolor)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateStormResponse> __BuildCreateStorm(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyplan, WorkflowExpression<string> bodygoals = null, WorkflowExpression<bool> bodyideacreator = null)
         {

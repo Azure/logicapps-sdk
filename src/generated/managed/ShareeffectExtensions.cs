@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddUpdateTermResponse> __BuildAddUpdateTerm(WorkflowExpression<bool> bodyisavailable, WorkflowExpression<string> bodytermlabel, WorkflowExpression<string> bodytermsgroup, WorkflowExpression<string> bodytermsset, WorkflowExpression<string> bodyotherlabels = null, WorkflowExpression<string> bodyparentterm = null)
         {
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> __BuildAddUpdateTermByKeyValue(WorkflowExpression<bool> bodyisavailable, WorkflowExpression<string> bodykeyvalue, WorkflowExpression<string> bodytermlabel, WorkflowExpression<string> bodytermsgroup, WorkflowExpression<string> bodytermsset, WorkflowExpression<string> bodyotherlabels = null, WorkflowExpression<string> bodyparentterm = null)
         {
@@ -127,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> __BuildGetTermByKeyValue(WorkflowExpression<string> searchValue)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTermByLabelResponseItem[]> __BuildGetTermByLabel(WorkflowExpression<string> searchValue)
         {
@@ -172,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadTemplateResponse> __BuildUploadTemplate(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodytemplate)
         {
@@ -205,7 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateDocumentResponse> __BuildGenerateDocument(WorkflowExpression<string> bodytemplateId, WorkflowExpression<bodyoutputformatInput> bodyoutputformat)
         {

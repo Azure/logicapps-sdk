@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PartnerLinqGetResponse> __BuildPartnerLinqGet(WorkflowExpression<string> code, WorkflowExpression<string> environment, WorkflowExpression<string> tennatId, WorkflowExpression<string> companyId, WorkflowExpression<string> process, WorkflowExpression<string> partnerId)
         {
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PartnerLinqPostResponse> __BuildPartnerLinq(WorkflowExpression<string> code, WorkflowExpression<string> environment, WorkflowExpression<string> tenantId, WorkflowExpression<string> companyId, WorkflowExpression<string> process, WorkflowExpression<string> partnerId, WorkflowExpression<string> bodydata = null)
         {

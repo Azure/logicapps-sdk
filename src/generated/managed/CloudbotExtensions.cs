@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadFileResponse> __BuildUploadFile(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> xCbotFilename, WorkflowExpression<string> fileContents = null)
         {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadFile(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> @ref)
         {
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteBotResponse> __BuildExecuteBot(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> botId, WorkflowExpression<bool> bodyasync, WorkflowExpression<string> bodydata1 = null, WorkflowExpression<string> bodydata2 = null, WorkflowExpression<string> bodydata3 = null, WorkflowExpression<string> bodydata4 = null, WorkflowExpression<string> bodydata5 = null, WorkflowExpression<string> bodydata6 = null, WorkflowExpression<string> bodydata7 = null, WorkflowExpression<string> bodydata8 = null, WorkflowExpression<string> bodydata9 = null, WorkflowExpression<string> bodydata10 = null, WorkflowExpression<string> bodyaPIParameters = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageSendPostResponse> __BuildMessageSend(WorkflowExpression<string> idempotency, WorkflowExpression<string> bodymessagecontenttitle = null, WorkflowExpression<string> bodymessagecontentbody = null, WorkflowExpression<string> bodymessagetouserId = null, WorkflowExpression<string> bodymessagetolistId = null, WorkflowExpression<string> bodymessagetoaudienceId = null, WorkflowExpression<string> bodymessagetoemail = null, WorkflowExpression<string> bodymessagetophoneNumber = null, WorkflowExpression<string> bodymessagetolocale = null)
         {
@@ -143,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudienceGetResponse> __BuildAudienceGet(WorkflowExpression<string> audienceId)
         {
@@ -164,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAudienceDelete(WorkflowExpression<string> audienceId)
         {
@@ -185,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudiencePutResponse> __BuildAudiencePut(WorkflowExpression<string> audienceId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyfilterpath = null, WorkflowExpression<string> bodyfilterOperator = null, WorkflowExpression<string> bodyfiltervalue = null, WorkflowExpression<bodyfilterfiltersInputItem[]> bodyfilterfilters = null)
         {
@@ -256,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudienceMembersGetResponse> __BuildAudienceMembersGet(WorkflowExpression<string> audienceId, WorkflowExpression<string> cursor = null)
         {
@@ -280,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AudiencesGetResponse> __BuildAudiencesGet(WorkflowExpression<string> cursor = null)
         {
@@ -303,7 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuditEventsGetResponse> __BuildAuditEventsGet(WorkflowExpression<string> cursor = null)
         {
@@ -326,7 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuditEventGetResponse> __BuildAuditEventGet(WorkflowExpression<string> auditEventId)
         {
@@ -347,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AutomationTemplatedPostResponse> __BuildAutomationTemplated(WorkflowExpression<string> templateId, WorkflowExpression<string> bodybrand = null, WorkflowExpression<string> bodytemplate = null, WorkflowExpression<string> bodyrecipient = null)
         {
@@ -412,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AutomationAdHocPostResponse> __BuildAutomationAdHoc(WorkflowExpression<JToken[]> bodyautomationsteps = null, WorkflowExpression<string> bodyautomationcancelationToken = null, WorkflowExpression<string> bodybrand = null, WorkflowExpression<string> bodytemplate = null, WorkflowExpression<string> bodyrecipient = null)
         {
@@ -498,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrandsGetResponse> __BuildBrandsGet(WorkflowExpression<string> cursor = null)
         {
@@ -521,7 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildBrand(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodysettingscolorsprimary = null, WorkflowExpression<string> bodysettingscolorssecondary = null, WorkflowExpression<string> bodysettingscolorstertiary = null, WorkflowExpression<string> bodysettingsemailheaderbarColor = null, WorkflowExpression<string> bodysettingsemailheaderlogohref = null, WorkflowExpression<string> bodysettingsemailheaderlogoimage = null, WorkflowExpression<string> bodysettingsemailfootermarkdown = null, WorkflowExpression<string> bodysettingsemailfootersocialfacebookurl = null, WorkflowExpression<string> bodysettingsemailfootersocialinstagramurl = null, WorkflowExpression<string> bodysettingsemailfootersociallinkedinurl = null, WorkflowExpression<string> bodysettingsemailfootersocialmediumurl = null, WorkflowExpression<string> bodysettingsemailfootersocialtwitterurl = null, WorkflowExpression<bool> bodysettingsinappdisableMessageIcon = null, WorkflowExpression<string> bodysettingsinappplacement = null, WorkflowExpression<string[]> bodysnippetsitems = null)
         {
@@ -783,7 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BrandGetResponse> __BuildBrandGet(WorkflowExpression<string> brandId)
         {
@@ -804,7 +791,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BulkJobPostResponse> __BuildBulkJob(WorkflowExpression<string> bodymessageEvent = null, WorkflowExpression<string> bodymessagebrand = null, WorkflowExpression<string> bodymessagetemplate = null, WorkflowExpression<string> bodymessagebrandId = null, WorkflowExpression<string> bodymessageroutingmethod = null, WorkflowExpression<string[]> bodymessageroutingchannels = null, WorkflowExpression<string> bodymessagemetadataEvent = null, WorkflowExpression<string[]> bodymessagemetadatatags = null, WorkflowExpression<string> bodymessagemetadatatraceId = null, WorkflowExpression<string> bodymessagemetadatautmcampaign = null, WorkflowExpression<string> bodymessagemetadatautmcontent = null, WorkflowExpression<string> bodymessagemetadatautmmedium = null, WorkflowExpression<string> bodymessagemetadatautmsource = null, WorkflowExpression<string> bodymessagemetadatautmterm = null)
         {
@@ -993,7 +979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BulkJobGetResponse> __BuildBulkJobGet(WorkflowExpression<string> jobId)
         {
@@ -1014,7 +999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildBulkJobUsers(WorkflowExpression<string> jobId, WorkflowExpression<bodyusersInputItem[]> bodyusers = null)
         {
@@ -1049,7 +1033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBulkJobRun(WorkflowExpression<string> jobId)
         {
@@ -1070,7 +1053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BulkJobUsersGetResponse> __BuildBulkJobUsersGet(WorkflowExpression<string> jobId)
         {
@@ -1100,7 +1082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListGetResponse> __BuildListGet(WorkflowExpression<string> listId)
         {
@@ -1121,7 +1102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildListDelete(WorkflowExpression<string> listId)
         {
@@ -1142,7 +1122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildListPut(WorkflowExpression<string> listId, WorkflowExpression<string> bodyname = null)
         {
@@ -1201,7 +1180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildListRestorePut(WorkflowExpression<string> listId)
         {
@@ -1222,7 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListSubscriptionsGetResponse> __BuildListSubscriptionsGet(WorkflowExpression<string> listId, WorkflowExpression<string> cursor = null)
         {
@@ -1246,7 +1223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildListSubscribers(WorkflowExpression<string> listId, WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients = null)
         {
@@ -1281,7 +1257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildListSubscribeDelete(WorkflowExpression<string> listId, WorkflowExpression<string> recipientId)
         {
@@ -1303,7 +1278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessagesGetResponse> __BuildMessagesGet(WorkflowExpression<bool> archived = null, WorkflowExpression<string> cursor = null, WorkflowExpression<string> @event = null, WorkflowExpression<string> list = null, WorkflowExpression<string> messageId = null, WorkflowExpression<string> notification = null, WorkflowExpression<string> recipient = null, WorkflowExpression<string> status = null, WorkflowExpression<string> tags = null)
         {
@@ -1350,7 +1324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageGetResponse> __BuildMessageGet(WorkflowExpression<string> messageId)
         {
@@ -1371,7 +1344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageHistoryGetResponse> __BuildMessageHistoryGet(WorkflowExpression<string> messageId, WorkflowExpression<string> type = null)
         {
@@ -1395,7 +1367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageContentGetResponse> __BuildMessageContentGet(WorkflowExpression<string> messageId)
         {
@@ -1416,7 +1387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMessagePut(WorkflowExpression<string> requestId)
         {
@@ -1437,7 +1407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotificationsGetResponse> __BuildNotificationsGet(WorkflowExpression<string> cursor = null)
         {
@@ -1460,7 +1429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProfileGetResponse> __BuildProfileGet(WorkflowExpression<string> recipientId)
         {
@@ -1481,7 +1449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProfileDeleteResponse> __BuildProfileDelete(WorkflowExpression<string> recipientId)
         {
@@ -1502,7 +1469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildProfile(WorkflowExpression<string> recipientId, WorkflowExpression<string> bodyprofileemail = null, WorkflowExpression<string> bodyprofilephoneNumber = null, WorkflowExpression<string> bodyprofileaddressformatted = null, WorkflowExpression<string> bodyprofileaddressstreetAddress = null, WorkflowExpression<string> bodyprofileaddresslocality = null, WorkflowExpression<string> bodyprofileaddressregion = null, WorkflowExpression<string> bodyprofileaddresspostalCode = null, WorkflowExpression<string> bodyprofileaddresscountry = null, WorkflowExpression<string> bodyprofilebirthdate = null, WorkflowExpression<bool> bodyprofileemailVerified = null, WorkflowExpression<bool> bodyprofilephoneNumberVerified = null, WorkflowExpression<string> bodyprofilegivenName = null, WorkflowExpression<string> bodyprofilemiddleName = null, WorkflowExpression<string> bodyprofilefamilyName = null, WorkflowExpression<string> bodyprofilepreferredName = null, WorkflowExpression<string> bodyprofilegender = null, WorkflowExpression<string> bodyprofilelocale = null, WorkflowExpression<string> bodyprofilepicture = null, WorkflowExpression<string> bodyprofileprofile = null, WorkflowExpression<string> bodyprofilesub = null, WorkflowExpression<string> bodyprofileupdatedAt = null, WorkflowExpression<string> bodyprofilewebsite = null, WorkflowExpression<string> bodyprofilezoneinfo = null, WorkflowExpression<string> bodyprofileairshipaudiencenamedUser = null, WorkflowExpression<string[]> bodyprofileairshipdeviceTypes = null, WorkflowExpression<string> bodyprofileairshipapn = null, WorkflowExpression<string> bodyprofileairshiptargetArn = null, WorkflowExpression<string> bodyprofileairshipdiscordchannelId = null, WorkflowExpression<string> bodyprofileairshipdiscorduserId = null, WorkflowExpression<string> bodyprofileairshipexpotoken = null, WorkflowExpression<string[]> bodyprofileairshipexpotokens = null, WorkflowExpression<string> bodyprofileairshipfacebookPSID = null, WorkflowExpression<string> bodyprofileairshipfirebaseToken = null, WorkflowExpression<string> bodyprofileairshipintercomfrom = null, WorkflowExpression<string> bodyprofileairshipintercomtoid = null, WorkflowExpression<string> bodyprofileairshipmsTeamsuserId = null, WorkflowExpression<string> bodyprofileairshipmsTeamsconversationId = null, WorkflowExpression<string> bodyprofileairshipmsTeamstenantId = null, WorkflowExpression<string> bodyprofileairshipmsTeamsserviceUrl = null, WorkflowExpression<string> bodyprofileairshiponeSignalPlayerID = null, WorkflowExpression<string> bodyprofileairshipslackaccessToken = null, WorkflowExpression<string> bodyprofileairshipslackchannel = null, WorkflowExpression<string> bodyprofileairshipslackemail = null, WorkflowExpression<string> bodyprofileairshipslackuserId = null, WorkflowExpression<string> bodyprofileairshipslackincomingWebhookurl = null, WorkflowExpression<string> bodyprofileairshipwebhookurl = null, WorkflowExpression<string> bodyprofileairshipwebhookmethod = null, WorkflowExpression<string> bodyprofileairshipwebhookauthenticationmode = null, WorkflowExpression<string> bodyprofileairshipwebhookauthenticationusername = null, WorkflowExpression<string> bodyprofileairshipwebhookauthenticationpassword = null, WorkflowExpression<string> bodyprofileairshipwebhookauthenticationtoken = null, WorkflowExpression<string> bodyprofileairshipwebhookprofile = null)
         {
@@ -2014,7 +1980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProfilePatchResponse> __BuildProfilePatch(WorkflowExpression<string> recipientId, WorkflowExpression<bodyInputItem[]> body = null)
         {

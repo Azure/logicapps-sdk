@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendFeedback(WorkflowExpression<string> botId)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> botId, WorkflowExpression<string> bodymessage)
         {
@@ -101,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildStartEscalation(WorkflowExpression<string> botId, WorkflowExpression<string> bodyinitialQuestion)
         {
@@ -156,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendAdaptiveResponse> __BuildSendAdaptive(WorkflowExpression<string> botId, WorkflowExpression<string> bodyadaptiveCardJson)
         {
@@ -195,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageInputResponse> __BuildSendMessageInput(WorkflowExpression<string> botId, WorkflowExpression<string> bodyquestion, WorkflowExpression<bool> bodyfileWaiting)
         {
@@ -237,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageInputListResponse> __BuildSendMessageInputList(WorkflowExpression<string> botId, WorkflowExpression<string> bodyquestion, WorkflowExpression<string> bodyfirstChoice, WorkflowExpression<string> bodysecondChoice, WorkflowExpression<string> bodythirdChoice = null, WorkflowExpression<string> bodyfourthChoice = null, WorkflowExpression<string> bodyfifthChoice = null, WorkflowExpression<string> bodysixthChoice = null, WorkflowExpression<string> bodyseventhChoice = null, WorkflowExpression<string> bodyeigthChoice = null, WorkflowExpression<string> bodyninethChoice = null, WorkflowExpression<string> bodytenthChoice = null)
         {
@@ -338,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendMessageInputArrayResponse> __BuildSendMessageInputArray(WorkflowExpression<string> botId, WorkflowExpression<string> bodyquestion, WorkflowExpression<JToken[]> bodylistOfChoices, WorkflowExpression<string> bodyvalueToSelectInList)
         {

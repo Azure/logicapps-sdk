@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datamuseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datamuseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WordsResponseItem[]> __BuildWords(WorkflowExpression<string> ml = null, WorkflowExpression<string> sl = null, WorkflowExpression<string> sp = null, WorkflowExpression<string> relJja = null, WorkflowExpression<string> relJjb = null, WorkflowExpression<string> relSyn = null, WorkflowExpression<string> relTrg = null, WorkflowExpression<string> relAnt = null, WorkflowExpression<string> relSpc = null, WorkflowExpression<string> relGen = null, WorkflowExpression<string> relCom = null, WorkflowExpression<string> relPar = null, WorkflowExpression<string> relBga = null, WorkflowExpression<string> relBgb = null, WorkflowExpression<string> relRhy = null, WorkflowExpression<string> relNry = null, WorkflowExpression<string> relHom = null, WorkflowExpression<string> relCns = null, WorkflowExpression<string> v = null, WorkflowExpression<string> topics = null, WorkflowExpression<string> lc = null, WorkflowExpression<string> rc = null, WorkflowExpression<int> max = null, WorkflowExpression<string> md = null)
         {

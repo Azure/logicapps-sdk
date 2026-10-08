@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseAddressResponse> __BuildAddressParseString(WorkflowExpression<string> inputaddressString = null, WorkflowExpression<string> inputcapitalizationMode = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckResponse> __BuildDomainCheck(WorkflowExpression<string> domain = null)
         {
@@ -81,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateUrlResponseFull> __BuildDomainUrlFull(WorkflowExpression<string> requestuRL = null)
         {
@@ -115,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> __BuildDomainUrlSyntaxOnly(WorkflowExpression<string> requestuRL = null)
         {
@@ -149,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WhoisResponse> __BuildDomain(WorkflowExpression<string> domain = null)
         {
@@ -171,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FullEmailValidationResponse> __BuildEmailFullValidation(WorkflowExpression<string> email = null)
         {
@@ -193,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GeolocateResponse> __BuildIPAddress(WorkflowExpression<string> value = null)
         {
@@ -215,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FirstNameValidationResponse> __BuildNameValidateFirstName(WorkflowExpression<string> inputfirstName = null)
         {
@@ -249,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FullNameValidationResponse> __BuildNameValidateFullName(WorkflowExpression<string> inputfullNameString = null)
         {
@@ -283,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGenderResponse> __BuildNameGetGender(WorkflowExpression<string> inputcountryCode = null, WorkflowExpression<string> inputfirstName = null)
         {
@@ -324,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateIdentifierResponse> __BuildNameIdentifier(WorkflowExpression<bool> inputallowHyphens = null, WorkflowExpression<bool> inputallowNumbers = null, WorkflowExpression<bool> inputallowPeriods = null, WorkflowExpression<bool> inputallowUnderscore = null, WorkflowExpression<bool> inputallowWhitespace = null, WorkflowExpression<string> inputinput = null, WorkflowExpression<int> inputmaxLength = null, WorkflowExpression<int> inputminLength = null)
         {
@@ -407,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LastNameValidationResponse> __BuildNameValidateLastName(WorkflowExpression<string> inputlastName = null)
         {
@@ -441,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PhoneNumberValidationResponse> __BuildPhoneNumberSyntaxOnly(WorkflowExpression<string> valuedefaultCountryCode = null, WorkflowExpression<string> valuephoneNumber = null)
         {
@@ -482,7 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserAgentValidateResponse> __BuildUserAgentParse(WorkflowExpression<string> requestuserAgentString = null)
         {
@@ -516,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VatLookupResponse> __BuildVatVatLookup(WorkflowExpression<string> inputvatCode = null)
         {

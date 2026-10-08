@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OptimizePdfResponse> __BuildOptimizePdf(WorkflowExpression<string> bodypDFFileContent, WorkflowExpression<bodymodeInput> bodymode = null, WorkflowExpression<int> bodygarbageLevel = null, WorkflowExpression<bool> bodydeflate = null, WorkflowExpression<bool> bodyclean = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProblemsResponse> __BuildGetProblems(WorkflowExpression<string> from = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProblemByIdResponse> __BuildGetProblemById(WorkflowExpression<string> problemId)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetProblemComments(WorkflowExpression<string> problemId)
         {
@@ -86,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostProblemComment(WorkflowExpression<string> problemId, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodycontext = null)
         {
@@ -129,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> __BuildGetProblemCommentByProblemIdAndCommentId(WorkflowExpression<string> problemId, WorkflowExpression<string> commentId)
         {
@@ -152,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEventsResponse> __BuildGetEvents(WorkflowExpression<string> from = null)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntitiesResponse> __BuildGetEntities(WorkflowExpression<string> entitySelector, WorkflowExpression<string> from = null)
         {
@@ -202,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEntityByIdResponse> __BuildGetEntityById(WorkflowExpression<string> entityId)
         {
@@ -223,7 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostEventIngest(WorkflowExpression<string> bodyeventType, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<int> bodytimeout = null, WorkflowExpression<string> bodyentitySelector = null)
         {
@@ -293,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSecurityProblemsResponse> __BuildGetSecurityProblems(WorkflowExpression<string> securityProblemSelector = null, WorkflowExpression<string> from = null)
         {
@@ -321,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> __BuildGetSecurityProblemsById(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
         {

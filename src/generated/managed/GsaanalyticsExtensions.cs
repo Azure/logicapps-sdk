@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Reports[]> __BuildGetReportData(WorkflowExpression<reportNameInput> reportName, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Reports[]> __BuildGetAgencyReportData(WorkflowExpression<agencyNameInput> agencyName, WorkflowExpression<reportNameInput> reportName, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Reports[]> __BuildGetDomainReportData(WorkflowExpression<string> domain, WorkflowExpression<reportNameInput> reportName, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
         {

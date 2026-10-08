@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertDocumentResponse> __BuildInsertDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
         {
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindDocumentResponse> __BuildFindDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
         {
@@ -119,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateDocumentResponse> __BuildUpdateDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<bool> bodyupsert = null)
         {
@@ -180,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteDocumentResponse> __BuildDeleteDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
         {
@@ -226,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertMultipleDocumentsResponse> __BuildInsertMultipleDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<JToken[]> bodydocuments)
         {
@@ -267,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindMultipleDocumentsResponse> __BuildFindMultipleDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<int> bodylimit = null, WorkflowExpression<int> bodyskip = null)
         {
@@ -344,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> __BuildUpdateMultipleDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<bool> bodyupsert = null)
         {
@@ -405,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteManyDocumentsResponse> __BuildDeleteManyDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
         {
@@ -451,7 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RunAggregationPipelineResponse> __BuildRunAggregationPipeline(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<JToken[]> bodypipeline)
         {

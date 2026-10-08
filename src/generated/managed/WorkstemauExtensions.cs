@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_001addFixedSalaryData(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodypayrollItemId, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<double> bodytotalLimitAmount = null, WorkflowExpression<double> bodypaidAmount = null, WorkflowExpression<double> bodysurplusAmount = null)
         {
@@ -102,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_002deleteFixedSalaryDataById(WorkflowExpression<string> id)
         {
@@ -133,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> __Build_003getUserInfoById(WorkflowExpression<string> id)
         {
@@ -155,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_003updateFixedSalaryDataById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodypayrollItemId = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<double> bodytotalLimitAmount = null, WorkflowExpression<double> bodypaidAmount = null, WorkflowExpression<double> bodysurplusAmount = null)
         {
@@ -234,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_004addLocationInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyaddress, WorkflowExpression<double> bodylongitude, WorkflowExpression<double> bodylatitude, WorkflowExpression<string> bodyareaCode, WorkflowExpression<int> bodyregion = null, WorkflowExpression<bool> bodyisEnableGps = null, WorkflowExpression<bool> bodyisEnableBluetooth = null, WorkflowExpression<string> bodyattendanceAddressCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodymapType = null)
         {
@@ -318,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultListV3PayrollFixedResp> __Build_004getFixedSalaryDataByEmployeeId(WorkflowExpression<string> employeeId)
         {
@@ -340,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_005addVariableSalaryData(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodypayrollItemId, WorkflowExpression<double> bodymoney, WorkflowExpression<string> bodypayrollDate, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodydataType = null)
         {
@@ -393,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_005deleteLocationById(WorkflowExpression<string> id)
         {
@@ -415,7 +407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_006deleteVariableSalaryDataById(WorkflowExpression<string> id)
         {
@@ -437,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_006updateLocationById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<double> bodylongitude = null, WorkflowExpression<double> bodylatitude = null, WorkflowExpression<int> bodyregion = null, WorkflowExpression<bool> bodyisEnableGps = null, WorkflowExpression<bool> bodyisEnableBluetooth = null, WorkflowExpression<string> bodyattendanceAddressCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodymapType = null, WorkflowExpression<string> bodyareaCode = null)
         {
@@ -544,7 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3AttAddressResp> __Build_007getLocationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -573,7 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_007updateVariableSalaryDataById(WorkflowExpression<string> bodyid, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -617,7 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AttAddressResp> __Build_008getLocationInfoById(WorkflowExpression<string> id)
         {
@@ -639,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> __Build_008getVariableSalaryDataList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> payrollDateFilter = null, WorkflowExpression<string> moneyFilter = null, WorkflowExpression<string> payrollItemIdFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> bizLabelIds = null)
         {
@@ -692,7 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_009addExternalSalaryData(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodybusinessSalaryItemId, WorkflowExpression<double> bodymoney, WorkflowExpression<string> bodyoccurrenceDate, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyexpirationDate = null)
         {
@@ -752,7 +737,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AttRuleResp> __Build_009getLocationAttendanceRulesById(WorkflowExpression<string> workLocationId)
         {
@@ -774,7 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_010addDepartmentInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -825,7 +808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_010deleteExternalSalaryDataById(WorkflowExpression<string> id)
         {
@@ -847,7 +829,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_011deleteDepartmentById(WorkflowExpression<string> id)
         {
@@ -869,7 +850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_011updateExternalSalaryDataById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyemployeeId = null, WorkflowExpression<string> bodybusinessSalaryItemId = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyoccurrenceDate = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyexpirationDate = null)
         {
@@ -948,7 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> __Build_012getExternalSalaryDataList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> businessSalaryItemFilter = null, WorkflowExpression<string> occurrenceDateFilter = null, WorkflowExpression<string> moneyFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> labelFilter = null)
         {
@@ -1001,7 +980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_012updateDepartmentById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -1059,7 +1037,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3DepartmentResp> __Build_013getDepartmentList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -1088,7 +1065,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> __Build_013getPayrollRunList(WorkflowExpression<string> status, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -1119,7 +1095,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_014addPositionInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodypositionCode = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -1163,7 +1138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> __Build_014getPayrollRunDataList(WorkflowExpression<string> planId, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -1191,7 +1165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_015deletePositionById(WorkflowExpression<string> id)
         {
@@ -1213,7 +1186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> __Build_015getPayrollDetailsInfoById(WorkflowExpression<string> id)
         {
@@ -1235,7 +1207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> __Build_016getPayrollPolicyList(WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> q = null)
         {
@@ -1264,7 +1235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_016updatePositionById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypositionCode = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -1315,7 +1285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3PayrollRegResp> __Build_017getPayrollPolicyInfoById(WorkflowExpression<string> id)
         {
@@ -1337,7 +1306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3PositionResp> __Build_017getPositionList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -1366,7 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_018addCostCenterInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -1410,7 +1377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> __Build_018getPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> nameFilter = null, WorkflowExpression<string> paymentTypeFilter = null, WorkflowExpression<string> payrollItemTypeId = null, WorkflowExpression<string> statusFilter = null)
         {
@@ -1451,7 +1417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_019deleteCostCenterById(WorkflowExpression<string> id)
         {
@@ -1473,7 +1438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3PayrollItemResp> __Build_019getPayItemInfoById(WorkflowExpression<string> id)
         {
@@ -1495,7 +1459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AddEmployeeResp> __Build_01addEmployeeInfo(WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodyenglishName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyemployeeStatus = null, WorkflowExpression<string> bodysex = null, WorkflowExpression<string> bodynationality = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<string> bodycountryCode = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyidentityCard = null, WorkflowExpression<string> bodychineseName = null, WorkflowExpression<string> bodysurnameEnglish = null, WorkflowExpression<string> bodypersonalNameEnglish = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<string> bodyemergencyContactRelation = null, WorkflowExpression<string> bodyemergencyContactPhone = null, WorkflowExpression<string> bodybankCode = null, WorkflowExpression<string> bodybankBranchNumber = null, WorkflowExpression<string> bodybankAccountNo = null, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodydate1 = null, WorkflowExpression<string> bodydate2 = null, WorkflowExpression<string> bodydate3 = null, WorkflowExpression<string> bodydate4 = null, WorkflowExpression<string> bodytext1 = null, WorkflowExpression<string> bodytext2 = null, WorkflowExpression<string> bodytext3 = null, WorkflowExpression<string> bodytext4 = null, WorkflowExpression<string> bodytext5 = null, WorkflowExpression<string> bodytext6 = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodymobileCardCalType = null, WorkflowExpression<string> bodyregularType = null, WorkflowExpression<string> bodyinsurePlanName = null, WorkflowExpression<string> bodybizLabelIds = null)
         {
@@ -1839,7 +1802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_01addLeaveBalanceAdjustInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyholidayType, WorkflowExpression<string> bodyoccurrenceTime, WorkflowExpression<string> bodycause, WorkflowExpression<string> bodyadjust)
         {
@@ -1881,7 +1843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_01addRosterInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyattendDay, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodyshiftTemplateId = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<double> bodyhourlyRate = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<double> bodytierRate = null, WorkflowExpression<double> bodyscheduledAmount = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -1997,7 +1958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3CalAttendanceResp> __Build_01attendanceSummaryCalculate(WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate, WorkflowExpression<string[]> bodyemployeeIds = null, WorkflowExpression<string[]> bodydepartmentIds = null, WorkflowExpression<string[]> bodypositionIds = null)
         {
@@ -2060,7 +2020,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> __Build_01getExpenseTypeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -2089,7 +2048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> __Build_020getExternalPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -2118,7 +2076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_020updateCostCenterById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -2169,7 +2126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3CostCenterResp> __Build_021getCostCenterList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -2198,7 +2154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3ExternalPayItemResp> __Build_021getExternalPayItemInfoById(WorkflowExpression<string> id)
         {
@@ -2220,7 +2175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_022addTagInfo(WorkflowExpression<string> bodylabelName, WorkflowExpression<string> bodylabelCode = null, WorkflowExpression<int> bodylabelStatus = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -2271,7 +2225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_022addWorkPatternInfo(WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyworkHoursForDay, WorkflowExpression<double> bodyworkHoursForWeek, WorkflowExpression<double> bodyworkHoursForYear, WorkflowExpression<double> bodytotalHours, WorkflowExpression<string> bodycycleType, WorkflowExpression<string> bodyadvancedSetting = null, WorkflowExpression<string> bodynumber = null, WorkflowExpression<string> bodyfte = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<int> bodysalaryCalculationStyle = null, WorkflowExpression<int> bodyworkTime = null, WorkflowExpression<string> bodydoubleWeekBaseDate = null, WorkflowExpression<string> bodyweekSalaryType = null, WorkflowExpression<int> bodyisThisWeek = null, WorkflowExpression<V3TermsSettingInsert[]> bodysettingList = null)
         {
@@ -2386,7 +2339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_023deleteTagById(WorkflowExpression<string> id)
         {
@@ -2408,7 +2360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_023updateWorkPatternById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyadvancedSetting = null, WorkflowExpression<string> bodynumber = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<double> bodyworkHoursForDay = null, WorkflowExpression<double> bodyworkHoursForWeek = null, WorkflowExpression<double> bodyworkHoursForYear = null, WorkflowExpression<double> bodytotalHours = null, WorkflowExpression<string> bodycycleType = null, WorkflowExpression<string> bodyfte = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<int> bodysalaryCalculationStyle = null, WorkflowExpression<int> bodyworkTime = null, WorkflowExpression<string> bodydoubleWeekBaseDate = null, WorkflowExpression<string> bodyweekSalaryType = null, WorkflowExpression<int> bodyisThisWeek = null, WorkflowExpression<string> bodytermsWorkDefaultId = null, WorkflowExpression<V3TermsSettingUpdate[]> bodysettingList = null)
         {
@@ -2557,7 +2508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_024deleteWorkPatternById(WorkflowExpression<string> id)
         {
@@ -2579,7 +2529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_024updateTagById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylabelCode = null, WorkflowExpression<string> bodylabelName = null, WorkflowExpression<int> bodylabelStatus = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -2637,7 +2586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LabelResp> __Build_025getTagList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -2666,7 +2614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> __Build_025getWorkPatternList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -2695,7 +2642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3DeviceResp> __Build_026getDeviceList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -2724,7 +2670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3WorkPatternResp> __Build_026getWorkPatternInfoById(WorkflowExpression<string> id)
         {
@@ -2746,7 +2691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> __Build_02addExpenseApplicationInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyreimbursementType, WorkflowExpression<string> bodyreimbursementDate, WorkflowExpression<string> bodyreimbursementName, WorkflowExpression<double> bodyamount, WorkflowExpression<string> bodyremark = null)
         {
@@ -2795,7 +2739,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_02batchSaveRosterInfo(WorkflowExpression<string[]> bodyemployeeIds, WorkflowExpression<string[]> bodydates, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodyshiftTemplateId = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<double> bodyhourlyRate = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<bool> bodyreplaceOriginal = null)
         {
@@ -2897,7 +2840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_02deleteEmployeeById(WorkflowExpression<string> id)
         {
@@ -2919,7 +2861,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_02deleteLeaveBalanceAdjustmentById(WorkflowExpression<string> id)
         {
@@ -2941,7 +2882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> __Build_02getAttendanceSummaryList(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> unit, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> attendCalculationFilter = null, WorkflowExpression<string> employeeFilter = null, WorkflowExpression<string> labelFilter = null, WorkflowExpression<string> payrollRegulationFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> attendanceTypeFilter = null, WorkflowExpression<string> shiftTypeFilter = null)
         {
@@ -3018,7 +2958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_03deleteExpenseApplicationById(WorkflowExpression<string> id)
         {
@@ -3040,7 +2979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_03deleteRosterById(WorkflowExpression<string> id)
         {
@@ -3062,7 +3000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> __Build_03GetDataDictionaryDetailsInfoById(WorkflowExpression<string> id)
         {
@@ -3084,7 +3021,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> __Build_03getEmployeeDailyAttendanceList(WorkflowExpression<string> employeeId, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> attendStatusFilter = null)
         {
@@ -3113,7 +3049,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> __Build_03getLeaveBalanceAdjustmentList(WorkflowExpression<string> employeeId, WorkflowExpression<string> holidayType, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -3143,7 +3078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_03updateEmployeeById(WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodyenglishName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyemployeeStatus = null, WorkflowExpression<string> bodysex = null, WorkflowExpression<string> bodynationality = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<string> bodycountryCode = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyidentityCard = null, WorkflowExpression<string> bodychineseName = null, WorkflowExpression<string> bodysurnameEnglish = null, WorkflowExpression<string> bodypersonalNameEnglish = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<string> bodyemergencyContactRelation = null, WorkflowExpression<string> bodyemergencyContactPhone = null, WorkflowExpression<string> bodybankCode = null, WorkflowExpression<string> bodybankBranchNumber = null, WorkflowExpression<string> bodybankAccountNo = null, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodydate1 = null, WorkflowExpression<string> bodydate2 = null, WorkflowExpression<string> bodydate3 = null, WorkflowExpression<string> bodydate4 = null, WorkflowExpression<string> bodytext1 = null, WorkflowExpression<string> bodytext2 = null, WorkflowExpression<string> bodytext3 = null, WorkflowExpression<string> bodytext4 = null, WorkflowExpression<string> bodytext5 = null, WorkflowExpression<string> bodytext6 = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodymobileCardCalType = null, WorkflowExpression<string> bodyregularType = null, WorkflowExpression<string> bodyinsurePlanName = null, WorkflowExpression<string> bodybizLabelIds = null)
         {
@@ -3487,7 +3421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AddMobileCardResp> __Build_04addAttendanceDataInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodymode, WorkflowExpression<string> bodycardType = null, WorkflowExpression<double> bodyactualLongitude = null, WorkflowExpression<double> bodyactualLatitude = null, WorkflowExpression<string> bodydeviceName = null, WorkflowExpression<string> bodycodeSource = null, WorkflowExpression<string> bodylocationName = null, WorkflowExpression<string> bodyworkLocationId = null, WorkflowExpression<string> bodydeviceId = null)
         {
@@ -3579,7 +3512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_04calculationLeaveBalance(WorkflowExpression<string> bodydate = null, WorkflowExpression<bool> bodyisForceCal = null, WorkflowExpression<string[]> bodyemployeeIdsList = null, WorkflowExpression<string[]> bodyposition = null, WorkflowExpression<string[]> bodydept = null)
         {
@@ -3641,7 +3573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> __Build_04getCustomizeUserFieldList(WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -3667,7 +3598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> __Build_04getEmployeeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> id = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<string> sex = null, WorkflowExpression<int> status = null, WorkflowExpression<string> hireType = null, WorkflowExpression<string> calculateSalaryType = null, WorkflowExpression<string> costCenterId = null, WorkflowExpression<string> payrollRegulationId = null, WorkflowExpression<string> regularType = null)
         {
@@ -3726,7 +3656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_04updateExpenseApplicationById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyreimbursementType = null, WorkflowExpression<string> bodyreimbursementDate = null, WorkflowExpression<string> bodyreimbursementName = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -3791,7 +3720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_04updateRosterInfoById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodyshiftTemplateId = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<double> bodyhourlyRate = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<double> bodytierRate = null, WorkflowExpression<double> bodyscheduledAmount = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -3904,7 +3832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_05deleteAttendanceDataById(WorkflowExpression<string> ids)
         {
@@ -3926,7 +3853,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> __Build_05getCustomizeUserFieldInfoById(WorkflowExpression<string> id)
         {
@@ -3948,7 +3874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3EmployeeInfoResp> __Build_05getEmployeeInfoById(WorkflowExpression<string> id)
         {
@@ -3970,7 +3895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> __Build_05GetExpenseApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> dateFilter = null, WorkflowExpression<string> reimbursementStatusFilter = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -4014,7 +3938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> __Build_05getLeaveBalanceList(WorkflowExpression<string> holidayType, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> regularTypeFilter = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> sexFilter = null, WorkflowExpression<string> leaveHolidayBalanceStatusFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> bizLabelIds = null)
         {
@@ -4072,7 +3995,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3RosterListResp> __Build_05getRosterList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendDay = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> attendStatus = null, WorkflowExpression<string> dateType = null)
         {
@@ -4113,7 +4035,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> __Build_06getApproveProcessList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -4142,7 +4063,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> __Build_06GetExpenseApplicationById(WorkflowExpression<string> id)
         {
@@ -4164,7 +4084,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> __Build_06GetLeaveBalanceInfoById(WorkflowExpression<string> employeeId, WorkflowExpression<string> holidayType)
         {
@@ -4188,7 +4107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3RosterInfoResp> __Build_06getRosterInfoById(WorkflowExpression<string> id)
         {
@@ -4210,7 +4128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_06resign(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylastWorkingDate, WorkflowExpression<string> bodyreasonsLeave, WorkflowExpression<string> bodyremark = null)
         {
@@ -4253,7 +4170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_06updateAttendanceDataById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodycardType = null, WorkflowExpression<double> bodyactualLongitude = null, WorkflowExpression<double> bodyactualLatitude = null, WorkflowExpression<string> bodydeviceName = null, WorkflowExpression<string> bodycodeSource = null, WorkflowExpression<string> bodylocationName = null, WorkflowExpression<string> bodyworkLocationId = null, WorkflowExpression<string> bodydeviceId = null)
         {
@@ -4353,7 +4269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> __Build_07addEmployeeHistory(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodytakeEffectType, WorkflowExpression<string> bodytakeEffectDate, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<string> bodycause = null, WorkflowExpression<string> bodymajorWorkLocationId = null)
         {
@@ -4483,7 +4398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> __Build_07addLeaveApplicationInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyholidayType, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<double> bodyleaveTime = null, WorkflowExpression<string> bodytimeType = null, WorkflowExpression<string> bodyholidayDate = null, WorkflowExpression<string> bodytime = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -4579,7 +4493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_07addShitTemplateInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceAddressId = null, WorkflowExpression<int> bodymealTime = null)
         {
@@ -4636,7 +4549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> __Build_07getAttendanceDataList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> attendCalculationId = null, WorkflowExpression<string> bizLabelIds = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
         {
@@ -4692,7 +4604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_08deleteEmployeeHistoryById(WorkflowExpression<string> id)
         {
@@ -4714,7 +4625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_08deleteLeaveApplicationById(WorkflowExpression<string> id)
         {
@@ -4736,7 +4646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_08deleteShiftTemplateById(WorkflowExpression<string> id)
         {
@@ -4758,7 +4667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3MobileCardInfoResp> __Build_08getAttendanceDataInfoById(WorkflowExpression<string> id)
         {
@@ -4780,7 +4688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> __Build_09getAttendanceItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -4809,7 +4716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_09updateEmployeeHistoryById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<string> bodycause = null, WorkflowExpression<string> bodymajorWorkLocationId = null)
         {
@@ -4936,7 +4842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_09updateLeaveApplicationById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyholidayType = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<double> bodyleaveTime = null, WorkflowExpression<string> bodytimeType = null, WorkflowExpression<string> bodyholidayDate = null, WorkflowExpression<string> bodytime = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5036,7 +4941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_09updateShiftTemplateById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceAddressId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5103,7 +5007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AddTimesheetResp> __Build_10addTimesheetInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string> bodyworkOverTimeType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5187,7 +5090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> __Build_10getEmployeeHistoryList(WorkflowExpression<string> employeeId, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -5215,7 +5117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> __Build_10getLeaveApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> employeeFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> holidayTypeFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> recordStatusFilter = null, WorkflowExpression<string> attendCalculationId = null, WorkflowExpression<string> bizLabelIds = null, WorkflowExpression<string> startDateFilter = null)
         {
@@ -5271,7 +5172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> __Build_10getShiftTemplateList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendanceAddressId = null, WorkflowExpression<string> dateType = null, WorkflowExpression<string> status = null)
         {
@@ -5309,7 +5209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_11addOpenShiftInfo(WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<int> bodyempPlanNo, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<string> bodyshiftType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5396,7 +5295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_11deleteTimesheetById(WorkflowExpression<string> id)
         {
@@ -5418,7 +5316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> __Build_11getLeaveApplicationInfoById(WorkflowExpression<string> id)
         {
@@ -5440,7 +5337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_12deleteOpenShiftById(WorkflowExpression<string> id)
         {
@@ -5462,7 +5358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultListV3LeaveProcessResp> __Build_12getLeaveApplicationApproveProcessById(WorkflowExpression<string> recordId)
         {
@@ -5484,7 +5379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_12updateTimesheetById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string> bodyworkOverTimeType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5568,7 +5462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> __Build_13getLeaveTypeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> shortName = null)
         {
@@ -5603,7 +5496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> __Build_13getTimesheetList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> bizLabelIds = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> addressCardId = null, WorkflowExpression<string> typeFilter = null)
         {
@@ -5662,7 +5554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_13updateOpenShiftById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<int> bodyempPlanNo, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<string> bodyshiftType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5749,7 +5640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> __Build_14getLeavePolicyList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null)
         {
@@ -5781,7 +5671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> __Build_14getOpenShiftList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> locationId = null, WorkflowExpression<string> costCenterId = null, WorkflowExpression<string> date = null)
         {
@@ -5822,7 +5711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3TimesheetInfoResp> __Build_14getTimesheetInfoById(WorkflowExpression<string> id)
         {
@@ -5844,7 +5732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> __Build_15addCalendarRemarkInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyemployeeStatus, WorkflowExpression<string> bodytimeType, WorkflowExpression<string> bodyexpectWorkStartTime, WorkflowExpression<string> bodyexpectWorkEndTime, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyrecordDate = null, WorkflowExpression<string> bodyexpectWorkLocation = null, WorkflowExpression<string> bodyexpectWorkTimeTemplate = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -5928,7 +5815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> __Build_15getLeavePolicyInfoById(WorkflowExpression<string> id)
         {
@@ -5950,7 +5836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> __Build_15getOpenShiftInfoById(WorkflowExpression<string> id)
         {
@@ -5972,7 +5857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_16addProjectCategoryInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -6016,7 +5900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_16deleteCalendarRemarkById(WorkflowExpression<string> id)
         {
@@ -6038,7 +5921,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> __Build_16getLeavePolicyTypeList(WorkflowExpression<string> regulationId, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> id = null, WorkflowExpression<string> holidayId = null, WorkflowExpression<string> generationFrequency = null)
         {
@@ -6078,7 +5960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_17deleteProjectCategoryById(WorkflowExpression<string> id)
         {
@@ -6100,7 +5981,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_17updateCalendarRemarkById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyemployeeStatus, WorkflowExpression<string> bodytimeType, WorkflowExpression<string> bodyexpectWorkStartTime, WorkflowExpression<string> bodyexpectWorkEndTime, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyrecordDate = null, WorkflowExpression<string> bodyexpectWorkLocation = null, WorkflowExpression<string> bodyexpectWorkTimeTemplate = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -6187,7 +6067,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> __Build_18getCalendarRemarkList(WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIds = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
         {
@@ -6222,7 +6101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_18updateProjectCategoryById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -6269,7 +6147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> __Build_19getProjectCategoryList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -6298,7 +6175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_20addProjectInfo(WorkflowExpression<string> bodycode, WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<double> bodyminRate = null, WorkflowExpression<double> bodymaxRate = null)
         {
@@ -6355,7 +6231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_21deleteProjectById(WorkflowExpression<string> id)
         {
@@ -6377,7 +6252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_22updateProjectById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodycode, WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<double> bodyminRate = null, WorkflowExpression<double> bodymaxRate = null)
         {
@@ -6437,7 +6311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ProjectListResp> __Build_23getProjectList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -6466,7 +6339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultV3ProjectInfoResp> __Build_24getProjectInfoById(WorkflowExpression<string> id)
         {
@@ -6488,7 +6360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_25addProjectCertificateInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyprojectId, WorkflowExpression<double> bodyshiftHours, WorkflowExpression<double> bodyworkedHours, WorkflowExpression<string> bodytier = null, WorkflowExpression<double> bodytierRate = null, WorkflowExpression<string> bodyreason = null)
         {
@@ -6548,7 +6419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_26updateProjectCertificateById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodytier = null, WorkflowExpression<double> bodytierRate = null)
         {
@@ -6592,7 +6462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> __Build_27getProjectCertificateList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<int> status = null, WorkflowExpression<string> hireType = null, WorkflowExpression<string> projectId = null)
         {
@@ -6639,7 +6508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_28addProjectCertificateHours(WorkflowExpression<string> bodyprojectCertificateId, WorkflowExpression<string> bodyoccurrenceTime, WorkflowExpression<double> bodybalance, WorkflowExpression<string> bodyreason)
         {
@@ -6678,7 +6546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __Build_29deleteProjectCertificateHoursById(WorkflowExpression<string> id)
         {
@@ -6700,7 +6567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> __Build_30getProjectCertificateHourList(WorkflowExpression<string> projectCertificateId, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -6728,7 +6594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2AttendanceResp> __BuildGetAttendCalculationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendDay = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> attendStatus = null, WorkflowExpression<string> type = null)
         {
@@ -6769,7 +6634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2CostCenterResp> __BuildGetCostCenterList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> costCenterCode = null)
         {
@@ -6804,7 +6668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2DepartmentResp> __BuildGetDepartmentList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> departmentCode = null, WorkflowExpression<string> parentId = null, WorkflowExpression<string> status = null)
         {
@@ -6845,7 +6708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2EmployeeResp> __BuildGetEmployeeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> englishName = null, WorkflowExpression<string> chineseName = null, WorkflowExpression<string> email = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> code = null, WorkflowExpression<int> status = null, WorkflowExpression<string> education = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<string> hireType = null, WorkflowExpression<string> bankCode = null, WorkflowExpression<string> costCenterId = null, WorkflowExpression<string> payrollRegulationId = null, WorkflowExpression<string> workDate = null)
         {
@@ -6919,7 +6781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2ExpenseResp> __BuildGetExpenseApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> reimbursementStatusFilter = null, WorkflowExpression<string> reimbursementName = null, WorkflowExpression<string> departmentFilter = null)
         {
@@ -6960,7 +6821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> __BuildGetExtPayItemData(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> employeeCode = null, WorkflowExpression<string> businessSalaryItemId = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> businessSalaryItemFilter = null)
         {
@@ -7004,7 +6864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> __BuildGetExtPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> paymentType = null, WorkflowExpression<string> status = null)
         {
@@ -7039,7 +6898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> __BuildGetFixedPayItemData(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> payrollItemId = null)
         {
@@ -7074,7 +6932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2LabelResp> __BuildGetLabelList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> labelCode = null, WorkflowExpression<string> labelName = null, WorkflowExpression<int> labelStatus = null)
         {
@@ -7112,7 +6969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> __BuildGetLeaveApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> holidayType = null, WorkflowExpression<string> status = null, WorkflowExpression<string> holidayDate = null)
         {
@@ -7153,7 +7009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2PayItemResp> __BuildGetPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> status = null)
         {
@@ -7188,7 +7043,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> __BuildGetPayrunList(WorkflowExpression<string> status, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
@@ -7216,7 +7070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2PositionResp> __BuildGetPositionList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> positionCode = null)
         {
@@ -7251,7 +7104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultListV2RosterResp> __BuildGetRosterDataList(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendCalculationId = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> englishName = null, WorkflowExpression<string> code = null, WorkflowExpression<string> surnameEnglish = null, WorkflowExpression<string> personalNameEnglish = null)
         {
@@ -7317,7 +7169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2TimesheetResp> __BuildGetTimesheetList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> type = null, WorkflowExpression<string> date = null, WorkflowExpression<string> status = null)
         {
@@ -7358,7 +7209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> __BuildGetVarPayItemData(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> payrollItemId = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> payrollItemIdFilter = null, WorkflowExpression<string> payrollPlanId = null)
         {
@@ -7402,7 +7252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> __BuildGetWorkLocationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> attendanceAddressCode = null, WorkflowExpression<string> status = null)
         {
@@ -7440,7 +7289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateCardById(WorkflowExpression<string> bodyid, WorkflowExpression<bool> bodyisInValid = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -7484,7 +7332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateCostCenterInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -7535,7 +7382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateDepartmentInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -7593,7 +7439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateEmployeeInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyenglishName = null, WorkflowExpression<string> bodychineseName = null, WorkflowExpression<string> bodysex = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyidentityCard = null, WorkflowExpression<string> bodybankCard = null, WorkflowExpression<string> bodynickName = null, WorkflowExpression<string> bodyeducation = null, WorkflowExpression<string> bodynationality = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<string> bodyemergencyContactRelation = null, WorkflowExpression<string> bodyemergencyContactPhone = null, WorkflowExpression<string> bodybankName = null, WorkflowExpression<string> bodybankBranchNumber = null, WorkflowExpression<string> bodybankAccountNo = null, WorkflowExpression<string> bodybankCode = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyregionCode = null, WorkflowExpression<string> bodyidentityCardHk = null, WorkflowExpression<string> bodypassportNumber = null, WorkflowExpression<string> bodypassportIssuingPlace = null, WorkflowExpression<string> bodyspouseName = null, WorkflowExpression<string> bodyspouseIdentityCardHk = null, WorkflowExpression<string> bodyspousePassportNumber = null, WorkflowExpression<string> bodyspousePassportIssuingPlace = null, WorkflowExpression<string> bodypostalAddress = null, WorkflowExpression<string> bodyemployerName = null, WorkflowExpression<string> bodyhometown = null, WorkflowExpression<string> bodynation = null, WorkflowExpression<string> bodypoliticalStatus = null, WorkflowExpression<string> bodyhighestEducation = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodyprobation = null, WorkflowExpression<bool> bodyisDisabled = null, WorkflowExpression<bool> bodyisForeignNationality = null, WorkflowExpression<string> bodydomicileLocation = null, WorkflowExpression<string> bodycertificateType = null, WorkflowExpression<string> bodycertificateNumber = null, WorkflowExpression<bool> bodyisMartyrDependents = null, WorkflowExpression<string> bodyoccupationTaxNumber = null, WorkflowExpression<string> bodynonLocalBlueCardNumber = null, WorkflowExpression<bool> bodyisForeignEmployees = null, WorkflowExpression<string> bodyweeklyLeaveWorkAgreement = null, WorkflowExpression<string> bodyemployeeType = null, WorkflowExpression<string> bodyjobLevel = null, WorkflowExpression<string> bodypost = null, WorkflowExpression<string> bodysalaryScale = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodyrecruitmentSource = null, WorkflowExpression<string> bodygraduatedSchool = null, WorkflowExpression<string> bodyprofession = null, WorkflowExpression<string> bodyappellation = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodyhomePhone = null, WorkflowExpression<string> bodyofficePhone = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodyprovince = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodypostcode = null, WorkflowExpression<string> bodycontractEndDate = null, WorkflowExpression<string> bodytaxIdentity = null, WorkflowExpression<string> bodyotherIncomeName = null)
         {
@@ -8078,7 +7923,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateExpenseApplication(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyreimbursementName = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -8133,7 +7977,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateExternalSalary(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyoccurrenceDate = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyexpirationDate = null)
         {
@@ -8202,7 +8045,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateFixedSalary(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodypayrollItemId = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null)
         {
@@ -8260,7 +8102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateLabelInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylabelCode = null, WorkflowExpression<string> bodylabelName = null, WorkflowExpression<int> bodylabelStatus = null)
         {
@@ -8311,7 +8152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateLeaveApplication(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyholidayType = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<double> bodyleaveTime = null, WorkflowExpression<string> bodytimeType = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyholidayDate = null, WorkflowExpression<string> bodytime = null)
         {
@@ -8411,7 +8251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdatePositionInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypositionCode = null, WorkflowExpression<string> bodystatus = null)
         {
@@ -8462,7 +8301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateRosterData(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyshiftIn = null, WorkflowExpression<string> bodyshiftOff = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyacrossTheNight = null)
         {
@@ -8548,7 +8386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateRosterItem(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycode = null)
         {
@@ -8592,7 +8429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateShiftTemplate(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyshiftIn = null, WorkflowExpression<string> bodyshiftOff = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyattendanceAddressId = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodylunchStartTime = null, WorkflowExpression<string> bodylunchEndTime = null)
         {
@@ -8678,7 +8514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateTenantInfo(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodybusinessRegistrationNumber = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodybankName = null, WorkflowExpression<string> bodybankBranchCode = null, WorkflowExpression<string> bodybankAccountNo = null)
         {
@@ -8747,7 +8582,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateTimesheet(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydate = null, WorkflowExpression<bool> bodyisCrossTheSky = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<int> bodymealTime = null)
         {
@@ -8812,7 +8646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateVarSalary(WorkflowExpression<string> bodyid, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyremark = null)
         {
@@ -8856,7 +8689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResultBoolean> __BuildUpdateWorkLocation(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<int> bodyregion = null, WorkflowExpression<string> bodyattendanceAddressCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyareaCode = null)
         {

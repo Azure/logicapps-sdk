@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> __BuildRelationshipsGet(WorkflowExpression<bool> includeIntersectional = null, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> count = null)
         {
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> __BuildRelationships(WorkflowExpression<string> bodyrelationshipTypeId, WorkflowExpression<string> bodyleadModelItemId, WorkflowExpression<string> bodymemberModelItemId, WorkflowExpression<string> bodymodelId, WorkflowExpression<string> bodyrelationshipTypePairId = null)
         {
@@ -117,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> __BuildRelationshipsGetSingle(WorkflowExpression<string> key, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null)
         {
@@ -144,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> __BuildRelationshipsDelete(WorkflowExpression<string> key)
         {
@@ -165,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> __BuildRelationshipsPatch(WorkflowExpression<string> key)
         {
@@ -201,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> __BuildObjectsGet(WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> count = null)
         {
@@ -242,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> __BuildObjects(WorkflowExpression<string> bodyobjectTypeId, WorkflowExpression<string> bodymodelId)
         {
@@ -283,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> __BuildObjectsGetSingle(WorkflowExpression<string> key, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null)
         {
@@ -310,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> __BuildObjectsDelete(WorkflowExpression<string> key)
         {
@@ -331,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> __BuildObjectsPatch(WorkflowExpression<string> key)
         {

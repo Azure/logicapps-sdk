@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "10to8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildBookAppointment(WorkflowExpression<string> organisationId, WorkflowExpression<string> bodystartDateTime, WorkflowExpression<string> bodyendDateTime, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription)
         {

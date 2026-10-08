@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Response> __BuildHtmlToPdf(WorkflowExpression<string> htmlContent = null, WorkflowExpression<string> xCustomHost = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSwaggerThreeToTwo(WorkflowExpression<string> swaggerUrl = null, WorkflowExpression<string> xCustomHost = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Response> __BuildEvaluate(WorkflowExpression<string> formula = null, WorkflowExpression<string> xCustomHost = null)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Response> __BuildSum(WorkflowExpression<string> xCustomHost = null, WorkflowExpression<string> bodydata = null, WorkflowExpression<string> bodypath = null)
         {
@@ -140,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Response> __BuildRoundUp(WorkflowExpression<double> input = null, WorkflowExpression<string> xCustomHost = null)
         {
@@ -166,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Response> __BuildRegex(WorkflowExpression<string> xCustomHost = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodypattern = null)
         {

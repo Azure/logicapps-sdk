@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightListGetResponse> __BuildHighlightListGet(WorkflowExpression<int> pageSize = null, WorkflowExpression<int> page = null, WorkflowExpression<int> bookId = null, WorkflowExpression<string> updatedLt = null, WorkflowExpression<string> updatedGt = null, WorkflowExpression<string> hightlightedAtLt = null, WorkflowExpression<string> highlightedAtGt = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightSavePostResponseItem[]> __BuildHighlightSave(WorkflowExpression<bodyhighlightsInputItem[]> bodyhighlights)
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightExportGetResponse> __BuildHighlightExportGet(WorkflowExpression<string> updatedAfter = null, WorkflowExpression<string> ids = null, WorkflowExpression<string> pageCursor = null)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HightlightDetailGetResponse> __BuildHightlightDetailGet(WorkflowExpression<string> highlightId)
         {
@@ -139,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildHighlightDelete(WorkflowExpression<string> highlightId)
         {
@@ -160,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightUpdatePatchResponse> __BuildHighlightUpdatePatch(WorkflowExpression<string> highlightId, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<int> bodylocation = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodycolor = null)
         {
@@ -223,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightTagsGetResponse> __BuildHighlightTagsGet(WorkflowExpression<string> highlightId, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> page = null)
         {
@@ -250,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightTagsPostResponse> __BuildHighlightTags(WorkflowExpression<string> highlightId, WorkflowExpression<string> bodyname)
         {
@@ -281,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildHighlightTagsDelete(WorkflowExpression<string> highlightId, WorkflowExpression<string> tagId)
         {
@@ -303,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HighlightTagsUpdateResponse> __BuildHighlightTagsUpdate(WorkflowExpression<string> highlightId, WorkflowExpression<string> tagId, WorkflowExpression<string> bodyname)
         {
@@ -335,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookListGetResponse> __BuildBookListGet(WorkflowExpression<int> pageSize = null, WorkflowExpression<string> page = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<int> numHighlights = null, WorkflowExpression<int> numHighlightsLt = null, WorkflowExpression<int> numHighlightsGt = null, WorkflowExpression<string> updatedLt = null, WorkflowExpression<string> updatedGt = null, WorkflowExpression<string> lastHighlightAtLt = null, WorkflowExpression<string> lastHighlightGt = null)
         {
@@ -388,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookGetResponse> __BuildBookGet(WorkflowExpression<string> bookId)
         {
@@ -409,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookTagsGetResponse> __BuildBookTagsGet(WorkflowExpression<string> bookId, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> page = null)
         {
@@ -436,7 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookTagsCreateResponse> __BuildBookTagsCreate(WorkflowExpression<string> bookId, WorkflowExpression<string> bodyname)
         {
@@ -467,7 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildBookTagsDelete(WorkflowExpression<string> bookId, WorkflowExpression<string> tagId)
         {
@@ -489,7 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BookTagsUpdateResponse> __BuildBookTagsUpdate(WorkflowExpression<string> bookId, WorkflowExpression<string> tagId, WorkflowExpression<string> bodyname)
         {

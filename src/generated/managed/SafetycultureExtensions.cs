@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuditSearchResponse> __BuildSearchAudits(WorkflowExpression<orderInput> order = null, WorkflowExpression<string> modifiedAfter = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> template = null, WorkflowExpression<archivedInput> archived = null, WorkflowExpression<completedInput> completed = null, WorkflowExpression<ownerInput> owner = null, WorkflowExpression<int> limit = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAuditByIdResponse> __BuildGetAuditById(WorkflowExpression<string> auditId)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAuditByIdResponse> __BuildArchiveRestoreAudit(WorkflowExpression<string> auditId, WorkflowExpression<bool> bodyarchived = null)
         {
@@ -123,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InitExportResponse> __BuildInitiateAuditExport(WorkflowExpression<string> auditId, WorkflowExpression<formatInput> format, WorkflowExpression<timezoneInput> timezone = null, WorkflowExpression<string> exportProfile = null)
         {
@@ -153,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportStatusResponse> __BuildPollExportStatus(WorkflowExpression<string> auditId, WorkflowExpression<string> exportId)
         {
@@ -175,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetAuditExport(WorkflowExpression<string> auditId, WorkflowExpression<string> exportId, WorkflowExpression<string> filename)
         {
@@ -198,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAuditLinkResponse> __BuildGetWebReportLink(WorkflowExpression<string> auditId)
         {
@@ -219,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteWebReportLink(WorkflowExpression<string> auditId)
         {
@@ -240,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActionsSearchResponse> __BuildSearchActions(WorkflowExpression<string[]> searchActionsBodyauditIDS = null, WorkflowExpression<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, WorkflowExpression<string> searchActionsBodycreatedafterDate = null, WorkflowExpression<string> searchActionsBodycreatedbeforeDate = null, WorkflowExpression<string> searchActionsBodymodifiedafterDate = null, WorkflowExpression<string> searchActionsBodymodifiedbeforeDate = null, WorkflowExpression<string> searchActionsBodydueafterDate = null, WorkflowExpression<string> searchActionsBodyduebeforeDate = null)
         {
@@ -347,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Action> __BuildCreateAction(WorkflowExpression<string> createActionBodyauditID = null, WorkflowExpression<string> createActionBodyitemID = null, WorkflowExpression<string> createActionBodytitle = null, WorkflowExpression<string> createActionBodydescription = null, WorkflowExpression<createActionBodypriorityInput> createActionBodypriority = null, WorkflowExpression<createActionBodystatusInput> createActionBodystatus = null, WorkflowExpression<string> createActionBodydueAt = null, WorkflowExpression<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
         {
@@ -430,7 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteActionResponse> __BuildDeleteAction(WorkflowExpression<string> actionId)
         {
@@ -451,7 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Action> __BuildUpdateAction(WorkflowExpression<string> actionId, WorkflowExpression<string> updateActionBodytitle = null, WorkflowExpression<string> updateActionBodydescription = null, WorkflowExpression<updateActionBodypriorityInput> updateActionBodypriority = null, WorkflowExpression<updateActionBodystatusInput> updateActionBodystatus = null, WorkflowExpression<string> updateActionBodydueAt = null, WorkflowExpression<updateActionBodyassigneesInputItem[]> updateActionBodyassignees = null)
         {
@@ -521,7 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetMedia(WorkflowExpression<string> auditId, WorkflowExpression<string> mediaId)
         {
@@ -543,7 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InitInspectionExportResponse> __BuildInitiateInspectionExport(WorkflowExpression<string> auditId, WorkflowExpression<formatexportFormatInput> formatexportFormat = null, WorkflowExpression<string> formatpreferenceID = null)
         {
@@ -595,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InspectionExportStatusResponse> __BuildPollInspectionExportStatus(WorkflowExpression<string> auditId, WorkflowExpression<string> exportId)
         {

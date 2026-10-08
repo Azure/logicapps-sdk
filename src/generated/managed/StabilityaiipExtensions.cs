@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EnginesListGetResponseItem[]> __BuildEnginesListGet(WorkflowExpression<string> organization = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerationTextImagePostResponse> __BuildGenerationTextImage(WorkflowExpression<string> engineId, WorkflowExpression<string> organization = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<bodytextPromptsInputItem[]> bodytextPrompts = null, WorkflowExpression<int> bodycfgScale = null, WorkflowExpression<string> bodyclipGuidancePreset = null, WorkflowExpression<string> bodysampler = null, WorkflowExpression<int> bodysamples = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<int> bodysteps = null)
         {
@@ -155,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerationImageImagePostResponse> __BuildGenerationImageImage(WorkflowExpression<string> engineId, WorkflowExpression<string> bodyinitImage, WorkflowExpression<string> organization = null, WorkflowExpression<bodytextPromptsInputItem[]> bodytextPrompts = null, WorkflowExpression<bodyinitImageModeInput> bodyinitImageMode = null, WorkflowExpression<double> bodyimageStrength = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodycfgScale = null, WorkflowExpression<string> bodyclipGuidancePreset = null, WorkflowExpression<string> bodysampler = null, WorkflowExpression<int> bodysamples = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<int> bodysteps = null)
         {
@@ -268,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerationUpscalePostResponse> __BuildGenerationUpscale(WorkflowExpression<string> engineId, WorkflowExpression<string> bodyimage, WorkflowExpression<string> organization = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<int> bodywidth = null)
         {
@@ -318,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerationMaskPostResponse> __BuildGenerationMask(WorkflowExpression<string> engineId, WorkflowExpression<string> bodyinitImage, WorkflowExpression<bodymaskSourceInput> bodymaskSource, WorkflowExpression<string> bodymaskImage, WorkflowExpression<string> organization = null, WorkflowExpression<bodytextPromptsInputItem[]> bodytextPrompts = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodycfgScale = null, WorkflowExpression<string> bodyclipGuidancePreset = null, WorkflowExpression<string> bodysampler = null, WorkflowExpression<int> bodysamples = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<int> bodysteps = null)
         {
@@ -423,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StableImageCorePostResponse> __BuildStableImageCore(WorkflowExpression<string> bodyprompt, WorkflowExpression<bodyaspectRatioInput> bodyaspectRatio = null, WorkflowExpression<string> bodynegativePrompt = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<bodystylePresetInput> bodystylePreset = null)
         {
@@ -491,7 +485,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StableDiffusionPostResponse> __BuildStableDiffusion(WorkflowExpression<string> bodyprompt, WorkflowExpression<bodyaspectRatioInput> bodyaspectRatio = null, WorkflowExpression<string> bodynegativePrompt = null, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<bodystylePresetInput> bodystylePreset = null)
         {

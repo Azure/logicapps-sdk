@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActWebApiModelsContact> __BuildCreateContact(WorkflowExpression<string> contactfullName = null, WorkflowExpression<string> contactemailAddress = null, WorkflowExpression<string> contactcompany = null, WorkflowExpression<string> contactidStatus = null, WorkflowExpression<string> contactreferredBy = null, WorkflowExpression<string> contactjobTitle = null, WorkflowExpression<string> contactbusinessPhoneNumber = null, WorkflowExpression<string> contactmobilePhoneNumber = null)
         {
@@ -109,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ActWebApiModelsContact> __BuildGetContact(WorkflowExpression<string> contactid)
         {

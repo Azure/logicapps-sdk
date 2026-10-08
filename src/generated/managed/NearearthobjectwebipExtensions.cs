@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FeedResponse> __BuildFeed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<bool> detailed = null)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FeedTodayResponse> __BuildFeedToday(WorkflowExpression<bool> detailed = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NeoResponse> __BuildNeo(WorkflowExpression<int> page = null, WorkflowExpression<int> size = null)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NeoIDResponse> __BuildNeoID(WorkflowExpression<string> iD)
         {
@@ -117,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentryResponse> __BuildSentry(WorkflowExpression<bool> isActive = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null)
         {
@@ -146,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SentryIDResponse> __BuildSentryID(WorkflowExpression<string> iD)
         {

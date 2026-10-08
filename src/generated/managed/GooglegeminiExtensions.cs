@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateTextContentResponse> __BuildGenerateTextContent(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName, WorkflowExpression<bodycontentsInputItem[]> bodycontents = null, WorkflowExpression<bodysafetySettingsInputItem[]> bodysafetySettings = null, WorkflowExpression<int> bodygenerationConfigmaxOutputTokens = null, WorkflowExpression<double> bodygenerationConfigtemperature = null, WorkflowExpression<double> bodygenerationConfigtopP = null, WorkflowExpression<int> bodygenerationConfigtopK = null, WorkflowExpression<int> bodygenerationConfigcandidateCount = null, WorkflowExpression<string[]> bodygenerationConfigstopSequences = null)
         {
@@ -111,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> __BuildGenerateStreamContent(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName, WorkflowExpression<bodycontentsInputItem[]> bodycontents = null, WorkflowExpression<bodysafetySettingsInputItem[]> bodysafetySettings = null, WorkflowExpression<double> bodygenerationConfigtemperature = null, WorkflowExpression<int> bodygenerationConfigmaxOutputTokens = null, WorkflowExpression<double> bodygenerationConfigtopP = null, WorkflowExpression<int> bodygenerationConfigtopK = null, WorkflowExpression<int> bodygenerationConfigcandidateCount = null, WorkflowExpression<string[]> bodygenerationConfigstopSequences = null)
         {
@@ -204,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateMultiModalContentResponse> __BuildGenerateMultiModalContent(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName, WorkflowExpression<bodycontentsInputItem2[]> bodycontents = null, WorkflowExpression<bodysafetySettingsInputItem[]> bodysafetySettings = null, WorkflowExpression<int> bodygenerationConfigmaxOutputTokens = null, WorkflowExpression<double> bodygenerationConfigtemperature = null, WorkflowExpression<double> bodygenerationConfigtopP = null, WorkflowExpression<int> bodygenerationConfigtopK = null, WorkflowExpression<string[]> bodygenerationConfigstopSequences = null)
         {
@@ -290,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CountTokensResponse> __BuildCountTokens(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName, WorkflowExpression<bodycontentsInputItem22[]> bodycontents = null)
         {
@@ -326,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllModelsResponse> __BuildGetAllModels(WorkflowExpression<string> apiVersion)
         {
@@ -347,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetModelDetailsResponse> __BuildGetModelDetails(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName)
         {
@@ -369,7 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateEmbeddingResponse> __BuildGenerateEmbedding(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName, WorkflowExpression<string> bodymodelResourceName, WorkflowExpression<bodycontentpartsInputItem[]> bodycontentparts = null, WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<string> bodytitle = null)
         {
@@ -430,7 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BatchEmbedContentsResponse> __BuildBatchEmbedContents(WorkflowExpression<string> apiVersion, WorkflowExpression<string> modelName, WorkflowExpression<bodyrequestsInputItem[]> bodyrequests)
         {

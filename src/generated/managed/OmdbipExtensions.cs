@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "omdbip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSearchResultsResponse> __BuildGetSearchResults(WorkflowExpression<string> apikey, WorkflowExpression<string> s = null, WorkflowExpression<string> i = null, WorkflowExpression<int> y = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<int> page = null)
         {

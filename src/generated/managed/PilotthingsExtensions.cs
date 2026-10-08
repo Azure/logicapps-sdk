@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageAlertRo> __BuildGetAlerts(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> dateStart = null, WorkflowExpression<int> dateEnd = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AlertRo> __BuildUpdateAlertState(WorkflowExpression<string> id, WorkflowExpression<string> paramJson = null)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageMeasureRo> __BuildGetMeasures(WorkflowExpression<bool> detailed = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -135,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CountRo> __BuildGetCount(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MeasureRo> __BuildGetMeasure(WorkflowExpression<string> id, WorkflowExpression<bool> detailed = null)
         {
@@ -201,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageMessageRo> __BuildGetMessages(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -242,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageMessageRo> __BuildGetMessagesAndMeasurements(WorkflowExpression<string> thingId, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -284,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageRo> __BuildAddMessage(WorkflowExpression<string> thingId, WorkflowExpression<string> messageRobody, WorkflowExpression<string> messageRocreationDate, WorkflowExpression<string> messageRoerrorMessage, WorkflowExpression<double> messageRolatitude, WorkflowExpression<double> messageRolongitude, WorkflowExpression<string> messageRometadata, WorkflowExpression<int> messageRonumber, WorkflowExpression<messageRoprocessedInput> messageRoprocessed, WorkflowExpression<string> messageRothingname, WorkflowExpression<string> messageRotimestamp, WorkflowExpression<string> messageRotopic, WorkflowExpression<string> messageRoid = null, WorkflowExpression<bool> messageRolinkabsolute = null, WorkflowExpression<string> messageRolinkauthority = null, WorkflowExpression<string> messageRolinkfragment = null, WorkflowExpression<string> messageRolinkhost = null, WorkflowExpression<bool> messageRolinkopaque = null, WorkflowExpression<string> messageRolinkpath = null, WorkflowExpression<int> messageRolinkport = null, WorkflowExpression<string> messageRolinkquery = null, WorkflowExpression<string> messageRolinkrawAuthority = null, WorkflowExpression<string> messageRolinkrawFragment = null, WorkflowExpression<string> messageRolinkrawPath = null, WorkflowExpression<string> messageRolinkrawQuery = null, WorkflowExpression<string> messageRolinkrawSchemeSpecificPart = null, WorkflowExpression<string> messageRolinkrawUserInfo = null, WorkflowExpression<string> messageRolinkscheme = null, WorkflowExpression<string> messageRolinkschemeSpecificPart = null, WorkflowExpression<string> messageRolinkuserInfo = null, WorkflowExpression<bool> messageRorawMeasurementsarray = null, WorkflowExpression<bool> messageRorawMeasurementsbigDecimal = null, WorkflowExpression<bool> messageRorawMeasurementsbigInteger = null, WorkflowExpression<bool> messageRorawMeasurementsbinary = null, WorkflowExpression<bool> messageRorawMeasurementsboolean = null, WorkflowExpression<bool> messageRorawMeasurementscontainerNode = null, WorkflowExpression<bool> messageRorawMeasurementsdouble = null, WorkflowExpression<bool> messageRorawMeasurementsfloat = null, WorkflowExpression<bool> messageRorawMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> messageRorawMeasurementsint = null, WorkflowExpression<bool> messageRorawMeasurementsintegralNumber = null, WorkflowExpression<bool> messageRorawMeasurementsLong = null, WorkflowExpression<bool> messageRorawMeasurementsmissingNode = null, WorkflowExpression<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, WorkflowExpression<bool> messageRorawMeasurementsnull = null, WorkflowExpression<bool> messageRorawMeasurementsnumber = null, WorkflowExpression<bool> messageRorawMeasurementsObject = null, WorkflowExpression<bool> messageRorawMeasurementspojo = null, WorkflowExpression<bool> messageRorawMeasurementsShort = null, WorkflowExpression<bool> messageRorawMeasurementstextual = null, WorkflowExpression<bool> messageRorawMeasurementsvalueNode = null, WorkflowExpression<string> messageRothingdisplayName = null, WorkflowExpression<string> messageRothingfixedName = null, WorkflowExpression<string> messageRothingid = null, WorkflowExpression<int> messageRothingnbAlerts = null, WorkflowExpression<ThingTagRo[]> messageRothingtags = null)
         {
@@ -685,7 +677,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageRo> __BuildGetMessage(WorkflowExpression<string> id)
         {
@@ -706,7 +697,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageRo> __BuildGetPreviousMessage(WorkflowExpression<string> id)
         {
@@ -727,7 +717,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageSiteRo> __BuildGetSites(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -768,7 +757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SiteRo[]> __BuildCreateSite(WorkflowExpression<bool> nodearray = null, WorkflowExpression<bool> nodebigDecimal = null, WorkflowExpression<bool> nodebigInteger = null, WorkflowExpression<bool> nodebinary = null, WorkflowExpression<bool> nodeboolean = null, WorkflowExpression<bool> nodecontainerNode = null, WorkflowExpression<bool> nodedouble = null, WorkflowExpression<bool> nodefloat = null, WorkflowExpression<bool> nodefloatingPointNumber = null, WorkflowExpression<bool> nodeint = null, WorkflowExpression<bool> nodeintegralNumber = null, WorkflowExpression<bool> nodeLong = null, WorkflowExpression<bool> nodemissingNode = null, WorkflowExpression<nodenodeTypeInput> nodenodeType = null, WorkflowExpression<bool> nodenull = null, WorkflowExpression<bool> nodenumber = null, WorkflowExpression<bool> nodeObject = null, WorkflowExpression<bool> nodepojo = null, WorkflowExpression<bool> nodeShort = null, WorkflowExpression<bool> nodetextual = null, WorkflowExpression<bool> nodevalueNode = null)
         {
@@ -942,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SiteRo> __BuildGetSite(WorkflowExpression<string> id)
         {
@@ -963,7 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteSite(WorkflowExpression<string> id)
         {
@@ -984,7 +970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SiteRo> __BuildUpdateSite(WorkflowExpression<string> id, WorkflowExpression<string> siteRoaddress, WorkflowExpression<string> siteRocity, WorkflowExpression<string> siteRoname, WorkflowExpression<string> siteRopostalCode, WorkflowExpression<string> siteRoid = null, WorkflowExpression<double> siteRolatitude = null, WorkflowExpression<double> siteRolongitude = null)
         {
@@ -1045,7 +1030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageThingTagRo> __BuildGetTags(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -1086,7 +1070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagRo> __BuildUpdateThingTag(WorkflowExpression<string> thingTagRoid = null, WorkflowExpression<string> thingTagRotag = null)
         {
@@ -1127,7 +1110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagRo> __BuildAddThingTag(WorkflowExpression<string> thingId, WorkflowExpression<string> thingTagRoid = null, WorkflowExpression<string> thingTagRotag = null)
         {
@@ -1169,7 +1151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagRo> __BuildGetThingTag(WorkflowExpression<string> id)
         {
@@ -1190,7 +1171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageSingleThingRo> __BuildGetThings(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<bool> detailed = null)
         {
@@ -1235,7 +1215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEntity> __BuildAddThingsCsv(WorkflowExpression<object> file)
         {
@@ -1256,7 +1235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleThingRo[]> __BuildAssociateThingsWithProduct(WorkflowExpression<bool> jsonarray = null, WorkflowExpression<bool> jsonbigDecimal = null, WorkflowExpression<bool> jsonbigInteger = null, WorkflowExpression<bool> jsonbinary = null, WorkflowExpression<bool> jsonboolean = null, WorkflowExpression<bool> jsoncontainerNode = null, WorkflowExpression<bool> jsondouble = null, WorkflowExpression<bool> jsonfloat = null, WorkflowExpression<bool> jsonfloatingPointNumber = null, WorkflowExpression<bool> jsonint = null, WorkflowExpression<bool> jsonintegralNumber = null, WorkflowExpression<bool> jsonLong = null, WorkflowExpression<bool> jsonmissingNode = null, WorkflowExpression<jsonnodeTypeInput> jsonnodeType = null, WorkflowExpression<bool> jsonnull = null, WorkflowExpression<bool> jsonnumber = null, WorkflowExpression<bool> jsonObject = null, WorkflowExpression<bool> jsonpojo = null, WorkflowExpression<bool> jsonShort = null, WorkflowExpression<bool> jsontextual = null, WorkflowExpression<bool> jsonvalueNode = null)
         {
@@ -1430,7 +1408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleThingRo[]> __BuildGetThingList(WorkflowExpression<string[]> thingIds = null)
         {
@@ -1452,7 +1429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleThingRo> __BuildGetThing(WorkflowExpression<string> id, WorkflowExpression<bool> detailed = null)
         {
@@ -1477,7 +1453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildIgnoreThing(WorkflowExpression<string> id, WorkflowExpression<bool> force = null)
         {
@@ -1501,7 +1476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThingRo> __BuildPutThing(WorkflowExpression<string> id, WorkflowExpression<string> thingRoname, WorkflowExpression<string> thingRositeaddress, WorkflowExpression<string> thingRositecity, WorkflowExpression<string> thingRositename, WorkflowExpression<string> thingRositepostalCode, WorkflowExpression<string> thingRoapplicationid = null, WorkflowExpression<string> thingRoapplicationlink = null, WorkflowExpression<string> thingRoapplicationname = null, WorkflowExpression<string> thingRoconnectivityid = null, WorkflowExpression<string> thingRoconnectivityrawStatus = null, WorkflowExpression<thingRoconnectivitystatusInput> thingRoconnectivitystatus = null, WorkflowExpression<thingRoconnectivitytypeInput> thingRoconnectivitytype = null, WorkflowExpression<CustomFieldRo[]> thingRocustomFields = null, WorkflowExpression<string> thingRocustomModelcolor = null, WorkflowExpression<string> thingRocustomModelicon = null, WorkflowExpression<string> thingRocustomModelid = null, WorkflowExpression<string> thingRocustomModellink = null, WorkflowExpression<string> thingRocustomModelname = null, WorkflowExpression<string> thingRodescription = null, WorkflowExpression<int> thingRodevicebatteryLevel = null, WorkflowExpression<thingRodevicebatteryStatusInput> thingRodevicebatteryStatus = null, WorkflowExpression<string> thingRodevicedeviceType = null, WorkflowExpression<string> thingRodeviceid = null, WorkflowExpression<string> thingRodevicemanufacturer = null, WorkflowExpression<int> thingRodevicememoryFree = null, WorkflowExpression<int> thingRodevicememoryTotal = null, WorkflowExpression<string> thingRodevicemodel = null, WorkflowExpression<string> thingRodevicemodelNumber = null, WorkflowExpression<string> thingRodevicename = null, WorkflowExpression<string> thingRodeviceserialNumber = null, WorkflowExpression<thingRodevicestatusInput> thingRodevicestatus = null, WorkflowExpression<string> thingRodisplayName = null, WorkflowExpression<bool> thingRodynamicGps = null, WorkflowExpression<double> thingRofixedLatitude = null, WorkflowExpression<double> thingRofixedLongitude = null, WorkflowExpression<string> thingRofixedName = null, WorkflowExpression<string> thingRoid = null, WorkflowExpression<int> thingRolastActivityDate = null, WorkflowExpression<double> thingRolastLatitude = null, WorkflowExpression<double> thingRolastLongitude = null, WorkflowExpression<bool> thingRolastMeasurementsarray = null, WorkflowExpression<bool> thingRolastMeasurementsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsboolean = null, WorkflowExpression<bool> thingRolastMeasurementscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsint = null, WorkflowExpression<bool> thingRolastMeasurementsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsLong = null, WorkflowExpression<bool> thingRolastMeasurementsmissingNode = null, WorkflowExpression<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsnull = null, WorkflowExpression<bool> thingRolastMeasurementsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsObject = null, WorkflowExpression<bool> thingRolastMeasurementspojo = null, WorkflowExpression<bool> thingRolastMeasurementsShort = null, WorkflowExpression<bool> thingRolastMeasurementstextual = null, WorkflowExpression<bool> thingRolastMeasurementsvalueNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsarray = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsboolean = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsint = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsLong = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsmissingNode = null, WorkflowExpression<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnull = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsObject = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampspojo = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsShort = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampstextual = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsvalueNode = null, WorkflowExpression<int> thingRolastMessageDate = null, WorkflowExpression<int> thingRomessageActivityTimeoutPeriod = null, WorkflowExpression<int> thingRonbAlerts = null, WorkflowExpression<thingRoproductconnectivityTypesInputItem[]> thingRoproductconnectivityTypes = null, WorkflowExpression<bool> thingRoproductgenerateLinks = null, WorkflowExpression<string> thingRoproductid = null, WorkflowExpression<string> thingRoproductlink = null, WorkflowExpression<bool> thingRoproductmanufacturergenerateLinks = null, WorkflowExpression<string> thingRoproductmanufacturerid = null, WorkflowExpression<string> thingRoproductmanufacturerlink = null, WorkflowExpression<string> thingRoproductmanufacturername = null, WorkflowExpression<string> thingRoproductmodelcolor = null, WorkflowExpression<bool> thingRoproductmodelgenerateLinks = null, WorkflowExpression<string> thingRoproductmodelicon = null, WorkflowExpression<string> thingRoproductmodelid = null, WorkflowExpression<bool> thingRoproductmodelisCustomModel = null, WorkflowExpression<bool> thingRoproductmodellinkabsolute = null, WorkflowExpression<string> thingRoproductmodellinkauthority = null, WorkflowExpression<string> thingRoproductmodellinkfragment = null, WorkflowExpression<string> thingRoproductmodellinkhost = null, WorkflowExpression<bool> thingRoproductmodellinkopaque = null, WorkflowExpression<string> thingRoproductmodellinkpath = null, WorkflowExpression<int> thingRoproductmodellinkport = null, WorkflowExpression<string> thingRoproductmodellinkquery = null, WorkflowExpression<string> thingRoproductmodellinkrawAuthority = null, WorkflowExpression<string> thingRoproductmodellinkrawFragment = null, WorkflowExpression<string> thingRoproductmodellinkrawPath = null, WorkflowExpression<string> thingRoproductmodellinkrawQuery = null, WorkflowExpression<string> thingRoproductmodellinkrawSchemeSpecificPart = null, WorkflowExpression<string> thingRoproductmodellinkrawUserInfo = null, WorkflowExpression<string> thingRoproductmodellinkscheme = null, WorkflowExpression<string> thingRoproductmodellinkschemeSpecificPart = null, WorkflowExpression<string> thingRoproductmodellinkuserInfo = null, WorkflowExpression<string> thingRoproductmodelname = null, WorkflowExpression<string> thingRoproductname = null, WorkflowExpression<string> thingRoproductreference = null, WorkflowExpression<string> thingRositeid = null, WorkflowExpression<double> thingRositelatitude = null, WorkflowExpression<double> thingRositelongitude = null, WorkflowExpression<string> thingRosourceId = null, WorkflowExpression<thingRostatusInput> thingRostatus = null, WorkflowExpression<ThingTagRo[]> thingRotags = null)
         {
@@ -2473,7 +2447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelRo> __BuildGetThingActiveModel(WorkflowExpression<string> id)
         {
@@ -2494,7 +2467,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageCustomFieldRo> __BuildGetCustomField(WorkflowExpression<string> id)
         {
@@ -2515,7 +2487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomFieldRo> __BuildCreateCustomField(WorkflowExpression<string> id, WorkflowExpression<string> customFieldRoid = null, WorkflowExpression<string> customFieldRoimageLink = null, WorkflowExpression<string> customFieldRolabel = null, WorkflowExpression<string> customFieldRoname = null, WorkflowExpression<customFieldRotypeInput> customFieldRotype = null, WorkflowExpression<string> customFieldRovalue = null)
         {
@@ -2585,7 +2556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomFieldRo> __BuildUpdateCustomField(WorkflowExpression<string> id, WorkflowExpression<string> customFieldRoid = null, WorkflowExpression<string> customFieldRoimageLink = null, WorkflowExpression<string> customFieldRolabel = null, WorkflowExpression<string> customFieldRoname = null, WorkflowExpression<customFieldRotypeInput> customFieldRotype = null, WorkflowExpression<string> customFieldRovalue = null)
         {
@@ -2655,7 +2625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEntity> __BuildDeleteCustomField(WorkflowExpression<string> id, WorkflowExpression<string> fieldId)
         {
@@ -2677,7 +2646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEntity> __BuildGetCustomFieldImage(WorkflowExpression<string> id, WorkflowExpression<string> fieldId)
         {
@@ -2699,7 +2667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEntity> __BuildPostCustomFieldImage(WorkflowExpression<string> id, WorkflowExpression<string> fieldId, WorkflowExpression<object> file)
         {
@@ -2722,7 +2689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEntity> __BuildGetThingImage(WorkflowExpression<string> id)
         {
@@ -2743,7 +2709,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MeasureTinyRo[]> __BuildGetLastMeasures(WorkflowExpression<string> id)
         {
@@ -2764,7 +2729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageTinyRo> __BuildGetLastMessage(WorkflowExpression<string> id)
         {
@@ -2785,7 +2749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageMeasureRo> __BuildGetThingMeasures(WorkflowExpression<string> id, WorkflowExpression<bool> detailed = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -2831,7 +2794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageMessageRo> __BuildGetThingMessages(WorkflowExpression<string> id, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -2873,7 +2835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteThingMessages(WorkflowExpression<string> id)
         {
@@ -2894,7 +2855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageRo> __BuildCreateThingMessages(WorkflowExpression<string> id, WorkflowExpression<string> messageRobody, WorkflowExpression<string> messageRocreationDate, WorkflowExpression<string> messageRoerrorMessage, WorkflowExpression<double> messageRolatitude, WorkflowExpression<double> messageRolongitude, WorkflowExpression<string> messageRometadata, WorkflowExpression<int> messageRonumber, WorkflowExpression<messageRoprocessedInput> messageRoprocessed, WorkflowExpression<string> messageRothingname, WorkflowExpression<string> messageRotimestamp, WorkflowExpression<string> messageRotopic, WorkflowExpression<string> messageRoid = null, WorkflowExpression<bool> messageRolinkabsolute = null, WorkflowExpression<string> messageRolinkauthority = null, WorkflowExpression<string> messageRolinkfragment = null, WorkflowExpression<string> messageRolinkhost = null, WorkflowExpression<bool> messageRolinkopaque = null, WorkflowExpression<string> messageRolinkpath = null, WorkflowExpression<int> messageRolinkport = null, WorkflowExpression<string> messageRolinkquery = null, WorkflowExpression<string> messageRolinkrawAuthority = null, WorkflowExpression<string> messageRolinkrawFragment = null, WorkflowExpression<string> messageRolinkrawPath = null, WorkflowExpression<string> messageRolinkrawQuery = null, WorkflowExpression<string> messageRolinkrawSchemeSpecificPart = null, WorkflowExpression<string> messageRolinkrawUserInfo = null, WorkflowExpression<string> messageRolinkscheme = null, WorkflowExpression<string> messageRolinkschemeSpecificPart = null, WorkflowExpression<string> messageRolinkuserInfo = null, WorkflowExpression<bool> messageRomeasurementsarray = null, WorkflowExpression<bool> messageRomeasurementsbigDecimal = null, WorkflowExpression<bool> messageRomeasurementsbigInteger = null, WorkflowExpression<bool> messageRomeasurementsbinary = null, WorkflowExpression<bool> messageRomeasurementsboolean = null, WorkflowExpression<bool> messageRomeasurementscontainerNode = null, WorkflowExpression<bool> messageRomeasurementsdouble = null, WorkflowExpression<bool> messageRomeasurementsfloat = null, WorkflowExpression<bool> messageRomeasurementsfloatingPointNumber = null, WorkflowExpression<bool> messageRomeasurementsint = null, WorkflowExpression<bool> messageRomeasurementsintegralNumber = null, WorkflowExpression<bool> messageRomeasurementsLong = null, WorkflowExpression<bool> messageRomeasurementsmissingNode = null, WorkflowExpression<messageRomeasurementsnodeTypeInput> messageRomeasurementsnodeType = null, WorkflowExpression<bool> messageRomeasurementsnull = null, WorkflowExpression<bool> messageRomeasurementsnumber = null, WorkflowExpression<bool> messageRomeasurementsObject = null, WorkflowExpression<bool> messageRomeasurementspojo = null, WorkflowExpression<bool> messageRomeasurementsShort = null, WorkflowExpression<bool> messageRomeasurementstextual = null, WorkflowExpression<bool> messageRomeasurementsvalueNode = null, WorkflowExpression<bool> messageRorawMeasurementsarray = null, WorkflowExpression<bool> messageRorawMeasurementsbigDecimal = null, WorkflowExpression<bool> messageRorawMeasurementsbigInteger = null, WorkflowExpression<bool> messageRorawMeasurementsbinary = null, WorkflowExpression<bool> messageRorawMeasurementsboolean = null, WorkflowExpression<bool> messageRorawMeasurementscontainerNode = null, WorkflowExpression<bool> messageRorawMeasurementsdouble = null, WorkflowExpression<bool> messageRorawMeasurementsfloat = null, WorkflowExpression<bool> messageRorawMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> messageRorawMeasurementsint = null, WorkflowExpression<bool> messageRorawMeasurementsintegralNumber = null, WorkflowExpression<bool> messageRorawMeasurementsLong = null, WorkflowExpression<bool> messageRorawMeasurementsmissingNode = null, WorkflowExpression<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, WorkflowExpression<bool> messageRorawMeasurementsnull = null, WorkflowExpression<bool> messageRorawMeasurementsnumber = null, WorkflowExpression<bool> messageRorawMeasurementsObject = null, WorkflowExpression<bool> messageRorawMeasurementspojo = null, WorkflowExpression<bool> messageRorawMeasurementsShort = null, WorkflowExpression<bool> messageRorawMeasurementstextual = null, WorkflowExpression<bool> messageRorawMeasurementsvalueNode = null, WorkflowExpression<string> messageRothingdisplayName = null, WorkflowExpression<string> messageRothingfixedName = null, WorkflowExpression<string> messageRothingid = null, WorkflowExpression<int> messageRothingnbAlerts = null, WorkflowExpression<ThingTagRo[]> messageRothingtags = null)
         {
@@ -3442,7 +3402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ModelRo> __BuildGetThingModel(WorkflowExpression<string> id)
         {
@@ -3463,7 +3422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageOperationRo> __BuildGetThingOperations(WorkflowExpression<string> id)
         {
@@ -3484,7 +3442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseEntity> __BuildExecuteThingOperation(WorkflowExpression<string> id, WorkflowExpression<string> operationId, WorkflowExpression<bool> placeholdersValuesarray = null, WorkflowExpression<bool> placeholdersValuesbigDecimal = null, WorkflowExpression<bool> placeholdersValuesbigInteger = null, WorkflowExpression<bool> placeholdersValuesbinary = null, WorkflowExpression<bool> placeholdersValuesboolean = null, WorkflowExpression<bool> placeholdersValuescontainerNode = null, WorkflowExpression<bool> placeholdersValuesdouble = null, WorkflowExpression<bool> placeholdersValuesfloat = null, WorkflowExpression<bool> placeholdersValuesfloatingPointNumber = null, WorkflowExpression<bool> placeholdersValuesint = null, WorkflowExpression<bool> placeholdersValuesintegralNumber = null, WorkflowExpression<bool> placeholdersValuesLong = null, WorkflowExpression<bool> placeholdersValuesmissingNode = null, WorkflowExpression<placeholdersValuesnodeTypeInput> placeholdersValuesnodeType = null, WorkflowExpression<bool> placeholdersValuesnull = null, WorkflowExpression<bool> placeholdersValuesnumber = null, WorkflowExpression<bool> placeholdersValuesObject = null, WorkflowExpression<bool> placeholdersValuespojo = null, WorkflowExpression<bool> placeholdersValuesShort = null, WorkflowExpression<bool> placeholdersValuestextual = null, WorkflowExpression<bool> placeholdersValuesvalueNode = null)
         {
@@ -3660,7 +3617,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleThingRo> __BuildUpdateThingFixedPosition(WorkflowExpression<string> id, WorkflowExpression<string> thingRoname, WorkflowExpression<string> thingRositeaddress, WorkflowExpression<string> thingRositecity, WorkflowExpression<string> thingRositename, WorkflowExpression<string> thingRositepostalCode, WorkflowExpression<CustomFieldRo[]> thingRocustomFields = null, WorkflowExpression<string> thingRodescription = null, WorkflowExpression<string> thingRodisplayName = null, WorkflowExpression<bool> thingRodynamicGps = null, WorkflowExpression<double> thingRofixedLatitude = null, WorkflowExpression<double> thingRofixedLongitude = null, WorkflowExpression<string> thingRofixedName = null, WorkflowExpression<string> thingRoid = null, WorkflowExpression<int> thingRolastActivityDate = null, WorkflowExpression<double> thingRolastLatitude = null, WorkflowExpression<double> thingRolastLongitude = null, WorkflowExpression<bool> thingRolastMeasurementsarray = null, WorkflowExpression<bool> thingRolastMeasurementsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsboolean = null, WorkflowExpression<bool> thingRolastMeasurementscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsint = null, WorkflowExpression<bool> thingRolastMeasurementsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsLong = null, WorkflowExpression<bool> thingRolastMeasurementsmissingNode = null, WorkflowExpression<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsnull = null, WorkflowExpression<bool> thingRolastMeasurementsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsObject = null, WorkflowExpression<bool> thingRolastMeasurementspojo = null, WorkflowExpression<bool> thingRolastMeasurementsShort = null, WorkflowExpression<bool> thingRolastMeasurementstextual = null, WorkflowExpression<bool> thingRolastMeasurementsvalueNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsarray = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsboolean = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsint = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsLong = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsmissingNode = null, WorkflowExpression<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnull = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsObject = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampspojo = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsShort = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampstextual = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsvalueNode = null, WorkflowExpression<int> thingRolastMessageDate = null, WorkflowExpression<int> thingRomessageActivityTimeoutPeriod = null, WorkflowExpression<int> thingRonbAlerts = null, WorkflowExpression<string> thingRositeid = null, WorkflowExpression<double> thingRositelatitude = null, WorkflowExpression<double> thingRositelongitude = null, WorkflowExpression<thingRostatusInput> thingRostatus = null, WorkflowExpression<ThingTagRo[]> thingRotags = null)
         {
@@ -4154,7 +4110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProductRo> __BuildGetThingProduct(WorkflowExpression<string> id)
         {
@@ -4175,7 +4130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleThingRo> __BuildDissociateThingProduct(WorkflowExpression<string> id)
         {
@@ -4196,7 +4150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleThingRo> __BuildAssociateThingProduct(WorkflowExpression<string> id, WorkflowExpression<string> productcertification = null, WorkflowExpression<productconnectivityTypesInputItem[]> productconnectivityTypes = null, WorkflowExpression<string> productdecoderid = null, WorkflowExpression<string> productdecoderlink = null, WorkflowExpression<bool> productdecodervisible = null, WorkflowExpression<string> productdescription = null, WorkflowExpression<string> productencoderid = null, WorkflowExpression<string> productencoderlink = null, WorkflowExpression<bool> productgenerateLinks = null, WorkflowExpression<bool> producthasImage = null, WorkflowExpression<string> productid = null, WorkflowExpression<string> productimageLink = null, WorkflowExpression<string> productinfoLink = null, WorkflowExpression<string> productlink = null, WorkflowExpression<bool> productmanufacturergenerateLinks = null, WorkflowExpression<string> productmanufacturerid = null, WorkflowExpression<string> productmanufacturerlink = null, WorkflowExpression<string> productmanufacturername = null, WorkflowExpression<string> productmanufacturerCategory = null, WorkflowExpression<string> productmodelcolor = null, WorkflowExpression<bool> productmodelgenerateLinks = null, WorkflowExpression<string> productmodelicon = null, WorkflowExpression<string> productmodelid = null, WorkflowExpression<bool> productmodelisCustomModel = null, WorkflowExpression<bool> productmodellinkabsolute = null, WorkflowExpression<string> productmodellinkauthority = null, WorkflowExpression<string> productmodellinkfragment = null, WorkflowExpression<string> productmodellinkhost = null, WorkflowExpression<bool> productmodellinkopaque = null, WorkflowExpression<string> productmodellinkpath = null, WorkflowExpression<int> productmodellinkport = null, WorkflowExpression<string> productmodellinkquery = null, WorkflowExpression<string> productmodellinkrawAuthority = null, WorkflowExpression<string> productmodellinkrawFragment = null, WorkflowExpression<string> productmodellinkrawPath = null, WorkflowExpression<string> productmodellinkrawQuery = null, WorkflowExpression<string> productmodellinkrawSchemeSpecificPart = null, WorkflowExpression<string> productmodellinkrawUserInfo = null, WorkflowExpression<string> productmodellinkscheme = null, WorkflowExpression<string> productmodellinkschemeSpecificPart = null, WorkflowExpression<string> productmodellinkuserInfo = null, WorkflowExpression<string> productmodelname = null, WorkflowExpression<bool> productmodelManufacturergenerateLinks = null, WorkflowExpression<string> productmodelManufacturerid = null, WorkflowExpression<string> productmodelManufacturerlink = null, WorkflowExpression<string> productmodelManufacturername = null, WorkflowExpression<string> productname = null, WorkflowExpression<bool> productreadOnly = null, WorkflowExpression<string> productreference = null, WorkflowExpression<TagRo[]> producttags = null, WorkflowExpression<ThingTinyRo[]> productthings = null)
         {
@@ -4629,7 +4582,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageFlowRo> __BuildGetFlowsRelatedToThing(WorkflowExpression<string> id)
         {
@@ -4650,7 +4602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageThingTagRo> __BuildGetThingTags(WorkflowExpression<string> id)
         {
@@ -4671,7 +4622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsAvg(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
         {
@@ -4718,7 +4668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatsCountRo> __BuildGetStatsCount(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
         {
@@ -4765,7 +4714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsLast(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -4806,7 +4754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetThingStatsLast(WorkflowExpression<string> thingId, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
         {
@@ -4848,7 +4795,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsMax(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
         {
@@ -4895,7 +4841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatsGraphRo[]> __BuildGetStatsMeasurements(WorkflowExpression<int> start, WorkflowExpression<int> end, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> time = null, WorkflowExpression<string> interval = null)
         {
@@ -4946,7 +4891,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsMin(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
         {
@@ -4993,7 +4937,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatsCountRo[]> __BuildGetStatsRepartition(WorkflowExpression<string> attribute, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
         {
@@ -5042,7 +4985,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StatsGraphRo[]> __BuildGetStatsSum(WorkflowExpression<int> start, WorkflowExpression<int> end, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> time = null, WorkflowExpression<string> interval = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodycomments, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodycustomUserId = null, WorkflowExpression<string> bodycustomAccountId = null, WorkflowExpression<string> bodytextOptIn = null, WorkflowExpression<string> bodycellNumber = null, WorkflowExpression<string> bodyassignedTo = null)
         {
@@ -102,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendNoteResponse> __BuildSendNote(WorkflowExpression<string> bodynoteId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodycustomUserId = null, WorkflowExpression<string> bodycustomAccountId = null, WorkflowExpression<string> bodytextOptIn = null, WorkflowExpression<string> bodycellNumber = null)
         {

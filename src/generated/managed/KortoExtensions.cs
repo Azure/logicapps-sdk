@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryTagsResponse> __BuildGetTag(WorkflowExpression<int> tagID = null, WorkflowExpression<string> tagName = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTag(WorkflowExpression<int> tagID = null, WorkflowExpression<string> tagName = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryTagResponseItem> __BuildCreateTag(WorkflowExpression<string> tagName = null, WorkflowExpression<int> tagType = null, WorkflowExpression<int> tagValueType = null)
         {
@@ -100,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecordQueryResponseItem> __BuildGetRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null)
         {
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null)
         {
@@ -152,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecordQueryResponseItem> __BuildCreateRecord(WorkflowExpression<object> file, WorkflowExpression<string> name = null, WorkflowExpression<string> actor = null, WorkflowExpression<string> externalid = null, WorkflowExpression<string> externalurl = null, WorkflowExpression<string> createdAt = null, WorkflowExpression<string> createdBy = null)
         {
@@ -191,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DownloadUrlMessage> __BuildDownloadRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null)
         {
@@ -217,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTagFromRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null, WorkflowExpression<string> tagName = null)
         {
@@ -246,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecordQueryResponseItem> __BuildAddTagToRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null, WorkflowExpression<string> tagName = null, WorkflowExpression<string> tagValue = null)
         {
@@ -278,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RecordQueryResponseItem> __BuildUpdateTagOnRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null, WorkflowExpression<string> tagName = null, WorkflowExpression<string> tagValue = null)
         {

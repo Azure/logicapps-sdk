@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTimeSlotsResponseItem[]> __BuildGetTimeSlots(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBookATimeSlot(WorkflowExpression<string> id, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyguestTimeZone, WorkflowExpression<string> bodybookingFormname = null, WorkflowExpression<string> bodybookingFormemail = null, WorkflowExpression<bodylocationTypeInput> bodylocationType = null, WorkflowExpression<string> bodylocationValue = null)
         {

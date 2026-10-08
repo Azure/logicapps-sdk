@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateJobResponse> __BuildCreateJob(WorkflowExpression<string> bodyname, WorkflowExpression<int> bodypriority = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JobStatusResponse> __BuildJobStatus(WorkflowExpression<string> jobName)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBulkPyAnalytics(WorkflowExpression<string> jobName, WorkflowExpression<int> batchSize, WorkflowExpression<string> bodyrequestId, WorkflowExpression<bodycurveTypeInput> bodycurveType, WorkflowExpression<string> bodypricingDate, WorkflowExpression<string> bodysettlementType, WorkflowExpression<bodyprepayTypeInput> bodyprepayType, WorkflowExpression<bool> bodycalculatePartialDurations4pt, WorkflowExpression<bool> bodycalculatePartialDurations7pt, WorkflowExpression<bool> bodyretrieveModelProjections, WorkflowExpression<bodycurrencyInput> bodycurrency = null, WorkflowExpression<int> bodyprepayRate = null, WorkflowExpression<bool> bodyretrieveOas = null, WorkflowExpression<bodyoptionModelInput> bodyoptionModel = null)
         {
@@ -160,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBulkIndicData(WorkflowExpression<string> jobName, WorkflowExpression<int> batchSize, WorkflowExpression<string> bodyrequestId)
         {
@@ -194,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> __BuildUploadSecuritiesList(WorkflowExpression<string> jobName, WorkflowExpression<string> bodysecuritiesList)
         {
@@ -226,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCloseJob(WorkflowExpression<string> jobName)
         {
@@ -248,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveBulkResultsResponse> __BuildRetrieveBulkResults(WorkflowExpression<string> jobName, WorkflowExpression<outputFormatInput> outputFormat, WorkflowExpression<string> bodypayload)
         {

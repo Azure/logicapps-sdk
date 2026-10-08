@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShareResponseV2> __BuildPostCompanyUpdate(WorkflowExpression<string> bodycompany, WorkflowExpression<string> bodycommentary, WorkflowExpression<bodyvisibilityInput> bodyvisibility, WorkflowExpression<string> bodycontentarticleuRLOfTheArticle, WorkflowExpression<string> bodycontentarticletitle, WorkflowExpression<bool> bodyisReshareDisabledByAuthor = null, WorkflowExpression<string> bodycontentarticledescription = null, WorkflowExpression<string> bodycontentarticlethumbnailURL = null)
         {
@@ -129,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShareResponseV2> __BuildPostUpdate(WorkflowExpression<string> bodycommentary, WorkflowExpression<bodyvisibilityInput> bodyvisibility, WorkflowExpression<string> bodycontentarticleuRLOfTheArticle, WorkflowExpression<string> bodycontentarticletitle, WorkflowExpression<bool> bodyisReshareDisabledByAuthor = null, WorkflowExpression<string> bodycontentarticledescription = null, WorkflowExpression<string> bodycontentarticlethumbnailURL = null)
         {

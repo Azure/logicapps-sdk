@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSubmitReview(WorkflowExpression<string> productId, WorkflowExpression<string> tenantId, WorkflowExpression<string> locale, WorkflowExpression<string> encodedUser, WorkflowExpression<string> bodyrating, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyreviewText, WorkflowExpression<string> bodyproductName, WorkflowExpression<string> channelId = null, WorkflowExpression<string> market = null, WorkflowExpression<string> bodysku = null, WorkflowExpression<string> bodylegalEntity = null, WorkflowExpression<string> bodysubmittedDateTime = null)
         {
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExportSuccessfulResponse> __BuildExportReviews(WorkflowExpression<string> tenantId)
         {

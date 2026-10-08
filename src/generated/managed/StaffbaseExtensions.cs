@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChannelsGetPostsResponse> __BuildChannelsGetPosts(WorkflowExpression<string> channelID, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildChannelsPost(WorkflowExpression<string> channelID, WorkflowExpression<string> bodyexternalID = null, WorkflowExpression<bodycontentsInputItem[]> bodycontents = null, WorkflowExpression<string> bodypublished = null)
         {
@@ -102,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommentsGetResponse> __BuildCommentsGet(WorkflowExpression<bool> manage = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> filter = null)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MediaGetResponse> __BuildMediaGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -162,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MediaData> __BuildMediaGetByID(WorkflowExpression<string> mediumID)
         {
@@ -183,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMediaDelete(WorkflowExpression<string> mediumID)
         {
@@ -204,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NotificationPostResponse> __BuildNotification(WorkflowExpression<string[]> bodyrecipientsaccessorIds = null, WorkflowExpression<bodycontentInputItem[]> bodycontent = null, WorkflowExpression<string> bodylink = null)
         {
@@ -260,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostsGetAllResponse> __BuildPostsGetAll(WorkflowExpression<string> query = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> manageable = null, WorkflowExpression<contentTypeInput> contentType = null)
         {
@@ -296,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostData> __BuildPostsGetByID(WorkflowExpression<string> pageID)
         {
@@ -317,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostsDeleteResponse> __BuildPostsDelete(WorkflowExpression<string> pageID)
         {
@@ -338,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostsPut(WorkflowExpression<string> pageID, WorkflowExpression<string> bodyexternalID = null, WorkflowExpression<bodycontentsInputItem2[]> bodycontents = null)
         {
@@ -380,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUserGetAll(WorkflowExpression<string> filter = null, WorkflowExpression<string> query = null)
         {
@@ -406,7 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUser(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null)
         {
@@ -454,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserData> __BuildUserGetByID(WorkflowExpression<string> userID)
         {
@@ -475,7 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUserDelete(WorkflowExpression<string> userID)
         {
@@ -496,7 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserData> __BuildUserPut(WorkflowExpression<string> userID, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyexternalID = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodypublicEmailAddress = null, WorkflowExpression<string> bodyconfiglocale = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null, WorkflowExpression<string[]> bodygroupIDs = null, WorkflowExpression<string> bodyposition = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<string> bodycreated = null, WorkflowExpression<string> bodyupdated = null, WorkflowExpression<string> bodyactivated = null)
         {
@@ -637,7 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUserPostRecovery(WorkflowExpression<string> userID)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AcronymSearchPostResponse> __BuildAcronymSearch(WorkflowExpression<bodyrequestsInputItem[]> bodyrequests = null)
         {
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AcronymPostResponse> __BuildAcronym(WorkflowExpression<string> bodydisplayName, WorkflowExpression<string> bodystandsFor, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodywebUrl = null, WorkflowExpression<bodystateInput> bodystate = null)
         {
@@ -125,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AcronymGetResponse> __BuildAcronymGet(WorkflowExpression<string> acronymsId)
         {
@@ -146,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAcronymDelete(WorkflowExpression<string> acronymsId)
         {
@@ -167,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAcronymPatch(WorkflowExpression<string> acronymsId, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodystandsFor = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodywebUrl = null, WorkflowExpression<bodystateInput> bodystate = null)
         {

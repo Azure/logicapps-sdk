@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Booth> __BuildBoothsGet(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Booth[]> __BuildBoothsGetAllBooths(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<deletedFilterInput> deletedFilter = null)
         {
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Booth[]> __BuildBoothsGetAllAvailableBooths(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -92,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Booth[]> __BuildBoothsGetAllRentedBooths(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -115,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsRentBooth(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> exhibitorId, WorkflowExpression<string> databaseName, WorkflowExpression<string> ratePlan = null, WorkflowExpression<string> status = null, WorkflowExpression<string> comment = null)
         {
@@ -151,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsUnRentBooth(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsHoldBooth(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName, WorkflowExpression<string> exhibitorId = null, WorkflowExpression<string> exhibitorName = null, WorkflowExpression<string> comment = null)
         {
@@ -210,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsUnHoldBooth(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -235,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsRentToHold(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -260,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsHoldToRent(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName, WorkflowExpression<string> ratePlan = null)
         {
@@ -288,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsCombineBooths(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<int> boundary, WorkflowExpression<string[]> boothNumbers = null)
         {
@@ -315,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsUncombineBooth(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -340,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsDeleteBooths(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string[]> boothNumbers = null)
         {
@@ -365,7 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsUndeleteBooths(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string[]> boothNumbers = null)
         {
@@ -390,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsChangeBoothNumber(WorkflowExpression<string> clientName, WorkflowExpression<string> oldNumber, WorkflowExpression<string> newNumber, WorkflowExpression<string> databaseName)
         {
@@ -417,7 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsSetBoothClass(WorkflowExpression<string> clientName, WorkflowExpression<string> classId, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -444,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsClearBoothClass(WorkflowExpression<string> clientName, WorkflowExpression<string> classId, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -471,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsSetBoothDisplayName(WorkflowExpression<string> clientName, WorkflowExpression<string> text, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -498,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsClearBoothDisplayName(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -523,7 +504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsAddChildExhibitor(WorkflowExpression<string> clientName, WorkflowExpression<string> childExhibitorId, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -550,7 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildBoothsRemoveChildExhibitor(WorkflowExpression<string> clientName, WorkflowExpression<string> childExhibitorId, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -577,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoothClass> __BuildClassesGet(WorkflowExpression<string> clientName, WorkflowExpression<string> classId, WorkflowExpression<string> databaseName)
         {
@@ -602,7 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoothClass[]> __BuildClassesGetAllBoothClasses(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -625,7 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoothClass> __BuildClassesCreate(WorkflowExpression<string> clientName, WorkflowExpression<string> boothClassid, WorkflowExpression<int> boothClasskeepWhenCombined, WorkflowExpression<int> boothClasscountAsInventory, WorkflowExpression<string> databaseName, WorkflowExpression<string> boothClassname = null, WorkflowExpression<string> boothClassdescription = null, WorkflowExpression<string> boothClassprioritity = null, WorkflowExpression<int> boothClasscolor = null)
         {
@@ -692,7 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoothClass> __BuildClassesUpdate(WorkflowExpression<string> clientName, WorkflowExpression<string> boothClassid, WorkflowExpression<int> boothClasskeepWhenCombined, WorkflowExpression<int> boothClasscountAsInventory, WorkflowExpression<string> classId, WorkflowExpression<string> databaseName, WorkflowExpression<string> boothClassname = null, WorkflowExpression<string> boothClassdescription = null, WorkflowExpression<string> boothClassprioritity = null, WorkflowExpression<int> boothClasscolor = null)
         {
@@ -761,7 +736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildClassesDelete(WorkflowExpression<string> clientName, WorkflowExpression<string> classId, WorkflowExpression<string> databaseName)
         {
@@ -786,7 +760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpocadEvent[]> __BuildEventsGetAllEvents(WorkflowExpression<string> clientName)
         {
@@ -807,7 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EventStats> __BuildEventsGetEventStatistics(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -830,7 +802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpoEventInformation> __BuildEventsGetEventInformation(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -853,7 +824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Exhibitor> __BuildExhibitorsGet(WorkflowExpression<string> clientName, WorkflowExpression<string> id, WorkflowExpression<string> databaseName)
         {
@@ -878,7 +848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Exhibitor[]> __BuildExhibitorsGetAllExhibitors(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -901,7 +870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Exhibitor> __BuildExhibitorsAddExhibitor(WorkflowExpression<string> clientName, WorkflowExpression<string> exhibitorexhibitorId, WorkflowExpression<string> databaseName, WorkflowExpression<string> exhibitoraddress1 = null, WorkflowExpression<string> exhibitoraddress2 = null, WorkflowExpression<string> exhibitorcity = null, WorkflowExpression<string> exhibitorcomments = null, WorkflowExpression<string> exhibitorcomments2 = null, WorkflowExpression<string> exhibitorcontact = null, WorkflowExpression<string> exhibitorcountry = null, WorkflowExpression<string> exhibitorcellPhone = null, WorkflowExpression<string> exhibitordisplayOnDrawing = null, WorkflowExpression<string> exhibitordoingBusinessAs = null, WorkflowExpression<string> exhibitordoingBusinessAsDisplayOnDrawing = null, WorkflowExpression<string> exhibitoremail = null, WorkflowExpression<string> exhibitorexhibitorName = null, WorkflowExpression<string> exhibitorexhibitorNameLine2 = null, WorkflowExpression<string> exhibitorfax = null, WorkflowExpression<string> exhibitorfield1 = null, WorkflowExpression<string> exhibitorfield2 = null, WorkflowExpression<string> exhibitorfield3 = null, WorkflowExpression<string> exhibitorfield4 = null, WorkflowExpression<string> exhibitorfield5 = null, WorkflowExpression<string> exhibitorfield6 = null, WorkflowExpression<string> exhibitorfield7 = null, WorkflowExpression<string> exhibitorfield8 = null, WorkflowExpression<string> exhibitorfield9 = null, WorkflowExpression<string> exhibitornickName = null, WorkflowExpression<string> exhibitorsalutation = null, WorkflowExpression<string> exhibitortitle = null, WorkflowExpression<string> exhibitorphone = null, WorkflowExpression<string> exhibitorpostalCode = null, WorkflowExpression<string> exhibitorprimaryGroup = null, WorkflowExpression<string> exhibitorpriorityPoints = null, WorkflowExpression<string> exhibitorproductDescription = null, WorkflowExpression<string> exhibitorstate = null, WorkflowExpression<string> exhibitorwebSite = null)
         {
@@ -1172,7 +1140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Exhibitor> __BuildExhibitorsUpdateExhibitor(WorkflowExpression<string> clientName, WorkflowExpression<string> exhibitorexhibitorId, WorkflowExpression<string> id, WorkflowExpression<string> databaseName, WorkflowExpression<string> exhibitoraddress1 = null, WorkflowExpression<string> exhibitoraddress2 = null, WorkflowExpression<string> exhibitorcity = null, WorkflowExpression<string> exhibitorcomments = null, WorkflowExpression<string> exhibitorcomments2 = null, WorkflowExpression<string> exhibitorcontact = null, WorkflowExpression<string> exhibitorcountry = null, WorkflowExpression<string> exhibitorcellPhone = null, WorkflowExpression<string> exhibitordisplayOnDrawing = null, WorkflowExpression<string> exhibitordoingBusinessAs = null, WorkflowExpression<string> exhibitordoingBusinessAsDisplayOnDrawing = null, WorkflowExpression<string> exhibitoremail = null, WorkflowExpression<string> exhibitorexhibitorName = null, WorkflowExpression<string> exhibitorexhibitorNameLine2 = null, WorkflowExpression<string> exhibitorfax = null, WorkflowExpression<string> exhibitorfield1 = null, WorkflowExpression<string> exhibitorfield2 = null, WorkflowExpression<string> exhibitorfield3 = null, WorkflowExpression<string> exhibitorfield4 = null, WorkflowExpression<string> exhibitorfield5 = null, WorkflowExpression<string> exhibitorfield6 = null, WorkflowExpression<string> exhibitorfield7 = null, WorkflowExpression<string> exhibitorfield8 = null, WorkflowExpression<string> exhibitorfield9 = null, WorkflowExpression<string> exhibitornickName = null, WorkflowExpression<string> exhibitorsalutation = null, WorkflowExpression<string> exhibitortitle = null, WorkflowExpression<string> exhibitorphone = null, WorkflowExpression<string> exhibitorpostalCode = null, WorkflowExpression<string> exhibitorprimaryGroup = null, WorkflowExpression<string> exhibitorpriorityPoints = null, WorkflowExpression<string> exhibitorproductDescription = null, WorkflowExpression<string> exhibitorstate = null, WorkflowExpression<string> exhibitorwebSite = null)
         {
@@ -1445,7 +1412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExhibitorsDeleteExhibitor(WorkflowExpression<string> clientName, WorkflowExpression<string> id, WorkflowExpression<string> databaseName)
         {
@@ -1470,7 +1436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Transaction[]> __BuildFinancialsGetAllTransactions(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> exhibitorId = null, WorkflowExpression<string> boothNumber = null, WorkflowExpression<string> expocadUser = null, WorkflowExpression<string> glCode = null, WorkflowExpression<reversedFilterInput> reversedFilter = null)
         {
@@ -1514,7 +1479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BoothFinancial> __BuildFinancialsGet(WorkflowExpression<string> clientName, WorkflowExpression<string> boothNumber, WorkflowExpression<string> databaseName)
         {
@@ -1539,7 +1503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Invoice> __BuildFinancialsGetInvoice(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> invoiceNo = null, WorkflowExpression<string> exhibitorId = null)
         {
@@ -1568,7 +1531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Invoice[]> __BuildFinancialsGetAllInvoices(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -1591,7 +1553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MasterRequestItem[]> __BuildFinancialsGetRequestItemList(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> glCode = null, WorkflowExpression<string> transactionCode = null)
         {
@@ -1620,7 +1581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvoiceRequestItem[]> __BuildFinancialsGetAssignedRequestItems(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> exhibitorId = null, WorkflowExpression<string> invoiceNumber = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> booth = null, WorkflowExpression<string> glCode = null, WorkflowExpression<string> transactionCode = null)
         {
@@ -1664,7 +1624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PaymentTypeItem[]> __BuildFinancialsGetPaymentTypeList(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -1687,7 +1646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InvoicePayment[]> __BuildFinancialsGetPayments(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> exhibitorId = null, WorkflowExpression<string> depositId = null, WorkflowExpression<string> invoiceNumber = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> paymentTypeCategory = null)
         {
@@ -1728,7 +1686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Pavilion[]> __BuildPavilionsGetAllPavilions(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -1751,7 +1708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RatePlan> __BuildRatePlansGetDefaultRatePlan(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -1774,7 +1730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildRatePlansSetDefaultRatePlan(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> name)
         {
@@ -1799,7 +1754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RatePlan[]> __BuildRatePlansGetAllRatePlans(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {
@@ -1822,7 +1776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RatePlan> __BuildRatePlansAddRatePlan(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName, WorkflowExpression<string> ratePlanname, WorkflowExpression<string> ratePlanshortCode, WorkflowExpression<double> ratePlangrossRate, WorkflowExpression<double> ratePlanfixedDiscountRate, WorkflowExpression<double> ratePlanpercentDiscountRate, WorkflowExpression<bool> ratePlanisFixed)
         {
@@ -1870,7 +1823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShowInShow[]> __BuildShowInShowsGetAllShowinShows(WorkflowExpression<string> clientName, WorkflowExpression<string> databaseName)
         {

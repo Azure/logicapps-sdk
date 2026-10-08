@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderUpdatePostResponse> __BuildFolderUpdate(WorkflowExpression<string> folderId, WorkflowExpression<string> bodyname)
         {
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FolderPostResponse> __BuildFolder(WorkflowExpression<string> bodyname)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRPostResponse> __BuildQR(WorkflowExpression<string> bodyname, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodydataurl = null)
         {
@@ -145,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRGetResponse> __BuildQRGet(WorkflowExpression<string> qrCodeId)
         {
@@ -166,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRUpdatePostResponse> __BuildQRUpdate(WorkflowExpression<string> qrCodeId, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodydataurl = null)
         {
@@ -242,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilePostResponse> __BuildFile(WorkflowExpression<object> file)
         {

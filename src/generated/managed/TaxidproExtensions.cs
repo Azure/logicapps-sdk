@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowExpression<string> country, WorkflowExpression<string> tin, WorkflowExpression<typeInput> type = null, WorkflowExpression<localeInput> locale = null, WorkflowExpression<bool> isIrs = null)
         {
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LookupResponse> __BuildLookup(WorkflowExpression<string> country, WorkflowExpression<string> tin, WorkflowExpression<typeInput> type = null, WorkflowExpression<localeInput> locale = null, WorkflowExpression<bool> isIrs = null)
         {

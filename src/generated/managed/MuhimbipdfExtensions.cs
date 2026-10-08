@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildCompositeWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatawatermarkData, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -85,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildCompressPdf(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<inputPdfDataremoveAnnotationsInput> inputPdfDataremoveAnnotations = null, WorkflowExpression<inputPdfDataremoveBlankPagesInput> inputPdfDataremoveBlankPages = null, WorkflowExpression<inputPdfDataremoveBookmarksInput> inputPdfDataremoveBookmarks = null, WorkflowExpression<inputPdfDataremoveEmbeddedFilesInput> inputPdfDataremoveEmbeddedFiles = null, WorkflowExpression<inputPdfDataremoveFormFieldsInput> inputPdfDataremoveFormFields = null, WorkflowExpression<inputPdfDataremoveHyperlinksInput> inputPdfDataremoveHyperlinks = null, WorkflowExpression<inputPdfDataremoveJavaScriptInput> inputPdfDataremoveJavaScript = null, WorkflowExpression<inputPdfDataremoveMetadataInput> inputPdfDataremoveMetadata = null, WorkflowExpression<inputPdfDataremovePageThumbnailsInput> inputPdfDataremovePageThumbnails = null, WorkflowExpression<inputPdfDatapackFontsInput> inputPdfDatapackFonts = null, WorkflowExpression<inputPdfDatapackDocumentInput> inputPdfDatapackDocument = null, WorkflowExpression<inputPdfDatarecompressImagesInput> inputPdfDatarecompressImages = null, WorkflowExpression<inputPdfDataenableMRCInput> inputPdfDataenableMRC = null, WorkflowExpression<int> inputPdfDatadownscaleResolutionMRC = null, WorkflowExpression<inputPdfDatapreserveSmoothingInput> inputPdfDatapreserveSmoothing = null, WorkflowExpression<inputPdfDataimageQualityInput> inputPdfDataimageQuality = null, WorkflowExpression<inputPdfDatadownscaleImagesInput> inputPdfDatadownscaleImages = null, WorkflowExpression<int> inputPdfDatadownscaleResolution = null, WorkflowExpression<inputPdfDataenableColorDetectionInput> inputPdfDataenableColorDetection = null, WorkflowExpression<inputPdfDataenableCharRepairInput> inputPdfDataenableCharRepair = null, WorkflowExpression<inputPdfDataenableJPEG2000Input> inputPdfDataenableJPEG2000 = null, WorkflowExpression<inputPdfDataenableJBIG2Input> inputPdfDataenableJBIG2 = null, WorkflowExpression<int> inputPdfDatajBIG2PMSThreshold = null, WorkflowExpression<string> inputPdfDataoverrideSettings = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -543,7 +541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvert(WorkflowExpression<string> inputDatasourceFileName, WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDataoutputFormatInput> inputDataoutputFormat, WorkflowExpression<string> inputDataoverrideSettings = null, WorkflowExpression<string> inputDatatemplateFileContent = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -622,7 +619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertCad(WorkflowExpression<string> inputCadDatasourceFileName, WorkflowExpression<string> inputCadDatasourceFileContent, WorkflowExpression<inputCadDatapaperSizeInput> inputCadDatapaperSize = null, WorkflowExpression<string> inputCadDatapaperSizeCustom = null, WorkflowExpression<string> inputCadDatapageMargins = null, WorkflowExpression<string> inputCadDatabackgroundColor = null, WorkflowExpression<inputCadDataforegroundColorInput> inputCadDataforegroundColor = null, WorkflowExpression<string> inputCadDataforegroundColorCustom = null, WorkflowExpression<inputCadDataemptyLayoutDetectionInput> inputCadDataemptyLayoutDetection = null, WorkflowExpression<inputCadDatalayoutSortOrderInput> inputCadDatalayoutSortOrder = null, WorkflowExpression<int> inputCadDatastartPage = null, WorkflowExpression<int> inputCadDataendPage = null, WorkflowExpression<string> inputCadDataoverrideSettings = null, WorkflowExpression<bool> inputCadDatafailOnError = null)
         {
@@ -821,7 +817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertEmail(WorkflowExpression<string> inputEmailDatasourceFileName, WorkflowExpression<string> inputEmailDatasourceFileContent, WorkflowExpression<bool> inputEmailDataincludeAttachments = null, WorkflowExpression<inputEmailDataattachmentActionInput> inputEmailDataattachmentAction = null, WorkflowExpression<bool> inputEmailDataattachmentSummary = null, WorkflowExpression<inputEmailDataunsupportedAttachmentActionInput> inputEmailDataunsupportedAttachmentAction = null, WorkflowExpression<string> inputEmailDataincludeAttachmentFilter = null, WorkflowExpression<string> inputEmailDataexcludeAttachmentFilter = null, WorkflowExpression<string> inputEmailDataviewportSize = null, WorkflowExpression<inputEmailDatapaperSizeInput> inputEmailDatapaperSize = null, WorkflowExpression<string> inputEmailDatapaperSizeCustom = null, WorkflowExpression<string> inputEmailDatapageMargins = null, WorkflowExpression<bool> inputEmailDataattachmentErrors = null, WorkflowExpression<int> inputEmailDataminImageSize = null, WorkflowExpression<bool> inputEmailDataofflineMode = null, WorkflowExpression<int> inputEmailDatastartPage = null, WorkflowExpression<int> inputEmailDataendPage = null, WorkflowExpression<inputEmailDataconversionQualityInput> inputEmailDataconversionQuality = null, WorkflowExpression<string> inputEmailDataoverrideSettings = null, WorkflowExpression<bool> inputEmailDatafailOnError = null)
         {
@@ -1082,7 +1077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertExcel(WorkflowExpression<string> inputExcelDatasourceFileName, WorkflowExpression<string> inputExcelDatasourceFileContent, WorkflowExpression<inputExcelDataoutputFormatInput> inputExcelDataoutputFormat, WorkflowExpression<inputExcelDatarangeInput> inputExcelDatarange = null, WorkflowExpression<bool> inputExcelDatarevealHiddenRows = null, WorkflowExpression<bool> inputExcelDatarevealHiddenColumns = null, WorkflowExpression<int> inputExcelDatafitToPagesWide = null, WorkflowExpression<int> inputExcelDatafitToPagesTall = null, WorkflowExpression<int> inputExcelDatastartPage = null, WorkflowExpression<int> inputExcelDataendPage = null, WorkflowExpression<inputExcelDataqualityInput> inputExcelDataquality = null, WorkflowExpression<string> inputExcelDataoverrideSettings = null, WorkflowExpression<bool> inputExcelDatafailOnError = null)
         {
@@ -1230,7 +1224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertHtml(WorkflowExpression<string> inputDatasourceURLOrHTML, WorkflowExpression<inputDatapageOrientationInput> inputDatapageOrientation = null, WorkflowExpression<inputDatamediaTypeInput> inputDatamediaType = null, WorkflowExpression<inputDataauthenticationTypeInput> inputDataauthenticationType = null, WorkflowExpression<string> inputDatauserName = null, WorkflowExpression<string> inputDatapassword = null, WorkflowExpression<string> inputDataviewportSize = null, WorkflowExpression<int> inputDataconversionDelay = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -1358,7 +1351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertInfopath(WorkflowExpression<string> inputInfopathDatasourceFileName, WorkflowExpression<string> inputInfopathDatasourceFileContent, WorkflowExpression<inputInfopathDataoutputFormatInput> inputInfopathDataoutputFormat, WorkflowExpression<string> inputInfopathDatatemplateFileContent = null, WorkflowExpression<string> inputInfopathDataviewNames = null, WorkflowExpression<bool> inputInfopathDataincludeAttachment = null, WorkflowExpression<inputInfopathDataattachmentActionInput> inputInfopathDataattachmentAction = null, WorkflowExpression<inputInfopathDataunsupportedAttachmentActionInput> inputInfopathDataunsupportedAttachmentAction = null, WorkflowExpression<bool> inputInfopathDatabreakMergeOnError = null, WorkflowExpression<string> inputInfopathDataincludeAttachmentFilter = null, WorkflowExpression<string> inputInfopathDataexcludeAttachmentFilter = null, WorkflowExpression<inputInfopathDatadefaultPaperSizeInput> inputInfopathDatadefaultPaperSize = null, WorkflowExpression<string> inputInfopathDatadefaultPaperSizeCustom = null, WorkflowExpression<inputInfopathDataforcePaperSizeInput> inputInfopathDataforcePaperSize = null, WorkflowExpression<string> inputInfopathDataforcePaperSizeCustom = null, WorkflowExpression<inputInfopathDatadefaultPageOrientationInput> inputInfopathDatadefaultPageOrientation = null, WorkflowExpression<inputInfopathDataforcePageOrientationInput> inputInfopathDataforcePageOrientation = null, WorkflowExpression<int> inputInfopathDatastartPage = null, WorkflowExpression<int> inputInfopathDataendPage = null, WorkflowExpression<inputInfopathDataconversionQualityInput> inputInfopathDataconversionQuality = null, WorkflowExpression<string> inputInfopathDataoverrideSettings = null, WorkflowExpression<bool> inputInfopathDatafailOnError = null)
         {
@@ -1569,7 +1561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertPdfa(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<inputPdfDatapDFProfileInput> inputPdfDatapDFProfile, WorkflowExpression<string> inputPdfDataoverrideSettings = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -1641,7 +1632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertPowerpoint(WorkflowExpression<string> inputPowerpointDatasourceFileName, WorkflowExpression<string> inputPowerpointDatasourceFileContent, WorkflowExpression<inputPowerpointDataoutputFormatInput> inputPowerpointDataoutputFormat, WorkflowExpression<inputPowerpointDatarangeInput> inputPowerpointDatarange = null, WorkflowExpression<inputPowerpointDataprintLayoutHandoutsInput> inputPowerpointDataprintLayoutHandouts = null, WorkflowExpression<bool> inputPowerpointDataframeSlides = null, WorkflowExpression<int> inputPowerpointDatastartPage = null, WorkflowExpression<int> inputPowerpointDataendPage = null, WorkflowExpression<inputPowerpointDataqualityInput> inputPowerpointDataquality = null, WorkflowExpression<string> inputPowerpointDataoverrideSettings = null, WorkflowExpression<bool> inputPowerpointDatafailOnError = null)
         {
@@ -1775,7 +1765,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertVisio(WorkflowExpression<string> inputVisioDatasourceFileName, WorkflowExpression<string> inputVisioDatasourceFileContent, WorkflowExpression<inputVisioDataoutputFormatInput> inputVisioDataoutputFormat, WorkflowExpression<inputVisioDatarangeInput> inputVisioDatarange = null, WorkflowExpression<int> inputVisioDatastartPage = null, WorkflowExpression<int> inputVisioDataendPage = null, WorkflowExpression<inputVisioDataqualityInput> inputVisioDataquality = null, WorkflowExpression<string> inputVisioDataoverrideSettings = null, WorkflowExpression<bool> inputVisioDatafailOnError = null)
         {
@@ -1875,7 +1864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertWord(WorkflowExpression<string> inputWordDatasourceFileName, WorkflowExpression<string> inputWordDatasourceFileContent, WorkflowExpression<inputWordDataoutputFormatInput> inputWordDataoutputFormat, WorkflowExpression<inputWordDatadisplayForReviewInput> inputWordDatadisplayForReview = null, WorkflowExpression<inputWordDatareviewMarkupModeInput> inputWordDatareviewMarkupMode = null, WorkflowExpression<inputWordDatagenerateBookmarksInput> inputWordDatagenerateBookmarks = null, WorkflowExpression<int> inputWordDatastartPage = null, WorkflowExpression<int> inputWordDataendPage = null, WorkflowExpression<inputWordDataqualityInput> inputWordDataquality = null, WorkflowExpression<string> inputWordDataoverrideSettings = null, WorkflowExpression<bool> inputWordDatafailOnError = null)
         {
@@ -2009,7 +1997,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponseCommon> __BuildCopyMetadata(WorkflowExpression<string> inputDatasiteUrl, WorkflowExpression<string> inputDatasourceFileUrl, WorkflowExpression<string> inputDatadestinationFilePath, WorkflowExpression<string> inputDatauserName = null, WorkflowExpression<string> inputDatapassword = null, WorkflowExpression<string> inputDatafieldsToCopy = null, WorkflowExpression<string> inputDatadestinationContentType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -2090,7 +2077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildEllipseWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatafillColor = null, WorkflowExpression<string> inputDatalineColor = null, WorkflowExpression<string> inputDatalineWidth = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -2315,7 +2301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildExportFormData(WorkflowExpression<string> inputFromPdfDatasourceFileName, WorkflowExpression<string> inputFromPdfDatasourceFileContent, WorkflowExpression<inputFromPdfDataoutputDataFormatInput> inputFromPdfDataoutputDataFormat, WorkflowExpression<bool> inputFromPdfDatafailOnError = null)
         {
@@ -2380,7 +2365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildExtractText(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<string> inputPdfDatapageRange = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -2457,7 +2441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildImageWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDataimage, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatawatermarkBackgroundColor = null, WorkflowExpression<string> inputDatawatermarkOutlineColor = null, WorkflowExpression<string> inputDatawatermarkOutlineWidth = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -2685,7 +2668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildImportFormData(WorkflowExpression<string> inputXmlDatasourceFileName, WorkflowExpression<string> inputXmlDatasourceFileContent, WorkflowExpression<string> inputXmlDatapDFFormFileContent = null, WorkflowExpression<string> inputXmlDatapDFFormURL = null, WorkflowExpression<string> inputXmlDatausername = null, WorkflowExpression<string> inputXmlDatadomain = null, WorkflowExpression<string> inputXmlDatapassword = null, WorkflowExpression<inputXmlDataflattenInput> inputXmlDataflatten = null, WorkflowExpression<inputXmlDatareadOnlyInput> inputXmlDatareadOnly = null, WorkflowExpression<string> inputXmlDataoverrideSettings = null, WorkflowExpression<bool> inputXmlDatafailOnError = null)
         {
@@ -2823,7 +2805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildExtractKeyValuePairs(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<string> inputPdfDataoCRLanguage = null, WorkflowExpression<inputPdfDatadPIInput> inputPdfDatadPI = null, WorkflowExpression<inputPdfDatakVPOutputFormatInput> inputPdfDatakVPOutputFormat = null, WorkflowExpression<string> inputPdfDatapageRange = null, WorkflowExpression<inputPdfDataautorotateInput> inputPdfDataautorotate = null, WorkflowExpression<inputPdfDatatrimSymbolsInput> inputPdfDatatrimSymbols = null, WorkflowExpression<inputPdfDataincludeKeyBoundingBoxInput> inputPdfDataincludeKeyBoundingBox = null, WorkflowExpression<inputPdfDataincludeValueBoundingBoxInput> inputPdfDataincludeValueBoundingBox = null, WorkflowExpression<inputPdfDataincludePageNumberInput> inputPdfDataincludePageNumber = null, WorkflowExpression<inputPdfDataincludeConfidenceInput> inputPdfDataincludeConfidence = null, WorkflowExpression<int> inputPdfDataconfidenceThreshold = null, WorkflowExpression<inputPdfDataincludeTypeInput> inputPdfDataincludeType = null, WorkflowExpression<string> inputPdfDataexpectedKeys = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -3094,7 +3075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildLineWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDataxCoordinateStart, WorkflowExpression<string> inputDatayCoordinateStart, WorkflowExpression<string> inputDataxCoordinateEnd, WorkflowExpression<string> inputDatayCoordinateEnd, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatalineColor = null, WorkflowExpression<string> inputDatalineWidth = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -3304,7 +3284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildLinearBarcodeWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatabarcodeContent, WorkflowExpression<inputDatabarcodeTypeInput> inputDatabarcodeType, WorkflowExpression<inputDatadisableCheckDigitInput> inputDatadisableCheckDigit, WorkflowExpression<inputDatashowCheckDigitInput> inputDatashowCheckDigit, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<inputDataomitEncodingOfStartStopSymbolsInput> inputDataomitEncodingOfStartStopSymbols = null, WorkflowExpression<string> inputDatamargin = null, WorkflowExpression<string> inputDatafontFamily = null, WorkflowExpression<string> inputDatafontSize = null, WorkflowExpression<string> inputDatafontStyle = null, WorkflowExpression<inputDatalabelPlacementInput> inputDatalabelPlacement = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatabarcodeBackgroundColor = null, WorkflowExpression<string> inputDatabarcodeBarColor = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -3596,7 +3575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildMergeToPdf(WorkflowExpression<string> inputDatasourceFileName1 = null, WorkflowExpression<string> inputDatasourceFileContent1 = null, WorkflowExpression<string> inputDatasourceFileName2 = null, WorkflowExpression<string> inputDatasourceFileContent2 = null, WorkflowExpression<string> inputDatasourceFileName3 = null, WorkflowExpression<string> inputDatasourceFileContent3 = null, WorkflowExpression<string> inputDatasourceFileName4 = null, WorkflowExpression<string> inputDatasourceFileContent4 = null, WorkflowExpression<string> inputDatasourceFileName5 = null, WorkflowExpression<string> inputDatasourceFileContent5 = null, WorkflowExpression<inputDataeachDocumentInput> inputDataeachDocument = null, WorkflowExpression<MergeSourceFile[]> inputDatasourceFiles = null, WorkflowExpression<string> inputDataoverrideSettings = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -3751,7 +3729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildOcrPdf(WorkflowExpression<string> inputDatasourceFileName, WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatalanguageInput> inputDatalanguage = null, WorkflowExpression<inputDataperformanceInput> inputDataperformance = null, WorkflowExpression<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, WorkflowExpression<string> inputDatacharacters = null, WorkflowExpression<bool> inputDatausePagination = null, WorkflowExpression<string> inputDataregions = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -3895,7 +3872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OcrOperationResponse> __BuildOcrText(WorkflowExpression<string> inputDatasourceFileName, WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatalanguageInput> inputDatalanguage = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<string> inputDatawidth = null, WorkflowExpression<string> inputDataheight = null, WorkflowExpression<string> inputDatapageNumber = null, WorkflowExpression<inputDataperformanceInput> inputDataperformance = null, WorkflowExpression<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, WorkflowExpression<string> inputDatacharacters = null, WorkflowExpression<bool> inputDatausePagination = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -4075,7 +4051,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildPdfWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatapDFWatermark, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -4282,7 +4257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildQrCodeWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatacontent, WorkflowExpression<inputDataversionInput> inputDataversion, WorkflowExpression<inputDatainputModeInput> inputDatainputMode, WorkflowExpression<inputDataerrorCorrectionLevelInput> inputDataerrorCorrectionLevel, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatawatermarkBackgroundColor = null, WorkflowExpression<string> inputDatawatermarkForegroundColor = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -4512,7 +4486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildRectangleWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatawatermarkBackgroundColor = null, WorkflowExpression<string> inputDatawatermarkOutlineColor = null, WorkflowExpression<string> inputDatawatermarkOutlineWidth = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -4737,7 +4710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildRtfWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatawatermarkContent, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatawatermarkBackgroundColor = null, WorkflowExpression<string> inputDatawatermarkOutlineColor = null, WorkflowExpression<string> inputDatawatermarkOutlineWidth = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -4965,7 +4937,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildSecurePdf(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataopenPassword = null, WorkflowExpression<string> inputDataownerPassword = null, WorkflowExpression<string> inputDatapDFRestrictions = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -5050,7 +5021,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SplitOperationResponse> __BuildSplitPdf(WorkflowExpression<string> inputDatasourceFileName, WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDatasplitByInput> inputDatasplitBy, WorkflowExpression<int> inputDatasplitParameter, WorkflowExpression<string> inputDatafileNameTemplate = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -5123,7 +5093,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildTextWatermark(WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<string> inputDatawatermarkContent, WorkflowExpression<string> inputDatafontFamilyName, WorkflowExpression<string> inputDatafontSize, WorkflowExpression<string> inputDatafontColor, WorkflowExpression<inputDatatextAlignmentInput> inputDatatextAlignment, WorkflowExpression<inputDatawordWrapInput> inputDatawordWrap, WorkflowExpression<inputDatapositionInput> inputDataposition, WorkflowExpression<string> inputDatawidth, WorkflowExpression<string> inputDataheight, WorkflowExpression<string> inputDatasourceFileName = null, WorkflowExpression<string> inputDataxCoordinate = null, WorkflowExpression<string> inputDatayCoordinate = null, WorkflowExpression<inputDatalayerInput> inputDatalayer = null, WorkflowExpression<string> inputDatarotation = null, WorkflowExpression<string> inputDataopacity = null, WorkflowExpression<string> inputDatafontStyle = null, WorkflowExpression<string> inputDatafontOutlineColor = null, WorkflowExpression<string> inputDatafontOutlineWidth = null, WorkflowExpression<int> inputDatawatermarkStartPage = null, WorkflowExpression<int> inputDatawatermarkEndPage = null, WorkflowExpression<int> inputDatawatermarkPageInterval = null, WorkflowExpression<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, WorkflowExpression<inputDataprintOnlyInput> inputDataprintOnly = null, WorkflowExpression<int> inputDatawatermarkStartSection = null, WorkflowExpression<int> inputDatawatermarkEndSection = null, WorkflowExpression<string> inputDatawatermarkPageType = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {

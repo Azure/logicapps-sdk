@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetArrivalsResponse> __BuildGetArrivals(WorkflowExpression<string> lang = null, WorkflowExpression<string> station = null, WorkflowExpression<string> uicCode = null, WorkflowExpression<string> dateTime = null, WorkflowExpression<int> maxJourneys = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeparturesResponse> __BuildGetDepartures(WorkflowExpression<string> lang = null, WorkflowExpression<string> station = null, WorkflowExpression<string> uicCode = null, WorkflowExpression<string> dateTime = null, WorkflowExpression<string> maxJourneys = null)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> __BuildGetStationDisruptions(WorkflowExpression<string> stationCode)
         {

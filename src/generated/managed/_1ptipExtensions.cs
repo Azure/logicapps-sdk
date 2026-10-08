@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<URLGetResponse> __BuildURLGet(WorkflowExpression<string> @long, WorkflowExpression<string> @short = null)
         {

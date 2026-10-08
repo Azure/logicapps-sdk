@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MD4GETResponse> __BuildMD4GET(WorkflowExpression<string> value)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MD4POSTResponse> __BuildMD4POST(WorkflowExpression<string> value, WorkflowExpression<string> body = null)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MD4POSTFileResponse> __BuildMD4POSTFile(WorkflowExpression<string> value, WorkflowExpression<string> file)
         {
@@ -87,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MD5GETResponse> __BuildMD5GET(WorkflowExpression<string> value)
         {
@@ -109,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MD5POSTResponse> __BuildMD5POST(WorkflowExpression<string> value, WorkflowExpression<string> body = null)
         {
@@ -133,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MD5POSTFileResponse> __BuildMD5POSTFile(WorkflowExpression<string> value, WorkflowExpression<string> file)
         {
@@ -156,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway256POSTResponse> __BuildHighway256POST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
         {
@@ -184,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway256RandomPOSTResponse> __BuildHighway256RandomPOST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
         {
@@ -212,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway64RandomPOSTResponse> __BuildHighway64RandomPOST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
         {
@@ -240,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway128GETResponse> __BuildHighway128GET(WorkflowExpression<string> value, WorkflowExpression<string> key)
         {
@@ -264,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway128RandomPOSTResponse> __BuildHighway128RandomPOST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
         {
@@ -292,7 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway128RandomGETResponse> __BuildHighway128RandomGET(WorkflowExpression<string> value, WorkflowExpression<string> key)
         {
@@ -316,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway64RandomGETResponse> __BuildHighway64RandomGET(WorkflowExpression<string> value, WorkflowExpression<string> key)
         {
@@ -340,7 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway64POSTResponse> __BuildHighway64POST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
         {
@@ -368,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Highway256RandomGETResponse> __BuildHighway256RandomGET(WorkflowExpression<string> value, WorkflowExpression<string> key)
         {
@@ -392,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SHA1GETResponse> __BuildSHA1GET(WorkflowExpression<string> value, WorkflowExpression<string> digestFormat)
         {
@@ -415,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<M200> __BuildSHA1POSTForm(WorkflowExpression<string> xHashifyProcess, WorkflowExpression<string> digestFormat, WorkflowExpression<string> file)
         {
@@ -439,7 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SHA256GETResponse> __BuildSHA256GET(WorkflowExpression<string> value, WorkflowExpression<string> digestFormat)
         {
@@ -462,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SHA256BodyPOSTResponse> __BuildSHA256BodyPOST(WorkflowExpression<string> value, WorkflowExpression<string> digestFormat, WorkflowExpression<string> body = null)
         {
@@ -505,7 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<M200> __BuildKeygen(WorkflowExpression<string> keyLength)
         {

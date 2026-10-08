@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserRequestResponse> __BuildGetUserByEmail(WorkflowExpression<string> bodyemail, WorkflowExpression<string[]> bodyinclude = null)
         {
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DocumentInfoResponse> __BuildPutDocument(WorkflowExpression<string> fileName, WorkflowExpression<string> id, WorkflowExpression<string> contentType, WorkflowExpression<string> file = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserRequestResponse> __BuildPreregisterUser(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyexternalSsoUserID = null, WorkflowExpression<string> bodyhandle = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<int[]> bodydivisionIDs = null, WorkflowExpression<int[]> bodytargetIDs = null, WorkflowExpression<UserTagRequestResponse[]> bodytags = null, WorkflowExpression<bool> bodysendInvitationEmail = null, WorkflowExpression<string> bodyinvitationMessage = null, WorkflowExpression<bodynotificationsDefaultInput> bodynotificationsDefault = null, WorkflowExpression<bool> bodyvaluecanSharePosts = null, WorkflowExpression<bool> bodyvaluecanCommentPosts = null, WorkflowExpression<bool> bodyvaluecanSubmitPosts = null, WorkflowExpression<bool> bodyvaluecanManageOrganization = null)
         {
@@ -240,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadImageResponse> __BuildManageImage(WorkflowExpression<string> contentType, WorkflowExpression<string> file = null)
         {
@@ -264,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostResponse> __BuildGet(WorkflowExpression<string> id, WorkflowExpression<int> userId = null)
         {
@@ -288,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostResponse> __BuildCreate(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodytagLine = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodycreatorComments = null, WorkflowExpression<string> bodypermaLink = null, WorkflowExpression<bool> bodyinternalDiscussionsEnabled = null, WorkflowExpression<string> bodymemberVideoUrl = null, WorkflowExpression<bodypostTypeInput> bodypostType = null, WorkflowExpression<bodyapprovalStateInput> bodyapprovalState = null, WorkflowExpression<bodydisplayModeInput> bodydisplayMode = null, WorkflowExpression<bool> bodysharable = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodysuggestedShareText = null, WorkflowExpression<string> bodyshortSuggestedShareText = null, WorkflowExpression<int> bodysharePoints = null, WorkflowExpression<int> bodyclickPoints = null, WorkflowExpression<bool> bodyshareWithImages = null, WorkflowExpression<bool> bodyshareImagesOnly = null, WorkflowExpression<PostTagRequestResponse[]> bodytags = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string[]> bodydocuments = null, WorkflowExpression<int> bodycreatorID = null, WorkflowExpression<bool> bodydisplayCreator = null, WorkflowExpression<int[]> bodycategoryIDs = null, WorkflowExpression<int[]> bodytargetIDs = null)
         {
@@ -500,7 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessResponse> __BuildPutImageTo(WorkflowExpression<string> id, WorkflowExpression<string> contentType, WorkflowExpression<string> file = null)
         {
@@ -525,7 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessResponse> __BuildAddImageTo(WorkflowExpression<string> id, WorkflowExpression<string> bodyurl)
         {
@@ -556,7 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostResponse> __BuildUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodytagLine = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodycreatorComments = null, WorkflowExpression<string> bodypermaLink = null, WorkflowExpression<bool> bodyinternalDiscussionsEnabled = null)
         {
@@ -660,7 +651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessResponse> __BuildManagePosts(WorkflowExpression<string[]> bodypostIDs, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<int[]> bodydivisionIDs = null, WorkflowExpression<int[]> bodycategoryIDs = null, WorkflowExpression<int[]> bodytargetIDs = null, WorkflowExpression<bodyapprovalStateInput> bodyapprovalState = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connpassip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connpassip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchEventResponse> __BuildSearchEvent(WorkflowExpression<string> keyword = null, WorkflowExpression<string> eventId = null, WorkflowExpression<string> keywordOr = null, WorkflowExpression<string> ym = null, WorkflowExpression<string> ymd = null, WorkflowExpression<string> nickname = null, WorkflowExpression<string> ownerNickname = null, WorkflowExpression<string> seriesId = null, WorkflowExpression<string> start = null, WorkflowExpression<string> order = null, WorkflowExpression<string> count = null)
         {

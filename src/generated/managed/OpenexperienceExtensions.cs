@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateNewProjectResponse> __BuildCreateNewProject(WorkflowExpression<string> projectSettingscustomerId, WorkflowExpression<string> projectSettingsid, WorkflowExpression<string> projectSettingsname, WorkflowExpression<int> projectSettingscontactPhone, WorkflowExpression<string> projectSettingscontactEmail, WorkflowExpression<string> projectSettingsresponsible, WorkflowExpression<string[]> projectSettingsservices, WorkflowExpression<string> projectSettingsaddress = null, WorkflowExpression<bool> projectSettingssettingsprojectAdminMembersAccess = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAuthTokenResponse> __BuildGetAuthToken(WorkflowExpression<string> bodyreferenceKey, WorkflowExpression<string> bodyemailAddress, WorkflowExpression<string> bodypassword)
         {
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> __BuildSendEnvelopeFromTemplate(WorkflowExpression<string> authToken, WorkflowExpression<string> bodytemplateCode, WorkflowExpression<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping, WorkflowExpression<string> bodyappKey = null)
         {
@@ -96,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> __BuildSendEnvelopeFromRule(WorkflowExpression<string> authToken, WorkflowExpression<string> bodyruleCode, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments, WorkflowExpression<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping)
         {
@@ -134,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> __BuildGetEnvelopeStatusInfo(WorkflowExpression<string> authToken, WorkflowExpression<string> bodyenvelopeCode, WorkflowExpression<bodydetailOrSummaryInput> bodydetailOrSummary)
         {
@@ -169,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplateInfoResponse> __BuildGetTemplateInfo(WorkflowExpression<string> templateCode, WorkflowExpression<string> authToken)
         {
@@ -192,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> __BuildDownloadEnvelopeDocuments(WorkflowExpression<string> envelopeCode, WorkflowExpression<string> authToken)
         {

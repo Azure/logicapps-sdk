@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMicroservice(WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyendpoint)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCFNCUSDOCResponse> __BuildGetCFNCUSDOC(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -101,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCfnsupdocResponse> __BuildGetCfnsupdoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -150,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChequeResponse> __BuildGetCheque(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -199,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContactResponse> __BuildGetContact(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -248,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCustomerResponse> __BuildGetCustomer(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -297,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDraftEntryResponse> __BuildGetDraftEntry(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -346,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExpenseResponse> __BuildGetExpense(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -395,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExpensesDocResponse> __BuildGetExpensesDoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodylOCATEINFO = null)
         {
@@ -458,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetItedocResponse> __BuildGetItedoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -507,7 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetItemResponse> __BuildGetItem(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -556,7 +545,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -605,7 +593,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPurdocResponse> __BuildGetPurdoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -654,7 +641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSaldocResponse> __BuildGetSaldoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -703,7 +689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetServiceResponse> __BuildGetService(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -752,7 +737,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSOEMAILResponse> __BuildGetSOEMAIL(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -801,7 +785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMeetingResponse> __BuildGetMeeting(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -850,7 +833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSOTASKResponse> __BuildGetSOTASK(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -899,7 +881,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSupplierResponse> __BuildGetSupplier(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
         {
@@ -969,7 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetCFNCUSDOC(WorkflowExpression<string> bodyvaluecFNCUSDOCsERIES, WorkflowExpression<string> bodyvaluecFNCUSDOCtRDR, WorkflowExpression<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, WorkflowExpression<bodyvaluecASHLINESInputItem[]> bodyvaluecASHLINES = null, WorkflowExpression<string> bodyvaluecFNCUSDOCcOLLECTOR = null, WorkflowExpression<string> bodyvaluecFNCUSDOCcOMMENTS = null, WorkflowExpression<string> bodyvaluecFNCUSDOCproject = null, WorkflowExpression<string> bodyvaluecFNCUSDOCsALESMAN = null, WorkflowExpression<string> bodyvaluecFNCUSDOCtRNDATE = null, WorkflowExpression<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -1097,7 +1077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetCfnsupdoc(WorkflowExpression<string> bodyvaluecFNSUPDOCsERIES, WorkflowExpression<string> bodyvaluecFNSUPDOCtRDR, WorkflowExpression<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, WorkflowExpression<bodyvaluecASHLINESInputItem2[]> bodyvaluecASHLINES = null, WorkflowExpression<string> bodyvaluecFNSUPDOCpRJC = null, WorkflowExpression<string> bodyvaluecFNSUPDOCrEMARKS = null, WorkflowExpression<string> bodyvaluecFNSUPDOCtRNDATE = null, WorkflowExpression<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -1211,7 +1190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetCheque(WorkflowExpression<string> bodyvaluecHEQUEbalance, WorkflowExpression<string> bodyvaluecHEQUEchequeNumber, WorkflowExpression<string> bodyvaluecHEQUEstatus, WorkflowExpression<string> bodyvaluecHEQUEvalue, WorkflowExpression<string> bodyvaluecHEQUEissueDate, WorkflowExpression<string> bodyvaluecHEQUEdueDate, WorkflowExpression<string> bodyvaluecHEQUEseries, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluecHEQUEbank = null, WorkflowExpression<string> bodyvaluecHEQUEissuerAddress = null, WorkflowExpression<string> bodyvaluecHEQUEissuerName = null, WorkflowExpression<string> bodyvaluecHEQUEissuerTelephone = null, WorkflowExpression<string> bodyvaluecHEQUEreceiptDate = null, WorkflowExpression<string> bodyvaluecHEQUEholderAddress = null, WorkflowExpression<string> bodyvaluecHEQUEholderName = null, WorkflowExpression<string> bodyvaluecHEQUEissuerTRNo = null, WorkflowExpression<string> bodyvaluecHEQUEcomments = null)
         {
@@ -1361,7 +1339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetContact(WorkflowExpression<string> bodyvaluepRSNOUTcode, WorkflowExpression<string> bodyvaluepRSNOUTname, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluepRSNOUTaddress = null, WorkflowExpression<string> bodyvaluepRSNOUTtRNo = null, WorkflowExpression<string> bodyvaluepRSNOUTgeographicalAreas = null, WorkflowExpression<string> bodyvaluepRSNOUTbIRTHDATE = null, WorkflowExpression<string> bodyvaluepRSNOUTcity = null, WorkflowExpression<string> bodyvaluepRSNOUTcountry = null, WorkflowExpression<string> bodyvaluepRSNOUTarea = null, WorkflowExpression<string> bodyvaluepRSNOUTprefecture = null, WorkflowExpression<string> bodyvaluepRSNOUTeducationLevel = null, WorkflowExpression<string> bodyvaluepRSNOUTemail = null, WorkflowExpression<string> bodyvaluepRSNOUTemail2 = null, WorkflowExpression<string> bodyvaluepRSNOUTfax = null, WorkflowExpression<string> bodyvaluepRSNOUTiDCardNo = null, WorkflowExpression<string> bodyvaluepRSNOUTtaxOffice = null, WorkflowExpression<string> bodyvaluepRSNOUTmobileTelephone = null, WorkflowExpression<string> bodyvaluepRSNOUTsurname = null, WorkflowExpression<string> bodyvaluepRSNOUTfatherSName = null, WorkflowExpression<string> bodyvaluepRSNOUTmotherSName = null, WorkflowExpression<string> bodyvaluepRSNOUTnameOfSpouse = null, WorkflowExpression<string> bodyvaluepRSNOUTnationality = null, WorkflowExpression<string> bodyvaluepRSNOUTtel1 = null, WorkflowExpression<string> bodyvaluepRSNOUTtel2 = null, WorkflowExpression<string> bodyvaluepRSNOUTinternalTelephone = null, WorkflowExpression<string> bodyvaluepRSNOUTpersonalTelephone = null, WorkflowExpression<string> bodyvaluepRSNOUTcomments = null, WorkflowExpression<bodyvaluepRSNOUTgenderInput> bodyvaluepRSNOUTgender = null, WorkflowExpression<string> bodyvaluepRSNOUTwebPage = null, WorkflowExpression<string> bodyvaluepRSNOUTzip = null, WorkflowExpression<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
         {
@@ -1636,7 +1613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetCustomer(WorkflowExpression<string> bodyvaluecUSTOMERcode, WorkflowExpression<string> bodyvaluecUSTOMERname, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluecUSTOMERprimaryAddress = null, WorkflowExpression<string> bodyvaluecUSTOMERtRNo = null, WorkflowExpression<string> bodyvaluecUSTOMERgeographicalAreas = null, WorkflowExpression<string> bodyvaluecUSTOMERcity = null, WorkflowExpression<int> bodyvaluecUSTOMERdiscount = null, WorkflowExpression<string> bodyvaluecUSTOMERlocationArea = null, WorkflowExpression<string> bodyvaluecUSTOMEReMail = null, WorkflowExpression<string> bodyvaluecUSTOMERfax = null, WorkflowExpression<string> bodyvaluecUSTOMERtaxOffice = null, WorkflowExpression<string> bodyvaluecUSTOMERprofession = null, WorkflowExpression<string> bodyvaluecUSTOMERprimaryTelephone = null, WorkflowExpression<string> bodyvaluecUSTOMERcomments = null, WorkflowExpression<bodyvaluecUSTOMERtaxCategoryInput> bodyvaluecUSTOMERtaxCategory = null, WorkflowExpression<string> bodyvaluecUSTOMERzip = null)
         {
@@ -1806,7 +1782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetDraftEntry(WorkflowExpression<string> bodyvaluesODRAFTcode, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluesODRAFTaddress = null, WorkflowExpression<string> bodyvaluesODRAFTtRNo = null, WorkflowExpression<string> bodyvaluesODRAFTcity = null, WorkflowExpression<string> bodyvaluesODRAFTcountry = null, WorkflowExpression<string> bodyvaluesODRAFTarea = null, WorkflowExpression<string> bodyvaluesODRAFTprefecture = null, WorkflowExpression<string> bodyvaluesODRAFTcategory = null, WorkflowExpression<string> bodyvaluesODRAFTcompanyEmail = null, WorkflowExpression<string> bodyvaluesODRAFTbusinessEmail = null, WorkflowExpression<string> bodyvaluesODRAFTpersonalEmail = null, WorkflowExpression<string> bodyvaluesODRAFTiDCardNo = null, WorkflowExpression<string> bodyvaluesODRAFTactivity = null, WorkflowExpression<string> bodyvaluesODRAFTmobileTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTnameTitle = null, WorkflowExpression<string> bodyvaluesODRAFTfirstName = null, WorkflowExpression<string> bodyvaluesODRAFTsurname = null, WorkflowExpression<string> bodyvaluesODRAFTzip = null, WorkflowExpression<string> bodyvaluesODRAFTbusinessTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTinternalTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTpersonalTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTcomments = null, WorkflowExpression<string> bodyvaluesODRAFTtitle = null, WorkflowExpression<string> bodyvaluesODRAFTwebPage = null, WorkflowExpression<string> bodyvaluesODRAFTzip2 = null, WorkflowExpression<string> bodyvaluesODRAFTLNKbranch = null, WorkflowExpression<string> bodyvaluesODRAFTLNKbusinessUnit = null, WorkflowExpression<string> bodyvaluesODRAFTLNKdepartment = null, WorkflowExpression<string> bodyvaluesODRAFTLNKproject = null, WorkflowExpression<string> bodyvaluesODRAFTLNKsource = null)
         {
@@ -2086,7 +2061,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetExpense(WorkflowExpression<string> bodyvaluelINEITEMcode, WorkflowExpression<bodyvaluelINEITEMinvoicingCategoryInput> bodyvaluelINEITEMinvoicingCategory, WorkflowExpression<string> bodyvaluelINEITEMname, WorkflowExpression<string> bodyvaluelINEITEMvatGroup, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluelINEITEMcommercialCategory = null, WorkflowExpression<bodyvaluelINEITEMtypeInput> bodyvaluelINEITEMtype = null, WorkflowExpression<string> bodyvaluelINEITEMcomments = null, WorkflowExpression<bodyvaluelINEITEMfeeValueInput> bodyvaluelINEITEMfeeValue = null)
         {
@@ -2192,7 +2166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetExpensesDoc(WorkflowExpression<string> bodyvaluelINSUPDOCseries, WorkflowExpression<string> bodyvaluelINSUPDOCsupplier, WorkflowExpression<bodyvalueunnamedInputItem[]> bodyvalueunnamed = null, WorkflowExpression<string> bodyvaluelINSUPDOCproject = null, WorkflowExpression<string> bodyvaluelINSUPDOCcomments = null, WorkflowExpression<string> bodyvaluelINSUPDOCtRNDATE = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -2292,7 +2265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetItedoc(WorkflowExpression<string> bodyvalueiTEDOCseries, WorkflowExpression<string> bodyvaluemTRDOCwarehouse, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvalueiTEDOCreason = null, WorkflowExpression<string> bodyvalueiTEDOCrEMARKS = null, WorkflowExpression<string> bodyvalueiTEDOCtRNDATE = null, WorkflowExpression<bodyvalueiTELINESInputItem[]> bodyvalueiTELINES = null)
         {
@@ -2400,7 +2372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetItem(WorkflowExpression<string> bodyvalueiTEMcode, WorkflowExpression<string> bodyvalueiTEMbaseUnitOfMeasure, WorkflowExpression<string> bodyvalueiTEMname, WorkflowExpression<string> bodyvalueiTEMvatGroup, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvalueiTEMcommercialCategory = null, WorkflowExpression<string> bodyvalueiTEMitemGroup = null, WorkflowExpression<string> bodyvalueiTEMretailPrice = null, WorkflowExpression<string> bodyvalueiTEMwholesalePrice = null, WorkflowExpression<string> bodyvalueiTEMcomments = null, WorkflowExpression<string> bodyvalueiTEMdiscount1 = null)
         {
@@ -2520,7 +2491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetProject(WorkflowExpression<string> bodyvaluepRJCcode, WorkflowExpression<string> bodyvaluepRJCname, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<bodyvaluepRJCaCTSTATUSInput> bodyvaluepRJCaCTSTATUS = null, WorkflowExpression<string> bodyvaluepRJCfINALDATE = null, WorkflowExpression<string> bodyvaluepRJCfROMDATE = null, WorkflowExpression<bodyvaluepRJCpRJCRMInput> bodyvaluepRJCpRJCRM = null, WorkflowExpression<string> bodyvaluepRJCcomments = null, WorkflowExpression<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
         {
@@ -2634,7 +2604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetPurdoc(WorkflowExpression<string> bodyvaluemTRDOCwarehouse, WorkflowExpression<string> bodyvaluepURDOCsERIES, WorkflowExpression<string> bodyvaluepURDOCsOCURRENCY, WorkflowExpression<string> bodyvaluepURDOCtRDR, WorkflowExpression<bodyvalueiTELINESInputItem2[]> bodyvalueiTELINES = null, WorkflowExpression<string> bodyvaluepURDOCdISC1PRC = null, WorkflowExpression<string> bodyvaluepURDOCpAYMENT = null, WorkflowExpression<string> bodyvaluepURDOCpRJC = null, WorkflowExpression<string> bodyvaluepURDOCrEMARKS = null, WorkflowExpression<string> bodyvaluepURDOCsUMAMNT = null, WorkflowExpression<string> bodyvaluepURDOCtRNDATE = null, WorkflowExpression<bodyvaluesRVLINESInputItem[]> bodyvaluesRVLINES = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -2776,7 +2745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetSaldoc(WorkflowExpression<string> bodyvaluemTRDOCwarehouse, WorkflowExpression<string> bodyvaluesALDOCpayment, WorkflowExpression<string> bodyvaluesALDOCseries, WorkflowExpression<string> bodyvaluesALDOCcurrency, WorkflowExpression<string> bodyvaluesALDOCcustomer, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<bodyvalueiTELINESInputItem22[]> bodyvalueiTELINES = null, WorkflowExpression<string> bodyvaluesALDOCdiscount = null, WorkflowExpression<string> bodyvaluesALDOCdiscountValue = null, WorkflowExpression<string> bodyvaluesALDOCnetAmount = null, WorkflowExpression<string> bodyvaluesALDOCproject = null, WorkflowExpression<string> bodyvaluesALDOCcomments = null, WorkflowExpression<string> bodyvaluesALDOCtotal = null, WorkflowExpression<string> bodyvaluesALDOCtRNDATE = null, WorkflowExpression<string> bodyvaluesALDOCvAT = null, WorkflowExpression<bodyvaluesRVLINESInputItem2[]> bodyvaluesRVLINES = null)
         {
@@ -2935,7 +2903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetService(WorkflowExpression<string> bodyvaluesERVICEcode, WorkflowExpression<string> bodyvaluesERVICEbaseUnitOfMeasure, WorkflowExpression<string> bodyvaluesERVICEname, WorkflowExpression<string> bodyvaluesERVICEvatGroup, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluesERVICEcommercialCategory = null, WorkflowExpression<string> bodyvaluesERVICEserviceGroup = null, WorkflowExpression<string> bodyvaluesERVICEretailPrice = null, WorkflowExpression<string> bodyvaluesERVICEwholesalePrice = null, WorkflowExpression<string> bodyvaluesERVICEcomments = null, WorkflowExpression<string> bodyvaluesERVICEdiscount1 = null)
         {
@@ -3055,7 +3022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetSOEMAIL(WorkflowExpression<string> bodyvaluesOACTIONsERIES, WorkflowExpression<bodyvaluesOACTIONaCTSTATUSInput> bodyvaluesOACTIONaCTSTATUS = null, WorkflowExpression<string> bodyvaluesOACTIONcOMMENTS = null, WorkflowExpression<string> bodyvaluesOACTIONtRNDATE = null, WorkflowExpression<string> bodyvaluesOMAILfROMADDRESS = null, WorkflowExpression<string> bodyvaluesOMAILfROMNAME = null, WorkflowExpression<string> bodyvaluesOMAILsOBCC = null, WorkflowExpression<string> bodyvaluesOMAILsOBODY = null, WorkflowExpression<string> bodyvaluesOMAILsOCC = null, WorkflowExpression<string> bodyvaluesOMAILsOTO = null, WorkflowExpression<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -3202,7 +3168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetMeeting(WorkflowExpression<string> bodydATAsOACTIONsERIES, WorkflowExpression<string> bodydATAsOACTIONoperator = null, WorkflowExpression<string> bodydATAsOACTIONoperatorContact = null, WorkflowExpression<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, WorkflowExpression<string> bodydATAsOACTIONcOMMENTS = null, WorkflowExpression<string> bodydATAsOACTIONfINALDATE = null, WorkflowExpression<string> bodydATAsOACTIONfROMDATE = null, WorkflowExpression<string> bodydATAsOACTIONorderedBy = null, WorkflowExpression<string> bodydATAsOACTIONorderedByContact = null, WorkflowExpression<string> bodydATAsOACTIONpriority = null, WorkflowExpression<string> bodydATAsOACTIONproject = null, WorkflowExpression<string> bodydATAsOACTIONrEMARKS = null, WorkflowExpression<string> bodydATAsOACTIONtRDR = null, WorkflowExpression<string> bodydATAsOACTIONtRNDATE = null, WorkflowExpression<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -3369,7 +3334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetSOTASK(WorkflowExpression<string> bodydATAsOACTIONsERIES, WorkflowExpression<string> bodydATAsOACTIONoperator = null, WorkflowExpression<string> bodydATAsOACTIONoperatorContact = null, WorkflowExpression<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, WorkflowExpression<string> bodydATAsOACTIONcOMMENTS = null, WorkflowExpression<string> bodydATAsOACTIONfINALDATE = null, WorkflowExpression<string> bodydATAsOACTIONfROMDATE = null, WorkflowExpression<string> bodydATAsOACTIONorderedBy = null, WorkflowExpression<string> bodydATAsOACTIONorderedByContact = null, WorkflowExpression<string> bodydATAsOACTIONpriority = null, WorkflowExpression<string> bodydATAsOACTIONproject = null, WorkflowExpression<string> bodydATAsOACTIONrEMARKS = null, WorkflowExpression<string> bodydATAsOACTIONtRDR = null, WorkflowExpression<string> bodydATAsOACTIONtRNDATE = null, WorkflowExpression<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {
@@ -3536,7 +3500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetData200response> __BuildSetSupplier(WorkflowExpression<string> bodyvaluesUPPLIERcODE, WorkflowExpression<string> bodyvaluesUPPLIERnAME, WorkflowExpression<bodyvaluesUPBANKACCInputItem[]> bodyvaluesUPBANKACC = null, WorkflowExpression<string> bodyvaluesUPPLIERaDDRESS = null, WorkflowExpression<string> bodyvaluesUPPLIERaFM = null, WorkflowExpression<string> bodyvaluesUPPLIERcITY = null, WorkflowExpression<string> bodyvaluesUPPLIERdISTRICT = null, WorkflowExpression<string> bodyvaluesUPPLIEReMAIL = null, WorkflowExpression<string> bodyvaluesUPPLIERfAX = null, WorkflowExpression<string> bodyvaluesUPPLIERiRSDATA = null, WorkflowExpression<string> bodyvaluesUPPLIERjOBTYPETRD = null, WorkflowExpression<string> bodyvaluesUPPLIERpHONE01 = null, WorkflowExpression<string> bodyvaluesUPPLIERrEMARKS = null, WorkflowExpression<string> bodyvaluesUPPLIERzIP = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
         {

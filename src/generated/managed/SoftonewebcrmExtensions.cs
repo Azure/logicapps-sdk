@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO[]> __BuildCallGetAll(WorkflowExpression<string> id = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> priorityId = null, WorkflowExpression<string> createdBy = null, WorkflowExpression<string> lastModifiedBy = null, WorkflowExpression<string> dueDate = null, WorkflowExpression<string> sortDate = null, WorkflowExpression<string> assignedToId = null, WorkflowExpression<string> relatedToId = null, WorkflowExpression<string> callResultId = null, WorkflowExpression<string> search = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> __BuildCallCreate(WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodyassignedToTypeInput> bodyassignedToType = null, WorkflowExpression<string> bodyassignedToId = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycallDuration = null, WorkflowExpression<string> bodycallResultId = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<string> bodypriorityId = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<bool> bodyreminderSet = null, WorkflowExpression<string> bodysortDate = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceAssignedToId = null, WorkflowExpression<string> bodysourceRelatedToId = null, WorkflowExpression<string[]> bodysourceContactIds = null, WorkflowExpression<bodycallDirectionInput> bodycallDirection = null)
         {
@@ -268,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> __BuildCallGetById(WorkflowExpression<string> id)
         {
@@ -289,7 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCallDelete(WorkflowExpression<string> id)
         {
@@ -310,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> __BuildCallUpdate(WorkflowExpression<string> id, WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodyassignedToTypeInput> bodyassignedToType = null, WorkflowExpression<string> bodyassignedToId = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycallDuration = null, WorkflowExpression<string> bodycallResultId = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<string> bodypriorityId = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<bool> bodyreminderSet = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<string> bodysortDate = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceAssignedToId = null, WorkflowExpression<string> bodysourceRelatedToId = null, WorkflowExpression<string[]> bodysourceContactIds = null, WorkflowExpression<bodycallDirectionInput> bodycallDirection = null)
         {
@@ -513,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO[]> __BuildEventGetAll(WorkflowExpression<string> id = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<eventStatusInput> eventStatus = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> assignedToId = null, WorkflowExpression<string> relatedToId = null, WorkflowExpression<string> sortDate = null, WorkflowExpression<string> parentId = null, WorkflowExpression<string> eventResultId = null, WorkflowExpression<string> priorityId = null, WorkflowExpression<string> search = null, WorkflowExpression<string> lastModifiedBy = null, WorkflowExpression<string> createdBy = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -581,7 +575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> __BuildEventCreate(WorkflowExpression<string> bodyupdateDate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<bodyassignedToTypeInput> bodyassignedToType = null, WorkflowExpression<string> bodyassignedToId = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<string> bodypriorityId = null, WorkflowExpression<string> bodylocationlongitude = null, WorkflowExpression<string> bodylocationlatitude = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyreminderSet = null, WorkflowExpression<string> bodycreatedBy = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<string> bodyrepeat = null, WorkflowExpression<bodyeventStatusInput> bodyeventStatus = null, WorkflowExpression<string> bodyeventResultId = null, WorkflowExpression<string> bodyrecurrenceInterval = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceAssignedToId = null, WorkflowExpression<string> bodysourceRelatedToId = null, WorkflowExpression<string[]> bodysourceContactIds = null, WorkflowExpression<string[]> bodyteamMembers = null)
         {
@@ -826,7 +819,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> __BuildEventGetById(WorkflowExpression<string> id)
         {
@@ -847,7 +839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEventDelete(WorkflowExpression<string> id)
         {
@@ -868,7 +859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> __BuildEventUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyupdateDate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<bodyassignedToTypeInput> bodyassignedToType = null, WorkflowExpression<string> bodyassignedToId = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<string> bodypriorityId = null, WorkflowExpression<string> bodylocationlongitude = null, WorkflowExpression<string> bodylocationlatitude = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyreminderSet = null, WorkflowExpression<string> bodycreatedBy = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<string> bodyrepeat = null, WorkflowExpression<bodyeventStatusInput> bodyeventStatus = null, WorkflowExpression<string> bodyeventResultId = null, WorkflowExpression<string> bodyrecurrenceInterval = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceAssignedToId = null, WorkflowExpression<string> bodysourceRelatedToId = null, WorkflowExpression<string[]> bodysourceContactIds = null, WorkflowExpression<string[]> bodyteamMembers = null)
         {
@@ -1114,7 +1104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO[]> __BuildNoteGetAll(WorkflowExpression<string> id = null, WorkflowExpression<string> search = null, WorkflowExpression<string> relatedToId = null, WorkflowExpression<relatedToTypeInput> relatedToType = null, WorkflowExpression<string> createdBy = null, WorkflowExpression<string> lastModifiedBy = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -1161,7 +1150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> __BuildNoteCreate(WorkflowExpression<string> bodysubject, WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<string[]> bodycontactIds = null)
         {
@@ -1240,7 +1228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> __BuildNoteGetById(WorkflowExpression<string> id)
         {
@@ -1261,7 +1248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNoteDelete(WorkflowExpression<string> id)
         {
@@ -1282,7 +1268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> __BuildNoteUpdate(WorkflowExpression<string> id, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null)
         {
@@ -1366,7 +1351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO[]> __BuildTaskGetAll(WorkflowExpression<string> id = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> relatedTo = null, WorkflowExpression<string> relatedToId = null, WorkflowExpression<string> priorityId = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> dueDate = null, WorkflowExpression<string> sortDate = null, WorkflowExpression<string> parentId = null, WorkflowExpression<string> lastModifiedBy = null, WorkflowExpression<string> createdBy = null, WorkflowExpression<string> assignedToId = null, WorkflowExpression<string> search = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -1434,7 +1418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> __BuildTaskCreate(WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodypriorityId = null, WorkflowExpression<string> bodyassignedToId = null, WorkflowExpression<bodyassignedToTypeInput> bodyassignedToType = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodytaskSubTypeId = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<bool> bodyreminderSet = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -1580,7 +1563,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> __BuildTaskGetById(WorkflowExpression<string> id)
         {
@@ -1601,7 +1583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTaskDelete(WorkflowExpression<string> id)
         {
@@ -1622,7 +1603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> __BuildTaskUpdate(WorkflowExpression<string> id, WorkflowExpression<bodytaskTypeInput> bodytaskType = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodycompletedDate = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodypriorityId = null, WorkflowExpression<string> bodyassignedToId = null, WorkflowExpression<bodyassignedToTypeInput> bodyassignedToType = null, WorkflowExpression<string[]> bodycontactIds = null, WorkflowExpression<bodycontactTypeInput> bodycontactType = null, WorkflowExpression<string> bodyrelatedToId = null, WorkflowExpression<bodyrelatedToTypeInput> bodyrelatedToType = null, WorkflowExpression<string> bodytaskSubTypeId = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyeditorBody = null, WorkflowExpression<bool> bodyreminderSet = null, WorkflowExpression<int> bodyposition = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<string> bodylastModifiedBy = null)
         {
@@ -1783,7 +1763,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto[]> __BuildLeadGetAll(WorkflowExpression<string> id = null, WorkflowExpression<string> name = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> insertDate = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> mobilePhone = null, WorkflowExpression<string> email = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<ownerTypeInput> ownerType = null, WorkflowExpression<string> accountSourceTypeId = null, WorkflowExpression<string> leadStatusId = null, WorkflowExpression<string> industryId = null, WorkflowExpression<string> status = null, WorkflowExpression<string> search = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -1857,7 +1836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> __BuildLeadCreate(WorkflowExpression<string> bodynamefirstName, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodyleadStatusId = null, WorkflowExpression<string> bodynamelastName = null, WorkflowExpression<string> bodynamemiddleName = null, WorkflowExpression<string> bodynamesalutationId = null, WorkflowExpression<string> bodynamesuffix = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodymobilePhone = null, WorkflowExpression<SalesPipelineApiDTOsEmailDTO[]> bodyotherEmail = null, WorkflowExpression<SalesPipelineApiDTOsPhoneDTO[]> bodyotherPhone = null, WorkflowExpression<bool> bodycallOptOut = null, WorkflowExpression<bool> bodyemailOptOut = null, WorkflowExpression<string> bodyratingId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<bodyownerTypeInput> bodyownerType = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyindustryId = null, WorkflowExpression<int> bodynoOfEmployees = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddressstate = null, WorkflowExpression<string> bodyaddresscountry = null, WorkflowExpression<string> bodyaddresspostalCode = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<double> bodyannualRevenue = null, WorkflowExpression<string> bodylastTransferDate = null, WorkflowExpression<string> bodygenderId = null, WorkflowExpression<string> bodypronounceId = null, WorkflowExpression<bodystatusInput> bodystatus = null)
         {
@@ -2142,7 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> __BuildLeadGetById(WorkflowExpression<string> id)
         {
@@ -2163,7 +2140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLeadDelete(WorkflowExpression<string> id)
         {
@@ -2184,7 +2160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> __BuildLeadUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodynamefirstName, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodyleadStatusId = null, WorkflowExpression<string> bodynamelastName = null, WorkflowExpression<string> bodynamemiddleName = null, WorkflowExpression<string> bodynamesalutationId = null, WorkflowExpression<string> bodynamesuffix = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodymobilePhone = null, WorkflowExpression<SalesPipelineApiDTOsEmailDTO[]> bodyotherEmail = null, WorkflowExpression<SalesPipelineApiDTOsPhoneDTO[]> bodyotherPhone = null, WorkflowExpression<bool> bodycallOptOut = null, WorkflowExpression<bool> bodyemailOptOut = null, WorkflowExpression<string> bodyratingId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<bodyownerTypeInput> bodyownerType = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyindustryId = null, WorkflowExpression<int> bodynoOfEmployees = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddressstate = null, WorkflowExpression<string> bodyaddresscountry = null, WorkflowExpression<string> bodyaddresspostalCode = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<double> bodyannualRevenue = null, WorkflowExpression<string> bodylastTransferDate = null, WorkflowExpression<string> bodygenderId = null, WorkflowExpression<string> bodypronounceId = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodylastModifiedBy = null)
         {
@@ -2477,7 +2452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[]> __BuildOpportunityGetAll(WorkflowExpression<string> id = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<string> name = null, WorkflowExpression<double> amount = null, WorkflowExpression<string> closeDate = null, WorkflowExpression<string> updateDate = null, WorkflowExpression<string> insertDate = null, WorkflowExpression<string> accountId = null, WorkflowExpression<string> forecastCategoryId = null, WorkflowExpression<string> accountSourceTypeId = null, WorkflowExpression<string> opportunityStatusId = null, WorkflowExpression<string> quoteId = null, WorkflowExpression<string> lossReasonId = null, WorkflowExpression<string> typeId = null, WorkflowExpression<string> lastModifiedBy = null, WorkflowExpression<string> createdBy = null, WorkflowExpression<string> search = null, WorkflowExpression<string> salesPipelineId = null, WorkflowExpression<string> status = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -2563,7 +2537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> __BuildOpportunityCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycloseDate, WorkflowExpression<string> bodytypeId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyaccountId = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<string> bodyforecastCategoryId = null, WorkflowExpression<string> bodysalesPipelineId = null, WorkflowExpression<int> bodyprobability = null, WorkflowExpression<int> bodyscore = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyquoteId = null, WorkflowExpression<string> bodyopportunityStatusId = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodynextStep = null, WorkflowExpression<bool> bodybudgetConfirmed = null, WorkflowExpression<bool> bodydiscoveryCompleted = null, WorkflowExpression<double> bodyexpectedRevenue = null, WorkflowExpression<string> bodylossReasonId = null, WorkflowExpression<bool> bodyprivate = null)
         {
@@ -2737,7 +2710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> __BuildOpportunityGetById(WorkflowExpression<string> id)
         {
@@ -2758,7 +2730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildOpportunityDelete(WorkflowExpression<string> id)
         {
@@ -2779,7 +2750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> __BuildOpportunityUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodytypeId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyaccountId = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<string> bodyforecastCategoryId = null, WorkflowExpression<string> bodycloseDate = null, WorkflowExpression<int> bodyprobability = null, WorkflowExpression<int> bodyscore = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodysalesPipelineId = null, WorkflowExpression<string> bodyquoteId = null, WorkflowExpression<string> bodyopportunityStatusId = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodynextStep = null, WorkflowExpression<bool> bodybudgetConfirmed = null, WorkflowExpression<bool> bodydiscoveryCompleted = null, WorkflowExpression<double> bodyexpectedRevenue = null, WorkflowExpression<string> bodylossReasonId = null, WorkflowExpression<bool> bodyprivate = null, WorkflowExpression<string> bodylastModifiedBy = null)
         {
@@ -2969,7 +2939,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdentityApiBackOfficeUsersGetUserGetUserResponse> __BuildUserGetById(WorkflowExpression<string> userId)
         {
@@ -2990,7 +2959,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IdentityApiTeamsDtosGetTeamResponse> __BuildTeamGetById(WorkflowExpression<string> id)
         {
@@ -3011,7 +2979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> __BuildAccountGetById(WorkflowExpression<string> accountId)
         {
@@ -3032,7 +2999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAccountDelete(WorkflowExpression<string> accountId)
         {
@@ -3053,7 +3019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> __BuildAccountUpdate(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodytin = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceParentId = null, WorkflowExpression<string> bodysourceOwnerId = null, WorkflowExpression<string[]> bodyprimaryContactIds = null, WorkflowExpression<string> bodyparentAccountId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddressstate = null, WorkflowExpression<string> bodyaddresslatitude = null, WorkflowExpression<string> bodyaddresslongtitude = null, WorkflowExpression<string> bodyaddresscountry = null, WorkflowExpression<string> bodyaddresscountryCode = null, WorkflowExpression<string> bodyaddresspostalCode = null, WorkflowExpression<string> bodyaddressfirstName = null, WorkflowExpression<string> bodyaddresslastName = null, WorkflowExpression<string> bodyaddressphoneNumber = null, WorkflowExpression<string> bodyaddressemail = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodyindustryId = null, WorkflowExpression<string> bodytierId = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<string> bodyaccountDescription = null, WorkflowExpression<int> bodynoOfEmployees = null, WorkflowExpression<double> bodyannualRevenue = null, WorkflowExpression<string> bodycreatedBy = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<string> bodyfax = null, WorkflowExpression<string> bodyownershipId = null, WorkflowExpression<string> bodyratingId = null, WorkflowExpression<string> bodyclassificationId = null, WorkflowExpression<string[]> bodyassignedTeams = null)
         {
@@ -3363,7 +3328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO[]> __BuildAccountGetAll(WorkflowExpression<string> parentAccount = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> suggestions = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<string> ownershipId = null, WorkflowExpression<string> ratingId = null, WorkflowExpression<string> classificationId = null, WorkflowExpression<string> industryId = null, WorkflowExpression<string> accountSourceTypeId = null, WorkflowExpression<string> primaryContactId = null, WorkflowExpression<string> assignedTeams = null, WorkflowExpression<string> search = null, WorkflowExpression<string> name = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -3434,7 +3398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> __BuildAccountCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodycompanyId = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodytin = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceParentId = null, WorkflowExpression<string> bodysourceOwnerId = null, WorkflowExpression<string[]> bodyprimaryContactIds = null, WorkflowExpression<string> bodyparentAccountId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddressstate = null, WorkflowExpression<string> bodyaddresslatitude = null, WorkflowExpression<string> bodyaddresslongtitude = null, WorkflowExpression<string> bodyaddresscountry = null, WorkflowExpression<string> bodyaddresscountryCode = null, WorkflowExpression<string> bodyaddresspostalCode = null, WorkflowExpression<string> bodyaddressfirstName = null, WorkflowExpression<string> bodyaddresslastName = null, WorkflowExpression<string> bodyaddressphoneNumber = null, WorkflowExpression<string> bodyaddressemail = null, WorkflowExpression<string> bodyupdateDate = null, WorkflowExpression<string> bodyinsertDate = null, WorkflowExpression<string> bodytaxOffice = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodyindustryId = null, WorkflowExpression<string> bodytierId = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<string> bodyaccountDescription = null, WorkflowExpression<int> bodynoOfEmployees = null, WorkflowExpression<double> bodyannualRevenue = null, WorkflowExpression<string> bodycreatedBy = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<string> bodyfax = null, WorkflowExpression<string> bodyownershipId = null, WorkflowExpression<string> bodyratingId = null, WorkflowExpression<string> bodyclassificationId = null, WorkflowExpression<string[]> bodyassignedTeams = null, WorkflowExpression<double> bodyaiScore = null, WorkflowExpression<string> bodyaiScoreReasoning = null, WorkflowExpression<bodyaiSentimentInput> bodyaiSentiment = null, WorkflowExpression<string> bodyaiGenerationDate = null)
         {
@@ -3802,7 +3765,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContact> __BuildContactGetById(WorkflowExpression<string> contactId)
         {
@@ -3823,7 +3785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildContactDelete(WorkflowExpression<string> contactId)
         {
@@ -3844,7 +3805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO> __BuildContactUpdate(WorkflowExpression<string> contactId, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string[]> bodyaccountIds = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceOwnerId = null, WorkflowExpression<string[]> bodysourceAccountIds = null, WorkflowExpression<string> bodynamefirstName = null, WorkflowExpression<string> bodynamelastName = null, WorkflowExpression<string> bodynamemiddleName = null, WorkflowExpression<string> bodynamesalutationId = null, WorkflowExpression<string> bodynamesuffix = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodymobilePhone = null, WorkflowExpression<string> bodyfax = null, WorkflowExpression<bool> bodycallOptOut = null, WorkflowExpression<bool> bodyemailOptOut = null, WorkflowExpression<CustomerApiFeaturesContactsEmailDTO[]> bodyotherEmail = null, WorkflowExpression<CustomerApiFeaturesContactsPhoneDTO[]> bodyotherPhone = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodygenderId = null, WorkflowExpression<string> bodypronounceId = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddressstate = null, WorkflowExpression<string> bodyaddresslatitude = null, WorkflowExpression<string> bodyaddresslongtitude = null, WorkflowExpression<string> bodyaddresscountry = null, WorkflowExpression<string> bodyaddresscountryCode = null, WorkflowExpression<string> bodyaddresspostalCode = null, WorkflowExpression<string> bodyaddressfirstName = null, WorkflowExpression<string> bodyaddresslastName = null, WorkflowExpression<string> bodyaddressphoneNumber = null, WorkflowExpression<string> bodyaddressemail = null, WorkflowExpression<string> bodycreatedBy = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyreportsTo = null, WorkflowExpression<string> bodyassistant = null, WorkflowExpression<string> bodyassistantPhone = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodylastStayInTouchReportedDate = null, WorkflowExpression<string> bodylastStayInTouchSaveDate = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string[]> bodyassignedTeams = null)
         {
@@ -4218,7 +4178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO[]> __BuildContactGetAll(WorkflowExpression<string> name = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<string> suggestions = null, WorkflowExpression<string> accountSourceTypeId = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> mobilePhone = null, WorkflowExpression<string> accountIds = null, WorkflowExpression<string> email = null, WorkflowExpression<string> id = null, WorkflowExpression<string> assignedTeams = null, WorkflowExpression<string> search = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
@@ -4286,7 +4245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO> __BuildContactCreate(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodycompanyId = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string[]> bodyaccountIds = null, WorkflowExpression<string> bodysourceId = null, WorkflowExpression<string> bodysourceOwnerId = null, WorkflowExpression<string[]> bodysourceAccountIds = null, WorkflowExpression<string> bodynamefirstName = null, WorkflowExpression<string> bodynamelastName = null, WorkflowExpression<string> bodynamemiddleName = null, WorkflowExpression<string> bodynamesalutationId = null, WorkflowExpression<string> bodynamesuffix = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodymobilePhone = null, WorkflowExpression<string> bodyfax = null, WorkflowExpression<bool> bodycallOptOut = null, WorkflowExpression<bool> bodyemailOptOut = null, WorkflowExpression<CustomerApiFeaturesContactsEmailDTO[]> bodyotherEmail = null, WorkflowExpression<CustomerApiFeaturesContactsPhoneDTO[]> bodyotherPhone = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodygenderId = null, WorkflowExpression<string> bodypronounceId = null, WorkflowExpression<string> bodyaddressaddress1 = null, WorkflowExpression<string> bodyaddressaddress2 = null, WorkflowExpression<string> bodyaddresscity = null, WorkflowExpression<string> bodyaddressstate = null, WorkflowExpression<string> bodyaddresslatitude = null, WorkflowExpression<string> bodyaddresslongtitude = null, WorkflowExpression<string> bodyaddresscountry = null, WorkflowExpression<string> bodyaddresscountryCode = null, WorkflowExpression<string> bodyaddresspostalCode = null, WorkflowExpression<string> bodyaddressfirstName = null, WorkflowExpression<string> bodyaddresslastName = null, WorkflowExpression<string> bodyaddressphoneNumber = null, WorkflowExpression<string> bodyaddressemail = null, WorkflowExpression<string> bodyinsertDate = null, WorkflowExpression<string> bodyupdateDate = null, WorkflowExpression<string> bodycreatedBy = null, WorkflowExpression<string> bodylastModifiedBy = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyreportsTo = null, WorkflowExpression<string> bodyassistant = null, WorkflowExpression<string> bodyassistantPhone = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodylastStayInTouchReportedDate = null, WorkflowExpression<string> bodylastStayInTouchSaveDate = null, WorkflowExpression<string> bodyaccountSourceTypeId = null, WorkflowExpression<string> bodyfullName = null, WorkflowExpression<string[]> bodyassignedTeams = null)
         {

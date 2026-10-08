@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentAddress> __BuildCreateConstituentAddress(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<bool> bodydoNotMail = null, WorkflowExpression<string> bodydoNotMailReason = null, WorkflowExpression<bool> bodyisConfidential = null, WorkflowExpression<int> bodyseasonalStartmonth = null, WorkflowExpression<int> bodyseasonalStartday = null, WorkflowExpression<int> bodyseasonalEndmonth = null, WorkflowExpression<int> bodyseasonalEndday = null, WorkflowExpression<string> bodyhistoricalStartDate = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodydPC = null, WorkflowExpression<string> bodycART = null, WorkflowExpression<string> bodylOT = null, WorkflowExpression<string> bodycongressionalDistrict = null, WorkflowExpression<string> bodystateHouseDistrict = null, WorkflowExpression<string> bodystateSenateDistrict = null, WorkflowExpression<string> bodylocalPrecinct = null, WorkflowExpression<bodyoriginInput> bodyorigin = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyinfoSourceComments = null, WorkflowExpression<bool> bodyrecentlyMoved = null, WorkflowExpression<string> bodyoldAddress = null, WorkflowExpression<bool> bodyomitFromValidation = null, WorkflowExpression<bool> bodycopyToSpouse = null, WorkflowExpression<bool> bodycopyToHousehold = null)
         {
@@ -284,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentAddress(WorkflowExpression<string> constituentAddressId)
         {
@@ -305,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentAddress(WorkflowExpression<string> constituentAddressId, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<bool> bodydoNotMail = null, WorkflowExpression<string> bodydoNotMailReason = null, WorkflowExpression<bool> bodyisConfidential = null, WorkflowExpression<int> bodyseasonalStartmonth = null, WorkflowExpression<int> bodyseasonalStartday = null, WorkflowExpression<int> bodyseasonalEndmonth = null, WorkflowExpression<int> bodyseasonalEndday = null, WorkflowExpression<string> bodyhistoricalStartDate = null, WorkflowExpression<string> bodyhistoricalEndDate = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodydPC = null, WorkflowExpression<string> bodycART = null, WorkflowExpression<string> bodylOT = null, WorkflowExpression<string> bodycongressionalDistrict = null, WorkflowExpression<string> bodystateHouseDistrict = null, WorkflowExpression<string> bodystateSenateDistrict = null, WorkflowExpression<string> bodylocalPrecinct = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyinfoSourceComments = null, WorkflowExpression<bool> bodyomitFromValidation = null, WorkflowExpression<bool> bodyupdateContacts = null, WorkflowExpression<bool> bodycopyToHousehold = null)
         {
@@ -559,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentAlternateLookupID> __BuildCreateConstituentAlternateLookupID(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodyalternateLookupID)
         {
@@ -595,7 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentAlternateLookupID(WorkflowExpression<string> alternateLookupId)
         {
@@ -616,7 +611,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentAlternateLookupID(WorkflowExpression<string> alternateLookupId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyalternateLookupID = null)
         {
@@ -658,7 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentAppealResponse> __BuildCreateConstituentAppealResponse(WorkflowExpression<string> bodyconstituentAppealID, WorkflowExpression<string> bodycategory, WorkflowExpression<string> bodyresponse, WorkflowExpression<string> bodydate = null)
         {
@@ -701,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentAppeal> __BuildCreateConstituentAppeal(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodyappealID, WorkflowExpression<string> bodymailing = null, WorkflowExpression<string> bodydateSent = null, WorkflowExpression<string> bodypackage = null, WorkflowExpression<string> bodysourceCode = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -769,7 +761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentAppeal(WorkflowExpression<string> constituentAppealId)
         {
@@ -790,7 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentAppeal(WorkflowExpression<string> constituentAppealId, WorkflowExpression<string> bodyappealID = null, WorkflowExpression<string> bodymailing = null, WorkflowExpression<string> bodydateSent = null, WorkflowExpression<string> bodypackage = null, WorkflowExpression<string> bodysourceCode = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -860,7 +850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgConstituentAppealCollection> __BuildListConstituentAppeals(WorkflowExpression<string> constituentId)
         {
@@ -881,7 +870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentAttribute(WorkflowExpression<string> constituentAttributeId)
         {
@@ -902,7 +890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentNote> __BuildCreateConstituentNote(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyauthorID = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<string> bodyhTML = null)
         {
@@ -966,7 +953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentNote(WorkflowExpression<string> constituentNoteId)
         {
@@ -987,7 +973,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentNote(WorkflowExpression<string> constituentNoteId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyauthorID = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<string> bodyhTML = null)
         {
@@ -1057,7 +1042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgConstituentSearchResultCollection> __BuildSearchConstituent(WorkflowExpression<string> keyName = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lookupId = null, WorkflowExpression<string> emailAddress = null, WorkflowExpression<string> phoneNumber = null, WorkflowExpression<string> country = null, WorkflowExpression<string> addressBlock = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> postCode = null, WorkflowExpression<int> classof = null, WorkflowExpression<bool> exactMatchOnly = null, WorkflowExpression<string> middleName = null, WorkflowExpression<string> constituency = null, WorkflowExpression<string> sourcecode = null, WorkflowExpression<bool> includeIndividuals = null, WorkflowExpression<bool> includeOrganizations = null, WorkflowExpression<bool> includeGroups = null, WorkflowExpression<bool> excludeHouseholds = null, WorkflowExpression<bool> checkNickname = null, WorkflowExpression<bool> checkAliases = null, WorkflowExpression<bool> checkAlternateLookupIds = null, WorkflowExpression<bool> onlyPrimaryAddress = null, WorkflowExpression<bool> includeDeceased = null, WorkflowExpression<bool> includeInactive = null, WorkflowExpression<bool> fuzzySearchOnName = null, WorkflowExpression<int> limit = null)
         {
@@ -1158,7 +1142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituent(WorkflowExpression<string> constituentId)
         {
@@ -1179,7 +1162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgAddressCollection> __BuildListConstituentAddresses(WorkflowExpression<string> constituentId, WorkflowExpression<bool> includeFormer = null)
         {
@@ -1203,7 +1185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgAlternateLookupIDCollection> __BuildListConstituentAlternateLookupIDs(WorkflowExpression<string> constituentId)
         {
@@ -1224,7 +1205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgAttributeCollection> __BuildListConstituentAttributes(WorkflowExpression<string> constituentId)
         {
@@ -1245,7 +1225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgConstituentPrimaryContactInfo> __BuildGetConstituentPrimaryContactInfo(WorkflowExpression<string> constituentId)
         {
@@ -1266,7 +1245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgEducationCollection> __BuildListConstituentEducations(WorkflowExpression<string> constituentId)
         {
@@ -1287,7 +1265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgEmailAddressCollection> __BuildListConstituentEmailAddresses(WorkflowExpression<string> constituentId)
         {
@@ -1308,7 +1285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgPhoneCollection> __BuildListConstituentPhones(WorkflowExpression<string> constituentId)
         {
@@ -1329,7 +1305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgConstituentProfilePicture> __BuildGetConstituentProfilePicture(WorkflowExpression<string> constituentId)
         {
@@ -1350,7 +1325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgEmploymentHistoryCollection> __BuildListConstituentEmploymentHistory(WorkflowExpression<string> constituentId, WorkflowExpression<bool> includeInactive = null)
         {
@@ -1374,7 +1348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgSolicitCodeCollection> __BuildListConstituentSolicitCodes(WorkflowExpression<string> constituentId, WorkflowExpression<bool> showExpired = null, WorkflowExpression<dateRangeInput> dateRange = null)
         {
@@ -1401,7 +1374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgTributeCollection> __BuildListConstituentTributes(WorkflowExpression<string> constituentId)
         {
@@ -1422,7 +1394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgConstituentSummaryProfile> __BuildGetConstituentSummaryProfile(WorkflowExpression<string> constituentId)
         {
@@ -1443,7 +1414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentEducation> __BuildCreateConstituentEducation(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodyeducationalInstitution, WorkflowExpression<string> bodystatus, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<string> bodyprogram = null, WorkflowExpression<string> bodydegree = null, WorkflowExpression<string> bodyhonorAwarded = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<int> bodysourceDateyear = null, WorkflowExpression<int> bodysourceDatemonth = null, WorkflowExpression<int> bodysourceDateday = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<int> bodydateGraduatedyear = null, WorkflowExpression<int> bodydateGraduatedmonth = null, WorkflowExpression<int> bodydateGraduatedday = null, WorkflowExpression<int> bodyclassOf = null, WorkflowExpression<int> bodypreferredClassOf = null, WorkflowExpression<bool> bodyaffiliated = null, WorkflowExpression<int> bodyfromyear = null, WorkflowExpression<int> bodyfrommonth = null, WorkflowExpression<int> bodyfromday = null, WorkflowExpression<int> bodytoyear = null, WorkflowExpression<int> bodytomonth = null, WorkflowExpression<int> bodytoday = null, WorkflowExpression<string> bodyreason = null, WorkflowExpression<string> bodylevel = null)
         {
@@ -1672,7 +1642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentEducation(WorkflowExpression<string> educationalHistoryId)
         {
@@ -1693,7 +1662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentEducation(WorkflowExpression<string> educationalHistoryId, WorkflowExpression<string> bodyeducationalInstitution = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<string> bodyprogram = null, WorkflowExpression<string> bodydegree = null, WorkflowExpression<string> bodyhonorAwarded = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<int> bodysourceDateyear = null, WorkflowExpression<int> bodysourceDatemonth = null, WorkflowExpression<int> bodysourceDateday = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<int> bodydateGraduatedyear = null, WorkflowExpression<int> bodydateGraduatedmonth = null, WorkflowExpression<int> bodydateGraduatedday = null, WorkflowExpression<int> bodyclassOf = null, WorkflowExpression<int> bodypreferredClassOf = null, WorkflowExpression<bool> bodyaffiliated = null, WorkflowExpression<int> bodyfromyear = null, WorkflowExpression<int> bodyfrommonth = null, WorkflowExpression<int> bodyfromday = null, WorkflowExpression<int> bodytoyear = null, WorkflowExpression<int> bodytomonth = null, WorkflowExpression<int> bodytoday = null, WorkflowExpression<string> bodyreason = null, WorkflowExpression<string> bodylevel = null)
         {
@@ -1928,7 +1896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentEmailAddress> __BuildCreateConstituentEmailAddress(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodyemailAddress, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<bool> bodydoNotEmail = null, WorkflowExpression<bodyoriginInput> bodyorigin = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyinfoSourceComments = null, WorkflowExpression<bool> bodycopyToSpouse = null, WorkflowExpression<bool> bodycopyToHousehold = null)
         {
@@ -2024,7 +1991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentEmailAddress(WorkflowExpression<string> emailAddressId)
         {
@@ -2045,7 +2011,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentEmailAddress(WorkflowExpression<string> emailAddressId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<bool> bodydoNotEmail = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyinfoSourceComments = null, WorkflowExpression<bool> bodycopyToSpouse = null, WorkflowExpression<bool> bodycopyToHousehold = null)
         {
@@ -2143,7 +2108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedFundraiserConstituency> __BuildCreateFundraiserConstituency(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodydateFrom = null, WorkflowExpression<string> bodydateTo = null)
         {
@@ -2187,7 +2151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFundraiserConstituency(WorkflowExpression<string> fundraiserConstituencyId)
         {
@@ -2208,7 +2171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditFundraiserConstituency(WorkflowExpression<string> fundraiserConstituencyId, WorkflowExpression<string> bodydateFrom = null, WorkflowExpression<string> bodydateTo = null)
         {
@@ -2250,7 +2212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedIndividualConstituent> __BuildCreateIndividualConstituent(WorkflowExpression<string> bodylastName, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodysuffix = null, WorkflowExpression<string> bodyaddressType = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<bool> bodydoNotSendMail = null, WorkflowExpression<string> bodydoNotMailReason = null, WorkflowExpression<string> bodydPC = null, WorkflowExpression<string> bodycART = null, WorkflowExpression<string> bodylOT = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodycongressionalDistrict = null, WorkflowExpression<string> bodyphoneType = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<string> bodyemailType = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodytitle2 = null, WorkflowExpression<string> bodysuffix2 = null, WorkflowExpression<string> bodynickname = null, WorkflowExpression<string> bodymaidenName = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<int> bodybirthdateyear = null, WorkflowExpression<int> bodybirthdatemonth = null, WorkflowExpression<int> bodybirthdateday = null, WorkflowExpression<string> bodygender = null)
         {
@@ -2498,7 +2459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditIndividualConstituent(WorkflowExpression<string> constituentId, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodysuffix = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodytitle2 = null, WorkflowExpression<string> bodysuffix2 = null, WorkflowExpression<string> bodynickname = null, WorkflowExpression<string> bodymaidenName = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<int> bodybirthdateyear = null, WorkflowExpression<int> bodybirthdatemonth = null, WorkflowExpression<int> bodybirthdateday = null, WorkflowExpression<string> bodygender = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<bool> bodygivesAnonymously = null, WorkflowExpression<bool> bodydeceased = null, WorkflowExpression<string> bodyprofilePicture = null, WorkflowExpression<string> bodyprofileThumbnail = null)
         {
@@ -2667,7 +2627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgIndividualConstituent> __BuildGetIndividualConstituent(WorkflowExpression<string> constituentId)
         {
@@ -2688,7 +2647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentInteraction> __BuildCreateConstituentInteraction(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodysummary, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodyexpectedDate, WorkflowExpression<string> bodycontactMethod, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<int> bodyexpectedStarthour = null, WorkflowExpression<int> bodyexpectedStartminute = null, WorkflowExpression<int> bodyexpectedEndhour = null, WorkflowExpression<int> bodyexpectedEndminute = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<bool> bodyallDayEvent = null, WorkflowExpression<string> bodyownerID = null, WorkflowExpression<string> bodyeventID = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<ConmgNewConstituentInteractionParticipant[]> bodyparticipants = null)
         {
@@ -2881,7 +2839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentInteraction(WorkflowExpression<string> constituentInteractionId)
         {
@@ -2902,7 +2859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentInteraction(WorkflowExpression<string> constituentInteractionId, WorkflowExpression<string> bodysummary = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<string> bodyexpectedDate = null, WorkflowExpression<int> bodyexpectedStarthour = null, WorkflowExpression<int> bodyexpectedStartminute = null, WorkflowExpression<int> bodyexpectedEndhour = null, WorkflowExpression<int> bodyexpectedEndminute = null, WorkflowExpression<string> bodyactualDate = null, WorkflowExpression<int> bodyactualStarthour = null, WorkflowExpression<int> bodyactualStartminute = null, WorkflowExpression<int> bodyactualEndhour = null, WorkflowExpression<int> bodyactualEndminute = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<bool> bodyallDayEvent = null, WorkflowExpression<string> bodyownerID = null, WorkflowExpression<string> bodycontactMethod = null, WorkflowExpression<string> bodyeventID = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<ConmgUpdateConstituentInteractionParticipant[]> bodyparticipants = null)
         {
@@ -3109,7 +3065,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgConstituentInteraction> __BuildGetConstituentInteraction(WorkflowExpression<string> constituentInteractionId)
         {
@@ -3130,7 +3085,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgMergedConstituent> __BuildMergeTwoConstituents(WorkflowExpression<string> bodysourceConstituentID, WorkflowExpression<string> bodytargetConstituentID, WorkflowExpression<string> bodyconfiguration, WorkflowExpression<bool> bodydeleteSource, WorkflowExpression<bodydeleteActionInput> bodydeleteAction, WorkflowExpression<string> bodyinactiveReason = null, WorkflowExpression<string> bodyinactivityDetails = null)
         {
@@ -3186,7 +3140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedOrganizationConstituent> __BuildCreateOrganizationConstituent(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyindustry = null, WorkflowExpression<int> bodynoOfEmployees = null, WorkflowExpression<int> bodynoOfSubsidiaryOrgs = null, WorkflowExpression<string> bodyparentOrg = null, WorkflowExpression<string> bodyaddressType = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostalCode = null, WorkflowExpression<bool> bodydoNotSendMail = null, WorkflowExpression<string> bodydoNotMailReason = null, WorkflowExpression<string> bodydPC = null, WorkflowExpression<string> bodycART = null, WorkflowExpression<string> bodylOT = null, WorkflowExpression<string> bodycounty = null, WorkflowExpression<string> bodycongressionalDistrict = null, WorkflowExpression<string> bodyphoneType = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<string> bodyemailType = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodywebAddress = null, WorkflowExpression<bool> bodyisPrimaryOrganization = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyprofilePicture = null, WorkflowExpression<string> bodyprofileThumbnail = null)
         {
@@ -3398,7 +3351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditOrganizationConstituent(WorkflowExpression<string> constituentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyindustry = null, WorkflowExpression<int> bodynoOfEmployees = null, WorkflowExpression<int> bodynoOfSubsidiaryOrgs = null, WorkflowExpression<string> bodyparentOrg = null, WorkflowExpression<string> bodywebAddress = null, WorkflowExpression<bool> bodyisPrimaryOrganization = null, WorkflowExpression<string> bodyprofilePicture = null, WorkflowExpression<string> bodyprofileThumbnail = null)
         {
@@ -3489,7 +3441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgOrganizationConstituent> __BuildGetOrganizationConstituent(WorkflowExpression<string> constituentId)
         {
@@ -3510,7 +3461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentPhone> __BuildCreateConstituentPhone(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodynumber, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodycallAfterhour = null, WorkflowExpression<int> bodycallAfterminute = null, WorkflowExpression<int> bodycallBeforehour = null, WorkflowExpression<int> bodycallBeforeminute = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<bool> bodydoNotCall = null, WorkflowExpression<string> bodydoNotCallReason = null, WorkflowExpression<bool> bodydoNotText = null, WorkflowExpression<bool> bodyisConfidential = null, WorkflowExpression<int> bodyseasonalStartmonth = null, WorkflowExpression<int> bodyseasonalStartday = null, WorkflowExpression<int> bodyseasonalEndmonth = null, WorkflowExpression<int> bodyseasonalEndday = null, WorkflowExpression<bodyoriginInput> bodyorigin = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyinfoSourceComments = null, WorkflowExpression<bool> bodycopyToSpouse = null, WorkflowExpression<bool> bodycopyToHousehold = null)
         {
@@ -3722,7 +3672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentPhone(WorkflowExpression<string> constituentPhoneId)
         {
@@ -3743,7 +3692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentPhone(WorkflowExpression<string> constituentPhoneId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodynumber = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodycallAfterhour = null, WorkflowExpression<int> bodycallAfterminute = null, WorkflowExpression<int> bodycallBeforehour = null, WorkflowExpression<int> bodycallBeforeminute = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<bool> bodyprimary = null, WorkflowExpression<bool> bodydoNotCall = null, WorkflowExpression<string> bodydoNotCallReason = null, WorkflowExpression<bool> bodydoNotText = null, WorkflowExpression<bool> bodyisConfidential = null, WorkflowExpression<int> bodyseasonalStartmonth = null, WorkflowExpression<int> bodyseasonalStartday = null, WorkflowExpression<int> bodyseasonalEndmonth = null, WorkflowExpression<int> bodyseasonalEndday = null, WorkflowExpression<string> bodyinformationSource = null, WorkflowExpression<string> bodyinfoSourceComments = null, WorkflowExpression<bool> bodycopyToSpouse = null, WorkflowExpression<bool> bodycopyToHousehold = null)
         {
@@ -3957,7 +3905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory> __BuildCreateConstituentEmploymentHistory(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodyrelationship, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodycareerLevel = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodydivision = null, WorkflowExpression<string> bodycareerLevel2 = null, WorkflowExpression<string> bodyresponsibilities = null, WorkflowExpression<bool> bodyisPrivate = null)
         {
@@ -4060,7 +4007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentEmploymentHistory(WorkflowExpression<string> relationshipJobInfoId)
         {
@@ -4081,7 +4027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentEmploymentHistory(WorkflowExpression<string> relationshipJobInfoId, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodycareerLevel = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodydivision = null, WorkflowExpression<string> bodycareerLevel2 = null, WorkflowExpression<string> bodyresponsibilities = null, WorkflowExpression<bool> bodyisPrivate = null)
         {
@@ -4179,7 +4124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConmgCreatedConstituentSolicitCode> __BuildCreateConstituentSolicitCode(WorkflowExpression<string> bodyconstituentID, WorkflowExpression<string> bodysolicitCode, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodycomments = null)
         {
@@ -4233,7 +4177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteConstituentSolicitCode(WorkflowExpression<string> constituentSolicitCodeId)
         {
@@ -4254,7 +4197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildEditConstituentSolicitCode(WorkflowExpression<string> constituentSolicitCodeId, WorkflowExpression<string> bodysolicitCode = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodycomments = null)
         {

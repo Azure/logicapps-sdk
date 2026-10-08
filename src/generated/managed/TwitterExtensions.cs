@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TweetModel[]> __BuildUserTimeline(WorkflowExpression<string> userName, WorkflowExpression<int> maxResults = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TweetModel[]> __BuildHomeTimeline(WorkflowExpression<int> maxResults = null)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TweetModel[]> __BuildSearchTweet(WorkflowExpression<string> searchQuery, WorkflowExpression<int> maxResults = null, WorkflowExpression<string> sinceId = null)
         {
@@ -97,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDetailsModel[]> __BuildFollowers(WorkflowExpression<string> userName, WorkflowExpression<int> maxResults = null)
         {
@@ -123,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDetailsModel[]> __BuildMyFollowers(WorkflowExpression<int> maxResults = null)
         {
@@ -147,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDetailsModel[]> __BuildFollowing(WorkflowExpression<string> userName, WorkflowExpression<int> maxResults = null)
         {
@@ -173,7 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDetailsModel[]> __BuildMyFollowing(WorkflowExpression<int> maxResults = null)
         {
@@ -197,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDetailsModel> __BuildUser(WorkflowExpression<string> userName)
         {
@@ -219,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TweetResponseModel> __BuildTweet(WorkflowExpression<string> tweetText = null, WorkflowExpression<string> body = null)
         {
@@ -244,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TweetResponseModel> __BuildRetweet(WorkflowExpression<string> tweetId, WorkflowExpression<bool> trimUser = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetIdeasResponseItem[]> __BuildGetIdeas(WorkflowExpression<string> activityId, WorkflowExpression<string> networkId = null)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetVotesResponseItem[]> __BuildGetVotes(WorkflowExpression<string> activityId, WorkflowExpression<string> networkId = null)
         {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> __BuildGetExploreResponses(WorkflowExpression<string> activityId, WorkflowExpression<string> networkId = null)
         {
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> __BuildGetActivities(WorkflowExpression<string> networkId, WorkflowExpression<activityTypeInput> activityType)
         {
@@ -125,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddIdeaResponse> __BuildAddIdea(WorkflowExpression<string> networkId, WorkflowExpression<string> activityId, WorkflowExpression<string> bodytext)
         {
@@ -157,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddIdeasResponseItem[]> __BuildAddIdeas(WorkflowExpression<string> networkId, WorkflowExpression<string> activityId, WorkflowExpression<bodyInputItem[]> body = null)
         {

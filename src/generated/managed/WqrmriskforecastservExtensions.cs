@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGroupReportBanks(WorkflowExpression<string> tenantId = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodytenantFirstName = null, WorkflowExpression<string> bodytenantLastName = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyemail = null)
         {
@@ -89,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGroupReportCUs(WorkflowExpression<string> tenantId = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodytenantFirstName = null, WorkflowExpression<string> bodytenantLastName = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyemail = null)
         {
@@ -160,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReportManagementBanks(WorkflowExpression<string> tenantId = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodytenantFirstName = null, WorkflowExpression<string> bodytenantLastName = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyemail = null)
         {
@@ -231,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReportManagementCUs(WorkflowExpression<string> tenantId = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> accept = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodytenantFirstName = null, WorkflowExpression<string> bodytenantLastName = null, WorkflowExpression<string> bodycompanyName = null, WorkflowExpression<string> bodyemail = null)
         {

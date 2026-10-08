@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CandidateSearchResponse> __BuildCandidateSearch(WorkflowExpression<string> cycle, WorkflowExpression<string> query = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CandidateGetResponse> __BuildCandidateGet(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CandidateTopFinancialResponse> __BuildCandidateTopFinancial(WorkflowExpression<string> cycle, WorkflowExpression<categoryInput> category)
         {
@@ -86,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CandidateStateResponse> __BuildCandidateState(WorkflowExpression<string> cycle, WorkflowExpression<string> state)
         {
@@ -108,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CandidateRecentResponse> __BuildCandidateRecent(WorkflowExpression<string> cycle)
         {
@@ -129,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContributionLateRecentResponse> __BuildContributionLateRecent(WorkflowExpression<string> cycle)
         {
@@ -150,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContributionLateCandidateResponse> __BuildContributionLateCandidate(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -172,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContributionLateCommitteeResponse> __BuildContributionLateCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -194,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContributionLateDateResponse> __BuildContributionLateDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
         {
@@ -218,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeSearchResponse> __BuildCommitteeSearch(WorkflowExpression<string> cycle, WorkflowExpression<string> query = null)
         {
@@ -242,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeGetResponse> __BuildCommitteeGet(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -264,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeRecentResponse> __BuildCommitteeRecent(WorkflowExpression<string> cycle)
         {
@@ -285,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeRecentPACsResponse> __BuildCommitteeRecentPACs(WorkflowExpression<string> cycle)
         {
@@ -306,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeFilingResponse> __BuildCommitteeFiling(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -328,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommitteeLeadershipResponse> __BuildCommitteeLeadership(WorkflowExpression<string> cycle)
         {
@@ -349,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingSearchResponse> __BuildFilingSearch(WorkflowExpression<string> cycle)
         {
@@ -370,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingDateResponse> __BuildFilingDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
         {
@@ -394,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingFormTypeResponse> __BuildFilingFormType(WorkflowExpression<string> cycle)
         {
@@ -415,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingTypeResponse> __BuildFilingType(WorkflowExpression<string> cycle, WorkflowExpression<string> formTypeId)
         {
@@ -437,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FilingSummaryResponse> __BuildFilingSummary(WorkflowExpression<string> cycle, WorkflowExpression<string> filingId)
         {
@@ -459,7 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditureRecentResponse> __BuildExpenditureRecent(WorkflowExpression<string> cycle)
         {
@@ -480,7 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditureDateResponse> __BuildExpenditureDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
         {
@@ -504,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditureCommitteeResponse> __BuildExpenditureCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -526,7 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditureCandidateResponse> __BuildExpenditureCandidate(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -548,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditurePresResponse> __BuildExpenditurePres(WorkflowExpression<string> cycle)
         {
@@ -569,7 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditureOfficeResponse> __BuildExpenditureOffice(WorkflowExpression<string> cycle, WorkflowExpression<string> office)
         {
@@ -591,7 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> __BuildExpenditureRaceCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -613,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommunicationRecentResponse> __BuildCommunicationRecent(WorkflowExpression<string> cycle)
         {
@@ -634,7 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommunicationCommitteeResponse> __BuildCommunicationCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
@@ -656,7 +627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommunicationDateResponse> __BuildCommunicationDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
         {
@@ -680,7 +650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BundlerCommitteeResponse> __BuildBundlerCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {

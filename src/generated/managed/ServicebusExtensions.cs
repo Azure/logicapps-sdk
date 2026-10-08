@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendMessage(WorkflowExpression<string> entityName, WorkflowExpression<JToken> messagecontent = null, WorkflowExpression<string> messagecontentType = null, WorkflowExpression<string> messagemessageId = null, WorkflowExpression<string> messageto = null, WorkflowExpression<string> messagereplyTo = null, WorkflowExpression<string> messagereplyToSessionId = null, WorkflowExpression<string> messagelabel = null, WorkflowExpression<string> messagescheduledEnqueueTimeUtc = null, WorkflowExpression<string> messagesessionId = null, WorkflowExpression<string> messagecorrelationId = null, WorkflowExpression<int> messagesequenceNumber = null, WorkflowExpression<string> messagelockToken = null, WorkflowExpression<string> messagetimeToLive = null, WorkflowExpression<string> systemProperties = null)
         {
@@ -149,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendMessages(WorkflowExpression<string> entityName, WorkflowExpression<ServiceBusMessage[]> messages = null, WorkflowExpression<string> systemProperties = null)
         {
@@ -176,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCompleteMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -207,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAbandonMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -238,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceBusMessage> __BuildGetDeferredMessageFromQueue(WorkflowExpression<string> queueName, WorkflowExpression<int> sequenceNumber, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -269,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeferMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -300,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeadLetterMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
         {
@@ -335,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenewLockOnMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null)
         {
@@ -362,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceBusMessage[]> __BuildGetMessagesFromQueueWithPeekLock(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -395,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCloseSessionInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
         {
@@ -417,7 +407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenewLockOnSessionInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
         {
@@ -439,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCompleteMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -471,7 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAbandonMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -503,7 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceBusMessage> __BuildGetDeferredMessageFromTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> sequenceNumber, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -535,7 +521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeferMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -567,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeadLetterMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
         {
@@ -603,7 +587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenewLockOnMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null)
         {
@@ -631,7 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Subscription> __BuildCreateTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<object> subscriptionFilter = null, WorkflowExpression<subscriptionFilterTypeInput> subscriptionFilterType = null)
         {
@@ -659,7 +641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName)
         {
@@ -681,7 +662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ServiceBusMessage[]> __BuildGetMessagesFromTopicWithPeekLock(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
         {
@@ -715,7 +695,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCloseSessionInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
         {
@@ -738,7 +717,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenewLockOnSessionInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
         {

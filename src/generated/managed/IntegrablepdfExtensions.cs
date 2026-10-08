@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildLockPdf(WorkflowExpression<string> lockPdfInputfileContent, WorkflowExpression<string> lockPdfInputpermissionsPassword, WorkflowExpression<bool> lockPdfInputallowAccessibility = null, WorkflowExpression<bool> lockPdfInputallowCopy = null, WorkflowExpression<bool> lockPdfInputallowDocumentAssembly = null, WorkflowExpression<bool> lockPdfInputallowEdit = null, WorkflowExpression<bool> lockPdfInputallowFormFilling = null, WorkflowExpression<bool> lockPdfInputallowPrint = null, WorkflowExpression<bool> lockPdfInputallowUpdateAnnotationsAndFields = null, WorkflowExpression<string> lockPdfInputdocumentOpenPassword = null)
         {
@@ -108,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMergePdf(WorkflowExpression<string> mergePdfInput1stFileContent, WorkflowExpression<string> mergePdfInput2ndFileContent, WorkflowExpression<string> mergePdfInput3rdFileContent = null, WorkflowExpression<string> mergePdfInput4thFileContent = null)
         {
@@ -156,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPasswordProtectPdf(WorkflowExpression<string> passwordProtectPdfInputfileContent, WorkflowExpression<string> passwordProtectPdfInputpassword)
         {
@@ -190,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSplitPdf(WorkflowExpression<string> splitPdfInputfileContent, WorkflowExpression<int> splitPdfInputfirstPage = null, WorkflowExpression<int> splitPdfInputlastPage = null)
         {
@@ -235,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildUnlockPdf(WorkflowExpression<string> unlockPdfInputfileContent, WorkflowExpression<string> unlockPdfInputpassword)
         {
@@ -269,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildWatermarkPdfBackground(WorkflowExpression<string> watermarkPdfBackgroundInputfileContent, WorkflowExpression<string> watermarkPdfBackgroundInput1stLine, WorkflowExpression<watermarkPdfBackgroundInputcolorInput> watermarkPdfBackgroundInputcolor = null, WorkflowExpression<string> watermarkPdfBackgroundInput2ndLine = null, WorkflowExpression<string> watermarkPdfBackgroundInput3rdLine = null, WorkflowExpression<double> watermarkPdfBackgroundInputmargin = null, WorkflowExpression<watermarkPdfBackgroundInputorientationInput> watermarkPdfBackgroundInputorientation = null, WorkflowExpression<watermarkPdfBackgroundInputstyleInput> watermarkPdfBackgroundInputstyle = null, WorkflowExpression<double> watermarkPdfBackgroundInputtransparency = null)
         {
@@ -352,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildWatermarkPdfCustom(WorkflowExpression<string> watermarkPdfCustomInputfileContent, WorkflowExpression<string> watermarkPdfCustomInputtemplateId, WorkflowExpression<string> watermarkPdfCustomInput1stLine = null, WorkflowExpression<string> watermarkPdfCustomInput2ndLine = null, WorkflowExpression<string> watermarkPdfCustomInput3rdLine = null, WorkflowExpression<string> watermarkPdfCustomInput4thLine = null, WorkflowExpression<string> watermarkPdfCustomInput5thLine = null)
         {
@@ -421,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildWatermarkPdfOverlay(WorkflowExpression<string> watermarkPdfOverlayInputfileContent, WorkflowExpression<string> watermarkPdfOverlayInput1stLine, WorkflowExpression<watermarkPdfOverlayInputcolorInput> watermarkPdfOverlayInputcolor = null, WorkflowExpression<string> watermarkPdfOverlayInput2ndLine = null, WorkflowExpression<string> watermarkPdfOverlayInput3rdLine = null, WorkflowExpression<double> watermarkPdfOverlayInputmargin = null, WorkflowExpression<watermarkPdfOverlayInputorientationInput> watermarkPdfOverlayInputorientation = null, WorkflowExpression<watermarkPdfOverlayInputstyleInput> watermarkPdfOverlayInputstyle = null, WorkflowExpression<double> watermarkPdfOverlayInputtransparency = null)
         {

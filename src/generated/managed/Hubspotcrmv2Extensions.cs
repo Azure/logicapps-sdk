@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfCompaniesById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListResponse> __BuildList(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateResponse> __BuildCreate(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -132,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadResponse> __BuildRead(WorkflowExpression<string> companyId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -168,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive(WorkflowExpression<string> companyId)
         {
@@ -189,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateResponse> __BuildUpdate(WorkflowExpression<string> companyId, WorkflowExpression<string> idProperty = null)
         {
@@ -228,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> __BuildMergeTwoCompaniesWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -269,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -310,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> __BuildPostCrmV3ObjectsCompaniesSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -379,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfContactsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -413,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List16Response> __BuildList16(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -451,7 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create17Response> __BuildCreate17(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -493,7 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read18Response> __BuildRead18(WorkflowExpression<string> contactId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -526,7 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive19(WorkflowExpression<string> contactId)
         {
@@ -547,7 +533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update20Response> __BuildUpdate20(WorkflowExpression<string> contactId)
         {
@@ -583,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> __BuildMergeTwoContactsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -624,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete22(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -665,7 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> __BuildPostCrmV3ObjectsContactsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -734,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfDealsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -768,7 +749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List28Response> __BuildList28(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -806,7 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create29Response> __BuildCreate29(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -848,7 +827,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read30Response> __BuildRead30(WorkflowExpression<string> dealId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -884,7 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive31(WorkflowExpression<string> dealId)
         {
@@ -905,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update32Response> __BuildUpdate32(WorkflowExpression<string> dealId, WorkflowExpression<string> idProperty = null)
         {
@@ -944,7 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> __BuildMergeTwoDealsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -985,7 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete34(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -1026,7 +1000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> __BuildPostCrmV3ObjectsDealsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -1095,7 +1068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfFeesById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -1129,7 +1101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read40Response> __BuildRead40(WorkflowExpression<string> feeId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -1165,7 +1136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive41(WorkflowExpression<string> feeId)
         {
@@ -1186,7 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update42Response> __BuildUpdate42(WorkflowExpression<string> feeId, WorkflowExpression<string> idProperty = null)
         {
@@ -1225,7 +1194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List43Response> __BuildList43(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -1263,7 +1231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create44Response> __BuildCreate44(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -1305,7 +1272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> __BuildMergeTwoFeesWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -1346,7 +1312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete46(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -1387,7 +1352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> __BuildPostCrmV3ObjectsFeesSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -1456,7 +1420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfGoalTargetsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -1490,7 +1453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read52Response> __BuildRead52(WorkflowExpression<string> goalTargetId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -1526,7 +1488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive53(WorkflowExpression<string> goalTargetId)
         {
@@ -1547,7 +1508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update54Response> __BuildUpdate54(WorkflowExpression<string> goalTargetId, WorkflowExpression<string> idProperty = null)
         {
@@ -1586,7 +1546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List55Response> __BuildList55(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -1624,7 +1583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create56Response> __BuildCreate56(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -1666,7 +1624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> __BuildMergeTwoGoalTargetsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -1707,7 +1664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete58(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -1748,7 +1704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> __BuildPostCrmV3ObjectsGoalTargetsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -1817,7 +1772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfLineItemsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -1851,7 +1805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List64Response> __BuildList64(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -1889,7 +1842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create65Response> __BuildCreate65(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -1931,7 +1883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read66Response> __BuildRead66(WorkflowExpression<string> lineItemId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -1967,7 +1918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive67(WorkflowExpression<string> lineItemId)
         {
@@ -1988,7 +1938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update68Response> __BuildUpdate68(WorkflowExpression<string> lineItemId, WorkflowExpression<string> idProperty = null)
         {
@@ -2027,7 +1976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> __BuildMergeTwoLineItemsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -2068,7 +2016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete70(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -2109,7 +2056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> __BuildPostCrmV3ObjectsLineItemsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -2178,7 +2124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAPageOfOwnersResponse> __BuildGetAPageOfOwners(WorkflowExpression<string> email, WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null, WorkflowExpression<bool> archived = null)
         {
@@ -2209,7 +2154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> __BuildReadAnOwnerByGivenidOruserid(WorkflowExpression<string> ownerId, WorkflowExpression<string> idProperty = null, WorkflowExpression<bool> archived = null)
         {
@@ -2236,7 +2180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfProductsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -2270,7 +2213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List78Response> __BuildList78(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -2308,7 +2250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create79Response> __BuildCreate79(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -2350,7 +2291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read80Response> __BuildRead80(WorkflowExpression<string> productId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -2386,7 +2326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive81(WorkflowExpression<string> productId)
         {
@@ -2407,7 +2346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update82Response> __BuildUpdate82(WorkflowExpression<string> productId, WorkflowExpression<string> idProperty = null)
         {
@@ -2446,7 +2384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> __BuildMergeTwoProductsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -2487,7 +2424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDelete84(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -2528,7 +2464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> __BuildPostCrmV3ObjectsProductsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -2597,7 +2532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfObjectsById(WorkflowExpression<string> objectType, WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -2632,7 +2566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadObjectResponse> __BuildReadObject(WorkflowExpression<string> objectType, WorkflowExpression<string> objectId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -2669,7 +2602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveObjectId(WorkflowExpression<string> objectType, WorkflowExpression<string> objectId)
         {
@@ -2691,7 +2623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateObjectIdResponse> __BuildUpdateObjectId(WorkflowExpression<string> objectType, WorkflowExpression<string> objectId, WorkflowExpression<string> idProperty = null)
         {
@@ -2731,7 +2662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListObjectResponse> __BuildListObject(WorkflowExpression<string> objectType, WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -2770,7 +2700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateObjectIdResponse> __BuildCreateObjectId(WorkflowExpression<string> objectType, WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -2813,7 +2742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> __BuildMergeTwoObjectsWithSameType(WorkflowExpression<string> objectType, WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -2855,7 +2783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDeleteObjectType(WorkflowExpression<string> objectType, WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -2897,7 +2824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> __BuildPostCrmV3ObjectsObjectTypeSearch(WorkflowExpression<string> objectType, WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -2967,7 +2893,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfDiscountsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -3001,7 +2926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read16Response> __BuildRead16(WorkflowExpression<string> discountId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -3037,7 +2961,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive17(WorkflowExpression<string> discountId)
         {
@@ -3058,7 +2981,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update18Response> __BuildUpdate18(WorkflowExpression<string> discountId, WorkflowExpression<string> idProperty = null)
         {
@@ -3097,7 +3019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List19Response> __BuildList19(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -3135,7 +3056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create20Response> __BuildCreate20(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null, WorkflowExpression<string> bodypropertiesnostrudcf = null)
         {
@@ -3184,7 +3104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> __BuildMergeTwoDiscountsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -3225,7 +3144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDeleteDiscounts(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -3266,7 +3184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> __BuildPostCrmV3ObjectsDiscountsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -3335,7 +3252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfFeedbackSubmissionsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -3369,7 +3285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read28Response> __BuildRead28(WorkflowExpression<string> feedbackSubmissionId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -3405,7 +3320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive29(WorkflowExpression<string> feedbackSubmissionId)
         {
@@ -3426,7 +3340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update30Response> __BuildUpdate30(WorkflowExpression<string> feedbackSubmissionId, WorkflowExpression<string> idProperty = null)
         {
@@ -3465,7 +3378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List31Response> __BuildList31(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -3503,7 +3415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create32Response> __BuildCreate32(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -3545,7 +3456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> __BuildMergeTwoFeedbackSubmissionsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -3586,7 +3496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDeleteFeedback(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -3627,7 +3536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> __BuildPostCrmV3ObjectsFeedbackSubmissionsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -3696,7 +3604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfQuotesById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -3730,7 +3637,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List40Response> __BuildList40(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -3768,7 +3674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create41Response> __BuildCreate41(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null, WorkflowExpression<string> bodypropertieselit26 = null)
         {
@@ -3817,7 +3722,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read42Response> __BuildRead42(WorkflowExpression<string> quoteId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -3853,7 +3757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive43(WorkflowExpression<string> quoteId)
         {
@@ -3874,7 +3777,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update44Response> __BuildUpdate44(WorkflowExpression<string> quoteId, WorkflowExpression<string> idProperty = null)
         {
@@ -3913,7 +3815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> __BuildMergeTwoQuotesWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -3954,7 +3855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDeleteQuotes(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -3995,7 +3895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> __BuildPostCrmV3ObjectsQuotesSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -4064,7 +3963,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfTaxesById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -4098,7 +3996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List52Response> __BuildList52(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -4136,7 +4033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create53Response> __BuildCreate53(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -4178,7 +4074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read54Response> __BuildRead54(WorkflowExpression<string> taxId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -4214,7 +4109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive55(WorkflowExpression<string> taxId)
         {
@@ -4235,7 +4129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update56Response> __BuildUpdate56(WorkflowExpression<string> taxId, WorkflowExpression<string> idProperty = null)
         {
@@ -4274,7 +4167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> __BuildMergeTwoTaxesWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -4315,7 +4207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDeleteTaxes(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -4356,7 +4247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> __BuildPostCrmV3ObjectsTaxesSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -4425,7 +4315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchiveABatchOfTicketsById(WorkflowExpression<bodyinputsInputItem[]> bodyinputs = null)
         {
@@ -4459,7 +4348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Read64Response> __BuildRead64(WorkflowExpression<string> ticketId, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> idProperty = null)
         {
@@ -4495,7 +4383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildArchive65(WorkflowExpression<string> ticketId)
         {
@@ -4516,7 +4403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Update66Response> __BuildUpdate66(WorkflowExpression<string> ticketId, WorkflowExpression<string> idProperty = null)
         {
@@ -4555,7 +4441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<List67Response> __BuildList67(WorkflowExpression<string> limit = null, WorkflowExpression<string> after = null, WorkflowExpression<string> properties = null, WorkflowExpression<string> propertiesWithHistory = null, WorkflowExpression<string> associations = null, WorkflowExpression<bool> archived = null)
         {
@@ -4593,7 +4478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create68Response> __BuildCreate68(WorkflowExpression<bodyassociationsInputItem[]> bodyassociations = null)
         {
@@ -4635,7 +4519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> __BuildMergeTwoTicketsWithSameType(WorkflowExpression<string> bodyobjectIdToMerge = null, WorkflowExpression<string> bodyprimaryObjectId = null)
         {
@@ -4676,7 +4559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGdprDeleteTickets(WorkflowExpression<string> bodyobjectId = null, WorkflowExpression<string> bodyidProperty = null)
         {
@@ -4717,7 +4599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> __BuildPostCrmV3ObjectsTicketsSearch(WorkflowExpression<string> bodyafter = null, WorkflowExpression<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowExpression<string> bodylimit = null, WorkflowExpression<string[]> bodyproperties = null, WorkflowExpression<string[]> bodysorts = null, WorkflowExpression<string> bodyquery = null)
         {
@@ -4786,7 +4667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAssociationTypesResponse> __BuildListAssociationTypes(WorkflowExpression<string> fromObjectType, WorkflowExpression<string> toObjectType)
         {
@@ -4808,7 +4688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteSpecificLabels(WorkflowExpression<string> fromObjectType, WorkflowExpression<string> toObjectType, WorkflowExpression<bodyinputsInputItem2[]> bodyinputs = null)
         {
@@ -4844,7 +4723,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDelete(WorkflowExpression<string> fromObjectType, WorkflowExpression<string> toObjectType, WorkflowExpression<bodyinputsInputItem22[]> bodyinputs = null)
         {
@@ -4880,7 +4758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDefaultAssociationsResponse> __BuildCreateDefaultAssociations(WorkflowExpression<string> fromObjectType, WorkflowExpression<string> toObjectType, WorkflowExpression<bodyinputsInputItem222[]> bodyinputs = null)
         {
@@ -4916,7 +4793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDelete6(WorkflowExpression<string> objectType, WorkflowExpression<string> objectId, WorkflowExpression<string> toObjectType, WorkflowExpression<string> toObjectId)
         {
@@ -4940,7 +4816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Create7Response> __BuildCreate7(WorkflowExpression<string> objectType, WorkflowExpression<string> objectId, WorkflowExpression<string> toObjectType, WorkflowExpression<string> toObjectId, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -4966,7 +4841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDefaultResponse> __BuildCreateDefault(WorkflowExpression<string> fromObjectType, WorkflowExpression<string> fromObjectId, WorkflowExpression<string> toObjectType, WorkflowExpression<string> toObjectId)
         {
@@ -4990,7 +4864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAssociationsResponse> __BuildListAssociations(WorkflowExpression<string> objectType, WorkflowExpression<string> objectId, WorkflowExpression<string> toObjectType, WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null)
         {
@@ -5019,7 +4892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllCardsResponse> __BuildGetAllCards(WorkflowExpression<string> appId)
         {
@@ -5040,7 +4912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateANewCardResponse> __BuildCreateANewCard(WorkflowExpression<string> appId, WorkflowExpression<string[]> bodyactionsbaseUrls = null, WorkflowExpression<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, WorkflowExpression<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, WorkflowExpression<string> bodyfetchtargetUrl = null, WorkflowExpression<string> bodyfetchcardType = null, WorkflowExpression<string> bodyfetchserverlessFunction = null, WorkflowExpression<string> bodytitle = null)
         {
@@ -5141,7 +5012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetACardResponse> __BuildGetACard(WorkflowExpression<string> appId, WorkflowExpression<string> cardId)
         {
@@ -5163,7 +5033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteACard(WorkflowExpression<string> appId, WorkflowExpression<string> cardId)
         {
@@ -5185,7 +5054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateACardResponse> __BuildUpdateACard(WorkflowExpression<string> appId, WorkflowExpression<string> cardId, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, WorkflowExpression<string> bodyfetchcardType = null, WorkflowExpression<string> bodyfetchtargetUrl = null, WorkflowExpression<string> bodyfetchserverlessFunction = null, WorkflowExpression<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, WorkflowExpression<string[]> bodyactionsbaseUrls = null)
         {
@@ -5296,7 +5164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> __BuildGetCrmV3ExportsExportAsyncTasksTaskIdStatus(WorkflowExpression<string> taskId)
         {
@@ -5317,7 +5184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartAnExportResponse> __BuildStartAnExport(WorkflowExpression<string> bodyexportName = null, WorkflowExpression<string> bodyexportType = null, WorkflowExpression<string> bodyformat = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string[]> bodyobjectProperties = null, WorkflowExpression<string> bodyobjectType = null, WorkflowExpression<string> bodyassociatedObjectType = null, WorkflowExpression<bodypublicCrmSearchRequestfiltersInputItem[]> bodypublicCrmSearchRequestfilters = null, WorkflowExpression<string> bodypublicCrmSearchRequestquery = null, WorkflowExpression<string[]> bodypublicCrmSearchRequestsorts = null)
         {
@@ -5422,7 +5288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> __BuildGetTheInformationOnAnyImport(WorkflowExpression<string> importId)
         {
@@ -5443,7 +5308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CancelAnActiveImportResponse> __BuildCancelAnActiveImport(WorkflowExpression<string> importId)
         {
@@ -5464,7 +5328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetActiveImportsResponse> __BuildGetActiveImports(WorkflowExpression<string> after = null, WorkflowExpression<string> before = null, WorkflowExpression<string> limit = null)
         {
@@ -5493,7 +5356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StartANewImportResponse> __BuildStartANewImport(WorkflowExpression<string> contentType)
         {
@@ -5515,7 +5377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> __BuildGetCrmV3ImportsImportIdErrorsGetErrors(WorkflowExpression<string> importId, WorkflowExpression<string> after = null, WorkflowExpression<string> limit = null)
         {
@@ -5542,7 +5403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> __BuildAddAndOrRemoveRecordsFromAList(WorkflowExpression<string> listId, WorkflowExpression<string[]> bodyrecordIdsToAdd = null, WorkflowExpression<string[]> bodyrecordIdsToRemove = null)
         {
@@ -5584,7 +5444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddRecordsToAListResponse> __BuildAddRecordsToAList(WorkflowExpression<string> listId, WorkflowExpression<string[]> body = null)
         {
@@ -5607,7 +5466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildAddAllRecordsFromASourceListToADestinationList(WorkflowExpression<string> listId, WorkflowExpression<string> sourceListId)
         {
@@ -5629,7 +5487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> __BuildFetchListMembershipsOrderedById(WorkflowExpression<string> listId, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null, WorkflowExpression<string> limit = null)
         {
@@ -5659,7 +5516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteAllRecordsFromAList(WorkflowExpression<string> listId)
         {
@@ -5680,7 +5536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RemoveRecordsFromAListResponse> __BuildRemoveRecordsFromAList(WorkflowExpression<string> listId, WorkflowExpression<string[]> body = null)
         {
@@ -5703,7 +5558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchListsResponse> __BuildSearchLists(WorkflowExpression<string[]> bodyadditionalProperties = null, WorkflowExpression<string> bodyoffset = null, WorkflowExpression<string> bodyquery = null, WorkflowExpression<string> bodycount = null)
         {

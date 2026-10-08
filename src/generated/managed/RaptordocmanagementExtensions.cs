@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetUserToken(WorkflowExpression<string> externalSystemID, WorkflowExpression<string> secret, WorkflowExpression<string> externalUserName)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDownloadDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
         {
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRemoveTagFromDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> tagId)
         {
@@ -91,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTagDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> tagId, WorkflowExpression<bool> reTag = null)
         {
@@ -118,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddFieldToDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> method = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyvalue = null)
         {
@@ -165,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateFieldOnDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyvalue = null)
         {
@@ -209,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddTemplateToDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> templateId, WorkflowExpression<string[]> body = null)
         {
@@ -234,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryDocumentsResponse> __BuildQueryDocuments(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string[]> bodyobligatoryTags = null, WorkflowExpression<string[]> bodytagsInHierarchy = null, WorkflowExpression<string[]> bodyexcludeTagsInHierarchy = null, WorkflowExpression<bool> bodyincludeTotalCount = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bodyorderByInput> bodyorderBy = null, WorkflowExpression<bool> bodyorderAscending = null, WorkflowExpression<string> bodycontinuationToken = null)
         {
@@ -334,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTagByTagIdResponse> __BuildGetTagByTagId(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> tagId)
         {
@@ -357,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTagByCodeResponse> __BuildGetTagByCode(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> code)
         {
@@ -381,7 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> __BuildGetMultipleTags(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string[]> bodyids = null)
         {
@@ -417,7 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryTagsResponse> __BuildQueryTags(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> bodyparentTagId = null, WorkflowExpression<string> bodydirectParentTagId = null, WorkflowExpression<bool> bodyhasNoParentTag = null, WorkflowExpression<bool> bodyincludeTotalCount = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bool> bodyorderAscending = null)
         {
@@ -495,7 +483,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFieldResponse> __BuildCreateField(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> method = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytenantId = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<int> bodyfieldType = null, WorkflowExpression<bool> bodyisRequired = null, WorkflowExpression<bool> bodyisReadOnly = null, WorkflowExpression<string> bodydefaultValue = null, WorkflowExpression<bodylabelsInputItem[]> bodylabels = null, WorkflowExpression<string> bodyvalidatingRegExp = null, WorkflowExpression<bodyvalidationMessageInputItem[]> bodyvalidationMessage = null, WorkflowExpression<int> bodyrowAmount = null, WorkflowExpression<string> bodyparentTagId = null)
         {
@@ -611,7 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFieldByIdResponse> __BuildGetFieldById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fieldId)
         {
@@ -634,7 +620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFieldByCodeResponse> __BuildGetFieldByCode(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> code)
         {
@@ -658,7 +643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> __BuildGetTemplateFields(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> templateId)
         {
@@ -681,7 +665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplatebyidResponse> __BuildGetTemplatebyid(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> templateId)
         {
@@ -704,7 +687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTemplatebycodeResponse> __BuildGetTemplatebycode(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> code)
         {
@@ -728,7 +710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserByIdResponse> __BuildGetUserById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> userId)
         {
@@ -751,7 +732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryUsersResponse> __BuildQueryUsers(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<bool> bodyexcludeActiveUsers = null, WorkflowExpression<bool> bodyexcludeInactiveUsers = null, WorkflowExpression<bool> bodyexcludeNormalUsers = null, WorkflowExpression<bool> bodyexcludeSystemUsers = null, WorkflowExpression<string> bodycontainsEmail = null, WorkflowExpression<string[]> bodyroleIds = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bool> bodyorderAscending = null)
         {
@@ -843,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetExternalSystemByIdResponse> __BuildGetExternalSystemById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> externalSystemId)
         {
@@ -866,7 +845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResolveContextResponse> __BuildResolveContext(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodyentityName = null, WorkflowExpression<string> bodylegalEntity = null)
         {
@@ -924,7 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> __BuildAdvancedSearchQueryDocuments(WorkflowExpression<string> exaAuthPlugin)
         {
@@ -953,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertExternalFileResponse> __BuildInsertExternalFile(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> filename, WorkflowExpression<string> bodybody = null)
         {
@@ -991,7 +967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentMetadataResponse> __BuildGetDocumentMetadata(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
         {
@@ -1014,7 +989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
         {
@@ -1037,7 +1011,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddSiteToStorageProvider(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id, WorkflowExpression<bodyInputItem[]> body = null)
         {
@@ -1062,7 +1035,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> __BuildGetDocumentMetadataByFileReference(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fileReferenceId)
         {
@@ -1085,7 +1057,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStorageProviderByIdResponse> __BuildGetStorageProviderById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
         {
@@ -1108,7 +1079,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadDocumentResponse> __BuildUploadDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> name, WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> body = null)
         {
@@ -1136,7 +1106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> __BuildSetPrimaryStorageProvider(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fileReferenceId, WorkflowExpression<string> storageProviderId, WorkflowExpression<bool> removeRaptorStorage = null)
         {
@@ -1163,7 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SetExternalSourceResponse> __BuildSetExternalSource(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fileReferenceId, WorkflowExpression<string> body = null)
         {
@@ -1188,7 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGenerateSiteSubscriptions(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> storageProviderId, WorkflowExpression<string> contentType = null, WorkflowExpression<string> body = null)
         {
@@ -1216,7 +1183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryTemplatesResponse> __BuildQueryTemplates(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<int> bodylanguageCode = null, WorkflowExpression<string[]> bodycontextTags = null, WorkflowExpression<int> bodyorderBy = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bool> bodyorderAscending = null, WorkflowExpression<string> bodycontinuationToken = null)
         {
@@ -1294,7 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FindDocumentResponse> __BuildFindDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> azureDirectoryId, WorkflowExpression<string> driveId, WorkflowExpression<string> driveItemId)
         {
@@ -1322,7 +1287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDetachDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> bodyazureDirectoryId = null, WorkflowExpression<string> bodydriveId = null, WorkflowExpression<string> bodydriveItemId = null)
         {
@@ -1372,7 +1336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetOrCreateTag(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<methodInput> method, WorkflowExpression<string> bodycode = null, WorkflowExpression<bodylabelsInputItem2[]> bodylabels = null, WorkflowExpression<string> bodyparentTagId = null)
         {
@@ -1424,7 +1387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddTemplateToDocumentSingle(WorkflowExpression<string> documentId, WorkflowExpression<string> templateId, WorkflowExpression<string> exaAuthPlugin)
         {

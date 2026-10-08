@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImportJobsPostResponse> __BuildImportJobs(WorkflowExpression<string> batchimportData, WorkflowExpression<string> batchnameForImport, WorkflowExpression<string> batchsecurityToken, WorkflowExpression<batchrPAEnvironmentInput> batchrPAEnvironment)
         {

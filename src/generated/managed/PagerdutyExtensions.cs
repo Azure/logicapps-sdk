@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Incident> __BuildGetIncidentByKey(WorkflowExpression<string> incidentKey)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<User> __BuildGetUser(WorkflowExpression<string> userId)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddNoteResponse> __BuildAddNoteToIncident(WorkflowExpression<string> incidentId, WorkflowExpression<string> requestaddedBy, WorkflowExpression<string> requestnote)
         {
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleIncident> __BuildAcknowledgeIncident(WorkflowExpression<string> incidentId, WorkflowExpression<string> requestacknowledgedBy)
         {
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleIncident> __BuildResolveIncident(WorkflowExpression<string> incidentId, WorkflowExpression<string> requestresolvedBy)
         {
@@ -157,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleIncident> __BuildReassignIncident(WorkflowExpression<string> incidentId, WorkflowExpression<string> requestfromUser, WorkflowExpression<string> requesttoUser)
         {
@@ -191,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleIncident> __BuildSnoozeIncident(WorkflowExpression<string> incidentId, WorkflowExpression<string> requestsnoozedBy, WorkflowExpression<int> requestsnooze)
         {
@@ -225,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SingleIncident> __BuildEscalateIncident(WorkflowExpression<string> incidentId, WorkflowExpression<string> requestescalatedBy, WorkflowExpression<string> requestescalationPolicy)
         {
@@ -259,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewIncident> __BuildCreateIncident(WorkflowExpression<string> requestserviceKey, WorkflowExpression<string> requestdescription)
         {

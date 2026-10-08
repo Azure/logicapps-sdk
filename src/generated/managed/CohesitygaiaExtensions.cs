@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryResponse> __BuildSendQuery(WorkflowExpression<string> bodyllmName, WorkflowExpression<string> bodyllmId, WorkflowExpression<string[]> bodydatasetNames, WorkflowExpression<string> bodyqueryString)
         {

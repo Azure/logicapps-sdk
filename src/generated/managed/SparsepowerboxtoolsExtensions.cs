@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfStampImage> __BuildPdfStampImage(WorkflowExpression<string> reqPdfStampImagepDF, WorkflowExpression<string> reqPdfStampImageimage, WorkflowExpression<double> reqPdfStampImageoptionsopacity = null, WorkflowExpression<double> reqPdfStampImageoptionsscale = null, WorkflowExpression<int> reqPdfStampImageoptionsrotate = null, WorkflowExpression<int> reqPdfStampImageoptionspositionyOffset = null, WorkflowExpression<string> reqPdfStampImageoptionspositionstartOfYOffset = null, WorkflowExpression<int> reqPdfStampImageoptionspositionxOffset = null)
         {
@@ -169,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200ExcelSheetAddRows> __BuildExcelSheetAddRows(WorkflowExpression<string> reqExcelSheetAddrowssheetname, WorkflowExpression<string> reqExcelSheetAddrowsexcel, WorkflowExpression<JToken[]> reqExcelSheetAddrowsdata = null)
         {
@@ -209,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfCreateByHtml> __BuildPdfCreateByHtml(WorkflowExpression<string> reqPdfCreateByHtmlhTML, WorkflowExpression<string> reqPdfCreateByHtmloptionsmediaType = null, WorkflowExpression<string> reqPdfCreateByHtmloptionspageFormat = null, WorkflowExpression<bool> reqPdfCreateByHtmloptionslandscape = null, WorkflowExpression<string> reqPdfCreateByHtmloptionsmarginmarginLeft = null, WorkflowExpression<string> reqPdfCreateByHtmloptionsmarginmarginRight = null, WorkflowExpression<string> reqPdfCreateByHtmloptionsmarginmarginTop = null, WorkflowExpression<string> reqPdfCreateByHtmloptionsmarginmarginBottom = null)
         {
@@ -382,7 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200ImageMergeDrawing> __BuildImageMergeDrawing(WorkflowExpression<string> reqImageMergeDrawingbackground, WorkflowExpression<string> reqImageMergeDrawingdrawing)
         {
@@ -415,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfStampText> __BuildPdfStampText(WorkflowExpression<string> reqPdfStampTextpDF, WorkflowExpression<string> reqPdfStampTexttext, WorkflowExpression<string> reqPdfStampTextoptionsfontColor = null, WorkflowExpression<int> reqPdfStampTextoptionsfontSize = null, WorkflowExpression<int> reqPdfStampTextoptionsrotate = null, WorkflowExpression<int> reqPdfStampTextoptionspositionyOffset = null, WorkflowExpression<string> reqPdfStampTextoptionspositionstartOfYOffset = null, WorkflowExpression<int> reqPdfStampTextoptionspositionxOffset = null)
         {
@@ -566,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200CsvToJson> __BuildCsvToJson(WorkflowExpression<string> reqCsvToJsoncSV, WorkflowExpression<bool> reqCsvToJsonoptionshasHeaders = null, WorkflowExpression<string> reqCsvToJsonoptionsdelimiter = null)
         {
@@ -638,7 +632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfCreateByUrl> __BuildPdfCreateByUrl(WorkflowExpression<string> reqPdfCreateByUrlhTML, WorkflowExpression<string> reqPdfCreateByUrloptionsmediaType = null, WorkflowExpression<string> reqPdfCreateByUrloptionspageFormat = null, WorkflowExpression<bool> reqPdfCreateByUrloptionslandscape = null, WorkflowExpression<string> reqPdfCreateByUrloptionsmarginmarginLeft = null, WorkflowExpression<string> reqPdfCreateByUrloptionsmarginmarginRight = null, WorkflowExpression<string> reqPdfCreateByUrloptionsmarginmarginTop = null, WorkflowExpression<string> reqPdfCreateByUrloptionsmarginmarginBottom = null)
         {
@@ -803,7 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200ImageStampText> __BuildImageStampText(WorkflowExpression<string> reqImageStampTextimage = null, WorkflowExpression<string> reqImageStampTexttextToStamp = null, WorkflowExpression<string> reqImageStampTextoptionslocationOfTheStamp = null, WorkflowExpression<string> reqImageStampTextoptionsfontcolor = null, WorkflowExpression<int> reqImageStampTextoptionsfontsize = null)
         {
@@ -903,7 +895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200ImageResize> __BuildImageResize(WorkflowExpression<string> reqImageResizeimage = null, WorkflowExpression<int> reqImageResizewidth = null, WorkflowExpression<int> reqImageResizeheight = null, WorkflowExpression<bool> reqImageResizeoptionsignoreTheAspectRation = null)
         {
@@ -976,7 +967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfSplitByPage> __BuildPdfSplitByPage(WorkflowExpression<string> reqPdfSplitByPagepDFFile = null, WorkflowExpression<double> reqPdfSplitByPageoptionsnumberOfPages = null)
         {
@@ -1035,7 +1025,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200ImageStampExif> __BuildImageStampExif(WorkflowExpression<string> reqImageStampExifimage = null, WorkflowExpression<string[]> reqImageStampExifoptionstags = null, WorkflowExpression<string> reqImageStampExifoptionslocationOfTheStamp = null, WorkflowExpression<string> reqImageStampExifoptionsfontcolor = null, WorkflowExpression<int> reqImageStampExifoptionsfontsize = null, WorkflowExpression<bool> reqImageStampExifoptionsprintTagName = null)
         {
@@ -1152,7 +1141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfFillForm> __BuildPdfFillForm(WorkflowExpression<string> reqPdfFillFormpDFFile = null)
         {
@@ -1194,7 +1182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfGetFormData> __BuildPdfGetFormData(WorkflowExpression<string> reqPdfGetFormDatapDFFile = null)
         {
@@ -1228,7 +1215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resp200PdfMergeSimple> __BuildPdfMergeSimple(WorkflowExpression<string[]> reqPdfMergeSimplepDFFile = null)
         {

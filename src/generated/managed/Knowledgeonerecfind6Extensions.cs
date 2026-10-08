@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryListResponse> __BuildQueryList(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildQueryTable(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> queryName = null, WorkflowExpression<string> searchText = null)
         {
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryDataResponse> __BuildQueryData(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> queryName = null, WorkflowExpression<int> startPosition = null, WorkflowExpression<int> numberOfRecords = null, WorkflowExpression<string> searchText = null)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildSavedSearch(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> savedSearchName = null, WorkflowExpression<string> queryParams = null)
         {
@@ -146,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendFileResponse> __BuildSendFile(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> bodyfileContents = null, WorkflowExpression<string> bodyfileName = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodycreatedDate = null, WorkflowExpression<string> bodyeDOCType = null, WorkflowExpression<bodyextraFieldsInputItem[]> bodyextraFields = null)
         {

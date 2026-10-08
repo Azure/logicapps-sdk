@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTrackersForWorkspaceResponseBody> __BuildGetTrackersForWorkspace(WorkflowExpression<string> workspaceId)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStatusesForATrackerResponse> __BuildGetStatusesForATracker(WorkflowExpression<string> workspaceId, WorkflowExpression<string> trackerId)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddTaskResponse> __BuildAddTask(WorkflowExpression<string> bodycontextWorkId, WorkflowExpression<string> bodycontextId, WorkflowExpression<string> bodytitle, WorkflowExpression<bodyassigneetyInput> bodyassigneety, WorkflowExpression<string> bodyassigneeworkId, WorkflowExpression<string> bodyworkObjectwWstype, WorkflowExpression<string> bodyworkObjectwId, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodydueTimeZone = null, WorkflowExpression<string> bodytaskStatus = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodyparentId = null)
         {
@@ -164,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UpdateSingleTaskFieldResponse> __BuildUpdateSingleTaskField(WorkflowExpression<string> bodycontextWorkId, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodyfieldType, WorkflowExpression<string> bodyfieldId, WorkflowExpression<object> bodyfieldData)
         {
@@ -206,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTrackerResponse> __BuildCreateTracker(WorkflowExpression<string> bodycontextWorkId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytrackerOwner = null)
         {
@@ -246,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddCustomFieldResponse> __BuildAddCustomField(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodycontextId, WorkflowExpression<bodyviewOptionInput> bodyviewOption, WorkflowExpression<string> bodyfieldTitle, WorkflowExpression<string> bodyfieldType, WorkflowExpression<object> bodyfieldData = null)
         {
@@ -295,7 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClearSingleTaskFieldResponse> __BuildClearSingleTaskField(WorkflowExpression<string> bodycontextWorkId, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodyfieldId)
         {
@@ -331,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImportTrackerResponse> __BuildImportTracker(WorkflowExpression<string> bodysourceWorkspaceId, WorkflowExpression<string> bodysourceTrackerId, WorkflowExpression<string> bodydestinationWorkspaceId, WorkflowExpression<string> bodyimportType, WorkflowExpression<object> bodyoptions = null)
         {

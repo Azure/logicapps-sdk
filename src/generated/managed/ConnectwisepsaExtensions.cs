@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetServiceTickets(WorkflowExpression<string> clientId, WorkflowExpression<string> conditions = null, WorkflowExpression<string> childConditions = null, WorkflowExpression<string> customFieldConditions = null, WorkflowExpression<string> orderBy = null, WorkflowExpression<string> fields = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<int> pageId = null)
         {
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostServiceTickets(WorkflowExpression<string> clientId, WorkflowExpression<object> body = null)
         {

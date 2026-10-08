@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowExpression<string> text, WorkflowExpression<setInput> set, WorkflowExpression<string> size = null, WorkflowExpression<string> bgset = null, WorkflowExpression<gravatarInput> gravatar = null)
         {

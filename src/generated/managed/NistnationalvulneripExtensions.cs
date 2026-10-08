@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCVECollectionResponse> __BuildGetCVECollection(WorkflowExpression<addOnsInput> addOns = null, WorkflowExpression<string> cpeMatchString = null, WorkflowExpression<string> cvssV2Metrics = null, WorkflowExpression<cvssV2SeverityInput> cvssV2Severity = null, WorkflowExpression<string> cvssV3Metrics = null, WorkflowExpression<cvssV3SeverityInput> cvssV3Severity = null, WorkflowExpression<string> cweId = null, WorkflowExpression<bool> includeMatchStringChange = null, WorkflowExpression<bool> isExactMatch = null, WorkflowExpression<string> keyword = null, WorkflowExpression<string> modStartDate = null, WorkflowExpression<string> modEndDate = null, WorkflowExpression<string> pubStartDate = null, WorkflowExpression<string> pubEndDate = null, WorkflowExpression<int> resultsPerPage = null, WorkflowExpression<int> startIndex = null)
         {
@@ -86,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCPECollectionResponse> __BuildGetCPECollection(WorkflowExpression<addOnsInput> addOns = null, WorkflowExpression<string> cpeMatchString = null, WorkflowExpression<bool> includeDeprecated = null, WorkflowExpression<string> keyword = null, WorkflowExpression<string> modStartDate = null, WorkflowExpression<string> modEndDate = null, WorkflowExpression<int> resultsPerPage = null, WorkflowExpression<int> startIndex = null)
         {

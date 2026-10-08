@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ADDREGISTRANTResponse> __BuildADDREGISTRANT(WorkflowExpression<string> platformId, WorkflowExpression<string> domainId, WorkflowExpression<string> appId, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodydesignation = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyticketTypeId = null)
         {

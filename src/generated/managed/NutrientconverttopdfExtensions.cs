@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvert(WorkflowExpression<string> inputDatasourceFileName, WorkflowExpression<string> inputDatasourceFileContent, WorkflowExpression<inputDataoutputFormatInput> inputDataoutputFormat, WorkflowExpression<string> inputDataoverrideSettings = null, WorkflowExpression<string> inputDatatemplateFileContent = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -97,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertCad(WorkflowExpression<string> inputCadDatasourceFileName, WorkflowExpression<string> inputCadDatasourceFileContent, WorkflowExpression<inputCadDatapaperSizeInput> inputCadDatapaperSize = null, WorkflowExpression<string> inputCadDatapaperSizeCustom = null, WorkflowExpression<string> inputCadDatapageMargins = null, WorkflowExpression<string> inputCadDatabackgroundColor = null, WorkflowExpression<inputCadDataforegroundColorInput> inputCadDataforegroundColor = null, WorkflowExpression<string> inputCadDataforegroundColorCustom = null, WorkflowExpression<inputCadDataemptyLayoutDetectionInput> inputCadDataemptyLayoutDetection = null, WorkflowExpression<inputCadDatalayoutSortOrderInput> inputCadDatalayoutSortOrder = null, WorkflowExpression<int> inputCadDatastartPage = null, WorkflowExpression<int> inputCadDataendPage = null, WorkflowExpression<string> inputCadDataoverrideSettings = null, WorkflowExpression<bool> inputCadDatafailOnError = null)
         {
@@ -296,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertEmail(WorkflowExpression<string> inputEmailDatasourceFileName, WorkflowExpression<string> inputEmailDatasourceFileContent, WorkflowExpression<bool> inputEmailDataincludeAttachments = null, WorkflowExpression<inputEmailDataattachmentActionInput> inputEmailDataattachmentAction = null, WorkflowExpression<bool> inputEmailDataattachmentSummary = null, WorkflowExpression<inputEmailDataunsupportedAttachmentActionInput> inputEmailDataunsupportedAttachmentAction = null, WorkflowExpression<string> inputEmailDataincludeAttachmentFilter = null, WorkflowExpression<string> inputEmailDataexcludeAttachmentFilter = null, WorkflowExpression<string> inputEmailDataviewportSize = null, WorkflowExpression<inputEmailDatapaperSizeInput> inputEmailDatapaperSize = null, WorkflowExpression<string> inputEmailDatapaperSizeCustom = null, WorkflowExpression<string> inputEmailDatapageMargins = null, WorkflowExpression<bool> inputEmailDataattachmentErrors = null, WorkflowExpression<int> inputEmailDataminImageSize = null, WorkflowExpression<bool> inputEmailDataofflineMode = null, WorkflowExpression<int> inputEmailDatastartPage = null, WorkflowExpression<int> inputEmailDataendPage = null, WorkflowExpression<inputEmailDataconversionQualityInput> inputEmailDataconversionQuality = null, WorkflowExpression<string> inputEmailDataoverrideSettings = null, WorkflowExpression<bool> inputEmailDatafailOnError = null)
         {
@@ -557,7 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertExcel(WorkflowExpression<string> inputExcelDatasourceFileName, WorkflowExpression<string> inputExcelDatasourceFileContent, WorkflowExpression<inputExcelDataoutputFormatInput> inputExcelDataoutputFormat, WorkflowExpression<inputExcelDatarangeInput> inputExcelDatarange = null, WorkflowExpression<bool> inputExcelDatarevealHiddenRows = null, WorkflowExpression<bool> inputExcelDatarevealHiddenColumns = null, WorkflowExpression<int> inputExcelDatafitToPagesWide = null, WorkflowExpression<int> inputExcelDatafitToPagesTall = null, WorkflowExpression<int> inputExcelDatastartPage = null, WorkflowExpression<int> inputExcelDataendPage = null, WorkflowExpression<inputExcelDataqualityInput> inputExcelDataquality = null, WorkflowExpression<string> inputExcelDataoverrideSettings = null, WorkflowExpression<bool> inputExcelDatafailOnError = null)
         {
@@ -705,7 +701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertHtml(WorkflowExpression<string> inputDatasourceURLOrHTML, WorkflowExpression<inputDatapageOrientationInput> inputDatapageOrientation = null, WorkflowExpression<inputDatamediaTypeInput> inputDatamediaType = null, WorkflowExpression<inputDataauthenticationTypeInput> inputDataauthenticationType = null, WorkflowExpression<string> inputDatauserName = null, WorkflowExpression<string> inputDatapassword = null, WorkflowExpression<string> inputDataviewportSize = null, WorkflowExpression<int> inputDataconversionDelay = null, WorkflowExpression<bool> inputDatafailOnError = null)
         {
@@ -833,7 +828,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertInfopath(WorkflowExpression<string> inputInfopathDatasourceFileName, WorkflowExpression<string> inputInfopathDatasourceFileContent, WorkflowExpression<inputInfopathDataoutputFormatInput> inputInfopathDataoutputFormat, WorkflowExpression<string> inputInfopathDatatemplateFileContent = null, WorkflowExpression<string> inputInfopathDataviewNames = null, WorkflowExpression<bool> inputInfopathDataincludeAttachment = null, WorkflowExpression<inputInfopathDataattachmentActionInput> inputInfopathDataattachmentAction = null, WorkflowExpression<inputInfopathDataunsupportedAttachmentActionInput> inputInfopathDataunsupportedAttachmentAction = null, WorkflowExpression<bool> inputInfopathDatabreakMergeOnError = null, WorkflowExpression<string> inputInfopathDataincludeAttachmentFilter = null, WorkflowExpression<string> inputInfopathDataexcludeAttachmentFilter = null, WorkflowExpression<inputInfopathDatadefaultPaperSizeInput> inputInfopathDatadefaultPaperSize = null, WorkflowExpression<string> inputInfopathDatadefaultPaperSizeCustom = null, WorkflowExpression<inputInfopathDataforcePaperSizeInput> inputInfopathDataforcePaperSize = null, WorkflowExpression<string> inputInfopathDataforcePaperSizeCustom = null, WorkflowExpression<inputInfopathDatadefaultPageOrientationInput> inputInfopathDatadefaultPageOrientation = null, WorkflowExpression<inputInfopathDataforcePageOrientationInput> inputInfopathDataforcePageOrientation = null, WorkflowExpression<int> inputInfopathDatastartPage = null, WorkflowExpression<int> inputInfopathDataendPage = null, WorkflowExpression<inputInfopathDataconversionQualityInput> inputInfopathDataconversionQuality = null, WorkflowExpression<string> inputInfopathDataoverrideSettings = null, WorkflowExpression<bool> inputInfopathDatafailOnError = null)
         {
@@ -1044,7 +1038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertPdfa(WorkflowExpression<string> inputPdfDatasourceFileName, WorkflowExpression<string> inputPdfDatasourceFileContent, WorkflowExpression<inputPdfDatapDFProfileInput> inputPdfDatapDFProfile, WorkflowExpression<string> inputPdfDataoverrideSettings = null, WorkflowExpression<bool> inputPdfDatafailOnError = null)
         {
@@ -1116,7 +1109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertPowerpoint(WorkflowExpression<string> inputPowerpointDatasourceFileName, WorkflowExpression<string> inputPowerpointDatasourceFileContent, WorkflowExpression<inputPowerpointDataoutputFormatInput> inputPowerpointDataoutputFormat, WorkflowExpression<inputPowerpointDatarangeInput> inputPowerpointDatarange = null, WorkflowExpression<inputPowerpointDataprintLayoutHandoutsInput> inputPowerpointDataprintLayoutHandouts = null, WorkflowExpression<bool> inputPowerpointDataframeSlides = null, WorkflowExpression<int> inputPowerpointDatastartPage = null, WorkflowExpression<int> inputPowerpointDataendPage = null, WorkflowExpression<inputPowerpointDataqualityInput> inputPowerpointDataquality = null, WorkflowExpression<string> inputPowerpointDataoverrideSettings = null, WorkflowExpression<bool> inputPowerpointDatafailOnError = null)
         {
@@ -1250,7 +1242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertVisio(WorkflowExpression<string> inputVisioDatasourceFileName, WorkflowExpression<string> inputVisioDatasourceFileContent, WorkflowExpression<inputVisioDataoutputFormatInput> inputVisioDataoutputFormat, WorkflowExpression<inputVisioDatarangeInput> inputVisioDatarange = null, WorkflowExpression<int> inputVisioDatastartPage = null, WorkflowExpression<int> inputVisioDataendPage = null, WorkflowExpression<inputVisioDataqualityInput> inputVisioDataquality = null, WorkflowExpression<string> inputVisioDataoverrideSettings = null, WorkflowExpression<bool> inputVisioDatafailOnError = null)
         {
@@ -1350,7 +1341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OperationResponse> __BuildConvertWord(WorkflowExpression<string> inputWordDatasourceFileName, WorkflowExpression<string> inputWordDatasourceFileContent, WorkflowExpression<inputWordDataoutputFormatInput> inputWordDataoutputFormat, WorkflowExpression<inputWordDatadisplayForReviewInput> inputWordDatadisplayForReview = null, WorkflowExpression<inputWordDatareviewMarkupModeInput> inputWordDatareviewMarkupMode = null, WorkflowExpression<inputWordDatagenerateBookmarksInput> inputWordDatagenerateBookmarks = null, WorkflowExpression<int> inputWordDatastartPage = null, WorkflowExpression<int> inputWordDataendPage = null, WorkflowExpression<inputWordDataqualityInput> inputWordDataquality = null, WorkflowExpression<string> inputWordDataoverrideSettings = null, WorkflowExpression<bool> inputWordDatafailOnError = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildSendSurvey(WorkflowExpression<string> to, WorkflowExpression<string> projectId, WorkflowExpression<string> formId, WorkflowExpression<string> emailTemplateId, WorkflowExpression<string> regarding = null, WorkflowExpression<string> recipientInfo = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<object> item = null)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSurveyInviteResponse> __BuildCreateSurveyInvite(WorkflowExpression<string> projectId, WorkflowExpression<string> formId, WorkflowExpression<string> email = null, WorkflowExpression<string> subject = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> regarding = null, WorkflowExpression<string> recipientInfo = null, WorkflowExpression<object> item = null)
         {

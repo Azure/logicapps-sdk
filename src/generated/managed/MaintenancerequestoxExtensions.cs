@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maintenancerequestox")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMaintenanceRequestOxmaint(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodypriority, WorkflowExpression<string> bodyrequestedBy, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodymasterEmail, WorkflowExpression<string> bodyapiKey)
         {

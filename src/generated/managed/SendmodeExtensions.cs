@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowExpression<string> messagemessagetext, WorkflowExpression<string[]> messagerecipients, WorkflowExpression<string> contentType = null, WorkflowExpression<string> messagesenderid = null, WorkflowExpression<string> messagecustomerid = null)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OptoutCustomerResponse> __BuildOptoutCustomer(WorkflowExpression<string> contentType, WorkflowExpression<string> messagemobilenumber, WorkflowExpression<string> messageoptoutresponse = null, WorkflowExpression<string> messagereturnedresponse = null)
         {
@@ -115,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImportCustomerResponse> __BuildImportCustomer(WorkflowExpression<string> importdatagroup, WorkflowExpression<string> importdatamobilenumber, WorkflowExpression<string> contentType = null, WorkflowExpression<string> importdatafirstname = null, WorkflowExpression<string> importdatasurname = null, WorkflowExpression<string> importdataaddress = null, WorkflowExpression<string> importdatatown = null, WorkflowExpression<string> importdatacounty = null, WorkflowExpression<string> importdataemail = null, WorkflowExpression<string> importdatacustom1 = null, WorkflowExpression<string> importdatacustom2 = null, WorkflowExpression<string> importdatabusinessname = null, WorkflowExpression<string> importdatadateofbirth = null)
         {
@@ -222,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CheckCreditsResponse> __BuildCheckCredits(WorkflowExpression<string> contentType = null)
         {

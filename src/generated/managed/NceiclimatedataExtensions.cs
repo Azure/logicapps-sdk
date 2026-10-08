@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DatasetsGetResponse> __BuildDatasetsGet(WorkflowExpression<string> datatypeid = null, WorkflowExpression<string> locationid = null, WorkflowExpression<string> stationid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DatasetGetResponse> __BuildDatasetGet(WorkflowExpression<string> id)
         {
@@ -88,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CatagoriesGetResponse> __BuildCatagoriesGet(WorkflowExpression<string> datatsetid = null, WorkflowExpression<string> locationid = null, WorkflowExpression<string> stationid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -137,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CategoryGetResponse> __BuildCategoryGet(WorkflowExpression<string> id)
         {
@@ -158,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypesGetResponse> __BuildTypesGet(WorkflowExpression<string> datatsetid = null, WorkflowExpression<string> locationid = null, WorkflowExpression<string> stationid = null, WorkflowExpression<string> datacategoryid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -210,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TypeGetResponse> __BuildTypeGet(WorkflowExpression<string> id)
         {
@@ -231,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocationCategoriesGetResponse> __BuildLocationCategoriesGet(WorkflowExpression<string> datasetid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -274,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocationCategoryGetResponse> __BuildLocationCategoryGet(WorkflowExpression<string> id)
         {
@@ -295,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocationsGetResponse> __BuildLocationsGet(WorkflowExpression<string> datatypeid = null, WorkflowExpression<string> locationcategoryid = null, WorkflowExpression<string> datacategoryid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -344,7 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocationGetResponse> __BuildLocationGet(WorkflowExpression<string> id)
         {
@@ -365,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationsGetResponse> __BuildStationsGet(WorkflowExpression<string> datasetid = null, WorkflowExpression<string> locationid = null, WorkflowExpression<string> datacategoryid = null, WorkflowExpression<string> datatypeid = null, WorkflowExpression<string> extent = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
         {
@@ -420,7 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationGetResponse> __BuildStationGet(WorkflowExpression<string> id)
         {
@@ -441,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DataGetResponse> __BuildDataGet(WorkflowExpression<string> datasetid, WorkflowExpression<string> startdate, WorkflowExpression<string> enddate, WorkflowExpression<string> datatypeid = null, WorkflowExpression<string> locationid = null, WorkflowExpression<string> stationid = null, WorkflowExpression<unitsInput> units = null, WorkflowExpression<sortfieldInput> sortfield = null, WorkflowExpression<sortorderInput> sortorder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> includemetadata = null)
         {
@@ -497,7 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DatasetsSearchGetResponse> __BuildDatasetsSearchGet(WorkflowExpression<string> dataset = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> boundingBox = null, WorkflowExpression<string> keywords = null, WorkflowExpression<string> text = null, WorkflowExpression<string> dataTypes = null, WorkflowExpression<string> stations = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<bool> available = null)
         {
@@ -550,7 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationHistoricalGetResponse> __BuildStationHistoricalGet(WorkflowExpression<string> stationid, WorkflowExpression<string> date = null, WorkflowExpression<string> begindate = null, WorkflowExpression<string> enddate = null)
         {
@@ -581,7 +566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StationHistoricSearchGetResponse> __BuildStationHistoricSearchGet(WorkflowExpression<string> qid = null, WorkflowExpression<string> qidMod = null, WorkflowExpression<string> state = null, WorkflowExpression<string> county = null, WorkflowExpression<string> country = null, WorkflowExpression<string> name = null, WorkflowExpression<string> nameMod = null, WorkflowExpression<string> platform = null, WorkflowExpression<string> date = null, WorkflowExpression<string> begindate = null, WorkflowExpression<string> enddate = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<bool> current = null, WorkflowExpression<string> headersOnly = null, WorkflowExpression<bool> phrData = null, WorkflowExpression<bool> definitions = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NPSCreateResponse> __BuildApiExtNPS(WorkflowExpression<string> modelemail, WorkflowExpression<int> modelscore, WorkflowExpression<string> modelratingDate, WorkflowExpression<string> modelname = null, WorkflowExpression<string> modelcomments = null, WorkflowExpression<string> modeladditionalData = null)
         {
@@ -75,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TimelineCreateResponse> __BuildApiExtTimeline(WorkflowExpression<string> modelsource, WorkflowExpression<string> modeltitle, WorkflowExpression<string> modeldescription, WorkflowExpression<string> modeltoDisplayName, WorkflowExpression<string> modeltoEmail, WorkflowExpression<string> modelfromDisplayName, WorkflowExpression<string> modelfromEmail, WorkflowExpression<string> modelcreatedByDateTime, WorkflowExpression<string> modelculture = null)
         {

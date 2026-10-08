@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingsearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewsArticle[]> __BuildGetNews(WorkflowExpression<string> q, WorkflowExpression<mktInput> mkt = null, WorkflowExpression<safeSearchInput> safeSearch = null, WorkflowExpression<string> count = null, WorkflowExpression<string> offset = null)
         {

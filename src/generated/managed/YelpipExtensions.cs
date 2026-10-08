@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BusinessSearchResponse> __BuildBusinessSearch(WorkflowExpression<string> term, WorkflowExpression<string> location, WorkflowExpression<double> latitude = null, WorkflowExpression<double> longtitude = null, WorkflowExpression<int> radius = null, WorkflowExpression<string> categories = null, WorkflowExpression<string> locale = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<sortByInput> sortBy = null, WorkflowExpression<bool> openNow = null)
         {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PhoneSearchResponse> __BuildPhoneSearch(WorkflowExpression<string> phone, WorkflowExpression<string> locale = null)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BusinessDetailsResponse> __BuildBusinessDetails(WorkflowExpression<string> id, WorkflowExpression<string> locale = null)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BusinessMatchResponseItem[]> __BuildBusinessMatch(WorkflowExpression<string> name, WorkflowExpression<string> address1, WorkflowExpression<string> city, WorkflowExpression<string> state, WorkflowExpression<string> country, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<double> latitude = null, WorkflowExpression<double> longitude = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> zipCode = null, WorkflowExpression<string> yelpBusinessId = null, WorkflowExpression<int> limit = null, WorkflowExpression<matchThresholdInput> matchThreshold = null)
         {
@@ -175,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReviewsResponse> __BuildReviews(WorkflowExpression<string> id, WorkflowExpression<string> locale = null)
         {
@@ -199,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AutocompleteResponse> __BuildAutocomplete(WorkflowExpression<string> text, WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<string> locale = null)
         {

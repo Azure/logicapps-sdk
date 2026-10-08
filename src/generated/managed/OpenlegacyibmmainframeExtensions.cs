@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMfCicsCobol(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMfCtgCobol(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMfImsCobol(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMfNatural(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMfVsamCics(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {
@@ -148,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMf3270Screens(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {
@@ -174,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMfMq(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
         {

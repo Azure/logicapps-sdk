@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLightResponse> __BuildGetLight(WorkflowExpression<string> deviceId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteLightResponse> __BuildExecuteLight(WorkflowExpression<string> deviceId, WorkflowExpression<string> bodymetadataname = null, WorkflowExpression<bool> bodyonon = null, WorkflowExpression<double> bodydimmingbrightness = null, WorkflowExpression<int> bodycolorTemperaturemirek = null, WorkflowExpression<double> bodycolorxyx = null, WorkflowExpression<double> bodycolorxyy = null, WorkflowExpression<double> bodydynamicsspeed = null, WorkflowExpression<int> bodydynamicsduration = null, WorkflowExpression<string> bodyalertaction = null, WorkflowExpression<bodygradientpointsInputItem[]> bodygradientpoints = null)
         {
@@ -237,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeviceResponse> __BuildGetDevice(WorkflowExpression<string> deviceId)
         {
@@ -258,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExecuteDeviceResponse> __BuildExecuteDevice(WorkflowExpression<string> deviceId, WorkflowExpression<bodymetadataarchetypeInput> bodymetadataarchetype = null, WorkflowExpression<string> bodymetadataname = null, WorkflowExpression<string> bodyidentifyaction = null)
         {
@@ -352,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSceneResponse> __BuildGetScene(WorkflowExpression<string> sceneId)
         {
@@ -373,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteSceneResponse> __BuildDeleteScene(WorkflowExpression<string> sceneId)
         {

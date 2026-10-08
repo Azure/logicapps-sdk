@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignGetResponse> __BuildCampaignGet(WorkflowExpression<string> scope = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignPostResponse> __BuildCampaign(WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyendAt = null, WorkflowExpression<int> bodygoal = null, WorkflowExpression<string> bodysubtitle = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytype = null)
         {
@@ -117,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignGetAResponse> __BuildCampaignGetA(WorkflowExpression<string> id)
         {
@@ -138,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildCampaignDelete(WorkflowExpression<string> id)
         {
@@ -159,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignPatchResponse> __BuildCampaignPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyendAt = null, WorkflowExpression<string> bodygoal = null, WorkflowExpression<string> bodysubtitle = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytype = null)
         {
@@ -236,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemberGetResponse> __BuildMemberGet(WorkflowExpression<string> campaignId)
         {
@@ -257,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemberGetAResponse> __BuildMemberGetA(WorkflowExpression<string> campaignId, WorkflowExpression<string> memberId)
         {
@@ -279,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildMemberDelete(WorkflowExpression<string> campaignId, WorkflowExpression<string> memberId)
         {
@@ -301,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TeamGetResponse> __BuildTeamGet(WorkflowExpression<string> campaignId)
         {
@@ -322,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TeamGetAResponse> __BuildTeamGetA(WorkflowExpression<string> campaignId, WorkflowExpression<string> teamId)
         {
@@ -344,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactGetResponse> __BuildContactGet(WorkflowExpression<string> scope = null)
         {
@@ -367,7 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactPostResponse> __BuildContact(WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null, WorkflowExpression<bodyphonesInputItem[]> bodyphones = null, WorkflowExpression<bodyaddressesInputItem[]> bodyaddresses = null, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<string> bodydob = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytwitterUrl = null, WorkflowExpression<string> bodylinkedinUrl = null, WorkflowExpression<string> bodyfacebookUrl = null)
         {
@@ -485,7 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactGetAResponse> __BuildContactGetA(WorkflowExpression<string> id)
         {
@@ -506,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactPatchResponse> __BuildContactPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodydob = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytwitterUrl = null, WorkflowExpression<string> bodylinkedinUrl = null, WorkflowExpression<string> bodyfacebookUrl = null)
         {
@@ -597,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildContactDelete(WorkflowExpression<string> id)
         {
@@ -618,7 +603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ContactRestoreResponse> __BuildContactRestore(WorkflowExpression<string> id)
         {
@@ -648,7 +632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TicketGetAResponse> __BuildTicketGetA(WorkflowExpression<string> id)
         {
@@ -678,7 +661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TransactionGetAResponse> __BuildTransactionGetA(WorkflowExpression<string> id)
         {
@@ -708,7 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PayoutGetAResponse> __BuildPayoutGetA(WorkflowExpression<string> id)
         {
@@ -738,7 +719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlanGetAResponse> __BuildPlanGetA(WorkflowExpression<string> id)
         {
@@ -768,7 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FundPostResponse> __BuildFund(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycode = null)
         {
@@ -809,7 +788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FundGetAResponse> __BuildFundGetA(WorkflowExpression<string> id)
         {
@@ -830,7 +808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FundPatchResponse> __BuildFundPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycode = null)
         {
@@ -872,7 +849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFundDelete(WorkflowExpression<string> id)
         {

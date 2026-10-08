@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Contact> __BuildGetContact(WorkflowExpression<string> contactListId, WorkflowExpression<string> contactId)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteContact(WorkflowExpression<string> contactListId, WorkflowExpression<string> contactId)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Contact> __BuildUpdateContact(WorkflowExpression<string> contactListId, WorkflowExpression<string> contactId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyinternetemail = null, WorkflowExpression<string> bodyinternetwebsite = null, WorkflowExpression<string> bodyinternetlinkedin = null, WorkflowExpression<string> bodyinternetfacebook = null, WorkflowExpression<string> bodyinternettwitter = null, WorkflowExpression<string> bodyphonesbusinessPhone = null, WorkflowExpression<string> bodyphonesmobile = null, WorkflowExpression<string> bodyphoneshome = null, WorkflowExpression<string> bodyphonesbusinessFax = null, WorkflowExpression<Address[]> bodyaddresses = null, WorkflowExpression<string> bodynotes = null)
         {
@@ -215,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Contact[]> __BuildGetAllContacts(WorkflowExpression<string> contactListId)
         {
@@ -236,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Contact> __BuildCreateContact(WorkflowExpression<string> contactListId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyinternetemail = null, WorkflowExpression<string> bodyinternetwebsite = null, WorkflowExpression<string> bodyinternetlinkedin = null, WorkflowExpression<string> bodyinternetfacebook = null, WorkflowExpression<string> bodyinternettwitter = null, WorkflowExpression<string> bodyphonesbusinessPhone = null, WorkflowExpression<string> bodyphonesmobile = null, WorkflowExpression<string> bodyphoneshome = null, WorkflowExpression<string> bodyphonesbusinessFax = null, WorkflowExpression<Address[]> bodyaddresses = null, WorkflowExpression<string> bodynotes = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPagesList(WorkflowExpression<int> limit = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> id = null, WorkflowExpression<string> name = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPagesCreate(WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodyfooterHtml = null, WorkflowExpression<string> bodyheadHtml = null, WorkflowExpression<string> bodyisDraft = null, WorkflowExpression<string> bodymetaDescription = null, WorkflowExpression<string> bodymetaKeywords = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodypublishDate = null, WorkflowExpression<string> bodypublishImmediately = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<string> bodywidgetContainers = null, WorkflowExpression<string> bodywidgets = null)
         {
@@ -184,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPagesArchive(WorkflowExpression<string> pageId)
         {
@@ -205,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPagesUpdate(WorkflowExpression<string> pageId, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodyfooterHtml = null, WorkflowExpression<string> bodyheadHtml = null, WorkflowExpression<string> bodyisDraft = null, WorkflowExpression<string> bodymetaDescription = null, WorkflowExpression<string> bodymetaKeywords = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodypublishDate = null, WorkflowExpression<string> bodypublishImmediately = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<string> bodywidgetContainers = null, WorkflowExpression<string> bodywidgets = null)
         {
@@ -338,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPagesPublish(WorkflowExpression<string> pageId, WorkflowExpression<bodyactionInput> bodyaction)
         {
@@ -369,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTemplatesList(WorkflowExpression<int> limit = null, WorkflowExpression<string> id = null)
         {
@@ -396,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTemplatesCreate(WorkflowExpression<bodycategoryIdInput> bodycategoryId = null, WorkflowExpression<string> bodyfolder = null, WorkflowExpression<bool> bodyisAvailableForNewContent = null, WorkflowExpression<bodytemplateTypeInput> bodytemplateType = null, WorkflowExpression<string> bodypath = null, WorkflowExpression<string> bodysource = null)
         {
@@ -475,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTemplatesArchive(WorkflowExpression<string> templateId)
         {
@@ -496,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTemplatesUpdate(WorkflowExpression<string> templateId, WorkflowExpression<string> bodysource)
         {

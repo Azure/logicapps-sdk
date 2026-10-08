@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CloudCreateResponse> __BuildCloudCreate(WorkflowExpression<string> bodytext, WorkflowExpression<double> bodyscale, WorkflowExpression<int> bodywidth, WorkflowExpression<int> bodyheight, WorkflowExpression<string[]> bodycolors = null, WorkflowExpression<string> bodyfont = null, WorkflowExpression<bool> bodyuseStopwords = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyuppercase = null)
         {

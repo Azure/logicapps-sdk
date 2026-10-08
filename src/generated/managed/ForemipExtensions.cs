@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Articles200Item[]> __BuildGetArticles(WorkflowExpression<int> page, WorkflowExpression<int> perPage, WorkflowExpression<string> tag, WorkflowExpression<string> tags = null, WorkflowExpression<string> tagsExclude = null, WorkflowExpression<string> username = null, WorkflowExpression<string> state = null, WorkflowExpression<string> top = null, WorkflowExpression<string> collectionId = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<User> __BuildGetUser(WorkflowExpression<string> userId, WorkflowExpression<string> url)
         {

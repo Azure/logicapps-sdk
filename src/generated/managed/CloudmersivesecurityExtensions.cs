@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringAutomaticThreatDetection> __BuildContentThreatDetectionAutomaticThreatDetectionString(WorkflowExpression<string> value = null)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringInsecureDeserializationJsonDetection> __BuildContentThreatDetectionDetectInsecureDeserializationJsonString(WorkflowExpression<string> value = null)
         {
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringSqlInjectionDetectionResult> __BuildContentThreatDetectionCheckSqlInjectionString(WorkflowExpression<string> value = null)
         {
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringXssProtectionResult> __BuildContentThreatDetectionProtectXss(WorkflowExpression<string> value = null)
         {
@@ -106,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StringXxeDetectionResult> __BuildContentThreatDetectionCheckXxe(WorkflowExpression<string> value = null)
         {
@@ -128,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UrlSsrfThreatDetectionResponseFull> __BuildNetworkThreatDetectionDetectSsrfUrl(WorkflowExpression<string> requestuRL = null, WorkflowExpression<string[]> requestblockedDomains = null)
         {
@@ -169,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IPThreatDetectionResponse> __BuildNetworkThreatDetectionIsThreat(WorkflowExpression<string> value = null)
         {
@@ -191,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreatDetectionBotCheckResponse> __BuildNetworkThreatDetectionIsBot(WorkflowExpression<string> value = null)
         {
@@ -213,7 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ThreatDetectionTorNodeResponse> __BuildNetworkThreatDetectionIsTorNode(WorkflowExpression<string> value = null)
         {

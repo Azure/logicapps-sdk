@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiResponse> __BuildSendInvitation(WorkflowExpression<string> bodycardTemplateId, WorkflowExpression<string> bodyjobtitle, WorkflowExpression<string> bodyworkEmail, WorkflowExpression<string> bodynameOnCard = null, WorkflowExpression<string> bodyextension = null)
         {
@@ -76,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ApiResponse> __BuildDisassociateMember(WorkflowExpression<string> contentType, WorkflowExpression<string> bodyemail)
         {

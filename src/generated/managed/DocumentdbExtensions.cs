@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostDocumentsResponse> __BuildCreateDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<bool> xMsDocumentdbIsUpsert = null, WorkflowExpression<string> xMsDocumentdbPreTriggerInclude = null, WorkflowExpression<string> xMsDocumentdbPostTriggerInclude = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -75,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateStoredProcedureResponse> __BuildCreateStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> bodyfunctionDefinition = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -122,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> documentId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<string> xMsDocumentdbPreTriggerInclude = null, WorkflowExpression<string> xMsDocumentdbPostTriggerInclude = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -173,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> sprocId, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -200,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildExecuteStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> sprocId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<string> parameters = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -232,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentV2Response> __BuildGetDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> documentId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -283,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentsV3Response> __BuildGetDocuments(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<xMsVersionInput> xMsVersion = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -333,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStoredProceduresResponse> __BuildGetStoredProcedures(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -359,7 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueryDocumentsV5Response> __BuildQueryDocuments(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> queryText = null, WorkflowExpression<string> partitionKey = null, WorkflowExpression<int> maxItemCount = null, WorkflowExpression<string> continuationToken = null, WorkflowExpression<consistencyLevelInput> consistencyLevel = null, WorkflowExpression<string> sessionToken = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
         {
@@ -406,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PutDocumentResponse> __BuildReplaceDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> documentId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<string> xMsDocumentdbPreTriggerInclude = null, WorkflowExpression<string> xMsDocumentdbPostTriggerInclude = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {
@@ -464,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateStoredProcedureResponse> __BuildReplaceStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> sprocId, WorkflowExpression<string> bodyfunctionDefinition = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
         {

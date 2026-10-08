@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DetectResponse> __BuildDetectObjects(WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AreaOfInterestResponse> __BuildGetAreaOfInterest(WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyzeImage(WorkflowExpression<string> subdomainName, WorkflowExpression<formatInput> format, WorkflowExpression<languageInput> language = null, WorkflowExpression<object> image = null)
         {
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DescribeResponse> __BuildDescribeImage(WorkflowExpression<string> subdomainName, WorkflowExpression<formatInput> format, WorkflowExpression<double> maxCandidates = null, WorkflowExpression<languageInput> language = null, WorkflowExpression<object> image = null)
         {
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DescribeResponse> __BuildDescribeImageContent(WorkflowExpression<string> subdomainName, WorkflowExpression<double> maxCandidates = null, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> image = null)
         {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DescribeResponse> __BuildDescribeImageURL(WorkflowExpression<string> subdomainName, WorkflowExpression<double> maxCandidates = null, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> imageURLimageURL = null)
         {
@@ -196,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetThumbnail(WorkflowExpression<string> subdomainName, WorkflowExpression<double> width, WorkflowExpression<double> height, WorkflowExpression<formatInput> format, WorkflowExpression<bool> smartCropping = null, WorkflowExpression<object> image = null)
         {
@@ -229,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OCRJsonResponse> __BuildOCR(WorkflowExpression<string> subdomainName, WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -256,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OCRTextResponse> __BuildOCRText(WorkflowExpression<string> subdomainName, WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -283,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainModelResponse> __BuildRecognizeDomainSpecificContent(WorkflowExpression<string> subdomainName, WorkflowExpression<modelInput> model, WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {
@@ -309,7 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagResponse> __BuildTagImage(WorkflowExpression<string> subdomainName, WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
         {

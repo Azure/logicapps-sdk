@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateHMAC(WorkflowExpression<string> bodyrequestString, WorkflowExpression<string> bodysecretKey, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bodyencodeTypeInput> bodyencodeType = null, WorkflowExpression<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
         {

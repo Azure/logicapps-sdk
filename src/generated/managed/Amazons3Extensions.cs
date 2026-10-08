@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<S3ObjectCollection> __BuildListObjects(WorkflowExpression<string> bucketName, WorkflowExpression<string> bucketRegion = null, WorkflowExpression<int> maxObjectCount = null, WorkflowExpression<string> continuationToken = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<S3ObjectDeepMetadata> __BuildGetObjectMetadata(WorkflowExpression<string> bucketName, WorkflowExpression<string> objectKey, WorkflowExpression<string> bucketRegion = null)
         {
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetObjectContent(WorkflowExpression<string> bucketName, WorkflowExpression<string> objectKey, WorkflowExpression<string> bucketRegion = null)
         {

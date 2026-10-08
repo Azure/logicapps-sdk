@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmIncidentResponse> __BuildGetIncident(WorkflowExpression<string> id)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> __BuildGetRetrospectiveById(WorkflowExpression<string> retrospectiveId)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> __BuildGetRetrospectiveByIncidentId(WorkflowExpression<string> id)
         {
@@ -81,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmBridgesResponse> __BuildGetBridgesForAnIncident(WorkflowExpression<string> id)
         {
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddNewIcMDiscussionEntry(WorkflowExpression<string> id, WorkflowExpression<string> bodydiscussionText = null, WorkflowExpression<bodyrenderTypeInput> bodyrenderType = null)
         {
@@ -144,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmDescriptionEntriesResponse> __BuildGetDescriptionEntries(WorkflowExpression<string> id, WorkflowExpression<int> count = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -173,7 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateIncidentSeverity(WorkflowExpression<string> id, WorkflowExpression<bodyseverityInput> bodyseverity, WorkflowExpression<string> bodydescriptionEntry = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -215,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateIncidentTitle(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -250,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateIncidentOwner(WorkflowExpression<string> id, WorkflowExpression<string> bodyowningContactAlias, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -285,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateIncidentCustomFields(WorkflowExpression<string> id, WorkflowExpression<string> bodygroupType, WorkflowExpression<bodycustomFieldsInputItem[]> bodycustomFields, WorkflowExpression<string> bodypublicID = null, WorkflowExpression<string> bodycontainerID = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -337,7 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateIncidentSingleCustomField(WorkflowExpression<string> id, WorkflowExpression<string> bodycustomField, WorkflowExpression<string> bodyvalue, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -375,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateIncidentTags(WorkflowExpression<string> id, WorkflowExpression<string[]> bodytags, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -410,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TagUserInDiscussionResponse> __BuildTagUserInDiscussion(WorkflowExpression<string> id, WorkflowExpression<string> bodyrecipientEmail, WorkflowExpression<string> bodydiscussionText, WorkflowExpression<string> bodyrecipientDisplayName = null, WorkflowExpression<string> bodymentionerDisplayName = null, WorkflowExpression<string> bodymentionerAlias = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -469,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IncidentAddUpdateResult> __BuildCreateIcMIncident(WorkflowExpression<string> bodyconnectorId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyowningTeam = null, WorkflowExpression<string> bodycorrelationId = null, WorkflowExpression<string> bodyroutingId = null, WorkflowExpression<bodyhowFoundInput> bodyhowFound = null, WorkflowExpression<bodyseverityInput> bodyseverity = null, WorkflowExpression<string> bodydiscussionEntrydiscussionText = null, WorkflowExpression<bodydiscussionEntryrenderTypeInput> bodydiscussionEntryrenderType = null, WorkflowExpression<string> bodysummary = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<bodycloudInstanceInput> bodycloudInstance = null, WorkflowExpression<string> bodyoccurringLocationenvironment = null, WorkflowExpression<string> bodyoccurringLocationdcRegion = null, WorkflowExpression<string> bodyoccurringLocationinstanceCluster = null, WorkflowExpression<string> bodyoccurringLocationrole = null, WorkflowExpression<string> bodyoccurringLocationslice = null, WorkflowExpression<bool> bodyisRestrictedIncident = null, WorkflowExpression<bool> bodyisSecurityRisk = null, WorkflowExpression<IcmAccessClaim[]> bodyaccessRestrictedToClaims = null)
         {
@@ -644,7 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmIncidentSearchResponse> __BuildSearchIncidents(WorkflowExpression<string> filter, WorkflowExpression<string> select = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<searchEndpointInput> searchEndpoint = null)
         {
@@ -679,7 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmTeamSearchResponse> __BuildSearchIcMTeams(WorkflowExpression<string> publicId = null, WorkflowExpression<string> name = null, WorkflowExpression<bool> includeMembers = null, WorkflowExpression<int> skip = null)
         {
@@ -712,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IcmCurrentOnCallResponse> __BuildGetCurrentOncallContactList(WorkflowExpression<string> teamId = null)
         {
@@ -735,7 +718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildTransferIncident(WorkflowExpression<string> id, WorkflowExpression<string> bodyowningTenantPublicId, WorkflowExpression<string> bodyowningTeamPublicId, WorkflowExpression<string> bodydescription, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -776,7 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMitigateIncident(WorkflowExpression<string> id, WorkflowExpression<string> bodymitigation, WorkflowExpression<bool> bodyisCustomerImpacting = null, WorkflowExpression<bool> bodyisNoise = null, WorkflowExpression<string> bodyhowFixed = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -832,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildReactivateIncident(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription, WorkflowExpression<bool> bodydisableVoiceNotifications = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -874,7 +854,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildResolveIncident(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription, WorkflowExpression<bool> bodyisCustomerImpacting = null, WorkflowExpression<bool> bodyisNoise = null, WorkflowExpression<icmEndpointInput> icmEndpoint = null)
         {
@@ -923,7 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> contentType = null)
         {

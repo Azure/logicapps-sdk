@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item[]> __BuildEntityTypesGetEntityTypes(WorkflowExpression<string> siteUrl)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesCreateEntityNoRetry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityTypeUid, WorkflowExpression<string> entityName)
         {
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Entity[]> __BuildFinancialEntitiesGetAllEntities(WorkflowExpression<string> siteUrl, WorkflowExpression<string> filter = null, WorkflowExpression<string> selectColumns = null)
         {
@@ -94,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesGetAllEntitiesNoRetry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> filter = null, WorkflowExpression<string> selectColumns = null)
         {
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Entity> __BuildFinancialEntitiesGetEntity(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> selectColumns = null)
         {
@@ -149,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesGetEntityNoRetry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> selectColumns = null)
         {
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item[]> __BuildFinancialEntitiesGetEntityFields(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId)
         {
@@ -200,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesGetEntityFieldValuesODataNoRetry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> filter = null)
         {
@@ -227,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FieldValue[]> __BuildFinancialEntitiesGetEntityFieldValues(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId)
         {
@@ -251,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FieldValue> __BuildFinancialEntitiesGetEntityFieldValue(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> fieldIdentifier)
         {
@@ -277,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<bool> __BuildFinancialEntitiesExecuteStageValidation(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> stageId = null)
         {
@@ -304,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResult> __BuildFinancialEntitiesSetEntityFieldValueNoRetry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> fieldIdentifier, WorkflowExpression<string> value)
         {
@@ -332,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResult> __BuildFinancialEntitiesSetEntityFieldsValuesNoRetry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<EntityFieldValuePair[]> fieldValues = null)
         {
@@ -358,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CustomFieldValueCreationInformation> __BuildFinancialEntitiesGetFinancialCustomFieldValue(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> eftId, WorkflowExpression<string> fdId, WorkflowExpression<string> fnId, WorkflowExpression<string> centerId, WorkflowExpression<string> fieldIdentifier)
         {
@@ -392,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFinancialEntitiesSetCustomFinancialFieldValue(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> eftId, WorkflowExpression<string> fdId, WorkflowExpression<string> fnId, WorkflowExpression<string> centerId, WorkflowExpression<string> fieldIdentifier, WorkflowExpression<string> value)
         {
@@ -428,7 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFinancialEntitiesSetCustomFinancialFieldsValues(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> eftId, WorkflowExpression<string> fdId, WorkflowExpression<string> fnId, WorkflowExpression<string> centerId, WorkflowExpression<FinancialFieldValuePair[]> fieldValues = null)
         {
@@ -462,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Resource[]> __BuildFinancialEntitiesGetEntityResources(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityUid)
         {
@@ -486,7 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildFinancialEntitiesAddEntityResource(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityUid, WorkflowExpression<string> resourceUid)
         {
@@ -512,7 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFinancialEntitiesExecuteStageTransition(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> stageId = null)
         {
@@ -539,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EntityHistoryEntry[]> __BuildFinancialEntitiesGetEntityHistoryEntries(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId)
         {
@@ -563,7 +543,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CallResult> __BuildFinancialEntitiesCreateEntityRelationship(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> relatedEntityId)
         {
@@ -589,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFinancialEntitiesLogEntityHistoryEntry(WorkflowExpression<string> siteUrl, WorkflowExpression<string> entityId, WorkflowExpression<string> activityType, WorkflowExpression<string> activityTypeIcon, WorkflowExpression<string> activityDetails, WorkflowExpression<string> initiator)
         {
@@ -621,7 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item[]> __BuildLookupTableGetLookupTables(WorkflowExpression<string> siteUrl)
         {
@@ -643,7 +620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Item[]> __BuildLookupTableGetLookupTableValues(WorkflowExpression<string> siteUrl, WorkflowExpression<string> optionSetUid)
         {

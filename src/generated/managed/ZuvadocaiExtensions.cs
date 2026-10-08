@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubmitFileResponse> __BuildSubmitFile(WorkflowExpression<string> file = null)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDeleteFile(WorkflowExpression<string> fileId)
         {
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateOcrRequestResponse> __BuildCreateOcrRequest(WorkflowExpression<string> fileIdBodyfileID = null)
         {
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOcrRequestStatusResponse> __BuildGetOcrRequestStatus(WorkflowExpression<string> requestId)
         {
@@ -116,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetOcrRequestTextResponse> __BuildGetOcrRequestText(WorkflowExpression<string> requestId)
         {
@@ -137,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetOcrRequestImages(WorkflowExpression<string> requestId)
         {
@@ -167,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> __BuildCreateFieldExtractionRequest(WorkflowExpression<string> bodyfileID = null, WorkflowExpression<string[]> bodyfieldIDs = null)
         {
@@ -208,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> __BuildGetFieldExtractionRequestStatus(WorkflowExpression<string> requestId)
         {
@@ -229,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> __BuildGetFieldExtractionRequestResults(WorkflowExpression<string> requestId)
         {
@@ -250,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> __BuildCreateDocumentClassificationRequest(WorkflowExpression<string> fileIdBodyfileID = null)
         {
@@ -284,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> __BuildGetDocumentClassificationRequestStatus(WorkflowExpression<string> requestId)
         {
@@ -305,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> __BuildCreateLanguageClassificationRequest(WorkflowExpression<string> fileIdBodyfileID = null)
         {
@@ -339,7 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> __BuildGetLanguageClassificationRequestStatus(WorkflowExpression<string> requestId)
         {
@@ -360,7 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateMlcRequestResponse> __BuildCreateMlcRequest(WorkflowExpression<string> fileIdBodyfileID = null)
         {
@@ -394,7 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMlcRequestStatusResponse> __BuildGetMlcRequestStatus(WorkflowExpression<string> requestId)
         {
@@ -415,7 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NormalizeDatesResponse> __BuildNormalizeDates(WorkflowExpression<string> textBodytext = null)
         {

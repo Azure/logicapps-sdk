@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddInstructorResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null)
         {
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetAttendanceResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<Attendees[]> bodyattendees = null)
         {
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLaunchSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodyjoinUrl = null)
         {
@@ -164,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodycorpId = null, WorkflowExpression<string> bodymeetingId = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodyjoinURL = null)
         {
@@ -250,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodycorpId = null, WorkflowExpression<string> bodymeetingId = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodyjoinURL = null)
         {
@@ -336,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null)
         {
@@ -380,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateInstructorResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null)
         {

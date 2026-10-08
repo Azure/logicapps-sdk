@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildGetExpenseImage(WorkflowExpression<string> expenseId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultExportResponse> __BuildExportExpenses(WorkflowExpression<string> exportId, WorkflowExpression<string> reportId = null, WorkflowExpression<string> categoryId = null, WorkflowExpression<string> expenseName = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> expenseStates = null, WorkflowExpression<string> reportStates = null, WorkflowExpression<string> userIds = null, WorkflowExpression<string> userMail = null, WorkflowExpression<string> reportIds = null, WorkflowExpression<string> expenseIds = null, WorkflowExpression<string> reportName = null, WorkflowExpression<string> reportIdShort = null, WorkflowExpression<int> dateFilterType = null, WorkflowExpression<string> payId = null, WorkflowExpression<string> payId2 = null, WorkflowExpression<string> payId3 = null, WorkflowExpression<string> accountingPeriod = null, WorkflowExpression<bool> includeReceipts = null, WorkflowExpression<int> expenseUseTypes = null, WorkflowExpression<string> archiveExpenses = null)
         {
@@ -123,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultExportResponse> __BuildPrintMission(WorkflowExpression<string> reportId)
         {
@@ -144,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultListExportFormatResponse> __BuildExportFormats(WorkflowExpression<bool> isForExpenses = null, WorkflowExpression<int> exportType = null)
         {
@@ -170,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> __BuildAddProjects(WorkflowExpression<AddOrUpdateProjectInput[]> addOrUpdateProjectInputArray = null)
         {
@@ -192,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> __BuildUpdateProjects(WorkflowExpression<AddOrUpdateProjectInput[]> addOrUpdateProjectInputArray = null)
         {
@@ -214,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResult> __BuildAddReciept(WorkflowExpression<string> addReceiptInputuserId, WorkflowExpression<string> addReceiptInputreceiptContent, WorkflowExpression<string> addReceiptInputreceiptName)
         {
@@ -259,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> __BuildValidatorReports(WorkflowExpression<string> validatorMail, WorkflowExpression<string> reportName = null, WorkflowExpression<string> reportStartDate = null, WorkflowExpression<string> reportEndDate = null, WorkflowExpression<string> reportStates = null, WorkflowExpression<string> reportIdShort = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<string> ownerPayId2 = null, WorkflowExpression<string> projectId = null, WorkflowExpression<int> dateFilterType = null, WorkflowExpression<int> sortBy = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<bool> isDesc = null)
         {
@@ -319,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResult> __BuildUpdateReportStatus(WorkflowExpression<string> reportId, WorkflowExpression<reportUpdateStatusInputoperationInput> reportUpdateStatusInputoperation, WorkflowExpression<string> reportUpdateStatusInputmessage, WorkflowExpression<string[]> reportUpdateStatusInputinvoiceIdsToReject = null, WorkflowExpression<string> reportUpdateStatusInputaccountingPeriod = null)
         {
@@ -367,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> __BuildCompanyReports(WorkflowExpression<string> reportName = null, WorkflowExpression<string> reportStartDate = null, WorkflowExpression<string> reportEndDate = null, WorkflowExpression<string> reportStates = null, WorkflowExpression<string> reportIdShort = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<string> ownerPayId2 = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> tagsNames = null, WorkflowExpression<int> dateFilterType = null, WorkflowExpression<int> sortBy = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<bool> isDesc = null)
         {
@@ -429,7 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAndPagesCountResultUserResponse> __BuildCompanyUsers(WorkflowExpression<string> id = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> mail = null, WorkflowExpression<string> payId = null, WorkflowExpression<string> mailOrNameOrPayId = null, WorkflowExpression<int> type = null, WorkflowExpression<int> state = null, WorkflowExpression<string> reviewerId = null, WorkflowExpression<string> reviewerName = null, WorkflowExpression<string> managerId = null, WorkflowExpression<string> managerName = null, WorkflowExpression<string> userIds = null, WorkflowExpression<string> userMails = null, WorkflowExpression<string> tagsNames = null, WorkflowExpression<string> simpleTagsNames = null, WorkflowExpression<int> sortBy = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<bool> isDesc = null)
         {
@@ -509,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResult> __BuildAddQuickExpense(WorkflowExpression<string> userId, WorkflowExpression<string> quickExpenseInputfileToSend, WorkflowExpression<string> quickExpenseInputtitle = null, WorkflowExpression<double> quickExpenseInputtransactionAmount = null, WorkflowExpression<string> quickExpenseInputvatRates = null, WorkflowExpression<string> quickExpenseInputvatAmounts = null, WorkflowExpression<string> quickExpenseInputcurrencyCode = null, WorkflowExpression<string> quickExpenseInputtransactionDate = null, WorkflowExpression<string> quickExpenseInputmerchantName = null, WorkflowExpression<string> quickExpenseInputlocationCountry = null, WorkflowExpression<string> quickExpenseInputlocationCity = null, WorkflowExpression<string> quickExpenseInputcomment = null, WorkflowExpression<string> quickExpenseInputmerchantExpenseId = null, WorkflowExpression<bool> quickExpenseInputisEncrypted = null, WorkflowExpression<quickExpenseInputexpenseUseTypeInput> quickExpenseInputexpenseUseType = null, WorkflowExpression<string> quickExpenseInputpaymentTypeCode = null, WorkflowExpression<string> quickExpenseInputexpenseTypeCode = null, WorkflowExpression<string> quickExpenseInputfileType = null)
         {
@@ -652,7 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAndPagesCountResultCategoryResponse> __BuildGetCategories(WorkflowExpression<string> id = null, WorkflowExpression<string> categoryName = null, WorkflowExpression<string> costAccount = null, WorkflowExpression<string> vatAccount = null, WorkflowExpression<bool> isActive = null, WorkflowExpression<string> tagsNames = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<int> sortBy = null, WorkflowExpression<bool> isDesc = null)
         {
@@ -702,7 +689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAndPagesCountResultExpenseResponse> __BuildGetExpensesWithPaging(WorkflowExpression<string> reportId = null, WorkflowExpression<string> categoryId = null, WorkflowExpression<string> expenseName = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> reportState = null, WorkflowExpression<string> expenseStates = null, WorkflowExpression<bool> isReimbusable = null, WorkflowExpression<double> valueInCurrency = null, WorkflowExpression<string> ownerId = null, WorkflowExpression<string> ownerMail = null, WorkflowExpression<string> ownerPayId = null, WorkflowExpression<string> ownerPayId2 = null, WorkflowExpression<string> ownerPayId3 = null, WorkflowExpression<string> ownerPayId4 = null, WorkflowExpression<string> ownerPayId5 = null, WorkflowExpression<string> ownerPayId6 = null, WorkflowExpression<string> projectId = null, WorkflowExpression<bool> isBillable = null, WorkflowExpression<int> dateFilterType = null, WorkflowExpression<string> merchantCountries = null, WorkflowExpression<string> currencies = null, WorkflowExpression<string> fileType = null, WorkflowExpression<string> reportIdShort = null, WorkflowExpression<string> expenseUseTypes = null, WorkflowExpression<string> supplierId = null, WorkflowExpression<string> expenseIds = null, WorkflowExpression<string> merchantName = null, WorkflowExpression<string> vatCode = null, WorkflowExpression<double> valueHTInExpenseCurrency = null, WorkflowExpression<double> vatRate = null, WorkflowExpression<double> vatValue = null, WorkflowExpression<string> reportsIds = null, WorkflowExpression<int> dateTimeOffset = null, WorkflowExpression<string> tagsNames = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<int> sortBy = null, WorkflowExpression<bool> isDesc = null)
         {
@@ -839,7 +825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultProjectResponse> __BuildGetProjectDetails(WorkflowExpression<string> projectId)
         {
@@ -860,7 +845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListAndPagesCountResultProjectResponse> __BuildGetProjects(WorkflowExpression<string> projectName = null, WorkflowExpression<string> projectIds = null, WorkflowExpression<string> validatorName = null, WorkflowExpression<string> projectReferenceOrExternalId = null, WorkflowExpression<bool> bringAllProjects = null, WorkflowExpression<int> projectUseType = null, WorkflowExpression<bool> isActive = null, WorkflowExpression<string> tagsNames = null, WorkflowExpression<string> customFieldsIds = null, WorkflowExpression<string> expenseDate = null, WorkflowExpression<string> userId = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<int> sortBy = null, WorkflowExpression<bool> isDesc = null)
         {
@@ -925,7 +909,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultListEventResponse> __BuildGetReportHistory(WorkflowExpression<string> reportId)
         {
@@ -947,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResult> __BuildInviteUser(WorkflowExpression<string> userInviteInputlastName, WorkflowExpression<string> userInviteInputfirstName, WorkflowExpression<string> userInviteInputmail, WorkflowExpression<string> userInviteInputlanguage, WorkflowExpression<userInviteInputuserTypeInput> userInviteInputuserType, WorkflowExpression<userInviteInputuserRoleInput> userInviteInputuserRole, WorkflowExpression<string> userInviteInputmailAlias = null, WorkflowExpression<string> userInviteInputpayId = null, WorkflowExpression<string> userInviteInputpayId2 = null, WorkflowExpression<string> userInviteInputpayId3 = null, WorkflowExpression<string> userInviteInputpayId4 = null, WorkflowExpression<string> userInviteInputpayId5 = null, WorkflowExpression<string> userInviteInputpayId6 = null, WorkflowExpression<string> userInviteInputlocalCurrency = null, WorkflowExpression<string> userInviteInputlocalCountry = null, WorkflowExpression<string> userInviteInputmanagerId = null, WorkflowExpression<string> userInviteInputreviewerId = null, WorkflowExpression<string> userInviteInputvendor = null, WorkflowExpression<string> userInviteInputdefaultProjectId = null, WorkflowExpression<string> userInviteInputiKRatesId = null, WorkflowExpression<ValidatorInput[]> userInviteInputadditionalValidators = null, WorkflowExpression<string[]> userInviteInputtagsToAssign = null)
         {
@@ -1113,7 +1095,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResult> __BuildUpateUser(WorkflowExpression<string> userId, WorkflowExpression<bool> shouldUpdateValidators, WorkflowExpression<string> userUpdateInputlastName = null, WorkflowExpression<string> userUpdateInputfirstName = null, WorkflowExpression<string> userUpdateInputmail = null, WorkflowExpression<string> userUpdateInputmailAlias = null, WorkflowExpression<string> userUpdateInputpayId = null, WorkflowExpression<string> userUpdateInputpayId2 = null, WorkflowExpression<string> userUpdateInputpayId3 = null, WorkflowExpression<string> userUpdateInputpayId4 = null, WorkflowExpression<string> userUpdateInputpayId5 = null, WorkflowExpression<string> userUpdateInputpayId6 = null, WorkflowExpression<string> userUpdateInputlanguage = null, WorkflowExpression<string> userUpdateInputlocalCurrency = null, WorkflowExpression<string> userUpdateInputlocalCountry = null, WorkflowExpression<string> userUpdateInputmanagerId = null, WorkflowExpression<string> userUpdateInputreviewerId = null, WorkflowExpression<userUpdateInputuserTypeInput> userUpdateInputuserType = null, WorkflowExpression<string> userUpdateInputvendor = null, WorkflowExpression<userUpdateInputuserRoleInput> userUpdateInputuserRole = null, WorkflowExpression<string> userUpdateInputjobTitle = null, WorkflowExpression<bool> userUpdateInputcanAddPurchase = null, WorkflowExpression<string> userUpdateInputdefaultProjectId = null, WorkflowExpression<string> userUpdateInputiKRatesId = null, WorkflowExpression<ValidatorInput[]> userUpdateInputadditionalValidators = null, WorkflowExpression<string[]> userUpdateInputtagsToAssign = null, WorkflowExpression<string[]> userUpdateInputtagsToUnassign = null)
         {
@@ -1318,7 +1299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> __BuildUpdateProjectState(WorkflowExpression<string[]> updateProjectStateInputitemIds, WorkflowExpression<bool> updateProjectStateInputprojectState)
         {
@@ -1351,7 +1331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BaseResultListUpdateUserResult> __BuildUpdateUsersState(WorkflowExpression<UpdateUserStateInput[]> updateUserStateInputArray = null)
         {

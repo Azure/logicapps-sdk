@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AccountUpdateResponse> __BuildAccountUpdate(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodypassword = null)
         {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainListResponse> __BuildDomainList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainCreateResponse> __BuildDomainCreate(WorkflowExpression<string> bodydomain, WorkflowExpression<string> bodyredirectroot = null, WorkflowExpression<string> bodyredirect404 = null)
         {
@@ -137,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainUpdateResponse> __BuildDomainUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyredirectroot = null, WorkflowExpression<string> bodyredirect404 = null)
         {
@@ -179,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainDeleteResponse> __BuildDomainDelete(WorkflowExpression<string> id)
         {
@@ -200,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SplashListResponse> __BuildSplashList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -226,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CTAListResponse> __BuildCTAList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -252,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkListResponse> __BuildLinkList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> order = null)
         {
@@ -281,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkGetResponse> __BuildLinkGet(WorkflowExpression<string> id)
         {
@@ -302,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkShortenResponse> __BuildLinkShorten(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodycustom = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodyexpiry = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<bodygeotargetInputItem[]> bodygeotarget = null, WorkflowExpression<bodydevicetargetInputItem[]> bodydevicetarget = null, WorkflowExpression<bodyparametersInputItem[]> bodyparameters = null)
         {
@@ -381,7 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkUpdateResponse> __BuildLinkUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodycustom = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodyexpiry = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<bodygeotargetInputItem[]> bodygeotarget = null, WorkflowExpression<bodydevicetargetInputItem[]> bodydevicetarget = null, WorkflowExpression<bodyparametersInputItem[]> bodyparameters = null)
         {
@@ -465,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LinkDeleteResponse> __BuildLinkDelete(WorkflowExpression<string> id)
         {
@@ -486,7 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelListResponse> __BuildPixelList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -512,7 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelCreateResponse> __BuildPixelCreate(WorkflowExpression<string> bodytype, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytag)
         {
@@ -548,7 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelUpdateResponse> __BuildPixelUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodytag, WorkflowExpression<string> bodyname = null)
         {
@@ -586,7 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PixelDeleteResponse> __BuildPixelDelete(WorkflowExpression<string> id)
         {
@@ -607,7 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRListResponse> __BuildQRList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
         {
@@ -633,7 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRGetResponse> __BuildQRGet(WorkflowExpression<string> id)
         {
@@ -654,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRCreateResponse> __BuildQRCreate(WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodydata = null, WorkflowExpression<string> bodybackground = null, WorkflowExpression<string> bodyforeground = null, WorkflowExpression<string> bodylogo = null)
         {
@@ -716,7 +697,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRUpdateResponse> __BuildQRUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodydata, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodybackground = null, WorkflowExpression<string> bodyforeground = null, WorkflowExpression<string> bodylogo = null)
         {
@@ -775,7 +755,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QRDeleteResponse> __BuildQRDelete(WorkflowExpression<string> id)
         {
@@ -805,7 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PlanSubscribeResponse> __BuildPlanSubscribe(WorkflowExpression<string> planid, WorkflowExpression<string> userid, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodyexpiration = null)
         {
@@ -848,7 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserListResponse> __BuildUserList(WorkflowExpression<filterInput> filter = null)
         {
@@ -871,7 +848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserGetResponse> __BuildUserGet(WorkflowExpression<string> id)
         {
@@ -892,7 +868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserCreateResponse> __BuildUserCreate(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyemail, WorkflowExpression<int> bodyplanid = null, WorkflowExpression<string> bodyexpiration = null)
         {
@@ -942,7 +917,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UserDeleteResponse> __BuildUserDelete(WorkflowExpression<string> id)
         {

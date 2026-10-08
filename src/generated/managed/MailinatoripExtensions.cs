@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InboxGetResponse> __BuildInboxGet(WorkflowExpression<string> domain, WorkflowExpression<string> inbox, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> decodeSubject = null)
         {
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageGetResponse> __BuildMessageGet(WorkflowExpression<string> domain, WorkflowExpression<string> inbox, WorkflowExpression<string> messageId)
         {
@@ -75,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageDeleteResponse> __BuildMessageDelete(WorkflowExpression<string> domain, WorkflowExpression<string> inbox, WorkflowExpression<string> messageId)
         {
@@ -98,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageAttachmentsGetResponse> __BuildMessageAttachmentsGet(WorkflowExpression<string> domain, WorkflowExpression<string> inbox, WorkflowExpression<string> messageId)
         {
@@ -121,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessageLinksGetResponse> __BuildMessageLinksGet(WorkflowExpression<string> domain, WorkflowExpression<string> inbox, WorkflowExpression<string> messageId)
         {
@@ -144,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<string> domain, WorkflowExpression<string> inbox, WorkflowExpression<string> bodyfromfull = null, WorkflowExpression<string> bodyheadersmimeVersion = null, WorkflowExpression<string> bodyheadersdate = null, WorkflowExpression<string> bodyheaderssubject = null, WorkflowExpression<string> bodyheaderscontentType = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<bodypartsInputItem[]> bodyparts = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<int> bodytime = null, WorkflowExpression<int> bodysecondsAgo = null)
         {
@@ -283,7 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainGetResponse> __BuildDomainGet(WorkflowExpression<string> domainId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateIncidentResponse> __BuildCreateIncident(WorkflowExpression<string> contentType = null, WorkflowExpression<string> accessToken = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<double> bodylatitude = null, WorkflowExpression<double> bodylongitude = null, WorkflowExpression<string> bodydivisionId = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<bool> bodyanonymouslyReported = null, WorkflowExpression<bodycheckListDataInputItem[]> bodycheckListData = null)
         {
@@ -108,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LoginResponse> __BuildLogin(WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodyuserUid = null, WorkflowExpression<string> bodyappPassword = null, WorkflowExpression<bool> bodyacceptConditions = null, WorkflowExpression<bool> bodyisOqsha = null)
         {

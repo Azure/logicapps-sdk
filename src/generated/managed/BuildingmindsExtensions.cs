@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PortfolioTypeWithPagination> __BuildGetPortfolios(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SiteTypeWithPagination> __BuildGetSites(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BuildingTypeWithPagination> __BuildGetBuildings(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -96,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FloorTypeWithPagination> __BuildGetFloors(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RoofsTypeWithPagination> __BuildGetRoofs(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -148,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FacadesTypeWithPagination> __BuildGetFacades(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -174,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<OutsideareasTypeWithPagination> __BuildGetOutsideareas(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -200,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SubareasTypeWithPagination> __BuildGetSubareas(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -226,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LandsTypeWithPagination> __BuildGetLands(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -252,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SpacesTypeWithPagination> __BuildGetSpaces(WorkflowExpression<string> top = null, WorkflowExpression<string> skip = null)
         {
@@ -278,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Portfolio> __BuildGetPortfolioById(WorkflowExpression<string> id)
         {
@@ -299,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Site> __BuildGetSiteById(WorkflowExpression<string> id)
         {
@@ -320,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Building> __BuildGetBuildingById(WorkflowExpression<string> id)
         {
@@ -341,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Floor> __BuildGetFloorById(WorkflowExpression<string> id)
         {
@@ -362,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Roof> __BuildGetRoofById(WorkflowExpression<string> id)
         {
@@ -383,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Facade> __BuildGetFacadeById(WorkflowExpression<string> id)
         {
@@ -404,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Outsidearea> __BuildGetOutsideareaById(WorkflowExpression<string> id)
         {
@@ -425,7 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Subarea> __BuildGetSubareaById(WorkflowExpression<string> id)
         {
@@ -446,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Land> __BuildGetLandById(WorkflowExpression<string> id)
         {
@@ -467,7 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Space> __BuildGetSpaceById(WorkflowExpression<string> id)
         {
@@ -488,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnPortfolio(WorkflowExpression<string> id)
         {
@@ -509,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnSite(WorkflowExpression<string> id)
         {
@@ -530,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnBuilding(WorkflowExpression<string> id)
         {
@@ -551,7 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnFloor(WorkflowExpression<string> id)
         {
@@ -572,7 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnRoof(WorkflowExpression<string> id)
         {
@@ -593,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnFacade(WorkflowExpression<string> id)
         {
@@ -614,7 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnOutsidearea(WorkflowExpression<string> id)
         {
@@ -635,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnSubarea(WorkflowExpression<string> id)
         {
@@ -656,7 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnLand(WorkflowExpression<string> id)
         {
@@ -677,7 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnSpace(WorkflowExpression<string> id)
         {
@@ -698,7 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> __BuildGetAssociatedSpacesForSpace(WorkflowExpression<spaceTypeInput> spaceType, WorkflowExpression<string> id, WorkflowExpression<associatedTypeInput> associatedType, WorkflowExpression<string> skip = null, WorkflowExpression<string> top = null)
         {
@@ -727,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetUnassociatedSpaces(WorkflowExpression<spaceTypeInput> spaceType, WorkflowExpression<associatedTypeInput> associatedType, WorkflowExpression<string> spaceid = null)
         {

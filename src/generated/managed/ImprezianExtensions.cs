@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCampaignPostValue(WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodyexpires, WorkflowExpression<double> bodybudget, WorkflowExpression<string> bodystartdate = null, WorkflowExpression<string> bodypromotype = null, WorkflowExpression<string> bodymanager = null)
         {
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CampaignGetValueResponse> __BuildCampaignGetValue(WorkflowExpression<string> id)
         {
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildCampaignPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartdate = null, WorkflowExpression<string> bodyexpires = null, WorkflowExpression<double> bodybudget = null, WorkflowExpression<string> bodymanager = null, WorkflowExpression<bool> bodyhistory = null)
         {
@@ -183,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildComLogPostValue(WorkflowExpression<string> bodycontactid = null, WorkflowExpression<string> bodyleadid = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyemployee = null, WorkflowExpression<string> bodystarttime = null, WorkflowExpression<string> bodyendtime = null, WorkflowExpression<string> bodyworkorder = null, WorkflowExpression<string> bodyproject = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<double> bodylength = null, WorkflowExpression<bool> bodybilled = null, WorkflowExpression<bool> bodyinbound = null)
         {
@@ -308,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ComLogGetValueResponse> __BuildComLogGetValue(WorkflowExpression<string> id)
         {
@@ -329,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildComLogPutValue(WorkflowExpression<string> id, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyemployee = null, WorkflowExpression<string> bodystarttime = null, WorkflowExpression<string> bodyendtime = null, WorkflowExpression<string> bodyworkorder = null, WorkflowExpression<string> bodyproject = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<double> bodylength = null, WorkflowExpression<bool> bodybilled = null, WorkflowExpression<bool> bodyinbound = null)
         {
@@ -450,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildContactPostValue(WorkflowExpression<string> bodyaccount = null, WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
         {
@@ -701,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildContactGetValue(WorkflowExpression<string> id)
         {
@@ -722,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildContactPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
         {
@@ -976,7 +967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildFollowUpPostValue(WorkflowExpression<string> bodycontactid = null, WorkflowExpression<string> bodyleadid = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodysetby = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<bool> bodyurgent = null, WorkflowExpression<double> bodyreminderminutes = null, WorkflowExpression<bool> bodycleared = null)
         {
@@ -1073,7 +1063,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FollowUpGetValueResponse> __BuildFollowUpGetValue(WorkflowExpression<string> id)
         {
@@ -1094,7 +1083,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFollowUpPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodysetby = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<string> bodyurgent = null, WorkflowExpression<double> bodyreminderminutes = null, WorkflowExpression<bool> bodycleared = null)
         {
@@ -1187,7 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemListPostValueResponse> __BuildItemListPostValue(WorkflowExpression<string> bodymodelno = null, WorkflowExpression<string> bodydescrip = null, WorkflowExpression<bodyitemtypeInput> bodyitemtype = null, WorkflowExpression<double> bodyprice = null, WorkflowExpression<double> bodycost = null, WorkflowExpression<string> bodyvendor = null)
         {
@@ -1256,7 +1243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ItemListGetValueResponse> __BuildItemListGetValue(WorkflowExpression<string> id)
         {
@@ -1277,7 +1263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildItemListPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodydescrip = null, WorkflowExpression<double> bodyprice = null, WorkflowExpression<double> bodycost = null, WorkflowExpression<string> bodyvendor = null)
         {
@@ -1342,7 +1327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildLeadPostValue(WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
         {
@@ -1593,7 +1577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LeadGetValueResponse> __BuildLeadGetValue(WorkflowExpression<string> id)
         {
@@ -1614,7 +1597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildLeadPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
         {
@@ -1866,7 +1848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildMembersGetValues(WorkflowExpression<typeInput> type)
         {
@@ -1888,7 +1869,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMembersPostValue(WorkflowExpression<string> bodypromoid = null, WorkflowExpression<bodyrecordtypeInput> bodyrecordtype = null, WorkflowExpression<string> bodyrecordid = null)
         {
@@ -1936,7 +1916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MembersGetValueResponse> __BuildMembersGetValue(WorkflowExpression<string> id)
         {
@@ -1957,7 +1936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildMembersPutValue(WorkflowExpression<string> id, WorkflowExpression<bodyoperationInput> bodyoperation = null, WorkflowExpression<bodyrecordtypeInput> bodyrecordtype = null, WorkflowExpression<string> bodypromoid = null, WorkflowExpression<string> bodyrecordid = null)
         {
@@ -2022,7 +2000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildShippingPostValue(WorkflowExpression<string> bodyorderid = null, WorkflowExpression<string> bodyshipdate = null, WorkflowExpression<string> bodycarrier = null, WorkflowExpression<string> bodymethod = null, WorkflowExpression<double> bodyweight = null, WorkflowExpression<string> bodypackagetype = null, WorkflowExpression<string> bodyreference1 = null, WorkflowExpression<string> bodyreference2 = null, WorkflowExpression<string> bodytrackingnumber = null, WorkflowExpression<string> bodytrackingurl = null, WorkflowExpression<double> bodyshippingcost = null, WorkflowExpression<bool> bodytohistory = null)
         {
@@ -2133,7 +2110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ShippingGetValueResponse> __BuildShippingGetValue(WorkflowExpression<string> id)
         {
@@ -2154,7 +2130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildShippingPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodyshipdate = null, WorkflowExpression<string> bodycarrier = null, WorkflowExpression<string> bodymethod = null, WorkflowExpression<double> bodyweight = null, WorkflowExpression<string> bodypackagetype = null, WorkflowExpression<string> bodyreference1 = null, WorkflowExpression<string> bodyreference2 = null, WorkflowExpression<string> bodytrackingnumber = null, WorkflowExpression<string> bodytrackingurl = null, WorkflowExpression<double> bodyshippingcost = null)
         {
@@ -2261,7 +2236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildSOPostValue(WorkflowExpression<string> bodyorderid = null, WorkflowExpression<string> bodyorderdate = null, WorkflowExpression<string> bodyorderdescription = null, WorkflowExpression<string> bodyaccount = null, WorkflowExpression<string> bodyaccountname = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodybillemail = null, WorkflowExpression<string> bodybilladdr1 = null, WorkflowExpression<string> bodybilladdr2 = null, WorkflowExpression<string> bodybillcity = null, WorkflowExpression<string> bodybillstate = null, WorkflowExpression<string> bodybillzipcode = null, WorkflowExpression<string> bodybillcountry = null, WorkflowExpression<string> bodybillphone = null, WorkflowExpression<string> bodybillfax = null, WorkflowExpression<string> bodyshipcompany = null, WorkflowExpression<string> bodyshipcontact = null, WorkflowExpression<string> bodyshipaddr1 = null, WorkflowExpression<string> bodyshipaddr2 = null, WorkflowExpression<string> bodyshipcity = null, WorkflowExpression<string> bodyshipstate = null, WorkflowExpression<string> bodyshipzipcode = null, WorkflowExpression<string> bodyshipcountry = null, WorkflowExpression<string> bodyshipphone = null, WorkflowExpression<string> bodyshipemail = null, WorkflowExpression<bodyorderstatusInput> bodyorderstatus = null, WorkflowExpression<string> bodycustomstatus = null, WorkflowExpression<string> bodytaxdistrict = null, WorkflowExpression<double> bodytaxrate = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodyordertax = null, WorkflowExpression<string> bodyshippingcost = null, WorkflowExpression<string> bodyshippingmethod = null, WorkflowExpression<double> bodycouponamount = null, WorkflowExpression<string> bodycouponcode = null, WorkflowExpression<string> bodypaymentmethod = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<bodylinedataInputItem[]> bodylinedata = null)
         {
@@ -2568,7 +2542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SOGetValueResponse> __BuildSOGetValue(WorkflowExpression<string> id)
         {
@@ -2589,7 +2562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSOPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodycustomstatus = null, WorkflowExpression<bodyorderstatusInput> bodyorderstatus = null)
         {
@@ -2647,7 +2619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildWorkOrderPostValue(WorkflowExpression<string> bodyfromaddress = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompanyname = null, WorkflowExpression<string> bodybilladdr1 = null, WorkflowExpression<string> bodybilladdr2 = null, WorkflowExpression<string> bodybillcity = null, WorkflowExpression<string> bodybillstate = null, WorkflowExpression<string> bodybillzipcode = null, WorkflowExpression<string> bodybillcountry = null, WorkflowExpression<string> bodybillphone = null, WorkflowExpression<string> bodybillfax = null, WorkflowExpression<string> bodyserviceaddr1 = null, WorkflowExpression<string> bodyserviceaddr2 = null, WorkflowExpression<string> bodyservicecity = null, WorkflowExpression<string> bodyservicestate = null, WorkflowExpression<string> bodyservicezipcode = null, WorkflowExpression<string> bodyservicecountry = null, WorkflowExpression<string> bodyservicephone = null, WorkflowExpression<string> bodyreceiveddate = null, WorkflowExpression<string> bodyponumber = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyreasoncode = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodybackup = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null)
         {
@@ -2884,7 +2855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkOrderGetValueResponse> __BuildWorkOrderGetValue(WorkflowExpression<string> id)
         {
@@ -2905,7 +2875,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildWorkOrderPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodyponumber = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyreasoncode = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodybackup = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<bool> bodyhistory = null)
         {

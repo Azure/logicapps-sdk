@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TodoList> __BuildCreateToDoList(WorkflowExpression<string> bodyname)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TodoList> __BuildGetToDoList(WorkflowExpression<string> folderId)
         {
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TodoList> __BuildUpdateToDoList(WorkflowExpression<string> folderId, WorkflowExpression<string> bodyname)
         {
@@ -108,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteToDoList(WorkflowExpression<string> folderId)
         {
@@ -129,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ToDo[]> __BuildListToDosByFolder(WorkflowExpression<string> folderId, WorkflowExpression<int> top = null)
         {
@@ -153,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ToDo> __BuildCreateToDo(WorkflowExpression<string> folderId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydueDateTimedueDate = null, WorkflowExpression<string> bodyreminderDateTimereminderDateTime = null, WorkflowExpression<bodyimportanceInput> bodyimportance = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodybodycontent = null, WorkflowExpression<bool> bodyisReminderOn = null)
         {
@@ -256,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ToDo> __BuildGetToDo(WorkflowExpression<string> folderId, WorkflowExpression<string> id)
         {
@@ -278,7 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ToDo> __BuildUpdateToDo(WorkflowExpression<string> folderId, WorkflowExpression<string> id, WorkflowExpression<string> bodydueDateTimedueDate = null, WorkflowExpression<string> bodyreminderDateTimereminderDateTime = null, WorkflowExpression<bodyimportanceInput> bodyimportance = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodybodycontent = null, WorkflowExpression<bool> bodyisReminderOn = null)
         {
@@ -386,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteToDo(WorkflowExpression<string> folderId, WorkflowExpression<string> id)
         {

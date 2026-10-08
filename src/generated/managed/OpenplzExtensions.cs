@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GovernmentRegion[]> __BuildGetGovernmentRegionsByFederalStateDE(WorkflowExpression<string> federalStateKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<District[]> __BuildGetDistrictsByFederalStateDE(WorkflowExpression<string> federalStateKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<District[]> __BuildGetDistrictsByGovernmentRegionDE(WorkflowExpression<string> governmentRegionKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -107,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Municipality[]> __BuildGetMunicipalitiesByFederalStateDE(WorkflowExpression<string> federalStateKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -134,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Municipality[]> __BuildGetMunicipalitiesByGovernmentRegionDE(WorkflowExpression<string> governmentRegionKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -161,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Municipality[]> __BuildGetMunicipalitiesByDistrictDE(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -188,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MunicipalAssociation[]> __BuildGetMunicipalAssociationsByFederalStateDE(WorkflowExpression<string> federalStateKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -215,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MunicipalAssociation[]> __BuildGetMunicipalAssociationsByGovernmentRegionDE(WorkflowExpression<string> governmentRegionKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -242,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MunicipalAssociation[]> __BuildGetMunicipalAssociationsByDistrictDE(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -269,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Locality[]> __BuildGetLocalitiesByFederalStateDE(WorkflowExpression<string> federalStateKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -296,7 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Locality[]> __BuildGetLocalitiesByGovernmentRegionDE(WorkflowExpression<string> governmentRegionKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -323,7 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Locality[]> __BuildGetLocalitiesByDistrictDE(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -350,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Locality[]> __BuildSearchLocalitiesDE(WorkflowExpression<string> postalCode = null, WorkflowExpression<string> name = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -382,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Street[]> __BuildSearchStreetsDE(WorkflowExpression<string> name = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> locality = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -417,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Street[]> __BuildFullTextSearchDE(WorkflowExpression<string> searchTerm, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -454,7 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityLI[]> __BuildSearchLocalitiesLI(WorkflowExpression<string> postalCode = null, WorkflowExpression<string> name = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -486,7 +470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreetLI[]> __BuildSearchStreetsLI(WorkflowExpression<string> name = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> locality = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -521,7 +504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreetLI[]> __BuildFullTextSearchLI(WorkflowExpression<string> searchTerm, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -558,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DistrictCH[]> __BuildGetDistrictsByCantonCH(WorkflowExpression<string> cantonKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -585,7 +566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommuneCH[]> __BuildGetCommunesByCantonCH(WorkflowExpression<string> cantonKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -612,7 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CommuneCH[]> __BuildGetCommunesByDistrictCH(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -639,7 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityCH[]> __BuildGetLocalitiesByCantonCH(WorkflowExpression<string> cantonKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -666,7 +644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityCH[]> __BuildGetLocalitiesByDistrictCH(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -693,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityCH[]> __BuildSearchLocalitiesCH(WorkflowExpression<string> postalCode = null, WorkflowExpression<string> name = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -725,7 +701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreetCH[]> __BuildSearchStreetsCH(WorkflowExpression<string> name = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> locality = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -760,7 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreetCH[]> __BuildFullTextSearchCH(WorkflowExpression<string> searchTerm, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -797,7 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DistrictAT[]> __BuildGetDistrictsByFederalProvinceAT(WorkflowExpression<string> federalProvinceKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -824,7 +797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MunicipalityAT[]> __BuildGetMunicipalitiesByFederalProvinceAT(WorkflowExpression<string> federalProvinceKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -851,7 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MunicipalityAT[]> __BuildGetMunicipalitiesByDistrictAT(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -878,7 +849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityAT[]> __BuildGetLocalitiesByFederalProvinceAT(WorkflowExpression<string> federalProvinceKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -905,7 +875,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityAT[]> __BuildGetLocalitiesByDistrictAT(WorkflowExpression<string> districtKey, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -932,7 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocalityAT[]> __BuildSearchLocalitiesAT(WorkflowExpression<string> postalCode = null, WorkflowExpression<string> name = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -964,7 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreetAT[]> __BuildSearchStreetsAT(WorkflowExpression<string> name = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> locality = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {
@@ -999,7 +966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<StreetAT[]> __BuildFullTextSearchAT(WorkflowExpression<string> searchTerm, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUsage> __BuildUsageGet(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate)
         {
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildCaseSingular(WorkflowExpression<string> input, WorkflowExpression<caseTypeInput> caseType, WorkflowExpression<languageInput> language)
         {
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ClassifyGetResponse> __BuildClassifyGet(WorkflowExpression<string> input, WorkflowExpression<categoriesInput> categories, WorkflowExpression<languageInput> language = null)
         {
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalFloat> __BuildCompareGet(WorkflowExpression<string> input1, WorkflowExpression<string> input2, WorkflowExpression<comparisonAlgorithmInput> comparisonAlgorithm)
         {
@@ -140,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CongruenceResultSingle> __BuildEmailCongruenceGet(WorkflowExpression<string> email, WorkflowExpression<string> firstName, WorkflowExpression<string> lastName)
         {
@@ -166,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CongruenceResultSingle> __BuildCountryCongruenceGet(WorkflowExpression<string> input, WorkflowExpression<string> country, WorkflowExpression<actionTypeInput> actionType)
         {
@@ -192,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CongruenceResultSingle> __BuildSalutationCongruenceGet(WorkflowExpression<string> salutation, WorkflowExpression<string> firstName, WorkflowExpression<languageInput> language)
         {
@@ -218,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeriveGenderGetResponse> __BuildDeriveGenderGet(WorkflowExpression<string> input)
         {
@@ -240,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeriveCityGetResponse> __BuildDeriveCityGet(WorkflowExpression<string> input)
         {
@@ -262,7 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DerivePostCodeGetResponse> __BuildDerivePostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -286,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeriveEmailGetResponse> __BuildDeriveEmailGet(WorkflowExpression<string> input)
         {
@@ -308,7 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeriveISOGetResponse> __BuildDeriveISOGet(WorkflowExpression<string> email = null, WorkflowExpression<string> url = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> country = null, WorkflowExpression<string> city = null, WorkflowExpression<int> threshold = null, WorkflowExpression<bool> onlyReturnBest = null, WorkflowExpression<bool> defaultToCountry = null)
         {
@@ -355,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatEmailGet(WorkflowExpression<string> input)
         {
@@ -377,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatPostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -401,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatE164Get(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -425,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatInternationalGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -449,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatNationalGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -473,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatRFC3966Get(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -497,7 +479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildFormatURLGet(WorkflowExpression<string> input, WorkflowExpression<string> uRLPrefix)
         {
@@ -521,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GeneratePatternResponse> __BuildGeneratePattern(WorkflowExpression<inputInputItem[]> input = null)
         {
@@ -543,7 +523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildGenerateTokenGet(WorkflowExpression<string> input, WorkflowExpression<generateAlgorithmTypeInput> generateAlgorithmType, WorkflowExpression<languageInput> language = null)
         {
@@ -571,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParsePhoneGetResponse> __BuildParsePhoneGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -595,7 +573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseEmailGetResponse> __BuildParseEmailGet(WorkflowExpression<string> input)
         {
@@ -617,7 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ParseURLGetResponse> __BuildParseURLGet(WorkflowExpression<string> input)
         {
@@ -639,7 +615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ScoringResponse> __BuildScoring(WorkflowExpression<inputInputItem2[]> input = null)
         {
@@ -661,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildTransformGet(WorkflowExpression<string> input, WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<operationTypeInput> operationType, WorkflowExpression<languageInput> language = null)
         {
@@ -691,7 +665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SequenceTransformResponse> __BuildSequenceTransform(WorkflowExpression<inputInputItem22[]> input = null)
         {
@@ -713,7 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildValidateEmailGet(WorkflowExpression<string> input)
         {
@@ -735,7 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildValidatePostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -759,7 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildValidateURLGet(WorkflowExpression<string> input)
         {
@@ -781,7 +751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildValidatePhoneGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -805,7 +774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildValidateDateTimeGet(WorkflowExpression<string> input, WorkflowExpression<string> dateTimeFormat)
         {
@@ -829,7 +797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidatePlusEmailGetResponse> __BuildValidatePlusEmailGet(WorkflowExpression<string> input)
         {
@@ -851,7 +818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> __BuildValidatePlusPostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -875,7 +841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ValidatePlusURLGetResponse> __BuildValidatePlusURLGet(WorkflowExpression<string> input)
         {
@@ -897,7 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VerifyAddressGetResponse> __BuildVerifyAddressGet(WorkflowExpression<providerInput> provider, WorkflowExpression<string> countryIdentifier, WorkflowExpression<bool> geocode, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null)
         {
@@ -940,7 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchAddressFindResponse> __BuildSearchAddressFind(WorkflowExpression<providerInput> provider, WorkflowExpression<string> query, WorkflowExpression<string> countryIdentifier)
         {
@@ -965,7 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchAddressRetrieveResponse> __BuildSearchAddressRetrieve(WorkflowExpression<providerInput> provider, WorkflowExpression<string> id, WorkflowExpression<string> countryIdentifier)
         {
@@ -990,7 +952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuppressDeceasedResponse> __BuildSuppressDeceased(WorkflowExpression<providerInput> provider, WorkflowExpression<string> lastName, WorkflowExpression<string> postcode, WorkflowExpression<string> countryIdentifier, WorkflowExpression<string> title = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> town = null, WorkflowExpression<string> county = null)
         {
@@ -1038,7 +999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuppressGoneAwayResponse> __BuildSuppressGoneAway(WorkflowExpression<providerInput> provider, WorkflowExpression<string> lastName, WorkflowExpression<string> postcode, WorkflowExpression<string> iSO2, WorkflowExpression<string> title = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> town = null, WorkflowExpression<string> county = null)
         {
@@ -1086,7 +1046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuppressRelocatedResponse> __BuildSuppressRelocated(WorkflowExpression<providerInput> provider, WorkflowExpression<string> lastName, WorkflowExpression<string> postcode, WorkflowExpression<string> iSO2, WorkflowExpression<string> title = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> town = null, WorkflowExpression<string> county = null)
         {
@@ -1134,7 +1093,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuppressPhonePersonalResponse> __BuildSuppressPhonePersonal(WorkflowExpression<providerInput> provider, WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -1159,7 +1117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuppressPhoneCorporateResponse> __BuildSuppressPhoneCorporate(WorkflowExpression<providerInput> provider, WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
         {
@@ -1184,7 +1141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuthenticateEmailGetResponse> __BuildAuthenticateEmailGet(WorkflowExpression<providerInput> provider, WorkflowExpression<string> email)
         {
@@ -1207,7 +1163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuthenticatePhoneGetResponse> __BuildAuthenticatePhoneGet(WorkflowExpression<providerInput> provider, WorkflowExpression<string> phone, WorkflowExpression<string> countryIdentifier)
         {
@@ -1232,7 +1187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsAllUpper(WorkflowExpression<string> input)
         {
@@ -1254,7 +1208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsAllLower(WorkflowExpression<string> input)
         {
@@ -1276,7 +1229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsMixedCase(WorkflowExpression<string> input)
         {
@@ -1298,7 +1250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsAlphaNumeric(WorkflowExpression<string> input)
         {
@@ -1320,7 +1271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsNumeric(WorkflowExpression<string> input)
         {
@@ -1342,7 +1292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsISO4217(WorkflowExpression<string> input)
         {
@@ -1364,7 +1313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsISO2(WorkflowExpression<string> input)
         {
@@ -1386,7 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsISO3(WorkflowExpression<string> input)
         {
@@ -1408,7 +1355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveLeading(WorkflowExpression<string> input, WorkflowExpression<string> valToRemove, WorkflowExpression<bool> leaveOneAtStart)
         {
@@ -1434,7 +1380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveChars(WorkflowExpression<string> input, WorkflowExpression<characterTypeInput> characterType)
         {
@@ -1458,7 +1403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveSingleWords(WorkflowExpression<string> input)
         {
@@ -1480,7 +1424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtReplaceRepeatingText(WorkflowExpression<string> input, WorkflowExpression<string> repeatingValue, WorkflowExpression<string> replacement)
         {
@@ -1506,7 +1449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtReplaceEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> stringToReplace, WorkflowExpression<string> replacement)
         {
@@ -1532,7 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtReplaceStartsWith(WorkflowExpression<string> input, WorkflowExpression<string> stringToReplace, WorkflowExpression<string> replacement)
         {
@@ -1558,7 +1499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtStringToBinary(WorkflowExpression<string> input)
         {
@@ -1580,7 +1520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtBinaryToString(WorkflowExpression<string> input)
         {
@@ -1602,7 +1541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtStringToHex(WorkflowExpression<string> input)
         {
@@ -1624,7 +1562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtHexToString(WorkflowExpression<string> input)
         {
@@ -1646,7 +1583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtReverse(WorkflowExpression<string> input)
         {
@@ -1668,7 +1604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtNormWhiteSpace(WorkflowExpression<string> input)
         {
@@ -1690,7 +1625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtNormPhone(WorkflowExpression<string> input)
         {
@@ -1712,7 +1646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtCollapseRepeatedChars(WorkflowExpression<string> input, WorkflowExpression<bool> collapseNumerics, WorkflowExpression<int> maximumRepeat = null)
         {
@@ -1739,7 +1672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtCollapseRepeatedType(WorkflowExpression<string> input, WorkflowExpression<int> maximumRepeat, WorkflowExpression<typeInput> type)
         {
@@ -1765,7 +1697,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveStopWords(WorkflowExpression<string> input)
         {
@@ -1787,7 +1718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtRetainChars(WorkflowExpression<string> input, WorkflowExpression<string> replacement, WorkflowExpression<string> charactersToRetain)
         {
@@ -1813,7 +1743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtExtractChars(WorkflowExpression<string> input, WorkflowExpression<int> extractLength, WorkflowExpression<extractFromInput> extractFrom)
         {
@@ -1839,7 +1768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtExtractWords(WorkflowExpression<string> input, WorkflowExpression<int> extractLength, WorkflowExpression<extractFromInput> extractFrom)
         {
@@ -1865,7 +1793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveHTML(WorkflowExpression<string> input)
         {
@@ -1887,7 +1814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkfor)
         {
@@ -1911,7 +1837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtStartsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkfor)
         {
@@ -1935,7 +1860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtEnsureEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkFor)
         {
@@ -1959,7 +1883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtEnsureStartEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkFor)
         {
@@ -1983,7 +1906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobal> __BuildStringExtEnsureStartsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkFor)
         {
@@ -2007,7 +1929,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtStartWithType(WorkflowExpression<string> input, WorkflowExpression<typeInput> type)
         {
@@ -2031,7 +1952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtEndsWithType(WorkflowExpression<string> input, WorkflowExpression<typeInput> type)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsUsableNameResponse> __BuildIsUsableName(WorkflowExpression<string> bodynametitle = null, WorkflowExpression<string> bodynameforename = null, WorkflowExpression<string> bodynamemiddleName = null, WorkflowExpression<string> bodynamesurname = null)
         {
@@ -81,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsCallableTPSResponse> __BuildIsCallableTPS(WorkflowExpression<string> bodynumber)
         {
@@ -111,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsCallableCTPSResponse> __BuildIsCallableCTPS(WorkflowExpression<string> bodynumber)
         {
@@ -141,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsValidBankAccountResponse> __BuildIsValidBankAccount(WorkflowExpression<string> bodysortCode, WorkflowExpression<string> bodybankAccountNumber = null)
         {
@@ -178,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsValidEmailResponse> __BuildIsValidEmail(WorkflowExpression<string> bodyemail, WorkflowExpression<bodylevelInput> bodylevel)
         {
@@ -211,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsValidTelephoneResponse> __BuildIsValidTelephone(WorkflowExpression<string> bodytelephoneNumber, WorkflowExpression<string> bodydefaultCountry, WorkflowExpression<bool> bodyoptionsuseLineValidation = null, WorkflowExpression<bool> bodyoptionsuseMobileValidation = null)
         {
@@ -266,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CleanAddressResponse> __BuildCleanAddress(WorkflowExpression<string[]> bodyaddresslines = null, WorkflowExpression<string> bodyoptionsdefaultCountryCode = null, WorkflowExpression<bool> bodyoptionsdetectCountry = null, WorkflowExpression<string> bodyoptionscountry = null, WorkflowExpression<bool> bodyoptionsincludeCountry = null)
         {
@@ -344,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetFullAddressResponse> __BuildGetFullAddress(WorkflowExpression<bodylicenceInput> bodylicence, WorkflowExpression<string> bodypostcode, WorkflowExpression<string> bodybuilding = null, WorkflowExpression<bool> bodyoptionsfixTownCounty = null, WorkflowExpression<int> bodyoptionsmaxLines = null, WorkflowExpression<int> bodyoptionsmaxLineLength = null, WorkflowExpression<bool> bodyoptionsnormalizeCase = null, WorkflowExpression<bool> bodyoptionsnormalizeTownCase = null, WorkflowExpression<bool> bodyoptionsexcludeCounty = null, WorkflowExpression<bool> bodyoptionsuseAnyAvailableCounty = null, WorkflowExpression<bool> bodyoptionsunwantedPunctuation = null, WorkflowExpression<bool> bodyoptionsfixBuilding = null, WorkflowExpression<bool> bodyoptionsincludeUDPRN = null, WorkflowExpression<bool> bodyoptionsincludeLocation = null, WorkflowExpression<bool> bodyoptionsreturnResultCount = null, WorkflowExpression<bool> bodyoptionsincludeNYB = null, WorkflowExpression<bool> bodyoptionsincludeMR = null, WorkflowExpression<bodyoptionsformatterInput> bodyoptionsformatter = null)
         {
@@ -517,7 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsDeceasedResponse> __BuildIsDeceased(WorkflowExpression<string> bodyrecordnamesurname, WorkflowExpression<string[]> bodyrecordaddresslines, WorkflowExpression<bool> bodymarketing, WorkflowExpression<string> bodyrecordnametitle = null, WorkflowExpression<string> bodyrecordnameforename = null, WorkflowExpression<string> bodyrecordnamemiddleName = null, WorkflowExpression<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
         {
@@ -623,7 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchPredictiveAddressResponse> __BuildSearchPredictiveAddress(WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodysearch, WorkflowExpression<string> bodytelephoneNumber = null, WorkflowExpression<string> bodysession = null, WorkflowExpression<bool> bodyoptionsincludeMR = null, WorkflowExpression<bool> bodyoptionsincludeNYB = null)
         {
@@ -692,7 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> __BuildDrilldownPredictiveAddress(WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodyid, WorkflowExpression<bool> bodyoptionsincludeMR = null, WorkflowExpression<bool> bodyoptionsincludeNYB = null)
         {
@@ -747,7 +736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrievePredictiveAddressResponse> __BuildRetrievePredictiveAddress(WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodyid, WorkflowExpression<int> bodyoptionsmaxLineLength = null, WorkflowExpression<int> bodyoptionsmaxLines = null, WorkflowExpression<bool> bodyoptionsfixTownCounty = null, WorkflowExpression<bool> bodyoptionsfixPostcode = null, WorkflowExpression<bool> bodyoptionsfixBuilding = null, WorkflowExpression<string> bodyoptionsunwantedPunctuation = null, WorkflowExpression<bodyoptionsformatterInput> bodyoptionsformatter = null, WorkflowExpression<bool> bodyoptionsincludeUDPRN = null, WorkflowExpression<bool> bodyoptionsincludeUPRN = null)
         {
@@ -931,7 +919,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CleanseEmailResponse> __BuildCleanseEmail(WorkflowExpression<string> bodyemail, WorkflowExpression<bodylevelInput> bodylevel, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyforename = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodysurname = null, WorkflowExpression<string> bodycompany = null)
         {
@@ -999,7 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IsValidPhoneResponse> __BuildIsValidPhone(WorkflowExpression<string> bodytelephoneNumber, WorkflowExpression<int> bodydefaultCountry)
         {

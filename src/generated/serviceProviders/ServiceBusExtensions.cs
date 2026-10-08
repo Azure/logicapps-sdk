@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildSendMessage(WorkflowExpression<string> entityName, WorkflowExpression<SendMessageInputMessageType> message)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildSendMessages(WorkflowExpression<string> entityName, WorkflowExpression<SendMessagesInputMessagesTypeItem[]> messages)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildReplicateMessages(WorkflowExpression<string> entityName, WorkflowExpression<bool> skipAlreadyReplicated)
         {
@@ -101,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCompleteQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
         {
@@ -128,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildAbandonQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
         {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeadLetterQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
         {
@@ -194,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildRenewLockQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
         {
@@ -221,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeferQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
         {
@@ -248,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> __BuildGetDeferredMessageFromQueueV2(WorkflowExpression<string> queueName, WorkflowExpression<string> sequenceNumber)
         {
@@ -275,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> __BuildGetMessagesFromQueueV2(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessages = null)
         {
@@ -306,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCompleteTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
         {
@@ -335,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildAbandonTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
         {
@@ -364,7 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeadLetterTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
         {
@@ -405,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildRenewLockTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
         {
@@ -434,7 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeferTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
         {
@@ -463,7 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> __BuildGetDeferredMessageFromTopicV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sequenceNumber)
         {
@@ -492,7 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> __BuildGetMessagesFromTopicV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessages = null)
         {
@@ -525,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCreateTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> topicSubscriptionName, WorkflowExpression<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType> topicSubscriptionFilterType, WorkflowExpression<object> topicSubscriptionCorrelationFilter = null)
         {
@@ -560,7 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeleteTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> topicSubscriptionName)
         {
@@ -587,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCompleteMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
         {
@@ -618,7 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildAbandonMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
         {
@@ -649,7 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeadLetterMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
         {
@@ -692,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildDeferMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
         {
@@ -723,7 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> __BuildGetDeferredMessageFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sequenceNumber, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> acquireNewSession = null)
         {
@@ -762,7 +738,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> __BuildGetDeferredMessageFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sequenceNumber, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> acquireNewSession = null)
         {
@@ -803,7 +778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> __BuildGetMessagesFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId, WorkflowExpression<int> maxMessages = null, WorkflowExpression<bool> acquireNewSession = null)
         {
@@ -842,7 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> __BuildGetMessagesFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId, WorkflowExpression<int> maxMessages = null, WorkflowExpression<bool> acquireNewSession = null)
         {
@@ -883,7 +856,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildRenewQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
         {
@@ -910,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildRenewTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
         {
@@ -939,7 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCloseQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
         {
@@ -966,7 +936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IOutputWorkflowAction<JToken> __BuildCloseTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
         {

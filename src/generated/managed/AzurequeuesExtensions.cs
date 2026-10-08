@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteMessage(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> messageId, WorkflowExpression<string> popreceipt)
         {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Messages> __BuildGetMessages(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> numofmessages = null, WorkflowExpression<string> visibilitytimeout = null)
         {
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Queue[]> __BuildListQueues(WorkflowExpression<string> storageAccountName)
         {
@@ -92,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPutMessage(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> message = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainResponse> __BuildDomain(WorkflowExpression<string> domain = null, WorkflowExpression<string> company = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> seniority = null, WorkflowExpression<string> department = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailResponse> __BuildEmail(WorkflowExpression<string> domain = null, WorkflowExpression<string> company = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> fullName = null, WorkflowExpression<int> maxDuration = null)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AuthorResponse> __BuildAuthor(WorkflowExpression<string> url, WorkflowExpression<int> maxDuration = null)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailVerifyResponse> __BuildEmailVerify(WorkflowExpression<string> email)
         {
@@ -144,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailCountResponse> __BuildEmailCount(WorkflowExpression<string> domain = null, WorkflowExpression<string> company = null, WorkflowExpression<typeInput> type = null)
         {

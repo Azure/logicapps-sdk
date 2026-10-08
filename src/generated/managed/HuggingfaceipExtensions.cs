@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildModelID(WorkflowExpression<string> modelId, WorkflowExpression<string> bodyinputs, WorkflowExpression<string> bodyquery = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FillMaskPostResponseItem[]> __BuildFillMask(WorkflowExpression<string> bodyinputs, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SummarizationPostResponseItem[]> __BuildSummarization(WorkflowExpression<string> bodyinputs = null, WorkflowExpression<bool> bodyparametersdoSample = null, WorkflowExpression<int> bodyparametersminLength = null, WorkflowExpression<int> bodyparametersmaxLength = null, WorkflowExpression<int> bodyparameterstopK = null, WorkflowExpression<int> bodyparameterstopP = null, WorkflowExpression<double> bodyparameterstemperature = null, WorkflowExpression<double> bodyparametersrepetitionPenalty = null, WorkflowExpression<double> bodyparametersmaxTime = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -266,7 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AnswerPostResponse> __BuildAnswer(WorkflowExpression<string> bodyinputsquestion = null, WorkflowExpression<string> bodyinputscontext = null)
         {
@@ -315,7 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<double[]> __BuildSentenceSimilarity(WorkflowExpression<string> bodyinputssourceSentence = null, WorkflowExpression<string[]> bodyinputssentences = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -386,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> __BuildTextClassification(WorkflowExpression<string> bodyinputs, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -438,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TextGenerationPostResponseItem[]> __BuildTextGeneration(WorkflowExpression<string> bodyinputs = null, WorkflowExpression<bool> bodyparametersdoSample = null, WorkflowExpression<int> bodyparametersminLength = null, WorkflowExpression<int> bodyparametersmaxLength = null, WorkflowExpression<int> bodyparameterstopK = null, WorkflowExpression<int> bodyparameterstopP = null, WorkflowExpression<double> bodyparameterstemperature = null, WorkflowExpression<double> bodyparametersrepetitionPenalty = null, WorkflowExpression<double> bodyparametersmaxTime = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -558,7 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> __BuildTokenClassification(WorkflowExpression<string> bodyinputs, WorkflowExpression<string> bodyparametersaggregationStrategy = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -625,7 +617,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<TranslationPostResponseItem[]> __BuildTranslation(WorkflowExpression<string> bodyinputs, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -677,7 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ZeroShotPostResponse> __BuildZeroShot(WorkflowExpression<string> bodyinputs = null, WorkflowExpression<string[]> bodyparameterscandidateLabels = null, WorkflowExpression<bool> bodyparametersmultiLabel = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {
@@ -755,7 +745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ConversationalPostResponse> __BuildConversational(WorkflowExpression<string[]> bodyinputspastUserInputs = null, WorkflowExpression<string[]> bodyinputsgeneratedResponses = null, WorkflowExpression<string> bodyinputstext = null, WorkflowExpression<int> bodyparametersminLength = null, WorkflowExpression<int> bodyparametersmaxLength = null, WorkflowExpression<int> bodyparameterstopK = null, WorkflowExpression<int> bodyparameterstopP = null, WorkflowExpression<double> bodyparameterstemperature = null, WorkflowExpression<double> bodyparametersrepetitionPenalty = null, WorkflowExpression<double> bodyparametersmaxTime = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
         {

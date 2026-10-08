@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupMemberResponse> __BuildGroupMember(WorkflowExpression<string> groupID)
         {
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupMemberDetailResponse> __BuildGroupMemberDetail(WorkflowExpression<string> groupID, WorkflowExpression<string> memberID)
         {
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GroupUserAddResponse> __BuildGroupUserAdd(WorkflowExpression<string> groupID, WorkflowExpression<string> bodyemailaddress, WorkflowExpression<string> bodyfirstname, WorkflowExpression<string> bodylastname)
         {
@@ -160,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportSignUpResponse> __BuildReportSignUp(WorkflowExpression<string> signUpID)
         {
@@ -181,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportSignUpSlotResponse> __BuildReportSignUpSlot(WorkflowExpression<string> signUpID)
         {
@@ -202,7 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReportSignupFilledResponse> __BuildReportSignupFilled(WorkflowExpression<string> signUpID)
         {

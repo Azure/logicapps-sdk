@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> __BuildStartJobs(WorkflowExpression<int> xUIPATHOrganizationUnitId, WorkflowExpression<string> bodystartInfoprocessName = null, WorkflowExpression<int> bodystartInfojobsCount = null, WorkflowExpression<bodystartInfosourceInput> bodystartInfosource = null, WorkflowExpression<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, WorkflowExpression<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, WorkflowExpression<string> bodystartInfoinputArguments = null, WorkflowExpression<string> bodystartInforeference = null)
         {
@@ -106,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<QueueItemDto> __BuildAddQueueItem(WorkflowExpression<int> xUIPATHOrganizationUnitId, WorkflowExpression<string> bodyitemDataname = null, WorkflowExpression<bodyitemDatapriorityInput> bodyitemDatapriority = null, WorkflowExpression<string> bodyitemDatadeferDate = null, WorkflowExpression<string> bodyitemDatadueDate = null, WorkflowExpression<string> bodyitemDatariskSLADate = null, WorkflowExpression<string> bodyitemDatareference = null, WorkflowExpression<string> bodyitemDataprogress = null)
         {

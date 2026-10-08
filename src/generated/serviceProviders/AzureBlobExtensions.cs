@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BlobExistsOutput> __BuildBlobExists(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteBlob(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName)
         {
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteBlobFromUri(WorkflowExpression<string> blobUri)
         {
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadBlobOutput> __BuildReadBlob(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName, WorkflowExpression<bool> inferContentType = null)
         {
@@ -132,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ReadBlobFromUriOutput> __BuildReadBlobFromUri(WorkflowExpression<string> blobUri, WorkflowExpression<bool> inferContentType = null)
         {
@@ -163,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadBlobOutput> __BuildUploadBlob(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName, WorkflowExpression<object> content, WorkflowExpression<UploadBlobInputOverrideIfExistsType> overrideIfExists = null)
         {
@@ -198,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<UploadBlobFromUriOutput> __BuildUploadBlobFromUri(WorkflowExpression<string> blobUri, WorkflowExpression<object> content, WorkflowExpression<UploadBlobFromUriInputOverrideIfExistsType> overrideIfExists = null)
         {
@@ -231,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBlobsOutput> __BuildListBlobs(WorkflowExpression<string> containerName, WorkflowExpression<string> blobNamePrefix = null, WorkflowExpression<string> pageMarker = null, WorkflowExpression<bool> excludeSubFolderBlobs = null)
         {
@@ -274,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBlobsFromUriOutput> __BuildListBlobsFromUri(WorkflowExpression<string> blobUri, WorkflowExpression<string> pageMarker = null)
         {
@@ -305,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListBlobDirectoriesOutput> __BuildListBlobDirectories(WorkflowExpression<string> containerName, WorkflowExpression<string> blobNamePrefix = null)
         {
@@ -336,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListContainersOutput> __BuildListContainers(WorkflowExpression<string> pageMarker = null)
         {
@@ -365,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBlobSASUriOutput> __BuildGetBlobSASUri(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName, WorkflowExpression<string> groupPolicyIdentifier = null, WorkflowExpression<GetBlobSASUriInputPermissionsType> permissions = null, WorkflowExpression<string> startTime = null, WorkflowExpression<string> expiryTime = null, WorkflowExpression<GetBlobSASUriInputSharedAccessProtocolType> sharedAccessProtocol = null, WorkflowExpression<string> ipAddressRange = null)
         {
@@ -428,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBlobSASUriFromUriOutput> __BuildGetBlobSASUriFromUri(WorkflowExpression<string> blobUri, WorkflowExpression<string> groupPolicyIdentifier = null, WorkflowExpression<GetBlobSASUriFromUriInputPermissionsType> permissions = null, WorkflowExpression<string> startTime = null, WorkflowExpression<string> expiryTime = null, WorkflowExpression<GetBlobSASUriFromUriInputSharedAccessProtocolType> sharedAccessProtocol = null, WorkflowExpression<string> ipAddressRange = null)
         {
@@ -489,7 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBlobMetadataOutput> __BuildGetBlobMetadata(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName)
         {
@@ -516,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetBlobMetadataFromUriOutput> __BuildGetBlobMetadataFromUri(WorkflowExpression<string> blobUri)
         {
@@ -541,7 +526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetContainerMetadataOutput> __BuildGetContainerMetadata(WorkflowExpression<string> containerName)
         {
@@ -566,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyBlobOutput> __BuildCopyBlob(WorkflowExpression<string> sourceContainerName, WorkflowExpression<string> sourceBlobName, WorkflowExpression<string> destinationContainerName, WorkflowExpression<string> destinationBlobName, WorkflowExpression<bool> overrideIfExists = null)
         {
@@ -603,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CopyBlobFromUriOutput> __BuildCopyBlobFromUri(WorkflowExpression<string> sourceBlobUri, WorkflowExpression<string> destinationBlobUri, WorkflowExpression<bool> overrideIfExists = null)
         {
@@ -636,7 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAccessPoliciesOutputItem[]> __BuildGetAccessPolicies(WorkflowExpression<string> containerName)
         {
@@ -661,7 +642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetBlobTier(WorkflowExpression<string> containerName, WorkflowExpression<string> blobName, WorkflowExpression<SetBlobTierInputBlobAccessTierType> blobAccessTier)
         {
@@ -690,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSetBlobTierFromUri(WorkflowExpression<string> blobUri, WorkflowExpression<SetBlobTierFromUriInputBlobAccessTierType> blobAccessTier)
         {
@@ -717,7 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveFromBlobPathOutput> __BuildExtractArchiveFromBlobPath(WorkflowExpression<string> sourceContainerName, WorkflowExpression<string> sourceBlobName, WorkflowExpression<string> destinationContainerName, WorkflowExpression<string> destinationFolderPath, WorkflowExpression<ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null)
         {
@@ -754,7 +732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveFromUriOutput> __BuildExtractArchiveFromUri(WorkflowExpression<string> sourceBlobUri, WorkflowExpression<string> destinationBlobUri, WorkflowExpression<ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null)
         {
@@ -787,7 +764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ExtractArchiveFromContentOutput> __BuildExtractArchiveFromContent(WorkflowExpression<string> destinationContainerName, WorkflowExpression<string> content = null, WorkflowExpression<string> destinationFolderPath = null, WorkflowExpression<ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null)
         {

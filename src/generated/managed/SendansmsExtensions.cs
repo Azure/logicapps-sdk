@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendSms(WorkflowExpression<string> xTopMessageKey, WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodydatafrom = null, WorkflowExpression<string[]> bodydatato = null, WorkflowExpression<string> bodydatatext = null)
         {

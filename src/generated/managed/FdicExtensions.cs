@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InstitutionsResponse> __BuildSearchInstitutions(WorkflowExpression<string> filters = null, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<LocationsResponse> __BuildSearchLocations(WorkflowExpression<string> filters = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -123,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<HistoryResponse> __BuildGetHistory(WorkflowExpression<string> filters = null, WorkflowExpression<string> search = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> aggBy = null, WorkflowExpression<string> aggTermFields = null, WorkflowExpression<int> aggLimit = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -187,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FinancialsResponse> __BuildGetFinancials(WorkflowExpression<string> filters = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> aggBy = null, WorkflowExpression<string> aggTermFields = null, WorkflowExpression<string> aggSumFields = null, WorkflowExpression<int> aggLimit = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -250,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SummaryResponse> __BuildGetHistorical(WorkflowExpression<string> filters = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> aggBy = null, WorkflowExpression<string> aggTermFields = null, WorkflowExpression<string> aggSumFields = null, WorkflowExpression<int> aggLimit = null, WorkflowExpression<string> maxValue = null, WorkflowExpression<string> maxValueBy = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -319,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FailuresResponse> __BuildGetFailures(WorkflowExpression<string> filters = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> totalFields = null, WorkflowExpression<string> subtotalBy = null, WorkflowExpression<string> aggBy = null, WorkflowExpression<string> aggTermFields = null, WorkflowExpression<string> aggSumFields = null, WorkflowExpression<int> aggLimit = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -389,7 +383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SodResponse> __BuildGetSod(WorkflowExpression<string> filters = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> sortBy = null, WorkflowExpression<string> sortOrder = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> aggBy = null, WorkflowExpression<string> aggTermFields = null, WorkflowExpression<string> aggSumFields = null, WorkflowExpression<int> aggLimit = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {
@@ -452,7 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DemographicsResponse> __BuildGetDemographics(WorkflowExpression<string> filters = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> filename = null)
         {

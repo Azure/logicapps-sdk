@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmartsheetCollectionSheet> __BuildListSheets(WorkflowExpression<string> optionalFolderId = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SheetWithRows> __BuildGetSheet(WorkflowExpression<string> sheetId, WorkflowExpression<string> columns = null)
         {
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmartsheetCollectionColumn> __BuildGetColumns(WorkflowExpression<string> sheetId)
         {
@@ -86,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetColumnsSchema(WorkflowExpression<string> sheetId)
         {
@@ -107,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RowsList> __BuildGetSheetData(WorkflowExpression<string> sheetId, WorkflowExpression<string> columns = null)
         {
@@ -131,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<InsertRowResponse> __BuildInsertRow(WorkflowExpression<string> sheetId, WorkflowExpression<object> row = null)
         {
@@ -154,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmartsheetCollectionFolder> __BuildListSubFolders(WorkflowExpression<string> id)
         {
@@ -175,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> __BuildGetDiscussionsForSheet(WorkflowExpression<string> sheetId)
         {
@@ -196,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DiscussionResponse> __BuildAddDiscussionToSheet(WorkflowExpression<string> sheetId, WorkflowExpression<string> discussiontitle = null, WorkflowExpression<string> discussioncommenttext = null)
         {
@@ -246,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DiscussionResponse> __BuildAddDiscussionToRow(WorkflowExpression<string> sheetId, WorkflowExpression<string> rowId, WorkflowExpression<string> discussiontitle = null, WorkflowExpression<string> discussioncommenttext = null)
         {
@@ -297,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCommentResponse> __BuildAddCommentToDiscussion(WorkflowExpression<string> sheetId, WorkflowExpression<string> discussionId, WorkflowExpression<string> commenttext = null)
         {
@@ -333,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DiscussionData> __BuildGetDiscussion(WorkflowExpression<string> sheetId, WorkflowExpression<string> discussionId)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vantage365imaging")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GenerateBarCodeResponse> __BuildGenerateBarCode(WorkflowExpression<typeofcodeInput> typeofcode, WorkflowExpression<string> texttoencode, WorkflowExpression<int> height = null, WorkflowExpression<int> width = null)
         {

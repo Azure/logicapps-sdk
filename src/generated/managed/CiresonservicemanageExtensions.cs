@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemGetResponse> __BuildGetWorkItem(WorkflowExpression<string> workItemId)
         {
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteWorkItemResponse> __BuildDeleteWorkItem(WorkflowExpression<string> id)
         {
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildCreateIncident(WorkflowExpression<string> bodyclassification, WorkflowExpression<string> bodyurgency, WorkflowExpression<string> bodyimpact, WorkflowExpression<string> bodysource, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodypriority = null, WorkflowExpression<string> bodysupportGroup = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyaffectedUser = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -148,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildUpdateIncident(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodypriority = null, WorkflowExpression<string> bodyclassification = null, WorkflowExpression<string> bodyurgency = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodysupportGroup = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyaffectedUser = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -253,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildCreateServiceRequest(WorkflowExpression<string> bodyarea, WorkflowExpression<string> bodyurgency, WorkflowExpression<string> bodysource, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodysupportGroup = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyaffectedUser = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -338,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildUpdateServiceRequest(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<int> bodypriority = null, WorkflowExpression<string> bodyclassification = null, WorkflowExpression<string> bodyurgency = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodysupportGroup = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyaffectedUser = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -443,7 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildCreateChangeRequest(WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyarea = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodyrisk = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -526,7 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildUpdateChangeRequest(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyarea = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodyrisk = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -610,7 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildCreateProblem(WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodyurgency = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -700,7 +691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildUpdateProblem(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodyurgency = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -791,7 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildCreateReleaseRecord(WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodyrisk = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -881,7 +870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildUpdateReleaseRecord(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyimpact = null, WorkflowExpression<string> bodyrisk = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyassignedUser = null)
         {
@@ -972,7 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WorkItemActionLogResponse> __BuildAddCommentLog(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyenteredBy = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<bodyactionTypeInput> bodyactionType = null)
         {

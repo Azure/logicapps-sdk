@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationsResponse> __BuildGetStations(WorkflowExpression<string> stationCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<string> state = null)
         {
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationResponse> __BuildGetStation(WorkflowExpression<string> stationCode)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetNearbyWeatherStationsResponse> __BuildGetNearbyWeatherStations(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<int> radius = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null, WorkflowExpression<groupInput> group = null, WorkflowExpression<string> state = null)
         {
@@ -125,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetStationRainfallResponse> __BuildGetStationRainfall(WorkflowExpression<string> stationCode, WorkflowExpression<string> summerStartDate = null, WorkflowExpression<string> growingSeasonStartDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> forecastDate = null, WorkflowExpression<string> select = null)
         {
@@ -161,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetPotentialYieldResponse> __BuildGetPotentialYield(WorkflowExpression<string> stationCode = null, WorkflowExpression<double> latitude = null, WorkflowExpression<double> longitude = null, WorkflowExpression<string> summerStartDate = null, WorkflowExpression<string> growingSeasonStartDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> forecastDate = null, WorkflowExpression<int> waterUseEfficiency = null, WorkflowExpression<int> evaporation = null)
         {
@@ -208,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetSoilWaterResponse> __BuildGetSoilWater(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<soilTypeInput> soilType, WorkflowExpression<string> stationCode = null, WorkflowExpression<double> latitude = null, WorkflowExpression<double> longitude = null, WorkflowExpression<int> faoInitialisationDays = null, WorkflowExpression<double> faoInitialisationCropCoefficient = null, WorkflowExpression<int> faoDevelopmentDays = null, WorkflowExpression<double> faoDevelopmentCropCoefficient = null, WorkflowExpression<int> faoMidSeasonDays = null, WorkflowExpression<double> faoMidSeasonCropCoefficient = null, WorkflowExpression<int> faoLateSeasonDays = null, WorkflowExpression<double> faoLateSeasonCropCoefficient = null, WorkflowExpression<int> faoBreakOfSeason3Days25April = null, WorkflowExpression<int> faoBreakOfSeason3Days5June = null)
         {
@@ -273,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetYellowSpotResponse> __BuildGetYellowSpot(WorkflowExpression<string> stationCode = null, WorkflowExpression<string> date = null, WorkflowExpression<string> select = null)
         {

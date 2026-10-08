@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotReplyResponse> __BuildSendReply(WorkflowExpression<string> contentreplyText, WorkflowExpression<string> contentreplyActivity, WorkflowExpression<bool> contentshowInChat = null, WorkflowExpression<string> contentcustomChannelData = null, WorkflowExpression<string> contentsignalResponseJSON = null, WorkflowExpression<string> contentmessageID = null)
         {
@@ -89,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotReplyResponse> __BuildSendReplyWithAdaptiveCard(WorkflowExpression<string> selectedCard, WorkflowExpression<object> content = null)
         {
@@ -112,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGenerateAdaptiveCard(WorkflowExpression<string> selectedCard, WorkflowExpression<object> content = null)
         {
@@ -135,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotReplyResponse> __BuildSendReplyWithAdaptiveCardSet(WorkflowExpression<cardSetdisplayStyleInput> cardSetdisplayStyle, WorkflowExpression<string> cardSetreplyActivity, WorkflowExpression<bool> cardSetshowInTab = null, WorkflowExpression<string> cardSettabButtonLabel = null, WorkflowExpression<string> cardSettabButtonMessage = null)
         {
@@ -207,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotReplyResponse> __BuildUpdateAdaptiveCard(WorkflowExpression<string> cardInforeplyActivity)
         {
@@ -245,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotConversationStartResponse> __BuildStartConversation(WorkflowExpression<string> contenttargetBot, WorkflowExpression<string> contentconversationText, WorkflowExpression<string> contentuser)
         {
@@ -281,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<BotGroupConversationStartResponse> __BuildStartGroupConversation(WorkflowExpression<string> contenttargetBot, WorkflowExpression<string> contentchannelName, WorkflowExpression<string> contentconversationText)
         {
@@ -325,7 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendBridgeEvent(WorkflowExpression<string> contentreplyActivity)
         {
@@ -363,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponse(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<bool> webHookshowInChat = null)
         {
@@ -455,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseDATE(WorkflowExpression<webHookdateScopeInput> webHookdateScope, WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null)
         {
@@ -567,7 +557,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseCHOICE(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookchoiceValues, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null, WorkflowExpression<bool> webHooklistenForVoiceResponse = null)
         {
@@ -696,7 +685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseCHOICELIST(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHookiconURL = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null, WorkflowExpression<bool> webHooklistenForVoiceResponse = null)
         {
@@ -837,7 +825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponsePEOPLE(WorkflowExpression<string> webHookmessage, WorkflowExpression<webHookmodeInput> webHookmode, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHooksearchString = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null, WorkflowExpression<bool> webHooklistenForVoiceResponse = null)
         {
@@ -973,7 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseINTENTVECTOR(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHooklUISIntentVector, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null)
         {
@@ -1085,7 +1071,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseMEMORY(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookmemoryType, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHookiconURL = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<string> webHooktargetUser = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null)
         {
@@ -1211,7 +1196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseADAPTIVECARD(WorkflowExpression<string> selectedCard, WorkflowExpression<object> webHook = null)
         {
@@ -1235,7 +1219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInitiateBridge(WorkflowExpression<webHookparticipantsInputItem[]> webHookparticipants, WorkflowExpression<string> webHookendChatCommand, WorkflowExpression<int> webHookidleTimeout, WorkflowExpression<string[]> webHookfilters = null)
         {
@@ -1296,7 +1279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseSaveBotMemory> __BuildSaveBotMemory(WorkflowExpression<string> contentuserPrincipalName, WorkflowExpression<string> contentmemoryType, WorkflowExpression<string> contenttitle, WorkflowExpression<string> contentvalue)
         {
@@ -1335,7 +1317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ResponseDeleteBotMemory> __BuildDeleteBotMemory(WorkflowExpression<string> contentuserPrincipalName, WorkflowExpression<string> contentmemoryType, WorkflowExpression<string> contentvalue)
         {
@@ -1371,7 +1352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MemoryItem[]> __BuildGetMemoryItemsByType(WorkflowExpression<string> checkMemoryInfouserPrincipalName, WorkflowExpression<string> checkMemoryInfomemoryType)
         {

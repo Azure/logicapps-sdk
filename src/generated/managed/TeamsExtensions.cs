@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewMeetingRespone> __BuildCreateTeamsMeeting(WorkflowExpression<calendaridInput> calendarid, WorkflowExpression<string> itemsubject, WorkflowExpression<string> itemtimeZone, WorkflowExpression<string> itembodyeventMessageContent = null, WorkflowExpression<string> itemstartstartTime = null, WorkflowExpression<string> itemendendTime = null, WorkflowExpression<string> itemrequiredAttendees = null, WorkflowExpression<string> itemoptionalAttendees = null, WorkflowExpression<string> itemlocationdisplayName = null, WorkflowExpression<itemimportanceInput> itemimportance = null, WorkflowExpression<itemrecurrencepatternrecurrencePatternInput> itemrecurrencepatternrecurrencePattern = null, WorkflowExpression<int> itemrecurrencepatternrecurrenceInterval = null, WorkflowExpression<string[]> itemrecurrencepatterndaysOfWeek = null, WorkflowExpression<itemrecurrencepatternweekIndexInput> itemrecurrencepatternweekIndex = null, WorkflowExpression<string> itemrecurrencerangerecurrenceStartDate = null, WorkflowExpression<string> itemrecurrencerangerecurrenceEndDate = null, WorkflowExpression<bool> itemallDayEvent = null, WorkflowExpression<int> itempreEventReminderTime = null, WorkflowExpression<bool> itemenableReminders = null, WorkflowExpression<itemstatusShowAsInput> itemstatusShowAs = null, WorkflowExpression<bool> itemrequestResponse = null)
         {
@@ -258,7 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChannelsForGroupResponse> __BuildGetChannelsForGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null)
         {
@@ -285,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateChannelResponse> __BuildCreateChannel(WorkflowExpression<string> groupId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription = null)
         {
@@ -323,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChannelResponse> __BuildGetChannel(WorkflowExpression<string> groupId, WorkflowExpression<string> channelId)
         {
@@ -345,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetAllChannelsForTeamResponse> __BuildGetAllChannelsForTeam(WorkflowExpression<string> groupId, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null)
         {
@@ -372,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetChatsResponse> __BuildGetChats(WorkflowExpression<chatTypeInput> chatType, WorkflowExpression<topicInput> topic)
         {
@@ -394,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTagsResponseSchema> __BuildGetTags(WorkflowExpression<string> groupId)
         {
@@ -415,7 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateTagResponseSchema> __BuildCreateTag(WorkflowExpression<string> groupId, WorkflowExpression<string> bodydisplayName, WorkflowExpression<string> bodymembersIDs)
         {
@@ -449,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AddMemberToTagResponseSchema> __BuildAddMemberToTag(WorkflowExpression<string> groupId, WorkflowExpression<string> tagId, WorkflowExpression<string> bodyuserSID)
         {
@@ -481,7 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTagMembersResponseSchema> __BuildGetTagMembers(WorkflowExpression<string> groupId, WorkflowExpression<string> tagId)
         {
@@ -503,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTagMember(WorkflowExpression<string> groupId, WorkflowExpression<string> tagId, WorkflowExpression<string> tagMemberId)
         {
@@ -526,7 +515,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildPostFeedNotification(WorkflowExpression<posterInput> poster, WorkflowExpression<notificationTypeInput> notificationType, WorkflowExpression<object> body = null)
         {
@@ -550,7 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AtMentionTagResponse> __BuildAtMentionTag(WorkflowExpression<string> groupId, WorkflowExpression<string> tagId)
         {
@@ -572,7 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteTag(WorkflowExpression<string> groupId, WorkflowExpression<string> tagId)
         {
@@ -594,7 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetMessagesFromChannelResponse> __BuildGetMessagesFromChannel(WorkflowExpression<string> groupId, WorkflowExpression<string> channelId)
         {
@@ -616,7 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetMessageDetails(WorkflowExpression<string> messageId, WorkflowExpression<threadTypeInput> threadType, WorkflowExpression<object> body = null)
         {
@@ -640,7 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListRepliesResponseSchema> __BuildListRepliesToMessage(WorkflowExpression<string> groupId, WorkflowExpression<string> channelId, WorkflowExpression<string> messageId, WorkflowExpression<int> top = null)
         {
@@ -667,7 +650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ListMembersResponseSchema> __BuildListMembers(WorkflowExpression<threadTypeInput> threadType, WorkflowExpression<object> body = null)
         {
@@ -690,7 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSubscribeUserMessageWithOptions(WorkflowExpression<object> userMessageWithOptionsSubscriptionRequest = null)
         {
@@ -712,7 +693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetTeamResponse> __BuildGetTeam(WorkflowExpression<string> teamId)
         {
@@ -733,7 +713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AtMentionUserV1> __BuildAtMentionUser(WorkflowExpression<string> userId)
         {
@@ -754,7 +733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewChatResponse> __BuildCreateChat(WorkflowExpression<string> itemmembersToAdd, WorkflowExpression<string> itemtitle = null)
         {
@@ -791,7 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateATeamResponse> __BuildCreateATeam(WorkflowExpression<string> bodyteamName, WorkflowExpression<string> bodydescription, WorkflowExpression<bodyvisibilityInput> bodyvisibility = null)
         {
@@ -841,7 +818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddMemberToTeam(WorkflowExpression<string> teamId, WorkflowExpression<string> bodyuser, WorkflowExpression<bool> bodysetUserAsTeamOwner = null)
         {
@@ -879,7 +855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostToConversationResponse> __BuildPostMessageToConversation(WorkflowExpression<posterInput> poster, WorkflowExpression<string> location, WorkflowExpression<object> body = null)
         {
@@ -903,7 +878,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostToConversationResponse> __BuildReplyWithMessageToConversation(WorkflowExpression<posterInput> poster, WorkflowExpression<string> location, WorkflowExpression<object> body = null)
         {
@@ -927,7 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostToConversationResponse> __BuildPostCardToConversation(WorkflowExpression<posterInput> poster, WorkflowExpression<string> location, WorkflowExpression<object> body = null)
         {
@@ -951,7 +924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildPostCardAndWaitForResponse(WorkflowExpression<posterInput> poster, WorkflowExpression<string> location, WorkflowExpression<object> bodybodyrecipient = null, WorkflowExpression<string> bodybodymessage = null, WorkflowExpression<string> bodybodyupdateMessage = null)
         {
@@ -1021,7 +993,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostToConversationResponse> __BuildReplyWithCardToConversation(WorkflowExpression<posterInput> poster, WorkflowExpression<string> location, WorkflowExpression<object> body = null)
         {
@@ -1045,7 +1016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<PostToConversationResponse> __BuildUpdateCardInConversation(WorkflowExpression<posterInput> poster, WorkflowExpression<string> location, WorkflowExpression<object> body = null)
         {
@@ -1069,7 +1039,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
         {

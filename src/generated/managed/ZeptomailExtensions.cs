@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetProcessedEmailsResponse> __BuildGetProcessedEmails(WorkflowExpression<string> mailagentKey, WorkflowExpression<string> subject = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null, WorkflowExpression<string> dateFrom = null, WorkflowExpression<string> dateTo = null, WorkflowExpression<string> requestId = null, WorkflowExpression<bool> isHb = null, WorkflowExpression<bool> isSb = null)
         {
@@ -74,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessMessage> __BuildSendMail(WorkflowExpression<string> bodymailAgent, WorkflowExpression<string> bodyfromname, WorkflowExpression<EmailAddressItems[]> bodyto, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodyfromaddressprefix = null, WorkflowExpression<string> bodyfromaddressdomain = null, WorkflowExpression<EmailAddressItems[]> bodycC = null, WorkflowExpression<EmailAddressItems[]> bodybCC = null, WorkflowExpression<bodymailTypeInput> bodymailType = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<ReplyToAddresss[]> bodyreplyTo = null, WorkflowExpression<bodyattachmentsInputItem[]> bodyattachments = null)
         {
@@ -195,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuccessMessage> __BuildSendTemplateMail(WorkflowExpression<string> bodymailAgent, WorkflowExpression<string> bodymailTemplate, WorkflowExpression<string> bodyfromname, WorkflowExpression<string> bodyfromaddressprefix = null, WorkflowExpression<string> bodyfromaddressdomain = null, WorkflowExpression<EmailAddressItems[]> bodyto = null, WorkflowExpression<EmailAddressItems[]> bodycC = null, WorkflowExpression<EmailAddressItems[]> bodybCC = null, WorkflowExpression<bodymergeInfoInputItem[]> bodymergeInfo = null, WorkflowExpression<ReplyToAddresss[]> bodyreplyTo = null)
         {
@@ -296,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ProcessedMailStatsResponse> __BuildProcessedMailStats(WorkflowExpression<string> mailagent, WorkflowExpression<string> fromTime = null, WorkflowExpression<string> toTime = null)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<AcquireAccessTokenResponse> __BuildAcquireAccessToken(WorkflowExpression<string> tenantName, WorkflowExpression<string> hostURL, WorkflowExpression<string> username, WorkflowExpression<string> password, WorkflowExpression<string> clientId, WorkflowExpression<string> clientSecret)
         {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPublishEvent(WorkflowExpression<string> tenantName, WorkflowExpression<string> authorizationToken, WorkflowExpression<string> bodyeventDefinitionCode = null, WorkflowExpression<bool> bodyisTest = null, WorkflowExpression<bodyattributesInputItem[]> bodyattributes = null)
         {
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildPublishTransaction(WorkflowExpression<string> tenantName, WorkflowExpression<string> authorizationToken, WorkflowExpression<string> bodytransactionDefinitionCode = null, WorkflowExpression<bool> bodyisTest = null, WorkflowExpression<bodyattributesInputItem[]> bodyattributes = null)
         {

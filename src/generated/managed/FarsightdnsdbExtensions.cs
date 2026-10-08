@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSetResults[]> __BuildRRSET(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
         {
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSetResults[]> __BuildRRSETRRTYPE(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<string> rrtype, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
         {
@@ -111,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RRSetResults[]> __BuildRRSETRRTYPEBAILIWICK(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<string> rrtype, WorkflowExpression<string> bailiwick, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
         {
@@ -159,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RDataResults[]> __BuildRDATA(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
         {
@@ -205,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RDataResults[]> __BuildRDATARRTYPE(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<string> rrtype, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
         {
@@ -252,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<FlexResults[]> __BuildFLEX(WorkflowExpression<methodInput> method, WorkflowExpression<keyInput> key, WorkflowExpression<string> value, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<string> exclude = null, WorkflowExpression<double> offset = null)
         {

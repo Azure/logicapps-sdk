@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSendAttachmentsToUrl(WorkflowExpression<string> bodyaPIURL, WorkflowExpression<string> bodyattachmentURL, WorkflowExpression<string> bodyattachmentFileName)
         {
@@ -70,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Response> __BuildReturnResultsToBot(WorkflowExpression<string> returnResultURL, WorkflowExpression<string> bodyadaptiveCardadaptiveCardSchema, WorkflowExpression<string> bodyadaptiveCardadaptiveCardType, WorkflowExpression<string> bodyadaptiveCardadaptiveCardVersion, WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodyendRequest, WorkflowExpression<JToken[]> bodyadaptiveCardadaptiveCardActions = null, WorkflowExpression<JToken[]> bodyadaptiveCardadaptiveCardBody = null, WorkflowExpression<bool> bodyrenderPreformattedText = null)
         {

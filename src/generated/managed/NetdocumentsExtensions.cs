@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetUserInfoResponse> __BuildGetUserInfo(WorkflowExpression<string> id, WorkflowExpression<string> cabGuid = null)
         {
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewVersionResponse> __BuildNewVersion(WorkflowExpression<string> id, WorkflowExpression<string> extension = null, WorkflowExpression<string> versionDescription = null, WorkflowExpression<string> verName = null, WorkflowExpression<bool> official = null, WorkflowExpression<bool> addToRecent = null, WorkflowExpression<string> srcVer = null, WorkflowExpression<bool> allocatesubversion = null, WorkflowExpression<string> body = null)
         {
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDocInfo(WorkflowExpression<string> id)
         {
@@ -122,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenameDocument(WorkflowExpression<string> id, WorkflowExpression<string> renameBodystandardAttributesnewName)
         {
@@ -162,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDocContent(WorkflowExpression<string> id, WorkflowExpression<bool> base64 = null)
         {
@@ -187,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteDoc(WorkflowExpression<string> id, WorkflowExpression<bool> permanent = null)
         {
@@ -213,7 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateDocument(WorkflowExpression<string> id, WorkflowExpression<string> extension = null, WorkflowExpression<bool> base64 = null, WorkflowExpression<string> body = null)
         {
@@ -244,7 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateFolderResponse> __BuildCreateFolder(WorkflowExpression<string> name, WorkflowExpression<string> parent = null, WorkflowExpression<string> cabinet = null)
         {
@@ -268,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetFldContent(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
         {
@@ -293,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFileFolder(WorkflowExpression<string> id, WorkflowExpression<string> item, WorkflowExpression<actionInput> action)
         {
@@ -316,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteFolder(WorkflowExpression<string> id, WorkflowExpression<bool> permanent = null, WorkflowExpression<bool> deleteContents = null)
         {
@@ -346,7 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRenameFolder(WorkflowExpression<string> id, WorkflowExpression<string> renameBodystandardAttributesnewName)
         {
@@ -386,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFollowFolder(WorkflowExpression<string> id, WorkflowExpression<string> recipients, WorkflowExpression<sendInput> send = null)
         {
@@ -409,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildFollowDocument(WorkflowExpression<string> id, WorkflowExpression<string> recipients, WorkflowExpression<sendInput> send = null)
         {
@@ -432,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCurrentUserInfoResponse> __BuildGetCurrentUserInfo(WorkflowExpression<string> cabGuid = null)
         {
@@ -456,7 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCheckinDoc(WorkflowExpression<string> id, WorkflowExpression<string> extension = null, WorkflowExpression<object> file = null, WorkflowExpression<bool> addToRecent = null)
         {
@@ -481,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCheckOutDoc(WorkflowExpression<string> id, WorkflowExpression<string> comment = null, WorkflowExpression<bool> download = null, WorkflowExpression<string> version = null, WorkflowExpression<bool> addToRecent = null)
         {
@@ -507,7 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateDocumentResponse> __BuildCreateDocument(WorkflowExpression<string> destination, WorkflowExpression<object> file, WorkflowExpression<bool> addToRecent = null, WorkflowExpression<string> profile = null)
         {
@@ -532,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLockDocumentVersion(WorkflowExpression<string> id, WorkflowExpression<int> version, WorkflowExpression<string> description = null)
         {
@@ -556,7 +537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDocumentVersions(WorkflowExpression<string> documentID)
         {
@@ -578,7 +558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateSecuredLinkResponse> __BuildCreateSecuredLink(WorkflowExpression<string> id, WorkflowExpression<string> password = null, WorkflowExpression<string> expirationdate = null, WorkflowExpression<string> version = null, WorkflowExpression<bool> download = null, WorkflowExpression<bool> notifyme = null, WorkflowExpression<bool> @lock = null)
         {
@@ -606,7 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetDocHistory(WorkflowExpression<string> id)
         {
@@ -628,7 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWorkspaceParentChildResponse> __BuildCreateWorkspaceParentChild(WorkflowExpression<string> cabinetID, WorkflowExpression<string> parentID, WorkflowExpression<string> childID)
         {
@@ -653,7 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateWorkspaceSingleResponse> __BuildCreateWorkspaceSingle(WorkflowExpression<string> cabinetID, WorkflowExpression<string> parentID)
         {
@@ -677,7 +653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetWorkspaceInformation(WorkflowExpression<string> workspaceID)
         {
@@ -700,7 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateChildEntryResponse> __BuildCreateChildEntry(WorkflowExpression<string> repositoryID, WorkflowExpression<string> childAttributeID, WorkflowExpression<string> parentID, WorkflowExpression<string> childID, WorkflowExpression<bool> lookupEntryBodyaccessfilteredPermissions, WorkflowExpression<bool> lookupEntryBodyaccessforcePermssions, WorkflowExpression<string> lookupEntryBodydescription = null, WorkflowExpression<string> lookupEntryBodytype = null, WorkflowExpression<bool> lookupEntryBodylitigationHold = null, WorkflowExpression<string> lookupEntryBodyclosedDate = null, WorkflowExpression<lookupEntryBodyaccesspermissionsInputItem[]> lookupEntryBodyaccesspermissions = null)
         {
@@ -782,7 +756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetChildEntry(WorkflowExpression<string> repositoryID, WorkflowExpression<string> childAttributeID, WorkflowExpression<string> parentID, WorkflowExpression<string> childID)
         {
@@ -808,7 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteChildEntryResponse> __BuildDeleteChildEntry(WorkflowExpression<string> repositoryID, WorkflowExpression<string> childAttributeID, WorkflowExpression<string> parentID, WorkflowExpression<string> childID)
         {
@@ -834,7 +806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateEntryResponse> __BuildCreateEntry(WorkflowExpression<string> repositoryID, WorkflowExpression<string> attributeID, WorkflowExpression<string> parentID, WorkflowExpression<bool> lookupEntryBodyaccessfilteredPermissions, WorkflowExpression<bool> lookupEntryBodyaccessforcePermssions, WorkflowExpression<string> lookupEntryBodydescription = null, WorkflowExpression<string> lookupEntryBodytype = null, WorkflowExpression<bool> lookupEntryBodylitigationHold = null, WorkflowExpression<string> lookupEntryBodyclosedDate = null, WorkflowExpression<lookupEntryBodyaccesspermissionsInputItem[]> lookupEntryBodyaccesspermissions = null)
         {
@@ -915,7 +886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetLookupEntry(WorkflowExpression<string> repositoryID, WorkflowExpression<string> attributeID, WorkflowExpression<string> parentID, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<int> skip = null, WorkflowExpression<int> top = null, WorkflowExpression<orderbyInput> orderby = null)
         {
@@ -956,7 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DeleteLookupEntryResponse> __BuildDeleteLookupEntry(WorkflowExpression<string> repositoryID, WorkflowExpression<string> attributeID, WorkflowExpression<string> parentID)
         {
@@ -981,7 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SearchLookupEntriesResponse> __BuildSearchLookupEntries(WorkflowExpression<string> repositoryID, WorkflowExpression<string> attributeID, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<int> skip = null, WorkflowExpression<int> top = null)
         {
@@ -1018,7 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSearchCabinets(WorkflowExpression<string> cabinets, WorkflowExpression<string> q, WorkflowExpression<string> select, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> skiptoken = null)
         {
@@ -1058,7 +1025,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildRefreshWorkspace(WorkflowExpression<string> workspaceID)
         {
@@ -1081,7 +1047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildLockDocument(WorkflowExpression<string> id, WorkflowExpression<string> comment = null)
         {
@@ -1107,7 +1072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUnockDocument(WorkflowExpression<string> id)
         {
@@ -1130,7 +1094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetRepositoryLog(WorkflowExpression<string> repositoryID, WorkflowExpression<logtypeInput> logtype, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null)
         {
@@ -1162,7 +1125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetRepositoryInformation(WorkflowExpression<string> repositoryID)
         {
@@ -1185,7 +1147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetRepositoryUsersResponseItem[]> __BuildGetRepositoryUsers(WorkflowExpression<string> repositoryID)
         {
@@ -1208,7 +1169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string[]> __BuildGetRepositoryGroups(WorkflowExpression<string> repositoryID, WorkflowExpression<string> filter = null, WorkflowExpression<string> top = null, WorkflowExpression<bool> paging = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<returnInfoInput> returnInfo = null)
         {
@@ -1248,7 +1208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateRepositoryGroupResponse> __BuildCreateRepositoryGroup(WorkflowExpression<string> repositoryID, WorkflowExpression<string> name, WorkflowExpression<bool> external, WorkflowExpression<bool> hidden, WorkflowExpression<bool> hideMembership)
         {
@@ -1275,7 +1234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRepositoryGroup(WorkflowExpression<string> repositoryID, WorkflowExpression<string> groupID)
         {
@@ -1298,7 +1256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> username, WorkflowExpression<string> displayFirstName, WorkflowExpression<string> displayLastName, WorkflowExpression<string> email, WorkflowExpression<bool> external, WorkflowExpression<bool> sendWelcome, WorkflowExpression<string> repository, WorkflowExpression<string> displayMiddleName = null)
         {
@@ -1328,7 +1285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddOrRemoveUserRepository(WorkflowExpression<string> repositoryID, WorkflowExpression<actionInput> action, WorkflowExpression<string> member, WorkflowExpression<bool> external, WorkflowExpression<bool> deleteIfFederated = null)
         {
@@ -1355,7 +1311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCollabSpaceResponse> __BuildCreateCollabSpace(WorkflowExpression<string> workspaceID, WorkflowExpression<string> name, WorkflowExpression<string> description = null)
         {
@@ -1380,7 +1335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetCabinetSettings(WorkflowExpression<string> cabinetID)
         {
@@ -1403,7 +1357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetCabinetInformation(WorkflowExpression<string> cabinetID)
         {
@@ -1426,7 +1379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken[]> __BuildGetCabinetCustomAttributes(WorkflowExpression<string> cabinetID)
         {
@@ -1449,7 +1401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCabinetDefaultAccessResponseItem[]> __BuildGetCabinetDefaultAccess(WorkflowExpression<string> cabinetID)
         {
@@ -1472,7 +1423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddToOrRemoveGroupFromCabinet(WorkflowExpression<string> cabinetID, WorkflowExpression<actionInput> action, WorkflowExpression<string> id, WorkflowExpression<bool> view, WorkflowExpression<bool> edit, WorkflowExpression<bool> share, WorkflowExpression<bool> administer, WorkflowExpression<bool> noAccess)
         {
@@ -1502,7 +1452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetCabinetGroupsResponseItem[]> __BuildGetCabinetGroups(WorkflowExpression<string> cabinetID)
         {
@@ -1525,7 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<CreateCabinetExternalGroupResponse> __BuildCreateCabinetExternalGroup(WorkflowExpression<string> cabinetID, WorkflowExpression<string> name, WorkflowExpression<optionsInput> options = null, WorkflowExpression<accessInput> access = null, WorkflowExpression<string> collaborationSpaceId = null, WorkflowExpression<collaborationspaceaccessInput> collaborationspaceaccess = null, WorkflowExpression<string> topwsattributegroupkey = null)
         {
@@ -1554,7 +1502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildSearchCabinetModifyACLs(WorkflowExpression<string> cabinetID, WorkflowExpression<string> q, WorkflowExpression<modeInput> mode, WorkflowExpression<string> newAcl, WorkflowExpression<string> email = null, WorkflowExpression<completionEmailInput> completionEmail = null)
         {
@@ -1582,7 +1529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildGetContainerContents(WorkflowExpression<string> containerID, WorkflowExpression<string> select, WorkflowExpression<int> top = null, WorkflowExpression<string> skiptoken = null, WorkflowExpression<string> orderby = null)
         {
@@ -1616,7 +1562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupInformationResponse> __BuildGetGroupInformation(WorkflowExpression<string> groupID, WorkflowExpression<bool> cabMembership = null)
         {
@@ -1643,7 +1588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<GetGroupMembershipResponseItem[]> __BuildGetGroupMembership(WorkflowExpression<string> groupID)
         {
@@ -1666,7 +1610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAddOrRemoveGroupMember(WorkflowExpression<string> groupID, WorkflowExpression<actionInput> action, WorkflowExpression<string> member)
         {

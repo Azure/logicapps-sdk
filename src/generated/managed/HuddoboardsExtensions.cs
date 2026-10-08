@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Node[]> __BuildBoardSearch(WorkflowExpression<string> q = null)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildBoardCreate(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodytemplateId = null)
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Board> __BuildBoard(WorkflowExpression<string> boardId)
         {
@@ -110,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NodeSummary[]> __BuildCards(WorkflowExpression<string> boardId, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> q = null)
         {
@@ -137,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Member[]> __BuildBoardMembers(WorkflowExpression<string> boardId, WorkflowExpression<bool> expand = null, WorkflowExpression<string> q = null)
         {
@@ -164,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Board[]> __BuildBoardMy(WorkflowExpression<bool> template = null)
         {
@@ -187,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNodeCreate(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyboard = null, WorkflowExpression<string> bodyparent = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodydescription = null)
         {
@@ -249,7 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Node> __BuildNode(WorkflowExpression<string> nodeId)
         {
@@ -270,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildAssign(WorkflowExpression<string> nodeId, WorkflowExpression<string> bodyuserId = null)
         {
@@ -305,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Node[]> __BuildChildren(WorkflowExpression<string> nodeId)
         {
@@ -326,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Node[]> __BuildComments(WorkflowExpression<string> nodeId)
         {
@@ -347,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCreateAComment(WorkflowExpression<string> nodeId, WorkflowExpression<string> bodydescription = null)
         {
@@ -382,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildIncompleteTask(WorkflowExpression<string> nodeId)
         {
@@ -403,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildCompleteTask(WorkflowExpression<string> nodeId)
         {
@@ -424,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildNodeDate(WorkflowExpression<string> nodeId, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodydue = null, WorkflowExpression<string> bodyend = null)
         {
@@ -473,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Node[]> __BuildFindTask(WorkflowExpression<string> q = null, WorkflowExpression<bool> completed = null)
         {
@@ -499,7 +483,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<User[]> __BuildUser(WorkflowExpression<string> q)
         {

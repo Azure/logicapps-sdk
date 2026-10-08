@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IChart[]> __BuildGetTopicCharts(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic> __BuildCreateTopicAfter(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodyicon)
         {
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic> __BuildDeleteTopic(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic> __BuildGetTopic(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic> __BuildUpdateTopic(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> bodyname = null)
         {
@@ -163,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic> __BuildCreateChildTopic(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodyicon)
         {
@@ -202,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic[]> __BuildGetTopicChildren(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -225,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField[]> __BuildGetTopicFields(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -248,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildGetFieldByDcvAndFieldsetId(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId)
         {
@@ -273,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateBooleanSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<bool> bodydata = null)
         {
@@ -454,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateTextSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<string> bodydata = null)
         {
@@ -635,7 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateTextMultiField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<string[]> bodydata = null)
         {
@@ -816,7 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateNumberSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<int> bodydata = null)
         {
@@ -997,7 +984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateNumberMultiField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<int[]> bodydata = null)
         {
@@ -1178,7 +1164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateDecimalSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<double> bodydata = null)
         {
@@ -1359,7 +1344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateDecimalMultiField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<double[]> bodydata = null)
         {
@@ -1540,7 +1524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateDateSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<string> bodydata = null)
         {
@@ -1721,7 +1704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateDateMultiField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null, WorkflowExpression<string[]> bodydata = null)
         {
@@ -1902,7 +1884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateListSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<int> bodysetOrder = null, WorkflowExpression<int> bodyorder = null, WorkflowExpression<string> bodytopicId = null, WorkflowExpression<string> bodysetName = null, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<bodyfieldValueTypeInput> bodyfieldValueType = null, WorkflowExpression<bool> bodyrequired = null, WorkflowExpression<bool> bodyreadonly = null, WorkflowExpression<string> bodyusage = null, WorkflowExpression<string> bodyrelationshipCategorydcv = null, WorkflowExpression<string> bodyrelationshipCategoryname = null, WorkflowExpression<string> bodyrelationshipCategoryicon = null, WorkflowExpression<string> bodycharacteristicdcv = null, WorkflowExpression<string> bodycharacteristicname = null, WorkflowExpression<string> bodycharacteristicicon = null, WorkflowExpression<string> bodyopenLocation = null)
         {
@@ -2092,7 +2073,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateRelationshipSingleField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<string> bodydatadcv = null, WorkflowExpression<string> bodydataname = null, WorkflowExpression<string> bodydataicon = null)
         {
@@ -2167,7 +2147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateRelationshipMultiField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<string> bodyfieldsetId = null, WorkflowExpression<RelationshipElement[]> bodydata = null)
         {
@@ -2220,7 +2199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateRelationshipListField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<string> bodyfieldsetId = null)
         {
@@ -2274,7 +2252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateFields(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<SingleTextField[]> bodysingleTextFields = null, WorkflowExpression<MultiTextField[]> bodymultiTextFields = null, WorkflowExpression<SingleNumberField[]> bodysingleNumberFields = null, WorkflowExpression<MultiNumberField[]> bodymultiNumberFields = null, WorkflowExpression<SingleBooleanField[]> bodysingleBooleanFields = null, WorkflowExpression<SingleDecimalField[]> bodysingleDecimalFields = null, WorkflowExpression<MultiDecimalField[]> bodymultiDecimalFields = null, WorkflowExpression<SingleDateField[]> bodysingleDateFields = null, WorkflowExpression<MultiDateField[]> bodymultiDateFields = null, WorkflowExpression<SingleListField[]> bodysingleListFields = null, WorkflowExpression<RelationshipField[]> bodysingleRelationshipFields = null, WorkflowExpression<MultiRelationshipField[]> bodymultiRelationshipFields = null, WorkflowExpression<RelationshipListField[]> bodysingleRelationshipListFields = null, WorkflowExpression<SingleHyperlinkField[]> bodysingleHyperlinkFields = null, WorkflowExpression<MultiHyperlinkField[]> bodymultiHyperlinkFields = null)
         {
@@ -2409,7 +2386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateSingleHyperlinkField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string> bodydata = null)
         {
@@ -2448,7 +2424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IField> __BuildUpdateMultiHyperlinkField(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> fieldsetId, WorkflowExpression<string> fieldId, WorkflowExpression<string[]> bodydata = null)
         {
@@ -2487,7 +2462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveTopicToTop(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2510,7 +2484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveTopicToBottom(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2533,7 +2506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveTopicUp(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2556,7 +2528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveTopicDown(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2579,7 +2550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveTopicLevelUp(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2602,7 +2572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMoveTopicLevelDown(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2625,7 +2594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IRelationship[]> __BuildGetTopicRelations(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2648,7 +2616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<IRelationship> __BuildSaveRelation(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> bodyfromElementDcv = null, WorkflowExpression<string> bodytoElementDcv = null, WorkflowExpression<bodyrelationshipTypeInput> bodyrelationshipType = null)
         {
@@ -2698,7 +2665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildDeleteRelation(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId, WorkflowExpression<string> relationId)
         {
@@ -2722,7 +2688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic> __BuildGetTopicRoot(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage)
         {
@@ -2744,7 +2709,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopicPath> __BuildGetPathToRoot(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2767,7 +2731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic[]> __BuildGetTopicSiblings(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2790,7 +2753,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ITopic[]> __BuildGetRelationCategories(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage)
         {
@@ -2812,7 +2774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetTopicTypes(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicId)
         {
@@ -2835,7 +2796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<JToken> __BuildGetTopicIcons(WorkflowExpression<string> dbId, WorkflowExpression<dataLanguageInput> dataLanguage, WorkflowExpression<string> topicType)
         {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<EmailPostResponse> __BuildEmail(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodycc = null, WorkflowExpression<string> bodybcc = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyhtml = null, WorkflowExpression<bodyattachmentsInputItem[]> bodyattachments = null, WorkflowExpression<string> bodyreplyTo = null)
         {
@@ -96,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<RetrieveGetResponse> __BuildRetrieveGet(WorkflowExpression<string> emailId)
         {
@@ -126,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DomainPostResponse> __BuildDomain(WorkflowExpression<string> bodyname, WorkflowExpression<bodyregionInput> bodyregion = null)
         {
@@ -173,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildDomainDelete(WorkflowExpression<string> domainId)
         {
@@ -194,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<string> __BuildVerify(WorkflowExpression<string> domainId)
         {

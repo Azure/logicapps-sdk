@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<WebSearchGetResponse> __BuildWebSearchGet(WorkflowExpression<string> q, WorkflowExpression<cacheControlInput> cacheControl = null, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> xLocLat = null, WorkflowExpression<string> xLocLong = null, WorkflowExpression<string> xLocTimezone = null, WorkflowExpression<string> xLocCity = null, WorkflowExpression<string> xLocState = null, WorkflowExpression<string> xLocStateName = null, WorkflowExpression<string> xLocCountry = null, WorkflowExpression<string> xLocPostalCode = null, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<uiLangInput> uiLang = null, WorkflowExpression<int> count = null, WorkflowExpression<int> offset = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<string> freshness = null, WorkflowExpression<bool> textDecorations = null, WorkflowExpression<bool> spellcheck = null, WorkflowExpression<string> resultFilter = null, WorkflowExpression<string> gogglesId = null, WorkflowExpression<string> units = null, WorkflowExpression<bool> extraSnippets = null, WorkflowExpression<bool> summary = null)
         {
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<ImageSearchGetResponse> __BuildImageSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<int> count = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<bool> spellcheck = null)
         {
@@ -160,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<VideoSearchGetResponse> __BuildVideoSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<int> count = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<bool> spellcheck = null)
         {
@@ -202,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewsSearchGetResponse> __BuildNewsSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<int> count = null, WorkflowExpression<int> offset = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<bool> spellcheck = null, WorkflowExpression<freshnessInput> freshness = null, WorkflowExpression<bool> extraSnippets = null)
         {
@@ -253,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SuggestionSearchGetResponse> __BuildSuggestionSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<langInput> lang = null, WorkflowExpression<int> count = null, WorkflowExpression<bool> rich = null)
         {
@@ -290,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<SpellcheckSearchGetResponse> __BuildSpellcheckSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<langInput> lang = null)
         {

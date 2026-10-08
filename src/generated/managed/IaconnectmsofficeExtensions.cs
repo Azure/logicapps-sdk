@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordCreateInstanceResponse> __BuildMSWordCreateInstance(WorkflowExpression<string> mSWordCreateInstanceworkflow, WorkflowExpression<bool> mSWordCreateInstanceshowWord = null)
         {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordCloseInstance(WorkflowExpression<string> mSWordCloseInstanceworkflow, WorkflowExpression<int> mSWordCloseInstancehandle = null)
         {
@@ -112,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordDetachFromInstance(WorkflowExpression<string> mSWordDetachFromInstanceworkflow, WorkflowExpression<int> mSWordDetachFromInstancehandle = null)
         {
@@ -159,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordAttachToExistingInstanceResponse> __BuildMSWordAttachToExistingInstance(WorkflowExpression<string> mSWordAttachToExistingInstanceworkflow, WorkflowExpression<string> mSWordAttachToExistingInstancefilename = null, WorkflowExpression<bool> mSWordAttachToExistingInstancetoggleWindow = null, WorkflowExpression<bool> mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> mSWordAttachToExistingInstancetoggleDelay = null)
         {
@@ -247,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordShowWord(WorkflowExpression<string> mSWordShowWordworkflow, WorkflowExpression<int> mSWordShowWordhandle = null)
         {
@@ -294,7 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordHideWord(WorkflowExpression<string> mSWordHideWordworkflow, WorkflowExpression<int> mSWordHideWordhandle = null)
         {
@@ -341,7 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordCreateDocumentResponse> __BuildMSWordCreateDocument(WorkflowExpression<string> mSWordCreateDocumentworkflow, WorkflowExpression<int> mSWordCreateDocumenthandle = null)
         {
@@ -388,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordOpenDocumentResponse> __BuildMSWordOpenDocument(WorkflowExpression<string> mSWordOpenDocumentfilename, WorkflowExpression<string> mSWordOpenDocumentworkflow, WorkflowExpression<int> mSWordOpenDocumenthandle = null, WorkflowExpression<bool> mSWordOpenDocumentopenReadOnly = null, WorkflowExpression<bool> mSWordOpenDocumentaddToRecentFiles = null, WorkflowExpression<string> mSWordOpenDocumentpassword = null, WorkflowExpression<bool> mSWordOpenDocumentopenAndRepair = null)
         {
@@ -496,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordSaveDocument(WorkflowExpression<string> mSWordSaveDocumentworkflow, WorkflowExpression<int> mSWordSaveDocumenthandle = null, WorkflowExpression<string> mSWordSaveDocumentdocumentName = null)
         {
@@ -550,7 +541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordSaveAsDocumentResponse> __BuildMSWordSaveAsDocument(WorkflowExpression<string> mSWordSaveAsDocumentsaveFilename, WorkflowExpression<string> mSWordSaveAsDocumentworkflow, WorkflowExpression<int> mSWordSaveAsDocumenthandle = null, WorkflowExpression<string> mSWordSaveAsDocumentdocumentName = null)
         {
@@ -607,7 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordCloseDocument(WorkflowExpression<string> mSWordCloseDocumentworkflow, WorkflowExpression<int> mSWordCloseDocumenthandle = null, WorkflowExpression<string> mSWordCloseDocumentdocumentName = null)
         {
@@ -661,7 +650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordTypeText(WorkflowExpression<string> mSWordTypeTexttext, WorkflowExpression<string> mSWordTypeTextworkflow, WorkflowExpression<int> mSWordTypeTexthandle = null)
         {
@@ -711,7 +699,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordSelectAll(WorkflowExpression<string> mSWordSelectAllworkflow, WorkflowExpression<int> mSWordSelectAllhandle = null, WorkflowExpression<string> mSWordSelectAlldocumentName = null)
         {
@@ -765,7 +752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordSelectRange(WorkflowExpression<int> mSWordSelectRangestart, WorkflowExpression<int> mSWordSelectRangefinish, WorkflowExpression<string> mSWordSelectRangeworkflow, WorkflowExpression<int> mSWordSelectRangehandle = null, WorkflowExpression<string> mSWordSelectRangedocumentName = null)
         {
@@ -825,7 +811,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordCopyToClipboard(WorkflowExpression<string> mSWordCopyToClipboardworkflow, WorkflowExpression<int> mSWordCopyToClipboardhandle = null)
         {
@@ -872,7 +857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordPasteFromClipboard(WorkflowExpression<string> mSWordPasteFromClipboardworkflow, WorkflowExpression<int> mSWordPasteFromClipboardhandle = null)
         {
@@ -919,7 +903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordClearClipboard(WorkflowExpression<string> mSWordClearClipboardworkflow)
         {
@@ -949,7 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetDocumentBodyTextResponse> __BuildMSWordGetDocumentBodyText(WorkflowExpression<int> mSWordGetDocumentBodyTextstart, WorkflowExpression<int> mSWordGetDocumentBodyTextfinish, WorkflowExpression<string> mSWordGetDocumentBodyTextworkflow, WorkflowExpression<int> mSWordGetDocumentBodyTexthandle = null, WorkflowExpression<string> mSWordGetDocumentBodyTextdocumentName = null)
         {
@@ -1009,7 +991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetNumberOfTablesInDocumentResponse> __BuildMSWordGetNumberOfTablesInDocument(WorkflowExpression<string> mSWordGetNumberOfTablesInDocumentworkflow, WorkflowExpression<int> mSWordGetNumberOfTablesInDocumenthandle = null, WorkflowExpression<string> mSWordGetNumberOfTablesInDocumentdocumentName = null)
         {
@@ -1063,7 +1044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordUpdateBookmark(WorkflowExpression<string> mSWordUpdateBookmarkbookmarkName, WorkflowExpression<string> mSWordUpdateBookmarkworkflow, WorkflowExpression<int> mSWordUpdateBookmarkhandle = null, WorkflowExpression<string> mSWordUpdateBookmarkdocumentName = null, WorkflowExpression<string> mSWordUpdateBookmarknewValue = null)
         {
@@ -1127,7 +1107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordSelectTable(WorkflowExpression<int> mSWordSelectTabletableIndex, WorkflowExpression<string> mSWordSelectTableworkflow, WorkflowExpression<int> mSWordSelectTablehandle = null, WorkflowExpression<string> mSWordSelectTabledocumentName = null)
         {
@@ -1184,7 +1163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetTableBoundsResponse> __BuildMSWordGetTableBounds(WorkflowExpression<int> mSWordGetTableBoundstableIndex, WorkflowExpression<string> mSWordGetTableBoundsworkflow, WorkflowExpression<int> mSWordGetTableBoundshandle = null, WorkflowExpression<string> mSWordGetTableBoundsdocumentName = null)
         {
@@ -1241,7 +1219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordSelectTableCell(WorkflowExpression<int> mSWordSelectTableCelltableIndex, WorkflowExpression<int> mSWordSelectTableCellrowIndex, WorkflowExpression<int> mSWordSelectTableCellcolumnIndex, WorkflowExpression<string> mSWordSelectTableCellworkflow, WorkflowExpression<int> mSWordSelectTableCellhandle = null, WorkflowExpression<string> mSWordSelectTableCelldocumentName = null)
         {
@@ -1304,7 +1281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetTableCellTextValueResponse> __BuildMSWordGetTableCellTextValue(WorkflowExpression<int> mSWordGetTableCellTextValuetableIndex, WorkflowExpression<int> mSWordGetTableCellTextValuerowIndex, WorkflowExpression<int> mSWordGetTableCellTextValuecolumnIndex, WorkflowExpression<string> mSWordGetTableCellTextValueworkflow, WorkflowExpression<int> mSWordGetTableCellTextValuehandle = null, WorkflowExpression<string> mSWordGetTableCellTextValuedocumentName = null)
         {
@@ -1367,7 +1343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetTableCellTextValueTrimmedResponse> __BuildMSWordGetTableCellTextValueTrimmed(WorkflowExpression<int> mSWordGetTableCellTextValueTrimmedtableIndex, WorkflowExpression<int> mSWordGetTableCellTextValueTrimmedrowIndex, WorkflowExpression<int> mSWordGetTableCellTextValueTrimmedcolumnIndex, WorkflowExpression<string> mSWordGetTableCellTextValueTrimmedworkflow, WorkflowExpression<int> mSWordGetTableCellTextValueTrimmedhandle = null, WorkflowExpression<string> mSWordGetTableCellTextValueTrimmeddocumentName = null)
         {
@@ -1430,7 +1405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordSetTableCellTextValue(WorkflowExpression<int> mSWordSetTableCellTextValuetableIndex, WorkflowExpression<int> mSWordSetTableCellTextValuerowIndex, WorkflowExpression<int> mSWordSetTableCellTextValuecolumnIndex, WorkflowExpression<string> mSWordSetTableCellTextValueworkflow, WorkflowExpression<int> mSWordSetTableCellTextValuehandle = null, WorkflowExpression<string> mSWordSetTableCellTextValuedocumentName = null, WorkflowExpression<string> mSWordSetTableCellTextValuenewCellText = null)
         {
@@ -1500,7 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordExportDocumentAsPDF(WorkflowExpression<string> mSWordExportDocumentAsPDFsaveFileName, WorkflowExpression<string> mSWordExportDocumentAsPDFworkflow, WorkflowExpression<int> mSWordExportDocumentAsPDFhandle = null, WorkflowExpression<string> mSWordExportDocumentAsPDFdocumentName = null)
         {
@@ -1557,7 +1530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordAddTable(WorkflowExpression<int> mSWordAddTablenumberOfRows, WorkflowExpression<int> mSWordAddTablenumberOfColumns, WorkflowExpression<string> mSWordAddTableworkflow, WorkflowExpression<int> mSWordAddTablehandle = null, WorkflowExpression<string> mSWordAddTabledocumentName = null, WorkflowExpression<int> mSWordAddTableautoFitBehaviour = null)
         {
@@ -1634,7 +1606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordAddTableRow(WorkflowExpression<int> mSWordAddTableRowtableIndex, WorkflowExpression<string> mSWordAddTableRowworkflow, WorkflowExpression<int> mSWordAddTableRowhandle = null, WorkflowExpression<string> mSWordAddTableRowdocumentName = null)
         {
@@ -1691,7 +1662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSWordAddTableColumn(WorkflowExpression<int> mSWordAddTableColumntableIndex, WorkflowExpression<string> mSWordAddTableColumnworkflow, WorkflowExpression<int> mSWordAddTableColumnhandle = null, WorkflowExpression<string> mSWordAddTableColumndocumentName = null)
         {
@@ -1748,7 +1718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetHighlightedTextResponse> __BuildMSWordGetHighlightedText(WorkflowExpression<string> mSWordGetHighlightedTextworkflow, WorkflowExpression<int> mSWordGetHighlightedTexthandle = null, WorkflowExpression<string> mSWordGetHighlightedTextdocumentName = null)
         {
@@ -1802,7 +1771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordExecuteCommandBarObjectResponse> __BuildMSWordExecuteCommandBarObject(WorkflowExpression<string> mSWordExecuteCommandBarObjectobjectId, WorkflowExpression<string> mSWordExecuteCommandBarObjectworkflow, WorkflowExpression<int> mSWordExecuteCommandBarObjecthandle = null, WorkflowExpression<bool> mSWordExecuteCommandBarObjectrunInBackground = null)
         {
@@ -1869,7 +1837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordSetDocumentSensitivityLabelResponse> __BuildMSWordSetDocumentSensitivityLabel(WorkflowExpression<mSWordSetDocumentSensitivityLabelassignmentMethodInput> mSWordSetDocumentSensitivityLabelassignmentMethod, WorkflowExpression<string> mSWordSetDocumentSensitivityLabellabelId, WorkflowExpression<string> mSWordSetDocumentSensitivityLabelworkflow, WorkflowExpression<int> mSWordSetDocumentSensitivityLabelhandle = null, WorkflowExpression<string> mSWordSetDocumentSensitivityLabeldocumentName = null, WorkflowExpression<string> mSWordSetDocumentSensitivityLabellabelName = null, WorkflowExpression<string> mSWordSetDocumentSensitivityLabelsiteId = null, WorkflowExpression<string> mSWordSetDocumentSensitivityLabeljustification = null)
         {
@@ -1950,7 +1917,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSWordGetDocumentSensitivityLabelResponse> __BuildMSWordGetDocumentSensitivityLabel(WorkflowExpression<string> mSWordGetDocumentSensitivityLabelworkflow, WorkflowExpression<int> mSWordGetDocumentSensitivityLabelhandle = null, WorkflowExpression<string> mSWordGetDocumentSensitivityLabeldocumentName = null)
         {
@@ -2004,7 +1970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelCreateInstanceResponse> __BuildMSExcelCreateInstance(WorkflowExpression<string> mSExcelCreateInstanceworkflow, WorkflowExpression<bool> mSExcelCreateInstanceenableEvents = null, WorkflowExpression<bool> mSExcelCreateInstanceshowExcel = null)
         {
@@ -2068,7 +2033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelCloseInstance(WorkflowExpression<string> mSExcelCloseInstanceworkflow, WorkflowExpression<int> mSExcelCloseInstancehandle = null)
         {
@@ -2115,7 +2079,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelAttachToExistingInstanceResponse> __BuildMSExcelAttachToExistingInstance(WorkflowExpression<string> mSExcelAttachToExistingInstanceworkflow, WorkflowExpression<string> mSExcelAttachToExistingInstancefilename = null, WorkflowExpression<bool> mSExcelAttachToExistingInstancetoggleWindow = null, WorkflowExpression<bool> mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> mSExcelAttachToExistingInstancetoggleDelay = null)
         {
@@ -2203,7 +2166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelShowExcel(WorkflowExpression<string> mSExcelShowExcelworkflow, WorkflowExpression<int> mSExcelShowExcelhandle = null)
         {
@@ -2250,7 +2212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelHideExcel(WorkflowExpression<string> mSExcelHideExcelworkflow, WorkflowExpression<int> mSExcelHideExcelhandle = null)
         {
@@ -2297,7 +2258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelOpenWorkbookResponse> __BuildMSExcelOpenWorkbook(WorkflowExpression<string> mSExcelOpenWorkbookworkflow, WorkflowExpression<int> mSExcelOpenWorkbookhandle = null, WorkflowExpression<string> mSExcelOpenWorkbookfilename = null, WorkflowExpression<bool> mSExcelOpenWorkbookreadOnly = null, WorkflowExpression<bool> mSExcelOpenWorkbookupdateLinks = null, WorkflowExpression<string> mSExcelOpenWorkbookpassword = null, WorkflowExpression<bool> mSExcelOpenWorkbookenableEvents = null, WorkflowExpression<bool> mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode = null, WorkflowExpression<bool> mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode = null)
         {
@@ -2443,7 +2403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelPutWorkbookInEditModeResponse> __BuildMSExcelPutWorkbookInEditMode(WorkflowExpression<string> mSExcelPutWorkbookInEditModeworkflow, WorkflowExpression<int> mSExcelPutWorkbookInEditModehandle = null, WorkflowExpression<string> mSExcelPutWorkbookInEditModeworkbookName = null, WorkflowExpression<bool> mSExcelPutWorkbookInEditModeforce = null)
         {
@@ -2514,7 +2473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelCreateWorkbookResponse> __BuildMSExcelCreateWorkbook(WorkflowExpression<string> mSExcelCreateWorkbookworkflow, WorkflowExpression<int> mSExcelCreateWorkbookhandle = null)
         {
@@ -2561,7 +2519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelCloseWorkbook(WorkflowExpression<string> mSExcelCloseWorkbookworkflow, WorkflowExpression<int> mSExcelCloseWorkbookhandle = null, WorkflowExpression<string> mSExcelCloseWorkbookworkbookName = null, WorkflowExpression<bool> mSExcelCloseWorkbooksaveData = null)
         {
@@ -2632,7 +2589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelCloseCurrentWorkbook(WorkflowExpression<string> mSExcelCloseCurrentWorkbookworkflow, WorkflowExpression<int> mSExcelCloseCurrentWorkbookhandle = null)
         {
@@ -2679,7 +2635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelGoToCell(WorkflowExpression<string> mSExcelGoToCellcellReference, WorkflowExpression<string> mSExcelGoToCellworkflow, WorkflowExpression<int> mSExcelGoToCellhandle = null, WorkflowExpression<string> mSExcelGoToCellworkbookName = null, WorkflowExpression<string> mSExcelGoToCellworksheetName = null)
         {
@@ -2743,7 +2698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetCellValueResponse> __BuildMSExcelGetCellValue(WorkflowExpression<string> mSExcelGetCellValuecellReference, WorkflowExpression<string> mSExcelGetCellValueworkflow, WorkflowExpression<int> mSExcelGetCellValuehandle = null, WorkflowExpression<string> mSExcelGetCellValueworkbookName = null, WorkflowExpression<string> mSExcelGetCellValueworksheetName = null)
         {
@@ -2807,7 +2761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetCellValue2Response> __BuildMSExcelGetCellValue2(WorkflowExpression<string> mSExcelGetCellValue2cellReference, WorkflowExpression<string> mSExcelGetCellValue2workflow, WorkflowExpression<int> mSExcelGetCellValue2handle = null, WorkflowExpression<string> mSExcelGetCellValue2workbookName = null, WorkflowExpression<string> mSExcelGetCellValue2worksheetName = null)
         {
@@ -2871,7 +2824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetCellTextResponse> __BuildMSExcelGetCellText(WorkflowExpression<string> mSExcelGetCellTextcellReference, WorkflowExpression<string> mSExcelGetCellTextworkflow, WorkflowExpression<int> mSExcelGetCellTexthandle = null, WorkflowExpression<string> mSExcelGetCellTextworkbookName = null, WorkflowExpression<string> mSExcelGetCellTextworksheetName = null)
         {
@@ -2935,7 +2887,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelSetCellValue(WorkflowExpression<string> mSExcelSetCellValuecellReference, WorkflowExpression<string> mSExcelSetCellValueworkflow, WorkflowExpression<int> mSExcelSetCellValuehandle = null, WorkflowExpression<string> mSExcelSetCellValueworkbookName = null, WorkflowExpression<string> mSExcelSetCellValueworksheetName = null, WorkflowExpression<string> mSExcelSetCellValuecellValue = null, WorkflowExpression<bool> mSExcelSetCellValuecellValueContainsStoredPassword = null)
         {
@@ -3023,7 +2974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelFindNextCellWithValueResponse> __BuildMSExcelFindNextCellWithValue(WorkflowExpression<mSExcelFindNextCellWithValuedirectionInput> mSExcelFindNextCellWithValuedirection, WorkflowExpression<string> mSExcelFindNextCellWithValuesearchValue, WorkflowExpression<string> mSExcelFindNextCellWithValueworkflow, WorkflowExpression<int> mSExcelFindNextCellWithValuehandle = null, WorkflowExpression<string> mSExcelFindNextCellWithValueworkbookName = null, WorkflowExpression<string> mSExcelFindNextCellWithValueworksheetName = null, WorkflowExpression<bool> mSExcelFindNextCellWithValuecaseSensitive = null, WorkflowExpression<mSExcelFindNextCellWithValuecomparisonTypeInput> mSExcelFindNextCellWithValuecomparisonType = null, WorkflowExpression<int> mSExcelFindNextCellWithValuemaxCellsToSearch = null, WorkflowExpression<bool> mSExcelFindNextCellWithValueactivateCell = null)
         {
@@ -3138,7 +3088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelFindNextEmptyCellResponse> __BuildMSExcelFindNextEmptyCell(WorkflowExpression<mSExcelFindNextEmptyCelldirectionInput> mSExcelFindNextEmptyCelldirection, WorkflowExpression<string> mSExcelFindNextEmptyCellworkflow, WorkflowExpression<int> mSExcelFindNextEmptyCellhandle = null, WorkflowExpression<string> mSExcelFindNextEmptyCellworkbookName = null, WorkflowExpression<string> mSExcelFindNextEmptyCellworksheetName = null, WorkflowExpression<bool> mSExcelFindNextEmptyCellactivateCell = null)
         {
@@ -3219,7 +3168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellLeftResponse> __BuildMSExcelGotoNextEmptyCellLeft(WorkflowExpression<string> mSExcelGotoNextEmptyCellLeftworkflow, WorkflowExpression<int> mSExcelGotoNextEmptyCellLefthandle = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellLeftworkbookName = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellLeftworksheetName = null)
         {
@@ -3280,7 +3228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellRightResponse> __BuildMSExcelGotoNextEmptyCellRight(WorkflowExpression<string> mSExcelGotoNextEmptyCellRightworkflow, WorkflowExpression<int> mSExcelGotoNextEmptyCellRighthandle = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellRightworkbookName = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellRightworksheetName = null)
         {
@@ -3341,7 +3288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellUpResponse> __BuildMSExcelGotoNextEmptyCellUp(WorkflowExpression<string> mSExcelGotoNextEmptyCellUpworkflow, WorkflowExpression<int> mSExcelGotoNextEmptyCellUphandle = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellUpworkbookName = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellUpworksheetName = null)
         {
@@ -3402,7 +3348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellDownResponse> __BuildMSExcelGotoNextEmptyCellDown(WorkflowExpression<string> mSExcelGotoNextEmptyCellDownworkflow, WorkflowExpression<int> mSExcelGotoNextEmptyCellDownhandle = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellDownworkbookName = null, WorkflowExpression<string> mSExcelGotoNextEmptyCellDownworksheetName = null)
         {
@@ -3463,7 +3408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveWorkbookResponse> __BuildMSExcelSaveWorkbook(WorkflowExpression<string> mSExcelSaveWorkbookworkflow, WorkflowExpression<int> mSExcelSaveWorkbookhandle = null, WorkflowExpression<string> mSExcelSaveWorkbookworkbookName = null)
         {
@@ -3517,7 +3461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsResponse> __BuildMSExcelSaveWorkbookAs(WorkflowExpression<string> mSExcelSaveWorkbookAssaveFilename, WorkflowExpression<string> mSExcelSaveWorkbookAsworkflow, WorkflowExpression<int> mSExcelSaveWorkbookAshandle = null, WorkflowExpression<string> mSExcelSaveWorkbookAsworkbookName = null, WorkflowExpression<bool> mSExcelSaveWorkbookAsdeleteExistingSaveFilename = null, WorkflowExpression<mSExcelSaveWorkbookAsexcelFileFormatInput> mSExcelSaveWorkbookAsexcelFileFormat = null)
         {
@@ -3608,7 +3551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsCSVResponse> __BuildMSExcelSaveWorkbookAsCSV(WorkflowExpression<string> mSExcelSaveWorkbookAsCSVsaveFilename, WorkflowExpression<string> mSExcelSaveWorkbookAsCSVworkflow, WorkflowExpression<int> mSExcelSaveWorkbookAsCSVhandle = null, WorkflowExpression<string> mSExcelSaveWorkbookAsCSVworkbookName = null, WorkflowExpression<bool> mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
@@ -3682,7 +3624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsWithPasswordResponse> __BuildMSExcelSaveWorkbookAsWithPassword(WorkflowExpression<string> mSExcelSaveWorkbookAsWithPasswordsaveFilename, WorkflowExpression<string> mSExcelSaveWorkbookAsWithPasswordpassword, WorkflowExpression<string> mSExcelSaveWorkbookAsWithPasswordworkflow, WorkflowExpression<int> mSExcelSaveWorkbookAsWithPasswordhandle = null, WorkflowExpression<string> mSExcelSaveWorkbookAsWithPasswordworkbookName = null, WorkflowExpression<bool> mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename = null, WorkflowExpression<mSExcelSaveWorkbookAsWithPasswordexcelFileFormatInput> mSExcelSaveWorkbookAsWithPasswordexcelFileFormat = null)
         {
@@ -3776,7 +3717,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookResponse> __BuildMSExcelSaveCurrentWorkbook(WorkflowExpression<string> mSExcelSaveCurrentWorkbookworkflow, WorkflowExpression<int> mSExcelSaveCurrentWorkbookhandle = null)
         {
@@ -3823,7 +3763,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsResponse> __BuildMSExcelSaveCurrentWorkbookAs(WorkflowExpression<string> mSExcelSaveCurrentWorkbookAsworkflow, WorkflowExpression<int> mSExcelSaveCurrentWorkbookAshandle = null, WorkflowExpression<string> mSExcelSaveCurrentWorkbookAssaveFilename = null, WorkflowExpression<bool> mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename = null, WorkflowExpression<mSExcelSaveCurrentWorkbookAsexcelFileFormatInput> mSExcelSaveCurrentWorkbookAsexcelFileFormat = null)
         {
@@ -3911,7 +3850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsCSVResponse> __BuildMSExcelSaveCurrentWorkbookAsCSV(WorkflowExpression<string> mSExcelSaveCurrentWorkbookAsCSVsaveFilename, WorkflowExpression<string> mSExcelSaveCurrentWorkbookAsCSVworkflow, WorkflowExpression<int> mSExcelSaveCurrentWorkbookAsCSVhandle = null, WorkflowExpression<bool> mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
@@ -3978,7 +3916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetWorksheetNamesResponse> __BuildMSExcelGetWorksheetNames(WorkflowExpression<string> mSExcelGetWorksheetNamesworkflow, WorkflowExpression<int> mSExcelGetWorksheetNameshandle = null, WorkflowExpression<string> mSExcelGetWorksheetNamesworkbookName = null)
         {
@@ -4032,7 +3969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetWorksheetNameResponse> __BuildMSExcelGetWorksheetName(WorkflowExpression<string> mSExcelGetWorksheetNameworkflow, WorkflowExpression<int> mSExcelGetWorksheetNamehandle = null, WorkflowExpression<string> mSExcelGetWorksheetNameworkbookName = null, WorkflowExpression<int> mSExcelGetWorksheetNameposition = null)
         {
@@ -4093,7 +4029,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelActivateWorksheet(WorkflowExpression<string> mSExcelActivateWorksheetworkflow, WorkflowExpression<int> mSExcelActivateWorksheethandle = null, WorkflowExpression<string> mSExcelActivateWorksheetworkbookName = null, WorkflowExpression<string> mSExcelActivateWorksheetworksheetName = null, WorkflowExpression<bool> mSExcelActivateWorksheetcreateIfMissing = null)
         {
@@ -4171,7 +4106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelCreateWorksheet(WorkflowExpression<string> mSExcelCreateWorksheetworkflow, WorkflowExpression<int> mSExcelCreateWorksheethandle = null, WorkflowExpression<string> mSExcelCreateWorksheetworkbookName = null, WorkflowExpression<string> mSExcelCreateWorksheetworksheetName = null)
         {
@@ -4232,7 +4166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelDeleteWorksheet(WorkflowExpression<string> mSExcelDeleteWorksheetworkflow, WorkflowExpression<int> mSExcelDeleteWorksheethandle = null, WorkflowExpression<string> mSExcelDeleteWorksheetworkbookName = null, WorkflowExpression<string> mSExcelDeleteWorksheetworksheetName = null)
         {
@@ -4293,7 +4226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetWorksheetAsCollectionEnhancedResponse> __BuildMSExcelGetWorksheetAsCollectionEnhanced(WorkflowExpression<string> mSExcelGetWorksheetAsCollectionEnhancedworkflow, WorkflowExpression<int> mSExcelGetWorksheetAsCollectionEnhancedhandle = null, WorkflowExpression<string> mSExcelGetWorksheetAsCollectionEnhancedworkbookName = null, WorkflowExpression<string> mSExcelGetWorksheetAsCollectionEnhancedworksheetName = null, WorkflowExpression<bool> mSExcelGetWorksheetAsCollectionEnhanceduseHeader = null, WorkflowExpression<string> mSExcelGetWorksheetAsCollectionEnhancedstartCell = null, WorkflowExpression<int> mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber = null, WorkflowExpression<bool> mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows = null, WorkflowExpression<bool> mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader = null, WorkflowExpression<string> mSExcelGetWorksheetAsCollectionEnhancedkeyColumn = null, WorkflowExpression<bool> mSExcelGetWorksheetAsCollectionEnhancedgetRawData = null, WorkflowExpression<int> mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount = null, WorkflowExpression<int> mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows = null, WorkflowExpression<int> mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn = null, WorkflowExpression<int> mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn = null)
         {
@@ -4521,7 +4453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetNumberOfRowsResponse> __BuildMSExcelGetNumberOfRows(WorkflowExpression<string> mSExcelGetNumberOfRowsworkflow, WorkflowExpression<int> mSExcelGetNumberOfRowshandle = null, WorkflowExpression<string> mSExcelGetNumberOfRowsworkbookName = null, WorkflowExpression<string> mSExcelGetNumberOfRowsworksheetName = null)
         {
@@ -4582,7 +4513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelEvaluateExpressionResponse> __BuildMSExcelEvaluateExpression(WorkflowExpression<string> mSExcelEvaluateExpressionexpression, WorkflowExpression<string> mSExcelEvaluateExpressionworkflow, WorkflowExpression<int> mSExcelEvaluateExpressionhandle = null)
         {
@@ -4632,7 +4562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetWorksheetUsedRangeResponse> __BuildMSExcelGetWorksheetUsedRange(WorkflowExpression<string> mSExcelGetWorksheetUsedRangeworkflow, WorkflowExpression<int> mSExcelGetWorksheetUsedRangehandle = null, WorkflowExpression<string> mSExcelGetWorksheetUsedRangeworkbookName = null, WorkflowExpression<string> mSExcelGetWorksheetUsedRangeworksheetName = null)
         {
@@ -4693,7 +4622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetCountrySettingResponse> __BuildMSExcelGetCountrySetting(WorkflowExpression<string> mSExcelGetCountrySettingworkflow, WorkflowExpression<int> mSExcelGetCountrySettinghandle = null)
         {
@@ -4740,7 +4668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelWriteCollection(WorkflowExpression<string> mSExcelWriteCollectioncellReference, WorkflowExpression<string> mSExcelWriteCollectioncollectionToWriteJSON, WorkflowExpression<string> mSExcelWriteCollectionworkflow, WorkflowExpression<int> mSExcelWriteCollectionhandle = null, WorkflowExpression<string> mSExcelWriteCollectionworkbookName = null, WorkflowExpression<string> mSExcelWriteCollectionworksheetName = null, WorkflowExpression<bool> mSExcelWriteCollectionincludeColumnNames = null)
         {
@@ -4824,7 +4751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelWriteCollectionWithDates(WorkflowExpression<string> mSExcelWriteCollectionWithDatescellReference, WorkflowExpression<string> mSExcelWriteCollectionWithDatescollectionToWriteJSON, WorkflowExpression<string> mSExcelWriteCollectionWithDatesworkflow, WorkflowExpression<int> mSExcelWriteCollectionWithDateshandle = null, WorkflowExpression<string> mSExcelWriteCollectionWithDatesworkbookName = null, WorkflowExpression<string> mSExcelWriteCollectionWithDatesworksheetName = null, WorkflowExpression<bool> mSExcelWriteCollectionWithDatesincludeColumnNames = null, WorkflowExpression<bool> mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate = null, WorkflowExpression<string> mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON = null)
         {
@@ -4932,7 +4858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetActiveCellResponse> __BuildMSExcelGetActiveCell(WorkflowExpression<string> mSExcelGetActiveCellworkflow, WorkflowExpression<int> mSExcelGetActiveCellhandle = null)
         {
@@ -4979,7 +4904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelFormatCell(WorkflowExpression<string> mSExcelFormatCellcellReference, WorkflowExpression<string> mSExcelFormatCellcellFormat, WorkflowExpression<string> mSExcelFormatCellworkflow, WorkflowExpression<int> mSExcelFormatCellhandle = null, WorkflowExpression<string> mSExcelFormatCellworkbookName = null, WorkflowExpression<string> mSExcelFormatCellworksheetName = null)
         {
@@ -5046,7 +4970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelFormatCurrentCell(WorkflowExpression<string> mSExcelFormatCurrentCellcellFormat, WorkflowExpression<string> mSExcelFormatCurrentCellworkflow, WorkflowExpression<int> mSExcelFormatCurrentCellhandle = null)
         {
@@ -5096,7 +5019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelSelectCellRange(WorkflowExpression<string> mSExcelSelectCellRangecellReference, WorkflowExpression<string> mSExcelSelectCellRangeworkflow, WorkflowExpression<int> mSExcelSelectCellRangehandle = null, WorkflowExpression<string> mSExcelSelectCellRangeworkbookName = null, WorkflowExpression<string> mSExcelSelectCellRangeworksheetName = null, WorkflowExpression<bool> mSExcelSelectCellRangeentireRow = null, WorkflowExpression<bool> mSExcelSelectCellRangeentireColumn = null)
         {
@@ -5194,7 +5116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelCopySelection(WorkflowExpression<string> mSExcelCopySelectionworkflow, WorkflowExpression<int> mSExcelCopySelectionhandle = null, WorkflowExpression<string> mSExcelCopySelectionworkbookName = null, WorkflowExpression<string> mSExcelCopySelectionworksheetName = null, WorkflowExpression<string> mSExcelCopySelectioncellReference = null, WorkflowExpression<bool> mSExcelCopySelectionentireRow = null, WorkflowExpression<bool> mSExcelCopySelectionentireColumn = null)
         {
@@ -5296,7 +5217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelCutSelection(WorkflowExpression<string> mSExcelCutSelectionworkflow, WorkflowExpression<int> mSExcelCutSelectionhandle = null, WorkflowExpression<string> mSExcelCutSelectionworkbookName = null, WorkflowExpression<string> mSExcelCutSelectionworksheetName = null, WorkflowExpression<string> mSExcelCutSelectioncellReference = null, WorkflowExpression<bool> mSExcelCutSelectionentireRow = null, WorkflowExpression<bool> mSExcelCutSelectionentireColumn = null)
         {
@@ -5398,7 +5318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelPasteIntoSelection(WorkflowExpression<string> mSExcelPasteIntoSelectionworkflow, WorkflowExpression<int> mSExcelPasteIntoSelectionhandle = null, WorkflowExpression<string> mSExcelPasteIntoSelectionworkbookName = null, WorkflowExpression<string> mSExcelPasteIntoSelectionworksheetName = null, WorkflowExpression<bool> mSExcelPasteIntoSelectionvaluesOnly = null, WorkflowExpression<bool> mSExcelPasteIntoSelectionsimplePasteOnly = null, WorkflowExpression<string> mSExcelPasteIntoSelectioncellReference = null, WorkflowExpression<bool> mSExcelPasteIntoSelectionentireRow = null, WorkflowExpression<bool> mSExcelPasteIntoSelectionentireColumn = null)
         {
@@ -5534,7 +5453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelInsertOnSelection(WorkflowExpression<string> mSExcelInsertOnSelectionworkflow, WorkflowExpression<int> mSExcelInsertOnSelectionhandle = null, WorkflowExpression<string> mSExcelInsertOnSelectionworkbookName = null, WorkflowExpression<string> mSExcelInsertOnSelectionworksheetName = null, WorkflowExpression<string> mSExcelInsertOnSelectioncellReference = null, WorkflowExpression<bool> mSExcelInsertOnSelectionentireRow = null, WorkflowExpression<bool> mSExcelInsertOnSelectionentireColumn = null, WorkflowExpression<mSExcelInsertOnSelectionshiftInput> mSExcelInsertOnSelectionshift = null)
         {
@@ -5643,7 +5561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelDeleteSelection(WorkflowExpression<string> mSExcelDeleteSelectionworkflow, WorkflowExpression<int> mSExcelDeleteSelectionhandle = null, WorkflowExpression<string> mSExcelDeleteSelectionworkbookName = null, WorkflowExpression<string> mSExcelDeleteSelectionworksheetName = null, WorkflowExpression<string> mSExcelDeleteSelectioncellReference = null, WorkflowExpression<bool> mSExcelDeleteSelectionentireRow = null, WorkflowExpression<bool> mSExcelDeleteSelectionentireColumn = null, WorkflowExpression<mSExcelDeleteSelectionshiftInput> mSExcelDeleteSelectionshift = null)
         {
@@ -5752,7 +5669,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelClearExcelClipboard(WorkflowExpression<string> mSExcelClearExcelClipboardworkflow, WorkflowExpression<int> mSExcelClearExcelClipboardhandle = null)
         {
@@ -5799,7 +5715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelRunMacroResponse> __BuildMSExcelRunMacro(WorkflowExpression<string> mSExcelRunMacromacroName, WorkflowExpression<string> mSExcelRunMacroworkflow, WorkflowExpression<int> mSExcelRunMacrohandle = null, WorkflowExpression<int> mSExcelRunMacronumberOfArguments = null, WorkflowExpression<string> mSExcelRunMacroargument1 = null, WorkflowExpression<string> mSExcelRunMacroargument2 = null, WorkflowExpression<string> mSExcelRunMacroargument3 = null, WorkflowExpression<string> mSExcelRunMacroargument4 = null, WorkflowExpression<string> mSExcelRunMacroargument5 = null, WorkflowExpression<string> mSExcelRunMacroargument6 = null, WorkflowExpression<string> mSExcelRunMacroargument7 = null, WorkflowExpression<string> mSExcelRunMacroargument8 = null, WorkflowExpression<string> mSExcelRunMacroargument9 = null, WorkflowExpression<string> mSExcelRunMacroargument10 = null, WorkflowExpression<bool> mSExcelRunMacrorunInBackground = null)
         {
@@ -5943,7 +5858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelAddMacroToWorkbook(WorkflowExpression<string> mSExcelAddMacroToWorkbookmacroCode, WorkflowExpression<string> mSExcelAddMacroToWorkbookworkflow, WorkflowExpression<int> mSExcelAddMacroToWorkbookhandle = null, WorkflowExpression<string> mSExcelAddMacroToWorkbookworkbookName = null)
         {
@@ -6000,7 +5914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelTrustVBOMInRegistry(WorkflowExpression<string> mSExcelTrustVBOMInRegistryworkflow, WorkflowExpression<int> mSExcelTrustVBOMInRegistryexcelVersion = null, WorkflowExpression<bool> mSExcelTrustVBOMInRegistrytrustVBOM = null)
         {
@@ -6054,7 +5967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelSetCalculationMode(WorkflowExpression<int> mSExcelSetCalculationModecalculationMode, WorkflowExpression<string> mSExcelSetCalculationModeworkflow, WorkflowExpression<int> mSExcelSetCalculationModehandle = null)
         {
@@ -6104,7 +6016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSExcelExecuteCommandBarObject(WorkflowExpression<string> mSExcelExecuteCommandBarObjectobjectId, WorkflowExpression<string> mSExcelExecuteCommandBarObjectworkflow, WorkflowExpression<int> mSExcelExecuteCommandBarObjecthandle = null, WorkflowExpression<bool> mSExcelExecuteCommandBarObjectrunInBackground = null)
         {
@@ -6171,7 +6082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelCopyBetweenCellsResponse> __BuildMSExcelCopyBetweenCells(WorkflowExpression<string> mSExcelCopyBetweenCellssourceCellReference, WorkflowExpression<string> mSExcelCopyBetweenCellstargetCellReference, WorkflowExpression<string> mSExcelCopyBetweenCellsworkflow, WorkflowExpression<int> mSExcelCopyBetweenCellssourceHandle = null, WorkflowExpression<string> mSExcelCopyBetweenCellssourceWorkbookName = null, WorkflowExpression<string> mSExcelCopyBetweenCellssourceWorksheetName = null, WorkflowExpression<bool> mSExcelCopyBetweenCellssourceEntireRow = null, WorkflowExpression<bool> mSExcelCopyBetweenCellssourceEntireColumn = null, WorkflowExpression<int> mSExcelCopyBetweenCellstargetHandle = null, WorkflowExpression<string> mSExcelCopyBetweenCellstargetWorkbookName = null, WorkflowExpression<string> mSExcelCopyBetweenCellstargetWorksheetName = null, WorkflowExpression<bool> mSExcelCopyBetweenCellstargetEntireRow = null, WorkflowExpression<bool> mSExcelCopyBetweenCellstargetEntireColumn = null, WorkflowExpression<bool> mSExcelCopyBetweenCellsvaluesOnly = null, WorkflowExpression<bool> mSExcelCopyBetweenCellssimplePasteOnly = null)
         {
@@ -6371,7 +6281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelCutBetweenCellsResponse> __BuildMSExcelCutBetweenCells(WorkflowExpression<string> mSExcelCutBetweenCellssourceCellReference, WorkflowExpression<string> mSExcelCutBetweenCellstargetCellReference, WorkflowExpression<string> mSExcelCutBetweenCellsworkflow, WorkflowExpression<int> mSExcelCutBetweenCellssourceHandle = null, WorkflowExpression<string> mSExcelCutBetweenCellssourceWorkbookName = null, WorkflowExpression<string> mSExcelCutBetweenCellssourceWorksheetName = null, WorkflowExpression<bool> mSExcelCutBetweenCellssourceEntireRow = null, WorkflowExpression<bool> mSExcelCutBetweenCellssourceEntireColumn = null, WorkflowExpression<int> mSExcelCutBetweenCellstargetHandle = null, WorkflowExpression<string> mSExcelCutBetweenCellstargetWorkbookName = null, WorkflowExpression<string> mSExcelCutBetweenCellstargetWorksheetName = null, WorkflowExpression<bool> mSExcelCutBetweenCellstargetEntireRow = null, WorkflowExpression<bool> mSExcelCutBetweenCellstargetEntireColumn = null, WorkflowExpression<bool> mSExcelCutBetweenCellsvaluesOnly = null)
         {
@@ -6554,7 +6463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelMinimiseWindowResponse> __BuildMSExcelMinimiseWindow(WorkflowExpression<string> mSExcelMinimiseWindowworkflow, WorkflowExpression<int> mSExcelMinimiseWindowhandle = null)
         {
@@ -6601,7 +6509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelMaximiseWindowResponse> __BuildMSExcelMaximiseWindow(WorkflowExpression<string> mSExcelMaximiseWindowworkflow, WorkflowExpression<int> mSExcelMaximiseWindowhandle = null)
         {
@@ -6648,7 +6555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelNormaliseWindowResponse> __BuildMSExcelNormaliseWindow(WorkflowExpression<string> mSExcelNormaliseWindowworkflow, WorkflowExpression<int> mSExcelNormaliseWindowhandle = null)
         {
@@ -6695,7 +6601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetAndSetCellValueResponse> __BuildMSExcelGetAndSetCellValue(WorkflowExpression<string> mSExcelGetAndSetCellValuesourceCellReference, WorkflowExpression<string> mSExcelGetAndSetCellValuetargetCellReference, WorkflowExpression<string> mSExcelGetAndSetCellValueworkflow, WorkflowExpression<int> mSExcelGetAndSetCellValuesourceHandle = null, WorkflowExpression<string> mSExcelGetAndSetCellValuesourceWorkbookName = null, WorkflowExpression<string> mSExcelGetAndSetCellValuesourceWorksheetName = null, WorkflowExpression<int> mSExcelGetAndSetCellValuetargetHandle = null, WorkflowExpression<string> mSExcelGetAndSetCellValuetargetWorkbookName = null, WorkflowExpression<string> mSExcelGetAndSetCellValuetargetWorksheetName = null)
         {
@@ -6793,7 +6698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetAndSetCellValue2Response> __BuildMSExcelGetAndSetCellValue2(WorkflowExpression<string> mSExcelGetAndSetCellValue2sourceCellReference, WorkflowExpression<string> mSExcelGetAndSetCellValue2targetCellReference, WorkflowExpression<string> mSExcelGetAndSetCellValue2workflow, WorkflowExpression<int> mSExcelGetAndSetCellValue2sourceHandle = null, WorkflowExpression<string> mSExcelGetAndSetCellValue2sourceWorkbookName = null, WorkflowExpression<string> mSExcelGetAndSetCellValue2sourceWorksheetName = null, WorkflowExpression<int> mSExcelGetAndSetCellValue2targetHandle = null, WorkflowExpression<string> mSExcelGetAndSetCellValue2targetWorkbookName = null, WorkflowExpression<string> mSExcelGetAndSetCellValue2targetWorksheetName = null)
         {
@@ -6891,7 +6795,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetAndSetCellTextResponse> __BuildMSExcelGetAndSetCellText(WorkflowExpression<string> mSExcelGetAndSetCellTextsourceCellReference, WorkflowExpression<string> mSExcelGetAndSetCellTexttargetCellReference, WorkflowExpression<string> mSExcelGetAndSetCellTextworkflow, WorkflowExpression<int> mSExcelGetAndSetCellTextsourceHandle = null, WorkflowExpression<string> mSExcelGetAndSetCellTextsourceWorkbookName = null, WorkflowExpression<string> mSExcelGetAndSetCellTextsourceWorksheetName = null, WorkflowExpression<int> mSExcelGetAndSetCellTexttargetHandle = null, WorkflowExpression<string> mSExcelGetAndSetCellTexttargetWorkbookName = null, WorkflowExpression<string> mSExcelGetAndSetCellTexttargetWorksheetName = null)
         {
@@ -6989,7 +6892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse> __BuildMSExcelCheckOLEObject(WorkflowExpression<string> mSExcelCheckOLEObjectoLEObjectName, WorkflowExpression<string> mSExcelCheckOLEObjectworkflow, WorkflowExpression<int> mSExcelCheckOLEObjecthandle = null, WorkflowExpression<string> mSExcelCheckOLEObjectworkbookName = null, WorkflowExpression<string> mSExcelCheckOLEObjectworksheetName = null, WorkflowExpression<bool> mSExcelCheckOLEObjectchecked = null, WorkflowExpression<bool> mSExcelCheckOLEObjectrunInBackground = null)
         {
@@ -7087,7 +6989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelInputTextIntoOLEObjectResponse> __BuildMSExcelInputTextIntoOLEObject(WorkflowExpression<string> mSExcelInputTextIntoOLEObjectoLEObjectName, WorkflowExpression<string> mSExcelInputTextIntoOLEObjectworkflow, WorkflowExpression<int> mSExcelInputTextIntoOLEObjecthandle = null, WorkflowExpression<string> mSExcelInputTextIntoOLEObjectworkbookName = null, WorkflowExpression<string> mSExcelInputTextIntoOLEObjectworksheetName = null, WorkflowExpression<string> mSExcelInputTextIntoOLEObjecttextToInput = null, WorkflowExpression<bool> mSExcelInputTextIntoOLEObjectrunInBackground = null)
         {
@@ -7175,7 +7076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSetCellBackgroundColourResponse> __BuildMSExcelSetCellBackgroundColour(WorkflowExpression<string> mSExcelSetCellBackgroundColourcellReference, WorkflowExpression<int> mSExcelSetCellBackgroundColourcolourIndex, WorkflowExpression<string> mSExcelSetCellBackgroundColourworkflow, WorkflowExpression<int> mSExcelSetCellBackgroundColourhandle = null, WorkflowExpression<string> mSExcelSetCellBackgroundColourworkbookName = null, WorkflowExpression<string> mSExcelSetCellBackgroundColourworksheetName = null)
         {
@@ -7242,7 +7142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetCellBackgroundColourResponse> __BuildMSExcelGetCellBackgroundColour(WorkflowExpression<string> mSExcelGetCellBackgroundColourcellReference, WorkflowExpression<string> mSExcelGetCellBackgroundColourworkflow, WorkflowExpression<int> mSExcelGetCellBackgroundColourhandle = null, WorkflowExpression<string> mSExcelGetCellBackgroundColourworkbookName = null, WorkflowExpression<string> mSExcelGetCellBackgroundColourworksheetName = null)
         {
@@ -7306,7 +7205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetOLEObjectValueResponse> __BuildMSExcelGetOLEObjectValue(WorkflowExpression<string> mSExcelGetOLEObjectValueoLEObjectName, WorkflowExpression<string> mSExcelGetOLEObjectValueworkflow, WorkflowExpression<int> mSExcelGetOLEObjectValuehandle = null, WorkflowExpression<string> mSExcelGetOLEObjectValueworkbookName = null, WorkflowExpression<string> mSExcelGetOLEObjectValueworksheetName = null)
         {
@@ -7370,7 +7268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelDoesOLEObjectExistResponse> __BuildMSExcelDoesOLEObjectExist(WorkflowExpression<string> mSExcelDoesOLEObjectExistoLEObjectName, WorkflowExpression<string> mSExcelDoesOLEObjectExistworkflow, WorkflowExpression<int> mSExcelDoesOLEObjectExisthandle = null, WorkflowExpression<string> mSExcelDoesOLEObjectExistworkbookName = null, WorkflowExpression<string> mSExcelDoesOLEObjectExistworksheetName = null)
         {
@@ -7434,7 +7331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelPressOLEObjectResponse> __BuildMSExcelPressOLEObject(WorkflowExpression<string> mSExcelPressOLEObjectoLEObjectName, WorkflowExpression<string> mSExcelPressOLEObjectworkflow, WorkflowExpression<int> mSExcelPressOLEObjecthandle = null, WorkflowExpression<string> mSExcelPressOLEObjectworkbookName = null, WorkflowExpression<string> mSExcelPressOLEObjectworksheetName = null, WorkflowExpression<bool> mSExcelPressOLEObjectrunInBackground = null)
         {
@@ -7515,7 +7411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelSetWorksheetSensitivityLabelResponse> __BuildMSExcelSetWorksheetSensitivityLabel(WorkflowExpression<mSExcelSetWorksheetSensitivityLabelassignmentMethodInput> mSExcelSetWorksheetSensitivityLabelassignmentMethod, WorkflowExpression<string> mSExcelSetWorksheetSensitivityLabellabelId, WorkflowExpression<string> mSExcelSetWorksheetSensitivityLabelworkflow, WorkflowExpression<int> mSExcelSetWorksheetSensitivityLabelhandle = null, WorkflowExpression<string> mSExcelSetWorksheetSensitivityLabelworkbookName = null, WorkflowExpression<string> mSExcelSetWorksheetSensitivityLabellabelName = null, WorkflowExpression<string> mSExcelSetWorksheetSensitivityLabelsiteId = null, WorkflowExpression<string> mSExcelSetWorksheetSensitivityLabeljustification = null)
         {
@@ -7596,7 +7491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelGetWorksheetSensitivityLabelResponse> __BuildMSExcelGetWorksheetSensitivityLabel(WorkflowExpression<string> mSExcelGetWorksheetSensitivityLabelworkflow, WorkflowExpression<int> mSExcelGetWorksheetSensitivityLabelhandle = null, WorkflowExpression<string> mSExcelGetWorksheetSensitivityLabelworkbookName = null)
         {
@@ -7650,7 +7544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSExcelWriteArrayResponse> __BuildMSExcelWriteArray(WorkflowExpression<string> mSExcelWriteArraycellReference, WorkflowExpression<string> mSExcelWriteArrayarrayToWriteJSON, WorkflowExpression<mSExcelWriteArraydirectionInput> mSExcelWriteArraydirection, WorkflowExpression<string> mSExcelWriteArrayworkflow, WorkflowExpression<int> mSExcelWriteArrayhandle = null, WorkflowExpression<string> mSExcelWriteArrayworkbookName = null, WorkflowExpression<string> mSExcelWriteArrayworksheetName = null)
         {
@@ -7720,7 +7613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookCreateInstanceResponse> __BuildMSOutlookCreateInstance(WorkflowExpression<string> mSOutlookCreateInstanceworkflow, WorkflowExpression<string> mSOutlookCreateInstanceprofileName = null, WorkflowExpression<bool> mSOutlookCreateInstanceshowOutlook = null)
         {
@@ -7774,7 +7666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookCloseInstance(WorkflowExpression<string> mSOutlookCloseInstanceworkflow, WorkflowExpression<int> mSOutlookCloseInstancesecondsToWaitForProcessToClose = null)
         {
@@ -7821,7 +7712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookCloseInstanceUsingWindow(WorkflowExpression<string> mSOutlookCloseInstanceUsingWindowworkflow, WorkflowExpression<bool> mSOutlookCloseInstanceUsingWindowuseNativeWindow = null, WorkflowExpression<bool> mSOutlookCloseInstanceUsingWindowuseUIA = null, WorkflowExpression<int> mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose = null)
         {
@@ -7902,7 +7792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookAttachToExistingInstanceResponse> __BuildMSOutlookAttachToExistingInstance(WorkflowExpression<string> mSOutlookAttachToExistingInstanceworkflow, WorkflowExpression<bool> mSOutlookAttachToExistingInstancetoggleWindow = null, WorkflowExpression<bool> mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, WorkflowExpression<double> mSOutlookAttachToExistingInstancetoggleDelay = null)
         {
@@ -7983,7 +7872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookIsConnectedResponse> __BuildMSOutlookIsConnected(WorkflowExpression<string> mSOutlookIsConnectedworkflow)
         {
@@ -8013,7 +7901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookShow(WorkflowExpression<string> mSOutlookShowworkflow)
         {
@@ -8043,7 +7930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetNameSpaceInformationResponse> __BuildMSOutlookGetNameSpaceInformation(WorkflowExpression<string> mSOutlookGetNameSpaceInformationworkflow)
         {
@@ -8073,7 +7959,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetMailFoldersResponse> __BuildMSOutlookGetMailFolders(WorkflowExpression<string> mSOutlookGetMailFoldersworkflow, WorkflowExpression<string> mSOutlookGetMailFoldersfolderPath = null, WorkflowExpression<bool> mSOutlookGetMailFolderssubFolders = null)
         {
@@ -8127,7 +8012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookMarkEmailAsRead(WorkflowExpression<string> mSOutlookMarkEmailAsReadentryID, WorkflowExpression<string> mSOutlookMarkEmailAsReadworkflow, WorkflowExpression<bool> mSOutlookMarkEmailAsReadread = null)
         {
@@ -8177,7 +8061,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse> __BuildMSOutlookGetEmailBody(WorkflowExpression<string> mSOutlookGetEmailBodyentryID, WorkflowExpression<string> mSOutlookGetEmailBodyworkflow, WorkflowExpression<bool> mSOutlookGetEmailBodyclickAllowButtonIfRequired = null)
         {
@@ -8227,7 +8110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse> __BuildMSOutlookGetEmailAttachmentFilenames(WorkflowExpression<string> mSOutlookGetEmailAttachmentFilenamesentryID, WorkflowExpression<string> mSOutlookGetEmailAttachmentFilenamesworkflow, WorkflowExpression<bool> mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = null)
         {
@@ -8277,7 +8159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse> __BuildMSOutlookSaveEmailAttachmentsAsFile(WorkflowExpression<string> mSOutlookSaveEmailAttachmentsAsFileentryID, WorkflowExpression<string> mSOutlookSaveEmailAttachmentsAsFileworkflow, WorkflowExpression<string> mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = null, WorkflowExpression<bool> mSOutlookSaveEmailAttachmentsAsFilecreateFolder = null, WorkflowExpression<string> mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = null, WorkflowExpression<bool> mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = null, WorkflowExpression<bool> mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = null)
         {
@@ -8375,7 +8256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookDeleteEmail(WorkflowExpression<string> mSOutlookDeleteEmailentryID, WorkflowExpression<string> mSOutlookDeleteEmailworkflow)
         {
@@ -8408,7 +8288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookMoveEmail(WorkflowExpression<string> mSOutlookMoveEmailentryID, WorkflowExpression<string> mSOutlookMoveEmailworkflow, WorkflowExpression<string> mSOutlookMoveEmaildestinationFolder = null)
         {
@@ -8448,7 +8327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookSendEmail(WorkflowExpression<string> mSOutlookSendEmailworkflow, WorkflowExpression<string> mSOutlookSendEmailto = null, WorkflowExpression<string> mSOutlookSendEmailcC = null, WorkflowExpression<string> mSOutlookSendEmailbCC = null, WorkflowExpression<string> mSOutlookSendEmailsubject = null, WorkflowExpression<mSOutlookSendEmailbodyFormatInput> mSOutlookSendEmailbodyFormat = null, WorkflowExpression<string> mSOutlookSendEmailbody = null, WorkflowExpression<string> mSOutlookSendEmailhTMLBody = null, WorkflowExpression<string> mSOutlookSendEmailrTFBody = null, WorkflowExpression<string> mSOutlookSendEmailattachmentFilenamesJSON = null, WorkflowExpression<bool> mSOutlookSendEmaildontSendIfAttachmentFilenameMissing = null, WorkflowExpression<bool> mSOutlookSendEmailclickAllowButtonIfRequired = null, WorkflowExpression<string> mSOutlookSendEmailvotingOptions = null, WorkflowExpression<string> mSOutlookSendEmailsendAsSMTPAddress = null, WorkflowExpression<bool> mSOutlookSendEmailbodyContainsStoredPassword = null)
         {
@@ -8606,7 +8484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookCreateMailFolder(WorkflowExpression<string> mSOutlookCreateMailFolderworkflow, WorkflowExpression<string> mSOutlookCreateMailFolderparentFolderPath = null, WorkflowExpression<string> mSOutlookCreateMailFoldernewFolderName = null)
         {
@@ -8650,7 +8527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookReplyToEmail(WorkflowExpression<string> mSOutlookReplyToEmailentryID, WorkflowExpression<string> mSOutlookReplyToEmailworkflow, WorkflowExpression<bool> mSOutlookReplyToEmailreplyToAll = null, WorkflowExpression<mSOutlookReplyToEmailbodyFormatInput> mSOutlookReplyToEmailbodyFormat = null, WorkflowExpression<string> mSOutlookReplyToEmailbody = null, WorkflowExpression<string> mSOutlookReplyToEmailhTMLBody = null, WorkflowExpression<string> mSOutlookReplyToEmailrTFBody = null, WorkflowExpression<string> mSOutlookReplyToEmailattachmentFilenamesJSON = null, WorkflowExpression<bool> mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = null, WorkflowExpression<bool> mSOutlookReplyToEmailclickAllowButtonIfRequired = null, WorkflowExpression<string> mSOutlookReplyToEmailvotingOptions = null, WorkflowExpression<string> mSOutlookReplyToEmailsendAsSMTPAddress = null, WorkflowExpression<bool> mSOutlookReplyToEmailbodyContainsStoredPassword = null)
         {
@@ -8800,7 +8676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookForwardEmail(WorkflowExpression<string> mSOutlookForwardEmailentryID, WorkflowExpression<string> mSOutlookForwardEmailworkflow, WorkflowExpression<string> mSOutlookForwardEmailto = null, WorkflowExpression<string> mSOutlookForwardEmailcC = null, WorkflowExpression<string> mSOutlookForwardEmailbCC = null, WorkflowExpression<bool> mSOutlookForwardEmailoverrideSubject = null, WorkflowExpression<string> mSOutlookForwardEmailsubject = null, WorkflowExpression<bool> mSOutlookForwardEmailoverrideBody = null, WorkflowExpression<mSOutlookForwardEmailbodyFormatInput> mSOutlookForwardEmailbodyFormat = null, WorkflowExpression<string> mSOutlookForwardEmailbody = null, WorkflowExpression<string> mSOutlookForwardEmailhTMLBody = null, WorkflowExpression<string> mSOutlookForwardEmailrTFBody = null, WorkflowExpression<bool> mSOutlookForwardEmailclickAllowButtonIfRequired = null, WorkflowExpression<string> mSOutlookForwardEmailvotingOptions = null, WorkflowExpression<string> mSOutlookForwardEmailsendAsSMTPAddress = null, WorkflowExpression<bool> mSOutlookForwardEmailincludeExistingHiddenAttachments = null, WorkflowExpression<bool> mSOutlookForwardEmailincludeExistingVisibleAttachments = null, WorkflowExpression<string> mSOutlookForwardEmailattachmentFilenamesJSON = null, WorkflowExpression<bool> mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = null, WorkflowExpression<bool> mSOutlookForwardEmailbodyContainsStoredPassword = null)
         {
@@ -9029,7 +8904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetMAPIProfilesResponse> __BuildMSOutlookGetMAPIProfiles(WorkflowExpression<string> mSOutlookGetMAPIProfilesworkflow)
         {
@@ -9059,7 +8933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetOutlookProcessIdResponse> __BuildMSOutlookGetOutlookProcessId(WorkflowExpression<string> mSOutlookGetOutlookProcessIdworkflow)
         {
@@ -9089,7 +8962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookBackgroundMonitorForAllowPopup(WorkflowExpression<string> mSOutlookBackgroundMonitorForAllowPopupworkflow, WorkflowExpression<int> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog = null, WorkflowExpression<int> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton = null, WorkflowExpression<int> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled = null, WorkflowExpression<string> mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName = null)
         {
@@ -9187,7 +9059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildMSOutlookSetAllowPopupDetails(WorkflowExpression<string> mSOutlookSetAllowPopupDetailsworkflow, WorkflowExpression<string> mSOutlookSetAllowPopupDetailsoutlookAllowButtonName = null, WorkflowExpression<string> mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId = null, WorkflowExpression<string> mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId = null)
         {
@@ -9268,7 +9139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookExecuteCommandBarObjectResponse> __BuildMSOutlookExecuteCommandBarObject(WorkflowExpression<string> mSOutlookExecuteCommandBarObjectobjectId, WorkflowExpression<string> mSOutlookExecuteCommandBarObjectworkflow, WorkflowExpression<bool> mSOutlookExecuteCommandBarObjectrunInBackground = null)
         {
@@ -9318,7 +9188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetEmailsResponse> __BuildMSOutlookGetEmails(WorkflowExpression<string> mSOutlookGetEmailsworkflow, WorkflowExpression<string> mSOutlookGetEmailsfolderPath = null, WorkflowExpression<bool> mSOutlookGetEmailssearchRead = null, WorkflowExpression<bool> mSOutlookGetEmailssearchUnread = null, WorkflowExpression<string> mSOutlookGetEmailssearchSubject = null, WorkflowExpression<string> mSOutlookGetEmailssearchFromSMTP = null, WorkflowExpression<string> mSOutlookGetEmailssearchFromName = null, WorkflowExpression<string> mSOutlookGetEmailssearchQuery = null, WorkflowExpression<int> mSOutlookGetEmailssearchMaxAgeInDays = null, WorkflowExpression<string> mSOutlookGetEmailssearchStartDateTimeAsString = null, WorkflowExpression<string> mSOutlookGetEmailssearchEndDateTimeAsString = null, WorkflowExpression<int> mSOutlookGetEmailsmaxResultsToReturn = null, WorkflowExpression<bool> mSOutlookGetEmailsclickAllowButtonIfRequired = null)
         {
@@ -9482,7 +9351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetFirstEmailResponse> __BuildMSOutlookGetFirstEmail(WorkflowExpression<string> mSOutlookGetFirstEmailworkflow, WorkflowExpression<string> mSOutlookGetFirstEmailfolderPath = null, WorkflowExpression<bool> mSOutlookGetFirstEmailsearchRead = null, WorkflowExpression<bool> mSOutlookGetFirstEmailsearchUnread = null, WorkflowExpression<string> mSOutlookGetFirstEmailsearchSubject = null, WorkflowExpression<string> mSOutlookGetFirstEmailsearchFromSMTP = null, WorkflowExpression<string> mSOutlookGetFirstEmailsearchFromName = null, WorkflowExpression<string> mSOutlookGetFirstEmailsearchQuery = null, WorkflowExpression<int> mSOutlookGetFirstEmailsearchMaxAgeInDays = null, WorkflowExpression<string> mSOutlookGetFirstEmailsearchStartDateTimeAsString = null, WorkflowExpression<string> mSOutlookGetFirstEmailsearchEndDateTimeAsString = null, WorkflowExpression<bool> mSOutlookGetFirstEmailclickAllowButtonIfRequired = null)
         {
@@ -9629,7 +9497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<MSOutlookGetNumberOfEmailsResponse> __BuildMSOutlookGetNumberOfEmails(WorkflowExpression<string> mSOutlookGetNumberOfEmailsworkflow, WorkflowExpression<string> mSOutlookGetNumberOfEmailsfolderPath = null, WorkflowExpression<bool> mSOutlookGetNumberOfEmailssearchRead = null, WorkflowExpression<bool> mSOutlookGetNumberOfEmailssearchUnread = null, WorkflowExpression<string> mSOutlookGetNumberOfEmailssearchSubject = null, WorkflowExpression<string> mSOutlookGetNumberOfEmailssearchFromSMTP = null, WorkflowExpression<string> mSOutlookGetNumberOfEmailssearchFromName = null, WorkflowExpression<string> mSOutlookGetNumberOfEmailssearchQuery = null, WorkflowExpression<int> mSOutlookGetNumberOfEmailssearchMaxAgeInDays = null, WorkflowExpression<string> mSOutlookGetNumberOfEmailssearchStartDateTimeAsString = null, WorkflowExpression<string> mSOutlookGetNumberOfEmailssearchEndDateTimeAsString = null)
         {

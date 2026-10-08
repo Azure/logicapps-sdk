@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Meeting> __BuildGetMeeting(WorkflowExpression<string> meetingId)
         {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IWorkflowAction __BuildUpdateMeeting(WorkflowExpression<string> meetingId, WorkflowExpression<string> meetingsubject, WorkflowExpression<string> meetingstartTime, WorkflowExpression<string> meetingendTime, WorkflowExpression<bool> meetingrequiresPassword, WorkflowExpression<meetingconferenceCallInfoInput> meetingconferenceCallInfo, WorkflowExpression<meetingmeetingTypeInput> meetingmeetingType = null)
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<Attendee[]> __BuildGetMeetingAttendees(WorkflowExpression<string> meetingId)
         {
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<NewMeetingResponse> __BuildCreateMeeting(WorkflowExpression<string> newMeetingsubject, WorkflowExpression<string> newMeetingstartTime, WorkflowExpression<string> newMeetingendTime, WorkflowExpression<bool> newMeetingrequiresPassword, WorkflowExpression<newMeetingconferenceCallInfoInput> newMeetingconferenceCallInfo, WorkflowExpression<newMeetingmeetingTypeInput> newMeetingmeetingType)
         {

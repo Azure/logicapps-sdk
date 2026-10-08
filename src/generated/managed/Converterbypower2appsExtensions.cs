@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5101AddHtmlToWord> __BuildAddHtmlToWord(WorkflowExpression<string> dtoRequestV5101AddHtmlToWordhTML, WorkflowExpression<string> dtoRequestV5101AddHtmlToWordexistingFileContent = null)
         {
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5031AddImageToWord> __BuildAddImageToWord(WorkflowExpression<string> dtoRequestV5031AddImageToWordimage, WorkflowExpression<string> dtoRequestV5031AddImageToWordexistingFileContent = null, WorkflowExpression<string> dtoRequestV5031AddImageToWordcaptionText = null, WorkflowExpression<int> dtoRequestV5031AddImageToWordmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV5031AddImageToWordmaximumImageHeight = null)
         {
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5042AddImageWithinTableToWord> __BuildAddImageWithinTableToWord(WorkflowExpression<string> dtoRequestV5042AddImageWithinTableToWordimage, WorkflowExpression<string> dtoRequestV5042AddImageWithinTableToWordexistingFileContent = null, WorkflowExpression<string> dtoRequestV5042AddImageWithinTableToWorddescriptionText = null, WorkflowExpression<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight = null)
         {
@@ -171,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5052AddTableToWord> __BuildAddTableToWord(WorkflowExpression<string> dtoRequestV5052AddTableToWordtableData, WorkflowExpression<string> dtoRequestV5052AddTableToWordexistingFileContent = null, WorkflowExpression<bool> dtoRequestV5052AddTableToWordshowHeaders = null, WorkflowExpression<string> dtoRequestV5052AddTableToWordtableStyle = null, WorkflowExpression<string> dtoRequestV5052AddTableToWordtableCaption = null)
         {
@@ -249,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5061AddTextToWord> __BuildAddTextToWord(WorkflowExpression<string> dtoRequestAddTextToWordDatatype, WorkflowExpression<string> dtoRequestAddTextToWordDatatext, WorkflowExpression<string> dtoRequestAddTextToWordDataexistingFileContent = null)
         {
@@ -289,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2081CombineCsvs> __BuildCombineCsvs(WorkflowExpression<string> dtoRequestV2081CombineCsvsmainCSV, WorkflowExpression<string> dtoRequestV2081CombineCsvscombineColumnName, WorkflowExpression<string> dtoRequestV2081CombineCsvssecondCSV, WorkflowExpression<string> dtoRequestV2081CombineCsvssecondCSVColumn = null)
         {
@@ -332,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays> __BuildCombineJsonArrays(WorkflowExpression<string> dtoRequestV2091CombineJsonArraysmainJSON, WorkflowExpression<string> dtoRequestV2091CombineJsonArrayscombinePropertyName, WorkflowExpression<string> dtoRequestV2091CombineJsonArrayssecondJSON, WorkflowExpression<string> dtoRequestV2091CombineJsonArrayssecondJSONProperty = null)
         {
@@ -375,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3041CompressImage> __BuildCompressImage(WorkflowExpression<string> dtoRequestCompressImageimageFile, WorkflowExpression<int> dtoRequestCompressImageimageQuality = null)
         {
@@ -412,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4080CompressPdf> __BuildCompressPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<bool> dtoRequestcompressImages = null, WorkflowExpression<int> dtoRequestimageQuality = null, WorkflowExpression<bool> dtoRequestoptimizeFonts = null, WorkflowExpression<bool> dtoRequestoptimizePageContents = null, WorkflowExpression<bool> dtoRequestremoveMetadata = null)
         {
@@ -477,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2071ConvertColor> __BuildConvertColor(WorkflowExpression<string> dtoRequestV2071ConvertColorcolor)
         {
@@ -507,7 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1033ConvertCsvToExcel> __BuildConvertCsvToExcel(WorkflowExpression<string> dtoRequestV1033ConvertCsvToExcelcSV, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV1033ConvertCsvToExcelseparator = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth = null)
         {
@@ -674,7 +663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseHtml> __BuildConvertCsvToHtmlTable(WorkflowExpression<string> dtoRequestV7061ConvertCsvToHtmlTablecSV, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV7061ConvertCsvToHtmlTableseparator = null, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter = null)
         {
@@ -800,7 +788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson> __BuildConvertCsvToJson(WorkflowExpression<string> dtoRequestV1022ConvertCsvToJsoncSV, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsoncSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsonremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV1022ConvertCsvToJsonskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV1022ConvertCsvToJsonseparator = null, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter = null)
         {
@@ -926,7 +913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson> __BuildConvertExcelToJson(WorkflowExpression<string> dtoRequestV1100ConvertExcelToJsonexcelFile, WorkflowExpression<bool> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, WorkflowExpression<string> dtoRequestV1100ConvertExcelToJsonstartCell = null, WorkflowExpression<string> dtoRequestV1100ConvertExcelToJsonsheetName = null)
         {
@@ -987,7 +973,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4013ConvertFileToPdf> __BuildConvertFileToPdf(WorkflowExpression<string> dtoRequestV4013FileToPdffile, WorkflowExpression<string> dtoRequestV4013FileToPdforiginFileName = null, WorkflowExpression<string> dtoRequestV4013FileToPdforiginFileExtension = null, WorkflowExpression<int> dtoRequestV4013FileToPdfconformanceLevel = null)
         {
@@ -1038,7 +1023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv> __BuildConvertHtmlTableToCsv(WorkflowExpression<string> dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, WorkflowExpression<string> dtoRequestV7070ConvertHtmlTableToCsvseparator = null)
         {
@@ -1075,7 +1059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV7080ConvertHtmlTableToExcel> __BuildConvertHtmlTableToExcel(WorkflowExpression<string> dtoRequestV7080ConvertHtmlTableToExcelhTMLTable)
         {
@@ -1105,7 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV7012ConvertHtmlTableToJson> __BuildConvertHtmlTableToJson(WorkflowExpression<string> dtoRequestHtmlToTableDatahTMLTable)
         {
@@ -1135,7 +1117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV7031ConvertHtmlToImage> __BuildConvertHtmlToImage(WorkflowExpression<string> dtoRequestV7031ConvertHtmlToImagehTML, WorkflowExpression<int> dtoRequestV7031ConvertHtmlToImagewidth = null, WorkflowExpression<int> dtoRequestV7031ConvertHtmlToImageheight = null)
         {
@@ -1179,7 +1160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV7022ConvertHtmlToPdf> __BuildConvertHtmlToPdf(WorkflowExpression<string> dtoRequestV7022ConvertHtmlToPdfhTML, WorkflowExpression<bool> dtoRequestV7022ConvertHtmlToPdflandscapeFormat = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdffooterOptions = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfheaderOptions = null, WorkflowExpression<string> dtoRequestV7022ConvertHtmlToPdfpaperFormat = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdftopMargin = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfbottomMargin = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfleftMargin = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfrightMargin = null, WorkflowExpression<string> dtoRequestV7022ConvertHtmlToPdfpageRanges = null, WorkflowExpression<double> dtoRequestV7022ConvertHtmlToPdfscale = null)
         {
@@ -1296,7 +1276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildConvertHtmlToWord(WorkflowExpression<string> dtoRequestV7041ConvertHtmlToWordhTML)
         {
@@ -1326,7 +1305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildConvertImage(WorkflowExpression<string> dtoRequestV3012ConvertImageimageFile, WorkflowExpression<string> dtoRequestV3012ConvertImageoutputFormat = null)
         {
@@ -1373,7 +1351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv> __BuildConvertJsonToCsv(WorkflowExpression<string> dtoRequestV1013ConvertJsonToCsvjSON, WorkflowExpression<string> dtoRequestV1013ConvertJsonToCsvseparator = null)
         {
@@ -1410,7 +1387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1063ConvertJsonToExcel> __BuildConvertJsonToExcel(WorkflowExpression<string> dtoRequestJsonToExcelDatajSON, WorkflowExpression<bool> dtoRequestJsonToExcelDataallInOneTable = null, WorkflowExpression<bool> dtoRequestJsonToExcelDataadjustExcelColumnToContent = null, WorkflowExpression<bool> dtoRequestJsonToExcelDatawrapExcelColumnText = null, WorkflowExpression<int> dtoRequestJsonToExcelDatamaxExcelColumnWidth = null)
         {
@@ -1498,7 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseHtml> __BuildConvertJsonToHtmlTable(WorkflowExpression<string> dtoRequestV7051ConvertJsonToHtmlTablejSON)
         {
@@ -1528,7 +1503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable> __BuildConvertJsonToTextTable(WorkflowExpression<string> dtoRequestV1090ConvertJsonToTextTablejSON)
         {
@@ -1558,7 +1532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml> __BuildConvertJsonToXml(WorkflowExpression<string> dtoRequestV1042ConvertJsonToXmljSON)
         {
@@ -1588,7 +1561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml> __BuildConvertJsonToYaml(WorkflowExpression<string> dtoRequestV1081ConvertJsonToYamljSON)
         {
@@ -1618,7 +1590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4070ConvertPdfToPdfA> __BuildConvertPdfToPdfA(WorkflowExpression<string> dtoRequestV4070ConvertPdfToPdfApDF, WorkflowExpression<int> dtoRequestV4070ConvertPdfToPdfAconformanceLevel = null)
         {
@@ -1655,7 +1626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults> __BuildConvertSharePointSearchResults(WorkflowExpression<string> dtoRequestV6011ConvertSharePointSearchResultssPSearchResult)
         {
@@ -1685,7 +1655,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml> __BuildConvertWordToHtml(WorkflowExpression<string> dtoRequestword, WorkflowExpression<bool> dtoRequestembedImages = null, WorkflowExpression<bool> dtoRequestfullHTMLDocument = null, WorkflowExpression<string> dtoRequesttitle = null)
         {
@@ -1736,7 +1705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1052ConvertXmlToJson> __BuildConvertXmlToJson(WorkflowExpression<string> dtoRequestV1052ConvertXmlToJsonxML)
         {
@@ -1766,7 +1734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV8010ConvertXRechnungToPdf> __BuildConvertXRechnungToPdf(WorkflowExpression<string> dtoRequestV8010ConvertXRechnungToPdfxRechnung)
         {
@@ -1796,7 +1763,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson> __BuildConvertYamlToJson(WorkflowExpression<string> dtoRequestV1071YamlToJsonyAML)
         {
@@ -1826,7 +1792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3091CreateChartImage> __BuildCreateChartImage(WorkflowExpression<string> dtoRequestV3091CreateChartImagetableData, WorkflowExpression<int> dtoRequestV3091CreateChartImageimageWidth = null, WorkflowExpression<int> dtoRequestV3091CreateChartImageimageHeight = null, WorkflowExpression<string> dtoRequestV3091CreateChartImagebackgroundColor = null, WorkflowExpression<string> dtoRequestV3091CreateChartImageoutputFormat = null, WorkflowExpression<string> dtoRequestV3091CreateChartImagechartType = null)
         {
@@ -1891,7 +1856,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3062CreateCode> __BuildCreateCode(WorkflowExpression<string> dtoRequestV3062CreateCodecontent, WorkflowExpression<string> dtoRequestV3062CreateCodecodeFormat = null, WorkflowExpression<int> dtoRequestV3062CreateCodewidth = null, WorkflowExpression<int> dtoRequestV3062CreateCodeheight = null, WorkflowExpression<string> dtoRequestV3062CreateCodeoutputFormat = null, WorkflowExpression<string> dtoRequestV3062CreateCodeembeddedImage = null, WorkflowExpression<double> dtoRequestV3062CreateCodeembeddedImageOpacity = null, WorkflowExpression<double> dtoRequestV3062CreateCodeembeddedImageRatio = null)
         {
@@ -1970,7 +1934,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3111CreateGraphImage> __BuildCreateGraphImage(WorkflowExpression<string> dtoRequestV3111CreateGraphImagegraphData, WorkflowExpression<int> dtoRequestV3111CreateGraphImageimageWidth = null, WorkflowExpression<int> dtoRequestV3111CreateGraphImageimageHeight = null, WorkflowExpression<string> dtoRequestV3111CreateGraphImagebackgroundColor = null, WorkflowExpression<string> dtoRequestV3111CreateGraphImageoutputFormat = null)
         {
@@ -2028,7 +1991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3101CreateTableImage> __BuildCreateTableImage(WorkflowExpression<string> dtoRequestV3101CreateTableImagetableData, WorkflowExpression<int> dtoRequestV3101CreateTableImageimageWidth = null, WorkflowExpression<int> dtoRequestV3101CreateTableImageimageHeight = null, WorkflowExpression<string> dtoRequestV3101CreateTableImagebackgroundColor = null, WorkflowExpression<string> dtoRequestV3101CreateTableImageoutputFormat = null, WorkflowExpression<string> dtoRequestV3101CreateTableImagetitle = null, WorkflowExpression<bool> dtoRequestV3101CreateTableImageshowTableBorders = null)
         {
@@ -2110,7 +2072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3081CreateWatermarkImage> __BuildCreateWatermarkImage(WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagemainImage, WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagewatermarkImage, WorkflowExpression<int> dtoRequestV3081CreateWatermarkImagewatermarkOpacity = null, WorkflowExpression<int> dtoRequestV3081CreateWatermarkImagewatermarkRatio = null, WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition = null, WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition = null)
         {
@@ -2171,7 +2132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5011CreateWordFile> __BuildCreateWordFile(WorkflowExpression<Section[]> dtoRequestV5011CreateWordFilesection, WorkflowExpression<string> dtoRequestV5011CreateWordFileexistingFileContent = null)
         {
@@ -2208,7 +2168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf> __BuildExtractImagesFromPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<int> dtoRequestfromPage = null, WorkflowExpression<int> dtoRequesttoPage = null, WorkflowExpression<string> dtoRequestfileNamePrefix = null, WorkflowExpression<bool> dtoRequestincludeBase64String = null)
         {
@@ -2266,7 +2225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties> __BuildExtractJsonObjectProperties(WorkflowExpression<string> dtoRequestV2100ExtractJsonObjectPropertiesjSON, WorkflowExpression<bool> dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties = null)
         {
@@ -2313,7 +2271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4060ExtractPdfPages> __BuildExtractPdfPages(WorkflowExpression<string> dtoRequestV4060ExtractPdfPagespDFFile, WorkflowExpression<string> dtoRequestV4060ExtractPdfPagespagesToExtract)
         {
@@ -2346,7 +2303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern> __BuildExtractTextAccordingToPattern(WorkflowExpression<string> dtoRequestV2140ExtractTextAccordingToPatterntext, WorkflowExpression<string> dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, WorkflowExpression<bool> dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled = null, WorkflowExpression<string> dtoRequestV2140ExtractTextAccordingToPatterntrimStrings = null)
         {
@@ -2393,7 +2349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf> __BuildExtractTextFromPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<int> dtoRequestfromPage = null, WorkflowExpression<int> dtoRequesttoPage = null, WorkflowExpression<bool> dtoRequestlayoutBased = null, WorkflowExpression<bool> dtoRequestincludePages = null, WorkflowExpression<string> dtoRequestpageSeparator = null, WorkflowExpression<bool> dtoRequestnormalizeWhitespace = null)
         {
@@ -2465,7 +2420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> __BuildExtractWordBookmarks(WorkflowExpression<string> dtoRequestV5021ExtractWordBookmarksfile, WorkflowExpression<bool> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, WorkflowExpression<string> dtoRequestV5021ExtractWordBookmarkssearchName = null, WorkflowExpression<string> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
         {
@@ -2526,7 +2480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> __BuildExtractWordContentControls(WorkflowExpression<string> dtoRequestV5120ExtractWordContentControlsfile, WorkflowExpression<string> dtoRequestV5120ExtractWordContentControlssearchTag = null, WorkflowExpression<string> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
         {
@@ -2570,7 +2523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2021IbanData> __BuildIbanData(WorkflowExpression<string> dtoRequestV2021IbanDataiBAN)
         {
@@ -2600,7 +2552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3071ImageMetaData> __BuildImageMetaData(WorkflowExpression<string> dtoRequestV3071ImageMetaDataimageFile)
         {
@@ -2630,7 +2581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildInsertImageToPowerPoint(WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointexistingFileContent, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderImage, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderName = null, WorkflowExpression<int> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
         {
@@ -2698,7 +2648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildInsertImageToWord(WorkflowExpression<string> dtoRequestV5081InsertImageToWordexistingFileContent, WorkflowExpression<string> dtoRequestV5081InsertImageToWordimage, WorkflowExpression<string> dtoRequestV5081InsertImageToWordplaceholderName = null, WorkflowExpression<int> dtoRequestV5081InsertImageToWordmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV5081InsertImageToWordmaximumImageHeight = null, WorkflowExpression<string> dtoRequestV5081InsertImageToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5081InsertImageToWordplaceholderSuffix = null)
         {
@@ -2766,7 +2715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5110InsertMultipleTextSectionsToWord> __BuildInsertMultipleTextSectionsToWord(WorkflowExpression<string> dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, WorkflowExpression<InsertSection[]> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, WorkflowExpression<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix = null)
         {
@@ -2813,7 +2761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5091InsertTableToWord> __BuildInsertTableToWord(WorkflowExpression<string> dtoRequestV5091InsertTableToWordexistingFileContent, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderName = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderTable = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordtableStyle = null, WorkflowExpression<bool> dtoRequestV5091InsertTableToWordshowHeaders = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderSuffix = null)
         {
@@ -2905,7 +2852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildInsertTextToPowerPoint(WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointexistingFileContent, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderName, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
         {
@@ -2959,7 +2905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5071InsertTextToWord> __BuildInsertTextToWord(WorkflowExpression<string> dtoRequestV5071InsertTextToWordexistingFileContent, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderName, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderText = null, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderSuffix = null)
         {
@@ -3013,7 +2958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4021MergePdfs> __BuildMergePdfs(WorkflowExpression<string> dtoRequestV4021MergePdfsfile1, WorkflowExpression<string> dtoRequestV4021MergePdfsfile2)
         {
@@ -3046,7 +2990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck> __BuildPatternMatchCheck(WorkflowExpression<string> dtoRequestV2120PatternMatchCheckinputText, WorkflowExpression<string> dtoRequestV2120PatternMatchCheckmatchPattern)
         {
@@ -3079,7 +3022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> __BuildPdfMetadata(WorkflowExpression<string> dtoRequestV4031PdfMetadatafile)
         {
@@ -3109,7 +3051,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4041ProtectPdf> __BuildProtectPdf(WorkflowExpression<string> dtoRequestV4041ProtectPdffile, WorkflowExpression<string> dtoRequestV4041ProtectPdfownerPassword = null, WorkflowExpression<string> dtoRequestV4041ProtectPdfuserPassword = null)
         {
@@ -3153,7 +3094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3051ReadCode> __BuildReadCode(WorkflowExpression<string> dtoRequestReadCodeDataqROrBarcode)
         {
@@ -3183,7 +3123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2011RegularExpression> __BuildRegularExpression(WorkflowExpression<string> dtoRequestV2011RegularExpressiontextToMatch, WorkflowExpression<string> dtoRequestV2011RegularExpressionregularExpression = null, WorkflowExpression<string> dtoRequestV2011RegularExpressionregularExpressionOption = null)
         {
@@ -3227,7 +3166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4110RemovePagesFromPdf> __BuildRemovePagesFromPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<string> dtoRequestpages, WorkflowExpression<bool> dtoRequestinputIs1Based = null, WorkflowExpression<int> dtoRequestmode = null, WorkflowExpression<bool> dtoRequestfailIfPageOutOfRange = null)
         {
@@ -3281,7 +3219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern> __BuildReplaceTextWithPattern(WorkflowExpression<string> dtoRequestV2110ReplaceTextWithPatterninputText, WorkflowExpression<string> dtoRequestV2110ReplaceTextWithPatternsearchPattern, WorkflowExpression<string> dtoRequestV2110ReplaceTextWithPatternreplacementText = null)
         {
@@ -3321,7 +3258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3022ResizeImage> __BuildResizeImage(WorkflowExpression<string> dtoRequestV3022ResizeImageimageFile, WorkflowExpression<double> dtoRequestV3022ResizeImageimageWidth = null, WorkflowExpression<double> dtoRequestV3022ResizeImageimageHeight = null, WorkflowExpression<string> dtoRequestV3022ResizeImageresizeBy = null)
         {
@@ -3372,7 +3308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV3031RotateImage> __BuildRotateImage(WorkflowExpression<string> dtoRequestV3031RotateImageimageFile, WorkflowExpression<double> dtoRequestV3031RotateImagerotate = null, WorkflowExpression<string> dtoRequestV3031RotateImageoutputFormat = null)
         {
@@ -3416,7 +3351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2151RunCode> __BuildRunCode(WorkflowExpression<string> dtopythonOrJavaScriptCode, WorkflowExpression<int> dtoruntime = null, WorkflowExpression<int> dtotimeoutSeconds = null, WorkflowExpression<bool> dtoprintLastExpression = null)
         {
@@ -3467,7 +3401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit> __BuildSmartTextSplit(WorkflowExpression<string> dtoRequestV2130SmartTextSplitinputText, WorkflowExpression<string> dtoRequestV2130SmartTextSplitsplitPattern = null, WorkflowExpression<bool> dtoRequestV2130SmartTextSplittrimEnabled = null, WorkflowExpression<string> dtoRequestV2130SmartTextSplittrimStrings = null)
         {
@@ -3518,7 +3451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2061SortCsv> __BuildSortCsv(WorkflowExpression<string> dtoRequestV2061SortCsvcSV, WorkflowExpression<bool> dtoRequestV2061SortCsvcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV2061SortCsvautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV2061SortCsvremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV2061SortCsvskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV2061SortCsvstopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV2061SortCsvseparator = null, WorkflowExpression<bool> dtoRequestV2061SortCsvautoDetectQuoteDelimiter = null, WorkflowExpression<string> dtoRequestV2061SortCsvsortColumn = null, WorkflowExpression<string> dtoRequestV2061SortCsvfurtherSortingColumn = null, WorkflowExpression<bool> dtoRequestV2061SortCsvreverseOrder = null)
         {
@@ -3675,7 +3607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2051SortJson> __BuildSortJson(WorkflowExpression<string> dtoRequestV2051SortJsonjSON, WorkflowExpression<string> dtoRequestV2051SortJsonsortProperty = null, WorkflowExpression<string> dtoRequestV2051SortJsonfurtherSortingProperty = null, WorkflowExpression<bool> dtoRequestV2051SortJsonreverseOrder = null)
         {
@@ -3736,7 +3667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2041Translate> __BuildTranslate(WorkflowExpression<string> dtoRequestV2041Translatetext, WorkflowExpression<string> dtoRequestV2041Translateto, WorkflowExpression<string> dtoRequestV2041Translatefrom = null)
         {
@@ -3776,7 +3706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV4051UnProtectPdf> __BuildUnProtectPdf(WorkflowExpression<string> dtoRequestV4051UnProtectPdffile, WorkflowExpression<string> dtoRequestV4051UnProtectPdfownerPassword = null, WorkflowExpression<bool> dtoRequestV4051UnProtectPdfremovePermissions = null)
         {
@@ -3820,7 +3749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildUpdateMultipleWordContentControls(WorkflowExpression<string> dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, WorkflowExpression<ContentControl[]> dtoRequestV5150UpdateMultipleWordContentControlscontentControl)
         {
@@ -3853,7 +3781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseFile> __BuildUpdateWordContentControl(WorkflowExpression<string> dtoRequestV5140UpdateWordContentControlexistingFileContent, WorkflowExpression<string> dtoRequestV5140UpdateWordContentControlname, WorkflowExpression<string> dtoRequestV5140UpdateWordContentControlvalue = null)
         {
@@ -3893,7 +3820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV5130UpdateWordTableOfContents> __BuildUpdateWordTableOfContents(WorkflowExpression<string> dtoRequestV5130UpdateWordTableOfContentsexistingFileContent)
         {
@@ -3923,7 +3849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IBodyWorkflowAction<DtoResponseV2031UrlToFile> __BuildUrlToFile(WorkflowExpression<string> dtoRequestV2031UrlToFileuRL)
         {
