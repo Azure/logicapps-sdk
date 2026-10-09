@@ -4,23 +4,35 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WaybackmachineipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
-        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSnapshot))]
+        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> timestamp = null)
         {
-            var apiCallPath = "/wayback/available";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (timestamp != null)
-                callPayload.Queries["timestamp"] = ExpressionConverter.Convert(timestamp);
-            return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSnapshotResponse> __BuildGetSnapshot(WorkflowExpression<string> url, WorkflowExpression<string> timestamp = null)
+        {
+            WorkflowExpression.Validate(url, nameof(url), required: true);
+            WorkflowExpression.Validate(timestamp, nameof(timestamp), required: false);
+            return new DeferredBodyAction<GetSnapshotResponse>(() =>
+            {
+                var apiCallPath = "/wayback/available";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                if (timestamp != null)
+                    callPayload.Queries["timestamp"] = ExpressionConverter.Convert(timestamp);
+                return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
+            });
         }
     }
 

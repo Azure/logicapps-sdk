@@ -4,233 +4,300 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ClimatiqipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateResponse> EmissionEstimate(Expression<Func<string>> bodyemissionFactoruuid = null, Expression<Func<string>> bodyemissionFactoractivityId = null, Expression<Func<string>> bodyemissionFactorsource = null, Expression<Func<string>> bodyemissionFactorregion = null, Expression<Func<bool>> bodyemissionFactorregionFallback = null, Expression<Func<string>> bodyemissionFactoryear = null, Expression<Func<string>> bodyemissionFactorlcaActivity = null, Expression<Func<string>> bodyemissionFactorcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        [WorkflowExpressionFactory(nameof(__BuildEmissionEstimate))]
+        public IBodyWorkflowAction<EmissionEstimateResponse> EmissionEstimate([WorkflowExpression] Func<string> bodyemissionFactoruuid = null, [WorkflowExpression] Func<string> bodyemissionFactoractivityId = null, [WorkflowExpression] Func<string> bodyemissionFactorsource = null, [WorkflowExpression] Func<string> bodyemissionFactorregion = null, [WorkflowExpression] Func<bool> bodyemissionFactorregionFallback = null, [WorkflowExpression] Func<string> bodyemissionFactoryear = null, [WorkflowExpression] Func<string> bodyemissionFactorlcaActivity = null, [WorkflowExpression] Func<string> bodyemissionFactorcalculationMethod = null, [WorkflowExpression] Func<int> bodyparametersenergy = null, [WorkflowExpression] Func<string> bodyparametersenergyUnit = null, [WorkflowExpression] Func<int> bodyparametersdata = null, [WorkflowExpression] Func<string> bodyparametersdataUnit = null, [WorkflowExpression] Func<int> bodyparametersdistance = null, [WorkflowExpression] Func<string> bodyparametersdistanceUnit = null, [WorkflowExpression] Func<int> bodyparametersmoney = null, [WorkflowExpression] Func<string> bodyparametersmoneyUnit = null, [WorkflowExpression] Func<int> bodyparametersnumber = null, [WorkflowExpression] Func<int> bodyparameterstime = null, [WorkflowExpression] Func<string> bodyparameterstimeUnit = null, [WorkflowExpression] Func<int> bodyparameterspassengers = null, [WorkflowExpression] Func<int> bodyparametersvolume = null, [WorkflowExpression] Func<string> bodyparametersvolumeUnit = null, [WorkflowExpression] Func<int> bodyparametersweight = null, [WorkflowExpression] Func<string> bodyparametersweightUnit = null)
         {
-            var apiCallPath = "/estimate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var emissionFactorObject = new JObject();
-            var emissionFactorObjectpropCount = 0;
-            if (bodyemissionFactoruuid != null)
-            {
-                emissionFactorObject["uuid"] = ExpressionConverter.ConvertO(bodyemissionFactoruuid);
-                emissionFactorObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyemissionFactoractivityId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmissionEstimateResponse> __BuildEmissionEstimate(WorkflowExpression<string> bodyemissionFactoruuid = null, WorkflowExpression<string> bodyemissionFactoractivityId = null, WorkflowExpression<string> bodyemissionFactorsource = null, WorkflowExpression<string> bodyemissionFactorregion = null, WorkflowExpression<bool> bodyemissionFactorregionFallback = null, WorkflowExpression<string> bodyemissionFactoryear = null, WorkflowExpression<string> bodyemissionFactorlcaActivity = null, WorkflowExpression<string> bodyemissionFactorcalculationMethod = null, WorkflowExpression<int> bodyparametersenergy = null, WorkflowExpression<string> bodyparametersenergyUnit = null, WorkflowExpression<int> bodyparametersdata = null, WorkflowExpression<string> bodyparametersdataUnit = null, WorkflowExpression<int> bodyparametersdistance = null, WorkflowExpression<string> bodyparametersdistanceUnit = null, WorkflowExpression<int> bodyparametersmoney = null, WorkflowExpression<string> bodyparametersmoneyUnit = null, WorkflowExpression<int> bodyparametersnumber = null, WorkflowExpression<int> bodyparameterstime = null, WorkflowExpression<string> bodyparameterstimeUnit = null, WorkflowExpression<int> bodyparameterspassengers = null, WorkflowExpression<int> bodyparametersvolume = null, WorkflowExpression<string> bodyparametersvolumeUnit = null, WorkflowExpression<int> bodyparametersweight = null, WorkflowExpression<string> bodyparametersweightUnit = null)
+        {
+            WorkflowExpression.Validate(bodyemissionFactoruuid, nameof(bodyemissionFactoruuid), required: false);
+            WorkflowExpression.Validate(bodyemissionFactoractivityId, nameof(bodyemissionFactoractivityId), required: false);
+            WorkflowExpression.Validate(bodyemissionFactorsource, nameof(bodyemissionFactorsource), required: false);
+            WorkflowExpression.Validate(bodyemissionFactorregion, nameof(bodyemissionFactorregion), required: false);
+            WorkflowExpression.Validate(bodyemissionFactorregionFallback, nameof(bodyemissionFactorregionFallback), required: false);
+            WorkflowExpression.Validate(bodyemissionFactoryear, nameof(bodyemissionFactoryear), required: false);
+            WorkflowExpression.Validate(bodyemissionFactorlcaActivity, nameof(bodyemissionFactorlcaActivity), required: false);
+            WorkflowExpression.Validate(bodyemissionFactorcalculationMethod, nameof(bodyemissionFactorcalculationMethod), required: false);
+            WorkflowExpression.Validate(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
+            WorkflowExpression.Validate(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersdata, nameof(bodyparametersdata), required: false);
+            WorkflowExpression.Validate(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
+            WorkflowExpression.Validate(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
+            WorkflowExpression.Validate(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
+            WorkflowExpression.Validate(bodyparameterstime, nameof(bodyparameterstime), required: false);
+            WorkflowExpression.Validate(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
+            WorkflowExpression.Validate(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
+            WorkflowExpression.Validate(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
+            WorkflowExpression.Validate(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersweight, nameof(bodyparametersweight), required: false);
+            WorkflowExpression.Validate(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            return new DeferredBodyAction<EmissionEstimateResponse>(() =>
             {
-                emissionFactorObject["activity_id"] = ExpressionConverter.ConvertO(bodyemissionFactoractivityId);
-                emissionFactorObjectpropCount++;
-            }
+                var apiCallPath = "/estimate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var emissionFactorObject = new JObject();
+                var emissionFactorObjectpropCount = 0;
+                if (bodyemissionFactoruuid != null)
+                {
+                    emissionFactorObject["uuid"] = ExpressionConverter.ConvertO(bodyemissionFactoruuid);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (bodyemissionFactorsource != null)
-            {
-                emissionFactorObject["source"] = ExpressionConverter.ConvertO(bodyemissionFactorsource);
-                emissionFactorObjectpropCount++;
-            }
+                if (bodyemissionFactoractivityId != null)
+                {
+                    emissionFactorObject["activity_id"] = ExpressionConverter.ConvertO(bodyemissionFactoractivityId);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (bodyemissionFactorregion != null)
-            {
-                emissionFactorObject["region"] = ExpressionConverter.ConvertO(bodyemissionFactorregion);
-                emissionFactorObjectpropCount++;
-            }
+                if (bodyemissionFactorsource != null)
+                {
+                    emissionFactorObject["source"] = ExpressionConverter.ConvertO(bodyemissionFactorsource);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (bodyemissionFactorregionFallback != null)
-            {
-                emissionFactorObject["region_fallback"] = ExpressionConverter.ConvertO(bodyemissionFactorregionFallback);
-                emissionFactorObjectpropCount++;
-            }
+                if (bodyemissionFactorregion != null)
+                {
+                    emissionFactorObject["region"] = ExpressionConverter.ConvertO(bodyemissionFactorregion);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (bodyemissionFactoryear != null)
-            {
-                emissionFactorObject["year"] = ExpressionConverter.ConvertO(bodyemissionFactoryear);
-                emissionFactorObjectpropCount++;
-            }
+                if (bodyemissionFactorregionFallback != null)
+                {
+                    emissionFactorObject["region_fallback"] = ExpressionConverter.ConvertO(bodyemissionFactorregionFallback);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (bodyemissionFactorlcaActivity != null)
-            {
-                emissionFactorObject["lca_activity"] = ExpressionConverter.ConvertO(bodyemissionFactorlcaActivity);
-                emissionFactorObjectpropCount++;
-            }
+                if (bodyemissionFactoryear != null)
+                {
+                    emissionFactorObject["year"] = ExpressionConverter.ConvertO(bodyemissionFactoryear);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (bodyemissionFactorcalculationMethod != null)
-            {
-                emissionFactorObject["calculation_method"] = ExpressionConverter.ConvertO(bodyemissionFactorcalculationMethod);
-                emissionFactorObjectpropCount++;
-            }
+                if (bodyemissionFactorlcaActivity != null)
+                {
+                    emissionFactorObject["lca_activity"] = ExpressionConverter.ConvertO(bodyemissionFactorlcaActivity);
+                    emissionFactorObjectpropCount++;
+                }
 
-            if (emissionFactorObjectpropCount > 0)
+                if (bodyemissionFactorcalculationMethod != null)
+                {
+                    emissionFactorObject["calculation_method"] = ExpressionConverter.ConvertO(bodyemissionFactorcalculationMethod);
+                    emissionFactorObjectpropCount++;
+                }
+
+                if (emissionFactorObjectpropCount > 0)
+                {
+                    body["emission_factor"] = emissionFactorObject;
+                    bodypropCount++;
+                }
+
+                var parametersObject = new JObject();
+                var parametersObjectpropCount = 0;
+                if (bodyparametersenergy != null)
+                {
+                    parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersenergyUnit != null)
+                {
+                    parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdata != null)
+                {
+                    parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdataUnit != null)
+                {
+                    parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdistance != null)
+                {
+                    parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdistanceUnit != null)
+                {
+                    parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersmoney != null)
+                {
+                    parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersmoneyUnit != null)
+                {
+                    parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersnumber != null)
+                {
+                    parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterstime != null)
+                {
+                    parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterstimeUnit != null)
+                {
+                    parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterspassengers != null)
+                {
+                    parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersvolume != null)
+                {
+                    parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersvolumeUnit != null)
+                {
+                    parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersweight != null)
+                {
+                    parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersweightUnit != null)
+                {
+                    parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (parametersObjectpropCount > 0)
+                {
+                    body["parameters"] = parametersObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EmissionEstimateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildEmissionEstimateBulk))]
+        public IBodyWorkflowAction<EmissionEstimateBulkResponse> EmissionEstimateBulk([WorkflowExpression] Func<bodyInputItem[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmissionEstimateBulkResponse> __BuildEmissionEstimateBulk(WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<EmissionEstimateBulkResponse>(() =>
             {
-                body["emission_factor"] = emissionFactorObject;
+                var apiCallPath = "/batch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<EmissionEstimateBulkResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildTravelFlight))]
+        public IBodyWorkflowAction<TravelFlightResponse> TravelFlight([WorkflowExpression] Func<bodylegsInputItem[]> bodylegs)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TravelFlightResponse> __BuildTravelFlight(WorkflowExpression<bodylegsInputItem[]> bodylegs)
+        {
+            WorkflowExpression.Validate(bodylegs, nameof(bodylegs), required: true);
+            return new DeferredBodyAction<TravelFlightResponse>(() =>
+            {
+                var apiCallPath = "/travel/flights";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["legs"] = ExpressionConverter.ConvertO(bodylegs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            var parametersObject = new JObject();
-            var parametersObjectpropCount = 0;
-            if (bodyparametersenergy != null)
-            {
-                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
-                parametersObjectpropCount++;
-            }
+                return new ApiConnectionAction<TravelFlightResponse>(callPayload);
+            });
+        }
 
-            if (bodyparametersenergyUnit != null)
-            {
-                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
-                parametersObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildFreightFlight))]
+        public IBodyWorkflowAction<FreightFlightResponse> FreightFlight([WorkflowExpression] Func<bodylegsInputItem[]> bodylegs)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyparametersdata != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FreightFlightResponse> __BuildFreightFlight(WorkflowExpression<bodylegsInputItem[]> bodylegs)
+        {
+            WorkflowExpression.Validate(bodylegs, nameof(bodylegs), required: true);
+            return new DeferredBodyAction<FreightFlightResponse>(() =>
             {
-                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdataUnit != null)
-            {
-                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdistance != null)
-            {
-                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdistanceUnit != null)
-            {
-                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersmoney != null)
-            {
-                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersmoneyUnit != null)
-            {
-                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersnumber != null)
-            {
-                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterstime != null)
-            {
-                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterstimeUnit != null)
-            {
-                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterspassengers != null)
-            {
-                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersvolume != null)
-            {
-                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersvolumeUnit != null)
-            {
-                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersweight != null)
-            {
-                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersweightUnit != null)
-            {
-                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (parametersObjectpropCount > 0)
-            {
-                body["parameters"] = parametersObject;
+                var apiCallPath = "/freight/flights";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["legs"] = ExpressionConverter.ConvertO(bodylegs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EmissionEstimateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateBulkResponse> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body = null)
-        {
-            var apiCallPath = "/batch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<EmissionEstimateBulkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<TravelFlightResponse> TravelFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
-        {
-            var apiCallPath = "/travel/flights";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["legs"] = ExpressionConverter.ConvertO(bodylegs);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TravelFlightResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<FreightFlightResponse> FreightFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
-        {
-            var apiCallPath = "/freight/flights";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["legs"] = ExpressionConverter.ConvertO(bodylegs);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FreightFlightResponse>(callPayload);
+                return new ApiConnectionAction<FreightFlightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -243,671 +310,948 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeCPUResponse> ComputeCPU(Expression<Func<string>> provider, Expression<Func<int>> bodycpuCount, Expression<Func<string>> bodyregion, Expression<Func<int>> bodycpuLoad, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydurationUnit = null)
+        [WorkflowExpressionFactory(nameof(__BuildComputeCPU))]
+        public IBodyWorkflowAction<ComputeCPUResponse> ComputeCPU([WorkflowExpression] Func<string> provider, [WorkflowExpression] Func<int> bodycpuCount, [WorkflowExpression] Func<string> bodyregion, [WorkflowExpression] Func<int> bodycpuLoad, [WorkflowExpression] Func<int> bodyduration, [WorkflowExpression] Func<string> bodydurationUnit = null)
         {
-            var apiCallPath = String.Format("/compute/{0}/cpu", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["cpu_count"] = ExpressionConverter.ConvertO(bodycpuCount);
-            bodypropCount++;
-            body["region"] = ExpressionConverter.ConvertO(bodyregion);
-            bodypropCount++;
-            body["cpu_load"] = ExpressionConverter.ConvertO(bodycpuLoad);
-            bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-            if (bodydurationUnit != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ComputeCPUResponse> __BuildComputeCPU(WorkflowExpression<string> provider, WorkflowExpression<int> bodycpuCount, WorkflowExpression<string> bodyregion, WorkflowExpression<int> bodycpuLoad, WorkflowExpression<int> bodyduration, WorkflowExpression<string> bodydurationUnit = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(bodycpuCount, nameof(bodycpuCount), required: true);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: true);
+            WorkflowExpression.Validate(bodycpuLoad, nameof(bodycpuLoad), required: true);
+            WorkflowExpression.Validate(bodyduration, nameof(bodyduration), required: true);
+            WorkflowExpression.Validate(bodydurationUnit, nameof(bodydurationUnit), required: false);
+            return new DeferredBodyAction<ComputeCPUResponse>(() =>
             {
-                body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/cpu", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ComputeCPUResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeStorageResponse> ComputeStorage(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<bodystorageTypeInput>> bodystorageType, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
-        {
-            var apiCallPath = String.Format("/compute/{0}/storage", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["region"] = ExpressionConverter.ConvertO(bodyregion);
-            bodypropCount++;
-            body["storage_type"] = ExpressionConverter.ConvertO(bodystorageType);
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            if (bodydataUnit != null)
-            {
-                body["data_unit"] = ExpressionConverter.ConvertO(bodydataUnit);
+                body["cpu_count"] = ExpressionConverter.ConvertO(bodycpuCount);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-            if (bodydurationUnit != null)
-            {
-                body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                body["region"] = ExpressionConverter.ConvertO(bodyregion);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ComputeStorageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeMemoryResponse> ComputeMemory(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
-        {
-            var apiCallPath = String.Format("/compute/{0}/memory", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["region"] = ExpressionConverter.ConvertO(bodyregion);
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            if (bodydataUnit != null)
-            {
-                body["data_unit"] = ExpressionConverter.ConvertO(bodydataUnit);
+                body["cpu_load"] = ExpressionConverter.ConvertO(bodycpuLoad);
                 bodypropCount++;
-            }
+                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                if (bodydurationUnit != null)
+                {
+                    body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-            if (bodydurationUnit != null)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ComputeCPUResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildComputeStorage))]
+        public IBodyWorkflowAction<ComputeStorageResponse> ComputeStorage([WorkflowExpression] Func<string> provider, [WorkflowExpression] Func<string> bodyregion, [WorkflowExpression] Func<bodystorageTypeInput> bodystorageType, [WorkflowExpression] Func<int> bodydata, [WorkflowExpression] Func<int> bodyduration, [WorkflowExpression] Func<string> bodydataUnit = null, [WorkflowExpression] Func<string> bodydurationUnit = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ComputeStorageResponse> __BuildComputeStorage(WorkflowExpression<string> provider, WorkflowExpression<string> bodyregion, WorkflowExpression<bodystorageTypeInput> bodystorageType, WorkflowExpression<int> bodydata, WorkflowExpression<int> bodyduration, WorkflowExpression<string> bodydataUnit = null, WorkflowExpression<string> bodydurationUnit = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: true);
+            WorkflowExpression.Validate(bodystorageType, nameof(bodystorageType), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowExpression.Validate(bodyduration, nameof(bodyduration), required: true);
+            WorkflowExpression.Validate(bodydataUnit, nameof(bodydataUnit), required: false);
+            WorkflowExpression.Validate(bodydurationUnit, nameof(bodydurationUnit), required: false);
+            return new DeferredBodyAction<ComputeStorageResponse>(() =>
             {
-                body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/storage", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ComputeMemoryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ClassificationResponse> Classification(Expression<Func<string>> bodyclassificationclassificationType = null, Expression<Func<string>> bodyclassificationclassificationCode = null, Expression<Func<string>> bodyclassificationsource = null, Expression<Func<string>> bodyclassificationregion = null, Expression<Func<bool>> bodyclassificationregionFallback = null, Expression<Func<string>> bodyclassificationyear = null, Expression<Func<string>> bodyclassificationlcaActivity = null, Expression<Func<string>> bodyclassificationcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
-        {
-            var apiCallPath = "/classifications/estimate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var classificationObject = new JObject();
-            var classificationObjectpropCount = 0;
-            if (bodyclassificationclassificationType != null)
-            {
-                classificationObject["classification_type"] = ExpressionConverter.ConvertO(bodyclassificationclassificationType);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationclassificationCode != null)
-            {
-                classificationObject["classification_code"] = ExpressionConverter.ConvertO(bodyclassificationclassificationCode);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationsource != null)
-            {
-                classificationObject["source"] = ExpressionConverter.ConvertO(bodyclassificationsource);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationregion != null)
-            {
-                classificationObject["region"] = ExpressionConverter.ConvertO(bodyclassificationregion);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationregionFallback != null)
-            {
-                classificationObject["region_fallback"] = ExpressionConverter.ConvertO(bodyclassificationregionFallback);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationyear != null)
-            {
-                classificationObject["year"] = ExpressionConverter.ConvertO(bodyclassificationyear);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationlcaActivity != null)
-            {
-                classificationObject["lca_activity"] = ExpressionConverter.ConvertO(bodyclassificationlcaActivity);
-                classificationObjectpropCount++;
-            }
-
-            if (bodyclassificationcalculationMethod != null)
-            {
-                classificationObject["calculation_method"] = ExpressionConverter.ConvertO(bodyclassificationcalculationMethod);
-                classificationObjectpropCount++;
-            }
-
-            if (classificationObjectpropCount > 0)
-            {
-                body["classification"] = classificationObject;
+                body["region"] = ExpressionConverter.ConvertO(bodyregion);
                 bodypropCount++;
-            }
-
-            var parametersObject = new JObject();
-            var parametersObjectpropCount = 0;
-            if (bodyparametersenergy != null)
-            {
-                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersenergyUnit != null)
-            {
-                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdata != null)
-            {
-                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdataUnit != null)
-            {
-                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdistance != null)
-            {
-                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdistanceUnit != null)
-            {
-                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersmoney != null)
-            {
-                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersmoneyUnit != null)
-            {
-                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersnumber != null)
-            {
-                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterstime != null)
-            {
-                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterstimeUnit != null)
-            {
-                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterspassengers != null)
-            {
-                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersvolume != null)
-            {
-                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersvolumeUnit != null)
-            {
-                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersweight != null)
-            {
-                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersweightUnit != null)
-            {
-                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (parametersObjectpropCount > 0)
-            {
-                body["parameters"] = parametersObject;
+                body["storage_type"] = ExpressionConverter.ConvertO(bodystorageType);
                 bodypropCount++;
-            }
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                if (bodydataUnit != null)
+                {
+                    body["data_unit"] = ExpressionConverter.ConvertO(bodydataUnit);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ClassificationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomResponse> Custom(Expression<Func<string>> bodycustomActivitylabel = null, Expression<Func<string>> bodycustomActivitysource = null, Expression<Func<string>> bodycustomActivityregion = null, Expression<Func<bool>> bodycustomActivityregionFallback = null, Expression<Func<string>> bodycustomActivityyear = null, Expression<Func<string>> bodycustomActivitylcaActivity = null, Expression<Func<string>> bodycustomActivitycalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
-        {
-            var apiCallPath = "/custom-activities/estimate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var customActivityObject = new JObject();
-            var customActivityObjectpropCount = 0;
-            if (bodycustomActivitylabel != null)
-            {
-                customActivityObject["label"] = ExpressionConverter.ConvertO(bodycustomActivitylabel);
-                customActivityObjectpropCount++;
-            }
-
-            if (bodycustomActivitysource != null)
-            {
-                customActivityObject["source"] = ExpressionConverter.ConvertO(bodycustomActivitysource);
-                customActivityObjectpropCount++;
-            }
-
-            if (bodycustomActivityregion != null)
-            {
-                customActivityObject["region"] = ExpressionConverter.ConvertO(bodycustomActivityregion);
-                customActivityObjectpropCount++;
-            }
-
-            if (bodycustomActivityregionFallback != null)
-            {
-                customActivityObject["region_fallback"] = ExpressionConverter.ConvertO(bodycustomActivityregionFallback);
-                customActivityObjectpropCount++;
-            }
-
-            if (bodycustomActivityyear != null)
-            {
-                customActivityObject["year"] = ExpressionConverter.ConvertO(bodycustomActivityyear);
-                customActivityObjectpropCount++;
-            }
-
-            if (bodycustomActivitylcaActivity != null)
-            {
-                customActivityObject["lca_activity"] = ExpressionConverter.ConvertO(bodycustomActivitylcaActivity);
-                customActivityObjectpropCount++;
-            }
-
-            if (bodycustomActivitycalculationMethod != null)
-            {
-                customActivityObject["calculation_method"] = ExpressionConverter.ConvertO(bodycustomActivitycalculationMethod);
-                customActivityObjectpropCount++;
-            }
-
-            if (customActivityObjectpropCount > 0)
-            {
-                body["custom_activity"] = customActivityObject;
                 bodypropCount++;
-            }
+                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                if (bodydurationUnit != null)
+                {
+                    body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                    bodypropCount++;
+                }
 
-            var parametersObject = new JObject();
-            var parametersObjectpropCount = 0;
-            if (bodyparametersenergy != null)
-            {
-                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
-                parametersObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyparametersenergyUnit != null)
-            {
-                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
-                parametersObjectpropCount++;
-            }
+                return new ApiConnectionAction<ComputeStorageResponse>(callPayload);
+            });
+        }
 
-            if (bodyparametersdata != null)
-            {
-                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
-                parametersObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildComputeMemory))]
+        public IBodyWorkflowAction<ComputeMemoryResponse> ComputeMemory([WorkflowExpression] Func<string> provider, [WorkflowExpression] Func<string> bodyregion, [WorkflowExpression] Func<int> bodydata, [WorkflowExpression] Func<int> bodyduration, [WorkflowExpression] Func<string> bodydataUnit = null, [WorkflowExpression] Func<string> bodydurationUnit = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyparametersdataUnit != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ComputeMemoryResponse> __BuildComputeMemory(WorkflowExpression<string> provider, WorkflowExpression<string> bodyregion, WorkflowExpression<int> bodydata, WorkflowExpression<int> bodyduration, WorkflowExpression<string> bodydataUnit = null, WorkflowExpression<string> bodydurationUnit = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowExpression.Validate(bodyduration, nameof(bodyduration), required: true);
+            WorkflowExpression.Validate(bodydataUnit, nameof(bodydataUnit), required: false);
+            WorkflowExpression.Validate(bodydurationUnit, nameof(bodydurationUnit), required: false);
+            return new DeferredBodyAction<ComputeMemoryResponse>(() =>
             {
-                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdistance != null)
-            {
-                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersdistanceUnit != null)
-            {
-                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersmoney != null)
-            {
-                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersmoneyUnit != null)
-            {
-                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersnumber != null)
-            {
-                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterstime != null)
-            {
-                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterstimeUnit != null)
-            {
-                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterspassengers != null)
-            {
-                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersvolume != null)
-            {
-                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersvolumeUnit != null)
-            {
-                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersweight != null)
-            {
-                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparametersweightUnit != null)
-            {
-                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
-                parametersObjectpropCount++;
-            }
-
-            if (parametersObjectpropCount > 0)
-            {
-                body["parameters"] = parametersObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/memory", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                if (bodydataUnit != null)
+                {
+                    body["data_unit"] = ExpressionConverter.ConvertO(bodydataUnit);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                bodypropCount++;
+                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                if (bodydurationUnit != null)
+                {
+                    body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ComputeMemoryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildClassification))]
+        public IBodyWorkflowAction<ClassificationResponse> Classification([WorkflowExpression] Func<string> bodyclassificationclassificationType = null, [WorkflowExpression] Func<string> bodyclassificationclassificationCode = null, [WorkflowExpression] Func<string> bodyclassificationsource = null, [WorkflowExpression] Func<string> bodyclassificationregion = null, [WorkflowExpression] Func<bool> bodyclassificationregionFallback = null, [WorkflowExpression] Func<string> bodyclassificationyear = null, [WorkflowExpression] Func<string> bodyclassificationlcaActivity = null, [WorkflowExpression] Func<string> bodyclassificationcalculationMethod = null, [WorkflowExpression] Func<int> bodyparametersenergy = null, [WorkflowExpression] Func<string> bodyparametersenergyUnit = null, [WorkflowExpression] Func<int> bodyparametersdata = null, [WorkflowExpression] Func<string> bodyparametersdataUnit = null, [WorkflowExpression] Func<int> bodyparametersdistance = null, [WorkflowExpression] Func<string> bodyparametersdistanceUnit = null, [WorkflowExpression] Func<int> bodyparametersmoney = null, [WorkflowExpression] Func<string> bodyparametersmoneyUnit = null, [WorkflowExpression] Func<int> bodyparametersnumber = null, [WorkflowExpression] Func<int> bodyparameterstime = null, [WorkflowExpression] Func<string> bodyparameterstimeUnit = null, [WorkflowExpression] Func<int> bodyparameterspassengers = null, [WorkflowExpression] Func<int> bodyparametersvolume = null, [WorkflowExpression] Func<string> bodyparametersvolumeUnit = null, [WorkflowExpression] Func<int> bodyparametersweight = null, [WorkflowExpression] Func<string> bodyparametersweightUnit = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ClassificationResponse> __BuildClassification(WorkflowExpression<string> bodyclassificationclassificationType = null, WorkflowExpression<string> bodyclassificationclassificationCode = null, WorkflowExpression<string> bodyclassificationsource = null, WorkflowExpression<string> bodyclassificationregion = null, WorkflowExpression<bool> bodyclassificationregionFallback = null, WorkflowExpression<string> bodyclassificationyear = null, WorkflowExpression<string> bodyclassificationlcaActivity = null, WorkflowExpression<string> bodyclassificationcalculationMethod = null, WorkflowExpression<int> bodyparametersenergy = null, WorkflowExpression<string> bodyparametersenergyUnit = null, WorkflowExpression<int> bodyparametersdata = null, WorkflowExpression<string> bodyparametersdataUnit = null, WorkflowExpression<int> bodyparametersdistance = null, WorkflowExpression<string> bodyparametersdistanceUnit = null, WorkflowExpression<int> bodyparametersmoney = null, WorkflowExpression<string> bodyparametersmoneyUnit = null, WorkflowExpression<int> bodyparametersnumber = null, WorkflowExpression<int> bodyparameterstime = null, WorkflowExpression<string> bodyparameterstimeUnit = null, WorkflowExpression<int> bodyparameterspassengers = null, WorkflowExpression<int> bodyparametersvolume = null, WorkflowExpression<string> bodyparametersvolumeUnit = null, WorkflowExpression<int> bodyparametersweight = null, WorkflowExpression<string> bodyparametersweightUnit = null)
+        {
+            WorkflowExpression.Validate(bodyclassificationclassificationType, nameof(bodyclassificationclassificationType), required: false);
+            WorkflowExpression.Validate(bodyclassificationclassificationCode, nameof(bodyclassificationclassificationCode), required: false);
+            WorkflowExpression.Validate(bodyclassificationsource, nameof(bodyclassificationsource), required: false);
+            WorkflowExpression.Validate(bodyclassificationregion, nameof(bodyclassificationregion), required: false);
+            WorkflowExpression.Validate(bodyclassificationregionFallback, nameof(bodyclassificationregionFallback), required: false);
+            WorkflowExpression.Validate(bodyclassificationyear, nameof(bodyclassificationyear), required: false);
+            WorkflowExpression.Validate(bodyclassificationlcaActivity, nameof(bodyclassificationlcaActivity), required: false);
+            WorkflowExpression.Validate(bodyclassificationcalculationMethod, nameof(bodyclassificationcalculationMethod), required: false);
+            WorkflowExpression.Validate(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
+            WorkflowExpression.Validate(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersdata, nameof(bodyparametersdata), required: false);
+            WorkflowExpression.Validate(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
+            WorkflowExpression.Validate(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
+            WorkflowExpression.Validate(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
+            WorkflowExpression.Validate(bodyparameterstime, nameof(bodyparameterstime), required: false);
+            WorkflowExpression.Validate(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
+            WorkflowExpression.Validate(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
+            WorkflowExpression.Validate(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
+            WorkflowExpression.Validate(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersweight, nameof(bodyparametersweight), required: false);
+            WorkflowExpression.Validate(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            return new DeferredBodyAction<ClassificationResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/classifications/estimate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var classificationObject = new JObject();
+                var classificationObjectpropCount = 0;
+                if (bodyclassificationclassificationType != null)
+                {
+                    classificationObject["classification_type"] = ExpressionConverter.ConvertO(bodyclassificationclassificationType);
+                    classificationObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<CustomResponse>(callPayload);
+                if (bodyclassificationclassificationCode != null)
+                {
+                    classificationObject["classification_code"] = ExpressionConverter.ConvertO(bodyclassificationclassificationCode);
+                    classificationObjectpropCount++;
+                }
+
+                if (bodyclassificationsource != null)
+                {
+                    classificationObject["source"] = ExpressionConverter.ConvertO(bodyclassificationsource);
+                    classificationObjectpropCount++;
+                }
+
+                if (bodyclassificationregion != null)
+                {
+                    classificationObject["region"] = ExpressionConverter.ConvertO(bodyclassificationregion);
+                    classificationObjectpropCount++;
+                }
+
+                if (bodyclassificationregionFallback != null)
+                {
+                    classificationObject["region_fallback"] = ExpressionConverter.ConvertO(bodyclassificationregionFallback);
+                    classificationObjectpropCount++;
+                }
+
+                if (bodyclassificationyear != null)
+                {
+                    classificationObject["year"] = ExpressionConverter.ConvertO(bodyclassificationyear);
+                    classificationObjectpropCount++;
+                }
+
+                if (bodyclassificationlcaActivity != null)
+                {
+                    classificationObject["lca_activity"] = ExpressionConverter.ConvertO(bodyclassificationlcaActivity);
+                    classificationObjectpropCount++;
+                }
+
+                if (bodyclassificationcalculationMethod != null)
+                {
+                    classificationObject["calculation_method"] = ExpressionConverter.ConvertO(bodyclassificationcalculationMethod);
+                    classificationObjectpropCount++;
+                }
+
+                if (classificationObjectpropCount > 0)
+                {
+                    body["classification"] = classificationObject;
+                    bodypropCount++;
+                }
+
+                var parametersObject = new JObject();
+                var parametersObjectpropCount = 0;
+                if (bodyparametersenergy != null)
+                {
+                    parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersenergyUnit != null)
+                {
+                    parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdata != null)
+                {
+                    parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdataUnit != null)
+                {
+                    parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdistance != null)
+                {
+                    parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdistanceUnit != null)
+                {
+                    parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersmoney != null)
+                {
+                    parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersmoneyUnit != null)
+                {
+                    parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersnumber != null)
+                {
+                    parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterstime != null)
+                {
+                    parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterstimeUnit != null)
+                {
+                    parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterspassengers != null)
+                {
+                    parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersvolume != null)
+                {
+                    parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersvolumeUnit != null)
+                {
+                    parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersweight != null)
+                {
+                    parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersweightUnit != null)
+                {
+                    parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (parametersObjectpropCount > 0)
+                {
+                    body["parameters"] = parametersObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ClassificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomBatchResponse> CustomBatch(Expression<Func<bodyInputItem2[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildCustom))]
+        public IBodyWorkflowAction<CustomResponse> Custom([WorkflowExpression] Func<string> bodycustomActivitylabel = null, [WorkflowExpression] Func<string> bodycustomActivitysource = null, [WorkflowExpression] Func<string> bodycustomActivityregion = null, [WorkflowExpression] Func<bool> bodycustomActivityregionFallback = null, [WorkflowExpression] Func<string> bodycustomActivityyear = null, [WorkflowExpression] Func<string> bodycustomActivitylcaActivity = null, [WorkflowExpression] Func<string> bodycustomActivitycalculationMethod = null, [WorkflowExpression] Func<int> bodyparametersenergy = null, [WorkflowExpression] Func<string> bodyparametersenergyUnit = null, [WorkflowExpression] Func<int> bodyparametersdata = null, [WorkflowExpression] Func<string> bodyparametersdataUnit = null, [WorkflowExpression] Func<int> bodyparametersdistance = null, [WorkflowExpression] Func<string> bodyparametersdistanceUnit = null, [WorkflowExpression] Func<int> bodyparametersmoney = null, [WorkflowExpression] Func<string> bodyparametersmoneyUnit = null, [WorkflowExpression] Func<int> bodyparametersnumber = null, [WorkflowExpression] Func<int> bodyparameterstime = null, [WorkflowExpression] Func<string> bodyparameterstimeUnit = null, [WorkflowExpression] Func<int> bodyparameterspassengers = null, [WorkflowExpression] Func<int> bodyparametersvolume = null, [WorkflowExpression] Func<string> bodyparametersvolumeUnit = null, [WorkflowExpression] Func<int> bodyparametersweight = null, [WorkflowExpression] Func<string> bodyparametersweightUnit = null)
         {
-            var apiCallPath = "/custom-activities/batch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CustomBatchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CustomResponse> __BuildCustom(WorkflowExpression<string> bodycustomActivitylabel = null, WorkflowExpression<string> bodycustomActivitysource = null, WorkflowExpression<string> bodycustomActivityregion = null, WorkflowExpression<bool> bodycustomActivityregionFallback = null, WorkflowExpression<string> bodycustomActivityyear = null, WorkflowExpression<string> bodycustomActivitylcaActivity = null, WorkflowExpression<string> bodycustomActivitycalculationMethod = null, WorkflowExpression<int> bodyparametersenergy = null, WorkflowExpression<string> bodyparametersenergyUnit = null, WorkflowExpression<int> bodyparametersdata = null, WorkflowExpression<string> bodyparametersdataUnit = null, WorkflowExpression<int> bodyparametersdistance = null, WorkflowExpression<string> bodyparametersdistanceUnit = null, WorkflowExpression<int> bodyparametersmoney = null, WorkflowExpression<string> bodyparametersmoneyUnit = null, WorkflowExpression<int> bodyparametersnumber = null, WorkflowExpression<int> bodyparameterstime = null, WorkflowExpression<string> bodyparameterstimeUnit = null, WorkflowExpression<int> bodyparameterspassengers = null, WorkflowExpression<int> bodyparametersvolume = null, WorkflowExpression<string> bodyparametersvolumeUnit = null, WorkflowExpression<int> bodyparametersweight = null, WorkflowExpression<string> bodyparametersweightUnit = null)
+        {
+            WorkflowExpression.Validate(bodycustomActivitylabel, nameof(bodycustomActivitylabel), required: false);
+            WorkflowExpression.Validate(bodycustomActivitysource, nameof(bodycustomActivitysource), required: false);
+            WorkflowExpression.Validate(bodycustomActivityregion, nameof(bodycustomActivityregion), required: false);
+            WorkflowExpression.Validate(bodycustomActivityregionFallback, nameof(bodycustomActivityregionFallback), required: false);
+            WorkflowExpression.Validate(bodycustomActivityyear, nameof(bodycustomActivityyear), required: false);
+            WorkflowExpression.Validate(bodycustomActivitylcaActivity, nameof(bodycustomActivitylcaActivity), required: false);
+            WorkflowExpression.Validate(bodycustomActivitycalculationMethod, nameof(bodycustomActivitycalculationMethod), required: false);
+            WorkflowExpression.Validate(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
+            WorkflowExpression.Validate(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersdata, nameof(bodyparametersdata), required: false);
+            WorkflowExpression.Validate(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
+            WorkflowExpression.Validate(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
+            WorkflowExpression.Validate(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
+            WorkflowExpression.Validate(bodyparameterstime, nameof(bodyparameterstime), required: false);
+            WorkflowExpression.Validate(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
+            WorkflowExpression.Validate(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
+            WorkflowExpression.Validate(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
+            WorkflowExpression.Validate(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
+            WorkflowExpression.Validate(bodyparametersweight, nameof(bodyparametersweight), required: false);
+            WorkflowExpression.Validate(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            return new DeferredBodyAction<CustomResponse>(() =>
+            {
+                var apiCallPath = "/custom-activities/estimate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var customActivityObject = new JObject();
+                var customActivityObjectpropCount = 0;
+                if (bodycustomActivitylabel != null)
+                {
+                    customActivityObject["label"] = ExpressionConverter.ConvertO(bodycustomActivitylabel);
+                    customActivityObjectpropCount++;
+                }
+
+                if (bodycustomActivitysource != null)
+                {
+                    customActivityObject["source"] = ExpressionConverter.ConvertO(bodycustomActivitysource);
+                    customActivityObjectpropCount++;
+                }
+
+                if (bodycustomActivityregion != null)
+                {
+                    customActivityObject["region"] = ExpressionConverter.ConvertO(bodycustomActivityregion);
+                    customActivityObjectpropCount++;
+                }
+
+                if (bodycustomActivityregionFallback != null)
+                {
+                    customActivityObject["region_fallback"] = ExpressionConverter.ConvertO(bodycustomActivityregionFallback);
+                    customActivityObjectpropCount++;
+                }
+
+                if (bodycustomActivityyear != null)
+                {
+                    customActivityObject["year"] = ExpressionConverter.ConvertO(bodycustomActivityyear);
+                    customActivityObjectpropCount++;
+                }
+
+                if (bodycustomActivitylcaActivity != null)
+                {
+                    customActivityObject["lca_activity"] = ExpressionConverter.ConvertO(bodycustomActivitylcaActivity);
+                    customActivityObjectpropCount++;
+                }
+
+                if (bodycustomActivitycalculationMethod != null)
+                {
+                    customActivityObject["calculation_method"] = ExpressionConverter.ConvertO(bodycustomActivitycalculationMethod);
+                    customActivityObjectpropCount++;
+                }
+
+                if (customActivityObjectpropCount > 0)
+                {
+                    body["custom_activity"] = customActivityObject;
+                    bodypropCount++;
+                }
+
+                var parametersObject = new JObject();
+                var parametersObjectpropCount = 0;
+                if (bodyparametersenergy != null)
+                {
+                    parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersenergyUnit != null)
+                {
+                    parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdata != null)
+                {
+                    parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdataUnit != null)
+                {
+                    parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdistance != null)
+                {
+                    parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersdistanceUnit != null)
+                {
+                    parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersmoney != null)
+                {
+                    parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersmoneyUnit != null)
+                {
+                    parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersnumber != null)
+                {
+                    parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterstime != null)
+                {
+                    parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterstimeUnit != null)
+                {
+                    parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterspassengers != null)
+                {
+                    parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersvolume != null)
+                {
+                    parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersvolumeUnit != null)
+                {
+                    parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersweight != null)
+                {
+                    parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparametersweightUnit != null)
+                {
+                    parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                    parametersObjectpropCount++;
+                }
+
+                if (parametersObjectpropCount > 0)
+                {
+                    body["parameters"] = parametersObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CustomResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<FactorsSearchResponse> FactorsSearch(Expression<Func<string>> query = null, Expression<Func<string>> uuid = null, Expression<Func<string>> activityId = null, Expression<Func<string>> id = null, Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null, Expression<Func<string>> unitType = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
+        [WorkflowExpressionFactory(nameof(__BuildCustomBatch))]
+        public IBodyWorkflowAction<CustomBatchResponse> CustomBatch([WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (uuid != null)
-                callPayload.Queries["uuid"] = ExpressionConverter.Convert(uuid);
-            if (activityId != null)
-                callPayload.Queries["activity_id"] = ExpressionConverter.Convert(activityId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            if (unitType != null)
-                callPayload.Queries["unit_type"] = ExpressionConverter.Convert(unitType);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (resultsPerPage != null)
-                callPayload.Queries["results_per_page"] = ExpressionConverter.Convert(resultsPerPage);
-            return new ApiConnectionAction<FactorsSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CustomBatchResponse> __BuildCustomBatch(WorkflowExpression<bodyInputItem2[]> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<CustomBatchResponse>(() =>
+            {
+                var apiCallPath = "/custom-activities/batch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<CustomBatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<SourcesResponse> Sources(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildFactorsSearch))]
+        public IBodyWorkflowAction<FactorsSearchResponse> FactorsSearch([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> uuid = null, [WorkflowExpression] Func<string> activityId = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null, [WorkflowExpression] Func<string> unitType = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> resultsPerPage = null)
         {
-            var apiCallPath = "/emission-factors/sources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<SourcesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FactorsSearchResponse> __BuildFactorsSearch(WorkflowExpression<string> query = null, WorkflowExpression<string> uuid = null, WorkflowExpression<string> activityId = null, WorkflowExpression<string> id = null, WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null, WorkflowExpression<string> unitType = null, WorkflowExpression<int> page = null, WorkflowExpression<int> resultsPerPage = null)
+        {
+            WorkflowExpression.Validate(query, nameof(query), required: false);
+            WorkflowExpression.Validate(uuid, nameof(uuid), required: false);
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            WorkflowExpression.Validate(unitType, nameof(unitType), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
+            return new DeferredBodyAction<FactorsSearchResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                if (uuid != null)
+                    callPayload.Queries["uuid"] = ExpressionConverter.Convert(uuid);
+                if (activityId != null)
+                    callPayload.Queries["activity_id"] = ExpressionConverter.Convert(activityId);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                if (unitType != null)
+                    callPayload.Queries["unit_type"] = ExpressionConverter.Convert(unitType);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (resultsPerPage != null)
+                    callPayload.Queries["results_per_page"] = ExpressionConverter.Convert(resultsPerPage);
+                return new ApiConnectionAction<FactorsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<YearsResponse> Years(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildSources))]
+        public IBodyWorkflowAction<SourcesResponse> Sources([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            var apiCallPath = "/emission-factors/years";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<YearsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SourcesResponse> __BuildSources(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<SourcesResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/sources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<SourcesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<RegionsResponse> Regions(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildYears))]
+        public IBodyWorkflowAction<YearsResponse> Years([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            var apiCallPath = "/emission-factors/regions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<RegionsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<YearsResponse> __BuildYears(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<YearsResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/years";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<YearsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CategoriesResponse> Categories(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildRegions))]
+        public IBodyWorkflowAction<RegionsResponse> Regions([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            var apiCallPath = "/emission-factors/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RegionsResponse> __BuildRegions(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<RegionsResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/regions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<RegionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<SectorsResponse> Sectors(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildCategories))]
+        public IBodyWorkflowAction<CategoriesResponse> Categories([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            var apiCallPath = "/emission-factors/sectors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<SectorsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CategoriesResponse> __BuildCategories(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<CategoriesResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<LifeCycleActivitiesResponse> LifeCycleActivities(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildSectors))]
+        public IBodyWorkflowAction<SectorsResponse> Sectors([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            var apiCallPath = "/emission-factors/lca-activities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<LifeCycleActivitiesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SectorsResponse> __BuildSectors(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<SectorsResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/sectors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<SectorsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<UnitTypesResponse> UnitTypes(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildLifeCycleActivities))]
+        public IBodyWorkflowAction<LifeCycleActivitiesResponse> LifeCycleActivities([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            var apiCallPath = "/emission-factors/unit-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
-            if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
-            return new ApiConnectionAction<UnitTypesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LifeCycleActivitiesResponse> __BuildLifeCycleActivities(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<LifeCycleActivitiesResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/lca-activities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<LifeCycleActivitiesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        [WorkflowExpressionFactory(nameof(__BuildUnitTypes))]
+        public IBodyWorkflowAction<UnitTypesResponse> UnitTypes([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UnitTypesResponse> __BuildUnitTypes(WorkflowExpression<string> sector = null, WorkflowExpression<string> category = null, WorkflowExpression<string> source = null, WorkflowExpression<string> region = null, WorkflowExpression<string> year = null, WorkflowExpression<string> id = null, WorkflowExpression<string> lcaActivity = null, WorkflowExpression<string> calculationMethod = null)
+        {
+            WorkflowExpression.Validate(sector, nameof(sector), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(region, nameof(region), required: false);
+            WorkflowExpression.Validate(year, nameof(year), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
+            WorkflowExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
+            return new DeferredBodyAction<UnitTypesResponse>(() =>
+            {
+                var apiCallPath = "/emission-factors/unit-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sector != null)
+                    callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (lcaActivity != null)
+                    callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                if (calculationMethod != null)
+                    callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                return new ApiConnectionAction<UnitTypesResponse>(callPayload);
+            });
         }
     }
 
@@ -1536,6 +1880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystorageTypeInput
     {
         [EnumMember(Value = "ssd")]

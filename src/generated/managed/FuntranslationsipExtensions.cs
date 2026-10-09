@@ -4,29 +4,41 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
-        {
-            var apiCallPath = String.Format("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<TranslatePostResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
+        [WorkflowExpressionFactory(nameof(__BuildTranslate))]
+        public IBodyWorkflowAction<TranslatePostResponse> Translate([WorkflowExpression] Func<languageInput> language, [WorkflowExpression] Func<string> bodytext)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TranslatePostResponse> __BuildTranslate(WorkflowExpression<languageInput> language, WorkflowExpression<string> bodytext)
+        {
+            WorkflowExpression.Validate(language, nameof(language), required: true);
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<TranslatePostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TranslatePostResponse>(callPayload);
+            });
         }
     }
 
@@ -61,6 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
         public string Translated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         [EnumMember(Value = "aldmeris")]

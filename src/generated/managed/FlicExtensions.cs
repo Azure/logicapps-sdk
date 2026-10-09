@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,57 +14,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
     public class FlicTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildFlicButtonTrigger))]
+        public IWorkflowTrigger FlicButtonTrigger([WorkflowExpression] Func<string> buttonUuid,[WorkflowExpression] Func<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(buttonUuid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookevents != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFlicButtonTrigger(WorkflowExpression<string> buttonUuid,WorkflowExpression<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(buttonUuid, nameof(buttonUuid), required: true);
+            WorkflowExpression.Validate(requestBodyOfWebhookevents, nameof(requestBodyOfWebhookevents), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(buttonUuid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookevents != null)
                 {
-                    requestBodyOfWebhook["events"] = ExpressionConverter.ConvertO(requestBodyOfWebhookevents);
+                    if (requestBodyOfWebhookevents != null)
+                    {
+                        requestBodyOfWebhook["events"] = ExpressionConverter.ConvertO(requestBodyOfWebhookevents);
+                        requestBodyOfWebhookpropCount++;
+                    }
+
+                    requestBodyOfWebhookpropCount++;
+                }
+                else
+                {
+                    requestBodyOfWebhook["events"] = "any";
                     requestBodyOfWebhookpropCount++;
                 }
 
-                requestBodyOfWebhookpropCount++;
-            }
-            else
-            {
-                requestBodyOfWebhook["events"] = "any";
-                requestBodyOfWebhookpropCount++;
-            }
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
 
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger FlicTaskTrigger(Expression<Func<string>> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFlicTaskTrigger))]
+        public IWorkflowTrigger FlicTaskTrigger([WorkflowExpression] Func<string> taskUuid,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskUuid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFlicTaskTrigger(WorkflowExpression<string> taskUuid,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(taskUuid, nameof(taskUuid), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskUuid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodyOfWebhookeventsInput
     {
         [EnumMember(Value = "click")]

@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,27 +20,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSchedules))]
+        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules([WorkflowExpression] Func<string> departureStation, [WorkflowExpression] Func<string> arrivalStation, [WorkflowExpression] Func<string> departureDate = null)
         {
-            var apiCallPath = String.Format("/live-trains/station/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(departureStation, 1), ExpressionConverter.ConvertWithUrlEncoding(arrivalStation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (departureDate != null)
-                callPayload.Queries["departure_date"] = ExpressionConverter.Convert(departureDate);
-            return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSchedulesResponseItem[]> __BuildGetSchedules(WorkflowExpression<string> departureStation, WorkflowExpression<string> arrivalStation, WorkflowExpression<string> departureDate = null)
+        {
+            WorkflowExpression.Validate(departureStation, nameof(departureStation), required: true);
+            WorkflowExpression.Validate(arrivalStation, nameof(arrivalStation), required: true);
+            WorkflowExpression.Validate(departureDate, nameof(departureDate), required: false);
+            return new DeferredBodyAction<GetSchedulesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(departureStation, 1), ExpressionConverter.ConvertWithUrlEncoding(arrivalStation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (departureDate != null)
+                    callPayload.Queries["departure_date"] = ExpressionConverter.Convert(departureDate);
+                return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetArrivalsAndDepartures))]
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures([WorkflowExpression] Func<string> trainStation, [WorkflowExpression] Func<int> arrivingTrains = null, [WorkflowExpression] Func<int> departingTrains = null)
         {
-            var apiCallPath = String.Format("/live-trains/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(trainStation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (arrivingTrains != null)
-                callPayload.Queries["arriving_trains"] = ExpressionConverter.Convert(arrivingTrains);
-            if (departingTrains != null)
-                callPayload.Queries["departing_trains"] = ExpressionConverter.Convert(departingTrains);
-            return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> __BuildGetArrivalsAndDepartures(WorkflowExpression<string> trainStation, WorkflowExpression<int> arrivingTrains = null, WorkflowExpression<int> departingTrains = null)
+        {
+            WorkflowExpression.Validate(trainStation, nameof(trainStation), required: true);
+            WorkflowExpression.Validate(arrivingTrains, nameof(arrivingTrains), required: false);
+            WorkflowExpression.Validate(departingTrains, nameof(departingTrains), required: false);
+            return new DeferredBodyAction<GetArrivalsAndDeparturesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(trainStation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (arrivingTrains != null)
+                    callPayload.Queries["arriving_trains"] = ExpressionConverter.Convert(arrivingTrains);
+                if (departingTrains != null)
+                    callPayload.Queries["departing_trains"] = ExpressionConverter.Convert(departingTrains);
+                return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
+            });
         }
     }
 

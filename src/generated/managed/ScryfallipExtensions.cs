@@ -4,156 +4,289 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ScryfallipActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsSearchGetResponse> CardsSearchGet(Expression<Func<string>> q, Expression<Func<uniqueInput>> unique = null, Expression<Func<orderInput>> order = null, Expression<Func<dirInput>> dir = null, Expression<Func<bool>> includeExtras = null, Expression<Func<bool>> includeMultilingual = null, Expression<Func<bool>> includeVariations = null, Expression<Func<int>> page = null)
-        {
-            var apiCallPath = "/cards/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["unique"] = Convert.ToString("cards");
-            if (unique != null)
-                callPayload.Queries["unique"] = ExpressionConverter.Convert(unique);
-            callPayload.Queries["order"] = Convert.ToString("name");
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            callPayload.Queries["dir"] = Convert.ToString("auto");
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            callPayload.Queries["include_extras"] = Convert.ToString(false);
-            if (includeExtras != null)
-                callPayload.Queries["include_extras"] = ExpressionConverter.Convert(includeExtras);
-            callPayload.Queries["include_multilingual"] = Convert.ToString(false);
-            if (includeMultilingual != null)
-                callPayload.Queries["include_multilingual"] = ExpressionConverter.Convert(includeMultilingual);
-            callPayload.Queries["include_variations"] = Convert.ToString(false);
-            if (includeVariations != null)
-                callPayload.Queries["include_variations"] = ExpressionConverter.Convert(includeVariations);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<CardsSearchGetResponse>(callPayload);
-        }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsNamedGetResponse> CardsNamedGet(Expression<Func<string>> exact = null, Expression<Func<string>> fuzzy = null, Expression<Func<string>> set = null, Expression<Func<versionInput>> version = null)
+        [WorkflowExpressionFactory(nameof(__BuildCardsSearchGet))]
+        public IBodyWorkflowAction<CardsSearchGetResponse> CardsSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<uniqueInput> unique = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<bool> includeExtras = null, [WorkflowExpression] Func<bool> includeMultilingual = null, [WorkflowExpression] Func<bool> includeVariations = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/cards/named";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
-            if (fuzzy != null)
-                callPayload.Queries["fuzzy"] = ExpressionConverter.Convert(fuzzy);
-            if (set != null)
-                callPayload.Queries["set"] = ExpressionConverter.Convert(set);
-            callPayload.Queries["version"] = Convert.ToString("large");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            return new ApiConnectionAction<CardsNamedGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsAutocompleteGetResponse> CardsAutocompleteGet(Expression<Func<string>> q, Expression<Func<bool>> includeExtras = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsSearchGetResponse> __BuildCardsSearchGet(WorkflowExpression<string> q, WorkflowExpression<uniqueInput> unique = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<bool> includeExtras = null, WorkflowExpression<bool> includeMultilingual = null, WorkflowExpression<bool> includeVariations = null, WorkflowExpression<int> page = null)
         {
-            var apiCallPath = "/cards/autocomplete";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (includeExtras != null)
-                callPayload.Queries["include_extras"] = ExpressionConverter.Convert(includeExtras);
-            return new ApiConnectionAction<CardsAutocompleteGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
-        {
-            var apiCallPath = "/cards/collection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyidentifiers != null)
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(unique, nameof(unique), required: false);
+            WorkflowExpression.Validate(order, nameof(order), required: false);
+            WorkflowExpression.Validate(dir, nameof(dir), required: false);
+            WorkflowExpression.Validate(includeExtras, nameof(includeExtras), required: false);
+            WorkflowExpression.Validate(includeMultilingual, nameof(includeMultilingual), required: false);
+            WorkflowExpression.Validate(includeVariations, nameof(includeVariations), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<CardsSearchGetResponse>(() =>
             {
-                body["identifiers"] = ExpressionConverter.ConvertO(bodyidentifiers);
-                bodypropCount++;
-            }
+                var apiCallPath = "/cards/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["unique"] = Convert.ToString("cards");
+                if (unique != null)
+                    callPayload.Queries["unique"] = ExpressionConverter.Convert(unique);
+                callPayload.Queries["order"] = Convert.ToString("name");
+                if (order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["dir"] = Convert.ToString("auto");
+                if (dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
+                callPayload.Queries["include_extras"] = Convert.ToString(false);
+                if (includeExtras != null)
+                    callPayload.Queries["include_extras"] = ExpressionConverter.Convert(includeExtras);
+                callPayload.Queries["include_multilingual"] = Convert.ToString(false);
+                if (includeMultilingual != null)
+                    callPayload.Queries["include_multilingual"] = ExpressionConverter.Convert(includeMultilingual);
+                callPayload.Queries["include_variations"] = Convert.ToString(false);
+                if (includeVariations != null)
+                    callPayload.Queries["include_variations"] = ExpressionConverter.Convert(includeVariations);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<CardsSearchGetResponse>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
+        [WorkflowExpressionFactory(nameof(__BuildCardsNamedGet))]
+        public IBodyWorkflowAction<CardsNamedGetResponse> CardsNamedGet([WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> fuzzy = null, [WorkflowExpression] Func<string> set = null, [WorkflowExpression] Func<versionInput> version = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsNamedGetResponse> __BuildCardsNamedGet(WorkflowExpression<string> exact = null, WorkflowExpression<string> fuzzy = null, WorkflowExpression<string> set = null, WorkflowExpression<versionInput> version = null)
+        {
+            WorkflowExpression.Validate(exact, nameof(exact), required: false);
+            WorkflowExpression.Validate(fuzzy, nameof(fuzzy), required: false);
+            WorkflowExpression.Validate(set, nameof(set), required: false);
+            WorkflowExpression.Validate(version, nameof(version), required: false);
+            return new DeferredBodyAction<CardsNamedGetResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CardsCollectionPostResponse>(callPayload);
+                var apiCallPath = "/cards/named";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (exact != null)
+                    callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                if (fuzzy != null)
+                    callPayload.Queries["fuzzy"] = ExpressionConverter.Convert(fuzzy);
+                if (set != null)
+                    callPayload.Queries["set"] = ExpressionConverter.Convert(set);
+                callPayload.Queries["version"] = Convert.ToString("large");
+                if (version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                return new ApiConnectionAction<CardsNamedGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsSetNumberGetResponse> CardsSetNumberGet(Expression<Func<string>> code, Expression<Func<string>> number)
+        [WorkflowExpressionFactory(nameof(__BuildCardsAutocompleteGet))]
+        public IBodyWorkflowAction<CardsAutocompleteGetResponse> CardsAutocompleteGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<bool> includeExtras = null)
         {
-            var apiCallPath = String.Format("/cards/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(code, 1), ExpressionConverter.ConvertWithUrlEncoding(number, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsSetNumberGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsAutocompleteGetResponse> __BuildCardsAutocompleteGet(WorkflowExpression<string> q, WorkflowExpression<bool> includeExtras = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(includeExtras, nameof(includeExtras), required: false);
+            return new DeferredBodyAction<CardsAutocompleteGetResponse>(() =>
+            {
+                var apiCallPath = "/cards/autocomplete";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (includeExtras != null)
+                    callPayload.Queries["include_extras"] = ExpressionConverter.Convert(includeExtras);
+                return new ApiConnectionAction<CardsAutocompleteGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsMultiverseGetResponse> CardsMultiverseGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCardsCollection))]
+        public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollection([WorkflowExpression] Func<bodyidentifiersInputItem[]> bodyidentifiers = null)
         {
-            var apiCallPath = String.Format("/cards/multiverse/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsMultiverseGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsCollectionPostResponse> __BuildCardsCollection(WorkflowExpression<bodyidentifiersInputItem[]> bodyidentifiers = null)
+        {
+            WorkflowExpression.Validate(bodyidentifiers, nameof(bodyidentifiers), required: false);
+            return new DeferredBodyAction<CardsCollectionPostResponse>(() =>
+            {
+                var apiCallPath = "/cards/collection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyidentifiers != null)
+                {
+                    body["identifiers"] = ExpressionConverter.ConvertO(bodyidentifiers);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CardsCollectionPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsMTGOGetResponse> CardsMTGOGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCardsSetNumberGet))]
+        public IBodyWorkflowAction<CardsSetNumberGetResponse> CardsSetNumberGet([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> number)
         {
-            var apiCallPath = String.Format("/cards/mtgo/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsMTGOGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsSetNumberGetResponse> __BuildCardsSetNumberGet(WorkflowExpression<string> code, WorkflowExpression<string> number)
+        {
+            WorkflowExpression.Validate(code, nameof(code), required: true);
+            WorkflowExpression.Validate(number, nameof(number), required: true);
+            return new DeferredBodyAction<CardsSetNumberGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(code, 1), ExpressionConverter.ConvertWithUrlEncoding(number, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsSetNumberGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsArenaGetResponse> CardsArenaGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCardsMultiverseGet))]
+        public IBodyWorkflowAction<CardsMultiverseGetResponse> CardsMultiverseGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/arena/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsArenaGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsMultiverseGetResponse> __BuildCardsMultiverseGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CardsMultiverseGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsMultiverseGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsTCGplayerGetResponse> CardsTCGplayerGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCardsMTGOGet))]
+        public IBodyWorkflowAction<CardsMTGOGetResponse> CardsMTGOGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsTCGplayerGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsMTGOGetResponse> __BuildCardsMTGOGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CardsMTGOGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsMTGOGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCardmarketGetResponse> CardsCardmarketGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCardsArenaGet))]
+        public IBodyWorkflowAction<CardsArenaGetResponse> CardsArenaGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/cardmarket/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsCardmarketGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsArenaGetResponse> __BuildCardsArenaGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CardsArenaGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsArenaGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsScryfallGetResponse> CardsScryfallGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCardsTCGplayerGet))]
+        public IBodyWorkflowAction<CardsTCGplayerGetResponse> CardsTCGplayerGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardsScryfallGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsTCGplayerGetResponse> __BuildCardsTCGplayerGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CardsTCGplayerGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsTCGplayerGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
+        [WorkflowExpressionFactory(nameof(__BuildCardsCardmarketGet))]
+        public IBodyWorkflowAction<CardsCardmarketGetResponse> CardsCardmarketGet([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsCardmarketGetResponse> __BuildCardsCardmarketGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CardsCardmarketGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cardmarket/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsCardmarketGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
+        [WorkflowExpressionFactory(nameof(__BuildCardsScryfallGet))]
+        public IBodyWorkflowAction<CardsScryfallGetResponse> CardsScryfallGet([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardsScryfallGetResponse> __BuildCardsScryfallGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CardsScryfallGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CardsScryfallGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
@@ -166,48 +299,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<SetGetResponse> SetGet(Expression<Func<string>> code)
+        [WorkflowExpressionFactory(nameof(__BuildSetGet))]
+        public IBodyWorkflowAction<SetGetResponse> SetGet([WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = String.Format("/sets/{0}", ExpressionConverter.ConvertWithUrlEncoding(code, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SetGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetGetResponse> __BuildSetGet(WorkflowExpression<string> code)
+        {
+            WorkflowExpression.Validate(code, nameof(code), required: true);
+            return new DeferredBodyAction<SetGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sets/{0}", ExpressionConverter.ConvertWithUrlEncoding(code, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SetGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<SetsTCGplayerGetResponse> SetsTCGplayerGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildSetsTCGplayerGet))]
+        public IBodyWorkflowAction<SetsTCGplayerGetResponse> SetsTCGplayerGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/sets/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SetsTCGplayerGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetsTCGplayerGetResponse> __BuildSetsTCGplayerGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<SetsTCGplayerGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sets/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SetsTCGplayerGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsMultiverseGetResponse> RulingsMultiverseGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRulingsMultiverseGet))]
+        public IBodyWorkflowAction<RulingsMultiverseGetResponse> RulingsMultiverseGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/multiverse/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RulingsMultiverseGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RulingsMultiverseGetResponse> __BuildRulingsMultiverseGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RulingsMultiverseGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RulingsMultiverseGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsMTGOGetResponse> RulingsMTGOGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRulingsMTGOGet))]
+        public IBodyWorkflowAction<RulingsMTGOGetResponse> RulingsMTGOGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/mtgo/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RulingsMTGOGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RulingsMTGOGetResponse> __BuildRulingsMTGOGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RulingsMTGOGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RulingsMTGOGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsArenaGetResponse> RulingsArenaGet(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRulingsArenaGet))]
+        public IBodyWorkflowAction<RulingsArenaGetResponse> RulingsArenaGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/cards/arena/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RulingsArenaGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RulingsArenaGetResponse> __BuildRulingsArenaGet(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RulingsArenaGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RulingsArenaGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
@@ -842,6 +1030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string BorderCrop { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uniqueInput
     {
         [EnumMember(Value = "cards")]
@@ -852,6 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         Prints
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "name")]
@@ -886,6 +1076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         Review
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dirInput
     {
         [EnumMember(Value = "auto")]
@@ -1208,6 +1399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Cardhoarder { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum versionInput
     {
         [EnumMember(Value = "large")]

@@ -4,121 +4,186 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytics
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CognitiveservicestextanalyticsActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
-        {
-            var apiCallPath = "/text/analytics/v3.0/entities/linking";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
 
-            return new ApiConnectionAction<EntityLinkingResult>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
+        [WorkflowExpressionFactory(nameof(__BuildEntitiesLinking))]
+        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EntityLinkingResult> __BuildEntitiesLinking(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
+        {
+            WorkflowExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
+            WorkflowExpression.Validate(modelVersion, nameof(modelVersion), required: false);
+            WorkflowExpression.Validate(showStats, nameof(showStats), required: false);
+            return new DeferredBodyAction<EntityLinkingResult>(() =>
+            {
+                var apiCallPath = "/text/analytics/v3.0/entities/linking";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<EntityLinkingResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        [WorkflowExpressionFactory(nameof(__BuildEntitiesRecognitionGeneral))]
+        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<EntitiesResultV3>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EntitiesResultV3> __BuildEntitiesRecognitionGeneral(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
+        {
+            WorkflowExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
+            WorkflowExpression.Validate(modelVersion, nameof(modelVersion), required: false);
+            WorkflowExpression.Validate(showStats, nameof(showStats), required: false);
+            return new DeferredBodyAction<EntitiesResultV3>(() =>
+            {
+                var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<EntitiesResultV3>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        [WorkflowExpressionFactory(nameof(__BuildKeyPhrase))]
+        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/keyPhrases";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<KeyPhraseResultV3>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyPhraseResultV3> __BuildKeyPhrase(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
+        {
+            WorkflowExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
+            WorkflowExpression.Validate(modelVersion, nameof(modelVersion), required: false);
+            WorkflowExpression.Validate(showStats, nameof(showStats), required: false);
+            return new DeferredBodyAction<KeyPhraseResultV3>(() =>
+            {
+                var apiCallPath = "/text/analytics/v3.0/keyPhrases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<KeyPhraseResultV3>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<LanguageResultV3> Languages(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        [WorkflowExpressionFactory(nameof(__BuildLanguages))]
+        public IBodyWorkflowAction<LanguageResultV3> Languages([WorkflowExpression] Func<LanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/languages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<LanguageResultV3>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LanguageResultV3> __BuildLanguages(WorkflowExpression<LanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
+        {
+            WorkflowExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
+            WorkflowExpression.Validate(modelVersion, nameof(modelVersion), required: false);
+            WorkflowExpression.Validate(showStats, nameof(showStats), required: false);
+            return new DeferredBodyAction<LanguageResultV3>(() =>
+            {
+                var apiCallPath = "/text/analytics/v3.0/languages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<LanguageResultV3>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<SentimentResponse> Sentiment(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        [WorkflowExpressionFactory(nameof(__BuildSentiment))]
+        public IBodyWorkflowAction<SentimentResponse> Sentiment([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/sentiment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<SentimentResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SentimentResponse> __BuildSentiment(WorkflowExpression<MultiLanguageInputV3[]> inputdocuments, WorkflowExpression<string> modelVersion = null, WorkflowExpression<bool> showStats = null)
+        {
+            WorkflowExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
+            WorkflowExpression.Validate(modelVersion, nameof(modelVersion), required: false);
+            WorkflowExpression.Validate(showStats, nameof(showStats), required: false);
+            return new DeferredBodyAction<SentimentResponse>(() =>
+            {
+                var apiCallPath = "/text/analytics/v3.0/sentiment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<SentimentResponse>(callPayload);
+            });
         }
     }
 
@@ -204,6 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public string TargetRef { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TextAnalyticsWarningCodeType
     {
         LongWordsInDocument,
@@ -426,6 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public TextAnalyticsWarning[] Warnings { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentSentimentSentimentType
     {
         [EnumMember(Value = "positive")]
@@ -468,6 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public int Length { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SentenceSentimentSentimentType
     {
         [EnumMember(Value = "positive")]

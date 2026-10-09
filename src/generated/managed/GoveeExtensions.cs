@@ -4,102 +4,133 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GoveeActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
+        [WorkflowExpressionFactory(nameof(__BuildRunCommandOnDevice))]
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice([WorkflowExpression] Func<string> bodydeviceMACAddress, [WorkflowExpression] Func<string> bodydeviceModel, [WorkflowExpression] Func<bodycmdcommandNameInput> bodycmdcommandName = null, [WorkflowExpression] Func<bodyturnInput> bodyturn = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<int> bodycolorcolorRed = null, [WorkflowExpression] Func<int> bodycolorcolorGreen = null, [WorkflowExpression] Func<int> bodycolorcolorBlue = null, [WorkflowExpression] Func<int> bodycolorTemperature = null)
         {
-            var apiCallPath = "/devices/control";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceMACAddress);
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodydeviceModel);
-            var cmdObject = new JObject();
-            var cmdObjectpropCount = 0;
-            if (bodycmdcommandName != null)
-            {
-                cmdObject["name"] = ExpressionConverter.ConvertO(bodycmdcommandName);
-                cmdObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (cmdObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse> __BuildRunCommandOnDevice(WorkflowExpression<string> bodydeviceMACAddress, WorkflowExpression<string> bodydeviceModel, WorkflowExpression<bodycmdcommandNameInput> bodycmdcommandName = null, WorkflowExpression<bodyturnInput> bodyturn = null, WorkflowExpression<int> bodybrightness = null, WorkflowExpression<int> bodycolorcolorRed = null, WorkflowExpression<int> bodycolorcolorGreen = null, WorkflowExpression<int> bodycolorcolorBlue = null, WorkflowExpression<int> bodycolorTemperature = null)
+        {
+            WorkflowExpression.Validate(bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
+            WorkflowExpression.Validate(bodydeviceModel, nameof(bodydeviceModel), required: true);
+            WorkflowExpression.Validate(bodycmdcommandName, nameof(bodycmdcommandName), required: false);
+            WorkflowExpression.Validate(bodyturn, nameof(bodyturn), required: false);
+            WorkflowExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
+            WorkflowExpression.Validate(bodycolorcolorRed, nameof(bodycolorcolorRed), required: false);
+            WorkflowExpression.Validate(bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
+            WorkflowExpression.Validate(bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
+            WorkflowExpression.Validate(bodycolorTemperature, nameof(bodycolorTemperature), required: false);
+            return new DeferredBodyAction<RunCommandOnDeviceResponse>(() =>
             {
-                body["cmd"] = cmdObject;
+                var apiCallPath = "/devices/control";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyturn != null)
-            {
-                body["turn"] = ExpressionConverter.ConvertO(bodyturn);
+                body["device"] = ExpressionConverter.ConvertO(bodydeviceMACAddress);
                 bodypropCount++;
-            }
+                body["model"] = ExpressionConverter.ConvertO(bodydeviceModel);
+                var cmdObject = new JObject();
+                var cmdObjectpropCount = 0;
+                if (bodycmdcommandName != null)
+                {
+                    cmdObject["name"] = ExpressionConverter.ConvertO(bodycmdcommandName);
+                    cmdObjectpropCount++;
+                }
 
-            if (bodybrightness != null)
-            {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
-                bodypropCount++;
-            }
+                if (cmdObjectpropCount > 0)
+                {
+                    body["cmd"] = cmdObject;
+                    bodypropCount++;
+                }
 
-            var colorObject = new JObject();
-            var colorObjectpropCount = 0;
-            if (bodycolorcolorRed != null)
-            {
-                colorObject["r"] = ExpressionConverter.ConvertO(bodycolorcolorRed);
-                colorObjectpropCount++;
-            }
+                if (bodyturn != null)
+                {
+                    body["turn"] = ExpressionConverter.ConvertO(bodyturn);
+                    bodypropCount++;
+                }
 
-            if (bodycolorcolorGreen != null)
-            {
-                colorObject["g"] = ExpressionConverter.ConvertO(bodycolorcolorGreen);
-                colorObjectpropCount++;
-            }
+                if (bodybrightness != null)
+                {
+                    body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                    bodypropCount++;
+                }
 
-            if (bodycolorcolorBlue != null)
-            {
-                colorObject["b"] = ExpressionConverter.ConvertO(bodycolorcolorBlue);
-                colorObjectpropCount++;
-            }
+                var colorObject = new JObject();
+                var colorObjectpropCount = 0;
+                if (bodycolorcolorRed != null)
+                {
+                    colorObject["r"] = ExpressionConverter.ConvertO(bodycolorcolorRed);
+                    colorObjectpropCount++;
+                }
 
-            if (colorObjectpropCount > 0)
-            {
-                body["color"] = colorObject;
-                bodypropCount++;
-            }
+                if (bodycolorcolorGreen != null)
+                {
+                    colorObject["g"] = ExpressionConverter.ConvertO(bodycolorcolorGreen);
+                    colorObjectpropCount++;
+                }
 
-            if (bodycolorTemperature != null)
-            {
-                body["colorTem"] = ExpressionConverter.ConvertO(bodycolorTemperature);
-                bodypropCount++;
-            }
+                if (bodycolorcolorBlue != null)
+                {
+                    colorObject["b"] = ExpressionConverter.ConvertO(bodycolorcolorBlue);
+                    colorObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (colorObjectpropCount > 0)
+                {
+                    body["color"] = colorObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
+                if (bodycolorTemperature != null)
+                {
+                    body["colorTem"] = ExpressionConverter.ConvertO(bodycolorTemperature);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDeviceInformation))]
+        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation([WorkflowExpression] Func<string> device = null, [WorkflowExpression] Func<string> model = null)
         {
-            var apiCallPath = "/devices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDeviceInformationResponse> __BuildGetDeviceInformation(WorkflowExpression<string> device = null, WorkflowExpression<string> model = null)
+        {
+            WorkflowExpression.Validate(device, nameof(device), required: false);
+            WorkflowExpression.Validate(model, nameof(model), required: false);
+            return new DeferredBodyAction<GetDeviceInformationResponse>(() =>
+            {
+                var apiCallPath = "/devices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (device != null)
+                    callPayload.Queries["device"] = ExpressionConverter.Convert(device);
+                if (model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
+            });
         }
     }
 
@@ -119,6 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         public JToken Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycmdcommandNameInput
     {
         [EnumMember(Value = "turn")]
@@ -131,6 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         ColorTem
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyturnInput
     {
         [EnumMember(Value = "on")]

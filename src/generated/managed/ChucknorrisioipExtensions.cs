@@ -4,32 +4,54 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ChucknorrisioipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRandomChuckNorrisFact))]
+        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact([WorkflowExpression] Func<string> category = null)
         {
-            var apiCallPath = "/random";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> __BuildGetRandomChuckNorrisFact(WorkflowExpression<string> category = null)
+        {
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            return new DeferredBodyAction<GetRandomChuckNorrisFactResponse>(() =>
+            {
+                var apiCallPath = "/random";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts(Expression<Func<string>> query)
+        [WorkflowExpressionFactory(nameof(__BuildSearchChuckNorrisFacts))]
+        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts([WorkflowExpression] Func<string> query)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> __BuildSearchChuckNorrisFacts(WorkflowExpression<string> query)
+        {
+            WorkflowExpression.Validate(query, nameof(query), required: true);
+            return new DeferredBodyAction<SearchChuckNorrisFactsResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(callPayload);
+            });
         }
     }
 

@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,197 +20,266 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<SwitchResponseItem[]> Switch(Expression<Func<string>> bodydid = null, Expression<Func<bool>> bodyon = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        [WorkflowExpressionFactory(nameof(__BuildSwitch))]
+        public IBodyWorkflowAction<SwitchResponseItem[]> Switch([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<bool> bodyon = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/switch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
-            {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyon != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SwitchResponseItem[]> __BuildSwitch(WorkflowExpression<string> bodydid = null, WorkflowExpression<bool> bodyon = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
+        {
+            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
+            WorkflowExpression.Validate(bodyon, nameof(bodyon), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            return new DeferredBodyAction<SwitchResponseItem[]>(() =>
             {
-                body["on"] = ExpressionConverter.ConvertO(bodyon);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/ms-flow/switch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                if (bodyon != null)
+                {
+                    body["on"] = ExpressionConverter.ConvertO(bodyon);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SwitchResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SwitchResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<ColorResponseItem[]> Color(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodyspectrumRGB = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        [WorkflowExpressionFactory(nameof(__BuildColor))]
+        public IBodyWorkflowAction<ColorResponseItem[]> Color([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodyspectrumRGB = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/color";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
-            {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyspectrumRGB != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ColorResponseItem[]> __BuildColor(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodyspectrumRGB = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
+        {
+            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
+            WorkflowExpression.Validate(bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            return new DeferredBodyAction<ColorResponseItem[]>(() =>
             {
-                body["spectrumRGB"] = ExpressionConverter.ConvertO(bodyspectrumRGB);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/ms-flow/color";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                if (bodyspectrumRGB != null)
+                {
+                    body["spectrumRGB"] = ExpressionConverter.ConvertO(bodyspectrumRGB);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ColorResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ColorResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodybrightness = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrightness))]
+        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/brightness";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
-            {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodybrightness != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BrightnessResponseItem[]> __BuildBrightness(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodybrightness = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
+        {
+            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
+            WorkflowExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            return new DeferredBodyAction<BrightnessResponseItem[]>(() =>
             {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/ms-flow/brightness";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                if (bodybrightness != null)
+                {
+                    body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<BrightnessResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<BrightnessResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodytemperature = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        [WorkflowExpressionFactory(nameof(__BuildTemperature))]
+        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodytemperature = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/temperature";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
-            {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodytemperature != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TemperatureResponseItem[]> __BuildTemperature(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodytemperature = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
+        {
+            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
+            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            return new DeferredBodyAction<TemperatureResponseItem[]>(() =>
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/ms-flow/temperature";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<TemperatureResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TemperatureResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<QueryResponse> Query(Expression<Func<string>> bodydid = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        [WorkflowExpressionFactory(nameof(__BuildQuery))]
+        public IBodyWorkflowAction<QueryResponse> Query([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
-            {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyregion != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QueryResponse> __BuildQuery(WorkflowExpression<string> bodydid = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
+        {
+            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            return new DeferredBodyAction<QueryResponse>(() =>
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/ms-flow/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<QueryResponse>(callPayload);
+            });
         }
     }
 

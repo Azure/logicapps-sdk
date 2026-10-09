@@ -4,151 +4,182 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MistralActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateChatCompletion))]
+        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<bool> bodystream = null, [WorkflowExpression] Func<bool> bodysafePrompt = null, [WorkflowExpression] Func<int> bodyrandomSeed = null)
         {
-            var apiCallPath = "/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-            if (bodytemperature != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChatCompletionResponse> __BuildCreateChatCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<bool> bodystream = null, WorkflowExpression<bool> bodysafePrompt = null, WorkflowExpression<int> bodyrandomSeed = null)
+        {
+            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
+            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: true);
+            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
+            WorkflowExpression.Validate(bodytopP, nameof(bodytopP), required: false);
+            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            WorkflowExpression.Validate(bodystream, nameof(bodystream), required: false);
+            WorkflowExpression.Validate(bodysafePrompt, nameof(bodysafePrompt), required: false);
+            WorkflowExpression.Validate(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
+            return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
+                var apiCallPath = "/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                bodypropCount++;
+                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
                 if (bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    if (bodytemperature != null)
+                    {
+                        body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["temperature"] = 0.7;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["temperature"] = 0.7;
-                bodypropCount++;
-            }
-
-            if (bodytopP != null)
-            {
                 if (bodytopP != null)
                 {
-                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    if (bodytopP != null)
+                    {
+                        body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["top_p"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["top_p"] = 1;
-                bodypropCount++;
-            }
+                if (bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    bodypropCount++;
+                }
 
-            if (bodymaxTokens != null)
-            {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-                bodypropCount++;
-            }
-
-            if (bodystream != null)
-            {
                 if (bodystream != null)
                 {
-                    body["stream"] = ExpressionConverter.ConvertO(bodystream);
+                    if (bodystream != null)
+                    {
+                        body["stream"] = ExpressionConverter.ConvertO(bodystream);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["stream"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["stream"] = false;
-                bodypropCount++;
-            }
-
-            if (bodysafePrompt != null)
-            {
                 if (bodysafePrompt != null)
                 {
-                    body["safe_prompt"] = ExpressionConverter.ConvertO(bodysafePrompt);
+                    if (bodysafePrompt != null)
+                    {
+                        body["safe_prompt"] = ExpressionConverter.ConvertO(bodysafePrompt);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["safe_prompt"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["safe_prompt"] = false;
-                bodypropCount++;
-            }
+                if (bodyrandomSeed != null)
+                {
+                    body["random_seed"] = ExpressionConverter.ConvertO(bodyrandomSeed);
+                    bodypropCount++;
+                }
 
-            if (bodyrandomSeed != null)
-            {
-                body["random_seed"] = ExpressionConverter.ConvertO(bodyrandomSeed);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+                return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateEmbedding))]
+        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding([WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string[]> bodyinput = null, [WorkflowExpression] Func<bodyencodingFormatInput> bodyencodingFormat = null)
         {
-            var apiCallPath = "/embeddings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymodel != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmbeddingResponse> __BuildCreateEmbedding(WorkflowExpression<string> bodymodel = null, WorkflowExpression<string[]> bodyinput = null, WorkflowExpression<bodyencodingFormatInput> bodyencodingFormat = null)
+        {
+            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
+            WorkflowExpression.Validate(bodyinput, nameof(bodyinput), required: false);
+            WorkflowExpression.Validate(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            return new DeferredBodyAction<EmbeddingResponse>(() =>
             {
+                var apiCallPath = "/embeddings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    if (bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "mistral-embed";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "mistral-embed";
-                bodypropCount++;
-            }
+                if (bodyinput != null)
+                {
+                    body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                    bodypropCount++;
+                }
 
-            if (bodyinput != null)
-            {
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
-                bodypropCount++;
-            }
+                if (bodyencodingFormat != null)
+                {
+                    body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                    bodypropCount++;
+                }
 
-            if (bodyencodingFormat != null)
-            {
-                body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EmbeddingResponse>(callPayload);
+                return new ApiConnectionAction<EmbeddingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
@@ -207,6 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ChatCompletionResponseChoicesTypeItemMessageTypeRoleType
     {
         [EnumMember(Value = "user")]
@@ -215,6 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         Assistant
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ChatCompletionResponseChoicesTypeItemFinishReasonType
     {
         [EnumMember(Value = "stop")]
@@ -246,6 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "system")]
@@ -297,6 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int TotalTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingFormatInput
     {
         [EnumMember(Value = "float")]

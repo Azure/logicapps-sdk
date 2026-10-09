@@ -4,67 +4,107 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AmeeopenbusinessipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
-        public IBodyWorkflowAction<GetCompaniesResponse> GetCompanies(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> companyName = null, Expression<Func<int>> gupAmeeCompanyId = null, Expression<Func<bool>> isGup = null, Expression<Func<string>> city = null, Expression<Func<int>> postcode = null, Expression<Func<string>> provinceName = null, Expression<Func<string>> ukSic2007 = null, Expression<Func<int>> minEmployees = null, Expression<Func<int>> maxEmployees = null, Expression<Func<int>> minAnnualSalesLocal = null, Expression<Func<int>> maxAnnualSalesLocal = null, Expression<Func<int>> minScore = null, Expression<Func<int>> maxScore = null, Expression<Func<string>> fromLatLon = null, Expression<Func<int>> distance = null, Expression<Func<string>> stats = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCompanies))]
+        public IBodyWorkflowAction<GetCompaniesResponse> GetCompanies([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<int> gupAmeeCompanyId = null, [WorkflowExpression] Func<bool> isGup = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> postcode = null, [WorkflowExpression] Func<string> provinceName = null, [WorkflowExpression] Func<string> ukSic2007 = null, [WorkflowExpression] Func<int> minEmployees = null, [WorkflowExpression] Func<int> maxEmployees = null, [WorkflowExpression] Func<int> minAnnualSalesLocal = null, [WorkflowExpression] Func<int> maxAnnualSalesLocal = null, [WorkflowExpression] Func<int> minScore = null, [WorkflowExpression] Func<int> maxScore = null, [WorkflowExpression] Func<string> fromLatLon = null, [WorkflowExpression] Func<int> distance = null, [WorkflowExpression] Func<string> stats = null)
         {
-            var apiCallPath = "/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (companyName != null)
-                callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
-            if (gupAmeeCompanyId != null)
-                callPayload.Queries["gup_amee_company_id"] = ExpressionConverter.Convert(gupAmeeCompanyId);
-            if (isGup != null)
-                callPayload.Queries["is_gup"] = ExpressionConverter.Convert(isGup);
-            if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            if (postcode != null)
-                callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
-            if (provinceName != null)
-                callPayload.Queries["province_name"] = ExpressionConverter.Convert(provinceName);
-            if (ukSic2007 != null)
-                callPayload.Queries["uk_sic_2007"] = ExpressionConverter.Convert(ukSic2007);
-            if (minEmployees != null)
-                callPayload.Queries["min_employees"] = ExpressionConverter.Convert(minEmployees);
-            if (maxEmployees != null)
-                callPayload.Queries["max_employees"] = ExpressionConverter.Convert(maxEmployees);
-            if (minAnnualSalesLocal != null)
-                callPayload.Queries["min_annual_sales_local"] = ExpressionConverter.Convert(minAnnualSalesLocal);
-            if (maxAnnualSalesLocal != null)
-                callPayload.Queries["max_annual_sales_local"] = ExpressionConverter.Convert(maxAnnualSalesLocal);
-            if (minScore != null)
-                callPayload.Queries["min_score"] = ExpressionConverter.Convert(minScore);
-            if (maxScore != null)
-                callPayload.Queries["max_score"] = ExpressionConverter.Convert(maxScore);
-            if (fromLatLon != null)
-                callPayload.Queries["from_lat_lon"] = ExpressionConverter.Convert(fromLatLon);
-            if (distance != null)
-                callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            if (stats != null)
-                callPayload.Queries["stats"] = ExpressionConverter.Convert(stats);
-            return new ApiConnectionAction<GetCompaniesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCompaniesResponse> __BuildGetCompanies(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> companyName = null, WorkflowExpression<int> gupAmeeCompanyId = null, WorkflowExpression<bool> isGup = null, WorkflowExpression<string> city = null, WorkflowExpression<int> postcode = null, WorkflowExpression<string> provinceName = null, WorkflowExpression<string> ukSic2007 = null, WorkflowExpression<int> minEmployees = null, WorkflowExpression<int> maxEmployees = null, WorkflowExpression<int> minAnnualSalesLocal = null, WorkflowExpression<int> maxAnnualSalesLocal = null, WorkflowExpression<int> minScore = null, WorkflowExpression<int> maxScore = null, WorkflowExpression<string> fromLatLon = null, WorkflowExpression<int> distance = null, WorkflowExpression<string> stats = null)
+        {
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(companyName, nameof(companyName), required: false);
+            WorkflowExpression.Validate(gupAmeeCompanyId, nameof(gupAmeeCompanyId), required: false);
+            WorkflowExpression.Validate(isGup, nameof(isGup), required: false);
+            WorkflowExpression.Validate(city, nameof(city), required: false);
+            WorkflowExpression.Validate(postcode, nameof(postcode), required: false);
+            WorkflowExpression.Validate(provinceName, nameof(provinceName), required: false);
+            WorkflowExpression.Validate(ukSic2007, nameof(ukSic2007), required: false);
+            WorkflowExpression.Validate(minEmployees, nameof(minEmployees), required: false);
+            WorkflowExpression.Validate(maxEmployees, nameof(maxEmployees), required: false);
+            WorkflowExpression.Validate(minAnnualSalesLocal, nameof(minAnnualSalesLocal), required: false);
+            WorkflowExpression.Validate(maxAnnualSalesLocal, nameof(maxAnnualSalesLocal), required: false);
+            WorkflowExpression.Validate(minScore, nameof(minScore), required: false);
+            WorkflowExpression.Validate(maxScore, nameof(maxScore), required: false);
+            WorkflowExpression.Validate(fromLatLon, nameof(fromLatLon), required: false);
+            WorkflowExpression.Validate(distance, nameof(distance), required: false);
+            WorkflowExpression.Validate(stats, nameof(stats), required: false);
+            return new DeferredBodyAction<GetCompaniesResponse>(() =>
+            {
+                var apiCallPath = "/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (companyName != null)
+                    callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
+                if (gupAmeeCompanyId != null)
+                    callPayload.Queries["gup_amee_company_id"] = ExpressionConverter.Convert(gupAmeeCompanyId);
+                if (isGup != null)
+                    callPayload.Queries["is_gup"] = ExpressionConverter.Convert(isGup);
+                if (city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                if (postcode != null)
+                    callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
+                if (provinceName != null)
+                    callPayload.Queries["province_name"] = ExpressionConverter.Convert(provinceName);
+                if (ukSic2007 != null)
+                    callPayload.Queries["uk_sic_2007"] = ExpressionConverter.Convert(ukSic2007);
+                if (minEmployees != null)
+                    callPayload.Queries["min_employees"] = ExpressionConverter.Convert(minEmployees);
+                if (maxEmployees != null)
+                    callPayload.Queries["max_employees"] = ExpressionConverter.Convert(maxEmployees);
+                if (minAnnualSalesLocal != null)
+                    callPayload.Queries["min_annual_sales_local"] = ExpressionConverter.Convert(minAnnualSalesLocal);
+                if (maxAnnualSalesLocal != null)
+                    callPayload.Queries["max_annual_sales_local"] = ExpressionConverter.Convert(maxAnnualSalesLocal);
+                if (minScore != null)
+                    callPayload.Queries["min_score"] = ExpressionConverter.Convert(minScore);
+                if (maxScore != null)
+                    callPayload.Queries["max_score"] = ExpressionConverter.Convert(maxScore);
+                if (fromLatLon != null)
+                    callPayload.Queries["from_lat_lon"] = ExpressionConverter.Convert(fromLatLon);
+                if (distance != null)
+                    callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
+                if (stats != null)
+                    callPayload.Queries["stats"] = ExpressionConverter.Convert(stats);
+                return new ApiConnectionAction<GetCompaniesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
-        public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> id, Expression<Func<string>> type = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCompany))]
+        public IBodyWorkflowAction<GetCompanyResponse> GetCompany([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> type = null)
         {
-            var apiCallPath = String.Format("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<GetCompanyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCompanyResponse> __BuildGetCompany(WorkflowExpression<string> id, WorkflowExpression<string> type = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            return new DeferredBodyAction<GetCompanyResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<GetCompanyResponse>(callPayload);
+            });
         }
     }
 

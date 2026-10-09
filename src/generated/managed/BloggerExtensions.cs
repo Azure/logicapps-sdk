@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,126 +20,229 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<PostList> ListPosts(Expression<Func<string>> blogId, Expression<Func<string>> status = null)
+        [WorkflowExpressionFactory(nameof(__BuildListPosts))]
+        public IBodyWorkflowAction<PostList> ListPosts([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = Convert.ToString("live");
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<PostList>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostList> __BuildListPosts(WorkflowExpression<string> blogId, WorkflowExpression<string> status = null)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<PostList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = Convert.ToString("live");
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<PostList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> Create(Expression<Func<string>> blogId, Expression<Func<string>> posttitle, Expression<Func<string>> postcontent, Expression<Func<string[]>> postlabels = null, Expression<Func<bool>> isDraft = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreate))]
+        public IBodyWorkflowAction<Post> Create([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> posttitle, [WorkflowExpression] Func<string> postcontent, [WorkflowExpression] Func<string[]> postlabels = null, [WorkflowExpression] Func<bool> isDraft = null)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["isDraft"] = Convert.ToString(false);
-            if (isDraft != null)
-                callPayload.Queries["isDraft"] = ExpressionConverter.Convert(isDraft);
-            var post = new JObject();
-            var postpropCount = 0;
-            postpropCount++;
-            post["title"] = ExpressionConverter.ConvertO(posttitle);
-            postpropCount++;
-            post["content"] = ExpressionConverter.ConvertO(postcontent);
-            if (postlabels != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Post> __BuildCreate(WorkflowExpression<string> blogId, WorkflowExpression<string> posttitle, WorkflowExpression<string> postcontent, WorkflowExpression<string[]> postlabels = null, WorkflowExpression<bool> isDraft = null)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(posttitle, nameof(posttitle), required: true);
+            WorkflowExpression.Validate(postcontent, nameof(postcontent), required: true);
+            WorkflowExpression.Validate(postlabels, nameof(postlabels), required: false);
+            WorkflowExpression.Validate(isDraft, nameof(isDraft), required: false);
+            return new DeferredBodyAction<Post>(() =>
             {
-                post["labels"] = ExpressionConverter.ConvertO(postlabels);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["isDraft"] = Convert.ToString(false);
+                if (isDraft != null)
+                    callPayload.Queries["isDraft"] = ExpressionConverter.Convert(isDraft);
+                var post = new JObject();
+                var postpropCount = 0;
                 postpropCount++;
-            }
-
-            if (postpropCount > 0)
-            {
-                callPayload.Body = post;
-            }
-
-            return new ApiConnectionAction<Post>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> Get(Expression<Func<string>> blogId, Expression<Func<string>> postId)
-        {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Post>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> Edit(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<string[]>> postlabels = null)
-        {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var post = new JObject();
-            var postpropCount = 0;
-            if (posttitle != null)
-            {
                 post["title"] = ExpressionConverter.ConvertO(posttitle);
                 postpropCount++;
-            }
-
-            if (postcontent != null)
-            {
                 post["content"] = ExpressionConverter.ConvertO(postcontent);
-                postpropCount++;
-            }
+                if (postlabels != null)
+                {
+                    post["labels"] = ExpressionConverter.ConvertO(postlabels);
+                    postpropCount++;
+                }
 
-            if (postlabels != null)
+                if (postpropCount > 0)
+                {
+                    callPayload.Body = post;
+                }
+
+                return new ApiConnectionAction<Post>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
+        [WorkflowExpressionFactory(nameof(__BuildGet))]
+        public IBodyWorkflowAction<Post> Get([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Post> __BuildGet(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            return new DeferredBodyAction<Post>(() =>
             {
-                post["labels"] = ExpressionConverter.ConvertO(postlabels);
-                postpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Post>(callPayload);
+            });
+        }
 
-            if (postpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
+        [WorkflowExpressionFactory(nameof(__BuildEdit))]
+        public IBodyWorkflowAction<Post> Edit([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<string> posttitle = null, [WorkflowExpression] Func<string> postcontent = null, [WorkflowExpression] Func<string[]> postlabels = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Post> __BuildEdit(WorkflowExpression<string> blogId, WorkflowExpression<string> postId, WorkflowExpression<string> posttitle = null, WorkflowExpression<string> postcontent = null, WorkflowExpression<string[]> postlabels = null)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            WorkflowExpression.Validate(posttitle, nameof(posttitle), required: false);
+            WorkflowExpression.Validate(postcontent, nameof(postcontent), required: false);
+            WorkflowExpression.Validate(postlabels, nameof(postlabels), required: false);
+            return new DeferredBodyAction<Post>(() =>
             {
-                callPayload.Body = post;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var post = new JObject();
+                var postpropCount = 0;
+                if (posttitle != null)
+                {
+                    post["title"] = ExpressionConverter.ConvertO(posttitle);
+                    postpropCount++;
+                }
 
-            return new ApiConnectionAction<Post>(callPayload);
+                if (postcontent != null)
+                {
+                    post["content"] = ExpressionConverter.ConvertO(postcontent);
+                    postpropCount++;
+                }
+
+                if (postlabels != null)
+                {
+                    post["labels"] = ExpressionConverter.ConvertO(postlabels);
+                    postpropCount++;
+                }
+
+                if (postpropCount > 0)
+                {
+                    callPayload.Body = post;
+                }
+
+                return new ApiConnectionAction<Post>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IWorkflowAction Delete(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        [WorkflowExpressionFactory(nameof(__BuildDelete))]
+        public IWorkflowAction Delete([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDelete(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> Publish(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        [WorkflowExpressionFactory(nameof(__BuildPublish))]
+        public IBodyWorkflowAction<Post> Publish([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}/publish", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Post>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Post> __BuildPublish(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            return new DeferredBodyAction<Post>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/publish", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Post>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> Revert(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        [WorkflowExpressionFactory(nameof(__BuildRevert))]
+        public IBodyWorkflowAction<Post> Revert([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}/revert", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Post>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Post> __BuildRevert(WorkflowExpression<string> blogId, WorkflowExpression<string> postId)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            return new DeferredBodyAction<Post>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/revert", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Post>(callPayload);
+            });
         }
     }
 
     public class BloggerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<statusInput>> status, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildOnPostCreated))]
+        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> blogId,[WorkflowExpression] Func<statusInput> status,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Post[]> __BuildOnPostCreated(WorkflowExpression<string> blogId,WorkflowExpression<statusInput> status,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
+            WorkflowExpression.Validate(status, nameof(status), required: true);
+            return new DeferredBodyTrigger<Post[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionTrigger<Post[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -240,6 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         public string LocationSpan { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         Draft,

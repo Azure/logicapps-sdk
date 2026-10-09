@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,22 +14,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/api/Hooks/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionId"] = ExpressionConverter.Convert(solutionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            data["url"] = "@listCallbackUrl()";
-            datapropCount++;
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildApiHooksSubscribePost))]
+        public IWorkflowTrigger ApiHooksSubscribePost([WorkflowExpression] Func<string> solutionId,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildApiHooksSubscribePost(WorkflowExpression<string> solutionId,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(solutionId, nameof(solutionId), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/Hooks/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["solutionId"] = ExpressionConverter.Convert(solutionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                data["url"] = "#{listCallbackUrl()}";
+                datapropCount++;
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

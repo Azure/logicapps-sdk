@@ -1,159 +1,208 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GratavidActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyemail, Expression<Func<string>> bodycomments, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null, Expression<Func<string>> bodyassignedTo = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycomments, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycustomUserId = null, [WorkflowExpression] Func<string> bodycustomAccountId = null, [WorkflowExpression] Func<string> bodytextOptIn = null, [WorkflowExpression] Func<string> bodycellNumber = null, [WorkflowExpression] Func<string> bodyassignedTo = null)
         {
-            var apiCallPath = "/api/integrationsEndpoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
-            callPayload.Queries["event"] = Convert.ToString("createTask");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodycomments, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodycustomUserId = null, WorkflowExpression<string> bodycustomAccountId = null, WorkflowExpression<string> bodytextOptIn = null, WorkflowExpression<string> bodycellNumber = null, WorkflowExpression<string> bodyassignedTo = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodycustomUserId, nameof(bodycustomUserId), required: false);
+            WorkflowExpression.Validate(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
+            WorkflowExpression.Validate(bodytextOptIn, nameof(bodytextOptIn), required: false);
+            WorkflowExpression.Validate(bodycellNumber, nameof(bodycellNumber), required: false);
+            WorkflowExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                var apiCallPath = "/api/integrationsEndpoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
+                callPayload.Queries["event"] = Convert.ToString("createTask");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                if (bodylastName != null)
+                {
+                    body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodycustomUserId != null)
+                {
+                    body["customUserId"] = ExpressionConverter.ConvertO(bodycustomUserId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomAccountId != null)
+                {
+                    body["customAccountId"] = ExpressionConverter.ConvertO(bodycustomAccountId);
+                    bodypropCount++;
+                }
+
+                if (bodytextOptIn != null)
+                {
+                    body["textOptIn"] = ExpressionConverter.ConvertO(bodytextOptIn);
+                    bodypropCount++;
+                }
+
+                if (bodycellNumber != null)
+                {
+                    body["cellNumber"] = ExpressionConverter.ConvertO(bodycellNumber);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                if (bodyassignedTo != null)
+                {
+                    body["assignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                    bodypropCount++;
+                }
 
-            if (bodycustomUserId != null)
-            {
-                body["customUserId"] = ExpressionConverter.ConvertO(bodycustomUserId);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodycustomAccountId != null)
-            {
-                body["customAccountId"] = ExpressionConverter.ConvertO(bodycustomAccountId);
-                bodypropCount++;
-            }
-
-            if (bodytextOptIn != null)
-            {
-                body["textOptIn"] = ExpressionConverter.ConvertO(bodytextOptIn);
-                bodypropCount++;
-            }
-
-            if (bodycellNumber != null)
-            {
-                body["cellNumber"] = ExpressionConverter.ConvertO(bodycellNumber);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-            if (bodyassignedTo != null)
-            {
-                body["assignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<SendNoteResponse> SendNote(Expression<Func<string>> bodynoteId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendNote))]
+        public IBodyWorkflowAction<SendNoteResponse> SendNote([WorkflowExpression] Func<string> bodynoteId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycustomUserId = null, [WorkflowExpression] Func<string> bodycustomAccountId = null, [WorkflowExpression] Func<string> bodytextOptIn = null, [WorkflowExpression] Func<string> bodycellNumber = null)
         {
-            var apiCallPath = "/api/integrationsEndpoint";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
-            callPayload.Queries["event"] = Convert.ToString("sendNote");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["noteId"] = ExpressionConverter.ConvertO(bodynoteId);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendNoteResponse> __BuildSendNote(WorkflowExpression<string> bodynoteId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodycustomUserId = null, WorkflowExpression<string> bodycustomAccountId = null, WorkflowExpression<string> bodytextOptIn = null, WorkflowExpression<string> bodycellNumber = null)
+        {
+            WorkflowExpression.Validate(bodynoteId, nameof(bodynoteId), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodycustomUserId, nameof(bodycustomUserId), required: false);
+            WorkflowExpression.Validate(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
+            WorkflowExpression.Validate(bodytextOptIn, nameof(bodytextOptIn), required: false);
+            WorkflowExpression.Validate(bodycellNumber, nameof(bodycellNumber), required: false);
+            return new DeferredBodyAction<SendNoteResponse>(() =>
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                var apiCallPath = "/api/integrationsEndpoint";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
+                callPayload.Queries["event"] = Convert.ToString("sendNote");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["noteId"] = ExpressionConverter.ConvertO(bodynoteId);
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomUserId != null)
-            {
-                body["customUserId"] = ExpressionConverter.ConvertO(bodycustomUserId);
-                bodypropCount++;
-            }
+                if (bodylastName != null)
+                {
+                    body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomAccountId != null)
-            {
-                body["customAccountId"] = ExpressionConverter.ConvertO(bodycustomAccountId);
-                bodypropCount++;
-            }
+                if (bodycustomUserId != null)
+                {
+                    body["customUserId"] = ExpressionConverter.ConvertO(bodycustomUserId);
+                    bodypropCount++;
+                }
 
-            if (bodytextOptIn != null)
-            {
-                body["textOptIn"] = ExpressionConverter.ConvertO(bodytextOptIn);
-                bodypropCount++;
-            }
+                if (bodycustomAccountId != null)
+                {
+                    body["customAccountId"] = ExpressionConverter.ConvertO(bodycustomAccountId);
+                    bodypropCount++;
+                }
 
-            if (bodycellNumber != null)
-            {
-                body["cellNumber"] = ExpressionConverter.ConvertO(bodycellNumber);
-                bodypropCount++;
-            }
+                if (bodytextOptIn != null)
+                {
+                    body["textOptIn"] = ExpressionConverter.ConvertO(bodytextOptIn);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodycellNumber != null)
+                {
+                    body["cellNumber"] = ExpressionConverter.ConvertO(bodycellNumber);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendNoteResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendNoteResponse>(callPayload);
+            });
         }
     }
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/api/manageIntegrations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
-            callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
-            callPayload.Queries["webookHookEvent"] = ExpressionConverter.Convert(webookHookEvent);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildNewEvent))]
+        public IWorkflowTrigger NewEvent([WorkflowExpression] Func<webookHookEventInput> webookHookEvent,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildNewEvent(WorkflowExpression<webookHookEventInput> webookHookEvent,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(webookHookEvent, nameof(webookHookEvent), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/manageIntegrations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
+                callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
+                callPayload.Queries["webookHookEvent"] = ExpressionConverter.Convert(webookHookEvent);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -184,6 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         public string ViewInGratavidLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webookHookEventInput
     {
         [EnumMember(Value = "taskSent")]

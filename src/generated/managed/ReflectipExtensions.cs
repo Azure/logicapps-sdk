@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,131 +20,198 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<BooksGetResponseItem[]> BooksGet(Expression<Func<string>> graphId)
+        [WorkflowExpressionFactory(nameof(__BuildBooksGet))]
+        public IBodyWorkflowAction<BooksGetResponseItem[]> BooksGet([WorkflowExpression] Func<string> graphId)
         {
-            var apiCallPath = String.Format("/graphs/{0}/books", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BooksGetResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BooksGetResponseItem[]> __BuildBooksGet(WorkflowExpression<string> graphId)
+        {
+            WorkflowExpression.Validate(graphId, nameof(graphId), required: true);
+            return new DeferredBodyAction<BooksGetResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/books", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BooksGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<LinksGetResponseItem[]> LinksGet(Expression<Func<string>> graphId)
+        [WorkflowExpressionFactory(nameof(__BuildLinksGet))]
+        public IBodyWorkflowAction<LinksGetResponseItem[]> LinksGet([WorkflowExpression] Func<string> graphId)
         {
-            var apiCallPath = String.Format("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LinksGetResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinksGetResponseItem[]> __BuildLinksGet(WorkflowExpression<string> graphId)
+        {
+            WorkflowExpression.Validate(graphId, nameof(graphId), required: true);
+            return new DeferredBodyAction<LinksGetResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LinksGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<LinkPostResponseItem[]> Link(Expression<Func<string>> graphId, Expression<Func<string>> bodyurl, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string[]>> bodyhighlights = null)
+        [WorkflowExpressionFactory(nameof(__BuildLink))]
+        public IBodyWorkflowAction<LinkPostResponseItem[]> Link([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyupdatedAt = null, [WorkflowExpression] Func<string[]> bodyhighlights = null)
         {
-            var apiCallPath = String.Format("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinkPostResponseItem[]> __BuildLink(WorkflowExpression<string> graphId, WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyupdatedAt = null, WorkflowExpression<string[]> bodyhighlights = null)
+        {
+            WorkflowExpression.Validate(graphId, nameof(graphId), required: true);
+            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowExpression.Validate(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
+            WorkflowExpression.Validate(bodyhighlights, nameof(bodyhighlights), required: false);
+            return new DeferredBodyAction<LinkPostResponseItem[]>(() =>
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodyupdatedAt != null)
+                {
+                    body["updated_at"] = ExpressionConverter.ConvertO(bodyupdatedAt);
+                    bodypropCount++;
+                }
 
-            if (bodyupdatedAt != null)
-            {
-                body["updated_at"] = ExpressionConverter.ConvertO(bodyupdatedAt);
-                bodypropCount++;
-            }
+                if (bodyhighlights != null)
+                {
+                    body["highlights"] = ExpressionConverter.ConvertO(bodyhighlights);
+                    bodypropCount++;
+                }
 
-            if (bodyhighlights != null)
-            {
-                body["highlights"] = ExpressionConverter.ConvertO(bodyhighlights);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<LinkPostResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<DailyNotePutResponse> DailyNotePut(Expression<Func<string>> graphId, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylistName = null)
+        [WorkflowExpressionFactory(nameof(__BuildDailyNotePut))]
+        public IBodyWorkflowAction<DailyNotePutResponse> DailyNotePut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodylistName = null)
         {
-            var apiCallPath = String.Format("/graphs/{0}/daily-notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydate != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DailyNotePutResponse> __BuildDailyNotePut(WorkflowExpression<string> graphId, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodylistName = null)
+        {
+            WorkflowExpression.Validate(graphId, nameof(graphId), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            WorkflowExpression.Validate(bodylistName, nameof(bodylistName), required: false);
+            return new DeferredBodyAction<DailyNotePutResponse>(() =>
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/daily-notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydate != null)
+                {
+                    body["date"] = ExpressionConverter.ConvertO(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
+
+                body["transform_type"] = "list-append";
                 bodypropCount++;
-            }
+                if (bodylistName != null)
+                {
+                    body["list_name"] = ExpressionConverter.ConvertO(bodylistName);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["transform_type"] = "list-append";
-            bodypropCount++;
-            if (bodylistName != null)
-            {
-                body["list_name"] = ExpressionConverter.ConvertO(bodylistName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DailyNotePutResponse>(callPayload);
+                return new ApiConnectionAction<DailyNotePutResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<NotePostResponse> Note(Expression<Func<string>> graphId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycontentMarkdown, Expression<Func<bool>> bodypinned = null)
+        [WorkflowExpressionFactory(nameof(__BuildNote))]
+        public IBodyWorkflowAction<NotePostResponse> Note([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodycontentMarkdown, [WorkflowExpression] Func<bool> bodypinned = null)
         {
-            var apiCallPath = String.Format("/graphs/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            bodypropCount++;
-            body["content_markdown"] = ExpressionConverter.ConvertO(bodycontentMarkdown);
-            if (bodypinned != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NotePostResponse> __BuildNote(WorkflowExpression<string> graphId, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodycontentMarkdown, WorkflowExpression<bool> bodypinned = null)
+        {
+            WorkflowExpression.Validate(graphId, nameof(graphId), required: true);
+            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: true);
+            WorkflowExpression.Validate(bodycontentMarkdown, nameof(bodycontentMarkdown), required: true);
+            WorkflowExpression.Validate(bodypinned, nameof(bodypinned), required: false);
+            return new DeferredBodyAction<NotePostResponse>(() =>
             {
-                body["pinned"] = ExpressionConverter.ConvertO(bodypinned);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                bodypropCount++;
+                body["content_markdown"] = ExpressionConverter.ConvertO(bodycontentMarkdown);
+                if (bodypinned != null)
+                {
+                    body["pinned"] = ExpressionConverter.ConvertO(bodypinned);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<NotePostResponse>(callPayload);
+                return new ApiConnectionAction<NotePostResponse>(callPayload);
+            });
         }
     }
 

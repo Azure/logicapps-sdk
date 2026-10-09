@@ -4,33 +4,44 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
+        [WorkflowExpressionFactory(nameof(__BuildDetect))]
+        public IBodyWorkflowAction<DetectPostResponse> Detect([WorkflowExpression] Func<bodyheadersInputItem[]> bodyheaders = null)
         {
-            var apiCallPath = "/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyheaders != null)
-            {
-                body["headers"] = ExpressionConverter.ConvertO(bodyheaders);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectPostResponse> __BuildDetect(WorkflowExpression<bodyheadersInputItem[]> bodyheaders = null)
+        {
+            WorkflowExpression.Validate(bodyheaders, nameof(bodyheaders), required: false);
+            return new DeferredBodyAction<DetectPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyheaders != null)
+                {
+                    body["headers"] = ExpressionConverter.ConvertO(bodyheaders);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<DetectPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DetectPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]

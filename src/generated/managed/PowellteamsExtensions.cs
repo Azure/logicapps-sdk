@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -106,6 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
         public bool IsMultiValueChoice { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PowellTeamsAPIModelsTeamApiTeamExtendModelVisibilityType
     {
         UserChoice,

@@ -4,353 +4,528 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CloudmersivedvActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ParseAddressResponse> AddressParseString(Expression<Func<string>> inputaddressString = null, Expression<Func<string>> inputcapitalizationMode = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddressParseString))]
+        public IBodyWorkflowAction<ParseAddressResponse> AddressParseString([WorkflowExpression] Func<string> inputaddressString = null, [WorkflowExpression] Func<string> inputcapitalizationMode = null)
         {
-            var apiCallPath = "/validate/address/parse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputaddressString != null)
-            {
-                input["AddressString"] = ExpressionConverter.ConvertO(inputaddressString);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputcapitalizationMode != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParseAddressResponse> __BuildAddressParseString(WorkflowExpression<string> inputaddressString = null, WorkflowExpression<string> inputcapitalizationMode = null)
+        {
+            WorkflowExpression.Validate(inputaddressString, nameof(inputaddressString), required: false);
+            WorkflowExpression.Validate(inputcapitalizationMode, nameof(inputcapitalizationMode), required: false);
+            return new DeferredBodyAction<ParseAddressResponse>(() =>
             {
-                input["CapitalizationMode"] = ExpressionConverter.ConvertO(inputcapitalizationMode);
-                inputpropCount++;
-            }
+                var apiCallPath = "/validate/address/parse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputaddressString != null)
+                {
+                    input["AddressString"] = ExpressionConverter.ConvertO(inputaddressString);
+                    inputpropCount++;
+                }
 
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+                if (inputcapitalizationMode != null)
+                {
+                    input["CapitalizationMode"] = ExpressionConverter.ConvertO(inputcapitalizationMode);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<CheckResponse> DomainCheck(Expression<Func<string>> domain = null)
+        [WorkflowExpressionFactory(nameof(__BuildDomainCheck))]
+        public IBodyWorkflowAction<CheckResponse> DomainCheck([WorkflowExpression] Func<string> domain = null)
         {
-            var apiCallPath = "/validate/domain/check";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(domain);
-            return new ApiConnectionAction<CheckResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckResponse> __BuildDomainCheck(WorkflowExpression<string> domain = null)
+        {
+            WorkflowExpression.Validate(domain, nameof(domain), required: false);
+            return new DeferredBodyAction<CheckResponse>(() =>
+            {
+                var apiCallPath = "/validate/domain/check";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(domain);
+                return new ApiConnectionAction<CheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseFull> DomainUrlFull(Expression<Func<string>> requestuRL = null)
+        [WorkflowExpressionFactory(nameof(__BuildDomainUrlFull))]
+        public IBodyWorkflowAction<ValidateUrlResponseFull> DomainUrlFull([WorkflowExpression] Func<string> requestuRL = null)
         {
-            var apiCallPath = "/validate/domain/url/full";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestuRL != null)
-            {
-                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateUrlResponseFull> __BuildDomainUrlFull(WorkflowExpression<string> requestuRL = null)
+        {
+            WorkflowExpression.Validate(requestuRL, nameof(requestuRL), required: false);
+            return new DeferredBodyAction<ValidateUrlResponseFull>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/validate/domain/url/full";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestuRL != null)
+                {
+                    request["URL"] = ExpressionConverter.ConvertO(requestuRL);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<ValidateUrlResponseFull>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<ValidateUrlResponseFull>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> DomainUrlSyntaxOnly(Expression<Func<string>> requestuRL = null)
+        [WorkflowExpressionFactory(nameof(__BuildDomainUrlSyntaxOnly))]
+        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> DomainUrlSyntaxOnly([WorkflowExpression] Func<string> requestuRL = null)
         {
-            var apiCallPath = "/validate/domain/url/syntax-only";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestuRL != null)
-            {
-                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> __BuildDomainUrlSyntaxOnly(WorkflowExpression<string> requestuRL = null)
+        {
+            WorkflowExpression.Validate(requestuRL, nameof(requestuRL), required: false);
+            return new DeferredBodyAction<ValidateUrlResponseSyntaxOnly>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/validate/domain/url/syntax-only";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestuRL != null)
+                {
+                    request["URL"] = ExpressionConverter.ConvertO(requestuRL);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<ValidateUrlResponseSyntaxOnly>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<ValidateUrlResponseSyntaxOnly>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<WhoisResponse> Domain(Expression<Func<string>> domain = null)
+        [WorkflowExpressionFactory(nameof(__BuildDomain))]
+        public IBodyWorkflowAction<WhoisResponse> Domain([WorkflowExpression] Func<string> domain = null)
         {
-            var apiCallPath = "/validate/domain/whois";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(domain);
-            return new ApiConnectionAction<WhoisResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WhoisResponse> __BuildDomain(WorkflowExpression<string> domain = null)
+        {
+            WorkflowExpression.Validate(domain, nameof(domain), required: false);
+            return new DeferredBodyAction<WhoisResponse>(() =>
+            {
+                var apiCallPath = "/validate/domain/whois";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(domain);
+                return new ApiConnectionAction<WhoisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullEmailValidationResponse> EmailFullValidation(Expression<Func<string>> email = null)
+        [WorkflowExpressionFactory(nameof(__BuildEmailFullValidation))]
+        public IBodyWorkflowAction<FullEmailValidationResponse> EmailFullValidation([WorkflowExpression] Func<string> email = null)
         {
-            var apiCallPath = "/validate/email/address/full";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(email);
-            return new ApiConnectionAction<FullEmailValidationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FullEmailValidationResponse> __BuildEmailFullValidation(WorkflowExpression<string> email = null)
+        {
+            WorkflowExpression.Validate(email, nameof(email), required: false);
+            return new DeferredBodyAction<FullEmailValidationResponse>(() =>
+            {
+                var apiCallPath = "/validate/email/address/full";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(email);
+                return new ApiConnectionAction<FullEmailValidationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GeolocateResponse> IPAddress(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildIPAddress))]
+        public IBodyWorkflowAction<GeolocateResponse> IPAddress([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/validate/ip/geolocate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<GeolocateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GeolocateResponse> __BuildIPAddress(WorkflowExpression<string> value = null)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<GeolocateResponse>(() =>
+            {
+                var apiCallPath = "/validate/ip/geolocate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<GeolocateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FirstNameValidationResponse> NameValidateFirstName(Expression<Func<string>> inputfirstName = null)
+        [WorkflowExpressionFactory(nameof(__BuildNameValidateFirstName))]
+        public IBodyWorkflowAction<FirstNameValidationResponse> NameValidateFirstName([WorkflowExpression] Func<string> inputfirstName = null)
         {
-            var apiCallPath = "/validate/name/first";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputfirstName != null)
-            {
-                input["FirstName"] = ExpressionConverter.ConvertO(inputfirstName);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirstNameValidationResponse> __BuildNameValidateFirstName(WorkflowExpression<string> inputfirstName = null)
+        {
+            WorkflowExpression.Validate(inputfirstName, nameof(inputfirstName), required: false);
+            return new DeferredBodyAction<FirstNameValidationResponse>(() =>
             {
-                callPayload.Body = input;
-            }
+                var apiCallPath = "/validate/name/first";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputfirstName != null)
+                {
+                    input["FirstName"] = ExpressionConverter.ConvertO(inputfirstName);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<FirstNameValidationResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<FirstNameValidationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullNameValidationResponse> NameValidateFullName(Expression<Func<string>> inputfullNameString = null)
+        [WorkflowExpressionFactory(nameof(__BuildNameValidateFullName))]
+        public IBodyWorkflowAction<FullNameValidationResponse> NameValidateFullName([WorkflowExpression] Func<string> inputfullNameString = null)
         {
-            var apiCallPath = "/validate/name/full-name";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputfullNameString != null)
-            {
-                input["FullNameString"] = ExpressionConverter.ConvertO(inputfullNameString);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FullNameValidationResponse> __BuildNameValidateFullName(WorkflowExpression<string> inputfullNameString = null)
+        {
+            WorkflowExpression.Validate(inputfullNameString, nameof(inputfullNameString), required: false);
+            return new DeferredBodyAction<FullNameValidationResponse>(() =>
             {
-                callPayload.Body = input;
-            }
+                var apiCallPath = "/validate/name/full-name";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputfullNameString != null)
+                {
+                    input["FullNameString"] = ExpressionConverter.ConvertO(inputfullNameString);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<FullNameValidationResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<FullNameValidationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GetGenderResponse> NameGetGender(Expression<Func<string>> inputcountryCode = null, Expression<Func<string>> inputfirstName = null)
+        [WorkflowExpressionFactory(nameof(__BuildNameGetGender))]
+        public IBodyWorkflowAction<GetGenderResponse> NameGetGender([WorkflowExpression] Func<string> inputcountryCode = null, [WorkflowExpression] Func<string> inputfirstName = null)
         {
-            var apiCallPath = "/validate/name/get-gender";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputcountryCode != null)
-            {
-                input["CountryCode"] = ExpressionConverter.ConvertO(inputcountryCode);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputfirstName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGenderResponse> __BuildNameGetGender(WorkflowExpression<string> inputcountryCode = null, WorkflowExpression<string> inputfirstName = null)
+        {
+            WorkflowExpression.Validate(inputcountryCode, nameof(inputcountryCode), required: false);
+            WorkflowExpression.Validate(inputfirstName, nameof(inputfirstName), required: false);
+            return new DeferredBodyAction<GetGenderResponse>(() =>
             {
-                input["FirstName"] = ExpressionConverter.ConvertO(inputfirstName);
-                inputpropCount++;
-            }
+                var apiCallPath = "/validate/name/get-gender";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputcountryCode != null)
+                {
+                    input["CountryCode"] = ExpressionConverter.ConvertO(inputcountryCode);
+                    inputpropCount++;
+                }
 
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+                if (inputfirstName != null)
+                {
+                    input["FirstName"] = ExpressionConverter.ConvertO(inputfirstName);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<GetGenderResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<GetGenderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateIdentifierResponse> NameIdentifier(Expression<Func<bool>> inputallowHyphens = null, Expression<Func<bool>> inputallowNumbers = null, Expression<Func<bool>> inputallowPeriods = null, Expression<Func<bool>> inputallowUnderscore = null, Expression<Func<bool>> inputallowWhitespace = null, Expression<Func<string>> inputinput = null, Expression<Func<int>> inputmaxLength = null, Expression<Func<int>> inputminLength = null)
+        [WorkflowExpressionFactory(nameof(__BuildNameIdentifier))]
+        public IBodyWorkflowAction<ValidateIdentifierResponse> NameIdentifier([WorkflowExpression] Func<bool> inputallowHyphens = null, [WorkflowExpression] Func<bool> inputallowNumbers = null, [WorkflowExpression] Func<bool> inputallowPeriods = null, [WorkflowExpression] Func<bool> inputallowUnderscore = null, [WorkflowExpression] Func<bool> inputallowWhitespace = null, [WorkflowExpression] Func<string> inputinput = null, [WorkflowExpression] Func<int> inputmaxLength = null, [WorkflowExpression] Func<int> inputminLength = null)
         {
-            var apiCallPath = "/validate/name/identifier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputallowHyphens != null)
-            {
-                input["AllowHyphens"] = ExpressionConverter.ConvertO(inputallowHyphens);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputallowNumbers != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateIdentifierResponse> __BuildNameIdentifier(WorkflowExpression<bool> inputallowHyphens = null, WorkflowExpression<bool> inputallowNumbers = null, WorkflowExpression<bool> inputallowPeriods = null, WorkflowExpression<bool> inputallowUnderscore = null, WorkflowExpression<bool> inputallowWhitespace = null, WorkflowExpression<string> inputinput = null, WorkflowExpression<int> inputmaxLength = null, WorkflowExpression<int> inputminLength = null)
+        {
+            WorkflowExpression.Validate(inputallowHyphens, nameof(inputallowHyphens), required: false);
+            WorkflowExpression.Validate(inputallowNumbers, nameof(inputallowNumbers), required: false);
+            WorkflowExpression.Validate(inputallowPeriods, nameof(inputallowPeriods), required: false);
+            WorkflowExpression.Validate(inputallowUnderscore, nameof(inputallowUnderscore), required: false);
+            WorkflowExpression.Validate(inputallowWhitespace, nameof(inputallowWhitespace), required: false);
+            WorkflowExpression.Validate(inputinput, nameof(inputinput), required: false);
+            WorkflowExpression.Validate(inputmaxLength, nameof(inputmaxLength), required: false);
+            WorkflowExpression.Validate(inputminLength, nameof(inputminLength), required: false);
+            return new DeferredBodyAction<ValidateIdentifierResponse>(() =>
             {
-                input["AllowNumbers"] = ExpressionConverter.ConvertO(inputallowNumbers);
-                inputpropCount++;
-            }
+                var apiCallPath = "/validate/name/identifier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputallowHyphens != null)
+                {
+                    input["AllowHyphens"] = ExpressionConverter.ConvertO(inputallowHyphens);
+                    inputpropCount++;
+                }
 
-            if (inputallowPeriods != null)
-            {
-                input["AllowPeriods"] = ExpressionConverter.ConvertO(inputallowPeriods);
-                inputpropCount++;
-            }
+                if (inputallowNumbers != null)
+                {
+                    input["AllowNumbers"] = ExpressionConverter.ConvertO(inputallowNumbers);
+                    inputpropCount++;
+                }
 
-            if (inputallowUnderscore != null)
-            {
-                input["AllowUnderscore"] = ExpressionConverter.ConvertO(inputallowUnderscore);
-                inputpropCount++;
-            }
+                if (inputallowPeriods != null)
+                {
+                    input["AllowPeriods"] = ExpressionConverter.ConvertO(inputallowPeriods);
+                    inputpropCount++;
+                }
 
-            if (inputallowWhitespace != null)
-            {
-                input["AllowWhitespace"] = ExpressionConverter.ConvertO(inputallowWhitespace);
-                inputpropCount++;
-            }
+                if (inputallowUnderscore != null)
+                {
+                    input["AllowUnderscore"] = ExpressionConverter.ConvertO(inputallowUnderscore);
+                    inputpropCount++;
+                }
 
-            if (inputinput != null)
-            {
-                input["Input"] = ExpressionConverter.ConvertO(inputinput);
-                inputpropCount++;
-            }
+                if (inputallowWhitespace != null)
+                {
+                    input["AllowWhitespace"] = ExpressionConverter.ConvertO(inputallowWhitespace);
+                    inputpropCount++;
+                }
 
-            if (inputmaxLength != null)
-            {
-                input["MaxLength"] = ExpressionConverter.ConvertO(inputmaxLength);
-                inputpropCount++;
-            }
+                if (inputinput != null)
+                {
+                    input["Input"] = ExpressionConverter.ConvertO(inputinput);
+                    inputpropCount++;
+                }
 
-            if (inputminLength != null)
-            {
-                input["MinLength"] = ExpressionConverter.ConvertO(inputminLength);
-                inputpropCount++;
-            }
+                if (inputmaxLength != null)
+                {
+                    input["MaxLength"] = ExpressionConverter.ConvertO(inputmaxLength);
+                    inputpropCount++;
+                }
 
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+                if (inputminLength != null)
+                {
+                    input["MinLength"] = ExpressionConverter.ConvertO(inputminLength);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<ValidateIdentifierResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<ValidateIdentifierResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<LastNameValidationResponse> NameValidateLastName(Expression<Func<string>> inputlastName = null)
+        [WorkflowExpressionFactory(nameof(__BuildNameValidateLastName))]
+        public IBodyWorkflowAction<LastNameValidationResponse> NameValidateLastName([WorkflowExpression] Func<string> inputlastName = null)
         {
-            var apiCallPath = "/validate/name/last";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputlastName != null)
-            {
-                input["LastName"] = ExpressionConverter.ConvertO(inputlastName);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LastNameValidationResponse> __BuildNameValidateLastName(WorkflowExpression<string> inputlastName = null)
+        {
+            WorkflowExpression.Validate(inputlastName, nameof(inputlastName), required: false);
+            return new DeferredBodyAction<LastNameValidationResponse>(() =>
             {
-                callPayload.Body = input;
-            }
+                var apiCallPath = "/validate/name/last";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputlastName != null)
+                {
+                    input["LastName"] = ExpressionConverter.ConvertO(inputlastName);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<LastNameValidationResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<LastNameValidationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<PhoneNumberValidationResponse> PhoneNumberSyntaxOnly(Expression<Func<string>> valuedefaultCountryCode = null, Expression<Func<string>> valuephoneNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildPhoneNumberSyntaxOnly))]
+        public IBodyWorkflowAction<PhoneNumberValidationResponse> PhoneNumberSyntaxOnly([WorkflowExpression] Func<string> valuedefaultCountryCode = null, [WorkflowExpression] Func<string> valuephoneNumber = null)
         {
-            var apiCallPath = "/validate/phonenumber/basic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var value = new JObject();
-            var valuepropCount = 0;
-            if (valuedefaultCountryCode != null)
-            {
-                value["DefaultCountryCode"] = ExpressionConverter.ConvertO(valuedefaultCountryCode);
-                valuepropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (valuephoneNumber != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PhoneNumberValidationResponse> __BuildPhoneNumberSyntaxOnly(WorkflowExpression<string> valuedefaultCountryCode = null, WorkflowExpression<string> valuephoneNumber = null)
+        {
+            WorkflowExpression.Validate(valuedefaultCountryCode, nameof(valuedefaultCountryCode), required: false);
+            WorkflowExpression.Validate(valuephoneNumber, nameof(valuephoneNumber), required: false);
+            return new DeferredBodyAction<PhoneNumberValidationResponse>(() =>
             {
-                value["PhoneNumber"] = ExpressionConverter.ConvertO(valuephoneNumber);
-                valuepropCount++;
-            }
+                var apiCallPath = "/validate/phonenumber/basic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var value = new JObject();
+                var valuepropCount = 0;
+                if (valuedefaultCountryCode != null)
+                {
+                    value["DefaultCountryCode"] = ExpressionConverter.ConvertO(valuedefaultCountryCode);
+                    valuepropCount++;
+                }
 
-            if (valuepropCount > 0)
-            {
-                callPayload.Body = value;
-            }
+                if (valuephoneNumber != null)
+                {
+                    value["PhoneNumber"] = ExpressionConverter.ConvertO(valuephoneNumber);
+                    valuepropCount++;
+                }
 
-            return new ApiConnectionAction<PhoneNumberValidationResponse>(callPayload);
+                if (valuepropCount > 0)
+                {
+                    callPayload.Body = value;
+                }
+
+                return new ApiConnectionAction<PhoneNumberValidationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<UserAgentValidateResponse> UserAgentParse(Expression<Func<string>> requestuserAgentString = null)
+        [WorkflowExpressionFactory(nameof(__BuildUserAgentParse))]
+        public IBodyWorkflowAction<UserAgentValidateResponse> UserAgentParse([WorkflowExpression] Func<string> requestuserAgentString = null)
         {
-            var apiCallPath = "/validate/useragent/parse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestuserAgentString != null)
-            {
-                request["UserAgentString"] = ExpressionConverter.ConvertO(requestuserAgentString);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserAgentValidateResponse> __BuildUserAgentParse(WorkflowExpression<string> requestuserAgentString = null)
+        {
+            WorkflowExpression.Validate(requestuserAgentString, nameof(requestuserAgentString), required: false);
+            return new DeferredBodyAction<UserAgentValidateResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/validate/useragent/parse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestuserAgentString != null)
+                {
+                    request["UserAgentString"] = ExpressionConverter.ConvertO(requestuserAgentString);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<UserAgentValidateResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<UserAgentValidateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<VatLookupResponse> VatVatLookup(Expression<Func<string>> inputvatCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildVatVatLookup))]
+        public IBodyWorkflowAction<VatLookupResponse> VatVatLookup([WorkflowExpression] Func<string> inputvatCode = null)
         {
-            var apiCallPath = "/validate/vat/lookup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputvatCode != null)
-            {
-                input["VatCode"] = ExpressionConverter.ConvertO(inputvatCode);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (inputpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VatLookupResponse> __BuildVatVatLookup(WorkflowExpression<string> inputvatCode = null)
+        {
+            WorkflowExpression.Validate(inputvatCode, nameof(inputvatCode), required: false);
+            return new DeferredBodyAction<VatLookupResponse>(() =>
             {
-                callPayload.Body = input;
-            }
+                var apiCallPath = "/validate/vat/lookup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputvatCode != null)
+                {
+                    input["VatCode"] = ExpressionConverter.ConvertO(inputvatCode);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<VatLookupResponse>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<VatLookupResponse>(callPayload);
+            });
         }
     }
 

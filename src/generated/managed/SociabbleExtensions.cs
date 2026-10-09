@@ -4,67 +4,85 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SociabbleActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction SendAlertRequest(Expression<Func<string>> bodyalertText, Expression<Func<string>> bodyalertTitle, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodyusername = null, Expression<Func<bool>> bodyisMandatory = null, Expression<Func<bool>> bodysendSMS = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendAlertRequest))]
+        public IWorkflowAction SendAlertRequest([WorkflowExpression] Func<string> bodyalertText, [WorkflowExpression] Func<string> bodyalertTitle, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<bool> bodyisMandatory = null, [WorkflowExpression] Func<bool> bodysendSMS = null)
         {
-            var apiCallPath = "/alerts/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["alertText"] = ExpressionConverter.ConvertO(bodyalertText);
-            bodypropCount++;
-            body["alertTitle"] = ExpressionConverter.ConvertO(bodyalertTitle);
-            if (bodystartDate != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendAlertRequest(WorkflowExpression<string> bodyalertText, WorkflowExpression<string> bodyalertTitle, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<bool> bodyisMandatory = null, WorkflowExpression<bool> bodysendSMS = null)
+        {
+            WorkflowExpression.Validate(bodyalertText, nameof(bodyalertText), required: true);
+            WorkflowExpression.Validate(bodyalertTitle, nameof(bodyalertTitle), required: true);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: false);
+            WorkflowExpression.Validate(bodyisMandatory, nameof(bodyisMandatory), required: false);
+            WorkflowExpression.Validate(bodysendSMS, nameof(bodysendSMS), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                var apiCallPath = "/alerts/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["alertText"] = ExpressionConverter.ConvertO(bodyalertText);
                 bodypropCount++;
-            }
+                body["alertTitle"] = ExpressionConverter.ConvertO(bodyalertTitle);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyaudienceId != null)
-            {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyusername != null)
-            {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
 
-            if (bodyisMandatory != null)
-            {
-                body["isMandatory"] = ExpressionConverter.ConvertO(bodyisMandatory);
-                bodypropCount++;
-            }
+                if (bodyusername != null)
+                {
+                    body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                    bodypropCount++;
+                }
 
-            if (bodysendSMS != null)
-            {
-                body["sendSMS"] = ExpressionConverter.ConvertO(bodysendSMS);
-                bodypropCount++;
-            }
+                if (bodyisMandatory != null)
+                {
+                    body["isMandatory"] = ExpressionConverter.ConvertO(bodyisMandatory);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysendSMS != null)
+                {
+                    body["sendSMS"] = ExpressionConverter.ConvertO(bodysendSMS);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
@@ -95,665 +113,844 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<InternalContent> CreateInternalNews(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedInternalContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateInternalNews))]
+        public IBodyWorkflowAction<InternalContent> CreateInternalNews([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedInternalContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null, [WorkflowExpression] Func<bool> bodyareCommentsAuthorized = null, [WorkflowExpression] Func<bool> bodyshouldNotifyUsers = null, [WorkflowExpression] Func<bool> bodyisMustReadContent = null)
         {
-            var apiCallPath = "/content/internalnews";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
-            if (bodycategoryIds != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InternalContent> __BuildCreateInternalNews(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedInternalContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null, WorkflowExpression<bool> bodyareCommentsAuthorized = null, WorkflowExpression<bool> bodyshouldNotifyUsers = null, WorkflowExpression<bool> bodyisMustReadContent = null)
+        {
+            WorkflowExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            WorkflowExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            WorkflowExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            WorkflowExpression.Validate(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
+            WorkflowExpression.Validate(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
+            WorkflowExpression.Validate(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
+            return new DeferredBodyAction<InternalContent>(() =>
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                var apiCallPath = "/content/internalnews";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+                if (bodycategoryIds != null)
+                {
+                    body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                    bodypropCount++;
+                }
 
-            if (bodyaudienceId != null)
-            {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationStartDate != null)
+                {
+                    body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationEndDate != null)
+                {
+                    body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodymyNewsDisplay != null)
+                {
+                    body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfMyNews != null)
+                {
+                    body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsStartDate != null)
+                {
+                    body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsEndDate != null)
+                {
+                    body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfSelectedChannels != null)
+                {
+                    body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsStartDate != null)
+                {
+                    body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsEndDate != null)
+                {
+                    body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                if (bodyareCommentsAuthorized != null)
+                {
+                    body["areCommentsAuthorized"] = ExpressionConverter.ConvertO(bodyareCommentsAuthorized);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationStartDate != null)
-            {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
-                bodypropCount++;
-            }
+                if (bodyshouldNotifyUsers != null)
+                {
+                    body["shouldNotifyUsers"] = ExpressionConverter.ConvertO(bodyshouldNotifyUsers);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationEndDate != null)
-            {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
-                bodypropCount++;
-            }
+                if (bodyisMustReadContent != null)
+                {
+                    body["isMustReadContent"] = ExpressionConverter.ConvertO(bodyisMustReadContent);
+                    bodypropCount++;
+                }
 
-            if (bodymyNewsDisplay != null)
-            {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyshouldPinTopOfMyNews != null)
-            {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsStartDate != null)
-            {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsEndDate != null)
-            {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfSelectedChannels != null)
-            {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsStartDate != null)
-            {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsEndDate != null)
-            {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            if (bodyareCommentsAuthorized != null)
-            {
-                body["areCommentsAuthorized"] = ExpressionConverter.ConvertO(bodyareCommentsAuthorized);
-                bodypropCount++;
-            }
-
-            if (bodyshouldNotifyUsers != null)
-            {
-                body["shouldNotifyUsers"] = ExpressionConverter.ConvertO(bodyshouldNotifyUsers);
-                bodypropCount++;
-            }
-
-            if (bodyisMustReadContent != null)
-            {
-                body["isMustReadContent"] = ExpressionConverter.ConvertO(bodyisMustReadContent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<InternalContent>(callPayload);
+                return new ApiConnectionAction<InternalContent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<ExternalContent> CreateExternalContent(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedExternalContentCreation[]>> bodycontents, Expression<Func<string>> bodycontentUrl, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyisShareable = null, Expression<Func<bool>> bodyisOfficialContent = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateExternalContent))]
+        public IBodyWorkflowAction<ExternalContent> CreateExternalContent([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedExternalContentCreation[]> bodycontents, [WorkflowExpression] Func<string> bodycontentUrl, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null, [WorkflowExpression] Func<bool> bodyisShareable = null, [WorkflowExpression] Func<bool> bodyisOfficialContent = null, [WorkflowExpression] Func<bool> bodyareCommentsAuthorized = null, [WorkflowExpression] Func<bool> bodyshouldNotifyUsers = null, [WorkflowExpression] Func<bool> bodyisMustReadContent = null)
         {
-            var apiCallPath = "/content/external";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
-            if (bodycategoryIds != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExternalContent> __BuildCreateExternalContent(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedExternalContentCreation[]> bodycontents, WorkflowExpression<string> bodycontentUrl, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null, WorkflowExpression<bool> bodyisShareable = null, WorkflowExpression<bool> bodyisOfficialContent = null, WorkflowExpression<bool> bodyareCommentsAuthorized = null, WorkflowExpression<bool> bodyshouldNotifyUsers = null, WorkflowExpression<bool> bodyisMustReadContent = null)
+        {
+            WorkflowExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodycontentUrl, nameof(bodycontentUrl), required: true);
+            WorkflowExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            WorkflowExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            WorkflowExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            WorkflowExpression.Validate(bodyisShareable, nameof(bodyisShareable), required: false);
+            WorkflowExpression.Validate(bodyisOfficialContent, nameof(bodyisOfficialContent), required: false);
+            WorkflowExpression.Validate(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
+            WorkflowExpression.Validate(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
+            WorkflowExpression.Validate(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
+            return new DeferredBodyAction<ExternalContent>(() =>
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                var apiCallPath = "/content/external";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+                if (bodycategoryIds != null)
+                {
+                    body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                    bodypropCount++;
+                }
 
-            if (bodyaudienceId != null)
-            {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationStartDate != null)
+                {
+                    body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationEndDate != null)
+                {
+                    body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodymyNewsDisplay != null)
+                {
+                    body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfMyNews != null)
+                {
+                    body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsStartDate != null)
+                {
+                    body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsEndDate != null)
+                {
+                    body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfSelectedChannels != null)
+                {
+                    body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsStartDate != null)
+                {
+                    body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsEndDate != null)
+                {
+                    body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodypublicationStartDate != null)
-            {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
                 bodypropCount++;
-            }
+                body["contentUrl"] = ExpressionConverter.ConvertO(bodycontentUrl);
+                if (bodyisShareable != null)
+                {
+                    body["isShareable"] = ExpressionConverter.ConvertO(bodyisShareable);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationEndDate != null)
-            {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
-                bodypropCount++;
-            }
+                if (bodyisOfficialContent != null)
+                {
+                    body["isOfficialContent"] = ExpressionConverter.ConvertO(bodyisOfficialContent);
+                    bodypropCount++;
+                }
 
-            if (bodymyNewsDisplay != null)
-            {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
-                bodypropCount++;
-            }
+                if (bodyareCommentsAuthorized != null)
+                {
+                    body["areCommentsAuthorized"] = ExpressionConverter.ConvertO(bodyareCommentsAuthorized);
+                    bodypropCount++;
+                }
 
-            if (bodyshouldPinTopOfMyNews != null)
-            {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
-                bodypropCount++;
-            }
+                if (bodyshouldNotifyUsers != null)
+                {
+                    body["shouldNotifyUsers"] = ExpressionConverter.ConvertO(bodyshouldNotifyUsers);
+                    bodypropCount++;
+                }
 
-            if (bodypinOfMyNewsStartDate != null)
-            {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
-                bodypropCount++;
-            }
+                if (bodyisMustReadContent != null)
+                {
+                    body["isMustReadContent"] = ExpressionConverter.ConvertO(bodyisMustReadContent);
+                    bodypropCount++;
+                }
 
-            if (bodypinOfMyNewsEndDate != null)
-            {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyshouldPinTopOfSelectedChannels != null)
-            {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsStartDate != null)
-            {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsEndDate != null)
-            {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            bodypropCount++;
-            body["contentUrl"] = ExpressionConverter.ConvertO(bodycontentUrl);
-            if (bodyisShareable != null)
-            {
-                body["isShareable"] = ExpressionConverter.ConvertO(bodyisShareable);
-                bodypropCount++;
-            }
-
-            if (bodyisOfficialContent != null)
-            {
-                body["isOfficialContent"] = ExpressionConverter.ConvertO(bodyisOfficialContent);
-                bodypropCount++;
-            }
-
-            if (bodyareCommentsAuthorized != null)
-            {
-                body["areCommentsAuthorized"] = ExpressionConverter.ConvertO(bodyareCommentsAuthorized);
-                bodypropCount++;
-            }
-
-            if (bodyshouldNotifyUsers != null)
-            {
-                body["shouldNotifyUsers"] = ExpressionConverter.ConvertO(bodyshouldNotifyUsers);
-                bodypropCount++;
-            }
-
-            if (bodyisMustReadContent != null)
-            {
-                body["isMustReadContent"] = ExpressionConverter.ConvertO(bodyisMustReadContent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExternalContent>(callPayload);
+                return new ApiConnectionAction<ExternalContent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaSuggestContent> CtaSuggestContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildCtaSuggestContentCreation))]
+        public IBodyWorkflowAction<CtaSuggestContent> CtaSuggestContentCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedBaseCtaContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var apiCallPath = "/content/Cta/Suggest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["discriminator"] = "Cta";
-            bodypropCount++;
-            bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
-            if (bodycategoryIds != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CtaSuggestContent> __BuildCtaSuggestContentCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedBaseCtaContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
+        {
+            WorkflowExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            WorkflowExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            WorkflowExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            return new DeferredBodyAction<CtaSuggestContent>(() =>
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                var apiCallPath = "/content/Cta/Suggest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["discriminator"] = "Cta";
                 bodypropCount++;
-            }
-
-            if (bodyaudienceId != null)
-            {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
                 bodypropCount++;
-            }
+                body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+                if (bodycategoryIds != null)
+                {
+                    body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationStartDate != null)
-            {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationStartDate != null)
+                {
+                    body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationEndDate != null)
+                {
+                    body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodymyNewsDisplay != null)
+                {
+                    body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfMyNews != null)
+                {
+                    body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsStartDate != null)
+                {
+                    body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsEndDate != null)
+                {
+                    body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfSelectedChannels != null)
+                {
+                    body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsStartDate != null)
+                {
+                    body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsEndDate != null)
+                {
+                    body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                    bodypropCount++;
+                }
+
+                body["ctaDiscriminator"] = "SuggestContent";
                 bodypropCount++;
-            }
-
-            if (bodypublicationEndDate != null)
-            {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
                 bodypropCount++;
-            }
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodymyNewsDisplay != null)
-            {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfMyNews != null)
-            {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsStartDate != null)
-            {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsEndDate != null)
-            {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfSelectedChannels != null)
-            {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsStartDate != null)
-            {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsEndDate != null)
-            {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
-                bodypropCount++;
-            }
-
-            body["ctaDiscriminator"] = "SuggestContent";
-            bodypropCount++;
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CtaSuggestContent>(callPayload);
+                return new ApiConnectionAction<CtaSuggestContent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaInvitationContent> CtaInvitationContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildCtaInvitationContentCreation))]
+        public IBodyWorkflowAction<CtaInvitationContent> CtaInvitationContentCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedBaseCtaContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var apiCallPath = "/content/Cta/Invitation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["discriminator"] = "Cta";
-            bodypropCount++;
-            bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
-            if (bodycategoryIds != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CtaInvitationContent> __BuildCtaInvitationContentCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedBaseCtaContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
+        {
+            WorkflowExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            WorkflowExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            WorkflowExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            return new DeferredBodyAction<CtaInvitationContent>(() =>
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                var apiCallPath = "/content/Cta/Invitation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["discriminator"] = "Cta";
                 bodypropCount++;
-            }
-
-            if (bodyaudienceId != null)
-            {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
                 bodypropCount++;
-            }
+                body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+                if (bodycategoryIds != null)
+                {
+                    body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationStartDate != null)
-            {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationStartDate != null)
+                {
+                    body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationEndDate != null)
+                {
+                    body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodymyNewsDisplay != null)
+                {
+                    body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfMyNews != null)
+                {
+                    body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsStartDate != null)
+                {
+                    body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsEndDate != null)
+                {
+                    body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfSelectedChannels != null)
+                {
+                    body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsStartDate != null)
+                {
+                    body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsEndDate != null)
+                {
+                    body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                    bodypropCount++;
+                }
+
+                body["ctaDiscriminator"] = "Invitation";
                 bodypropCount++;
-            }
-
-            if (bodypublicationEndDate != null)
-            {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
                 bodypropCount++;
-            }
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodymyNewsDisplay != null)
-            {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfMyNews != null)
-            {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsStartDate != null)
-            {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsEndDate != null)
-            {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfSelectedChannels != null)
-            {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsStartDate != null)
-            {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsEndDate != null)
-            {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
-                bodypropCount++;
-            }
-
-            body["ctaDiscriminator"] = "Invitation";
-            bodypropCount++;
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CtaInvitationContent>(callPayload);
+                return new ApiConnectionAction<CtaInvitationContent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaMobileContent> CtaMobileContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildCtaMobileContentCreation))]
+        public IBodyWorkflowAction<CtaMobileContent> CtaMobileContentCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedBaseCtaContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var apiCallPath = "/content/Cta/Mobile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["discriminator"] = "Cta";
-            bodypropCount++;
-            bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
-            if (bodycategoryIds != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CtaMobileContent> __BuildCtaMobileContentCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedBaseCtaContentCreation[]> bodycontents, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
+        {
+            WorkflowExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            WorkflowExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            WorkflowExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            return new DeferredBodyAction<CtaMobileContent>(() =>
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                var apiCallPath = "/content/Cta/Mobile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["discriminator"] = "Cta";
                 bodypropCount++;
-            }
-
-            if (bodyaudienceId != null)
-            {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
                 bodypropCount++;
-            }
+                body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+                if (bodycategoryIds != null)
+                {
+                    body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationStartDate != null)
-            {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationStartDate != null)
+                {
+                    body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublicationEndDate != null)
+                {
+                    body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodymyNewsDisplay != null)
+                {
+                    body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfMyNews != null)
+                {
+                    body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsStartDate != null)
+                {
+                    body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinOfMyNewsEndDate != null)
+                {
+                    body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodyshouldPinTopOfSelectedChannels != null)
+                {
+                    body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsStartDate != null)
+                {
+                    body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodypinTopOfSelectedChannelsEndDate != null)
+                {
+                    body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                    bodypropCount++;
+                }
+
+                body["ctaDiscriminator"] = "Mobile";
                 bodypropCount++;
-            }
-
-            if (bodypublicationEndDate != null)
-            {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
                 bodypropCount++;
-            }
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodymyNewsDisplay != null)
-            {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfMyNews != null)
-            {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsStartDate != null)
-            {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinOfMyNewsEndDate != null)
-            {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
-                bodypropCount++;
-            }
-
-            if (bodyshouldPinTopOfSelectedChannels != null)
-            {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsStartDate != null)
-            {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
-                bodypropCount++;
-            }
-
-            if (bodypinTopOfSelectedChannelsEndDate != null)
-            {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
-                bodypropCount++;
-            }
-
-            body["ctaDiscriminator"] = "Mobile";
-            bodypropCount++;
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CtaMobileContent>(callPayload);
+                return new ApiConnectionAction<CtaMobileContent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaEventContent> CtaEventCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedCtaEventContentCreation[]>> bodycontents, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodylink = null, Expression<Func<int>> bodyawardedBonus = null, Expression<Func<bool>> bodyshouldDisplayTitle = null, Expression<Func<bool>> bodyshouldDisplayButton = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildCtaEventCreation))]
+        public IBodyWorkflowAction<CtaEventContent> CtaEventCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedCtaEventContentCreation[]> bodycontents, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodylink = null, [WorkflowExpression] Func<int> bodyawardedBonus = null, [WorkflowExpression] Func<bool> bodyshouldDisplayTitle = null, [WorkflowExpression] Func<bool> bodyshouldDisplayButton = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var apiCallPath = "/content/Cta/Event";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["discriminator"] = "Cta";
-            bodypropCount++;
-            body["ctaDiscriminator"] = "Event";
-            bodypropCount++;
-            bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
-            if (bodyaudienceId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CtaEventContent> __BuildCtaEventCreation(WorkflowExpression<string[]> bodychannelIds, WorkflowExpression<LocalizedCtaEventContentCreation[]> bodycontents, WorkflowExpression<string> bodyaudienceId = null, WorkflowExpression<string[]> bodycategoryIds = null, WorkflowExpression<string> bodylink = null, WorkflowExpression<int> bodyawardedBonus = null, WorkflowExpression<bool> bodyshouldDisplayTitle = null, WorkflowExpression<bool> bodyshouldDisplayButton = null, WorkflowExpression<string> bodypublicationStartDate = null, WorkflowExpression<string> bodypublicationEndDate = null, WorkflowExpression<bodymyNewsDisplayInput> bodymyNewsDisplay = null, WorkflowExpression<bool> bodyshouldPinTopOfMyNews = null, WorkflowExpression<string> bodypinOfMyNewsStartDate = null, WorkflowExpression<string> bodypinOfMyNewsEndDate = null, WorkflowExpression<bool> bodyshouldPinTopOfSelectedChannels = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsStartDate = null, WorkflowExpression<string> bodypinTopOfSelectedChannelsEndDate = null)
+        {
+            WorkflowExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            WorkflowExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            WorkflowExpression.Validate(bodylink, nameof(bodylink), required: false);
+            WorkflowExpression.Validate(bodyawardedBonus, nameof(bodyawardedBonus), required: false);
+            WorkflowExpression.Validate(bodyshouldDisplayTitle, nameof(bodyshouldDisplayTitle), required: false);
+            WorkflowExpression.Validate(bodyshouldDisplayButton, nameof(bodyshouldDisplayButton), required: false);
+            WorkflowExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            WorkflowExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            WorkflowExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            WorkflowExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            WorkflowExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            return new DeferredBodyAction<CtaEventContent>(() =>
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                var apiCallPath = "/content/Cta/Event";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["discriminator"] = "Cta";
                 bodypropCount++;
-            }
-
-            if (bodycategoryIds != null)
-            {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["ctaDiscriminator"] = "Event";
                 bodypropCount++;
-            }
-
-            if (bodylink != null)
-            {
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
                 bodypropCount++;
-            }
+                body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+                if (bodyaudienceId != null)
+                {
+                    body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                    bodypropCount++;
+                }
 
-            if (bodyawardedBonus != null)
-            {
-                body["awardedBonus"] = ExpressionConverter.ConvertO(bodyawardedBonus);
+                if (bodycategoryIds != null)
+                {
+                    body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                    bodypropCount++;
+                }
+
+                if (bodylink != null)
+                {
+                    body["link"] = ExpressionConverter.ConvertO(bodylink);
+                    bodypropCount++;
+                }
+
+                if (bodyawardedBonus != null)
+                {
+                    body["awardedBonus"] = ExpressionConverter.ConvertO(bodyawardedBonus);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                if (bodyshouldDisplayTitle != null)
+                {
+                    body["shouldDisplayTitle"] = ExpressionConverter.ConvertO(bodyshouldDisplayTitle);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            if (bodyshouldDisplayTitle != null)
-            {
-                body["shouldDisplayTitle"] = ExpressionConverter.ConvertO(bodyshouldDisplayTitle);
-                bodypropCount++;
-            }
+                if (bodyshouldDisplayButton != null)
+                {
+                    body["shouldDisplayButton"] = ExpressionConverter.ConvertO(bodyshouldDisplayButton);
+                    bodypropCount++;
+                }
 
-            if (bodyshouldDisplayButton != null)
-            {
-                body["shouldDisplayButton"] = ExpressionConverter.ConvertO(bodyshouldDisplayButton);
-                bodypropCount++;
-            }
+                if (bodypublicationStartDate != null)
+                {
+                    body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationStartDate != null)
-            {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
-                bodypropCount++;
-            }
+                if (bodypublicationEndDate != null)
+                {
+                    body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                    bodypropCount++;
+                }
 
-            if (bodypublicationEndDate != null)
-            {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
-                bodypropCount++;
-            }
+                if (bodymyNewsDisplay != null)
+                {
+                    body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                    bodypropCount++;
+                }
 
-            if (bodymyNewsDisplay != null)
-            {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
-                bodypropCount++;
-            }
+                if (bodyshouldPinTopOfMyNews != null)
+                {
+                    body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                    bodypropCount++;
+                }
 
-            if (bodyshouldPinTopOfMyNews != null)
-            {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
-                bodypropCount++;
-            }
+                if (bodypinOfMyNewsStartDate != null)
+                {
+                    body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                    bodypropCount++;
+                }
 
-            if (bodypinOfMyNewsStartDate != null)
-            {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
-                bodypropCount++;
-            }
+                if (bodypinOfMyNewsEndDate != null)
+                {
+                    body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                    bodypropCount++;
+                }
 
-            if (bodypinOfMyNewsEndDate != null)
-            {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
-                bodypropCount++;
-            }
+                if (bodyshouldPinTopOfSelectedChannels != null)
+                {
+                    body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                    bodypropCount++;
+                }
 
-            if (bodyshouldPinTopOfSelectedChannels != null)
-            {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
-                bodypropCount++;
-            }
+                if (bodypinTopOfSelectedChannelsStartDate != null)
+                {
+                    body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                    bodypropCount++;
+                }
 
-            if (bodypinTopOfSelectedChannelsStartDate != null)
-            {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
-                bodypropCount++;
-            }
+                if (bodypinTopOfSelectedChannelsEndDate != null)
+                {
+                    body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                    bodypropCount++;
+                }
 
-            if (bodypinTopOfSelectedChannelsEndDate != null)
-            {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CtaEventContent>(callPayload);
+                return new ApiConnectionAction<CtaEventContent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<string>> bodybadgeId, Expression<Func<int>> bodylevel)
+        [WorkflowExpressionFactory(nameof(__BuildAssignBadgeToUser))]
+        public IWorkflowAction AssignBadgeToUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> bodybadgeId, [WorkflowExpression] Func<int> bodylevel)
         {
-            var apiCallPath = String.Format("/users/{0}/badges/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["badgeId"] = ExpressionConverter.ConvertO(bodybadgeId);
-            bodypropCount++;
-            body["level"] = ExpressionConverter.ConvertO(bodylevel);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAssignBadgeToUser(WorkflowExpression<string> username, WorkflowExpression<string> bodybadgeId, WorkflowExpression<int> bodylevel)
+        {
+            WorkflowExpression.Validate(username, nameof(username), required: true);
+            WorkflowExpression.Validate(bodybadgeId, nameof(bodybadgeId), required: true);
+            WorkflowExpression.Validate(bodylevel, nameof(bodylevel), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/badges/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["badgeId"] = ExpressionConverter.ConvertO(bodybadgeId);
+                bodypropCount++;
+                body["level"] = ExpressionConverter.ConvertO(bodylevel);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<bodycontentsInputItem[]>> bodycontents, Expression<Func<bool>> bodyisEngaging = null, Expression<Func<bool>> bodyisInternal = null, Expression<Func<int>> bodypoints = null)
+        [WorkflowExpressionFactory(nameof(__BuildAssignCustomActionToUser))]
+        public IWorkflowAction AssignCustomActionToUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents, [WorkflowExpression] Func<bool> bodyisEngaging = null, [WorkflowExpression] Func<bool> bodyisInternal = null, [WorkflowExpression] Func<int> bodypoints = null)
         {
-            var apiCallPath = String.Format("/users/{0}/customactions/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisEngaging != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAssignCustomActionToUser(WorkflowExpression<string> username, WorkflowExpression<bodycontentsInputItem[]> bodycontents, WorkflowExpression<bool> bodyisEngaging = null, WorkflowExpression<bool> bodyisInternal = null, WorkflowExpression<int> bodypoints = null)
+        {
+            WorkflowExpression.Validate(username, nameof(username), required: true);
+            WorkflowExpression.Validate(bodycontents, nameof(bodycontents), required: true);
+            WorkflowExpression.Validate(bodyisEngaging, nameof(bodyisEngaging), required: false);
+            WorkflowExpression.Validate(bodyisInternal, nameof(bodyisInternal), required: false);
+            WorkflowExpression.Validate(bodypoints, nameof(bodypoints), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["isEngaging"] = ExpressionConverter.ConvertO(bodyisEngaging);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/customactions/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisEngaging != null)
+                {
+                    body["isEngaging"] = ExpressionConverter.ConvertO(bodyisEngaging);
+                    bodypropCount++;
+                }
+
+                if (bodyisInternal != null)
+                {
+                    body["isInternal"] = ExpressionConverter.ConvertO(bodyisInternal);
+                    bodypropCount++;
+                }
+
+                if (bodypoints != null)
+                {
+                    body["points"] = ExpressionConverter.ConvertO(bodypoints);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyisInternal != null)
-            {
-                body["isInternal"] = ExpressionConverter.ConvertO(bodyisInternal);
-                bodypropCount++;
-            }
-
-            if (bodypoints != null)
-            {
-                body["points"] = ExpressionConverter.ConvertO(bodypoints);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
@@ -766,60 +963,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> GetBadgeLevels(Expression<Func<string>> badgeId)
+        [WorkflowExpressionFactory(nameof(__BuildGetBadgeLevels))]
+        public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> GetBadgeLevels([WorkflowExpression] Func<string> badgeId)
         {
-            var apiCallPath = String.Format("/badges/{0}/levels", ExpressionConverter.ConvertWithUrlEncoding(badgeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBadgeLevelsResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> __BuildGetBadgeLevels(WorkflowExpression<string> badgeId)
+        {
+            WorkflowExpression.Validate(badgeId, nameof(badgeId), required: true);
+            return new DeferredBodyAction<GetBadgeLevelsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/badges/{0}/levels", ExpressionConverter.ConvertWithUrlEncoding(badgeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetBadgeLevelsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStream(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<object>> media)
+        [WorkflowExpressionFactory(nameof(__BuildUploadMediaByStream))]
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStream([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<object> media)
         {
-            var apiCallPath = "/medias/ByStream";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByStream(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<object> media)
+        {
+            WorkflowExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
+            WorkflowExpression.Validate(media, nameof(media), required: true);
+            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            {
+                var apiCallPath = "/medias/ByStream";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrl(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> mediaUrl)
+        [WorkflowExpressionFactory(nameof(__BuildUploadMediaByUrl))]
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrl([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<string> mediaUrl)
         {
-            var apiCallPath = "/medias/ByUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByUrl(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<string> mediaUrl)
+        {
+            WorkflowExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
+            WorkflowExpression.Validate(mediaUrl, nameof(mediaUrl), required: true);
+            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            {
+                var apiCallPath = "/medias/ByUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStreamByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<object>> media)
+        [WorkflowExpressionFactory(nameof(__BuildUploadMediaByStreamByFolder))]
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStreamByFolder([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<object> media)
         {
-            var apiCallPath = "/medias/ByStreamByFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByStreamByFolder(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<string> folderId, WorkflowExpression<object> media)
+        {
+            WorkflowExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
+            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            WorkflowExpression.Validate(media, nameof(media), required: true);
+            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            {
+                var apiCallPath = "/medias/ByStreamByFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrlByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<string>> mediaUrl)
+        [WorkflowExpressionFactory(nameof(__BuildUploadMediaByUrlByFolder))]
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrlByFolder([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> mediaUrl)
         {
-            var apiCallPath = "/medias/ByUrlByFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaByUrlByFolder(WorkflowExpression<mediaVisibilityInput> mediaVisibility, WorkflowExpression<string> folderId, WorkflowExpression<string> mediaUrl)
+        {
+            WorkflowExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
+            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            WorkflowExpression.Validate(mediaUrl, nameof(mediaUrl), required: true);
+            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            {
+                var apiCallPath = "/medias/ByUrlByFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetFoldersResponse> GetMediaDriveFolders(Expression<Func<string>> culture = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetMediaDriveFolders))]
+        public IBodyWorkflowAction<GetFoldersResponse> GetMediaDriveFolders([WorkflowExpression] Func<string> culture = null)
         {
-            var apiCallPath = "/mediadrive";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["culture"] = Convert.ToString("en");
-            if (culture != null)
-                callPayload.Queries["culture"] = ExpressionConverter.Convert(culture);
-            return new ApiConnectionAction<GetFoldersResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFoldersResponse> __BuildGetMediaDriveFolders(WorkflowExpression<string> culture = null)
+        {
+            WorkflowExpression.Validate(culture, nameof(culture), required: false);
+            return new DeferredBodyAction<GetFoldersResponse>(() =>
+            {
+                var apiCallPath = "/mediadrive";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["culture"] = Convert.ToString("en");
+                if (culture != null)
+                    callPayload.Queries["culture"] = ExpressionConverter.Convert(culture);
+                return new ApiConnectionAction<GetFoldersResponse>(callPayload);
+            });
         }
     }
 
@@ -905,6 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public LocalizedInternalContent[] Contents { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContentTypeDiscriminator
     {
         None,
@@ -1015,6 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string[] MediaIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LanguageBehavior
     {
         [EnumMember(Value = "af")]
@@ -1121,6 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         Welsh
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymyNewsDisplayInput
     {
         [EnumMember(Value = "default")]
@@ -1275,6 +1547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public LocalizedBaseCtaContent[] Contents { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CtaContentTypeDiscriminator
     {
         None,
@@ -1617,6 +1890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mediaVisibilityInput
     {
         [EnumMember(Value = "private")]

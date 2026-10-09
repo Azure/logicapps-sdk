@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,30 +20,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<List> GetList(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetList))]
+        public IBodyWorkflowAction<List> GetList([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<List>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List> __BuildGetList(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<List>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<List>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Export> GetExport(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetExport))]
+        public IBodyWorkflowAction<Export> GetExport([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/exports/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Export>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Export> __BuildGetExport(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Export>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/exports/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Export>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Export> StartExport(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildStartExport))]
+        public IBodyWorkflowAction<Export> StartExport([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/exports/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Export>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Export> __BuildStartExport(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Export>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/exports/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Export>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
@@ -93,75 +125,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> AddSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddSubscriber))]
+        public IBodyWorkflowAction<Subscriber> AddSubscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodydoubleOptIn = null)
         {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Subscriber> __BuildAddSubscriber(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bool> bodydoubleOptIn = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            return new DeferredBodyAction<Subscriber>(() =>
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodylastName != null)
+                {
+                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodydoubleOptIn != null)
-            {
-                body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
-                bodypropCount++;
-            }
+                if (bodydoubleOptIn != null)
+                {
+                    body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Subscriber>(callPayload);
+                return new ApiConnectionAction<Subscriber>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> UpdateSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateSubscriber))]
+        public IBodyWorkflowAction<Subscriber> UpdateSubscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodydoubleOptIn = null)
         {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Subscriber> __BuildUpdateSubscriber(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bool> bodydoubleOptIn = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            return new DeferredBodyAction<Subscriber>(() =>
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodylastName != null)
+                {
+                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodydoubleOptIn != null)
-            {
-                body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
-                bodypropCount++;
-            }
+                if (bodydoubleOptIn != null)
+                {
+                    body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Subscriber>(callPayload);
+                return new ApiConnectionAction<Subscriber>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
@@ -174,53 +234,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> UnsubscribeSubscriber(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        [WorkflowExpressionFactory(nameof(__BuildUnsubscribeSubscriber))]
+        public IBodyWorkflowAction<Subscriber> UnsubscribeSubscriber([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodydoubleOptIn = null)
         {
-            var apiCallPath = "/subscribers/unsubscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyfirstName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Subscriber> __BuildUnsubscribeSubscriber(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bool> bodydoubleOptIn = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            return new DeferredBodyAction<Subscriber>(() =>
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydoubleOptIn != null)
-            {
-                if (bodydoubleOptIn != null)
+                var apiCallPath = "/subscribers/unsubscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
                 {
-                    body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["double_opt_in"] = true;
-                bodypropCount++;
-            }
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylastName != null)
+                {
+                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Subscriber>(callPayload);
+                if (bodydoubleOptIn != null)
+                {
+                    if (bodydoubleOptIn != null)
+                    {
+                        body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["double_opt_in"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Subscriber>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]

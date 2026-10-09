@@ -4,160 +4,273 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AirlabsipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListFlightsResponse> ListFlights(Expression<Func<string>> flag = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> arrIata = null)
+        [WorkflowExpressionFactory(nameof(__BuildListFlights))]
+        public IBodyWorkflowAction<ListFlightsResponse> ListFlights([WorkflowExpression] Func<string> flag = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> arrIata = null)
         {
-            var apiCallPath = "/flights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (flag != null)
-                callPayload.Queries["flag"] = ExpressionConverter.Convert(flag);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
-            return new ApiConnectionAction<ListFlightsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListFlightsResponse> __BuildListFlights(WorkflowExpression<string> flag = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> depIata = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> arrIata = null)
+        {
+            WorkflowExpression.Validate(flag, nameof(flag), required: false);
+            WorkflowExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            WorkflowExpression.Validate(flightIata, nameof(flightIata), required: false);
+            WorkflowExpression.Validate(depIcao, nameof(depIcao), required: false);
+            WorkflowExpression.Validate(depIata, nameof(depIata), required: false);
+            WorkflowExpression.Validate(arrIcao, nameof(arrIcao), required: false);
+            WorkflowExpression.Validate(arrIata, nameof(arrIata), required: false);
+            return new DeferredBodyAction<ListFlightsResponse>(() =>
+            {
+                var apiCallPath = "/flights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (flag != null)
+                    callPayload.Queries["flag"] = ExpressionConverter.Convert(flag);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                if (depIcao != null)
+                    callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                if (depIata != null)
+                    callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                if (arrIcao != null)
+                    callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                if (arrIata != null)
+                    callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                return new ApiConnectionAction<ListFlightsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<GetFlightResponse> GetFlight(Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFlight))]
+        public IBodyWorkflowAction<GetFlightResponse> GetFlight([WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> flightIcao = null)
         {
-            var apiCallPath = "/flight";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
-            return new ApiConnectionAction<GetFlightResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFlightResponse> __BuildGetFlight(WorkflowExpression<string> flightIata = null, WorkflowExpression<string> flightIcao = null)
+        {
+            WorkflowExpression.Validate(flightIata, nameof(flightIata), required: false);
+            WorkflowExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            return new DeferredBodyAction<GetFlightResponse>(() =>
+            {
+                var apiCallPath = "/flight";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                return new ApiConnectionAction<GetFlightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListAirlinesResponse> ListAirlines(Expression<Func<string>> iataCode = null, Expression<Func<string>> iataPrefix = null, Expression<Func<string>> iataAccounting = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> callsign = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListAirlines))]
+        public IBodyWorkflowAction<ListAirlinesResponse> ListAirlines([WorkflowExpression] Func<string> iataCode = null, [WorkflowExpression] Func<string> iataPrefix = null, [WorkflowExpression] Func<string> iataAccounting = null, [WorkflowExpression] Func<string> icaoCode = null, [WorkflowExpression] Func<string> callsign = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/airlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iataCode != null)
-                callPayload.Queries["iata_code"] = ExpressionConverter.Convert(iataCode);
-            if (iataPrefix != null)
-                callPayload.Queries["iata_prefix"] = ExpressionConverter.Convert(iataPrefix);
-            if (iataAccounting != null)
-                callPayload.Queries["iata_accounting"] = ExpressionConverter.Convert(iataAccounting);
-            if (icaoCode != null)
-                callPayload.Queries["icao_code"] = ExpressionConverter.Convert(icaoCode);
-            if (callsign != null)
-                callPayload.Queries["callsign"] = ExpressionConverter.Convert(callsign);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
-            return new ApiConnectionAction<ListAirlinesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListAirlinesResponse> __BuildListAirlines(WorkflowExpression<string> iataCode = null, WorkflowExpression<string> iataPrefix = null, WorkflowExpression<string> iataAccounting = null, WorkflowExpression<string> icaoCode = null, WorkflowExpression<string> callsign = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> Fields = null)
+        {
+            WorkflowExpression.Validate(iataCode, nameof(iataCode), required: false);
+            WorkflowExpression.Validate(iataPrefix, nameof(iataPrefix), required: false);
+            WorkflowExpression.Validate(iataAccounting, nameof(iataAccounting), required: false);
+            WorkflowExpression.Validate(icaoCode, nameof(icaoCode), required: false);
+            WorkflowExpression.Validate(callsign, nameof(callsign), required: false);
+            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            WorkflowExpression.Validate(Fields, nameof(Fields), required: false);
+            return new DeferredBodyAction<ListAirlinesResponse>(() =>
+            {
+                var apiCallPath = "/airlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (iataCode != null)
+                    callPayload.Queries["iata_code"] = ExpressionConverter.Convert(iataCode);
+                if (iataPrefix != null)
+                    callPayload.Queries["iata_prefix"] = ExpressionConverter.Convert(iataPrefix);
+                if (iataAccounting != null)
+                    callPayload.Queries["iata_accounting"] = ExpressionConverter.Convert(iataAccounting);
+                if (icaoCode != null)
+                    callPayload.Queries["icao_code"] = ExpressionConverter.Convert(icaoCode);
+                if (callsign != null)
+                    callPayload.Queries["callsign"] = ExpressionConverter.Convert(callsign);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                return new ApiConnectionAction<ListAirlinesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListRoutesResponse> ListRoutes(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListRoutes))]
+        public IBodyWorkflowAction<ListRoutesResponse> ListRoutes([WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/routes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
-            if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
-            if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
-            return new ApiConnectionAction<ListRoutesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListRoutesResponse> __BuildListRoutes(WorkflowExpression<string> depIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> arrIata = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> airlineIcao = null, WorkflowExpression<string> airlineIata = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> Fields = null)
+        {
+            WorkflowExpression.Validate(depIata, nameof(depIata), required: false);
+            WorkflowExpression.Validate(depIcao, nameof(depIcao), required: false);
+            WorkflowExpression.Validate(arrIata, nameof(arrIata), required: false);
+            WorkflowExpression.Validate(arrIcao, nameof(arrIcao), required: false);
+            WorkflowExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
+            WorkflowExpression.Validate(airlineIata, nameof(airlineIata), required: false);
+            WorkflowExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            WorkflowExpression.Validate(flightIata, nameof(flightIata), required: false);
+            WorkflowExpression.Validate(Fields, nameof(Fields), required: false);
+            return new DeferredBodyAction<ListRoutesResponse>(() =>
+            {
+                var apiCallPath = "/routes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (depIata != null)
+                    callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                if (depIcao != null)
+                    callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                if (arrIata != null)
+                    callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                if (arrIcao != null)
+                    callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                if (airlineIcao != null)
+                    callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
+                if (airlineIata != null)
+                    callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                return new ApiConnectionAction<ListRoutesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListSchedulesResponse> ListSchedules(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListSchedules))]
+        public IBodyWorkflowAction<ListSchedulesResponse> ListSchedules([WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/schedules";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
-            if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
-            if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
-            return new ApiConnectionAction<ListSchedulesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListSchedulesResponse> __BuildListSchedules(WorkflowExpression<string> depIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> arrIata = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> airlineIcao = null, WorkflowExpression<string> airlineIata = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> Fields = null)
+        {
+            WorkflowExpression.Validate(depIata, nameof(depIata), required: false);
+            WorkflowExpression.Validate(depIcao, nameof(depIcao), required: false);
+            WorkflowExpression.Validate(arrIata, nameof(arrIata), required: false);
+            WorkflowExpression.Validate(arrIcao, nameof(arrIcao), required: false);
+            WorkflowExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
+            WorkflowExpression.Validate(airlineIata, nameof(airlineIata), required: false);
+            WorkflowExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            WorkflowExpression.Validate(flightIata, nameof(flightIata), required: false);
+            WorkflowExpression.Validate(Fields, nameof(Fields), required: false);
+            return new DeferredBodyAction<ListSchedulesResponse>(() =>
+            {
+                var apiCallPath = "/schedules";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (depIata != null)
+                    callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                if (depIcao != null)
+                    callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                if (arrIata != null)
+                    callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                if (arrIcao != null)
+                    callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                if (airlineIcao != null)
+                    callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
+                if (airlineIata != null)
+                    callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                return new ApiConnectionAction<ListSchedulesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListAirportsResponse> ListAirports(Expression<Func<string>> iataCode = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> cityCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListAirports))]
+        public IBodyWorkflowAction<ListAirportsResponse> ListAirports([WorkflowExpression] Func<string> iataCode = null, [WorkflowExpression] Func<string> icaoCode = null, [WorkflowExpression] Func<string> cityCode = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/airports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iataCode != null)
-                callPayload.Queries["iata_code"] = ExpressionConverter.Convert(iataCode);
-            if (icaoCode != null)
-                callPayload.Queries["icao_code"] = ExpressionConverter.Convert(icaoCode);
-            if (cityCode != null)
-                callPayload.Queries["city_code"] = ExpressionConverter.Convert(cityCode);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
-            return new ApiConnectionAction<ListAirportsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListAirportsResponse> __BuildListAirports(WorkflowExpression<string> iataCode = null, WorkflowExpression<string> icaoCode = null, WorkflowExpression<string> cityCode = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> Fields = null)
+        {
+            WorkflowExpression.Validate(iataCode, nameof(iataCode), required: false);
+            WorkflowExpression.Validate(icaoCode, nameof(icaoCode), required: false);
+            WorkflowExpression.Validate(cityCode, nameof(cityCode), required: false);
+            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            WorkflowExpression.Validate(Fields, nameof(Fields), required: false);
+            return new DeferredBodyAction<ListAirportsResponse>(() =>
+            {
+                var apiCallPath = "/airports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (iataCode != null)
+                    callPayload.Queries["iata_code"] = ExpressionConverter.Convert(iataCode);
+                if (icaoCode != null)
+                    callPayload.Queries["icao_code"] = ExpressionConverter.Convert(icaoCode);
+                if (cityCode != null)
+                    callPayload.Queries["city_code"] = ExpressionConverter.Convert(cityCode);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                return new ApiConnectionAction<ListAirportsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> code = null, Expression<Func<string>> code3 = null, Expression<Func<string>> continent = null, Expression<Func<string>> Fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListCountries))]
+        public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> code3 = null, [WorkflowExpression] Func<string> continent = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            if (code3 != null)
-                callPayload.Queries["code3"] = ExpressionConverter.Convert(code3);
-            if (continent != null)
-                callPayload.Queries["continent"] = ExpressionConverter.Convert(continent);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
-            return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListCountriesResponse> __BuildListCountries(WorkflowExpression<string> code = null, WorkflowExpression<string> code3 = null, WorkflowExpression<string> continent = null, WorkflowExpression<string> Fields = null)
+        {
+            WorkflowExpression.Validate(code, nameof(code), required: false);
+            WorkflowExpression.Validate(code3, nameof(code3), required: false);
+            WorkflowExpression.Validate(continent, nameof(continent), required: false);
+            WorkflowExpression.Validate(Fields, nameof(Fields), required: false);
+            return new DeferredBodyAction<ListCountriesResponse>(() =>
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (code != null)
+                    callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                if (code3 != null)
+                    callPayload.Queries["code3"] = ExpressionConverter.Convert(code3);
+                if (continent != null)
+                    callPayload.Queries["continent"] = ExpressionConverter.Convert(continent);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            });
         }
     }
 

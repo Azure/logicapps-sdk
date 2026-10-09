@@ -1,526 +1,1043 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MaximizercrmActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFind(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAbEntryFind))]
+        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AbEntryFindSchema> __BuildActionAbEntryFind(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AbEntryFindSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryCreateSchema> ActionAbEntryCreate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAbEntryCreate))]
+        public IBodyWorkflowAction<AbEntryCreateSchema> ActionAbEntryCreate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AbEntryCreateSchema> __BuildActionAbEntryCreate(WorkflowExpression<applyActionToInput> applyActionTo, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(applyActionTo, nameof(applyActionTo), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AbEntryCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AbEntryCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryUpdateSchema> ActionAbEntryUpdate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAbEntryUpdate))]
+        public IBodyWorkflowAction<AbEntryUpdateSchema> ActionAbEntryUpdate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryUpdateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AbEntryUpdateSchema> __BuildActionAbEntryUpdate(WorkflowExpression<applyActionToInput> applyActionTo, WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(applyActionTo, nameof(applyActionTo), required: true);
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AbEntryUpdateSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AbEntryUpdateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFindOrCreate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAbEntryFindOrCreate))]
+        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFindOrCreate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AbEntryFindSchema> __BuildActionAbEntryFindOrCreate(WorkflowExpression<applyActionToInput> applyActionTo, WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(applyActionTo, nameof(applyActionTo), required: true);
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AbEntryFindSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentCreate(Expression<Func<linkWithTypeInput>> linkWithType = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAppointmentCreate))]
+        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentCreate([WorkflowExpression] Func<linkWithTypeInput> linkWithType = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (linkWithType != null)
-                callPayload.Queries["linkWithType"] = ExpressionConverter.Convert(linkWithType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AppointmentCreateSchema> __BuildActionAppointmentCreate(WorkflowExpression<linkWithTypeInput> linkWithType = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(linkWithType, nameof(linkWithType), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AppointmentCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (linkWithType != null)
+                    callPayload.Queries["linkWithType"] = ExpressionConverter.Convert(linkWithType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentUpdateSchema> ActionAppointmentUpdate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAppointmentUpdate))]
+        public IBodyWorkflowAction<AppointmentUpdateSchema> ActionAppointmentUpdate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentUpdateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AppointmentUpdateSchema> __BuildActionAppointmentUpdate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AppointmentUpdateSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AppointmentUpdateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentFind(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAppointmentFind))]
+        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentFind([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AppointmentCreateSchema> __BuildActionAppointmentFind(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AppointmentCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentDelete(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionAppointmentDelete))]
+        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentDelete([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AppointmentCreateSchema> __BuildActionAppointmentDelete(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AppointmentCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/action/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<PACaseView> ActionCaseCreate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionCaseCreate))]
+        public IBodyWorkflowAction<PACaseView> ActionCaseCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Case/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PACaseView>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PACaseView> __BuildActionCaseCreate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PACaseView>(() =>
+            {
+                var apiCallPath = "/api/Case/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PACaseView>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<PACaseView> ActionCaseUpdate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionCaseUpdate))]
+        public IBodyWorkflowAction<PACaseView> ActionCaseUpdate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Case/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PACaseView>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PACaseView> __BuildActionCaseUpdate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PACaseView>(() =>
+            {
+                var apiCallPath = "/api/Case/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PACaseView>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<CaseFindOrCreateSchema> ActionCaseFindOrCreate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionCaseFindOrCreate))]
+        public IBodyWorkflowAction<CaseFindOrCreateSchema> ActionCaseFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Case/api/Case/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CaseFindOrCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CaseFindOrCreateSchema> __BuildActionCaseFindOrCreate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<CaseFindOrCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Case/api/Case/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<CaseFindOrCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<HotlistTaskCreateSchema> ActionHTaskCreate(Expression<Func<parentTypeInput>> parentType, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionHTaskCreate))]
+        public IBodyWorkflowAction<HotlistTaskCreateSchema> ActionHTaskCreate([WorkflowExpression] Func<parentTypeInput> parentType, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/HTask/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<HotlistTaskCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<HotlistTaskCreateSchema> __BuildActionHTaskCreate(WorkflowExpression<parentTypeInput> parentType, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(parentType, nameof(parentType), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<HotlistTaskCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/HTask/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<HotlistTaskCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<InteractionLogCreateSchema> ActionInteractionCreate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionInteractionCreate))]
+        public IBodyWorkflowAction<InteractionLogCreateSchema> ActionInteractionCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Interaction/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<InteractionLogCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InteractionLogCreateSchema> __BuildActionInteractionCreate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<InteractionLogCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Interaction/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<InteractionLogCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadFindSchema> ActionLeadFind(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionLeadFind))]
+        public IBodyWorkflowAction<LeadFindSchema> ActionLeadFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadFindSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadFindSchema> __BuildActionLeadFind(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<LeadFindSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<LeadFindSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadCreateSchema> ActionLeadCreate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionLeadCreate))]
+        public IBodyWorkflowAction<LeadCreateSchema> ActionLeadCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadCreateSchema> __BuildActionLeadCreate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<LeadCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<LeadCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadUpdateSchema> ActionLeadUpdate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionLeadUpdate))]
+        public IBodyWorkflowAction<LeadUpdateSchema> ActionLeadUpdate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadUpdateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadUpdateSchema> __BuildActionLeadUpdate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<LeadUpdateSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<LeadUpdateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadFindOrCreateSchema> ActionLeadFindOrCreate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionLeadFindOrCreate))]
+        public IBodyWorkflowAction<LeadFindOrCreateSchema> ActionLeadFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadFindOrCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadFindOrCreateSchema> __BuildActionLeadFindOrCreate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<LeadFindOrCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<LeadFindOrCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadConvertSchema> ActionLeadConvert(Expression<Func<convertOptionInput>> convertOption = null, Expression<Func<doNotCreateAContactInput>> doNotCreateAContact = null, Expression<Func<doNotCreateAnOpportunityInput>> doNotCreateAnOpportunity = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionLeadConvert))]
+        public IBodyWorkflowAction<LeadConvertSchema> ActionLeadConvert([WorkflowExpression] Func<convertOptionInput> convertOption = null, [WorkflowExpression] Func<doNotCreateAContactInput> doNotCreateAContact = null, [WorkflowExpression] Func<doNotCreateAnOpportunityInput> doNotCreateAnOpportunity = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/convert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["convertOption"] = Convert.ToString("newIndividual");
-            if (convertOption != null)
-                callPayload.Queries["convertOption"] = ExpressionConverter.Convert(convertOption);
-            callPayload.Queries["doNotCreateAContact"] = Convert.ToString("false");
-            if (doNotCreateAContact != null)
-                callPayload.Queries["doNotCreateAContact"] = ExpressionConverter.Convert(doNotCreateAContact);
-            callPayload.Queries["doNotCreateAnOpportunity"] = Convert.ToString("false");
-            if (doNotCreateAnOpportunity != null)
-                callPayload.Queries["doNotCreateAnOpportunity"] = ExpressionConverter.Convert(doNotCreateAnOpportunity);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadConvertSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadConvertSchema> __BuildActionLeadConvert(WorkflowExpression<convertOptionInput> convertOption = null, WorkflowExpression<doNotCreateAContactInput> doNotCreateAContact = null, WorkflowExpression<doNotCreateAnOpportunityInput> doNotCreateAnOpportunity = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(convertOption, nameof(convertOption), required: false);
+            WorkflowExpression.Validate(doNotCreateAContact, nameof(doNotCreateAContact), required: false);
+            WorkflowExpression.Validate(doNotCreateAnOpportunity, nameof(doNotCreateAnOpportunity), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<LeadConvertSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/action/convert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["convertOption"] = Convert.ToString("newIndividual");
+                if (convertOption != null)
+                    callPayload.Queries["convertOption"] = ExpressionConverter.Convert(convertOption);
+                callPayload.Queries["doNotCreateAContact"] = Convert.ToString("false");
+                if (doNotCreateAContact != null)
+                    callPayload.Queries["doNotCreateAContact"] = ExpressionConverter.Convert(doNotCreateAContact);
+                callPayload.Queries["doNotCreateAnOpportunity"] = Convert.ToString("false");
+                if (doNotCreateAnOpportunity != null)
+                    callPayload.Queries["doNotCreateAnOpportunity"] = ExpressionConverter.Convert(doNotCreateAnOpportunity);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<LeadConvertSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<NoteCreateSchema> ActionNoteCreate(Expression<Func<parentTypeInput>> parentType, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionNoteCreate))]
+        public IBodyWorkflowAction<NoteCreateSchema> ActionNoteCreate([WorkflowExpression] Func<parentTypeInput> parentType, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Note/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<NoteCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NoteCreateSchema> __BuildActionNoteCreate(WorkflowExpression<parentTypeInput> parentType, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(parentType, nameof(parentType), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<NoteCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Note/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<NoteCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityFindSchema> ActionOpportunityFind(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionOpportunityFind))]
+        public IBodyWorkflowAction<OpportunityFindSchema> ActionOpportunityFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityFindSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpportunityFindSchema> __BuildActionOpportunityFind(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<OpportunityFindSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<OpportunityFindSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityCreateSchema> ActionOpportunityCreate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionOpportunityCreate))]
+        public IBodyWorkflowAction<OpportunityCreateSchema> ActionOpportunityCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpportunityCreateSchema> __BuildActionOpportunityCreate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<OpportunityCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<OpportunityCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityFindOrCreateSchema> ActionOpportunityFindOrCreate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionOpportunityFindOrCreate))]
+        public IBodyWorkflowAction<OpportunityFindOrCreateSchema> ActionOpportunityFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityFindOrCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpportunityFindOrCreateSchema> __BuildActionOpportunityFindOrCreate(WorkflowExpression<string> udf1 = null, WorkflowExpression<string> udf2 = null, WorkflowExpression<string> udf3 = null, WorkflowExpression<string> udf4 = null, WorkflowExpression<string> udf5 = null, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(udf1, nameof(udf1), required: false);
+            WorkflowExpression.Validate(udf2, nameof(udf2), required: false);
+            WorkflowExpression.Validate(udf3, nameof(udf3), required: false);
+            WorkflowExpression.Validate(udf4, nameof(udf4), required: false);
+            WorkflowExpression.Validate(udf5, nameof(udf5), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<OpportunityFindOrCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<OpportunityFindOrCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityUpdateSchema> ActionOpportunityUpdate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionOpportunityUpdate))]
+        public IBodyWorkflowAction<OpportunityUpdateSchema> ActionOpportunityUpdate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityUpdateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpportunityUpdateSchema> __BuildActionOpportunityUpdate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<OpportunityUpdateSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<OpportunityUpdateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<PersonalTaskCreateSchema> ActionPTaskCreate(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionPTaskCreate))]
+        public IBodyWorkflowAction<PersonalTaskCreateSchema> ActionPTaskCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/PTask/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PersonalTaskCreateSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PersonalTaskCreateSchema> __BuildActionPTaskCreate(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PersonalTaskCreateSchema>(() =>
+            {
+                var apiCallPath = "/api/PTask/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PersonalTaskCreateSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<UserFindSchema> ActionUserFind(Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionUserFind))]
+        public IBodyWorkflowAction<UserFindSchema> ActionUserFind([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/User/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<UserFindSchema>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserFindSchema> __BuildActionUserFind(WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<UserFindSchema>(() =>
+            {
+                var apiCallPath = "/api/User/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<UserFindSchema>(callPayload);
+            });
         }
     }
 
     public class MaximizercrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerAbEntryUpdated))]
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/AbEntry/trigger/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/AbEntry/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<AbEntryTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/trigger/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerAbEntryCreated))]
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/AbEntry/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Appointment/trigger/Updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<AbEntryTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerAbEntryDateNotification))]
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Appointment/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Appointment/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<AbEntryTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/AbEntry/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerAppointmentUpdated))]
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Case/api/Case/trigger/Updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Case/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<AppointmentTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/trigger/Updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerAppointmentCreated))]
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Case/api/Case/trigger/Created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/HotlistTask/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<AppointmentTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerAppointmentDateNotification))]
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Lead/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Lead/trigger/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<AppointmentTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Appointment/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerCaseUpdated))]
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Lead/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<WebhookCreated>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<CaseTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Case/api/Case/trigger/Updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerCaseDateNotification))]
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/trigger/Created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/trigger/Updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<CaseTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Case/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerCaseCreated))]
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<CaseTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Case/api/Case/trigger/Created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerHTaskCreated))]
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> __BuildTriggerHTaskCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<HotlistTaskTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/HotlistTask/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerLeadDateNotification))]
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<LeadTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerLeadUpdated))]
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<LeadTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/trigger/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerLeadCreated))]
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<LeadTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Lead/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWebhookOppStageChanged))]
+        public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookCreated> __BuildWebhookOppStageChanged(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<WebhookCreated>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<WebhookCreated>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerOppCreated))]
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOppCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<OpportunityTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/trigger/Created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerOppUpdated))]
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOppUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<OpportunityTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/trigger/Updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerOpportunityDateNotification))]
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOpportunityDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyTrigger<OpportunityTriggerSchema>(() =>
+            {
+                var apiCallPath = "/api/Opportunity/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -725,6 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public PaAbEntryView[] AbEntries { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum applyActionToInput
     {
         Individual,
@@ -1284,6 +1802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string CaseProductItemValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum linkWithTypeInput
     {
         Case,
@@ -1581,6 +2100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string[] Category { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum parentTypeInput
     {
         AbEntry,
@@ -3014,6 +3534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public JToken UserDefinedFields { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum convertOptionInput
     {
         [EnumMember(Value = "newCompany")]
@@ -3028,6 +3549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         ChooseExistingContact
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum doNotCreateAContactInput
     {
         [EnumMember(Value = "true")]
@@ -3036,6 +3558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum doNotCreateAnOpportunityInput
     {
         [EnumMember(Value = "true")]

@@ -4,23 +4,35 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Usb4sapActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usb4sap")]
-        public IWorkflowAction GetCallExtractMetadata(Expression<Func<string>> filter, Expression<Func<string>> format = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCallExtractMetadata))]
+        public IWorkflowAction GetCallExtractMetadata([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> format = null)
         {
-            var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (format != null)
-                callPayload.Queries["$format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetCallExtractMetadata(WorkflowExpression<string> filter, WorkflowExpression<string> format = null)
+        {
+            WorkflowExpression.Validate(filter, nameof(filter), required: true);
+            WorkflowExpression.Validate(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (format != null)
+                    callPayload.Queries["$format"] = ExpressionConverter.Convert(format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

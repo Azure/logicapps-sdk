@@ -4,197 +4,286 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SignhostActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction> Getdetails(Expression<Func<string>> transactionId)
+        [WorkflowExpressionFactory(nameof(__BuildGetdetails))]
+        public IBodyWorkflowAction<Transaction> Getdetails([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Transaction>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Transaction> __BuildGetdetails(WorkflowExpression<string> transactionId)
+        {
+            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            return new DeferredBodyAction<Transaction>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Transaction>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel> Delete(Expression<Func<string>> transactionId, Expression<Func<bool>> bodysendNotifications = null, Expression<Func<string>> bodyreason = null)
+        [WorkflowExpressionFactory(nameof(__BuildDelete))]
+        public IBodyWorkflowAction<ErrorModel> Delete([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<bool> bodysendNotifications = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysendNotifications != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ErrorModel> __BuildDelete(WorkflowExpression<string> transactionId, WorkflowExpression<bool> bodysendNotifications = null, WorkflowExpression<string> bodyreason = null)
+        {
+            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            WorkflowExpression.Validate(bodysendNotifications, nameof(bodysendNotifications), required: false);
+            WorkflowExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            return new DeferredBodyAction<ErrorModel>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodysendNotifications != null)
                 {
-                    body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                    if (bodysendNotifications != null)
+                    {
+                        body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["SendNotifications"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["SendNotifications"] = false;
-                bodypropCount++;
-            }
+                if (bodyreason != null)
+                {
+                    body["Reason"] = ExpressionConverter.ConvertO(bodyreason);
+                    bodypropCount++;
+                }
 
-            if (bodyreason != null)
-            {
-                body["Reason"] = ExpressionConverter.ConvertO(bodyreason);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ErrorModel>(callPayload);
+                return new ApiConnectionAction<ErrorModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<string> Downloadpdf(Expression<Func<string>> transactionId, Expression<Func<string>> fileId)
+        [WorkflowExpressionFactory(nameof(__BuildDownloadpdf))]
+        public IBodyWorkflowAction<string> Downloadpdf([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDownloadpdf(WorkflowExpression<string> transactionId, WorkflowExpression<string> fileId)
+        {
+            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<string> Downloadreceipt(Expression<Func<string>> transactionId)
+        [WorkflowExpressionFactory(nameof(__BuildDownloadreceipt))]
+        public IBodyWorkflowAction<string> Downloadreceipt([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDownloadreceipt(WorkflowExpression<string> transactionId)
+        {
+            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction> Create(Expression<Func<transactionlanguageInput>> transactionlanguage = null, Expression<Func<bool>> transactionseal = null, Expression<Func<transactionsignersInputItem[]>> transactionsigners = null, Expression<Func<transactionreceiversInputItem[]>> transactionreceivers = null, Expression<Func<string>> transactionreference = null, Expression<Func<string>> transactionpostbackUrl = null, Expression<Func<int>> transactionsignRequestMode = null, Expression<Func<int>> transactiondaysToExpire = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreate))]
+        public IBodyWorkflowAction<Transaction> Create([WorkflowExpression] Func<transactionlanguageInput> transactionlanguage = null, [WorkflowExpression] Func<bool> transactionseal = null, [WorkflowExpression] Func<transactionsignersInputItem[]> transactionsigners = null, [WorkflowExpression] Func<transactionreceiversInputItem[]> transactionreceivers = null, [WorkflowExpression] Func<string> transactionreference = null, [WorkflowExpression] Func<string> transactionpostbackUrl = null, [WorkflowExpression] Func<int> transactionsignRequestMode = null, [WorkflowExpression] Func<int> transactiondaysToExpire = null)
         {
-            var apiCallPath = "/api/transaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var transaction = new JObject();
-            var transactionpropCount = 0;
-            var filesObject = new JObject();
-            var filesObjectpropCount = 0;
-            if (filesObjectpropCount > 0)
-            {
-                transaction["Files"] = filesObject;
-                transactionpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (transactionlanguage != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Transaction> __BuildCreate(WorkflowExpression<transactionlanguageInput> transactionlanguage = null, WorkflowExpression<bool> transactionseal = null, WorkflowExpression<transactionsignersInputItem[]> transactionsigners = null, WorkflowExpression<transactionreceiversInputItem[]> transactionreceivers = null, WorkflowExpression<string> transactionreference = null, WorkflowExpression<string> transactionpostbackUrl = null, WorkflowExpression<int> transactionsignRequestMode = null, WorkflowExpression<int> transactiondaysToExpire = null)
+        {
+            WorkflowExpression.Validate(transactionlanguage, nameof(transactionlanguage), required: false);
+            WorkflowExpression.Validate(transactionseal, nameof(transactionseal), required: false);
+            WorkflowExpression.Validate(transactionsigners, nameof(transactionsigners), required: false);
+            WorkflowExpression.Validate(transactionreceivers, nameof(transactionreceivers), required: false);
+            WorkflowExpression.Validate(transactionreference, nameof(transactionreference), required: false);
+            WorkflowExpression.Validate(transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
+            WorkflowExpression.Validate(transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
+            WorkflowExpression.Validate(transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
+            return new DeferredBodyAction<Transaction>(() =>
             {
-                transaction["Language"] = ExpressionConverter.ConvertO(transactionlanguage);
-                transactionpropCount++;
-            }
+                var apiCallPath = "/api/transaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var transaction = new JObject();
+                var transactionpropCount = 0;
+                var filesObject = new JObject();
+                var filesObjectpropCount = 0;
+                if (filesObjectpropCount > 0)
+                {
+                    transaction["Files"] = filesObject;
+                    transactionpropCount++;
+                }
 
-            if (transactionseal != null)
-            {
+                if (transactionlanguage != null)
+                {
+                    transaction["Language"] = ExpressionConverter.ConvertO(transactionlanguage);
+                    transactionpropCount++;
+                }
+
                 if (transactionseal != null)
                 {
-                    transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                    if (transactionseal != null)
+                    {
+                        transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["Seal"] = false;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["Seal"] = false;
-                transactionpropCount++;
-            }
+                if (transactionsigners != null)
+                {
+                    transaction["Signers"] = ExpressionConverter.ConvertO(transactionsigners);
+                    transactionpropCount++;
+                }
 
-            if (transactionsigners != null)
-            {
-                transaction["Signers"] = ExpressionConverter.ConvertO(transactionsigners);
-                transactionpropCount++;
-            }
+                if (transactionreceivers != null)
+                {
+                    transaction["Receivers"] = ExpressionConverter.ConvertO(transactionreceivers);
+                    transactionpropCount++;
+                }
 
-            if (transactionreceivers != null)
-            {
-                transaction["Receivers"] = ExpressionConverter.ConvertO(transactionreceivers);
-                transactionpropCount++;
-            }
+                if (transactionreference != null)
+                {
+                    transaction["Reference"] = ExpressionConverter.ConvertO(transactionreference);
+                    transactionpropCount++;
+                }
 
-            if (transactionreference != null)
-            {
-                transaction["Reference"] = ExpressionConverter.ConvertO(transactionreference);
-                transactionpropCount++;
-            }
+                if (transactionpostbackUrl != null)
+                {
+                    transaction["PostbackUrl"] = ExpressionConverter.ConvertO(transactionpostbackUrl);
+                    transactionpropCount++;
+                }
 
-            if (transactionpostbackUrl != null)
-            {
-                transaction["PostbackUrl"] = ExpressionConverter.ConvertO(transactionpostbackUrl);
-                transactionpropCount++;
-            }
-
-            if (transactionsignRequestMode != null)
-            {
                 if (transactionsignRequestMode != null)
                 {
-                    transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                    if (transactionsignRequestMode != null)
+                    {
+                        transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["SignRequestMode"] = 2;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["SignRequestMode"] = 2;
-                transactionpropCount++;
-            }
-
-            if (transactiondaysToExpire != null)
-            {
                 if (transactiondaysToExpire != null)
                 {
-                    transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                    if (transactiondaysToExpire != null)
+                    {
+                        transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["DaysToExpire"] = 60;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["DaysToExpire"] = 60;
-                transactionpropCount++;
-            }
+                if (transactionpropCount > 0)
+                {
+                    callPayload.Body = transaction;
+                }
 
-            if (transactionpropCount > 0)
-            {
-                callPayload.Body = transaction;
-            }
-
-            return new ApiConnectionAction<Transaction>(callPayload);
+                return new ApiConnectionAction<Transaction>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IWorkflowAction Addfile(Expression<Func<string>> transactionId, Expression<Func<string>> fileId, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddfile))]
+        public IWorkflowAction Addfile([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddfile(WorkflowExpression<string> transactionId, WorkflowExpression<string> fileId, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel> Start(Expression<Func<string>> transactionId)
+        [WorkflowExpressionFactory(nameof(__BuildStart))]
+        public IBodyWorkflowAction<ErrorModel> Start([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ErrorModel>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ErrorModel> __BuildStart(WorkflowExpression<string> transactionId)
+        {
+            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            return new DeferredBodyAction<ErrorModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ErrorModel>(callPayload);
+            });
         }
     }
 
@@ -233,6 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string Link { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionLanguageType
     {
         [EnumMember(Value = "de-DE")]
@@ -281,6 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public double Bsn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuthenticationTypeType
     {
         DigiD,
@@ -292,6 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public VerificationTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VerificationTypeType
     {
         Consent,
@@ -316,6 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         ZealiDQualified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionSignersTypeItemLanguageType
     {
         [EnumMember(Value = "de-DE")]
@@ -342,6 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string CreatedDateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionSignersTypeItemActivitiesTypeItemCodeType
     {
         [EnumMember(Value = "101")]
@@ -385,6 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public JToken Context { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionStatusType
     {
         [EnumMember(Value = "5")]
@@ -410,6 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionlanguageInput
     {
         [EnumMember(Value = "de-DE")]
@@ -451,6 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public transactionsignersInputItemActivitiesTypeItem[] Activities { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionsignersInputItemLanguageType
     {
         [EnumMember(Value = "de-DE")]
@@ -477,6 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string CreatedDateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionsignersInputItemActivitiesTypeItemCodeType
     {
         [EnumMember(Value = "101")]

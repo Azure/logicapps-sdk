@@ -4,69 +4,110 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CdccontentservicesipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaSearchResponse> MediaSearch(Expression<Func<string>> q = null, Expression<Func<string>> mediatypes = null, Expression<Func<string>> name = null, Expression<Func<string>> topic = null, Expression<Func<int>> topicids = null, Expression<Func<string>> audience = null, Expression<Func<string>> languagename = null, Expression<Func<string>> languageisocode = null, Expression<Func<string>> sourcename = null, Expression<Func<string>> sourceacronym = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
+        [WorkflowExpressionFactory(nameof(__BuildMediaSearch))]
+        public IBodyWorkflowAction<MediaSearchResponse> MediaSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> mediatypes = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> topic = null, [WorkflowExpression] Func<int> topicids = null, [WorkflowExpression] Func<string> audience = null, [WorkflowExpression] Func<string> languagename = null, [WorkflowExpression] Func<string> languageisocode = null, [WorkflowExpression] Func<string> sourcename = null, [WorkflowExpression] Func<string> sourceacronym = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> pagenum = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/resources/media";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (mediatypes != null)
-                callPayload.Queries["mediatypes"] = ExpressionConverter.Convert(mediatypes);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (topic != null)
-                callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
-            if (topicids != null)
-                callPayload.Queries["topicids"] = ExpressionConverter.Convert(topicids);
-            if (audience != null)
-                callPayload.Queries["audience"] = ExpressionConverter.Convert(audience);
-            if (languagename != null)
-                callPayload.Queries["languagename"] = ExpressionConverter.Convert(languagename);
-            if (languageisocode != null)
-                callPayload.Queries["languageisocode"] = ExpressionConverter.Convert(languageisocode);
-            if (sourcename != null)
-                callPayload.Queries["sourcename"] = ExpressionConverter.Convert(sourcename);
-            if (sourceacronym != null)
-                callPayload.Queries["sourceacronym"] = ExpressionConverter.Convert(sourceacronym);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
-            if (pagenum != null)
-                callPayload.Queries["pagenum"] = ExpressionConverter.Convert(pagenum);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<MediaSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MediaSearchResponse> __BuildMediaSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> mediatypes = null, WorkflowExpression<string> name = null, WorkflowExpression<string> topic = null, WorkflowExpression<int> topicids = null, WorkflowExpression<string> audience = null, WorkflowExpression<string> languagename = null, WorkflowExpression<string> languageisocode = null, WorkflowExpression<string> sourcename = null, WorkflowExpression<string> sourceacronym = null, WorkflowExpression<string> sort = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<int> max = null, WorkflowExpression<int> pagenum = null, WorkflowExpression<int> offset = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(mediatypes, nameof(mediatypes), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(topic, nameof(topic), required: false);
+            WorkflowExpression.Validate(topicids, nameof(topicids), required: false);
+            WorkflowExpression.Validate(audience, nameof(audience), required: false);
+            WorkflowExpression.Validate(languagename, nameof(languagename), required: false);
+            WorkflowExpression.Validate(languageisocode, nameof(languageisocode), required: false);
+            WorkflowExpression.Validate(sourcename, nameof(sourcename), required: false);
+            WorkflowExpression.Validate(sourceacronym, nameof(sourceacronym), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            WorkflowExpression.Validate(order, nameof(order), required: false);
+            WorkflowExpression.Validate(max, nameof(max), required: false);
+            WorkflowExpression.Validate(pagenum, nameof(pagenum), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<MediaSearchResponse>(() =>
+            {
+                var apiCallPath = "/resources/media";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (mediatypes != null)
+                    callPayload.Queries["mediatypes"] = ExpressionConverter.Convert(mediatypes);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (topic != null)
+                    callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
+                if (topicids != null)
+                    callPayload.Queries["topicids"] = ExpressionConverter.Convert(topicids);
+                if (audience != null)
+                    callPayload.Queries["audience"] = ExpressionConverter.Convert(audience);
+                if (languagename != null)
+                    callPayload.Queries["languagename"] = ExpressionConverter.Convert(languagename);
+                if (languageisocode != null)
+                    callPayload.Queries["languageisocode"] = ExpressionConverter.Convert(languageisocode);
+                if (sourcename != null)
+                    callPayload.Queries["sourcename"] = ExpressionConverter.Convert(sourcename);
+                if (sourceacronym != null)
+                    callPayload.Queries["sourceacronym"] = ExpressionConverter.Convert(sourceacronym);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                if (max != null)
+                    callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                if (pagenum != null)
+                    callPayload.Queries["pagenum"] = ExpressionConverter.Convert(pagenum);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                return new ApiConnectionAction<MediaSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaGetResponse> MediaGet(Expression<Func<string>> mediaId, Expression<Func<string>> sort = null, Expression<Func<string>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
+        [WorkflowExpressionFactory(nameof(__BuildMediaGet))]
+        public IBodyWorkflowAction<MediaGetResponse> MediaGet([WorkflowExpression] Func<string> mediaId, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> pagenum = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = String.Format("/resources/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
-            if (pagenum != null)
-                callPayload.Queries["pagenum"] = ExpressionConverter.Convert(pagenum);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<MediaGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MediaGetResponse> __BuildMediaGet(WorkflowExpression<string> mediaId, WorkflowExpression<string> sort = null, WorkflowExpression<string> order = null, WorkflowExpression<int> max = null, WorkflowExpression<int> pagenum = null, WorkflowExpression<int> offset = null)
+        {
+            WorkflowExpression.Validate(mediaId, nameof(mediaId), required: true);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            WorkflowExpression.Validate(order, nameof(order), required: false);
+            WorkflowExpression.Validate(max, nameof(max), required: false);
+            WorkflowExpression.Validate(pagenum, nameof(pagenum), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<MediaGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                if (max != null)
+                    callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                if (pagenum != null)
+                    callPayload.Queries["pagenum"] = ExpressionConverter.Convert(pagenum);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                return new ApiConnectionAction<MediaGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
@@ -106,30 +147,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tAGID)
+        [WorkflowExpressionFactory(nameof(__BuildTagGet))]
+        public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tAGID)
         {
-            var apiCallPath = String.Format("/resources/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagGetResponse> __BuildTagGet(WorkflowExpression<string> tAGID)
+        {
+            WorkflowExpression.Validate(tAGID, nameof(tAGID), required: true);
+            return new DeferredBodyAction<TagGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaTagResponse> MediaTag(Expression<Func<string>> tAGID)
+        [WorkflowExpressionFactory(nameof(__BuildMediaTag))]
+        public IBodyWorkflowAction<MediaTagResponse> MediaTag([WorkflowExpression] Func<string> tAGID)
         {
-            var apiCallPath = String.Format("/resources/tags/{0}/media", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MediaTagResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MediaTagResponse> __BuildMediaTag(WorkflowExpression<string> tAGID)
+        {
+            WorkflowExpression.Validate(tAGID, nameof(tAGID), required: true);
+            return new DeferredBodyAction<MediaTagResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MediaTagResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagRelatedResponse> TagRelated(Expression<Func<string>> tAGID)
+        [WorkflowExpressionFactory(nameof(__BuildTagRelated))]
+        public IBodyWorkflowAction<TagRelatedResponse> TagRelated([WorkflowExpression] Func<string> tAGID)
         {
-            var apiCallPath = String.Format("/resources/tags/{0}/related", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagRelatedResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagRelatedResponse> __BuildTagRelated(WorkflowExpression<string> tAGID)
+        {
+            WorkflowExpression.Validate(tAGID, nameof(tAGID), required: true);
+            return new DeferredBodyAction<TagRelatedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagRelatedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
@@ -485,6 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         public string TopicContextTitle { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         ASC,

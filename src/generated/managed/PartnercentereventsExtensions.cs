@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -22,73 +21,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IWorkflowAction EventRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventRegistration))]
+        public IWorkflowAction EventRegistration([WorkflowExpression] Func<string> bodysignatureTokenToMsSignatureHeader = null, [WorkflowExpression] Func<string[]> bodywebhookEvents = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
         {
-            var apiCallPath = "/webhooks/v1/registration";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysignatureTokenToMsSignatureHeader != null)
-            {
-                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodywebhookEvents != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildEventRegistration(WorkflowExpression<string> bodysignatureTokenToMsSignatureHeader = null, WorkflowExpression<string[]> bodywebhookEvents = null, WorkflowExpression<string> bodywebhookUrl = null)
+        {
+            WorkflowExpression.Validate(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
+            WorkflowExpression.Validate(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
+            WorkflowExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
-                bodypropCount++;
-            }
+                var apiCallPath = "/webhooks/v1/registration";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysignatureTokenToMsSignatureHeader != null)
+                {
+                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
+                    bodypropCount++;
+                }
 
-            if (bodywebhookUrl != null)
-            {
-                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
-                bodypropCount++;
-            }
+                if (bodywebhookEvents != null)
+                {
+                    body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodywebhookUrl != null)
+                {
+                    body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateRegistration))]
+        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration([WorkflowExpression] Func<string> bodysignatureTokenToMsSignatureHeader = null, [WorkflowExpression] Func<string[]> bodywebhookEvents = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
         {
-            var apiCallPath = "/webhooks/v1/registration";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysignatureTokenToMsSignatureHeader != null)
-            {
-                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodywebhookEvents != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateRegistrationResponse> __BuildUpdateRegistration(WorkflowExpression<string> bodysignatureTokenToMsSignatureHeader = null, WorkflowExpression<string[]> bodywebhookEvents = null, WorkflowExpression<string> bodywebhookUrl = null)
+        {
+            WorkflowExpression.Validate(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
+            WorkflowExpression.Validate(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
+            WorkflowExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            return new DeferredBodyAction<UpdateRegistrationResponse>(() =>
             {
-                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
-                bodypropCount++;
-            }
+                var apiCallPath = "/webhooks/v1/registration";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysignatureTokenToMsSignatureHeader != null)
+                {
+                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
+                    bodypropCount++;
+                }
 
-            if (bodywebhookUrl != null)
-            {
-                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
-                bodypropCount++;
-            }
+                if (bodywebhookEvents != null)
+                {
+                    body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodywebhookUrl != null)
+                {
+                    body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateRegistrationResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateRegistrationResponse>(callPayload);
+            });
         }
     }
 

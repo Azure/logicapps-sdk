@@ -4,172 +4,268 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LsegfinancialanalytiActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> bodyname, Expression<Func<int>> bodypriority = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateJob))]
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodypriority = null)
         {
-            var apiCallPath = "/power-platform/v1/create-job";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypriority != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateJobResponse> __BuildCreateJob(WorkflowExpression<string> bodyname, WorkflowExpression<int> bodypriority = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            return new DeferredBodyAction<CreateJobResponse>(() =>
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                var apiCallPath = "/power-platform/v1/create-job";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateJobResponse>(callPayload);
+                return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<JobStatusResponse> JobStatus(Expression<Func<string>> jobName)
+        [WorkflowExpressionFactory(nameof(__BuildJobStatus))]
+        public IBodyWorkflowAction<JobStatusResponse> JobStatus([WorkflowExpression] Func<string> jobName)
         {
-            var apiCallPath = "/power-platform/v1/job-status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            return new ApiConnectionAction<JobStatusResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JobStatusResponse> __BuildJobStatus(WorkflowExpression<string> jobName)
+        {
+            WorkflowExpression.Validate(jobName, nameof(jobName), required: true);
+            return new DeferredBodyAction<JobStatusResponse>(() =>
+            {
+                var apiCallPath = "/power-platform/v1/job-status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+                return new ApiConnectionAction<JobStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<bool>> bodyretrieveOas = null, Expression<Func<bodyoptionModelInput>> bodyoptionModel = null)
+        [WorkflowExpressionFactory(nameof(__BuildBulkPyAnalytics))]
+        public IWorkflowAction BulkPyAnalytics([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId, [WorkflowExpression] Func<bodycurveTypeInput> bodycurveType, [WorkflowExpression] Func<string> bodypricingDate, [WorkflowExpression] Func<string> bodysettlementType, [WorkflowExpression] Func<bodyprepayTypeInput> bodyprepayType, [WorkflowExpression] Func<bool> bodycalculatePartialDurations4pt, [WorkflowExpression] Func<bool> bodycalculatePartialDurations7pt, [WorkflowExpression] Func<bool> bodyretrieveModelProjections, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<int> bodyprepayRate = null, [WorkflowExpression] Func<bool> bodyretrieveOas = null, [WorkflowExpression] Func<bodyoptionModelInput> bodyoptionModel = null)
         {
-            var apiCallPath = "/power-platform/v1/bulk-py-analytics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["requestId"] = ExpressionConverter.ConvertO(bodyrequestId);
-            bodypropCount++;
-            body["curveType"] = ExpressionConverter.ConvertO(bodycurveType);
-            if (bodycurrency != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildBulkPyAnalytics(WorkflowExpression<string> jobName, WorkflowExpression<int> batchSize, WorkflowExpression<string> bodyrequestId, WorkflowExpression<bodycurveTypeInput> bodycurveType, WorkflowExpression<string> bodypricingDate, WorkflowExpression<string> bodysettlementType, WorkflowExpression<bodyprepayTypeInput> bodyprepayType, WorkflowExpression<bool> bodycalculatePartialDurations4pt, WorkflowExpression<bool> bodycalculatePartialDurations7pt, WorkflowExpression<bool> bodyretrieveModelProjections, WorkflowExpression<bodycurrencyInput> bodycurrency = null, WorkflowExpression<int> bodyprepayRate = null, WorkflowExpression<bool> bodyretrieveOas = null, WorkflowExpression<bodyoptionModelInput> bodyoptionModel = null)
+        {
+            WorkflowExpression.Validate(jobName, nameof(jobName), required: true);
+            WorkflowExpression.Validate(batchSize, nameof(batchSize), required: true);
+            WorkflowExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
+            WorkflowExpression.Validate(bodycurveType, nameof(bodycurveType), required: true);
+            WorkflowExpression.Validate(bodypricingDate, nameof(bodypricingDate), required: true);
+            WorkflowExpression.Validate(bodysettlementType, nameof(bodysettlementType), required: true);
+            WorkflowExpression.Validate(bodyprepayType, nameof(bodyprepayType), required: true);
+            WorkflowExpression.Validate(bodycalculatePartialDurations4pt, nameof(bodycalculatePartialDurations4pt), required: true);
+            WorkflowExpression.Validate(bodycalculatePartialDurations7pt, nameof(bodycalculatePartialDurations7pt), required: true);
+            WorkflowExpression.Validate(bodyretrieveModelProjections, nameof(bodyretrieveModelProjections), required: true);
+            WorkflowExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
+            WorkflowExpression.Validate(bodyprepayRate, nameof(bodyprepayRate), required: false);
+            WorkflowExpression.Validate(bodyretrieveOas, nameof(bodyretrieveOas), required: false);
+            WorkflowExpression.Validate(bodyoptionModel, nameof(bodyoptionModel), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                var apiCallPath = "/power-platform/v1/bulk-py-analytics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+                callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["pricingDate"] = ExpressionConverter.ConvertO(bodypricingDate);
-            bodypropCount++;
-            body["settlementType"] = ExpressionConverter.ConvertO(bodysettlementType);
-            bodypropCount++;
-            body["prepayType"] = ExpressionConverter.ConvertO(bodyprepayType);
-            if (bodyprepayRate != null)
-            {
-                body["prepayRate"] = ExpressionConverter.ConvertO(bodyprepayRate);
+                body["requestId"] = ExpressionConverter.ConvertO(bodyrequestId);
                 bodypropCount++;
-            }
+                body["curveType"] = ExpressionConverter.ConvertO(bodycurveType);
+                if (bodycurrency != null)
+                {
+                    body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["calculatePartialDurations4pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations4pt);
-            bodypropCount++;
-            body["calculatePartialDurations7pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations7pt);
-            bodypropCount++;
-            body["retrieveModelProjections"] = ExpressionConverter.ConvertO(bodyretrieveModelProjections);
-            if (bodyretrieveOas != null)
-            {
-                body["retrieveOas"] = ExpressionConverter.ConvertO(bodyretrieveOas);
                 bodypropCount++;
-            }
-
-            if (bodyoptionModel != null)
-            {
-                body["optionModel"] = ExpressionConverter.ConvertO(bodyoptionModel);
+                body["pricingDate"] = ExpressionConverter.ConvertO(bodypricingDate);
                 bodypropCount++;
-            }
+                body["settlementType"] = ExpressionConverter.ConvertO(bodysettlementType);
+                bodypropCount++;
+                body["prepayType"] = ExpressionConverter.ConvertO(bodyprepayType);
+                if (bodyprepayRate != null)
+                {
+                    body["prepayRate"] = ExpressionConverter.ConvertO(bodyprepayRate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["calculatePartialDurations4pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations4pt);
+                bodypropCount++;
+                body["calculatePartialDurations7pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations7pt);
+                bodypropCount++;
+                body["retrieveModelProjections"] = ExpressionConverter.ConvertO(bodyretrieveModelProjections);
+                if (bodyretrieveOas != null)
+                {
+                    body["retrieveOas"] = ExpressionConverter.ConvertO(bodyretrieveOas);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodyoptionModel != null)
+                {
+                    body["optionModel"] = ExpressionConverter.ConvertO(bodyoptionModel);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId)
+        [WorkflowExpressionFactory(nameof(__BuildBulkIndicData))]
+        public IWorkflowAction BulkIndicData([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId)
         {
-            var apiCallPath = "/power-platform/v1/bulk-indic-data";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["requestId"] = ExpressionConverter.ConvertO(bodyrequestId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildBulkIndicData(WorkflowExpression<string> jobName, WorkflowExpression<int> batchSize, WorkflowExpression<string> bodyrequestId)
+        {
+            WorkflowExpression.Validate(jobName, nameof(jobName), required: true);
+            WorkflowExpression.Validate(batchSize, nameof(batchSize), required: true);
+            WorkflowExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/power-platform/v1/bulk-indic-data";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+                callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["requestId"] = ExpressionConverter.ConvertO(bodyrequestId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<string>> bodysecuritiesList)
+        [WorkflowExpressionFactory(nameof(__BuildUploadSecuritiesList))]
+        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> UploadSecuritiesList([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<string> bodysecuritiesList)
         {
-            var apiCallPath = "/power-platform/v1/upload-securities-list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["securitiesList"] = ExpressionConverter.ConvertO(bodysecuritiesList);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<UploadSecuritiesListDefaultResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> __BuildUploadSecuritiesList(WorkflowExpression<string> jobName, WorkflowExpression<string> bodysecuritiesList)
+        {
+            WorkflowExpression.Validate(jobName, nameof(jobName), required: true);
+            WorkflowExpression.Validate(bodysecuritiesList, nameof(bodysecuritiesList), required: true);
+            return new DeferredBodyAction<UploadSecuritiesListDefaultResponse>(() =>
+            {
+                var apiCallPath = "/power-platform/v1/upload-securities-list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["securitiesList"] = ExpressionConverter.ConvertO(bodysecuritiesList);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UploadSecuritiesListDefaultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction CloseJob(Expression<Func<string>> jobName)
+        [WorkflowExpressionFactory(nameof(__BuildCloseJob))]
+        public IWorkflowAction CloseJob([WorkflowExpression] Func<string> jobName)
         {
-            var apiCallPath = "/power-platform/v1/close-job";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCloseJob(WorkflowExpression<string> jobName)
+        {
+            WorkflowExpression.Validate(jobName, nameof(jobName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/power-platform/v1/close-job";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<RetrieveBulkResultsResponse> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<outputFormatInput>> outputFormat, Expression<Func<string>> bodypayload)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveBulkResults))]
+        public IBodyWorkflowAction<RetrieveBulkResultsResponse> RetrieveBulkResults([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<outputFormatInput> outputFormat, [WorkflowExpression] Func<string> bodypayload)
         {
-            var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            callPayload.Queries["Output Format"] = ExpressionConverter.Convert(outputFormat);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["payload"] = ExpressionConverter.ConvertO(bodypayload);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<RetrieveBulkResultsResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveBulkResultsResponse> __BuildRetrieveBulkResults(WorkflowExpression<string> jobName, WorkflowExpression<outputFormatInput> outputFormat, WorkflowExpression<string> bodypayload)
+        {
+            WorkflowExpression.Validate(jobName, nameof(jobName), required: true);
+            WorkflowExpression.Validate(outputFormat, nameof(outputFormat), required: true);
+            WorkflowExpression.Validate(bodypayload, nameof(bodypayload), required: true);
+            return new DeferredBodyAction<RetrieveBulkResultsResponse>(() =>
+            {
+                var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+                callPayload.Queries["Output Format"] = ExpressionConverter.Convert(outputFormat);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["payload"] = ExpressionConverter.ConvertO(bodypayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RetrieveBulkResultsResponse>(callPayload);
+            });
         }
     }
 
@@ -195,6 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool OnHold { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycurveTypeInput
     {
         [EnumMember(Value = "On The Run Curve")]
@@ -207,6 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         SwapRFRCurve
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyprepayTypeInput
     {
         Default,
@@ -216,12 +314,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         PreExpModel
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycurrencyInput
     {
         USD,
         EUR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionModelInput
     {
         OAS,
@@ -241,6 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string Results { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum outputFormatInput
     {
         [EnumMember(Value = "csv")]

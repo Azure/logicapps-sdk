@@ -4,29 +4,40 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AddresslabsActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
-        public IBodyWorkflowAction<ParseAddressResponse> ParseAddress(Expression<Func<string>> bodyaddress)
-        {
-            var apiCallPath = "/parsed-address";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
+        [WorkflowExpressionFactory(nameof(__BuildParseAddress))]
+        public IBodyWorkflowAction<ParseAddressResponse> ParseAddress([WorkflowExpression] Func<string> bodyaddress)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParseAddressResponse> __BuildParseAddress(WorkflowExpression<string> bodyaddress)
+        {
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
+            return new DeferredBodyAction<ParseAddressResponse>(() =>
+            {
+                var apiCallPath = "/parsed-address";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+            });
         }
     }
 

@@ -4,32 +4,46 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Vantage365imagingActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vantage365imaging")]
-        public IBodyWorkflowAction<GenerateBarCodeResponse> GenerateBarCode(Expression<Func<typeofcodeInput>> typeofcode, Expression<Func<string>> texttoencode, Expression<Func<int>> height = null, Expression<Func<int>> width = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateBarCode))]
+        public IBodyWorkflowAction<GenerateBarCodeResponse> GenerateBarCode([WorkflowExpression] Func<typeofcodeInput> typeofcode, [WorkflowExpression] Func<string> texttoencode, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<int> width = null)
         {
-            var apiCallPath = "/5884ce85663b4aba83128a0098112024/triggers/manual/paths/invoke";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2016-10-01");
-            callPayload.Queries["sp"] = Convert.ToString("/triggers/manual/run");
-            callPayload.Queries["sv"] = Convert.ToString("1.0");
-            callPayload.Queries["sig"] = Convert.ToString("cFQmyp6LsHfQTy18hqygjAVLuXSHR-FMtcRg_CxLIkA");
-            callPayload.Queries["height"] = Convert.ToString(100);
-            if (height != null)
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-            callPayload.Queries["width"] = Convert.ToString(100);
-            if (width != null)
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            callPayload.Queries["typeofcode"] = ExpressionConverter.Convert(typeofcode);
-            callPayload.Queries["texttoencode"] = ExpressionConverter.Convert(texttoencode);
-            return new ApiConnectionAction<GenerateBarCodeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GenerateBarCodeResponse> __BuildGenerateBarCode(WorkflowExpression<typeofcodeInput> typeofcode, WorkflowExpression<string> texttoencode, WorkflowExpression<int> height = null, WorkflowExpression<int> width = null)
+        {
+            WorkflowExpression.Validate(typeofcode, nameof(typeofcode), required: true);
+            WorkflowExpression.Validate(texttoencode, nameof(texttoencode), required: true);
+            WorkflowExpression.Validate(height, nameof(height), required: false);
+            WorkflowExpression.Validate(width, nameof(width), required: false);
+            return new DeferredBodyAction<GenerateBarCodeResponse>(() =>
+            {
+                var apiCallPath = "/5884ce85663b4aba83128a0098112024/triggers/manual/paths/invoke";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2016-10-01");
+                callPayload.Queries["sp"] = Convert.ToString("/triggers/manual/run");
+                callPayload.Queries["sv"] = Convert.ToString("1.0");
+                callPayload.Queries["sig"] = Convert.ToString("cFQmyp6LsHfQTy18hqygjAVLuXSHR-FMtcRg_CxLIkA");
+                callPayload.Queries["height"] = Convert.ToString(100);
+                if (height != null)
+                    callPayload.Queries["height"] = ExpressionConverter.Convert(height);
+                callPayload.Queries["width"] = Convert.ToString(100);
+                if (width != null)
+                    callPayload.Queries["width"] = ExpressionConverter.Convert(width);
+                callPayload.Queries["typeofcode"] = ExpressionConverter.Convert(typeofcode);
+                callPayload.Queries["texttoencode"] = ExpressionConverter.Convert(texttoencode);
+                return new ApiConnectionAction<GenerateBarCodeResponse>(callPayload);
+            });
         }
     }
 
@@ -43,6 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
         public string Barcodegraphic { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeofcodeInput
     {
         Aztec,

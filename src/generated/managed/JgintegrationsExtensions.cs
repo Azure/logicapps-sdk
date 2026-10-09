@@ -4,143 +4,206 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class JgintegrationsActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<HASHHMACResponse> HASHHMAC(Expression<Func<bodyalgoInput>> bodyalgo, Expression<Func<string>> bodycontent, Expression<Func<string>> bodykey)
-        {
-            var apiCallPath = "/crypto/hash_hmac";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["algo"] = ExpressionConverter.ConvertO(bodyalgo);
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<HASHHMACResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
+        [WorkflowExpressionFactory(nameof(__BuildHASHHMAC))]
+        public IBodyWorkflowAction<HASHHMACResponse> HASHHMAC([WorkflowExpression] Func<bodyalgoInput> bodyalgo, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string> bodykey)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<HASHHMACResponse> __BuildHASHHMAC(WorkflowExpression<bodyalgoInput> bodyalgo, WorkflowExpression<string> bodycontent, WorkflowExpression<string> bodykey)
+        {
+            WorkflowExpression.Validate(bodyalgo, nameof(bodyalgo), required: true);
+            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
+            return new DeferredBodyAction<HASHHMACResponse>(() =>
+            {
+                var apiCallPath = "/crypto/hash_hmac";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["algo"] = ExpressionConverter.ConvertO(bodyalgo);
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<HASHHMACResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<PREGREPLACEResponse> PREGREPLACE(Expression<Func<string>> bodypattern, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyreplacement = null)
+        [WorkflowExpressionFactory(nameof(__BuildPREGREPLACE))]
+        public IBodyWorkflowAction<PREGREPLACEResponse> PREGREPLACE([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyreplacement = null)
         {
-            var apiCallPath = "/text/preg_replace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            if (bodyreplacement != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PREGREPLACEResponse> __BuildPREGREPLACE(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodyreplacement = null)
+        {
+            WorkflowExpression.Validate(bodypattern, nameof(bodypattern), required: true);
+            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: true);
+            WorkflowExpression.Validate(bodyreplacement, nameof(bodyreplacement), required: false);
+            return new DeferredBodyAction<PREGREPLACEResponse>(() =>
             {
+                var apiCallPath = "/text/preg_replace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
                 if (bodyreplacement != null)
                 {
-                    body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                    if (bodyreplacement != null)
+                    {
+                        body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["replacement"] = "";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
+                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PREGREPLACEResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
+        [WorkflowExpressionFactory(nameof(__BuildMANUAL))]
+        public IBodyWorkflowAction<MANUALResponse> MANUAL([WorkflowExpression] Func<string> bodyfunction, [WorkflowExpression] Func<string> bodydata)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MANUALResponse> __BuildMANUAL(WorkflowExpression<string> bodyfunction, WorkflowExpression<string> bodydata)
+        {
+            WorkflowExpression.Validate(bodyfunction, nameof(bodyfunction), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            return new DeferredBodyAction<MANUALResponse>(() =>
             {
-                body["replacement"] = "";
+                var apiCallPath = "/manual_func";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["function"] = ExpressionConverter.ConvertO(bodyfunction);
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PREGREPLACEResponse>(callPayload);
+                return new ApiConnectionAction<MANUALResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<MANUALResponse> MANUAL(Expression<Func<string>> bodyfunction, Expression<Func<string>> bodydata)
+        [WorkflowExpressionFactory(nameof(__BuildHTMLTOPDF))]
+        public IBodyWorkflowAction<JToken> HTMLTOPDF([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodylandscape, [WorkflowExpression] Func<bodypagesizeInput> bodypagesize)
         {
-            var apiCallPath = "/manual_func";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["function"] = ExpressionConverter.ConvertO(bodyfunction);
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<MANUALResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildHTMLTOPDF(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodylandscape, WorkflowExpression<bodypagesizeInput> bodypagesize)
+        {
+            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodylandscape, nameof(bodylandscape), required: true);
+            WorkflowExpression.Validate(bodypagesize, nameof(bodypagesize), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/text/html_to_pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/pdf");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["landscape"] = ExpressionConverter.ConvertO(bodylandscape);
+                bodypropCount++;
+                body["pagesize"] = ExpressionConverter.ConvertO(bodypagesize);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<JToken> HTMLTOPDF(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyname, Expression<Func<bool>> bodylandscape, Expression<Func<bodypagesizeInput>> bodypagesize)
+        [WorkflowExpressionFactory(nameof(__BuildFILESTRING))]
+        public IBodyWorkflowAction<FILESTRINGResponse> FILESTRING([WorkflowExpression] Func<string> bodysubject)
         {
-            var apiCallPath = "/text/html_to_pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/pdf");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["landscape"] = ExpressionConverter.ConvertO(bodylandscape);
-            bodypropCount++;
-            body["pagesize"] = ExpressionConverter.ConvertO(bodypagesize);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<FILESTRINGResponse> FILESTRING(Expression<Func<string>> bodysubject)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FILESTRINGResponse> __BuildFILESTRING(WorkflowExpression<string> bodysubject)
         {
-            var apiCallPath = "/text/file_string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["pattern"] = "/[^a-zA-Z0-9 \\-\\(\\)\\_]+/";
-            bodypropCount++;
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: true);
+            return new DeferredBodyAction<FILESTRINGResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/text/file_string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["pattern"] = "/[^a-zA-Z0-9 \\-\\(\\)\\_]+/";
+                bodypropCount++;
+                bodypropCount++;
+                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FILESTRINGResponse>(callPayload);
+                return new ApiConnectionAction<FILESTRINGResponse>(callPayload);
+            });
         }
     }
 
@@ -154,6 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Hash { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyalgoInput
     {
         [EnumMember(Value = "md2")]
@@ -216,6 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Output { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypagesizeInput
     {
         [EnumMember(Value = "[4a0")]

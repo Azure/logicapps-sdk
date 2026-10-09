@@ -4,156 +4,298 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MotimateActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<UserGetAllResponse> UserGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
-        {
-            var apiCallPath = "/public_api/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<UserGetAllResponse>(callPayload);
-        }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById(Expression<Func<string>> userId, Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        [WorkflowExpressionFactory(nameof(__BuildUserGetAll))]
+        public IBodyWorkflowAction<UserGetAllResponse> UserGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            var apiCallPath = String.Format("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<UserDeleteByIdResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserGetAllResponse> __BuildUserGetAll(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
         {
-            var apiCallPath = "/public_api/positions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<PositionGetAllResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionCreateResponse> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
-        {
-            var apiCallPath = "/public_api/positions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PositionCreateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> positionId)
-        {
-            var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<PositionDeleteByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> bodyimportId = null, Expression<Func<string>> bodyname = null)
-        {
-            var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimportId != null)
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<UserGetAllResponse>(() =>
             {
-                body["import_id"] = ExpressionConverter.ConvertO(bodyimportId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/public_api/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<UserGetAllResponse>(callPayload);
+            });
+        }
 
-            if (bodyname != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
+        [WorkflowExpressionFactory(nameof(__BuildUserDeleteById))]
+        public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserDeleteByIdResponse> __BuildUserDeleteById(WorkflowExpression<string> userId, WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
+        {
+            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<UserDeleteByIdResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<UserDeleteByIdResponse>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
+        [WorkflowExpressionFactory(nameof(__BuildPositionGetAll))]
+        public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PositionGetAllResponse> __BuildPositionGetAll(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<PositionGetAllResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PositionUpdateByIdResponse>(callPayload);
+                var apiCallPath = "/public_api/positions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<PositionGetAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        [WorkflowExpressionFactory(nameof(__BuildPositionCreate))]
+        public IBodyWorkflowAction<PositionCreateResponse> PositionCreate([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = "/public_api/groups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<GroupGetAllResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PositionCreateResponse> __BuildPositionCreate(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PositionCreateResponse>(() =>
+            {
+                var apiCallPath = "/public_api/positions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PositionCreateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupCreateResponse> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildPositionDeleteById))]
+        public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> positionId)
         {
-            var apiCallPath = "/public_api/groups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<GroupCreateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PositionDeleteByIdResponse> __BuildPositionDeleteById(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<string> positionId)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            WorkflowExpression.Validate(positionId, nameof(positionId), required: true);
+            return new DeferredBodyAction<PositionDeleteByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<PositionDeleteByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> groupId)
+        [WorkflowExpressionFactory(nameof(__BuildPositionUpdateById))]
+        public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById([WorkflowExpression] Func<string> positionId, [WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyimportId = null, [WorkflowExpression] Func<string> bodyname = null)
         {
-            var apiCallPath = String.Format("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<GroupDeleteByIdResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PositionUpdateByIdResponse> __BuildPositionUpdateById(WorkflowExpression<string> positionId, WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<string> bodyimportId = null, WorkflowExpression<string> bodyname = null)
+        {
+            WorkflowExpression.Validate(positionId, nameof(positionId), required: true);
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            WorkflowExpression.Validate(bodyimportId, nameof(bodyimportId), required: false);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            return new DeferredBodyAction<PositionUpdateByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyimportId != null)
+                {
+                    body["import_id"] = ExpressionConverter.ConvertO(bodyimportId);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PositionUpdateByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<TokenGetResponse> TokenGet(Expression<Func<string>> subdomain, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId)
+        [WorkflowExpressionFactory(nameof(__BuildGroupGetAll))]
+        public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            var apiCallPath = "/oauth/token";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["grant_type"] = Convert.ToString("password");
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["password"] = ExpressionConverter.Convert(password);
-            callPayload.Queries["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<TokenGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupGetAllResponse> __BuildGroupGetAll(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<GroupGetAllResponse>(() =>
+            {
+                var apiCallPath = "/public_api/groups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<GroupGetAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<MeResponse> Me(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        [WorkflowExpressionFactory(nameof(__BuildGroupCreate))]
+        public IBodyWorkflowAction<GroupCreateResponse> GroupCreate([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = "/public_api/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<MeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupCreateResponse> __BuildGroupCreate(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<GroupCreateResponse>(() =>
+            {
+                var apiCallPath = "/public_api/groups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<GroupCreateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
+        [WorkflowExpressionFactory(nameof(__BuildGroupDeleteById))]
+        public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> groupId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupDeleteByIdResponse> __BuildGroupDeleteById(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain, WorkflowExpression<string> groupId)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<GroupDeleteByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<GroupDeleteByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
+        [WorkflowExpressionFactory(nameof(__BuildTokenGet))]
+        public IBodyWorkflowAction<TokenGetResponse> TokenGet([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> password, [WorkflowExpression] Func<string> clientId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TokenGetResponse> __BuildTokenGet(WorkflowExpression<string> subdomain, WorkflowExpression<string> username, WorkflowExpression<string> password, WorkflowExpression<string> clientId)
+        {
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            WorkflowExpression.Validate(username, nameof(username), required: true);
+            WorkflowExpression.Validate(password, nameof(password), required: true);
+            WorkflowExpression.Validate(clientId, nameof(clientId), required: true);
+            return new DeferredBodyAction<TokenGetResponse>(() =>
+            {
+                var apiCallPath = "/oauth/token";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["grant_type"] = Convert.ToString("password");
+                callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+                callPayload.Queries["password"] = ExpressionConverter.Convert(password);
+                callPayload.Queries["client_id"] = ExpressionConverter.Convert(clientId);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<TokenGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
+        [WorkflowExpressionFactory(nameof(__BuildMe))]
+        public IBodyWorkflowAction<MeResponse> Me([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MeResponse> __BuildMe(WorkflowExpression<string> auth, WorkflowExpression<string> subdomain)
+        {
+            WorkflowExpression.Validate(auth, nameof(auth), required: true);
+            WorkflowExpression.Validate(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<MeResponse>(() =>
+            {
+                var apiCallPath = "/public_api/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+                return new ApiConnectionAction<MeResponse>(callPayload);
+            });
         }
     }
 

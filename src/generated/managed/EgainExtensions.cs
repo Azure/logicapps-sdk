@@ -4,74 +4,133 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EgainActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
-        public IWorkflowAction KbSearch(Expression<Func<string>> portalId, Expression<Func<string>> q, Expression<Func<string>> lang, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<string>> acceptLanguage, Expression<Func<string>> accept, Expression<Func<string>> attribute = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> pagesize = null)
+        [WorkflowExpressionFactory(nameof(__BuildKbSearch))]
+        public IWorkflowAction KbSearch([WorkflowExpression] Func<string> portalId, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> shortName, [WorkflowExpression] Func<string> acceptLanguage, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> attribute = null, [WorkflowExpression] Func<int> pagenum = null, [WorkflowExpression] Func<int> pagesize = null)
         {
-            var apiCallPath = String.Format("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", ExpressionConverter.ConvertWithUrlEncoding(portalId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["$lang"] = ExpressionConverter.Convert(lang);
-            if (attribute != null)
-                callPayload.Queries["$attribute"] = ExpressionConverter.Convert(attribute);
-            if (pagenum != null)
-                callPayload.Queries["$pagenum"] = ExpressionConverter.Convert(pagenum);
-            if (pagesize != null)
-                callPayload.Queries["$pagesize"] = ExpressionConverter.Convert(pagesize);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
-            callPayload.Headers["Accept-language"] = ExpressionConverter.Convert(acceptLanguage);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildKbSearch(WorkflowExpression<string> portalId, WorkflowExpression<string> q, WorkflowExpression<string> lang, WorkflowExpression<string> authToken, WorkflowExpression<string> baseUrl, WorkflowExpression<string> shortName, WorkflowExpression<string> acceptLanguage, WorkflowExpression<string> accept, WorkflowExpression<string> attribute = null, WorkflowExpression<int> pagenum = null, WorkflowExpression<int> pagesize = null)
+        {
+            WorkflowExpression.Validate(portalId, nameof(portalId), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(lang, nameof(lang), required: true);
+            WorkflowExpression.Validate(authToken, nameof(authToken), required: true);
+            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            WorkflowExpression.Validate(shortName, nameof(shortName), required: true);
+            WorkflowExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(attribute, nameof(attribute), required: false);
+            WorkflowExpression.Validate(pagenum, nameof(pagenum), required: false);
+            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", ExpressionConverter.ConvertWithUrlEncoding(portalId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["$lang"] = ExpressionConverter.Convert(lang);
+                if (attribute != null)
+                    callPayload.Queries["$attribute"] = ExpressionConverter.Convert(attribute);
+                if (pagenum != null)
+                    callPayload.Queries["$pagenum"] = ExpressionConverter.Convert(pagenum);
+                if (pagesize != null)
+                    callPayload.Queries["$pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
+                callPayload.Headers["Accept-language"] = ExpressionConverter.Convert(acceptLanguage);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
-        public IWorkflowAction Generative(Expression<Func<string>> q, Expression<Func<int>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> departmentId = null, Expression<Func<int>> userId = null, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerative))]
+        public IWorkflowAction Generative([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> portalId, [WorkflowExpression] Func<string> languageCode, [WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> shortName, [WorkflowExpression] Func<int> departmentId = null, [WorkflowExpression] Func<int> userId = null, [WorkflowExpression] Func<int> personalizationProfileId = null, [WorkflowExpression] Func<string> accept = null)
         {
-            var apiCallPath = "/core/aiservices/v3/internal/instantanswers/generative";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            callPayload.Queries["portalId"] = ExpressionConverter.Convert(portalId);
-            callPayload.Queries["languageCode"] = ExpressionConverter.Convert(languageCode);
-            if (personalizationProfileId != null)
-                callPayload.Queries["personalizationProfileId"] = ExpressionConverter.Convert(personalizationProfileId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
-            if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGenerative(WorkflowExpression<string> q, WorkflowExpression<int> portalId, WorkflowExpression<string> languageCode, WorkflowExpression<string> authToken, WorkflowExpression<string> baseUrl, WorkflowExpression<string> shortName, WorkflowExpression<int> departmentId = null, WorkflowExpression<int> userId = null, WorkflowExpression<int> personalizationProfileId = null, WorkflowExpression<string> accept = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(portalId, nameof(portalId), required: true);
+            WorkflowExpression.Validate(languageCode, nameof(languageCode), required: true);
+            WorkflowExpression.Validate(authToken, nameof(authToken), required: true);
+            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            WorkflowExpression.Validate(shortName, nameof(shortName), required: true);
+            WorkflowExpression.Validate(departmentId, nameof(departmentId), required: false);
+            WorkflowExpression.Validate(userId, nameof(userId), required: false);
+            WorkflowExpression.Validate(personalizationProfileId, nameof(personalizationProfileId), required: false);
+            WorkflowExpression.Validate(accept, nameof(accept), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/core/aiservices/v3/internal/instantanswers/generative";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
+                if (userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["portalId"] = ExpressionConverter.Convert(portalId);
+                callPayload.Queries["languageCode"] = ExpressionConverter.Convert(languageCode);
+                if (personalizationProfileId != null)
+                    callPayload.Queries["personalizationProfileId"] = ExpressionConverter.Convert(personalizationProfileId);
+                callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
+                if (accept != null)
+                    callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
-        public IWorkflowAction Search(Expression<Func<string>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> q, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IWorkflowAction Search([WorkflowExpression] Func<string> portalId, [WorkflowExpression] Func<string> languageCode, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> shortName, [WorkflowExpression] Func<int> personalizationProfileId = null, [WorkflowExpression] Func<string> accept = null)
         {
-            var apiCallPath = String.Format("/core/aiservices/v3/internal/instantanswers/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(portalId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["languageCode"] = ExpressionConverter.Convert(languageCode);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (personalizationProfileId != null)
-                callPayload.Queries["personalizationProfileId"] = ExpressionConverter.Convert(personalizationProfileId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
-            if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSearch(WorkflowExpression<string> portalId, WorkflowExpression<string> languageCode, WorkflowExpression<string> q, WorkflowExpression<string> authToken, WorkflowExpression<string> baseUrl, WorkflowExpression<string> shortName, WorkflowExpression<int> personalizationProfileId = null, WorkflowExpression<string> accept = null)
+        {
+            WorkflowExpression.Validate(portalId, nameof(portalId), required: true);
+            WorkflowExpression.Validate(languageCode, nameof(languageCode), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(authToken, nameof(authToken), required: true);
+            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            WorkflowExpression.Validate(shortName, nameof(shortName), required: true);
+            WorkflowExpression.Validate(personalizationProfileId, nameof(personalizationProfileId), required: false);
+            WorkflowExpression.Validate(accept, nameof(accept), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/core/aiservices/v3/internal/instantanswers/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(portalId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["languageCode"] = ExpressionConverter.Convert(languageCode);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (personalizationProfileId != null)
+                    callPayload.Queries["personalizationProfileId"] = ExpressionConverter.Convert(personalizationProfileId);
+                callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
+                if (accept != null)
+                    callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

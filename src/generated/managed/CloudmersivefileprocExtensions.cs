@@ -4,437 +4,690 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CloudmersivefileprocActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<GetDocxCommentsResponse> EditDocumentDocxGetComments(Expression<Func<string>> reqConfiginputFileBytes = null, Expression<Func<string>> reqConfiginputFileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditDocumentDocxGetComments))]
+        public IBodyWorkflowAction<GetDocxCommentsResponse> EditDocumentDocxGetComments([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            var apiCallPath = "/convert/edit/docx/get-comments/flat-list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqConfig = new JObject();
-            var reqConfigpropCount = 0;
-            if (reqConfiginputFileBytes != null)
-            {
-                reqConfig["InputFileBytes"] = ExpressionConverter.ConvertO(reqConfiginputFileBytes);
-                reqConfigpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (reqConfiginputFileUrl != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocxCommentsResponse> __BuildEditDocumentDocxGetComments(WorkflowExpression<string> reqConfiginputFileBytes = null, WorkflowExpression<string> reqConfiginputFileUrl = null)
+        {
+            WorkflowExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
+            WorkflowExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
+            return new DeferredBodyAction<GetDocxCommentsResponse>(() =>
             {
-                reqConfig["InputFileUrl"] = ExpressionConverter.ConvertO(reqConfiginputFileUrl);
-                reqConfigpropCount++;
-            }
+                var apiCallPath = "/convert/edit/docx/get-comments/flat-list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqConfig = new JObject();
+                var reqConfigpropCount = 0;
+                if (reqConfiginputFileBytes != null)
+                {
+                    reqConfig["InputFileBytes"] = ExpressionConverter.ConvertO(reqConfiginputFileBytes);
+                    reqConfigpropCount++;
+                }
 
-            if (reqConfigpropCount > 0)
-            {
-                callPayload.Body = reqConfig;
-            }
+                if (reqConfiginputFileUrl != null)
+                {
+                    reqConfig["InputFileUrl"] = ExpressionConverter.ConvertO(reqConfiginputFileUrl);
+                    reqConfigpropCount++;
+                }
 
-            return new ApiConnectionAction<GetDocxCommentsResponse>(callPayload);
+                if (reqConfigpropCount > 0)
+                {
+                    callPayload.Body = reqConfig;
+                }
+
+                return new ApiConnectionAction<GetDocxCommentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64DetectResponse> EditTextBase64Detect(Expression<Func<string>> requestbase64ContentToDetect = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextBase64Detect))]
+        public IBodyWorkflowAction<Base64DetectResponse> EditTextBase64Detect([WorkflowExpression] Func<string> requestbase64ContentToDetect = null)
         {
-            var apiCallPath = "/convert/edit/text/encoding/base64/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestbase64ContentToDetect != null)
-            {
-                request["Base64ContentToDetect"] = ExpressionConverter.ConvertO(requestbase64ContentToDetect);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Base64DetectResponse> __BuildEditTextBase64Detect(WorkflowExpression<string> requestbase64ContentToDetect = null)
+        {
+            WorkflowExpression.Validate(requestbase64ContentToDetect, nameof(requestbase64ContentToDetect), required: false);
+            return new DeferredBodyAction<Base64DetectResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/convert/edit/text/encoding/base64/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestbase64ContentToDetect != null)
+                {
+                    request["Base64ContentToDetect"] = ExpressionConverter.ConvertO(requestbase64ContentToDetect);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<Base64DetectResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<Base64DetectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64EncodeResponse> EditTextBase64Encode(Expression<Func<string>> requestcontentToEncode = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextBase64Encode))]
+        public IBodyWorkflowAction<Base64EncodeResponse> EditTextBase64Encode([WorkflowExpression] Func<string> requestcontentToEncode = null)
         {
-            var apiCallPath = "/convert/edit/text/encoding/base64/encode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestcontentToEncode != null)
-            {
-                request["ContentToEncode"] = ExpressionConverter.ConvertO(requestcontentToEncode);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Base64EncodeResponse> __BuildEditTextBase64Encode(WorkflowExpression<string> requestcontentToEncode = null)
+        {
+            WorkflowExpression.Validate(requestcontentToEncode, nameof(requestcontentToEncode), required: false);
+            return new DeferredBodyAction<Base64EncodeResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/convert/edit/text/encoding/base64/encode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestcontentToEncode != null)
+                {
+                    request["ContentToEncode"] = ExpressionConverter.ConvertO(requestcontentToEncode);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<Base64EncodeResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<Base64EncodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64DecodeResponse> EditTextBase64Decode(Expression<Func<string>> requestbase64ContentToDecode = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextBase64Decode))]
+        public IBodyWorkflowAction<Base64DecodeResponse> EditTextBase64Decode([WorkflowExpression] Func<string> requestbase64ContentToDecode = null)
         {
-            var apiCallPath = "/convert/edit/text/encoding/base64/decode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestbase64ContentToDecode != null)
-            {
-                request["Base64ContentToDecode"] = ExpressionConverter.ConvertO(requestbase64ContentToDecode);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Base64DecodeResponse> __BuildEditTextBase64Decode(WorkflowExpression<string> requestbase64ContentToDecode = null)
+        {
+            WorkflowExpression.Validate(requestbase64ContentToDecode, nameof(requestbase64ContentToDecode), required: false);
+            return new DeferredBodyAction<Base64DecodeResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/convert/edit/text/encoding/base64/decode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestbase64ContentToDecode != null)
+                {
+                    request["Base64ContentToDecode"] = ExpressionConverter.ConvertO(requestbase64ContentToDecode);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<Base64DecodeResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<Base64DecodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<TextEncodingDetectResponse> EditTextTextEncodingDetect(Expression<Func<object>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextTextEncodingDetect))]
+        public IBodyWorkflowAction<TextEncodingDetectResponse> EditTextTextEncodingDetect([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/text/encoding/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextEncodingDetectResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TextEncodingDetectResponse> __BuildEditTextTextEncodingDetect(WorkflowExpression<object> inputFile)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<TextEncodingDetectResponse>(() =>
+            {
+                var apiCallPath = "/convert/edit/text/encoding/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextEncodingDetectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<FindStringSimpleResponse> EditTextFindSimple(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requesttargetString = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextFindSimple))]
+        public IBodyWorkflowAction<FindStringSimpleResponse> EditTextFindSimple([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requesttargetString = null)
         {
-            var apiCallPath = "/convert/edit/text/find/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContent != null)
-            {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requesttargetString != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FindStringSimpleResponse> __BuildEditTextFindSimple(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requesttargetString = null)
+        {
+            WorkflowExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
+            WorkflowExpression.Validate(requesttargetString, nameof(requesttargetString), required: false);
+            return new DeferredBodyAction<FindStringSimpleResponse>(() =>
             {
-                request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
-                requestpropCount++;
-            }
+                var apiCallPath = "/convert/edit/text/find/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContent != null)
+                {
+                    request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requesttargetString != null)
+                {
+                    request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<FindStringSimpleResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<FindStringSimpleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<FindStringRegexResponse> EditTextFindRegex(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requesttargetRegex = null, Expression<Func<bool>> requestmatchCase = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextFindRegex))]
+        public IBodyWorkflowAction<FindStringRegexResponse> EditTextFindRegex([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requesttargetRegex = null, [WorkflowExpression] Func<bool> requestmatchCase = null)
         {
-            var apiCallPath = "/convert/edit/text/find/regex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContent != null)
-            {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requesttargetRegex != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FindStringRegexResponse> __BuildEditTextFindRegex(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requesttargetRegex = null, WorkflowExpression<bool> requestmatchCase = null)
+        {
+            WorkflowExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
+            WorkflowExpression.Validate(requesttargetRegex, nameof(requesttargetRegex), required: false);
+            WorkflowExpression.Validate(requestmatchCase, nameof(requestmatchCase), required: false);
+            return new DeferredBodyAction<FindStringRegexResponse>(() =>
             {
-                request["TargetRegex"] = ExpressionConverter.ConvertO(requesttargetRegex);
-                requestpropCount++;
-            }
+                var apiCallPath = "/convert/edit/text/find/regex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContent != null)
+                {
+                    request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                    requestpropCount++;
+                }
 
-            if (requestmatchCase != null)
-            {
-                request["MatchCase"] = ExpressionConverter.ConvertO(requestmatchCase);
-                requestpropCount++;
-            }
+                if (requesttargetRegex != null)
+                {
+                    request["TargetRegex"] = ExpressionConverter.ConvertO(requesttargetRegex);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestmatchCase != null)
+                {
+                    request["MatchCase"] = ExpressionConverter.ConvertO(requestmatchCase);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<FindStringRegexResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<FindStringRegexResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ReplaceStringSimpleResponse> EditTextReplaceSimple(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requesttargetString = null, Expression<Func<string>> requestreplaceWithString = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextReplaceSimple))]
+        public IBodyWorkflowAction<ReplaceStringSimpleResponse> EditTextReplaceSimple([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requesttargetString = null, [WorkflowExpression] Func<string> requestreplaceWithString = null)
         {
-            var apiCallPath = "/convert/edit/text/replace/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContent != null)
-            {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requesttargetString != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReplaceStringSimpleResponse> __BuildEditTextReplaceSimple(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requesttargetString = null, WorkflowExpression<string> requestreplaceWithString = null)
+        {
+            WorkflowExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
+            WorkflowExpression.Validate(requesttargetString, nameof(requesttargetString), required: false);
+            WorkflowExpression.Validate(requestreplaceWithString, nameof(requestreplaceWithString), required: false);
+            return new DeferredBodyAction<ReplaceStringSimpleResponse>(() =>
             {
-                request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
-                requestpropCount++;
-            }
+                var apiCallPath = "/convert/edit/text/replace/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContent != null)
+                {
+                    request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                    requestpropCount++;
+                }
 
-            if (requestreplaceWithString != null)
-            {
-                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
-                requestpropCount++;
-            }
+                if (requesttargetString != null)
+                {
+                    request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestreplaceWithString != null)
+                {
+                    request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<ReplaceStringSimpleResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<ReplaceStringSimpleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ReplaceStringRegexResponse> EditTextReplaceRegex(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requestregularExpressionString = null, Expression<Func<string>> requestreplaceWithString = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextReplaceRegex))]
+        public IBodyWorkflowAction<ReplaceStringRegexResponse> EditTextReplaceRegex([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requestregularExpressionString = null, [WorkflowExpression] Func<string> requestreplaceWithString = null)
         {
-            var apiCallPath = "/convert/edit/text/replace/regex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContent != null)
-            {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestregularExpressionString != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReplaceStringRegexResponse> __BuildEditTextReplaceRegex(WorkflowExpression<string> requesttextContent = null, WorkflowExpression<string> requestregularExpressionString = null, WorkflowExpression<string> requestreplaceWithString = null)
+        {
+            WorkflowExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
+            WorkflowExpression.Validate(requestregularExpressionString, nameof(requestregularExpressionString), required: false);
+            WorkflowExpression.Validate(requestreplaceWithString, nameof(requestreplaceWithString), required: false);
+            return new DeferredBodyAction<ReplaceStringRegexResponse>(() =>
             {
-                request["RegularExpressionString"] = ExpressionConverter.ConvertO(requestregularExpressionString);
-                requestpropCount++;
-            }
+                var apiCallPath = "/convert/edit/text/replace/regex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContent != null)
+                {
+                    request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                    requestpropCount++;
+                }
 
-            if (requestreplaceWithString != null)
-            {
-                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
-                requestpropCount++;
-            }
+                if (requestregularExpressionString != null)
+                {
+                    request["RegularExpressionString"] = ExpressionConverter.ConvertO(requestregularExpressionString);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestreplaceWithString != null)
+                {
+                    request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<ReplaceStringRegexResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<ReplaceStringRegexResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<DetectLineEndingsResponse> EditTextDetectLineEndings(Expression<Func<object>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextDetectLineEndings))]
+        public IBodyWorkflowAction<DetectLineEndingsResponse> EditTextDetectLineEndings([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/text/line-endings/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DetectLineEndingsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectLineEndingsResponse> __BuildEditTextDetectLineEndings(WorkflowExpression<object> inputFile)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<DetectLineEndingsResponse>(() =>
+            {
+                var apiCallPath = "/convert/edit/text/line-endings/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DetectLineEndingsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ChangeLineEndingResponse> EditTextChangeLineEndings(Expression<Func<string>> lineEndingType, Expression<Func<object>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextChangeLineEndings))]
+        public IBodyWorkflowAction<ChangeLineEndingResponse> EditTextChangeLineEndings([WorkflowExpression] Func<string> lineEndingType, [WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/text/line-endings/change";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["lineEndingType"] = ExpressionConverter.Convert(lineEndingType);
-            return new ApiConnectionAction<ChangeLineEndingResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChangeLineEndingResponse> __BuildEditTextChangeLineEndings(WorkflowExpression<string> lineEndingType, WorkflowExpression<object> inputFile)
+        {
+            WorkflowExpression.Validate(lineEndingType, nameof(lineEndingType), required: true);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<ChangeLineEndingResponse>(() =>
+            {
+                var apiCallPath = "/convert/edit/text/line-endings/change";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["lineEndingType"] = ExpressionConverter.Convert(lineEndingType);
+                return new ApiConnectionAction<ChangeLineEndingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveHtmlFromTextResponse> EditTextRemoveHtml(Expression<Func<string>> requesttextContainingHtml = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextRemoveHtml))]
+        public IBodyWorkflowAction<RemoveHtmlFromTextResponse> EditTextRemoveHtml([WorkflowExpression] Func<string> requesttextContainingHtml = null)
         {
-            var apiCallPath = "/convert/edit/text/remove/html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContainingHtml != null)
-            {
-                request["TextContainingHtml"] = ExpressionConverter.ConvertO(requesttextContainingHtml);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RemoveHtmlFromTextResponse> __BuildEditTextRemoveHtml(WorkflowExpression<string> requesttextContainingHtml = null)
+        {
+            WorkflowExpression.Validate(requesttextContainingHtml, nameof(requesttextContainingHtml), required: false);
+            return new DeferredBodyAction<RemoveHtmlFromTextResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/convert/edit/text/remove/html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContainingHtml != null)
+                {
+                    request["TextContainingHtml"] = ExpressionConverter.ConvertO(requesttextContainingHtml);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<RemoveHtmlFromTextResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<RemoveHtmlFromTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextRemoveAllWhitespace(Expression<Func<string>> requesttextContainingWhitespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextRemoveAllWhitespace))]
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextRemoveAllWhitespace([WorkflowExpression] Func<string> requesttextContainingWhitespace = null)
         {
-            var apiCallPath = "/convert/edit/text/remove/whitespace/all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContainingWhitespace != null)
-            {
-                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> __BuildEditTextRemoveAllWhitespace(WorkflowExpression<string> requesttextContainingWhitespace = null)
+        {
+            WorkflowExpression.Validate(requesttextContainingWhitespace, nameof(requesttextContainingWhitespace), required: false);
+            return new DeferredBodyAction<RemoveWhitespaceFromTextResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/convert/edit/text/remove/whitespace/all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContainingWhitespace != null)
+                {
+                    request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<RemoveWhitespaceFromTextResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<RemoveWhitespaceFromTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextTrimWhitespace(Expression<Func<string>> requesttextContainingWhitespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditTextTrimWhitespace))]
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextTrimWhitespace([WorkflowExpression] Func<string> requesttextContainingWhitespace = null)
         {
-            var apiCallPath = "/convert/edit/text/remove/whitespace/trim";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttextContainingWhitespace != null)
-            {
-                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> __BuildEditTextTrimWhitespace(WorkflowExpression<string> requesttextContainingWhitespace = null)
+        {
+            WorkflowExpression.Validate(requesttextContainingWhitespace, nameof(requesttextContainingWhitespace), required: false);
+            return new DeferredBodyAction<RemoveWhitespaceFromTextResponse>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/convert/edit/text/remove/whitespace/trim";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttextContainingWhitespace != null)
+                {
+                    request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<RemoveWhitespaceFromTextResponse>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<RemoveWhitespaceFromTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<DocumentValidationResult> ValidateDocumentExecutableValidation(Expression<Func<object>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildValidateDocumentExecutableValidation))]
+        public IBodyWorkflowAction<DocumentValidationResult> ValidateDocumentExecutableValidation([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/validate/executable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocumentValidationResult>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentValidationResult> __BuildValidateDocumentExecutableValidation(WorkflowExpression<object> inputFile)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<DocumentValidationResult>(() =>
+            {
+                var apiCallPath = "/convert/validate/executable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DocumentValidationResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ViewerResponse> ViewerToolsCreateSimple(Expression<Func<object>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildViewerToolsCreateSimple))]
+        public IBodyWorkflowAction<ViewerResponse> ViewerToolsCreateSimple([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/viewer/create/web/simple";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewerResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ViewerResponse> __BuildViewerToolsCreateSimple(WorkflowExpression<object> inputFile)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<ViewerResponse>(() =>
+            {
+                var apiCallPath = "/convert/viewer/create/web/simple";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ViewerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<string> ZipArchiveZipCreate(Expression<Func<object>> inputFile1, Expression<Func<object>> inputFile2 = null, Expression<Func<object>> inputFile3 = null, Expression<Func<object>> inputFile4 = null, Expression<Func<object>> inputFile5 = null, Expression<Func<object>> inputFile6 = null, Expression<Func<object>> inputFile7 = null, Expression<Func<object>> inputFile8 = null, Expression<Func<object>> inputFile9 = null, Expression<Func<object>> inputFile10 = null)
+        [WorkflowExpressionFactory(nameof(__BuildZipArchiveZipCreate))]
+        public IBodyWorkflowAction<string> ZipArchiveZipCreate([WorkflowExpression] Func<object> inputFile1, [WorkflowExpression] Func<object> inputFile2 = null, [WorkflowExpression] Func<object> inputFile3 = null, [WorkflowExpression] Func<object> inputFile4 = null, [WorkflowExpression] Func<object> inputFile5 = null, [WorkflowExpression] Func<object> inputFile6 = null, [WorkflowExpression] Func<object> inputFile7 = null, [WorkflowExpression] Func<object> inputFile8 = null, [WorkflowExpression] Func<object> inputFile9 = null, [WorkflowExpression] Func<object> inputFile10 = null)
         {
-            var apiCallPath = "/convert/archive/zip/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildZipArchiveZipCreate(WorkflowExpression<object> inputFile1, WorkflowExpression<object> inputFile2 = null, WorkflowExpression<object> inputFile3 = null, WorkflowExpression<object> inputFile4 = null, WorkflowExpression<object> inputFile5 = null, WorkflowExpression<object> inputFile6 = null, WorkflowExpression<object> inputFile7 = null, WorkflowExpression<object> inputFile8 = null, WorkflowExpression<object> inputFile9 = null, WorkflowExpression<object> inputFile10 = null)
+        {
+            WorkflowExpression.Validate(inputFile1, nameof(inputFile1), required: true);
+            WorkflowExpression.Validate(inputFile2, nameof(inputFile2), required: false);
+            WorkflowExpression.Validate(inputFile3, nameof(inputFile3), required: false);
+            WorkflowExpression.Validate(inputFile4, nameof(inputFile4), required: false);
+            WorkflowExpression.Validate(inputFile5, nameof(inputFile5), required: false);
+            WorkflowExpression.Validate(inputFile6, nameof(inputFile6), required: false);
+            WorkflowExpression.Validate(inputFile7, nameof(inputFile7), required: false);
+            WorkflowExpression.Validate(inputFile8, nameof(inputFile8), required: false);
+            WorkflowExpression.Validate(inputFile9, nameof(inputFile9), required: false);
+            WorkflowExpression.Validate(inputFile10, nameof(inputFile10), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/convert/archive/zip/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken> ZipArchiveZipCreateAdvanced(Expression<Func<ZipFile[]>> requestfilesInZip = null, Expression<Func<ZipDirectory[]>> requestdirectoriesInZip = null)
+        [WorkflowExpressionFactory(nameof(__BuildZipArchiveZipCreateAdvanced))]
+        public IBodyWorkflowAction<JToken> ZipArchiveZipCreateAdvanced([WorkflowExpression] Func<ZipFile[]> requestfilesInZip = null, [WorkflowExpression] Func<ZipDirectory[]> requestdirectoriesInZip = null)
         {
-            var apiCallPath = "/convert/archive/zip/create/advanced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestfilesInZip != null)
-            {
-                request["FilesInZip"] = ExpressionConverter.ConvertO(requestfilesInZip);
-                requestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestdirectoriesInZip != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildZipArchiveZipCreateAdvanced(WorkflowExpression<ZipFile[]> requestfilesInZip = null, WorkflowExpression<ZipDirectory[]> requestdirectoriesInZip = null)
+        {
+            WorkflowExpression.Validate(requestfilesInZip, nameof(requestfilesInZip), required: false);
+            WorkflowExpression.Validate(requestdirectoriesInZip, nameof(requestdirectoriesInZip), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                request["DirectoriesInZip"] = ExpressionConverter.ConvertO(requestdirectoriesInZip);
-                requestpropCount++;
-            }
+                var apiCallPath = "/convert/archive/zip/create/advanced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestfilesInZip != null)
+                {
+                    request["FilesInZip"] = ExpressionConverter.ConvertO(requestfilesInZip);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestdirectoriesInZip != null)
+                {
+                    request["DirectoriesInZip"] = ExpressionConverter.ConvertO(requestdirectoriesInZip);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ZipExtractResponse> ZipArchiveZipExtract(Expression<Func<object>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildZipArchiveZipExtract))]
+        public IBodyWorkflowAction<ZipExtractResponse> ZipArchiveZipExtract([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/archive/zip/extract";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ZipExtractResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ZipExtractResponse> __BuildZipArchiveZipExtract(WorkflowExpression<object> inputFile)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<ZipExtractResponse>(() =>
+            {
+                var apiCallPath = "/convert/archive/zip/extract";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ZipExtractResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken> ZipArchiveZipEncryptAdvanced(Expression<Func<string>> encryptionRequestinputFileContents = null, Expression<Func<string>> encryptionRequestpassword = null, Expression<Func<string>> encryptionRequestencryptionAlgorithm = null)
+        [WorkflowExpressionFactory(nameof(__BuildZipArchiveZipEncryptAdvanced))]
+        public IBodyWorkflowAction<JToken> ZipArchiveZipEncryptAdvanced([WorkflowExpression] Func<string> encryptionRequestinputFileContents = null, [WorkflowExpression] Func<string> encryptionRequestpassword = null, [WorkflowExpression] Func<string> encryptionRequestencryptionAlgorithm = null)
         {
-            var apiCallPath = "/convert/archive/zip/encrypt/advanced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var encryptionRequest = new JObject();
-            var encryptionRequestpropCount = 0;
-            if (encryptionRequestinputFileContents != null)
-            {
-                encryptionRequest["InputFileContents"] = ExpressionConverter.ConvertO(encryptionRequestinputFileContents);
-                encryptionRequestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (encryptionRequestpassword != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildZipArchiveZipEncryptAdvanced(WorkflowExpression<string> encryptionRequestinputFileContents = null, WorkflowExpression<string> encryptionRequestpassword = null, WorkflowExpression<string> encryptionRequestencryptionAlgorithm = null)
+        {
+            WorkflowExpression.Validate(encryptionRequestinputFileContents, nameof(encryptionRequestinputFileContents), required: false);
+            WorkflowExpression.Validate(encryptionRequestpassword, nameof(encryptionRequestpassword), required: false);
+            WorkflowExpression.Validate(encryptionRequestencryptionAlgorithm, nameof(encryptionRequestencryptionAlgorithm), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                encryptionRequest["Password"] = ExpressionConverter.ConvertO(encryptionRequestpassword);
-                encryptionRequestpropCount++;
-            }
+                var apiCallPath = "/convert/archive/zip/encrypt/advanced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var encryptionRequest = new JObject();
+                var encryptionRequestpropCount = 0;
+                if (encryptionRequestinputFileContents != null)
+                {
+                    encryptionRequest["InputFileContents"] = ExpressionConverter.ConvertO(encryptionRequestinputFileContents);
+                    encryptionRequestpropCount++;
+                }
 
-            if (encryptionRequestencryptionAlgorithm != null)
-            {
-                encryptionRequest["EncryptionAlgorithm"] = ExpressionConverter.ConvertO(encryptionRequestencryptionAlgorithm);
-                encryptionRequestpropCount++;
-            }
+                if (encryptionRequestpassword != null)
+                {
+                    encryptionRequest["Password"] = ExpressionConverter.ConvertO(encryptionRequestpassword);
+                    encryptionRequestpropCount++;
+                }
 
-            if (encryptionRequestpropCount > 0)
-            {
-                callPayload.Body = encryptionRequest;
-            }
+                if (encryptionRequestencryptionAlgorithm != null)
+                {
+                    encryptionRequest["EncryptionAlgorithm"] = ExpressionConverter.ConvertO(encryptionRequestencryptionAlgorithm);
+                    encryptionRequestpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (encryptionRequestpropCount > 0)
+                {
+                    callPayload.Body = encryptionRequest;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken> ZipArchiveZipDecrypt(Expression<Func<object>> inputFile, Expression<Func<string>> zipPassword)
+        [WorkflowExpressionFactory(nameof(__BuildZipArchiveZipDecrypt))]
+        public IBodyWorkflowAction<JToken> ZipArchiveZipDecrypt([WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<string> zipPassword)
         {
-            var apiCallPath = "/convert/archive/zip/decrypt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["zipPassword"] = ExpressionConverter.Convert(zipPassword);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildZipArchiveZipDecrypt(WorkflowExpression<object> inputFile, WorkflowExpression<string> zipPassword)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            WorkflowExpression.Validate(zipPassword, nameof(zipPassword), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/convert/archive/zip/decrypt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["zipPassword"] = ExpressionConverter.Convert(zipPassword);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

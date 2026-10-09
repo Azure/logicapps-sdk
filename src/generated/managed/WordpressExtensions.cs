@@ -1,84 +1,122 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WordpressActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<SiteStatsModel> SiteStats(Expression<Func<string>> siteId)
+        [WorkflowExpressionFactory(nameof(__BuildSiteStats))]
+        public IBodyWorkflowAction<SiteStatsModel> SiteStats([WorkflowExpression] Func<string> siteId)
         {
-            var apiCallPath = String.Format("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("stats");
-            return new ApiConnectionAction<SiteStatsModel>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SiteStatsModel> __BuildSiteStats(WorkflowExpression<string> siteId)
+        {
+            WorkflowExpression.Validate(siteId, nameof(siteId), required: true);
+            return new DeferredBodyAction<SiteStatsModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("stats");
+                return new ApiConnectionAction<SiteStatsModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
+        [WorkflowExpressionFactory(nameof(__BuildGet))]
+        public IBodyWorkflowAction<PostModel> Get([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> postId)
         {
-            var apiCallPath = String.Format("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PostModel>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostModel> __BuildGet(WorkflowExpression<string> siteId, WorkflowExpression<string> postId)
+        {
+            WorkflowExpression.Validate(siteId, nameof(siteId), required: true);
+            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            return new DeferredBodyAction<PostModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PostModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreate))]
+        public IBodyWorkflowAction<PostModel> Create([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> posttitle = null, [WorkflowExpression] Func<string> postcontent = null, [WorkflowExpression] Func<poststatusInput> poststatus = null, [WorkflowExpression] Func<string> posttags = null)
         {
-            var apiCallPath = String.Format("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var post = new JObject();
-            var postpropCount = 0;
-            if (posttitle != null)
-            {
-                post["title"] = ExpressionConverter.ConvertO(posttitle);
-                postpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (postcontent != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostModel> __BuildCreate(WorkflowExpression<string> siteId, WorkflowExpression<string> posttitle = null, WorkflowExpression<string> postcontent = null, WorkflowExpression<poststatusInput> poststatus = null, WorkflowExpression<string> posttags = null)
+        {
+            WorkflowExpression.Validate(siteId, nameof(siteId), required: true);
+            WorkflowExpression.Validate(posttitle, nameof(posttitle), required: false);
+            WorkflowExpression.Validate(postcontent, nameof(postcontent), required: false);
+            WorkflowExpression.Validate(poststatus, nameof(poststatus), required: false);
+            WorkflowExpression.Validate(posttags, nameof(posttags), required: false);
+            return new DeferredBodyAction<PostModel>(() =>
             {
-                post["content"] = ExpressionConverter.ConvertO(postcontent);
-                postpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var post = new JObject();
+                var postpropCount = 0;
+                if (posttitle != null)
+                {
+                    post["title"] = ExpressionConverter.ConvertO(posttitle);
+                    postpropCount++;
+                }
 
-            if (poststatus != null)
-            {
-                post["status"] = ExpressionConverter.ConvertO(poststatus);
-                postpropCount++;
-            }
+                if (postcontent != null)
+                {
+                    post["content"] = ExpressionConverter.ConvertO(postcontent);
+                    postpropCount++;
+                }
 
-            if (posttags != null)
-            {
-                post["tags"] = ExpressionConverter.ConvertO(posttags);
-                postpropCount++;
-            }
+                if (poststatus != null)
+                {
+                    post["status"] = ExpressionConverter.ConvertO(poststatus);
+                    postpropCount++;
+                }
 
-            if (postpropCount > 0)
-            {
-                callPayload.Body = post;
-            }
+                if (posttags != null)
+                {
+                    post["tags"] = ExpressionConverter.ConvertO(posttags);
+                    postpropCount++;
+                }
 
-            return new ApiConnectionAction<PostModel>(callPayload);
+                if (postpropCount > 0)
+                {
+                    callPayload.Body = post;
+                }
+
+                return new ApiConnectionAction<PostModel>(callPayload);
+            });
         }
     }
 
     public class WordpressTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/me/posts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListPostsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListPostsResponse>(callPayload, recurrence: recurrence);
         }
     }
 
@@ -232,6 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         public bool Geo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum poststatusInput
     {
         [EnumMember(Value = "draft")]

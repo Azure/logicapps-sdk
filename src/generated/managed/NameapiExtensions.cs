@@ -4,63 +4,86 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NameapiActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
+        [WorkflowExpressionFactory(nameof(__BuildParseName))]
+        public IBodyWorkflowAction<ParseNameResponse> ParseName([WorkflowExpression] Func<JToken[]> bodyinputPersonpersonNamepersonNames, [WorkflowExpression] Func<bodyinputPersongenderInput> bodyinputPersongender = null)
         {
-            var apiCallPath = "/v5.3/parser/personnameparser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputPersonObject = new JObject();
-            var inputPersonObjectpropCount = 0;
-            inputPersonObject["type"] = "NaturalInputPerson";
-            inputPersonObjectpropCount++;
-            var personNameObject = new JObject();
-            var personNameObjectpropCount = 0;
-            personNameObjectpropCount++;
-            personNameObject["nameFields"] = ExpressionConverter.ConvertO(bodyinputPersonpersonNamepersonNames);
-            if (personNameObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParseNameResponse> __BuildParseName(WorkflowExpression<JToken[]> bodyinputPersonpersonNamepersonNames, WorkflowExpression<bodyinputPersongenderInput> bodyinputPersongender = null)
+        {
+            WorkflowExpression.Validate(bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
+            WorkflowExpression.Validate(bodyinputPersongender, nameof(bodyinputPersongender), required: false);
+            return new DeferredBodyAction<ParseNameResponse>(() =>
             {
-                inputPersonObject["personName"] = personNameObject;
+                var apiCallPath = "/v5.3/parser/personnameparser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputPersonObject = new JObject();
+                var inputPersonObjectpropCount = 0;
+                inputPersonObject["type"] = "NaturalInputPerson";
                 inputPersonObjectpropCount++;
-            }
+                var personNameObject = new JObject();
+                var personNameObjectpropCount = 0;
+                personNameObjectpropCount++;
+                personNameObject["nameFields"] = ExpressionConverter.ConvertO(bodyinputPersonpersonNamepersonNames);
+                if (personNameObjectpropCount > 0)
+                {
+                    inputPersonObject["personName"] = personNameObject;
+                    inputPersonObjectpropCount++;
+                }
 
-            if (bodyinputPersongender != null)
-            {
-                inputPersonObject["gender"] = ExpressionConverter.ConvertO(bodyinputPersongender);
-                inputPersonObjectpropCount++;
-            }
+                if (bodyinputPersongender != null)
+                {
+                    inputPersonObject["gender"] = ExpressionConverter.ConvertO(bodyinputPersongender);
+                    inputPersonObjectpropCount++;
+                }
 
-            if (inputPersonObjectpropCount > 0)
-            {
-                body["inputPerson"] = inputPersonObject;
-                bodypropCount++;
-            }
+                if (inputPersonObjectpropCount > 0)
+                {
+                    body["inputPerson"] = inputPersonObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseNameResponse>(callPayload);
+                return new ApiConnectionAction<ParseNameResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
+        [WorkflowExpressionFactory(nameof(__BuildDetectDea))]
+        public IBodyWorkflowAction<DetectDeaResponse> DetectDea([WorkflowExpression] Func<string> emailAddress)
         {
-            var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["emailAddress"] = ExpressionConverter.Convert(emailAddress);
-            return new ApiConnectionAction<DetectDeaResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectDeaResponse> __BuildDetectDea(WorkflowExpression<string> emailAddress)
+        {
+            WorkflowExpression.Validate(emailAddress, nameof(emailAddress), required: true);
+            return new DeferredBodyAction<DetectDeaResponse>(() =>
+            {
+                var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["emailAddress"] = ExpressionConverter.Convert(emailAddress);
+                return new ApiConnectionAction<DetectDeaResponse>(callPayload);
+            });
         }
     }
 
@@ -158,6 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         public double Confidence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinputPersongenderInput
     {
         MALE,

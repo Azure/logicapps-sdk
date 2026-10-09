@@ -4,67 +4,123 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NationalweatherserviceActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Tafs(Expression<Func<string>> stationId)
+        [WorkflowExpressionFactory(nameof(__BuildTafs))]
+        public IBodyWorkflowAction<ProblemDetail> Tafs([WorkflowExpression] Func<string> stationId)
         {
-            var apiCallPath = String.Format("/stations/{0}/tafs", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetail> __BuildTafs(WorkflowExpression<string> stationId)
+        {
+            WorkflowExpression.Validate(stationId, nameof(stationId), required: true);
+            return new DeferredBodyAction<ProblemDetail>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProblemDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Taf(Expression<Func<string>> stationId, Expression<Func<string>> date, Expression<Func<string>> time)
+        [WorkflowExpressionFactory(nameof(__BuildTaf))]
+        public IBodyWorkflowAction<ProblemDetail> Taf([WorkflowExpression] Func<string> stationId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> time)
         {
-            var apiCallPath = String.Format("/stations/{0}/tafs/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(time, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetail> __BuildTaf(WorkflowExpression<string> stationId, WorkflowExpression<string> date, WorkflowExpression<string> time)
+        {
+            WorkflowExpression.Validate(stationId, nameof(stationId), required: true);
+            WorkflowExpression.Validate(date, nameof(date), required: true);
+            WorkflowExpression.Validate(time, nameof(time), required: true);
+            return new DeferredBodyAction<ProblemDetail>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(time, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProblemDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarQueue(Expression<Func<string>> host, Expression<Func<int>> limit = null, Expression<Func<string>> arrived = null, Expression<Func<string>> created = null, Expression<Func<string>> published = null, Expression<Func<string>> station = null, Expression<Func<string>> type = null, Expression<Func<string>> feed = null, Expression<Func<int>> resolution = null)
+        [WorkflowExpressionFactory(nameof(__BuildRadarQueue))]
+        public IBodyWorkflowAction<ProblemDetail> RadarQueue([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> arrived = null, [WorkflowExpression] Func<string> created = null, [WorkflowExpression] Func<string> published = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> feed = null, [WorkflowExpression] Func<int> resolution = null)
         {
-            var apiCallPath = String.Format("/radar/queues/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (arrived != null)
-                callPayload.Queries["arrived"] = ExpressionConverter.Convert(arrived);
-            if (created != null)
-                callPayload.Queries["created"] = ExpressionConverter.Convert(created);
-            if (published != null)
-                callPayload.Queries["published"] = ExpressionConverter.Convert(published);
-            if (station != null)
-                callPayload.Queries["station"] = ExpressionConverter.Convert(station);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (feed != null)
-                callPayload.Queries["feed"] = ExpressionConverter.Convert(feed);
-            if (resolution != null)
-                callPayload.Queries["resolution"] = ExpressionConverter.Convert(resolution);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetail> __BuildRadarQueue(WorkflowExpression<string> host, WorkflowExpression<int> limit = null, WorkflowExpression<string> arrived = null, WorkflowExpression<string> created = null, WorkflowExpression<string> published = null, WorkflowExpression<string> station = null, WorkflowExpression<string> type = null, WorkflowExpression<string> feed = null, WorkflowExpression<int> resolution = null)
+        {
+            WorkflowExpression.Validate(host, nameof(host), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(arrived, nameof(arrived), required: false);
+            WorkflowExpression.Validate(created, nameof(created), required: false);
+            WorkflowExpression.Validate(published, nameof(published), required: false);
+            WorkflowExpression.Validate(station, nameof(station), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            WorkflowExpression.Validate(feed, nameof(feed), required: false);
+            WorkflowExpression.Validate(resolution, nameof(resolution), required: false);
+            return new DeferredBodyAction<ProblemDetail>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radar/queues/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (arrived != null)
+                    callPayload.Queries["arrived"] = ExpressionConverter.Convert(arrived);
+                if (created != null)
+                    callPayload.Queries["created"] = ExpressionConverter.Convert(created);
+                if (published != null)
+                    callPayload.Queries["published"] = ExpressionConverter.Convert(published);
+                if (station != null)
+                    callPayload.Queries["station"] = ExpressionConverter.Convert(station);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (feed != null)
+                    callPayload.Queries["feed"] = ExpressionConverter.Convert(feed);
+                if (resolution != null)
+                    callPayload.Queries["resolution"] = ExpressionConverter.Convert(resolution);
+                return new ApiConnectionAction<ProblemDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarProfiler(Expression<Func<string>> stationId, Expression<Func<string>> time = null, Expression<Func<string>> interval = null)
+        [WorkflowExpressionFactory(nameof(__BuildRadarProfiler))]
+        public IBodyWorkflowAction<ProblemDetail> RadarProfiler([WorkflowExpression] Func<string> stationId, [WorkflowExpression] Func<string> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            var apiCallPath = String.Format("/radar/profilers/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (time != null)
-                callPayload.Queries["time"] = ExpressionConverter.Convert(time);
-            if (interval != null)
-                callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetail> __BuildRadarProfiler(WorkflowExpression<string> stationId, WorkflowExpression<string> time = null, WorkflowExpression<string> interval = null)
+        {
+            WorkflowExpression.Validate(stationId, nameof(stationId), required: true);
+            WorkflowExpression.Validate(time, nameof(time), required: false);
+            WorkflowExpression.Validate(interval, nameof(interval), required: false);
+            return new DeferredBodyAction<ProblemDetail>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radar/profilers/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (time != null)
+                    callPayload.Queries["time"] = ExpressionConverter.Convert(time);
+                if (interval != null)
+                    callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
+                return new ApiConnectionAction<ProblemDetail>(callPayload);
+            });
         }
     }
 

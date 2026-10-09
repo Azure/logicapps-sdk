@@ -4,52 +4,90 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AzureadapplicationsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationListDefinition> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<countInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
+        [WorkflowExpressionFactory(nameof(__BuildListApplications))]
+        public IBodyWorkflowAction<ApplicationListDefinition> ListApplications([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<countInput> count = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/v1.0/applications";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["$count"] = Convert.ToString("true");
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["$expand"] = Convert.ToString("Owners");
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<ApplicationListDefinition>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApplicationListDefinition> __BuildListApplications(WorkflowExpression<string> select = null, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<countInput> count = null, WorkflowExpression<string> expand = null, WorkflowExpression<int> top = null)
+        {
+            WorkflowExpression.Validate(select, nameof(select), required: false);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            WorkflowExpression.Validate(count, nameof(count), required: false);
+            WorkflowExpression.Validate(expand, nameof(expand), required: false);
+            WorkflowExpression.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<ApplicationListDefinition>(() =>
+            {
+                var apiCallPath = "/v1.0/applications";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$count"] = Convert.ToString("true");
+                if (count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["$expand"] = Convert.ToString("Owners");
+                if (expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<ApplicationListDefinition>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationDefinition> GetApplication(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetApplication))]
+        public IBodyWorkflowAction<ApplicationDefinition> GetApplication([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ApplicationDefinition>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApplicationDefinition> __BuildGetApplication(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ApplicationDefinition>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ApplicationDefinition>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetAppOwners))]
+        public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/v1.0/applications/{0}/owners", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ApplicationOwnersDefinition>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApplicationOwnersDefinition> __BuildGetAppOwners(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ApplicationOwnersDefinition>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}/owners", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ApplicationOwnersDefinition>(callPayload);
+            });
         }
     }
 
@@ -342,6 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         public JToken[] RedirectUris { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countInput
     {
         [EnumMember(Value = "true")]

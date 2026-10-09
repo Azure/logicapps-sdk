@@ -4,94 +4,153 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EcologiipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodytest = null)
+        [WorkflowExpressionFactory(nameof(__BuildPurchaseTrees))]
+        public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees([WorkflowExpression] Func<int> bodynumber, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodytest = null)
         {
-            var apiCallPath = "/impact/trees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PurchaseTreesResponse> __BuildPurchaseTrees(WorkflowExpression<int> bodynumber, WorkflowExpression<string> bodyname = null, WorkflowExpression<bool> bodytest = null)
+        {
+            WorkflowExpression.Validate(bodynumber, nameof(bodynumber), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodytest, nameof(bodytest), required: false);
+            return new DeferredBodyAction<PurchaseTreesResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/impact/trees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodytest != null)
+                if (bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(bodytest);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PurchaseTreesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
+        [WorkflowExpressionFactory(nameof(__BuildPurchaseOffsets))]
+        public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets([WorkflowExpression] Func<int> bodynumber, [WorkflowExpression] Func<string> bodyunits, [WorkflowExpression] Func<bool> bodytest = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PurchaseOffsetsResponse> __BuildPurchaseOffsets(WorkflowExpression<int> bodynumber, WorkflowExpression<string> bodyunits, WorkflowExpression<bool> bodytest = null)
+        {
+            WorkflowExpression.Validate(bodynumber, nameof(bodynumber), required: true);
+            WorkflowExpression.Validate(bodyunits, nameof(bodyunits), required: true);
+            WorkflowExpression.Validate(bodytest, nameof(bodytest), required: false);
+            return new DeferredBodyAction<PurchaseOffsetsResponse>(() =>
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                var apiCallPath = "/impact/carbon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PurchaseTreesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyunits, Expression<Func<bool>> bodytest = null)
-        {
-            var apiCallPath = "/impact/carbon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            bodypropCount++;
-            body["units"] = ExpressionConverter.ConvertO(bodyunits);
-            if (bodytest != null)
-            {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["number"] = ExpressionConverter.ConvertO(bodynumber);
                 bodypropCount++;
-            }
+                body["units"] = ExpressionConverter.ConvertO(bodyunits);
+                if (bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(bodytest);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PurchaseOffsetsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetImpact))]
+        public IBodyWorkflowAction<GetImpactResponse> GetImpact([WorkflowExpression] Func<string> username)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetImpactResponse> __BuildGetImpact(WorkflowExpression<string> username)
+        {
+            WorkflowExpression.Validate(username, nameof(username), required: true);
+            return new DeferredBodyAction<GetImpactResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PurchaseOffsetsResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/impact", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetImpactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetImpactResponse> GetImpact(Expression<Func<string>> username)
+        [WorkflowExpressionFactory(nameof(__BuildGetTrees))]
+        public IBodyWorkflowAction<GetTreesResponse> GetTrees([WorkflowExpression] Func<string> username)
         {
-            var apiCallPath = String.Format("/users/{0}/impact", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetImpactResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTreesResponse> __BuildGetTrees(WorkflowExpression<string> username)
+        {
+            WorkflowExpression.Validate(username, nameof(username), required: true);
+            return new DeferredBodyAction<GetTreesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/trees", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTreesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetTreesResponse> GetTrees(Expression<Func<string>> username)
+        [WorkflowExpressionFactory(nameof(__BuildGetOffset))]
+        public IBodyWorkflowAction<GetOffsetResponse> GetOffset([WorkflowExpression] Func<string> username)
         {
-            var apiCallPath = String.Format("/users/{0}/trees", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTreesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetOffsetResponse> GetOffset(Expression<Func<string>> username)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOffsetResponse> __BuildGetOffset(WorkflowExpression<string> username)
         {
-            var apiCallPath = String.Format("/users/{0}/carbon-offset", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetOffsetResponse>(callPayload);
+            WorkflowExpression.Validate(username, nameof(username), required: true);
+            return new DeferredBodyAction<GetOffsetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/carbon-offset", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetOffsetResponse>(callPayload);
+            });
         }
     }
 

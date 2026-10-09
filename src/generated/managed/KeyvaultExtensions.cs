@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,110 +20,198 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions(Expression<Func<string>> keyName)
+        [WorkflowExpressionFactory(nameof(__BuildListKeyVersions))]
+        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions([WorkflowExpression] Func<string> keyName)
         {
-            var apiCallPath = String.Format("/keys/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata(Expression<Func<string>> keyName)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyMetadataCollection> __BuildListKeyVersions(WorkflowExpression<string> keyName)
         {
-            var apiCallPath = String.Format("/keys/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion)
-        {
-            var apiCallPath = String.Format("/keys/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
-        {
-            var apiCallPath = String.Format("/keys/{0}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["rawData"] = ExpressionConverter.ConvertO(operationInputrawData);
-            if (operationInputpropCount > 0)
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            return new DeferredBodyAction<KeyMetadataCollection>(() =>
             {
-                callPayload.Body = operationInput;
-            }
-
-            return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        [WorkflowExpressionFactory(nameof(__BuildGetKeyMetadata))]
+        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata([WorkflowExpression] Func<string> keyName)
         {
-            var apiCallPath = String.Format("/keys/{0}/versions/{1}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["rawData"] = ExpressionConverter.ConvertO(operationInputrawData);
-            if (operationInputpropCount > 0)
-            {
-                callPayload.Body = operationInput;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyMetadata> __BuildGetKeyMetadata(WorkflowExpression<string> keyName)
+        {
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            return new DeferredBodyAction<KeyMetadata>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<KeyMetadata>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        [WorkflowExpressionFactory(nameof(__BuildGetKeyVersionMetadata))]
+        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion)
         {
-            var apiCallPath = String.Format("/keys/{0}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["encryptedData"] = ExpressionConverter.ConvertO(operationInputencryptedData);
-            if (operationInputpropCount > 0)
-            {
-                callPayload.Body = operationInput;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyMetadata> __BuildGetKeyVersionMetadata(WorkflowExpression<string> keyName, WorkflowExpression<string> keyVersion)
+        {
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            WorkflowExpression.Validate(keyVersion, nameof(keyVersion), required: true);
+            return new DeferredBodyAction<KeyMetadata>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<KeyMetadata>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        [WorkflowExpressionFactory(nameof(__BuildEncryptData))]
+        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
         {
-            var apiCallPath = String.Format("/keys/{0}/versions/{1}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["encryptedData"] = ExpressionConverter.ConvertO(operationInputencryptedData);
-            if (operationInputpropCount > 0)
-            {
-                callPayload.Body = operationInput;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyEncryptOutput> __BuildEncryptData(WorkflowExpression<string> keyName, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputrawData)
+        {
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            WorkflowExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            WorkflowExpression.Validate(operationInputrawData, nameof(operationInputrawData), required: true);
+            return new DeferredBodyAction<KeyEncryptOutput>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["rawData"] = ExpressionConverter.ConvertO(operationInputrawData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+
+                return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        [WorkflowExpressionFactory(nameof(__BuildEncryptDataWithVersion))]
+        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyEncryptOutput> __BuildEncryptDataWithVersion(WorkflowExpression<string> keyName, WorkflowExpression<string> keyVersion, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputrawData)
+        {
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            WorkflowExpression.Validate(keyVersion, nameof(keyVersion), required: true);
+            WorkflowExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            WorkflowExpression.Validate(operationInputrawData, nameof(operationInputrawData), required: true);
+            return new DeferredBodyAction<KeyEncryptOutput>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["rawData"] = ExpressionConverter.ConvertO(operationInputrawData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+
+                return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        [WorkflowExpressionFactory(nameof(__BuildDecryptData))]
+        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyDecryptOutput> __BuildDecryptData(WorkflowExpression<string> keyName, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputencryptedData)
+        {
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            WorkflowExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            WorkflowExpression.Validate(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            return new DeferredBodyAction<KeyDecryptOutput>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["encryptedData"] = ExpressionConverter.ConvertO(operationInputencryptedData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+
+                return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        [WorkflowExpressionFactory(nameof(__BuildDecryptDataWithVersion))]
+        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyDecryptOutput> __BuildDecryptDataWithVersion(WorkflowExpression<string> keyName, WorkflowExpression<string> keyVersion, WorkflowExpression<operationInputalgorithmInput> operationInputalgorithm, WorkflowExpression<string> operationInputencryptedData)
+        {
+            WorkflowExpression.Validate(keyName, nameof(keyName), required: true);
+            WorkflowExpression.Validate(keyVersion, nameof(keyVersion), required: true);
+            WorkflowExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            WorkflowExpression.Validate(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            return new DeferredBodyAction<KeyDecryptOutput>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = ExpressionConverter.ConvertO(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["encryptedData"] = ExpressionConverter.ConvertO(operationInputencryptedData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+
+                return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
@@ -137,48 +224,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions(Expression<Func<string>> secretName)
+        [WorkflowExpressionFactory(nameof(__BuildListSecretVersions))]
+        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions([WorkflowExpression] Func<string> secretName)
         {
-            var apiCallPath = String.Format("/secrets/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SecretMetadataCollection> __BuildListSecretVersions(WorkflowExpression<string> secretName)
+        {
+            WorkflowExpression.Validate(secretName, nameof(secretName), required: true);
+            return new DeferredBodyAction<SecretMetadataCollection>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata(Expression<Func<string>> secretName)
+        [WorkflowExpressionFactory(nameof(__BuildGetSecretMetadata))]
+        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata([WorkflowExpression] Func<string> secretName)
         {
-            var apiCallPath = String.Format("/secrets/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadata>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SecretMetadata> __BuildGetSecretMetadata(WorkflowExpression<string> secretName)
+        {
+            WorkflowExpression.Validate(secretName, nameof(secretName), required: true);
+            return new DeferredBodyAction<SecretMetadata>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SecretMetadata>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        [WorkflowExpressionFactory(nameof(__BuildGetSecretVersionMetadata))]
+        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> secretVersion)
         {
-            var apiCallPath = String.Format("/secrets/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(secretVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadata>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SecretMetadata> __BuildGetSecretVersionMetadata(WorkflowExpression<string> secretName, WorkflowExpression<string> secretVersion)
+        {
+            WorkflowExpression.Validate(secretName, nameof(secretName), required: true);
+            WorkflowExpression.Validate(secretVersion, nameof(secretVersion), required: true);
+            return new DeferredBodyAction<SecretMetadata>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(secretVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SecretMetadata>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecret(Expression<Func<string>> secretName)
+        [WorkflowExpressionFactory(nameof(__BuildGetSecret))]
+        public IBodyWorkflowAction<Secret> GetSecret([WorkflowExpression] Func<string> secretName)
         {
-            var apiCallPath = String.Format("/secrets/{0}/value", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Secret>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Secret> __BuildGetSecret(WorkflowExpression<string> secretName)
+        {
+            WorkflowExpression.Validate(secretName, nameof(secretName), required: true);
+            return new DeferredBodyAction<Secret>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/value", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Secret>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        [WorkflowExpressionFactory(nameof(__BuildGetSecretVersion))]
+        public IBodyWorkflowAction<Secret> GetSecretVersion([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> secretVersion)
         {
-            var apiCallPath = String.Format("/secrets/{0}/versions/{1}/value", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(secretVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Secret>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Secret> __BuildGetSecretVersion(WorkflowExpression<string> secretName, WorkflowExpression<string> secretVersion)
+        {
+            WorkflowExpression.Validate(secretName, nameof(secretName), required: true);
+            WorkflowExpression.Validate(secretVersion, nameof(secretVersion), required: true);
+            return new DeferredBodyAction<Secret>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/value", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(secretVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Secret>(callPayload);
+            });
         }
     }
 
@@ -231,6 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         public string EncryptedData { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum operationInputalgorithmInput
     {
         [EnumMember(Value = "RSA-OAEP-256")]

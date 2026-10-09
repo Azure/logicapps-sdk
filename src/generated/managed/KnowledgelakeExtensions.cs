@@ -4,35 +4,49 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
-        {
-            var apiCallPath = "/ImportJobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var batch = new JObject();
-            var batchpropCount = 0;
-            batchpropCount++;
-            batch["Data"] = ExpressionConverter.ConvertO(batchimportData);
-            batchpropCount++;
-            batch["FileName"] = ExpressionConverter.ConvertO(batchnameForImport);
-            batchpropCount++;
-            batch["SecurityKey"] = ExpressionConverter.ConvertO(batchsecurityToken);
-            batchpropCount++;
-            batch["Version"] = ExpressionConverter.ConvertO(batchrPAEnvironment);
-            if (batchpropCount > 0)
-            {
-                callPayload.Body = batch;
-            }
 
-            return new ApiConnectionAction<ImportJobsPostResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
+        [WorkflowExpressionFactory(nameof(__BuildImportJobs))]
+        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs([WorkflowExpression] Func<string> batchimportData, [WorkflowExpression] Func<string> batchnameForImport, [WorkflowExpression] Func<string> batchsecurityToken, [WorkflowExpression] Func<batchrPAEnvironmentInput> batchrPAEnvironment)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ImportJobsPostResponse> __BuildImportJobs(WorkflowExpression<string> batchimportData, WorkflowExpression<string> batchnameForImport, WorkflowExpression<string> batchsecurityToken, WorkflowExpression<batchrPAEnvironmentInput> batchrPAEnvironment)
+        {
+            WorkflowExpression.Validate(batchimportData, nameof(batchimportData), required: true);
+            WorkflowExpression.Validate(batchnameForImport, nameof(batchnameForImport), required: true);
+            WorkflowExpression.Validate(batchsecurityToken, nameof(batchsecurityToken), required: true);
+            WorkflowExpression.Validate(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
+            return new DeferredBodyAction<ImportJobsPostResponse>(() =>
+            {
+                var apiCallPath = "/ImportJobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var batch = new JObject();
+                var batchpropCount = 0;
+                batchpropCount++;
+                batch["Data"] = ExpressionConverter.ConvertO(batchimportData);
+                batchpropCount++;
+                batch["FileName"] = ExpressionConverter.ConvertO(batchnameForImport);
+                batchpropCount++;
+                batch["SecurityKey"] = ExpressionConverter.ConvertO(batchsecurityToken);
+                batchpropCount++;
+                batch["Version"] = ExpressionConverter.ConvertO(batchrPAEnvironment);
+                if (batchpropCount > 0)
+                {
+                    callPayload.Body = batch;
+                }
+
+                return new ApiConnectionAction<ImportJobsPostResponse>(callPayload);
+            });
         }
     }
 
@@ -57,6 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         public string JobId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum batchrPAEnvironmentInput
     {
         [EnumMember(Value = "0")]

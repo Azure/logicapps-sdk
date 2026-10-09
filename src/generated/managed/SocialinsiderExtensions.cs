@@ -4,165 +4,220 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SocialinsiderActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction ProfileTimeBasedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofile = null)
+        [WorkflowExpressionFactory(nameof(__BuildProfileTimeBasedMetrics))]
+        public IWorkflowAction ProfileTimeBasedMetrics([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofile = null)
         {
-            var apiCallPath = "/profile_time_based_metrics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodykey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyprojectname != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildProfileTimeBasedMetrics(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofile = null)
+        {
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
+            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
+            WorkflowExpression.Validate(bodyprofile, nameof(bodyprofile), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/profile_time_based_metrics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    bodypropCount++;
+                }
 
-            if (bodyplatform != null)
-            {
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
-                bodypropCount++;
-            }
+                if (bodyprojectname != null)
+                {
+                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    bodypropCount++;
+                }
 
-            if (bodyprofile != null)
-            {
-                body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
-                bodypropCount++;
-            }
+                if (bodyplatform != null)
+                {
+                    body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprofile != null)
+                {
+                    body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction ProfileAggregatedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
+        [WorkflowExpressionFactory(nameof(__BuildProfileAggregatedMetrics))]
+        public IWorkflowAction ProfileAggregatedMetrics([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
         {
-            var apiCallPath = "/profiles_aggregated_metrics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodykey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyprojectname != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildProfileAggregatedMetrics(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofiles = null)
+        {
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
+            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
+            WorkflowExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/profiles_aggregated_metrics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    bodypropCount++;
+                }
 
-            if (bodyplatform != null)
-            {
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
-                bodypropCount++;
-            }
+                if (bodyprojectname != null)
+                {
+                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    bodypropCount++;
+                }
 
-            if (bodyprofiles != null)
-            {
-                body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
-                bodypropCount++;
-            }
+                if (bodyplatform != null)
+                {
+                    body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprofiles != null)
+                {
+                    body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction Posts(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
+        [WorkflowExpressionFactory(nameof(__BuildPosts))]
+        public IWorkflowAction Posts([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
         {
-            var apiCallPath = "/posts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodykey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyprojectname != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPosts(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofiles = null)
+        {
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
+            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
+            WorkflowExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/posts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    bodypropCount++;
+                }
 
-            if (bodyplatform != null)
-            {
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
-                bodypropCount++;
-            }
+                if (bodyprojectname != null)
+                {
+                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    bodypropCount++;
+                }
 
-            if (bodyprofiles != null)
-            {
-                body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
-                bodypropCount++;
-            }
+                if (bodyplatform != null)
+                {
+                    body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprofiles != null)
+                {
+                    body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction Stories(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string[]>> bodyprofiles = null)
+        [WorkflowExpressionFactory(nameof(__BuildStories))]
+        public IWorkflowAction Stories([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
         {
-            var apiCallPath = "/stories";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodykey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyprojectname != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildStories(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string[]> bodyprofiles = null)
+        {
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
+            WorkflowExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/stories";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    bodypropCount++;
+                }
 
-            if (bodyprofiles != null)
-            {
-                body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
-                bodypropCount++;
-            }
+                if (bodyprojectname != null)
+                {
+                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprofiles != null)
+                {
+                    body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

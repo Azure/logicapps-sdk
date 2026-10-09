@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,32 +29,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildStoresRefreshStore))]
+        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore([WorkflowExpression] Func<int> bodystoreId = null, [WorkflowExpression] Func<string> bodyrefreshDate = null)
         {
-            var apiCallPath = "/stores/refreshstore";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystoreId != null)
-            {
-                body["storeId"] = ExpressionConverter.ConvertO(bodystoreId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyrefreshDate != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RefreshStoreResponse> __BuildStoresRefreshStore(WorkflowExpression<int> bodystoreId = null, WorkflowExpression<string> bodyrefreshDate = null)
+        {
+            WorkflowExpression.Validate(bodystoreId, nameof(bodystoreId), required: false);
+            WorkflowExpression.Validate(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
+            return new DeferredBodyAction<RefreshStoreResponse>(() =>
             {
-                body["refreshDate"] = ExpressionConverter.ConvertO(bodyrefreshDate);
-                bodypropCount++;
-            }
+                var apiCallPath = "/stores/refreshstore";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystoreId != null)
+                {
+                    body["storeId"] = ExpressionConverter.ConvertO(bodystoreId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyrefreshDate != null)
+                {
+                    body["refreshDate"] = ExpressionConverter.ConvertO(bodyrefreshDate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
+            });
         }
     }
 

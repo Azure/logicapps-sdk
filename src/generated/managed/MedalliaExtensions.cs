@@ -4,49 +4,73 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MedalliaActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
-        {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
+        [WorkflowExpressionFactory(nameof(__BuildTriggerInvitation))]
+        public IWorkflowAction TriggerInvitation([WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildTriggerInvitation(WorkflowExpression<string> service, WorkflowExpression<string> instanceURL)
+        {
+            WorkflowExpression.Validate(service, nameof(service), required: true);
+            WorkflowExpression.Validate(instanceURL, nameof(instanceURL), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
+        [WorkflowExpressionFactory(nameof(__BuildSendExperienceSignals))]
+        public IWorkflowAction SendExperienceSignals([WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
-            var apiCallPath = String.Format("/inbound/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendExperienceSignals(WorkflowExpression<string> service, WorkflowExpression<string> instanceURL)
+        {
+            WorkflowExpression.Validate(service, nameof(service), required: true);
+            WorkflowExpression.Validate(instanceURL, nameof(instanceURL), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/inbound/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

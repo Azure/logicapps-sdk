@@ -4,79 +4,123 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NistnvdipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCVECollectionResponse> GetCVECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<cvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<cvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCVECollection))]
+        public IBodyWorkflowAction<GetCVECollectionResponse> GetCVECollection([WorkflowExpression] Func<addOnsInput> addOns = null, [WorkflowExpression] Func<string> cpeMatchString = null, [WorkflowExpression] Func<string> cvssV2Metrics = null, [WorkflowExpression] Func<cvssV2SeverityInput> cvssV2Severity = null, [WorkflowExpression] Func<string> cvssV3Metrics = null, [WorkflowExpression] Func<cvssV3SeverityInput> cvssV3Severity = null, [WorkflowExpression] Func<string> cweId = null, [WorkflowExpression] Func<bool> includeMatchStringChange = null, [WorkflowExpression] Func<bool> isExactMatch = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> modStartDate = null, [WorkflowExpression] Func<string> modEndDate = null, [WorkflowExpression] Func<string> pubStartDate = null, [WorkflowExpression] Func<string> pubEndDate = null, [WorkflowExpression] Func<int> resultsPerPage = null, [WorkflowExpression] Func<int> startIndex = null)
         {
-            var apiCallPath = "/cves/1.0/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (addOns != null)
-                callPayload.Queries["addOns"] = ExpressionConverter.Convert(addOns);
-            if (cpeMatchString != null)
-                callPayload.Queries["cpeMatchString"] = ExpressionConverter.Convert(cpeMatchString);
-            if (cvssV2Metrics != null)
-                callPayload.Queries["cvssV2Metrics"] = ExpressionConverter.Convert(cvssV2Metrics);
-            if (cvssV2Severity != null)
-                callPayload.Queries["cvssV2Severity"] = ExpressionConverter.Convert(cvssV2Severity);
-            if (cvssV3Metrics != null)
-                callPayload.Queries["cvssV3Metrics"] = ExpressionConverter.Convert(cvssV3Metrics);
-            if (cvssV3Severity != null)
-                callPayload.Queries["cvssV3Severity"] = ExpressionConverter.Convert(cvssV3Severity);
-            if (cweId != null)
-                callPayload.Queries["cweId"] = ExpressionConverter.Convert(cweId);
-            if (includeMatchStringChange != null)
-                callPayload.Queries["includeMatchStringChange"] = ExpressionConverter.Convert(includeMatchStringChange);
-            if (isExactMatch != null)
-                callPayload.Queries["isExactMatch"] = ExpressionConverter.Convert(isExactMatch);
-            if (keyword != null)
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
-            if (modStartDate != null)
-                callPayload.Queries["modStartDate"] = ExpressionConverter.Convert(modStartDate);
-            if (modEndDate != null)
-                callPayload.Queries["modEndDate"] = ExpressionConverter.Convert(modEndDate);
-            if (pubStartDate != null)
-                callPayload.Queries["pubStartDate"] = ExpressionConverter.Convert(pubStartDate);
-            if (pubEndDate != null)
-                callPayload.Queries["pubEndDate"] = ExpressionConverter.Convert(pubEndDate);
-            if (resultsPerPage != null)
-                callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            return new ApiConnectionAction<GetCVECollectionResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCVECollectionResponse> __BuildGetCVECollection(WorkflowExpression<addOnsInput> addOns = null, WorkflowExpression<string> cpeMatchString = null, WorkflowExpression<string> cvssV2Metrics = null, WorkflowExpression<cvssV2SeverityInput> cvssV2Severity = null, WorkflowExpression<string> cvssV3Metrics = null, WorkflowExpression<cvssV3SeverityInput> cvssV3Severity = null, WorkflowExpression<string> cweId = null, WorkflowExpression<bool> includeMatchStringChange = null, WorkflowExpression<bool> isExactMatch = null, WorkflowExpression<string> keyword = null, WorkflowExpression<string> modStartDate = null, WorkflowExpression<string> modEndDate = null, WorkflowExpression<string> pubStartDate = null, WorkflowExpression<string> pubEndDate = null, WorkflowExpression<int> resultsPerPage = null, WorkflowExpression<int> startIndex = null)
+        {
+            WorkflowExpression.Validate(addOns, nameof(addOns), required: false);
+            WorkflowExpression.Validate(cpeMatchString, nameof(cpeMatchString), required: false);
+            WorkflowExpression.Validate(cvssV2Metrics, nameof(cvssV2Metrics), required: false);
+            WorkflowExpression.Validate(cvssV2Severity, nameof(cvssV2Severity), required: false);
+            WorkflowExpression.Validate(cvssV3Metrics, nameof(cvssV3Metrics), required: false);
+            WorkflowExpression.Validate(cvssV3Severity, nameof(cvssV3Severity), required: false);
+            WorkflowExpression.Validate(cweId, nameof(cweId), required: false);
+            WorkflowExpression.Validate(includeMatchStringChange, nameof(includeMatchStringChange), required: false);
+            WorkflowExpression.Validate(isExactMatch, nameof(isExactMatch), required: false);
+            WorkflowExpression.Validate(keyword, nameof(keyword), required: false);
+            WorkflowExpression.Validate(modStartDate, nameof(modStartDate), required: false);
+            WorkflowExpression.Validate(modEndDate, nameof(modEndDate), required: false);
+            WorkflowExpression.Validate(pubStartDate, nameof(pubStartDate), required: false);
+            WorkflowExpression.Validate(pubEndDate, nameof(pubEndDate), required: false);
+            WorkflowExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
+            WorkflowExpression.Validate(startIndex, nameof(startIndex), required: false);
+            return new DeferredBodyAction<GetCVECollectionResponse>(() =>
+            {
+                var apiCallPath = "/cves/1.0/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (addOns != null)
+                    callPayload.Queries["addOns"] = ExpressionConverter.Convert(addOns);
+                if (cpeMatchString != null)
+                    callPayload.Queries["cpeMatchString"] = ExpressionConverter.Convert(cpeMatchString);
+                if (cvssV2Metrics != null)
+                    callPayload.Queries["cvssV2Metrics"] = ExpressionConverter.Convert(cvssV2Metrics);
+                if (cvssV2Severity != null)
+                    callPayload.Queries["cvssV2Severity"] = ExpressionConverter.Convert(cvssV2Severity);
+                if (cvssV3Metrics != null)
+                    callPayload.Queries["cvssV3Metrics"] = ExpressionConverter.Convert(cvssV3Metrics);
+                if (cvssV3Severity != null)
+                    callPayload.Queries["cvssV3Severity"] = ExpressionConverter.Convert(cvssV3Severity);
+                if (cweId != null)
+                    callPayload.Queries["cweId"] = ExpressionConverter.Convert(cweId);
+                if (includeMatchStringChange != null)
+                    callPayload.Queries["includeMatchStringChange"] = ExpressionConverter.Convert(includeMatchStringChange);
+                if (isExactMatch != null)
+                    callPayload.Queries["isExactMatch"] = ExpressionConverter.Convert(isExactMatch);
+                if (keyword != null)
+                    callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+                if (modStartDate != null)
+                    callPayload.Queries["modStartDate"] = ExpressionConverter.Convert(modStartDate);
+                if (modEndDate != null)
+                    callPayload.Queries["modEndDate"] = ExpressionConverter.Convert(modEndDate);
+                if (pubStartDate != null)
+                    callPayload.Queries["pubStartDate"] = ExpressionConverter.Convert(pubStartDate);
+                if (pubEndDate != null)
+                    callPayload.Queries["pubEndDate"] = ExpressionConverter.Convert(pubEndDate);
+                if (resultsPerPage != null)
+                    callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                return new ApiConnectionAction<GetCVECollectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCPECollectionResponse> GetCPECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCPECollection))]
+        public IBodyWorkflowAction<GetCPECollectionResponse> GetCPECollection([WorkflowExpression] Func<addOnsInput> addOns = null, [WorkflowExpression] Func<string> cpeMatchString = null, [WorkflowExpression] Func<bool> includeDeprecated = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> modStartDate = null, [WorkflowExpression] Func<string> modEndDate = null, [WorkflowExpression] Func<int> resultsPerPage = null, [WorkflowExpression] Func<int> startIndex = null)
         {
-            var apiCallPath = "/cpes/1.0/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (addOns != null)
-                callPayload.Queries["addOns"] = ExpressionConverter.Convert(addOns);
-            callPayload.Queries["cpeMatchString"] = Convert.ToString("cpe:2.3:*:microsoft");
-            if (cpeMatchString != null)
-                callPayload.Queries["cpeMatchString"] = ExpressionConverter.Convert(cpeMatchString);
-            callPayload.Queries["includeDeprecated"] = Convert.ToString(false);
-            if (includeDeprecated != null)
-                callPayload.Queries["includeDeprecated"] = ExpressionConverter.Convert(includeDeprecated);
-            if (keyword != null)
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
-            if (modStartDate != null)
-                callPayload.Queries["modStartDate"] = ExpressionConverter.Convert(modStartDate);
-            if (modEndDate != null)
-                callPayload.Queries["modEndDate"] = ExpressionConverter.Convert(modEndDate);
-            if (resultsPerPage != null)
-                callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            return new ApiConnectionAction<GetCPECollectionResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCPECollectionResponse> __BuildGetCPECollection(WorkflowExpression<addOnsInput> addOns = null, WorkflowExpression<string> cpeMatchString = null, WorkflowExpression<bool> includeDeprecated = null, WorkflowExpression<string> keyword = null, WorkflowExpression<string> modStartDate = null, WorkflowExpression<string> modEndDate = null, WorkflowExpression<int> resultsPerPage = null, WorkflowExpression<int> startIndex = null)
+        {
+            WorkflowExpression.Validate(addOns, nameof(addOns), required: false);
+            WorkflowExpression.Validate(cpeMatchString, nameof(cpeMatchString), required: false);
+            WorkflowExpression.Validate(includeDeprecated, nameof(includeDeprecated), required: false);
+            WorkflowExpression.Validate(keyword, nameof(keyword), required: false);
+            WorkflowExpression.Validate(modStartDate, nameof(modStartDate), required: false);
+            WorkflowExpression.Validate(modEndDate, nameof(modEndDate), required: false);
+            WorkflowExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
+            WorkflowExpression.Validate(startIndex, nameof(startIndex), required: false);
+            return new DeferredBodyAction<GetCPECollectionResponse>(() =>
+            {
+                var apiCallPath = "/cpes/1.0/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (addOns != null)
+                    callPayload.Queries["addOns"] = ExpressionConverter.Convert(addOns);
+                callPayload.Queries["cpeMatchString"] = Convert.ToString("cpe:2.3:*:microsoft");
+                if (cpeMatchString != null)
+                    callPayload.Queries["cpeMatchString"] = ExpressionConverter.Convert(cpeMatchString);
+                callPayload.Queries["includeDeprecated"] = Convert.ToString(false);
+                if (includeDeprecated != null)
+                    callPayload.Queries["includeDeprecated"] = ExpressionConverter.Convert(includeDeprecated);
+                if (keyword != null)
+                    callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+                if (modStartDate != null)
+                    callPayload.Queries["modStartDate"] = ExpressionConverter.Convert(modStartDate);
+                if (modEndDate != null)
+                    callPayload.Queries["modEndDate"] = ExpressionConverter.Convert(modEndDate);
+                if (resultsPerPage != null)
+                    callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                return new ApiConnectionAction<GetCPECollectionResponse>(callPayload);
+            });
         }
     }
 
@@ -387,12 +431,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public JToken BaseScore { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOnsInput
     {
         [EnumMember(Value = "cves")]
         Cves
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cvssV2SeverityInput
     {
         LOW,
@@ -400,6 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         HIGH
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cvssV3SeverityInput
     {
         LOW,

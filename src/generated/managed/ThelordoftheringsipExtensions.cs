@@ -4,232 +4,422 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ThelordoftheringsipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<BookListResponse> BookList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildBookList))]
+        public IBodyWorkflowAction<BookListResponse> BookList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = "/book";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<BookListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BookListResponse> __BuildBookList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<BookListResponse>(() =>
+            {
+                var apiCallPath = "/book";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<BookListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<BookGetResponse> BookGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildBookGet))]
+        public IBodyWorkflowAction<BookGetResponse> BookGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/book/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<BookGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BookGetResponse> __BuildBookGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<BookGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/book/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<BookGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<BookGetChaptersResponse> BookGetChapters(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildBookGetChapters))]
+        public IBodyWorkflowAction<BookGetChaptersResponse> BookGetChapters([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/book/{0}/chapter", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<BookGetChaptersResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BookGetChaptersResponse> __BuildBookGetChapters(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<BookGetChaptersResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/book/{0}/chapter", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<BookGetChaptersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<MovieListResponse> MovieList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildMovieList))]
+        public IBodyWorkflowAction<MovieListResponse> MovieList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = "/movie";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<MovieListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MovieListResponse> __BuildMovieList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<MovieListResponse>(() =>
+            {
+                var apiCallPath = "/movie";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<MovieListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<MovieGetResponse> MovieGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildMovieGet))]
+        public IBodyWorkflowAction<MovieGetResponse> MovieGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/movie/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<MovieGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MovieGetResponse> __BuildMovieGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<MovieGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/movie/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<MovieGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<MovieGetQuoteResponse> MovieGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildMovieGetQuote))]
+        public IBodyWorkflowAction<MovieGetQuoteResponse> MovieGetQuote([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/movie/{0}/quote", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<MovieGetQuoteResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MovieGetQuoteResponse> __BuildMovieGetQuote(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<MovieGetQuoteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/movie/{0}/quote", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<MovieGetQuoteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<CharacterListResponse> CharacterList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildCharacterList))]
+        public IBodyWorkflowAction<CharacterListResponse> CharacterList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = "/character";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<CharacterListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CharacterListResponse> __BuildCharacterList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<CharacterListResponse>(() =>
+            {
+                var apiCallPath = "/character";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<CharacterListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<CharacterGetResponse> CharacterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildCharacterGet))]
+        public IBodyWorkflowAction<CharacterGetResponse> CharacterGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/character/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<CharacterGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CharacterGetResponse> __BuildCharacterGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<CharacterGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/character/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<CharacterGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<CharacterGetQuoteResponse> CharacterGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildCharacterGetQuote))]
+        public IBodyWorkflowAction<CharacterGetQuoteResponse> CharacterGetQuote([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/character/{0}/quote", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<CharacterGetQuoteResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CharacterGetQuoteResponse> __BuildCharacterGetQuote(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<CharacterGetQuoteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/character/{0}/quote", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<CharacterGetQuoteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<QuoteListResponse> QuoteList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildQuoteList))]
+        public IBodyWorkflowAction<QuoteListResponse> QuoteList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = "/quote";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<QuoteListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QuoteListResponse> __BuildQuoteList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<QuoteListResponse>(() =>
+            {
+                var apiCallPath = "/quote";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<QuoteListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<QuoteGetResponse> QuoteGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildQuoteGet))]
+        public IBodyWorkflowAction<QuoteGetResponse> QuoteGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/quote/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<QuoteGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QuoteGetResponse> __BuildQuoteGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<QuoteGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/quote/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<QuoteGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<ChapterListResponse> ChapterList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildChapterList))]
+        public IBodyWorkflowAction<ChapterListResponse> ChapterList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = "/chapter";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<ChapterListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChapterListResponse> __BuildChapterList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<ChapterListResponse>(() =>
+            {
+                var apiCallPath = "/chapter";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<ChapterListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<ChapterGetResponse> ChapterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        [WorkflowExpressionFactory(nameof(__BuildChapterGet))]
+        public IBodyWorkflowAction<ChapterGetResponse> ChapterGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            var apiCallPath = String.Format("/chapter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
-            return new ApiConnectionAction<ChapterGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChapterGetResponse> __BuildChapterGet(WorkflowExpression<string> id, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> sorting = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(sorting, nameof(sorting), required: false);
+            return new DeferredBodyAction<ChapterGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chapter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (sorting != null)
+                    callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                return new ApiConnectionAction<ChapterGetResponse>(callPayload);
+            });
         }
     }
 

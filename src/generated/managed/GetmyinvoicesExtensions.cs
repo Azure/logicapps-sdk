@@ -4,31 +4,44 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GetmyinvoicesActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
-        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
-        {
-            var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInvoiceFromGetMyInvoices))]
+        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyapiKey)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> __BuildGetInvoiceFromGetMyInvoices(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyapiKey)
+        {
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
+            return new DeferredBodyAction<GetInvoiceFromGetMyInvoicesResponse>(() =>
+            {
+                var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(callPayload);
+            });
         }
     }
 

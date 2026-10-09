@@ -4,20 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Passageby1passwordau
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Passageby1passwordauActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "passageby1passwordau")]
-        public IBodyWorkflowAction<OpenIdConfiguration> GetOpenIdConfiguration(Expression<Func<string>> appId)
+        [WorkflowExpressionFactory(nameof(__BuildGetOpenIdConfiguration))]
+        public IBodyWorkflowAction<OpenIdConfiguration> GetOpenIdConfiguration([WorkflowExpression] Func<string> appId)
         {
-            var apiCallPath = String.Format("/apps/{0}/.well-known/openid-configuration", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OpenIdConfiguration>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpenIdConfiguration> __BuildGetOpenIdConfiguration(WorkflowExpression<string> appId)
+        {
+            WorkflowExpression.Validate(appId, nameof(appId), required: true);
+            return new DeferredBodyAction<OpenIdConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/apps/{0}/.well-known/openid-configuration", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OpenIdConfiguration>(callPayload);
+            });
         }
     }
 

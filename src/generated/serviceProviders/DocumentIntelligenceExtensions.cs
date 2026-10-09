@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
 {
     using System;
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -13,22 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
 
     public class DocumentIntelligenceActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
-            if (modelIdInputs != null)
-            {
-                serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
-            }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
+        [WorkflowExpressionFactory(nameof(__BuildAnalyzeDocument))]
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument([WorkflowExpression] Func<AnalyzeDocumentInputModelIdType> modelId, [WorkflowExpression] Func<object> modelIdInputs = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> __BuildAnalyzeDocument(WorkflowExpression<AnalyzeDocumentInputModelIdType> modelId, WorkflowExpression<object> modelIdInputs = null)
+        {
+            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
+            WorkflowExpression.Validate(modelIdInputs, nameof(modelIdInputs), required: false);
+            return new DeferredBodyAction<AnalyzeDocumentOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
+                if (modelIdInputs != null)
+                {
+                    serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+            });
         }
     }
 
@@ -41,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
         public JToken Response { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AnalyzeDocumentInputModelIdType
     {
         [EnumMember(Value = "prebuilt-read")]

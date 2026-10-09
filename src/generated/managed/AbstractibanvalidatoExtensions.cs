@@ -4,21 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbstractibanvalidatoActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractibanvalidato")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> iban)
+        [WorkflowExpressionFactory(nameof(__BuildValidate))]
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> iban)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["iban"] = ExpressionConverter.Convert(iban);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowExpression<string> iban)
+        {
+            WorkflowExpression.Validate(iban, nameof(iban), required: true);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["iban"] = ExpressionConverter.Convert(iban);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
     }
 

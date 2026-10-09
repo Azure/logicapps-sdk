@@ -4,55 +4,77 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LettriaActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend(Expression<Func<string[]>> bodydocuments = null)
+        [WorkflowExpressionFactory(nameof(__BuildComprehend))]
+        public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend([WorkflowExpression] Func<string[]> bodydocuments = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocuments != null)
-            {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ComprehendPostResponseItem[]> __BuildComprehend(WorkflowExpression<string[]> bodydocuments = null)
+        {
+            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            return new DeferredBodyAction<ComprehendPostResponseItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ComprehendPostResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ComprehendPostResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify(Expression<Func<string[]>> bodydocuments = null)
+        [WorkflowExpressionFactory(nameof(__BuildClassify))]
+        public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify([WorkflowExpression] Func<string[]> bodydocuments = null)
         {
-            var apiCallPath = "/nls/classification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocuments != null)
-            {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ClassifyPostResponseItem[]> __BuildClassify(WorkflowExpression<string[]> bodydocuments = null)
+        {
+            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            return new DeferredBodyAction<ClassifyPostResponseItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/nls/classification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ClassifyPostResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ClassifyPostResponseItem[]>(callPayload);
+            });
         }
     }
 

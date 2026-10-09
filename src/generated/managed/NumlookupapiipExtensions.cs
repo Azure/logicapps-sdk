@@ -4,22 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NumlookupapiipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
-        public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildNumberGet))]
+        public IBodyWorkflowAction<NumberGetResponse> NumberGet([WorkflowExpression] Func<string> phoneNumber, [WorkflowExpression] Func<string> countryCode = null)
         {
-            var apiCallPath = String.Format("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(phoneNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<NumberGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NumberGetResponse> __BuildNumberGet(WorkflowExpression<string> phoneNumber, WorkflowExpression<string> countryCode = null)
+        {
+            WorkflowExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
+            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            return new DeferredBodyAction<NumberGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(phoneNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                return new ApiConnectionAction<NumberGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]

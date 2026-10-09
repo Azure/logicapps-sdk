@@ -4,49 +4,73 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SearchapigooglesearchActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<deviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<safeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<deviceInput> device = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> uule = null, [WorkflowExpression] Func<string> googleDomain = null, [WorkflowExpression] Func<string> gl = null, [WorkflowExpression] Func<string> hl = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> cr = null, [WorkflowExpression] Func<nfprInput> nfpr = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<safeInput> safe = null, [WorkflowExpression] Func<int> num = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["engine"] = Convert.ToString("google");
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["device"] = Convert.ToString("desktop");
-            if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-            if (uule != null)
-                callPayload.Queries["uule"] = ExpressionConverter.Convert(uule);
-            if (googleDomain != null)
-                callPayload.Queries["google_domain"] = ExpressionConverter.Convert(googleDomain);
-            if (gl != null)
-                callPayload.Queries["gl"] = ExpressionConverter.Convert(gl);
-            if (hl != null)
-                callPayload.Queries["hl"] = ExpressionConverter.Convert(hl);
-            if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
-            if (cr != null)
-                callPayload.Queries["cr"] = ExpressionConverter.Convert(cr);
-            if (nfpr != null)
-                callPayload.Queries["nfpr"] = ExpressionConverter.Convert(nfpr);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (safe != null)
-                callPayload.Queries["safe"] = ExpressionConverter.Convert(safe);
-            if (num != null)
-                callPayload.Queries["num"] = ExpressionConverter.Convert(num);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<deviceInput> device = null, WorkflowExpression<string> location = null, WorkflowExpression<string> uule = null, WorkflowExpression<string> googleDomain = null, WorkflowExpression<string> gl = null, WorkflowExpression<string> hl = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> cr = null, WorkflowExpression<nfprInput> nfpr = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<safeInput> safe = null, WorkflowExpression<int> num = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(device, nameof(device), required: false);
+            WorkflowExpression.Validate(location, nameof(location), required: false);
+            WorkflowExpression.Validate(uule, nameof(uule), required: false);
+            WorkflowExpression.Validate(googleDomain, nameof(googleDomain), required: false);
+            WorkflowExpression.Validate(gl, nameof(gl), required: false);
+            WorkflowExpression.Validate(hl, nameof(hl), required: false);
+            WorkflowExpression.Validate(lr, nameof(lr), required: false);
+            WorkflowExpression.Validate(cr, nameof(cr), required: false);
+            WorkflowExpression.Validate(nfpr, nameof(nfpr), required: false);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            WorkflowExpression.Validate(safe, nameof(safe), required: false);
+            WorkflowExpression.Validate(num, nameof(num), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<SearchGetResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["engine"] = Convert.ToString("google");
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["device"] = Convert.ToString("desktop");
+                if (device != null)
+                    callPayload.Queries["device"] = ExpressionConverter.Convert(device);
+                if (location != null)
+                    callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+                if (uule != null)
+                    callPayload.Queries["uule"] = ExpressionConverter.Convert(uule);
+                if (googleDomain != null)
+                    callPayload.Queries["google_domain"] = ExpressionConverter.Convert(googleDomain);
+                if (gl != null)
+                    callPayload.Queries["gl"] = ExpressionConverter.Convert(gl);
+                if (hl != null)
+                    callPayload.Queries["hl"] = ExpressionConverter.Convert(hl);
+                if (lr != null)
+                    callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                if (cr != null)
+                    callPayload.Queries["cr"] = ExpressionConverter.Convert(cr);
+                if (nfpr != null)
+                    callPayload.Queries["nfpr"] = ExpressionConverter.Convert(nfpr);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (safe != null)
+                    callPayload.Queries["safe"] = ExpressionConverter.Convert(safe);
+                if (num != null)
+                    callPayload.Queries["num"] = ExpressionConverter.Convert(num);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            });
         }
     }
 
@@ -1458,6 +1482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         public bool Video { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deviceInput
     {
         [EnumMember(Value = "desktop")]
@@ -1468,6 +1493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         Tablet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum nfprInput
     {
         [EnumMember(Value = "0")]
@@ -1476,6 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         [EnumMember(Value = "0")]
@@ -1484,6 +1511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum safeInput
     {
         [EnumMember(Value = "off")]

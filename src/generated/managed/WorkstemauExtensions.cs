@@ -4,67 +4,85 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WorkstemauActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _001addFixedSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
+        [WorkflowExpressionFactory(nameof(__Build_001addFixedSalaryData))]
+        public IBodyWorkflowAction<ResultBoolean> _001addFixedSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodypayrollItemId, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<double> bodytotalLimitAmount = null, [WorkflowExpression] Func<double> bodypaidAmount = null, [WorkflowExpression] Func<double> bodysurplusAmount = null)
         {
-            var apiCallPath = "/v3/payroll/addFixedSalaryData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
-            if (bodymoney != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_001addFixedSalaryData(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodypayrollItemId, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<double> bodytotalLimitAmount = null, WorkflowExpression<double> bodypaidAmount = null, WorkflowExpression<double> bodysurplusAmount = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: true);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodytotalLimitAmount, nameof(bodytotalLimitAmount), required: false);
+            WorkflowExpression.Validate(bodypaidAmount, nameof(bodypaidAmount), required: false);
+            WorkflowExpression.Validate(bodysurplusAmount, nameof(bodysurplusAmount), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                var apiCallPath = "/v3/payroll/addFixedSalaryData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
                 bodypropCount++;
-            }
+                body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodytotalLimitAmount != null)
-            {
-                body["totalLimitAmount"] = ExpressionConverter.ConvertO(bodytotalLimitAmount);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodypaidAmount != null)
-            {
-                body["paidAmount"] = ExpressionConverter.ConvertO(bodypaidAmount);
-                bodypropCount++;
-            }
+                if (bodytotalLimitAmount != null)
+                {
+                    body["totalLimitAmount"] = ExpressionConverter.ConvertO(bodytotalLimitAmount);
+                    bodypropCount++;
+                }
 
-            if (bodysurplusAmount != null)
-            {
-                body["surplusAmount"] = ExpressionConverter.ConvertO(bodysurplusAmount);
-                bodypropCount++;
-            }
+                if (bodypaidAmount != null)
+                {
+                    body["paidAmount"] = ExpressionConverter.ConvertO(bodypaidAmount);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysurplusAmount != null)
+                {
+                    body["surplusAmount"] = ExpressionConverter.ConvertO(bodysurplusAmount);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
@@ -77,13 +95,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _002deleteFixedSalaryDataById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_002deleteFixedSalaryDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _002deleteFixedSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/deleteFixedSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_002deleteFixedSalaryDataById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/deleteFixedSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
@@ -96,1296 +125,1883 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> _003getUserInfoById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_003getUserInfoById))]
+        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> _003getUserInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/getUserInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3SysEnterpriseUserResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> __Build_003getUserInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3SysEnterpriseUserResp>(() =>
+            {
+                var apiCallPath = "/v3/company/getUserInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3SysEnterpriseUserResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _003updateFixedSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
+        [WorkflowExpressionFactory(nameof(__Build_003updateFixedSalaryDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _003updateFixedSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypayrollItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<double> bodytotalLimitAmount = null, [WorkflowExpression] Func<double> bodypaidAmount = null, [WorkflowExpression] Func<double> bodysurplusAmount = null)
         {
-            var apiCallPath = "/v3/payroll/updateFixedSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypayrollItemId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_003updateFixedSalaryDataById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodypayrollItemId = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<double> bodytotalLimitAmount = null, WorkflowExpression<double> bodypaidAmount = null, WorkflowExpression<double> bodysurplusAmount = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: false);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodytotalLimitAmount, nameof(bodytotalLimitAmount), required: false);
+            WorkflowExpression.Validate(bodypaidAmount, nameof(bodypaidAmount), required: false);
+            WorkflowExpression.Validate(bodysurplusAmount, nameof(bodysurplusAmount), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                var apiCallPath = "/v3/payroll/updateFixedSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypayrollItemId != null)
+                {
+                    body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                    bodypropCount++;
+                }
 
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
 
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodytotalLimitAmount != null)
-            {
-                body["totalLimitAmount"] = ExpressionConverter.ConvertO(bodytotalLimitAmount);
-                bodypropCount++;
-            }
+                if (bodytotalLimitAmount != null)
+                {
+                    body["totalLimitAmount"] = ExpressionConverter.ConvertO(bodytotalLimitAmount);
+                    bodypropCount++;
+                }
 
-            if (bodypaidAmount != null)
-            {
-                body["paidAmount"] = ExpressionConverter.ConvertO(bodypaidAmount);
-                bodypropCount++;
-            }
+                if (bodypaidAmount != null)
+                {
+                    body["paidAmount"] = ExpressionConverter.ConvertO(bodypaidAmount);
+                    bodypropCount++;
+                }
 
-            if (bodysurplusAmount != null)
-            {
-                body["surplusAmount"] = ExpressionConverter.ConvertO(bodysurplusAmount);
-                bodypropCount++;
-            }
+                if (bodysurplusAmount != null)
+                {
+                    body["surplusAmount"] = ExpressionConverter.ConvertO(bodysurplusAmount);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _004addLocationInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylongitude, Expression<Func<double>> bodylatitude, Expression<Func<string>> bodyareaCode, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null)
+        [WorkflowExpressionFactory(nameof(__Build_004addLocationInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _004addLocationInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<string> bodyareaCode, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<bool> bodyisEnableGps = null, [WorkflowExpression] Func<bool> bodyisEnableBluetooth = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymapType = null)
         {
-            var apiCallPath = "/v3/company/addLocationInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            bodypropCount++;
-            body["longitude"] = ExpressionConverter.ConvertO(bodylongitude);
-            bodypropCount++;
-            body["latitude"] = ExpressionConverter.ConvertO(bodylatitude);
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodyisEnableGps != null)
-            {
-                body["isEnableGps"] = ExpressionConverter.ConvertO(bodyisEnableGps);
-                bodypropCount++;
-            }
-
-            if (bodyisEnableBluetooth != null)
-            {
-                body["isEnableBluetooth"] = ExpressionConverter.ConvertO(bodyisEnableBluetooth);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceAddressCode != null)
-            {
-                body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodymapType != null)
-            {
-                body["mapType"] = ExpressionConverter.ConvertO(bodymapType);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3PayrollFixedResp> _004getFixedSalaryDataByEmployeeId(Expression<Func<string>> employeeId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_004addLocationInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyaddress, WorkflowExpression<double> bodylongitude, WorkflowExpression<double> bodylatitude, WorkflowExpression<string> bodyareaCode, WorkflowExpression<int> bodyregion = null, WorkflowExpression<bool> bodyisEnableGps = null, WorkflowExpression<bool> bodyisEnableBluetooth = null, WorkflowExpression<string> bodyattendanceAddressCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodymapType = null)
         {
-            var apiCallPath = "/v3/payroll/getFixedSalaryDataByEmployeeId";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            return new ApiConnectionAction<ResultListV3PayrollFixedResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _005addVariableSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodypayrollDate, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydataType = null)
-        {
-            var apiCallPath = "/v3/payroll/addVariableSalaryData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
-            bodypropCount++;
-            body["money"] = ExpressionConverter.ConvertO(bodymoney);
-            bodypropCount++;
-            body["payrollDate"] = ExpressionConverter.ConvertO(bodypayrollDate);
-            if (bodyremark != null)
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
+            WorkflowExpression.Validate(bodylongitude, nameof(bodylongitude), required: true);
+            WorkflowExpression.Validate(bodylatitude, nameof(bodylatitude), required: true);
+            WorkflowExpression.Validate(bodyareaCode, nameof(bodyareaCode), required: true);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodyisEnableGps, nameof(bodyisEnableGps), required: false);
+            WorkflowExpression.Validate(bodyisEnableBluetooth, nameof(bodyisEnableBluetooth), required: false);
+            WorkflowExpression.Validate(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodymapType, nameof(bodymapType), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                var apiCallPath = "/v3/company/addLocationInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydataType != null)
-            {
-                body["dataType"] = ExpressionConverter.ConvertO(bodydataType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _005deleteLocationById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/company/deleteLocationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _006deleteVariableSalaryDataById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/payroll/deleteVariableSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _006updateLocationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress = null, Expression<Func<double>> bodylongitude = null, Expression<Func<double>> bodylatitude = null, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null, Expression<Func<string>> bodyareaCode = null)
-        {
-            var apiCallPath = "/v3/company/updateLocationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
-            {
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
                 body["address"] = ExpressionConverter.ConvertO(bodyaddress);
                 bodypropCount++;
-            }
-
-            if (bodylongitude != null)
-            {
                 body["longitude"] = ExpressionConverter.ConvertO(bodylongitude);
                 bodypropCount++;
-            }
-
-            if (bodylatitude != null)
-            {
                 body["latitude"] = ExpressionConverter.ConvertO(bodylatitude);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                if (bodyisEnableGps != null)
+                {
+                    body["isEnableGps"] = ExpressionConverter.ConvertO(bodyisEnableGps);
+                    bodypropCount++;
+                }
 
-            if (bodyisEnableGps != null)
-            {
-                body["isEnableGps"] = ExpressionConverter.ConvertO(bodyisEnableGps);
-                bodypropCount++;
-            }
+                if (bodyisEnableBluetooth != null)
+                {
+                    body["isEnableBluetooth"] = ExpressionConverter.ConvertO(bodyisEnableBluetooth);
+                    bodypropCount++;
+                }
 
-            if (bodyisEnableBluetooth != null)
-            {
-                body["isEnableBluetooth"] = ExpressionConverter.ConvertO(bodyisEnableBluetooth);
-                bodypropCount++;
-            }
+                if (bodyattendanceAddressCode != null)
+                {
+                    body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
+                    bodypropCount++;
+                }
 
-            if (bodyattendanceAddressCode != null)
-            {
-                body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodymapType != null)
+                {
+                    body["mapType"] = ExpressionConverter.ConvertO(bodymapType);
+                    bodypropCount++;
+                }
 
-            if (bodymapType != null)
-            {
-                body["mapType"] = ExpressionConverter.ConvertO(bodymapType);
                 bodypropCount++;
-            }
-
-            if (bodyareaCode != null)
-            {
                 body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3AttAddressResp> _007getLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_004getFixedSalaryDataByEmployeeId))]
+        public IBodyWorkflowAction<ResultListV3PayrollFixedResp> _004getFixedSalaryDataByEmployeeId([WorkflowExpression] Func<string> employeeId)
         {
-            var apiCallPath = "/v3/company/getLocationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3AttAddressResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultListV3PayrollFixedResp> __Build_004getFixedSalaryDataByEmployeeId(WorkflowExpression<string> employeeId)
+        {
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: true);
+            return new DeferredBodyAction<ResultListV3PayrollFixedResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getFixedSalaryDataByEmployeeId";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                return new ApiConnectionAction<ResultListV3PayrollFixedResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _007updateVariableSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_005addVariableSalaryData))]
+        public IBodyWorkflowAction<ResultBoolean> _005addVariableSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodypayrollItemId, [WorkflowExpression] Func<double> bodymoney, [WorkflowExpression] Func<string> bodypayrollDate, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodydataType = null)
         {
-            var apiCallPath = "/v3/payroll/updateVariableSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AttAddressResp> _008getLocationInfoById(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_005addVariableSalaryData(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodypayrollItemId, WorkflowExpression<double> bodymoney, WorkflowExpression<string> bodypayrollDate, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodydataType = null)
         {
-            var apiCallPath = "/v3/company/getLocationInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3AttAddressResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> _008getVariableSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> payrollDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
-        {
-            var apiCallPath = "/v3/payroll/getVariableSalaryDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (payrollDateFilter != null)
-                callPayload.Queries["payrollDateFilter"] = ExpressionConverter.Convert(payrollDateFilter);
-            if (moneyFilter != null)
-                callPayload.Queries["moneyFilter"] = ExpressionConverter.Convert(moneyFilter);
-            if (payrollItemIdFilter != null)
-                callPayload.Queries["payrollItemIdFilter"] = ExpressionConverter.Convert(payrollItemIdFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            return new ApiConnectionAction<ResultIPageV3PayrollNonFixedResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _009addExternalSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodybusinessSalaryItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodyoccurrenceDate, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
-        {
-            var apiCallPath = "/v3/payroll/addExternalSalaryData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycode != null)
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: true);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: true);
+            WorkflowExpression.Validate(bodypayrollDate, nameof(bodypayrollDate), required: true);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodydataType, nameof(bodydataType), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                var apiCallPath = "/v3/payroll/addVariableSalaryData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["businessSalaryItemId"] = ExpressionConverter.ConvertO(bodybusinessSalaryItemId);
-            bodypropCount++;
-            body["money"] = ExpressionConverter.ConvertO(bodymoney);
-            bodypropCount++;
-            body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AttRuleResp> _009getLocationAttendanceRulesById(Expression<Func<string>> workLocationId)
-        {
-            var apiCallPath = "/v3/company/getLocationAttendanceRulesById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workLocationId"] = ExpressionConverter.Convert(workLocationId);
-            return new ApiConnectionAction<ResultV3AttRuleResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _010addDepartmentInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
-        {
-            var apiCallPath = "/v3/company/addDepartmentInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydepartmentCode != null)
-            {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _010deleteExternalSalaryDataById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/payroll/deleteExternalSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _011deleteDepartmentById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/company/deleteDepartmentById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _011updateExternalSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyemployeeId = null, Expression<Func<string>> bodybusinessSalaryItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
-        {
-            var apiCallPath = "/v3/payroll/updateExternalSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyemployeeId != null)
-            {
                 body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
                 bodypropCount++;
-            }
-
-            if (bodybusinessSalaryItemId != null)
-            {
-                body["businessSalaryItemId"] = ExpressionConverter.ConvertO(bodybusinessSalaryItemId);
+                body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
                 bodypropCount++;
-            }
-
-            if (bodymoney != null)
-            {
                 body["money"] = ExpressionConverter.ConvertO(bodymoney);
                 bodypropCount++;
-            }
+                body["payrollDate"] = ExpressionConverter.ConvertO(bodypayrollDate);
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodyoccurrenceDate != null)
+                if (bodydataType != null)
+                {
+                    body["dataType"] = ExpressionConverter.ConvertO(bodydataType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_005deleteLocationById))]
+        public IBodyWorkflowAction<ResultBoolean> _005deleteLocationById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_005deleteLocationById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
+                var apiCallPath = "/v3/company/deleteLocationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_006deleteVariableSalaryDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _006deleteVariableSalaryDataById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_006deleteVariableSalaryDataById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/deleteVariableSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_006updateLocationById))]
+        public IBodyWorkflowAction<ResultBoolean> _006updateLocationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<double> bodylongitude = null, [WorkflowExpression] Func<double> bodylatitude = null, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<bool> bodyisEnableGps = null, [WorkflowExpression] Func<bool> bodyisEnableBluetooth = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymapType = null, [WorkflowExpression] Func<string> bodyareaCode = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_006updateLocationById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<double> bodylongitude = null, WorkflowExpression<double> bodylatitude = null, WorkflowExpression<int> bodyregion = null, WorkflowExpression<bool> bodyisEnableGps = null, WorkflowExpression<bool> bodyisEnableBluetooth = null, WorkflowExpression<string> bodyattendanceAddressCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodymapType = null, WorkflowExpression<string> bodyareaCode = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            WorkflowExpression.Validate(bodylongitude, nameof(bodylongitude), required: false);
+            WorkflowExpression.Validate(bodylatitude, nameof(bodylatitude), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodyisEnableGps, nameof(bodyisEnableGps), required: false);
+            WorkflowExpression.Validate(bodyisEnableBluetooth, nameof(bodyisEnableBluetooth), required: false);
+            WorkflowExpression.Validate(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodymapType, nameof(bodymapType), required: false);
+            WorkflowExpression.Validate(bodyareaCode, nameof(bodyareaCode), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/updateLocationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodylongitude != null)
+                {
+                    body["longitude"] = ExpressionConverter.ConvertO(bodylongitude);
+                    bodypropCount++;
+                }
+
+                if (bodylatitude != null)
+                {
+                    body["latitude"] = ExpressionConverter.ConvertO(bodylatitude);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodyisEnableGps != null)
+                {
+                    body["isEnableGps"] = ExpressionConverter.ConvertO(bodyisEnableGps);
+                    bodypropCount++;
+                }
+
+                if (bodyisEnableBluetooth != null)
+                {
+                    body["isEnableBluetooth"] = ExpressionConverter.ConvertO(bodyisEnableBluetooth);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressCode != null)
+                {
+                    body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodymapType != null)
+                {
+                    body["mapType"] = ExpressionConverter.ConvertO(bodymapType);
+                    bodypropCount++;
+                }
+
+                if (bodyareaCode != null)
+                {
+                    body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_007getLocationList))]
+        public IBodyWorkflowAction<ResultIPageV3AttAddressResp> _007getLocationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3AttAddressResp> __Build_007getLocationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3AttAddressResp>(() =>
+            {
+                var apiCallPath = "/v3/company/getLocationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3AttAddressResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_007updateVariableSalaryDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _007updateVariableSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_007updateVariableSalaryDataById(WorkflowExpression<string> bodyid, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/updateVariableSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_008getLocationInfoById))]
+        public IBodyWorkflowAction<ResultV3AttAddressResp> _008getLocationInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AttAddressResp> __Build_008getLocationInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3AttAddressResp>(() =>
+            {
+                var apiCallPath = "/v3/company/getLocationInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3AttAddressResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_008getVariableSalaryDataList))]
+        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> _008getVariableSalaryDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> payrollDateFilter = null, [WorkflowExpression] Func<string> moneyFilter = null, [WorkflowExpression] Func<string> payrollItemIdFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> __Build_008getVariableSalaryDataList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> payrollDateFilter = null, WorkflowExpression<string> moneyFilter = null, WorkflowExpression<string> payrollItemIdFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> bizLabelIds = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
+            WorkflowExpression.Validate(payrollDateFilter, nameof(payrollDateFilter), required: false);
+            WorkflowExpression.Validate(moneyFilter, nameof(moneyFilter), required: false);
+            WorkflowExpression.Validate(payrollItemIdFilter, nameof(payrollItemIdFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
+            return new DeferredBodyAction<ResultIPageV3PayrollNonFixedResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getVariableSalaryDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
+                if (payrollDateFilter != null)
+                    callPayload.Queries["payrollDateFilter"] = ExpressionConverter.Convert(payrollDateFilter);
+                if (moneyFilter != null)
+                    callPayload.Queries["moneyFilter"] = ExpressionConverter.Convert(moneyFilter);
+                if (payrollItemIdFilter != null)
+                    callPayload.Queries["payrollItemIdFilter"] = ExpressionConverter.Convert(payrollItemIdFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
+                return new ApiConnectionAction<ResultIPageV3PayrollNonFixedResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_009addExternalSalaryData))]
+        public IBodyWorkflowAction<ResultBoolean> _009addExternalSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodybusinessSalaryItemId, [WorkflowExpression] Func<double> bodymoney, [WorkflowExpression] Func<string> bodyoccurrenceDate, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_009addExternalSalaryData(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodybusinessSalaryItemId, WorkflowExpression<double> bodymoney, WorkflowExpression<string> bodyoccurrenceDate, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyexpirationDate = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodybusinessSalaryItemId, nameof(bodybusinessSalaryItemId), required: true);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: true);
+            WorkflowExpression.Validate(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/addExternalSalaryData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["businessSalaryItemId"] = ExpressionConverter.ConvertO(bodybusinessSalaryItemId);
+                bodypropCount++;
+                body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                bodypropCount++;
                 body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                    bodypropCount++;
+                }
 
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> _012getExternalSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> businessSalaryItemFilter = null, Expression<Func<string>> occurrenceDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> labelFilter = null)
+        [WorkflowExpressionFactory(nameof(__Build_009getLocationAttendanceRulesById))]
+        public IBodyWorkflowAction<ResultV3AttRuleResp> _009getLocationAttendanceRulesById([WorkflowExpression] Func<string> workLocationId)
         {
-            var apiCallPath = "/v3/payroll/getExternalSalaryDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (businessSalaryItemFilter != null)
-                callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(businessSalaryItemFilter);
-            if (occurrenceDateFilter != null)
-                callPayload.Queries["occurrenceDateFilter"] = ExpressionConverter.Convert(occurrenceDateFilter);
-            if (moneyFilter != null)
-                callPayload.Queries["moneyFilter"] = ExpressionConverter.Convert(moneyFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (labelFilter != null)
-                callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(labelFilter);
-            return new ApiConnectionAction<ResultIPageV3ExternalPayrollResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AttRuleResp> __Build_009getLocationAttendanceRulesById(WorkflowExpression<string> workLocationId)
+        {
+            WorkflowExpression.Validate(workLocationId, nameof(workLocationId), required: true);
+            return new DeferredBodyAction<ResultV3AttRuleResp>(() =>
+            {
+                var apiCallPath = "/v3/company/getLocationAttendanceRulesById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workLocationId"] = ExpressionConverter.Convert(workLocationId);
+                return new ApiConnectionAction<ResultV3AttRuleResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _012updateDepartmentById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
+        [WorkflowExpressionFactory(nameof(__Build_010addDepartmentInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _010addDepartmentInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/company/updateDepartmentById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_010addDepartmentInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyparentId = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
+                var apiCallPath = "/v3/company/addDepartmentInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_010deleteExternalSalaryDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _010deleteExternalSalaryDataById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_010deleteExternalSalaryDataById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/deleteExternalSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_011deleteDepartmentById))]
+        public IBodyWorkflowAction<ResultBoolean> _011deleteDepartmentById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_011deleteDepartmentById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/deleteDepartmentById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_011updateExternalSalaryDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _011updateExternalSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyemployeeId = null, [WorkflowExpression] Func<string> bodybusinessSalaryItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyoccurrenceDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_011updateExternalSalaryDataById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyemployeeId = null, WorkflowExpression<string> bodybusinessSalaryItemId = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyoccurrenceDate = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyexpirationDate = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: false);
+            WorkflowExpression.Validate(bodybusinessSalaryItemId, nameof(bodybusinessSalaryItemId), required: false);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/updateExternalSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodydepartmentCode != null)
+                if (bodyemployeeId != null)
+                {
+                    body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                    bodypropCount++;
+                }
+
+                if (bodybusinessSalaryItemId != null)
+                {
+                    body["businessSalaryItemId"] = ExpressionConverter.ConvertO(bodybusinessSalaryItemId);
+                    bodypropCount++;
+                }
+
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodyoccurrenceDate != null)
+                {
+                    body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_012getExternalSalaryDataList))]
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> _012getExternalSalaryDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> businessSalaryItemFilter = null, [WorkflowExpression] Func<string> occurrenceDateFilter = null, [WorkflowExpression] Func<string> moneyFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> labelFilter = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> __Build_012getExternalSalaryDataList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> businessSalaryItemFilter = null, WorkflowExpression<string> occurrenceDateFilter = null, WorkflowExpression<string> moneyFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> labelFilter = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
+            WorkflowExpression.Validate(businessSalaryItemFilter, nameof(businessSalaryItemFilter), required: false);
+            WorkflowExpression.Validate(occurrenceDateFilter, nameof(occurrenceDateFilter), required: false);
+            WorkflowExpression.Validate(moneyFilter, nameof(moneyFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(labelFilter, nameof(labelFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV3ExternalPayrollResp>(() =>
             {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                var apiCallPath = "/v3/payroll/getExternalSalaryDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
+                if (businessSalaryItemFilter != null)
+                    callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(businessSalaryItemFilter);
+                if (occurrenceDateFilter != null)
+                    callPayload.Queries["occurrenceDateFilter"] = ExpressionConverter.Convert(occurrenceDateFilter);
+                if (moneyFilter != null)
+                    callPayload.Queries["moneyFilter"] = ExpressionConverter.Convert(moneyFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (labelFilter != null)
+                    callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(labelFilter);
+                return new ApiConnectionAction<ResultIPageV3ExternalPayrollResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_012updateDepartmentById))]
+        public IBodyWorkflowAction<ResultBoolean> _012updateDepartmentById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_012updateDepartmentById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyparentId = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/updateDepartmentById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_013getDepartmentList))]
+        public IBodyWorkflowAction<ResultIPageV3DepartmentResp> _013getDepartmentList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3DepartmentResp> __Build_013getDepartmentList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3DepartmentResp>(() =>
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                var apiCallPath = "/v3/company/getDepartmentList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3DepartmentResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_013getPayrollRunList))]
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> _013getPayrollRunList([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> __Build_013getPayrollRunList(WorkflowExpression<string> status, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(status, nameof(status), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3PayrollPlanResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getPayrollRunList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3PayrollPlanResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_014addPositionInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _014addPositionInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_014addPositionInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodypositionCode = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/addPositionInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3DepartmentResp> _013getDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/company/getDepartmentList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3DepartmentResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> _013getPayrollRunList(Expression<Func<string>> status, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/payroll/getPayrollRunList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3PayrollPlanResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _014addPositionInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
-        {
-            var apiCallPath = "/v3/company/addPositionInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypositionCode != null)
-            {
-                body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> _014getPayrollRunDataList(Expression<Func<string>> planId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/payroll/getPayrollRunDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["planId"] = ExpressionConverter.Convert(planId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3PayrollPlanDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _015deletePositionById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/company/deletePositionById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> _015getPayrollDetailsInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/payroll/getPayrollDetailsInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultListV3PayrollPlanDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> _016getPayrollPolicyList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> q = null)
-        {
-            var apiCallPath = "/v3/payroll/getPayrollPolicyList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<ResultIPageV3PayrollRegResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _016updatePositionById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
-        {
-            var apiCallPath = "/v3/company/updatePositionById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
-            {
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                if (bodypositionCode != null)
+                {
+                    body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
+                    bodypropCount++;
+                }
 
-            if (bodypositionCode != null)
-            {
-                body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3PayrollRegResp> _017getPayrollPolicyInfoById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_014getPayrollRunDataList))]
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> _014getPayrollRunDataList([WorkflowExpression] Func<string> planId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getPayrollPolicyInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3PayrollRegResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> __Build_014getPayrollRunDataList(WorkflowExpression<string> planId, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(planId, nameof(planId), required: true);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3PayrollPlanDetailResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getPayrollRunDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["planId"] = ExpressionConverter.Convert(planId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3PayrollPlanDetailResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PositionResp> _017getPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_015deletePositionById))]
+        public IBodyWorkflowAction<ResultBoolean> _015deletePositionById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/getPositionList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3PositionResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_015deletePositionById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/deletePositionById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _018addCostCenterInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        [WorkflowExpressionFactory(nameof(__Build_015getPayrollDetailsInfoById))]
+        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> _015getPayrollDetailsInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/addCostCenterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycostCenterCode != null)
-            {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodystatus != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> __Build_015getPayrollDetailsInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultListV3PayrollPlanDetailResp>(() =>
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/payroll/getPayrollDetailsInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultListV3PayrollPlanDetailResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> _018getPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> nameFilter = null, Expression<Func<string>> paymentTypeFilter = null, Expression<Func<string>> payrollItemTypeId = null, Expression<Func<string>> statusFilter = null)
+        [WorkflowExpressionFactory(nameof(__Build_016getPayrollPolicyList))]
+        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> _016getPayrollPolicyList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> q = null)
         {
-            var apiCallPath = "/v3/payroll/getPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (nameFilter != null)
-                callPayload.Queries["nameFilter"] = ExpressionConverter.Convert(nameFilter);
-            if (paymentTypeFilter != null)
-                callPayload.Queries["paymentTypeFilter"] = ExpressionConverter.Convert(paymentTypeFilter);
-            if (payrollItemTypeId != null)
-                callPayload.Queries["payrollItemTypeId"] = ExpressionConverter.Convert(payrollItemTypeId);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            return new ApiConnectionAction<ResultIPageV3PayrollItemResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> __Build_016getPayrollPolicyList(WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> q = null)
+        {
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            return new DeferredBodyAction<ResultIPageV3PayrollRegResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getPayrollPolicyList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                return new ApiConnectionAction<ResultIPageV3PayrollRegResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _019deleteCostCenterById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_016updatePositionById))]
+        public IBodyWorkflowAction<ResultBoolean> _016updatePositionById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v3/company/deleteCostCenterById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_016updatePositionById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypositionCode = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/updatePositionById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypositionCode != null)
+                {
+                    body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3PayrollItemResp> _019getPayItemInfoById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_017getPayrollPolicyInfoById))]
+        public IBodyWorkflowAction<ResultV3PayrollRegResp> _017getPayrollPolicyInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/getPayItemInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3PayrollItemResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3PayrollRegResp> __Build_017getPayrollPolicyInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3PayrollRegResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getPayrollPolicyInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3PayrollRegResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeResp> _01addEmployeeInfo(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
+        [WorkflowExpressionFactory(nameof(__Build_017getPositionList))]
+        public IBodyWorkflowAction<ResultIPageV3PositionResp> _017getPositionList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/employee/addEmployeeInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            bodypropCount++;
-            body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyemployeeStatus != null)
-            {
-                body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodysex != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3PositionResp> __Build_017getPositionList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3PositionResp>(() =>
             {
-                body["sex"] = ExpressionConverter.ConvertO(bodysex);
-                bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
-                bodypropCount++;
-            }
-
-            if (bodymaritalStatus != null)
-            {
-                body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
-                bodypropCount++;
-            }
-
-            if (bodycountryCode != null)
-            {
-                body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-                bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
-
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCard != null)
-            {
-                body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
-                bodypropCount++;
-            }
-
-            if (bodychineseName != null)
-            {
-                body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
-                bodypropCount++;
-            }
-
-            if (bodysurnameEnglish != null)
-            {
-                body["surnameEnglish"] = ExpressionConverter.ConvertO(bodysurnameEnglish);
-                bodypropCount++;
-            }
-
-            if (bodypersonalNameEnglish != null)
-            {
-                body["personalNameEnglish"] = ExpressionConverter.ConvertO(bodypersonalNameEnglish);
-                bodypropCount++;
-            }
-
-            if (bodybirthday != null)
-            {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactRelation != null)
-            {
-                body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactPhone != null)
-            {
-                body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
-                bodypropCount++;
-            }
-
-            if (bodybankCode != null)
-            {
-                body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
-                bodypropCount++;
-            }
-
-            if (bodybankBranchNumber != null)
-            {
-                body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodydate1 != null)
-            {
-                body["date1"] = ExpressionConverter.ConvertO(bodydate1);
-                bodypropCount++;
-            }
-
-            if (bodydate2 != null)
-            {
-                body["date2"] = ExpressionConverter.ConvertO(bodydate2);
-                bodypropCount++;
-            }
-
-            if (bodydate3 != null)
-            {
-                body["date3"] = ExpressionConverter.ConvertO(bodydate3);
-                bodypropCount++;
-            }
-
-            if (bodydate4 != null)
-            {
-                body["date4"] = ExpressionConverter.ConvertO(bodydate4);
-                bodypropCount++;
-            }
-
-            if (bodytext1 != null)
-            {
-                body["text1"] = ExpressionConverter.ConvertO(bodytext1);
-                bodypropCount++;
-            }
-
-            if (bodytext2 != null)
-            {
-                body["text2"] = ExpressionConverter.ConvertO(bodytext2);
-                bodypropCount++;
-            }
-
-            if (bodytext3 != null)
-            {
-                body["text3"] = ExpressionConverter.ConvertO(bodytext3);
-                bodypropCount++;
-            }
-
-            if (bodytext4 != null)
-            {
-                body["text4"] = ExpressionConverter.ConvertO(bodytext4);
-                bodypropCount++;
-            }
-
-            if (bodytext5 != null)
-            {
-                body["text5"] = ExpressionConverter.ConvertO(bodytext5);
-                bodypropCount++;
-            }
-
-            if (bodytext6 != null)
-            {
-                body["text6"] = ExpressionConverter.ConvertO(bodytext6);
-                bodypropCount++;
-            }
-
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
-
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
-
-            if (bodymobileCardCalType != null)
-            {
-                body["mobileCardCalType"] = ExpressionConverter.ConvertO(bodymobileCardCalType);
-                bodypropCount++;
-            }
-
-            if (bodyregularType != null)
-            {
-                body["regularType"] = ExpressionConverter.ConvertO(bodyregularType);
-                bodypropCount++;
-            }
-
-            if (bodyinsurePlanName != null)
-            {
-                body["insurePlanName"] = ExpressionConverter.ConvertO(bodyinsurePlanName);
-                bodypropCount++;
-            }
-
-            if (bodybizLabelIds != null)
-            {
-                body["bizLabelIds"] = ExpressionConverter.ConvertO(bodybizLabelIds);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddEmployeeResp>(callPayload);
+                var apiCallPath = "/v3/company/getPositionList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3PositionResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _01addLeaveBalanceAdjustInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<string>> bodycause, Expression<Func<string>> bodyadjust)
+        [WorkflowExpressionFactory(nameof(__Build_018addCostCenterInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _018addCostCenterInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v3/leave/addLeaveBalanceAdjustInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-            bodypropCount++;
-            body["occurrenceTime"] = ExpressionConverter.ConvertO(bodyoccurrenceTime);
-            bodypropCount++;
-            body["cause"] = ExpressionConverter.ConvertO(bodycause);
-            bodypropCount++;
-            body["adjust"] = ExpressionConverter.ConvertO(bodyadjust);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_018addCostCenterInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/addCostCenterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodycostCenterCode != null)
+                {
+                    body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _01addRosterInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyattendDay, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_018getPayItemList))]
+        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> _018getPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> nameFilter = null, [WorkflowExpression] Func<string> paymentTypeFilter = null, [WorkflowExpression] Func<string> payrollItemTypeId = null, [WorkflowExpression] Func<string> statusFilter = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addRosterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["attendDay"] = ExpressionConverter.ConvertO(bodyattendDay);
-            if (bodyshiftTemplateId != null)
-            {
-                body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyaddressCardId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> __Build_018getPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> nameFilter = null, WorkflowExpression<string> paymentTypeFilter = null, WorkflowExpression<string> payrollItemTypeId = null, WorkflowExpression<string> statusFilter = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(nameFilter, nameof(nameFilter), required: false);
+            WorkflowExpression.Validate(paymentTypeFilter, nameof(paymentTypeFilter), required: false);
+            WorkflowExpression.Validate(payrollItemTypeId, nameof(payrollItemTypeId), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV3PayrollItemResp>(() =>
             {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
-                bodypropCount++;
-            }
-
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodyhourlyRate != null)
-            {
-                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodytierRate != null)
-            {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
-                bodypropCount++;
-            }
-
-            if (bodyscheduledAmount != null)
-            {
-                body["scheduledAmount"] = ExpressionConverter.ConvertO(bodyscheduledAmount);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/payroll/getPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (nameFilter != null)
+                    callPayload.Queries["nameFilter"] = ExpressionConverter.Convert(nameFilter);
+                if (paymentTypeFilter != null)
+                    callPayload.Queries["paymentTypeFilter"] = ExpressionConverter.Convert(paymentTypeFilter);
+                if (payrollItemTypeId != null)
+                    callPayload.Queries["payrollItemTypeId"] = ExpressionConverter.Convert(payrollItemTypeId);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                return new ApiConnectionAction<ResultIPageV3PayrollItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3CalAttendanceResp> _01attendanceSummaryCalculate(Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string[]>> bodyemployeeIds = null, Expression<Func<string[]>> bodydepartmentIds = null, Expression<Func<string[]>> bodypositionIds = null)
+        [WorkflowExpressionFactory(nameof(__Build_019deleteCostCenterById))]
+        public IBodyWorkflowAction<ResultBoolean> _019deleteCostCenterById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/attendanceSummaryCalculate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-            bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-            if (bodyemployeeIds != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_019deleteCostCenterById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["employeeIds"] = ExpressionConverter.ConvertO(bodyemployeeIds);
+                var apiCallPath = "/v3/company/deleteCostCenterById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_019getPayItemInfoById))]
+        public IBodyWorkflowAction<ResultV3PayrollItemResp> _019getPayItemInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3PayrollItemResp> __Build_019getPayItemInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3PayrollItemResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getPayItemInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3PayrollItemResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_01addEmployeeInfo))]
+        public IBodyWorkflowAction<ResultV3AddEmployeeResp> _01addEmployeeInfo([WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyenglishName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyemployeeStatus = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysurnameEnglish = null, [WorkflowExpression] Func<string> bodypersonalNameEnglish = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodydate1 = null, [WorkflowExpression] Func<string> bodydate2 = null, [WorkflowExpression] Func<string> bodydate3 = null, [WorkflowExpression] Func<string> bodydate4 = null, [WorkflowExpression] Func<string> bodytext1 = null, [WorkflowExpression] Func<string> bodytext2 = null, [WorkflowExpression] Func<string> bodytext3 = null, [WorkflowExpression] Func<string> bodytext4 = null, [WorkflowExpression] Func<string> bodytext5 = null, [WorkflowExpression] Func<string> bodytext6 = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodymobileCardCalType = null, [WorkflowExpression] Func<string> bodyregularType = null, [WorkflowExpression] Func<string> bodyinsurePlanName = null, [WorkflowExpression] Func<string> bodybizLabelIds = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AddEmployeeResp> __Build_01addEmployeeInfo(WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodyenglishName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyemployeeStatus = null, WorkflowExpression<string> bodysex = null, WorkflowExpression<string> bodynationality = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<string> bodycountryCode = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyidentityCard = null, WorkflowExpression<string> bodychineseName = null, WorkflowExpression<string> bodysurnameEnglish = null, WorkflowExpression<string> bodypersonalNameEnglish = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<string> bodyemergencyContactRelation = null, WorkflowExpression<string> bodyemergencyContactPhone = null, WorkflowExpression<string> bodybankCode = null, WorkflowExpression<string> bodybankBranchNumber = null, WorkflowExpression<string> bodybankAccountNo = null, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodydate1 = null, WorkflowExpression<string> bodydate2 = null, WorkflowExpression<string> bodydate3 = null, WorkflowExpression<string> bodydate4 = null, WorkflowExpression<string> bodytext1 = null, WorkflowExpression<string> bodytext2 = null, WorkflowExpression<string> bodytext3 = null, WorkflowExpression<string> bodytext4 = null, WorkflowExpression<string> bodytext5 = null, WorkflowExpression<string> bodytext6 = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodymobileCardCalType = null, WorkflowExpression<string> bodyregularType = null, WorkflowExpression<string> bodyinsurePlanName = null, WorkflowExpression<string> bodybizLabelIds = null)
+        {
+            WorkflowExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
+            WorkflowExpression.Validate(bodyenglishName, nameof(bodyenglishName), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: false);
+            WorkflowExpression.Validate(bodysex, nameof(bodysex), required: false);
+            WorkflowExpression.Validate(bodynationality, nameof(bodynationality), required: false);
+            WorkflowExpression.Validate(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
+            WorkflowExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
+            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            WorkflowExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
+            WorkflowExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
+            WorkflowExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyidentityCard, nameof(bodyidentityCard), required: false);
+            WorkflowExpression.Validate(bodychineseName, nameof(bodychineseName), required: false);
+            WorkflowExpression.Validate(bodysurnameEnglish, nameof(bodysurnameEnglish), required: false);
+            WorkflowExpression.Validate(bodypersonalNameEnglish, nameof(bodypersonalNameEnglish), required: false);
+            WorkflowExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactRelation, nameof(bodyemergencyContactRelation), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactPhone, nameof(bodyemergencyContactPhone), required: false);
+            WorkflowExpression.Validate(bodybankCode, nameof(bodybankCode), required: false);
+            WorkflowExpression.Validate(bodybankBranchNumber, nameof(bodybankBranchNumber), required: false);
+            WorkflowExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
+            WorkflowExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
+            WorkflowExpression.Validate(bodydate1, nameof(bodydate1), required: false);
+            WorkflowExpression.Validate(bodydate2, nameof(bodydate2), required: false);
+            WorkflowExpression.Validate(bodydate3, nameof(bodydate3), required: false);
+            WorkflowExpression.Validate(bodydate4, nameof(bodydate4), required: false);
+            WorkflowExpression.Validate(bodytext1, nameof(bodytext1), required: false);
+            WorkflowExpression.Validate(bodytext2, nameof(bodytext2), required: false);
+            WorkflowExpression.Validate(bodytext3, nameof(bodytext3), required: false);
+            WorkflowExpression.Validate(bodytext4, nameof(bodytext4), required: false);
+            WorkflowExpression.Validate(bodytext5, nameof(bodytext5), required: false);
+            WorkflowExpression.Validate(bodytext6, nameof(bodytext6), required: false);
+            WorkflowExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
+            WorkflowExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            WorkflowExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
+            WorkflowExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
+            WorkflowExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
+            WorkflowExpression.Validate(bodymobileCardCalType, nameof(bodymobileCardCalType), required: false);
+            WorkflowExpression.Validate(bodyregularType, nameof(bodyregularType), required: false);
+            WorkflowExpression.Validate(bodyinsurePlanName, nameof(bodyinsurePlanName), required: false);
+            WorkflowExpression.Validate(bodybizLabelIds, nameof(bodybizLabelIds), required: false);
+            return new DeferredBodyAction<ResultV3AddEmployeeResp>(() =>
+            {
+                var apiCallPath = "/v3/employee/addEmployeeInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydepartmentIds != null)
-            {
-                body["departmentIds"] = ExpressionConverter.ConvertO(bodydepartmentIds);
+                body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
                 bodypropCount++;
-            }
-
-            if (bodypositionIds != null)
-            {
-                body["positionIds"] = ExpressionConverter.ConvertO(bodypositionIds);
+                body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyemployeeStatus != null)
+                {
+                    body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodysex != null)
+                {
+                    body["sex"] = ExpressionConverter.ConvertO(bodysex);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodymaritalStatus != null)
+                {
+                    body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodycountryCode != null)
+                {
+                    body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCard != null)
+                {
+                    body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
+                    bodypropCount++;
+                }
+
+                if (bodychineseName != null)
+                {
+                    body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
+                    bodypropCount++;
+                }
+
+                if (bodysurnameEnglish != null)
+                {
+                    body["surnameEnglish"] = ExpressionConverter.ConvertO(bodysurnameEnglish);
+                    bodypropCount++;
+                }
+
+                if (bodypersonalNameEnglish != null)
+                {
+                    body["personalNameEnglish"] = ExpressionConverter.ConvertO(bodypersonalNameEnglish);
+                    bodypropCount++;
+                }
+
+                if (bodybirthday != null)
+                {
+                    body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactRelation != null)
+                {
+                    body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactPhone != null)
+                {
+                    body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
+                    bodypropCount++;
+                }
+
+                if (bodybankCode != null)
+                {
+                    body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchNumber != null)
+                {
+                    body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodydate1 != null)
+                {
+                    body["date1"] = ExpressionConverter.ConvertO(bodydate1);
+                    bodypropCount++;
+                }
+
+                if (bodydate2 != null)
+                {
+                    body["date2"] = ExpressionConverter.ConvertO(bodydate2);
+                    bodypropCount++;
+                }
+
+                if (bodydate3 != null)
+                {
+                    body["date3"] = ExpressionConverter.ConvertO(bodydate3);
+                    bodypropCount++;
+                }
+
+                if (bodydate4 != null)
+                {
+                    body["date4"] = ExpressionConverter.ConvertO(bodydate4);
+                    bodypropCount++;
+                }
+
+                if (bodytext1 != null)
+                {
+                    body["text1"] = ExpressionConverter.ConvertO(bodytext1);
+                    bodypropCount++;
+                }
+
+                if (bodytext2 != null)
+                {
+                    body["text2"] = ExpressionConverter.ConvertO(bodytext2);
+                    bodypropCount++;
+                }
+
+                if (bodytext3 != null)
+                {
+                    body["text3"] = ExpressionConverter.ConvertO(bodytext3);
+                    bodypropCount++;
+                }
+
+                if (bodytext4 != null)
+                {
+                    body["text4"] = ExpressionConverter.ConvertO(bodytext4);
+                    bodypropCount++;
+                }
+
+                if (bodytext5 != null)
+                {
+                    body["text5"] = ExpressionConverter.ConvertO(bodytext5);
+                    bodypropCount++;
+                }
+
+                if (bodytext6 != null)
+                {
+                    body["text6"] = ExpressionConverter.ConvertO(bodytext6);
+                    bodypropCount++;
+                }
+
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
+                    bodypropCount++;
+                }
+
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodymobileCardCalType != null)
+                {
+                    body["mobileCardCalType"] = ExpressionConverter.ConvertO(bodymobileCardCalType);
+                    bodypropCount++;
+                }
+
+                if (bodyregularType != null)
+                {
+                    body["regularType"] = ExpressionConverter.ConvertO(bodyregularType);
+                    bodypropCount++;
+                }
+
+                if (bodyinsurePlanName != null)
+                {
+                    body["insurePlanName"] = ExpressionConverter.ConvertO(bodyinsurePlanName);
+                    bodypropCount++;
+                }
+
+                if (bodybizLabelIds != null)
+                {
+                    body["bizLabelIds"] = ExpressionConverter.ConvertO(bodybizLabelIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3AddEmployeeResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_01addLeaveBalanceAdjustInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _01addLeaveBalanceAdjustInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyholidayType, [WorkflowExpression] Func<string> bodyoccurrenceTime, [WorkflowExpression] Func<string> bodycause, [WorkflowExpression] Func<string> bodyadjust)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_01addLeaveBalanceAdjustInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyholidayType, WorkflowExpression<string> bodyoccurrenceTime, WorkflowExpression<string> bodycause, WorkflowExpression<string> bodyadjust)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: true);
+            WorkflowExpression.Validate(bodyoccurrenceTime, nameof(bodyoccurrenceTime), required: true);
+            WorkflowExpression.Validate(bodycause, nameof(bodycause), required: true);
+            WorkflowExpression.Validate(bodyadjust, nameof(bodyadjust), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v3/leave/addLeaveBalanceAdjustInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
+                bodypropCount++;
+                body["occurrenceTime"] = ExpressionConverter.ConvertO(bodyoccurrenceTime);
+                bodypropCount++;
+                body["cause"] = ExpressionConverter.ConvertO(bodycause);
+                bodypropCount++;
+                body["adjust"] = ExpressionConverter.ConvertO(bodyadjust);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResultV3CalAttendanceResp>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_01addRosterInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _01addRosterInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyattendDay, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<double> bodyscheduledAmount = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_01addRosterInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyattendDay, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodyshiftTemplateId = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<double> bodyhourlyRate = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<double> bodytierRate = null, WorkflowExpression<double> bodyscheduledAmount = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyattendDay, nameof(bodyattendDay), required: true);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
+            WorkflowExpression.Validate(bodyshiftTemplateId, nameof(bodyshiftTemplateId), required: false);
+            WorkflowExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
+            WorkflowExpression.Validate(bodyscheduledAmount, nameof(bodyscheduledAmount), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/addRosterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["attendDay"] = ExpressionConverter.ConvertO(bodyattendDay);
+                if (bodyshiftTemplateId != null)
+                {
+                    body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodyhourlyRate != null)
+                {
+                    body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
+                    bodypropCount++;
+                }
+
+                if (bodyscheduledAmount != null)
+                {
+                    body["scheduledAmount"] = ExpressionConverter.ConvertO(bodyscheduledAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_01attendanceSummaryCalculate))]
+        public IBodyWorkflowAction<ResultV3CalAttendanceResp> _01attendanceSummaryCalculate([WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string[]> bodyemployeeIds = null, [WorkflowExpression] Func<string[]> bodydepartmentIds = null, [WorkflowExpression] Func<string[]> bodypositionIds = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3CalAttendanceResp> __Build_01attendanceSummaryCalculate(WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate, WorkflowExpression<string[]> bodyemployeeIds = null, WorkflowExpression<string[]> bodydepartmentIds = null, WorkflowExpression<string[]> bodypositionIds = null)
+        {
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
+            WorkflowExpression.Validate(bodyemployeeIds, nameof(bodyemployeeIds), required: false);
+            WorkflowExpression.Validate(bodydepartmentIds, nameof(bodydepartmentIds), required: false);
+            WorkflowExpression.Validate(bodypositionIds, nameof(bodypositionIds), required: false);
+            return new DeferredBodyAction<ResultV3CalAttendanceResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/attendanceSummaryCalculate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                bodypropCount++;
+                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                if (bodyemployeeIds != null)
+                {
+                    body["employeeIds"] = ExpressionConverter.ConvertO(bodyemployeeIds);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentIds != null)
+                {
+                    body["departmentIds"] = ExpressionConverter.ConvertO(bodydepartmentIds);
+                    bodypropCount++;
+                }
+
+                if (bodypositionIds != null)
+                {
+                    body["positionIds"] = ExpressionConverter.ConvertO(bodypositionIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3CalAttendanceResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
@@ -1398,625 +2014,932 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> _01getExpenseTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_01getExpenseTypeList))]
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> _01getExpenseTypeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/expense/getExpenseTypeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3BizReimbursementTypeResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> _020getExternalPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> __Build_01getExpenseTypeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getExternalPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ExternalPayItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _020updateCostCenterById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
-        {
-            var apiCallPath = "/v3/company/updateCostCenterById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3BizReimbursementTypeResp>(() =>
             {
+                var apiCallPath = "/v3/expense/getExpenseTypeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3BizReimbursementTypeResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_020getExternalPayItemList))]
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> _020getExternalPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> __Build_020getExternalPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3ExternalPayItemResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getExternalPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3ExternalPayItemResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_020updateCostCenterById))]
+        public IBodyWorkflowAction<ResultBoolean> _020updateCostCenterById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_020updateCostCenterById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/updateCostCenterById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterCode != null)
+                {
+                    body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_021getCostCenterList))]
+        public IBodyWorkflowAction<ResultIPageV3CostCenterResp> _021getCostCenterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3CostCenterResp> __Build_021getCostCenterList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3CostCenterResp>(() =>
+            {
+                var apiCallPath = "/v3/company/getCostCenterList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3CostCenterResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_021getExternalPayItemInfoById))]
+        public IBodyWorkflowAction<ResultV3ExternalPayItemResp> _021getExternalPayItemInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3ExternalPayItemResp> __Build_021getExternalPayItemInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3ExternalPayItemResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getExternalPayItemInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3ExternalPayItemResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_022addTagInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _022addTagInfo([WorkflowExpression] Func<string> bodylabelName, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<int> bodylabelStatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_022addTagInfo(WorkflowExpression<string> bodylabelName, WorkflowExpression<string> bodylabelCode = null, WorkflowExpression<int> bodylabelStatus = null, WorkflowExpression<string> bodyparentId = null)
+        {
+            WorkflowExpression.Validate(bodylabelName, nameof(bodylabelName), required: true);
+            WorkflowExpression.Validate(bodylabelCode, nameof(bodylabelCode), required: false);
+            WorkflowExpression.Validate(bodylabelStatus, nameof(bodylabelStatus), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/addTagInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodylabelCode != null)
+                {
+                    body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
+                if (bodylabelStatus != null)
+                {
+                    body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_022addWorkPatternInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _022addWorkPatternInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyworkHoursForDay, [WorkflowExpression] Func<double> bodyworkHoursForWeek, [WorkflowExpression] Func<double> bodyworkHoursForYear, [WorkflowExpression] Func<double> bodytotalHours, [WorkflowExpression] Func<string> bodycycleType, [WorkflowExpression] Func<string> bodyadvancedSetting = null, [WorkflowExpression] Func<string> bodynumber = null, [WorkflowExpression] Func<string> bodyfte = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodysalaryCalculationStyle = null, [WorkflowExpression] Func<int> bodyworkTime = null, [WorkflowExpression] Func<string> bodydoubleWeekBaseDate = null, [WorkflowExpression] Func<string> bodyweekSalaryType = null, [WorkflowExpression] Func<int> bodyisThisWeek = null, [WorkflowExpression] Func<V3TermsSettingInsert[]> bodysettingList = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_022addWorkPatternInfo(WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyworkHoursForDay, WorkflowExpression<double> bodyworkHoursForWeek, WorkflowExpression<double> bodyworkHoursForYear, WorkflowExpression<double> bodytotalHours, WorkflowExpression<string> bodycycleType, WorkflowExpression<string> bodyadvancedSetting = null, WorkflowExpression<string> bodynumber = null, WorkflowExpression<string> bodyfte = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<int> bodysalaryCalculationStyle = null, WorkflowExpression<int> bodyworkTime = null, WorkflowExpression<string> bodydoubleWeekBaseDate = null, WorkflowExpression<string> bodyweekSalaryType = null, WorkflowExpression<int> bodyisThisWeek = null, WorkflowExpression<V3TermsSettingInsert[]> bodysettingList = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyworkHoursForDay, nameof(bodyworkHoursForDay), required: true);
+            WorkflowExpression.Validate(bodyworkHoursForWeek, nameof(bodyworkHoursForWeek), required: true);
+            WorkflowExpression.Validate(bodyworkHoursForYear, nameof(bodyworkHoursForYear), required: true);
+            WorkflowExpression.Validate(bodytotalHours, nameof(bodytotalHours), required: true);
+            WorkflowExpression.Validate(bodycycleType, nameof(bodycycleType), required: true);
+            WorkflowExpression.Validate(bodyadvancedSetting, nameof(bodyadvancedSetting), required: false);
+            WorkflowExpression.Validate(bodynumber, nameof(bodynumber), required: false);
+            WorkflowExpression.Validate(bodyfte, nameof(bodyfte), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodysalaryCalculationStyle, nameof(bodysalaryCalculationStyle), required: false);
+            WorkflowExpression.Validate(bodyworkTime, nameof(bodyworkTime), required: false);
+            WorkflowExpression.Validate(bodydoubleWeekBaseDate, nameof(bodydoubleWeekBaseDate), required: false);
+            WorkflowExpression.Validate(bodyweekSalaryType, nameof(bodyweekSalaryType), required: false);
+            WorkflowExpression.Validate(bodyisThisWeek, nameof(bodyisThisWeek), required: false);
+            WorkflowExpression.Validate(bodysettingList, nameof(bodysettingList), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/addWorkPatternInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyadvancedSetting != null)
+                {
+                    body["advancedSetting"] = ExpressionConverter.ConvertO(bodyadvancedSetting);
+                    bodypropCount++;
+                }
+
+                if (bodynumber != null)
+                {
+                    body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodycostCenterCode != null)
-            {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3CostCenterResp> _021getCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/company/getCostCenterList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3CostCenterResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3ExternalPayItemResp> _021getExternalPayItemInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/payroll/getExternalPayItemInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3ExternalPayItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _022addTagInfo(Expression<Func<string>> bodylabelName, Expression<Func<string>> bodylabelCode = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
-        {
-            var apiCallPath = "/v3/company/addTagInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylabelCode != null)
-            {
-                body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
-            if (bodylabelStatus != null)
-            {
-                body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _022addWorkPatternInfo(Expression<Func<string>> bodyname, Expression<Func<double>> bodyworkHoursForDay, Expression<Func<double>> bodyworkHoursForWeek, Expression<Func<double>> bodyworkHoursForYear, Expression<Func<double>> bodytotalHours, Expression<Func<string>> bodycycleType, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<V3TermsSettingInsert[]>> bodysettingList = null)
-        {
-            var apiCallPath = "/v3/payroll/addWorkPatternInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyadvancedSetting != null)
-            {
-                body["advancedSetting"] = ExpressionConverter.ConvertO(bodyadvancedSetting);
-                bodypropCount++;
-            }
-
-            if (bodynumber != null)
-            {
-                body["number"] = ExpressionConverter.ConvertO(bodynumber);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["workHoursForDay"] = ExpressionConverter.ConvertO(bodyworkHoursForDay);
-            bodypropCount++;
-            body["workHoursForWeek"] = ExpressionConverter.ConvertO(bodyworkHoursForWeek);
-            bodypropCount++;
-            body["workHoursForYear"] = ExpressionConverter.ConvertO(bodyworkHoursForYear);
-            bodypropCount++;
-            body["totalHours"] = ExpressionConverter.ConvertO(bodytotalHours);
-            bodypropCount++;
-            body["cycleType"] = ExpressionConverter.ConvertO(bodycycleType);
-            if (bodyfte != null)
-            {
-                body["fte"] = ExpressionConverter.ConvertO(bodyfte);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodysalaryCalculationStyle != null)
-            {
-                body["salaryCalculationStyle"] = ExpressionConverter.ConvertO(bodysalaryCalculationStyle);
-                bodypropCount++;
-            }
-
-            if (bodyworkTime != null)
-            {
-                body["workTime"] = ExpressionConverter.ConvertO(bodyworkTime);
-                bodypropCount++;
-            }
-
-            if (bodydoubleWeekBaseDate != null)
-            {
-                body["doubleWeekBaseDate"] = ExpressionConverter.ConvertO(bodydoubleWeekBaseDate);
-                bodypropCount++;
-            }
-
-            if (bodyweekSalaryType != null)
-            {
-                body["weekSalaryType"] = ExpressionConverter.ConvertO(bodyweekSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodyisThisWeek != null)
-            {
-                body["isThisWeek"] = ExpressionConverter.ConvertO(bodyisThisWeek);
-                bodypropCount++;
-            }
-
-            if (bodysettingList != null)
-            {
-                body["settingList"] = ExpressionConverter.ConvertO(bodysettingList);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _023deleteTagById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/company/deleteTagById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _023updateWorkPatternById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyworkHoursForDay = null, Expression<Func<double>> bodyworkHoursForWeek = null, Expression<Func<double>> bodyworkHoursForYear = null, Expression<Func<double>> bodytotalHours = null, Expression<Func<string>> bodycycleType = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<string>> bodytermsWorkDefaultId = null, Expression<Func<V3TermsSettingUpdate[]>> bodysettingList = null)
-        {
-            var apiCallPath = "/v3/payroll/updateWorkPatternById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyadvancedSetting != null)
-            {
-                body["advancedSetting"] = ExpressionConverter.ConvertO(bodyadvancedSetting);
-                bodypropCount++;
-            }
-
-            if (bodynumber != null)
-            {
-                body["number"] = ExpressionConverter.ConvertO(bodynumber);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyworkHoursForDay != null)
-            {
                 body["workHoursForDay"] = ExpressionConverter.ConvertO(bodyworkHoursForDay);
                 bodypropCount++;
-            }
-
-            if (bodyworkHoursForWeek != null)
-            {
                 body["workHoursForWeek"] = ExpressionConverter.ConvertO(bodyworkHoursForWeek);
                 bodypropCount++;
-            }
-
-            if (bodyworkHoursForYear != null)
-            {
                 body["workHoursForYear"] = ExpressionConverter.ConvertO(bodyworkHoursForYear);
                 bodypropCount++;
-            }
-
-            if (bodytotalHours != null)
-            {
                 body["totalHours"] = ExpressionConverter.ConvertO(bodytotalHours);
                 bodypropCount++;
-            }
-
-            if (bodycycleType != null)
-            {
                 body["cycleType"] = ExpressionConverter.ConvertO(bodycycleType);
-                bodypropCount++;
-            }
+                if (bodyfte != null)
+                {
+                    body["fte"] = ExpressionConverter.ConvertO(bodyfte);
+                    bodypropCount++;
+                }
 
-            if (bodyfte != null)
-            {
-                body["fte"] = ExpressionConverter.ConvertO(bodyfte);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodysalaryCalculationStyle != null)
+                {
+                    body["salaryCalculationStyle"] = ExpressionConverter.ConvertO(bodysalaryCalculationStyle);
+                    bodypropCount++;
+                }
 
-            if (bodysalaryCalculationStyle != null)
-            {
-                body["salaryCalculationStyle"] = ExpressionConverter.ConvertO(bodysalaryCalculationStyle);
-                bodypropCount++;
-            }
+                if (bodyworkTime != null)
+                {
+                    body["workTime"] = ExpressionConverter.ConvertO(bodyworkTime);
+                    bodypropCount++;
+                }
 
-            if (bodyworkTime != null)
-            {
-                body["workTime"] = ExpressionConverter.ConvertO(bodyworkTime);
-                bodypropCount++;
-            }
+                if (bodydoubleWeekBaseDate != null)
+                {
+                    body["doubleWeekBaseDate"] = ExpressionConverter.ConvertO(bodydoubleWeekBaseDate);
+                    bodypropCount++;
+                }
 
-            if (bodydoubleWeekBaseDate != null)
-            {
-                body["doubleWeekBaseDate"] = ExpressionConverter.ConvertO(bodydoubleWeekBaseDate);
-                bodypropCount++;
-            }
+                if (bodyweekSalaryType != null)
+                {
+                    body["weekSalaryType"] = ExpressionConverter.ConvertO(bodyweekSalaryType);
+                    bodypropCount++;
+                }
 
-            if (bodyweekSalaryType != null)
-            {
-                body["weekSalaryType"] = ExpressionConverter.ConvertO(bodyweekSalaryType);
-                bodypropCount++;
-            }
+                if (bodyisThisWeek != null)
+                {
+                    body["isThisWeek"] = ExpressionConverter.ConvertO(bodyisThisWeek);
+                    bodypropCount++;
+                }
 
-            if (bodyisThisWeek != null)
-            {
-                body["isThisWeek"] = ExpressionConverter.ConvertO(bodyisThisWeek);
-                bodypropCount++;
-            }
+                if (bodysettingList != null)
+                {
+                    body["settingList"] = ExpressionConverter.ConvertO(bodysettingList);
+                    bodypropCount++;
+                }
 
-            if (bodytermsWorkDefaultId != null)
-            {
-                body["termsWorkDefaultId"] = ExpressionConverter.ConvertO(bodytermsWorkDefaultId);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysettingList != null)
-            {
-                body["settingList"] = ExpressionConverter.ConvertO(bodysettingList);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _024deleteWorkPatternById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_023deleteTagById))]
+        public IBodyWorkflowAction<ResultBoolean> _023deleteTagById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/deleteWorkPatternById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_023deleteTagById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/deleteTagById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _024updateTagById(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
+        [WorkflowExpressionFactory(nameof(__Build_023updateWorkPatternById))]
+        public IBodyWorkflowAction<ResultBoolean> _023updateWorkPatternById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyadvancedSetting = null, [WorkflowExpression] Func<string> bodynumber = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<double> bodyworkHoursForDay = null, [WorkflowExpression] Func<double> bodyworkHoursForWeek = null, [WorkflowExpression] Func<double> bodyworkHoursForYear = null, [WorkflowExpression] Func<double> bodytotalHours = null, [WorkflowExpression] Func<string> bodycycleType = null, [WorkflowExpression] Func<string> bodyfte = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodysalaryCalculationStyle = null, [WorkflowExpression] Func<int> bodyworkTime = null, [WorkflowExpression] Func<string> bodydoubleWeekBaseDate = null, [WorkflowExpression] Func<string> bodyweekSalaryType = null, [WorkflowExpression] Func<int> bodyisThisWeek = null, [WorkflowExpression] Func<string> bodytermsWorkDefaultId = null, [WorkflowExpression] Func<V3TermsSettingUpdate[]> bodysettingList = null)
         {
-            var apiCallPath = "/v3/company/updateTagById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodylabelCode != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_023updateWorkPatternById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyadvancedSetting = null, WorkflowExpression<string> bodynumber = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<double> bodyworkHoursForDay = null, WorkflowExpression<double> bodyworkHoursForWeek = null, WorkflowExpression<double> bodyworkHoursForYear = null, WorkflowExpression<double> bodytotalHours = null, WorkflowExpression<string> bodycycleType = null, WorkflowExpression<string> bodyfte = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<int> bodysalaryCalculationStyle = null, WorkflowExpression<int> bodyworkTime = null, WorkflowExpression<string> bodydoubleWeekBaseDate = null, WorkflowExpression<string> bodyweekSalaryType = null, WorkflowExpression<int> bodyisThisWeek = null, WorkflowExpression<string> bodytermsWorkDefaultId = null, WorkflowExpression<V3TermsSettingUpdate[]> bodysettingList = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyadvancedSetting, nameof(bodyadvancedSetting), required: false);
+            WorkflowExpression.Validate(bodynumber, nameof(bodynumber), required: false);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyworkHoursForDay, nameof(bodyworkHoursForDay), required: false);
+            WorkflowExpression.Validate(bodyworkHoursForWeek, nameof(bodyworkHoursForWeek), required: false);
+            WorkflowExpression.Validate(bodyworkHoursForYear, nameof(bodyworkHoursForYear), required: false);
+            WorkflowExpression.Validate(bodytotalHours, nameof(bodytotalHours), required: false);
+            WorkflowExpression.Validate(bodycycleType, nameof(bodycycleType), required: false);
+            WorkflowExpression.Validate(bodyfte, nameof(bodyfte), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodysalaryCalculationStyle, nameof(bodysalaryCalculationStyle), required: false);
+            WorkflowExpression.Validate(bodyworkTime, nameof(bodyworkTime), required: false);
+            WorkflowExpression.Validate(bodydoubleWeekBaseDate, nameof(bodydoubleWeekBaseDate), required: false);
+            WorkflowExpression.Validate(bodyweekSalaryType, nameof(bodyweekSalaryType), required: false);
+            WorkflowExpression.Validate(bodyisThisWeek, nameof(bodyisThisWeek), required: false);
+            WorkflowExpression.Validate(bodytermsWorkDefaultId, nameof(bodytermsWorkDefaultId), required: false);
+            WorkflowExpression.Validate(bodysettingList, nameof(bodysettingList), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                var apiCallPath = "/v3/payroll/updateWorkPatternById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyadvancedSetting != null)
+                {
+                    body["advancedSetting"] = ExpressionConverter.ConvertO(bodyadvancedSetting);
+                    bodypropCount++;
+                }
 
-            if (bodylabelName != null)
-            {
-                body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
-                bodypropCount++;
-            }
+                if (bodynumber != null)
+                {
+                    body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                    bodypropCount++;
+                }
 
-            if (bodylabelStatus != null)
-            {
-                body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
-                bodypropCount++;
-            }
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
+                if (bodyworkHoursForDay != null)
+                {
+                    body["workHoursForDay"] = ExpressionConverter.ConvertO(bodyworkHoursForDay);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyworkHoursForWeek != null)
+                {
+                    body["workHoursForWeek"] = ExpressionConverter.ConvertO(bodyworkHoursForWeek);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodyworkHoursForYear != null)
+                {
+                    body["workHoursForYear"] = ExpressionConverter.ConvertO(bodyworkHoursForYear);
+                    bodypropCount++;
+                }
+
+                if (bodytotalHours != null)
+                {
+                    body["totalHours"] = ExpressionConverter.ConvertO(bodytotalHours);
+                    bodypropCount++;
+                }
+
+                if (bodycycleType != null)
+                {
+                    body["cycleType"] = ExpressionConverter.ConvertO(bodycycleType);
+                    bodypropCount++;
+                }
+
+                if (bodyfte != null)
+                {
+                    body["fte"] = ExpressionConverter.ConvertO(bodyfte);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodysalaryCalculationStyle != null)
+                {
+                    body["salaryCalculationStyle"] = ExpressionConverter.ConvertO(bodysalaryCalculationStyle);
+                    bodypropCount++;
+                }
+
+                if (bodyworkTime != null)
+                {
+                    body["workTime"] = ExpressionConverter.ConvertO(bodyworkTime);
+                    bodypropCount++;
+                }
+
+                if (bodydoubleWeekBaseDate != null)
+                {
+                    body["doubleWeekBaseDate"] = ExpressionConverter.ConvertO(bodydoubleWeekBaseDate);
+                    bodypropCount++;
+                }
+
+                if (bodyweekSalaryType != null)
+                {
+                    body["weekSalaryType"] = ExpressionConverter.ConvertO(bodyweekSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodyisThisWeek != null)
+                {
+                    body["isThisWeek"] = ExpressionConverter.ConvertO(bodyisThisWeek);
+                    bodypropCount++;
+                }
+
+                if (bodytermsWorkDefaultId != null)
+                {
+                    body["termsWorkDefaultId"] = ExpressionConverter.ConvertO(bodytermsWorkDefaultId);
+                    bodypropCount++;
+                }
+
+                if (bodysettingList != null)
+                {
+                    body["settingList"] = ExpressionConverter.ConvertO(bodysettingList);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LabelResp> _025getTagList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_024deleteWorkPatternById))]
+        public IBodyWorkflowAction<ResultBoolean> _024deleteWorkPatternById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/getTagList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3LabelResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_024deleteWorkPatternById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/payroll/deleteWorkPatternById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> _025getWorkPatternList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_024updateTagById))]
+        public IBodyWorkflowAction<ResultBoolean> _024updateTagById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<string> bodylabelName = null, [WorkflowExpression] Func<int> bodylabelStatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/payroll/getWorkPatternList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3WorkPatternSummaryResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_024updateTagById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylabelCode = null, WorkflowExpression<string> bodylabelName = null, WorkflowExpression<int> bodylabelStatus = null, WorkflowExpression<string> bodyparentId = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodylabelCode, nameof(bodylabelCode), required: false);
+            WorkflowExpression.Validate(bodylabelName, nameof(bodylabelName), required: false);
+            WorkflowExpression.Validate(bodylabelStatus, nameof(bodylabelStatus), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/company/updateTagById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodylabelCode != null)
+                {
+                    body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                    bodypropCount++;
+                }
+
+                if (bodylabelName != null)
+                {
+                    body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
+                    bodypropCount++;
+                }
+
+                if (bodylabelStatus != null)
+                {
+                    body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3DeviceResp> _026getDeviceList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_025getTagList))]
+        public IBodyWorkflowAction<ResultIPageV3LabelResp> _025getTagList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getDeviceList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3DeviceResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LabelResp> __Build_025getTagList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3LabelResp>(() =>
+            {
+                var apiCallPath = "/v3/company/getTagList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3LabelResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3WorkPatternResp> _026getWorkPatternInfoById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_025getWorkPatternList))]
+        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> _025getWorkPatternList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getWorkPatternInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3WorkPatternResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> __Build_025getWorkPatternList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3WorkPatternSummaryResp>(() =>
+            {
+                var apiCallPath = "/v3/payroll/getWorkPatternList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3WorkPatternSummaryResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> _02addExpenseApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyreimbursementType, Expression<Func<string>> bodyreimbursementDate, Expression<Func<string>> bodyreimbursementName, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_026getDeviceList))]
+        public IBodyWorkflowAction<ResultIPageV3DeviceResp> _026getDeviceList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/expense/addExpenseApplicationInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["reimbursementType"] = ExpressionConverter.ConvertO(bodyreimbursementType);
-            bodypropCount++;
-            body["reimbursementDate"] = ExpressionConverter.ConvertO(bodyreimbursementDate);
-            bodypropCount++;
-            body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
-            bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3DeviceResp> __Build_026getDeviceList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3DeviceResp>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3BizReimbursementInsertResp>(callPayload);
+                var apiCallPath = "/v3/company/getDeviceList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3DeviceResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _02batchSaveRosterInfo(Expression<Func<string[]>> bodyemployeeIds, Expression<Func<string[]>> bodydates, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<bool>> bodyreplaceOriginal = null)
+        [WorkflowExpressionFactory(nameof(__Build_026getWorkPatternInfoById))]
+        public IBodyWorkflowAction<ResultV3WorkPatternResp> _026getWorkPatternInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/batchSaveRosterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeIds"] = ExpressionConverter.ConvertO(bodyemployeeIds);
-            bodypropCount++;
-            body["dates"] = ExpressionConverter.ConvertO(bodydates);
-            if (bodyshiftTemplateId != null)
-            {
-                body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyaddressCardId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3WorkPatternResp> __Build_026getWorkPatternInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3WorkPatternResp>(() =>
             {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
-                bodypropCount++;
-            }
-
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodyhourlyRate != null)
-            {
-                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyreplaceOriginal != null)
-            {
-                body["replaceOriginal"] = ExpressionConverter.ConvertO(bodyreplaceOriginal);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/payroll/getWorkPatternInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3WorkPatternResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _02deleteEmployeeById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_02addExpenseApplicationInfo))]
+        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> _02addExpenseApplicationInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyreimbursementType, [WorkflowExpression] Func<string> bodyreimbursementDate, [WorkflowExpression] Func<string> bodyreimbursementName, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/employee/deleteAllData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> __Build_02addExpenseApplicationInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyreimbursementType, WorkflowExpression<string> bodyreimbursementDate, WorkflowExpression<string> bodyreimbursementName, WorkflowExpression<double> bodyamount, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyreimbursementType, nameof(bodyreimbursementType), required: true);
+            WorkflowExpression.Validate(bodyreimbursementDate, nameof(bodyreimbursementDate), required: true);
+            WorkflowExpression.Validate(bodyreimbursementName, nameof(bodyreimbursementName), required: true);
+            WorkflowExpression.Validate(bodyamount, nameof(bodyamount), required: true);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultV3BizReimbursementInsertResp>(() =>
+            {
+                var apiCallPath = "/v3/expense/addExpenseApplicationInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["reimbursementType"] = ExpressionConverter.ConvertO(bodyreimbursementType);
+                bodypropCount++;
+                body["reimbursementDate"] = ExpressionConverter.ConvertO(bodyreimbursementDate);
+                bodypropCount++;
+                body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
+                bodypropCount++;
+                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3BizReimbursementInsertResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _02deleteLeaveBalanceAdjustmentById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_02batchSaveRosterInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _02batchSaveRosterInfo([WorkflowExpression] Func<string[]> bodyemployeeIds, [WorkflowExpression] Func<string[]> bodydates, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<bool> bodyreplaceOriginal = null)
         {
-            var apiCallPath = "/v3/leave/deleteLeaveBalanceAdjustmentById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_02batchSaveRosterInfo(WorkflowExpression<string[]> bodyemployeeIds, WorkflowExpression<string[]> bodydates, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodyshiftTemplateId = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<double> bodyhourlyRate = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<bool> bodyreplaceOriginal = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeIds, nameof(bodyemployeeIds), required: true);
+            WorkflowExpression.Validate(bodydates, nameof(bodydates), required: true);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
+            WorkflowExpression.Validate(bodyshiftTemplateId, nameof(bodyshiftTemplateId), required: false);
+            WorkflowExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyreplaceOriginal, nameof(bodyreplaceOriginal), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/batchSaveRosterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeIds"] = ExpressionConverter.ConvertO(bodyemployeeIds);
+                bodypropCount++;
+                body["dates"] = ExpressionConverter.ConvertO(bodydates);
+                if (bodyshiftTemplateId != null)
+                {
+                    body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodyhourlyRate != null)
+                {
+                    body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyreplaceOriginal != null)
+                {
+                    body["replaceOriginal"] = ExpressionConverter.ConvertO(bodyreplaceOriginal);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> _02getAttendanceSummaryList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> unit, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> attendCalculationFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> labelFilter = null, Expression<Func<string>> payrollRegulationFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> attendanceTypeFilter = null, Expression<Func<string>> shiftTypeFilter = null)
+        [WorkflowExpressionFactory(nameof(__Build_02deleteEmployeeById))]
+        public IBodyWorkflowAction<ResultBoolean> _02deleteEmployeeById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/getAttendanceSummaryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            callPayload.Queries["unit"] = ExpressionConverter.Convert(unit);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (attendCalculationFilter != null)
-                callPayload.Queries["attendCalculationFilter"] = ExpressionConverter.Convert(attendCalculationFilter);
-            if (employeeFilter != null)
-                callPayload.Queries["employeeFilter"] = ExpressionConverter.Convert(employeeFilter);
-            if (labelFilter != null)
-                callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(labelFilter);
-            if (payrollRegulationFilter != null)
-                callPayload.Queries["payrollRegulationFilter"] = ExpressionConverter.Convert(payrollRegulationFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (attendanceTypeFilter != null)
-                callPayload.Queries["attendanceTypeFilter"] = ExpressionConverter.Convert(attendanceTypeFilter);
-            if (shiftTypeFilter != null)
-                callPayload.Queries["shiftTypeFilter"] = ExpressionConverter.Convert(shiftTypeFilter);
-            return new ApiConnectionAction<ResultIPageV3AttendanceListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_02deleteEmployeeById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/employee/deleteAllData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_02deleteLeaveBalanceAdjustmentById))]
+        public IBodyWorkflowAction<ResultBoolean> _02deleteLeaveBalanceAdjustmentById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_02deleteLeaveBalanceAdjustmentById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/leave/deleteLeaveBalanceAdjustmentById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_02getAttendanceSummaryList))]
+        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> _02getAttendanceSummaryList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> unit, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> attendCalculationFilter = null, [WorkflowExpression] Func<string> employeeFilter = null, [WorkflowExpression] Func<string> labelFilter = null, [WorkflowExpression] Func<string> payrollRegulationFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> attendanceTypeFilter = null, [WorkflowExpression] Func<string> shiftTypeFilter = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> __Build_02getAttendanceSummaryList(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> unit, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> attendCalculationFilter = null, WorkflowExpression<string> employeeFilter = null, WorkflowExpression<string> labelFilter = null, WorkflowExpression<string> payrollRegulationFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> attendanceTypeFilter = null, WorkflowExpression<string> shiftTypeFilter = null)
+        {
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
+            WorkflowExpression.Validate(unit, nameof(unit), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            WorkflowExpression.Validate(positionFilter, nameof(positionFilter), required: false);
+            WorkflowExpression.Validate(attendCalculationFilter, nameof(attendCalculationFilter), required: false);
+            WorkflowExpression.Validate(employeeFilter, nameof(employeeFilter), required: false);
+            WorkflowExpression.Validate(labelFilter, nameof(labelFilter), required: false);
+            WorkflowExpression.Validate(payrollRegulationFilter, nameof(payrollRegulationFilter), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(attendanceTypeFilter, nameof(attendanceTypeFilter), required: false);
+            WorkflowExpression.Validate(shiftTypeFilter, nameof(shiftTypeFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV3AttendanceListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getAttendanceSummaryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["unit"] = ExpressionConverter.Convert(unit);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
+                if (attendCalculationFilter != null)
+                    callPayload.Queries["attendCalculationFilter"] = ExpressionConverter.Convert(attendCalculationFilter);
+                if (employeeFilter != null)
+                    callPayload.Queries["employeeFilter"] = ExpressionConverter.Convert(employeeFilter);
+                if (labelFilter != null)
+                    callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(labelFilter);
+                if (payrollRegulationFilter != null)
+                    callPayload.Queries["payrollRegulationFilter"] = ExpressionConverter.Convert(payrollRegulationFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (attendanceTypeFilter != null)
+                    callPayload.Queries["attendanceTypeFilter"] = ExpressionConverter.Convert(attendanceTypeFilter);
+                if (shiftTypeFilter != null)
+                    callPayload.Queries["shiftTypeFilter"] = ExpressionConverter.Convert(shiftTypeFilter);
+                return new ApiConnectionAction<ResultIPageV3AttendanceListResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
@@ -2029,2779 +2952,4205 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _03deleteExpenseApplicationById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_03deleteExpenseApplicationById))]
+        public IBodyWorkflowAction<ResultBoolean> _03deleteExpenseApplicationById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/expense/deleteExpenseApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_03deleteExpenseApplicationById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/expense/deleteExpenseApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _03deleteRosterById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_03deleteRosterById))]
+        public IBodyWorkflowAction<ResultBoolean> _03deleteRosterById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteRosterById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_03deleteRosterById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteRosterById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> _03GetDataDictionaryDetailsInfoById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_03GetDataDictionaryDetailsInfoById))]
+        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> _03GetDataDictionaryDetailsInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/settings/getDataDictionaryDetailsInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryItemResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> __Build_03GetDataDictionaryDetailsInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultListV3BizCustomizeDictionaryItemResp>(() =>
+            {
+                var apiCallPath = "/v3/settings/getDataDictionaryDetailsInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> _03getEmployeeDailyAttendanceList(Expression<Func<string>> employeeId, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> attendStatusFilter = null)
+        [WorkflowExpressionFactory(nameof(__Build_03getEmployeeDailyAttendanceList))]
+        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> _03getEmployeeDailyAttendanceList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> attendStatusFilter = null)
         {
-            var apiCallPath = "/v3/attendance/getEmployeeDailyAttendanceList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (attendStatusFilter != null)
-                callPayload.Queries["attendStatusFilter"] = ExpressionConverter.Convert(attendStatusFilter);
-            return new ApiConnectionAction<ResultListV3AttendanceDetailListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> __Build_03getEmployeeDailyAttendanceList(WorkflowExpression<string> employeeId, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> attendStatusFilter = null)
+        {
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: true);
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
+            WorkflowExpression.Validate(attendStatusFilter, nameof(attendStatusFilter), required: false);
+            return new DeferredBodyAction<ResultListV3AttendanceDetailListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getEmployeeDailyAttendanceList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (attendStatusFilter != null)
+                    callPayload.Queries["attendStatusFilter"] = ExpressionConverter.Convert(attendStatusFilter);
+                return new ApiConnectionAction<ResultListV3AttendanceDetailListResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> _03getLeaveBalanceAdjustmentList(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_03getLeaveBalanceAdjustmentList))]
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> _03getLeaveBalanceAdjustmentList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> holidayType, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/leave/getLeaveBalanceAdjustmentList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3LeaveHolidayBalanceResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> __Build_03getLeaveBalanceAdjustmentList(WorkflowExpression<string> employeeId, WorkflowExpression<string> holidayType, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: true);
+            WorkflowExpression.Validate(holidayType, nameof(holidayType), required: true);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeaveHolidayBalanceResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/getLeaveBalanceAdjustmentList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3LeaveHolidayBalanceResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _03updateEmployeeById(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
+        [WorkflowExpressionFactory(nameof(__Build_03updateEmployeeById))]
+        public IBodyWorkflowAction<ResultBoolean> _03updateEmployeeById([WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyenglishName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyemployeeStatus = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysurnameEnglish = null, [WorkflowExpression] Func<string> bodypersonalNameEnglish = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodydate1 = null, [WorkflowExpression] Func<string> bodydate2 = null, [WorkflowExpression] Func<string> bodydate3 = null, [WorkflowExpression] Func<string> bodydate4 = null, [WorkflowExpression] Func<string> bodytext1 = null, [WorkflowExpression] Func<string> bodytext2 = null, [WorkflowExpression] Func<string> bodytext3 = null, [WorkflowExpression] Func<string> bodytext4 = null, [WorkflowExpression] Func<string> bodytext5 = null, [WorkflowExpression] Func<string> bodytext6 = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodymobileCardCalType = null, [WorkflowExpression] Func<string> bodyregularType = null, [WorkflowExpression] Func<string> bodyinsurePlanName = null, [WorkflowExpression] Func<string> bodybizLabelIds = null)
         {
-            var apiCallPath = "/v3/employee/updateEmployeeById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            bodypropCount++;
-            body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyemployeeStatus != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_03updateEmployeeById(WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodyenglishName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyemployeeStatus = null, WorkflowExpression<string> bodysex = null, WorkflowExpression<string> bodynationality = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<string> bodycountryCode = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyidentityCard = null, WorkflowExpression<string> bodychineseName = null, WorkflowExpression<string> bodysurnameEnglish = null, WorkflowExpression<string> bodypersonalNameEnglish = null, WorkflowExpression<string> bodybirthday = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<string> bodyemergencyContactRelation = null, WorkflowExpression<string> bodyemergencyContactPhone = null, WorkflowExpression<string> bodybankCode = null, WorkflowExpression<string> bodybankBranchNumber = null, WorkflowExpression<string> bodybankAccountNo = null, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodydate1 = null, WorkflowExpression<string> bodydate2 = null, WorkflowExpression<string> bodydate3 = null, WorkflowExpression<string> bodydate4 = null, WorkflowExpression<string> bodytext1 = null, WorkflowExpression<string> bodytext2 = null, WorkflowExpression<string> bodytext3 = null, WorkflowExpression<string> bodytext4 = null, WorkflowExpression<string> bodytext5 = null, WorkflowExpression<string> bodytext6 = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodymobileCardCalType = null, WorkflowExpression<string> bodyregularType = null, WorkflowExpression<string> bodyinsurePlanName = null, WorkflowExpression<string> bodybizLabelIds = null)
+        {
+            WorkflowExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
+            WorkflowExpression.Validate(bodyenglishName, nameof(bodyenglishName), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: false);
+            WorkflowExpression.Validate(bodysex, nameof(bodysex), required: false);
+            WorkflowExpression.Validate(bodynationality, nameof(bodynationality), required: false);
+            WorkflowExpression.Validate(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
+            WorkflowExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
+            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            WorkflowExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
+            WorkflowExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
+            WorkflowExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyidentityCard, nameof(bodyidentityCard), required: false);
+            WorkflowExpression.Validate(bodychineseName, nameof(bodychineseName), required: false);
+            WorkflowExpression.Validate(bodysurnameEnglish, nameof(bodysurnameEnglish), required: false);
+            WorkflowExpression.Validate(bodypersonalNameEnglish, nameof(bodypersonalNameEnglish), required: false);
+            WorkflowExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactRelation, nameof(bodyemergencyContactRelation), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactPhone, nameof(bodyemergencyContactPhone), required: false);
+            WorkflowExpression.Validate(bodybankCode, nameof(bodybankCode), required: false);
+            WorkflowExpression.Validate(bodybankBranchNumber, nameof(bodybankBranchNumber), required: false);
+            WorkflowExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
+            WorkflowExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
+            WorkflowExpression.Validate(bodydate1, nameof(bodydate1), required: false);
+            WorkflowExpression.Validate(bodydate2, nameof(bodydate2), required: false);
+            WorkflowExpression.Validate(bodydate3, nameof(bodydate3), required: false);
+            WorkflowExpression.Validate(bodydate4, nameof(bodydate4), required: false);
+            WorkflowExpression.Validate(bodytext1, nameof(bodytext1), required: false);
+            WorkflowExpression.Validate(bodytext2, nameof(bodytext2), required: false);
+            WorkflowExpression.Validate(bodytext3, nameof(bodytext3), required: false);
+            WorkflowExpression.Validate(bodytext4, nameof(bodytext4), required: false);
+            WorkflowExpression.Validate(bodytext5, nameof(bodytext5), required: false);
+            WorkflowExpression.Validate(bodytext6, nameof(bodytext6), required: false);
+            WorkflowExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
+            WorkflowExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            WorkflowExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
+            WorkflowExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
+            WorkflowExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
+            WorkflowExpression.Validate(bodymobileCardCalType, nameof(bodymobileCardCalType), required: false);
+            WorkflowExpression.Validate(bodyregularType, nameof(bodyregularType), required: false);
+            WorkflowExpression.Validate(bodyinsurePlanName, nameof(bodyinsurePlanName), required: false);
+            WorkflowExpression.Validate(bodybizLabelIds, nameof(bodybizLabelIds), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
+                var apiCallPath = "/v3/employee/updateEmployeeById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysex != null)
-            {
-                body["sex"] = ExpressionConverter.ConvertO(bodysex);
+                body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
                 bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
+                body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyemployeeStatus != null)
+                {
+                    body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
+                    bodypropCount++;
+                }
 
-            if (bodymaritalStatus != null)
-            {
-                body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
-                bodypropCount++;
-            }
+                if (bodysex != null)
+                {
+                    body["sex"] = ExpressionConverter.ConvertO(bodysex);
+                    bodypropCount++;
+                }
 
-            if (bodycountryCode != null)
-            {
-                body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-                bodypropCount++;
-            }
+                if (bodynationality != null)
+                {
+                    body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
+                    bodypropCount++;
+                }
 
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
+                if (bodymaritalStatus != null)
+                {
+                    body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
+                    bodypropCount++;
+                }
 
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
+                if (bodycountryCode != null)
+                {
+                    body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
+                    bodypropCount++;
+                }
 
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
+                if (bodyphone != null)
+                {
+                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    bodypropCount++;
+                }
 
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
 
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
+                    bodypropCount++;
+                }
 
-            if (bodyidentityCard != null)
-            {
-                body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
-                bodypropCount++;
-            }
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
+                    bodypropCount++;
+                }
 
-            if (bodychineseName != null)
-            {
-                body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
-                bodypropCount++;
-            }
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodysurnameEnglish != null)
-            {
-                body["surnameEnglish"] = ExpressionConverter.ConvertO(bodysurnameEnglish);
-                bodypropCount++;
-            }
+                if (bodyidentityCard != null)
+                {
+                    body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
+                    bodypropCount++;
+                }
 
-            if (bodypersonalNameEnglish != null)
-            {
-                body["personalNameEnglish"] = ExpressionConverter.ConvertO(bodypersonalNameEnglish);
-                bodypropCount++;
-            }
+                if (bodychineseName != null)
+                {
+                    body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
+                    bodypropCount++;
+                }
 
-            if (bodybirthday != null)
-            {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
-                bodypropCount++;
-            }
+                if (bodysurnameEnglish != null)
+                {
+                    body["surnameEnglish"] = ExpressionConverter.ConvertO(bodysurnameEnglish);
+                    bodypropCount++;
+                }
 
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
+                if (bodypersonalNameEnglish != null)
+                {
+                    body["personalNameEnglish"] = ExpressionConverter.ConvertO(bodypersonalNameEnglish);
+                    bodypropCount++;
+                }
 
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
+                if (bodybirthday != null)
+                {
+                    body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
+                    bodypropCount++;
+                }
 
-            if (bodyemergencyContactRelation != null)
-            {
-                body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
-                bodypropCount++;
-            }
+                if (bodyaddress != null)
+                {
+                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    bodypropCount++;
+                }
 
-            if (bodyemergencyContactPhone != null)
-            {
-                body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
-                bodypropCount++;
-            }
+                if (bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
+                    bodypropCount++;
+                }
 
-            if (bodybankCode != null)
-            {
-                body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
-                bodypropCount++;
-            }
+                if (bodyemergencyContactRelation != null)
+                {
+                    body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
+                    bodypropCount++;
+                }
 
-            if (bodybankBranchNumber != null)
-            {
-                body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
-                bodypropCount++;
-            }
+                if (bodyemergencyContactPhone != null)
+                {
+                    body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
+                    bodypropCount++;
+                }
 
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
+                if (bodybankCode != null)
+                {
+                    body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
+                    bodypropCount++;
+                }
 
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
+                if (bodybankBranchNumber != null)
+                {
+                    body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
+                    bodypropCount++;
+                }
 
-            if (bodydate1 != null)
-            {
-                body["date1"] = ExpressionConverter.ConvertO(bodydate1);
-                bodypropCount++;
-            }
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
+                    bodypropCount++;
+                }
 
-            if (bodydate2 != null)
-            {
-                body["date2"] = ExpressionConverter.ConvertO(bodydate2);
-                bodypropCount++;
-            }
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
+                    bodypropCount++;
+                }
 
-            if (bodydate3 != null)
-            {
-                body["date3"] = ExpressionConverter.ConvertO(bodydate3);
-                bodypropCount++;
-            }
+                if (bodydate1 != null)
+                {
+                    body["date1"] = ExpressionConverter.ConvertO(bodydate1);
+                    bodypropCount++;
+                }
 
-            if (bodydate4 != null)
-            {
-                body["date4"] = ExpressionConverter.ConvertO(bodydate4);
-                bodypropCount++;
-            }
+                if (bodydate2 != null)
+                {
+                    body["date2"] = ExpressionConverter.ConvertO(bodydate2);
+                    bodypropCount++;
+                }
 
-            if (bodytext1 != null)
-            {
-                body["text1"] = ExpressionConverter.ConvertO(bodytext1);
-                bodypropCount++;
-            }
+                if (bodydate3 != null)
+                {
+                    body["date3"] = ExpressionConverter.ConvertO(bodydate3);
+                    bodypropCount++;
+                }
 
-            if (bodytext2 != null)
-            {
-                body["text2"] = ExpressionConverter.ConvertO(bodytext2);
-                bodypropCount++;
-            }
+                if (bodydate4 != null)
+                {
+                    body["date4"] = ExpressionConverter.ConvertO(bodydate4);
+                    bodypropCount++;
+                }
 
-            if (bodytext3 != null)
-            {
-                body["text3"] = ExpressionConverter.ConvertO(bodytext3);
-                bodypropCount++;
-            }
+                if (bodytext1 != null)
+                {
+                    body["text1"] = ExpressionConverter.ConvertO(bodytext1);
+                    bodypropCount++;
+                }
 
-            if (bodytext4 != null)
-            {
-                body["text4"] = ExpressionConverter.ConvertO(bodytext4);
-                bodypropCount++;
-            }
+                if (bodytext2 != null)
+                {
+                    body["text2"] = ExpressionConverter.ConvertO(bodytext2);
+                    bodypropCount++;
+                }
 
-            if (bodytext5 != null)
-            {
-                body["text5"] = ExpressionConverter.ConvertO(bodytext5);
-                bodypropCount++;
-            }
+                if (bodytext3 != null)
+                {
+                    body["text3"] = ExpressionConverter.ConvertO(bodytext3);
+                    bodypropCount++;
+                }
 
-            if (bodytext6 != null)
-            {
-                body["text6"] = ExpressionConverter.ConvertO(bodytext6);
-                bodypropCount++;
-            }
+                if (bodytext4 != null)
+                {
+                    body["text4"] = ExpressionConverter.ConvertO(bodytext4);
+                    bodypropCount++;
+                }
 
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
+                if (bodytext5 != null)
+                {
+                    body["text5"] = ExpressionConverter.ConvertO(bodytext5);
+                    bodypropCount++;
+                }
 
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
+                if (bodytext6 != null)
+                {
+                    body["text6"] = ExpressionConverter.ConvertO(bodytext6);
+                    bodypropCount++;
+                }
 
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
 
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
-            }
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
+                    bodypropCount++;
+                }
 
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
+                    bodypropCount++;
+                }
 
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
+                    bodypropCount++;
+                }
 
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
 
-            if (bodymobileCardCalType != null)
-            {
-                body["mobileCardCalType"] = ExpressionConverter.ConvertO(bodymobileCardCalType);
-                bodypropCount++;
-            }
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
 
-            if (bodyregularType != null)
-            {
-                body["regularType"] = ExpressionConverter.ConvertO(bodyregularType);
-                bodypropCount++;
-            }
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
+                    bodypropCount++;
+                }
 
-            if (bodyinsurePlanName != null)
-            {
-                body["insurePlanName"] = ExpressionConverter.ConvertO(bodyinsurePlanName);
-                bodypropCount++;
-            }
+                if (bodymobileCardCalType != null)
+                {
+                    body["mobileCardCalType"] = ExpressionConverter.ConvertO(bodymobileCardCalType);
+                    bodypropCount++;
+                }
 
-            if (bodybizLabelIds != null)
-            {
-                body["bizLabelIds"] = ExpressionConverter.ConvertO(bodybizLabelIds);
-                bodypropCount++;
-            }
+                if (bodyregularType != null)
+                {
+                    body["regularType"] = ExpressionConverter.ConvertO(bodyregularType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyinsurePlanName != null)
+                {
+                    body["insurePlanName"] = ExpressionConverter.ConvertO(bodyinsurePlanName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodybizLabelIds != null)
+                {
+                    body["bizLabelIds"] = ExpressionConverter.ConvertO(bodybizLabelIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddMobileCardResp> _04addAttendanceDataInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodydate, Expression<Func<string>> bodymode, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
+        [WorkflowExpressionFactory(nameof(__Build_04addAttendanceDataInfo))]
+        public IBodyWorkflowAction<ResultV3AddMobileCardResp> _04addAttendanceDataInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodymode, [WorkflowExpression] Func<string> bodycardType = null, [WorkflowExpression] Func<double> bodyactualLongitude = null, [WorkflowExpression] Func<double> bodyactualLatitude = null, [WorkflowExpression] Func<string> bodydeviceName = null, [WorkflowExpression] Func<string> bodycodeSource = null, [WorkflowExpression] Func<string> bodylocationName = null, [WorkflowExpression] Func<string> bodyworkLocationId = null, [WorkflowExpression] Func<string> bodydeviceId = null)
         {
-            var apiCallPath = "/v3/attendance/addAttendanceDataInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
-            if (bodycardType != null)
-            {
-                body["cardType"] = ExpressionConverter.ConvertO(bodycardType);
-                bodypropCount++;
-            }
-
-            if (bodyactualLongitude != null)
-            {
-                body["actualLongitude"] = ExpressionConverter.ConvertO(bodyactualLongitude);
-                bodypropCount++;
-            }
-
-            if (bodyactualLatitude != null)
-            {
-                body["actualLatitude"] = ExpressionConverter.ConvertO(bodyactualLatitude);
-                bodypropCount++;
-            }
-
-            if (bodydeviceName != null)
-            {
-                body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
-                bodypropCount++;
-            }
-
-            if (bodycodeSource != null)
-            {
-                body["codeSource"] = ExpressionConverter.ConvertO(bodycodeSource);
-                bodypropCount++;
-            }
-
-            if (bodylocationName != null)
-            {
-                body["locationName"] = ExpressionConverter.ConvertO(bodylocationName);
-                bodypropCount++;
-            }
-
-            if (bodyworkLocationId != null)
-            {
-                body["workLocationId"] = ExpressionConverter.ConvertO(bodyworkLocationId);
-                bodypropCount++;
-            }
-
-            if (bodydeviceId != null)
-            {
-                body["deviceId"] = ExpressionConverter.ConvertO(bodydeviceId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddMobileCardResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _04calculationLeaveBalance(Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisForceCal = null, Expression<Func<string[]>> bodyemployeeIdsList = null, Expression<Func<string[]>> bodyposition = null, Expression<Func<string[]>> bodydept = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AddMobileCardResp> __Build_04addAttendanceDataInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodymode, WorkflowExpression<string> bodycardType = null, WorkflowExpression<double> bodyactualLongitude = null, WorkflowExpression<double> bodyactualLatitude = null, WorkflowExpression<string> bodydeviceName = null, WorkflowExpression<string> bodycodeSource = null, WorkflowExpression<string> bodylocationName = null, WorkflowExpression<string> bodyworkLocationId = null, WorkflowExpression<string> bodydeviceId = null)
         {
-            var apiCallPath = "/v3/leave/calculationLeaveBalance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydate != null)
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: true);
+            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: true);
+            WorkflowExpression.Validate(bodycardType, nameof(bodycardType), required: false);
+            WorkflowExpression.Validate(bodyactualLongitude, nameof(bodyactualLongitude), required: false);
+            WorkflowExpression.Validate(bodyactualLatitude, nameof(bodyactualLatitude), required: false);
+            WorkflowExpression.Validate(bodydeviceName, nameof(bodydeviceName), required: false);
+            WorkflowExpression.Validate(bodycodeSource, nameof(bodycodeSource), required: false);
+            WorkflowExpression.Validate(bodylocationName, nameof(bodylocationName), required: false);
+            WorkflowExpression.Validate(bodyworkLocationId, nameof(bodyworkLocationId), required: false);
+            WorkflowExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: false);
+            return new DeferredBodyAction<ResultV3AddMobileCardResp>(() =>
             {
+                var apiCallPath = "/v3/attendance/addAttendanceDataInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
                 body["date"] = ExpressionConverter.ConvertO(bodydate);
                 bodypropCount++;
-            }
+                body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                if (bodycardType != null)
+                {
+                    body["cardType"] = ExpressionConverter.ConvertO(bodycardType);
+                    bodypropCount++;
+                }
 
-            if (bodyisForceCal != null)
-            {
-                body["isForceCal"] = ExpressionConverter.ConvertO(bodyisForceCal);
-                bodypropCount++;
-            }
+                if (bodyactualLongitude != null)
+                {
+                    body["actualLongitude"] = ExpressionConverter.ConvertO(bodyactualLongitude);
+                    bodypropCount++;
+                }
 
-            if (bodyemployeeIdsList != null)
-            {
-                body["employeeIdsList"] = ExpressionConverter.ConvertO(bodyemployeeIdsList);
-                bodypropCount++;
-            }
+                if (bodyactualLatitude != null)
+                {
+                    body["actualLatitude"] = ExpressionConverter.ConvertO(bodyactualLatitude);
+                    bodypropCount++;
+                }
 
-            if (bodyposition != null)
-            {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
-                bodypropCount++;
-            }
+                if (bodydeviceName != null)
+                {
+                    body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
+                    bodypropCount++;
+                }
 
-            if (bodydept != null)
-            {
-                body["dept"] = ExpressionConverter.ConvertO(bodydept);
-                bodypropCount++;
-            }
+                if (bodycodeSource != null)
+                {
+                    body["codeSource"] = ExpressionConverter.ConvertO(bodycodeSource);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylocationName != null)
+                {
+                    body["locationName"] = ExpressionConverter.ConvertO(bodylocationName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodyworkLocationId != null)
+                {
+                    body["workLocationId"] = ExpressionConverter.ConvertO(bodyworkLocationId);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceId != null)
+                {
+                    body["deviceId"] = ExpressionConverter.ConvertO(bodydeviceId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3AddMobileCardResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> _04getCustomizeUserFieldList(Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_04calculationLeaveBalance))]
+        public IBodyWorkflowAction<ResultBoolean> _04calculationLeaveBalance([WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisForceCal = null, [WorkflowExpression] Func<string[]> bodyemployeeIdsList = null, [WorkflowExpression] Func<string[]> bodyposition = null, [WorkflowExpression] Func<string[]> bodydept = null)
         {
-            var apiCallPath = "/v3/settings/getCustomizeUserFieldList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3BizEmployeeCustomizationResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_04calculationLeaveBalance(WorkflowExpression<string> bodydate = null, WorkflowExpression<bool> bodyisForceCal = null, WorkflowExpression<string[]> bodyemployeeIdsList = null, WorkflowExpression<string[]> bodyposition = null, WorkflowExpression<string[]> bodydept = null)
+        {
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
+            WorkflowExpression.Validate(bodyisForceCal, nameof(bodyisForceCal), required: false);
+            WorkflowExpression.Validate(bodyemployeeIdsList, nameof(bodyemployeeIdsList), required: false);
+            WorkflowExpression.Validate(bodyposition, nameof(bodyposition), required: false);
+            WorkflowExpression.Validate(bodydept, nameof(bodydept), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/leave/calculationLeaveBalance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydate != null)
+                {
+                    body["date"] = ExpressionConverter.ConvertO(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodyisForceCal != null)
+                {
+                    body["isForceCal"] = ExpressionConverter.ConvertO(bodyisForceCal);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeIdsList != null)
+                {
+                    body["employeeIdsList"] = ExpressionConverter.ConvertO(bodyemployeeIdsList);
+                    bodypropCount++;
+                }
+
+                if (bodyposition != null)
+                {
+                    body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                    bodypropCount++;
+                }
+
+                if (bodydept != null)
+                {
+                    body["dept"] = ExpressionConverter.ConvertO(bodydept);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> _04getEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> sex = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> calculateSalaryType = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> regularType = null)
+        [WorkflowExpressionFactory(nameof(__Build_04getCustomizeUserFieldList))]
+        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> _04getCustomizeUserFieldList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/employee/getEmployeeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (id != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> __Build_04getCustomizeUserFieldList(WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3BizEmployeeCustomizationResp>(() =>
+            {
+                var apiCallPath = "/v3/settings/getCustomizeUserFieldList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3BizEmployeeCustomizationResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_04getEmployeeList))]
+        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> _04getEmployeeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> sex = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> calculateSalaryType = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> payrollRegulationId = null, [WorkflowExpression] Func<string> regularType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> __Build_04getEmployeeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> id = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<string> sex = null, WorkflowExpression<int> status = null, WorkflowExpression<string> hireType = null, WorkflowExpression<string> calculateSalaryType = null, WorkflowExpression<string> costCenterId = null, WorkflowExpression<string> payrollRegulationId = null, WorkflowExpression<string> regularType = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(departmentId, nameof(departmentId), required: false);
+            WorkflowExpression.Validate(positionId, nameof(positionId), required: false);
+            WorkflowExpression.Validate(sex, nameof(sex), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(hireType, nameof(hireType), required: false);
+            WorkflowExpression.Validate(calculateSalaryType, nameof(calculateSalaryType), required: false);
+            WorkflowExpression.Validate(costCenterId, nameof(costCenterId), required: false);
+            WorkflowExpression.Validate(payrollRegulationId, nameof(payrollRegulationId), required: false);
+            WorkflowExpression.Validate(regularType, nameof(regularType), required: false);
+            return new DeferredBodyAction<ResultIPageV3EmployeeListResp>(() =>
+            {
+                var apiCallPath = "/v3/employee/getEmployeeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
+                if (sex != null)
+                    callPayload.Queries["sex"] = ExpressionConverter.Convert(sex);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (hireType != null)
+                    callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
+                if (calculateSalaryType != null)
+                    callPayload.Queries["calculateSalaryType"] = ExpressionConverter.Convert(calculateSalaryType);
+                if (costCenterId != null)
+                    callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
+                if (payrollRegulationId != null)
+                    callPayload.Queries["payrollRegulationId"] = ExpressionConverter.Convert(payrollRegulationId);
+                if (regularType != null)
+                    callPayload.Queries["regularType"] = ExpressionConverter.Convert(regularType);
+                return new ApiConnectionAction<ResultIPageV3EmployeeListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_04updateExpenseApplicationById))]
+        public IBodyWorkflowAction<ResultBoolean> _04updateExpenseApplicationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreimbursementType = null, [WorkflowExpression] Func<string> bodyreimbursementDate = null, [WorkflowExpression] Func<string> bodyreimbursementName = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_04updateExpenseApplicationById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyreimbursementType = null, WorkflowExpression<string> bodyreimbursementDate = null, WorkflowExpression<string> bodyreimbursementName = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyreimbursementType, nameof(bodyreimbursementType), required: false);
+            WorkflowExpression.Validate(bodyreimbursementDate, nameof(bodyreimbursementDate), required: false);
+            WorkflowExpression.Validate(bodyreimbursementName, nameof(bodyreimbursementName), required: false);
+            WorkflowExpression.Validate(bodyamount, nameof(bodyamount), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/expense/updateExpenseApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyreimbursementType != null)
+                {
+                    body["reimbursementType"] = ExpressionConverter.ConvertO(bodyreimbursementType);
+                    bodypropCount++;
+                }
+
+                if (bodyreimbursementDate != null)
+                {
+                    body["reimbursementDate"] = ExpressionConverter.ConvertO(bodyreimbursementDate);
+                    bodypropCount++;
+                }
+
+                if (bodyreimbursementName != null)
+                {
+                    body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
+                    bodypropCount++;
+                }
+
+                if (bodyamount != null)
+                {
+                    body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_04updateRosterInfoById))]
+        public IBodyWorkflowAction<ResultBoolean> _04updateRosterInfoById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<double> bodyscheduledAmount = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_04updateRosterInfoById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodyshiftTemplateId = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<double> bodyhourlyRate = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<double> bodytierRate = null, WorkflowExpression<double> bodyscheduledAmount = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
+            WorkflowExpression.Validate(bodyshiftTemplateId, nameof(bodyshiftTemplateId), required: false);
+            WorkflowExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
+            WorkflowExpression.Validate(bodyscheduledAmount, nameof(bodyscheduledAmount), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/updateRosterInfoById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyshiftTemplateId != null)
+                {
+                    body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodyhourlyRate != null)
+                {
+                    body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
+                    bodypropCount++;
+                }
+
+                if (bodyscheduledAmount != null)
+                {
+                    body["scheduledAmount"] = ExpressionConverter.ConvertO(bodyscheduledAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_05deleteAttendanceDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _05deleteAttendanceDataById([WorkflowExpression] Func<string> ids)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_05deleteAttendanceDataById(WorkflowExpression<string> ids)
+        {
+            WorkflowExpression.Validate(ids, nameof(ids), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendance/deleteAttendanceDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_05getCustomizeUserFieldInfoById))]
+        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> _05getCustomizeUserFieldInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> __Build_05getCustomizeUserFieldInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3BizEmployeeCustomizationResp>(() =>
+            {
+                var apiCallPath = "/v3/settings/getCustomizeUserFieldInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (sex != null)
-                callPayload.Queries["sex"] = ExpressionConverter.Convert(sex);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (hireType != null)
-                callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
-            if (calculateSalaryType != null)
-                callPayload.Queries["calculateSalaryType"] = ExpressionConverter.Convert(calculateSalaryType);
-            if (costCenterId != null)
-                callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
-            if (payrollRegulationId != null)
-                callPayload.Queries["payrollRegulationId"] = ExpressionConverter.Convert(payrollRegulationId);
-            if (regularType != null)
-                callPayload.Queries["regularType"] = ExpressionConverter.Convert(regularType);
-            return new ApiConnectionAction<ResultIPageV3EmployeeListResp>(callPayload);
+                return new ApiConnectionAction<ResultV3BizEmployeeCustomizationResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _04updateExpenseApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreimbursementType = null, Expression<Func<string>> bodyreimbursementDate = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_05getEmployeeInfoById))]
+        public IBodyWorkflowAction<ResultV3EmployeeInfoResp> _05getEmployeeInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/expense/updateExpenseApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyreimbursementType != null)
-            {
-                body["reimbursementType"] = ExpressionConverter.ConvertO(bodyreimbursementType);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyreimbursementDate != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3EmployeeInfoResp> __Build_05getEmployeeInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3EmployeeInfoResp>(() =>
             {
-                body["reimbursementDate"] = ExpressionConverter.ConvertO(bodyreimbursementDate);
-                bodypropCount++;
-            }
-
-            if (bodyreimbursementName != null)
-            {
-                body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
-                bodypropCount++;
-            }
-
-            if (bodyamount != null)
-            {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/employee/getEmployeeInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3EmployeeInfoResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _04updateRosterInfoById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_05GetExpenseApplicationList))]
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> _05GetExpenseApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> dateFilter = null, [WorkflowExpression] Func<string> reimbursementStatusFilter = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateRosterInfoById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyshiftTemplateId != null)
-            {
-                body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyaddressCardId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> __Build_05GetExpenseApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> dateFilter = null, WorkflowExpression<string> reimbursementStatusFilter = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(dateFilter, nameof(dateFilter), required: false);
+            WorkflowExpression.Validate(reimbursementStatusFilter, nameof(reimbursementStatusFilter), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3BizReimbursementResp>(() =>
             {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/expense/getExpenseApplicationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (dateFilter != null)
+                    callPayload.Queries["dateFilter"] = ExpressionConverter.Convert(dateFilter);
+                if (reimbursementStatusFilter != null)
+                    callPayload.Queries["reimbursementStatusFilter"] = ExpressionConverter.Convert(reimbursementStatusFilter);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3BizReimbursementResp>(callPayload);
+            });
+        }
 
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_05getLeaveBalanceList))]
+        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> _05getLeaveBalanceList([WorkflowExpression] Func<string> holidayType, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> regularTypeFilter = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> sexFilter = null, [WorkflowExpression] Func<string> leaveHolidayBalanceStatusFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyshiftStatus != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> __Build_05getLeaveBalanceList(WorkflowExpression<string> holidayType, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> regularTypeFilter = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> sexFilter = null, WorkflowExpression<string> leaveHolidayBalanceStatusFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> bizLabelIds = null)
+        {
+            WorkflowExpression.Validate(holidayType, nameof(holidayType), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(regularTypeFilter, nameof(regularTypeFilter), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            WorkflowExpression.Validate(positionFilter, nameof(positionFilter), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(sexFilter, nameof(sexFilter), required: false);
+            WorkflowExpression.Validate(leaveHolidayBalanceStatusFilter, nameof(leaveHolidayBalanceStatusFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
+            WorkflowExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeaveBalanceResp>(() =>
             {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/leave/getLeaveBalanceList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
+                if (regularTypeFilter != null)
+                    callPayload.Queries["regularTypeFilter"] = ExpressionConverter.Convert(regularTypeFilter);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (sexFilter != null)
+                    callPayload.Queries["sexFilter"] = ExpressionConverter.Convert(sexFilter);
+                if (leaveHolidayBalanceStatusFilter != null)
+                    callPayload.Queries["leaveHolidayBalanceStatusFilter"] = ExpressionConverter.Convert(leaveHolidayBalanceStatusFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
+                return new ApiConnectionAction<ResultIPageV3LeaveBalanceResp>(callPayload);
+            });
+        }
 
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_05getRosterList))]
+        public IBodyWorkflowAction<ResultIPageV3RosterListResp> _05getRosterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendDay = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> attendStatus = null, [WorkflowExpression] Func<string> dateType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyattendanceItemId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3RosterListResp> __Build_05getRosterList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendDay = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> attendStatus = null, WorkflowExpression<string> dateType = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(attendDay, nameof(attendDay), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(attendStatus, nameof(attendStatus), required: false);
+            WorkflowExpression.Validate(dateType, nameof(dateType), required: false);
+            return new DeferredBodyAction<ResultIPageV3RosterListResp>(() =>
             {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/attendCalculation/getRosterList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (attendDay != null)
+                    callPayload.Queries["attendDay"] = ExpressionConverter.Convert(attendDay);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (attendStatus != null)
+                    callPayload.Queries["attendStatus"] = ExpressionConverter.Convert(attendStatus);
+                if (dateType != null)
+                    callPayload.Queries["dateType"] = ExpressionConverter.Convert(dateType);
+                return new ApiConnectionAction<ResultIPageV3RosterListResp>(callPayload);
+            });
+        }
 
-            if (bodyhourlyRate != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_06getApproveProcessList))]
+        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> _06getApproveProcessList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> __Build_06getApproveProcessList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(() =>
             {
+                var apiCallPath = "/v3/settings/getApproveProcessList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_06GetExpenseApplicationById))]
+        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> _06GetExpenseApplicationById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> __Build_06GetExpenseApplicationById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3BizReimbursementDetailResp>(() =>
+            {
+                var apiCallPath = "/v3/expense/getExpenseApplicationById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3BizReimbursementDetailResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_06GetLeaveBalanceInfoById))]
+        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> _06GetLeaveBalanceInfoById([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> holidayType)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> __Build_06GetLeaveBalanceInfoById(WorkflowExpression<string> employeeId, WorkflowExpression<string> holidayType)
+        {
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: true);
+            WorkflowExpression.Validate(holidayType, nameof(holidayType), required: true);
+            return new DeferredBodyAction<ResultV3LeaveBalanceDetailResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/getLeaveBalanceInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
+                return new ApiConnectionAction<ResultV3LeaveBalanceDetailResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_06getRosterInfoById))]
+        public IBodyWorkflowAction<ResultV3RosterInfoResp> _06getRosterInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3RosterInfoResp> __Build_06getRosterInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3RosterInfoResp>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/getRosterInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3RosterInfoResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_06resign))]
+        public IBodyWorkflowAction<ResultBoolean> _06resign([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylastWorkingDate, [WorkflowExpression] Func<string> bodyreasonsLeave, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_06resign(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylastWorkingDate, WorkflowExpression<string> bodyreasonsLeave, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodylastWorkingDate, nameof(bodylastWorkingDate), required: true);
+            WorkflowExpression.Validate(bodyreasonsLeave, nameof(bodyreasonsLeave), required: true);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/employee/resign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["lastWorkingDate"] = ExpressionConverter.ConvertO(bodylastWorkingDate);
+                bodypropCount++;
+                body["reasonsLeave"] = ExpressionConverter.ConvertO(bodyreasonsLeave);
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_06updateAttendanceDataById))]
+        public IBodyWorkflowAction<ResultBoolean> _06updateAttendanceDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodycardType = null, [WorkflowExpression] Func<double> bodyactualLongitude = null, [WorkflowExpression] Func<double> bodyactualLatitude = null, [WorkflowExpression] Func<string> bodydeviceName = null, [WorkflowExpression] Func<string> bodycodeSource = null, [WorkflowExpression] Func<string> bodylocationName = null, [WorkflowExpression] Func<string> bodyworkLocationId = null, [WorkflowExpression] Func<string> bodydeviceId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_06updateAttendanceDataById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodycardType = null, WorkflowExpression<double> bodyactualLongitude = null, WorkflowExpression<double> bodyactualLatitude = null, WorkflowExpression<string> bodydeviceName = null, WorkflowExpression<string> bodycodeSource = null, WorkflowExpression<string> bodylocationName = null, WorkflowExpression<string> bodyworkLocationId = null, WorkflowExpression<string> bodydeviceId = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
+            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: false);
+            WorkflowExpression.Validate(bodycardType, nameof(bodycardType), required: false);
+            WorkflowExpression.Validate(bodyactualLongitude, nameof(bodyactualLongitude), required: false);
+            WorkflowExpression.Validate(bodyactualLatitude, nameof(bodyactualLatitude), required: false);
+            WorkflowExpression.Validate(bodydeviceName, nameof(bodydeviceName), required: false);
+            WorkflowExpression.Validate(bodycodeSource, nameof(bodycodeSource), required: false);
+            WorkflowExpression.Validate(bodylocationName, nameof(bodylocationName), required: false);
+            WorkflowExpression.Validate(bodyworkLocationId, nameof(bodyworkLocationId), required: false);
+            WorkflowExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendance/updateAttendanceDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodydate != null)
+                {
+                    body["date"] = ExpressionConverter.ConvertO(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodymode != null)
+                {
+                    body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                    bodypropCount++;
+                }
+
+                if (bodycardType != null)
+                {
+                    body["cardType"] = ExpressionConverter.ConvertO(bodycardType);
+                    bodypropCount++;
+                }
+
+                if (bodyactualLongitude != null)
+                {
+                    body["actualLongitude"] = ExpressionConverter.ConvertO(bodyactualLongitude);
+                    bodypropCount++;
+                }
+
+                if (bodyactualLatitude != null)
+                {
+                    body["actualLatitude"] = ExpressionConverter.ConvertO(bodyactualLatitude);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceName != null)
+                {
+                    body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
+                    bodypropCount++;
+                }
+
+                if (bodycodeSource != null)
+                {
+                    body["codeSource"] = ExpressionConverter.ConvertO(bodycodeSource);
+                    bodypropCount++;
+                }
+
+                if (bodylocationName != null)
+                {
+                    body["locationName"] = ExpressionConverter.ConvertO(bodylocationName);
+                    bodypropCount++;
+                }
+
+                if (bodyworkLocationId != null)
+                {
+                    body["workLocationId"] = ExpressionConverter.ConvertO(bodyworkLocationId);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceId != null)
+                {
+                    body["deviceId"] = ExpressionConverter.ConvertO(bodydeviceId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_07addEmployeeHistory))]
+        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> _07addEmployeeHistory([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodytakeEffectType, [WorkflowExpression] Func<string> bodytakeEffectDate, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<string> bodymajorWorkLocationId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> __Build_07addEmployeeHistory(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodytakeEffectType, WorkflowExpression<string> bodytakeEffectDate, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<string> bodycause = null, WorkflowExpression<string> bodymajorWorkLocationId = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
+            WorkflowExpression.Validate(bodytakeEffectType, nameof(bodytakeEffectType), required: true);
+            WorkflowExpression.Validate(bodytakeEffectDate, nameof(bodytakeEffectDate), required: true);
+            WorkflowExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
+            WorkflowExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
+            WorkflowExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
+            WorkflowExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            WorkflowExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
+            WorkflowExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
+            WorkflowExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
+            WorkflowExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
+            WorkflowExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
+            WorkflowExpression.Validate(bodycause, nameof(bodycause), required: false);
+            WorkflowExpression.Validate(bodymajorWorkLocationId, nameof(bodymajorWorkLocationId), required: false);
+            return new DeferredBodyAction<ResultV3AddEmployeeHistoryResp>(() =>
+            {
+                var apiCallPath = "/v3/employee/addEmployeeHistory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
+                    bodypropCount++;
+                }
+
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodycause != null)
+                {
+                    body["cause"] = ExpressionConverter.ConvertO(bodycause);
+                    bodypropCount++;
+                }
+
+                if (bodymajorWorkLocationId != null)
+                {
+                    body["majorWorkLocationId"] = ExpressionConverter.ConvertO(bodymajorWorkLocationId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["takeEffectType"] = ExpressionConverter.ConvertO(bodytakeEffectType);
+                bodypropCount++;
+                body["takeEffectDate"] = ExpressionConverter.ConvertO(bodytakeEffectDate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3AddEmployeeHistoryResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_07addLeaveApplicationInfo))]
+        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> _07addLeaveApplicationInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyholidayType, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> __Build_07addLeaveApplicationInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyholidayType, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<double> bodyleaveTime = null, WorkflowExpression<string> bodytimeType = null, WorkflowExpression<string> bodyholidayDate = null, WorkflowExpression<string> bodytime = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: true);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            WorkflowExpression.Validate(bodyleaveTime, nameof(bodyleaveTime), required: false);
+            WorkflowExpression.Validate(bodytimeType, nameof(bodytimeType), required: false);
+            WorkflowExpression.Validate(bodyholidayDate, nameof(bodyholidayDate), required: false);
+            WorkflowExpression.Validate(bodytime, nameof(bodytime), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultV3LeaveHolidayInsertResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/addLeaveApplicationInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyleaveTime != null)
+                {
+                    body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
+                    bodypropCount++;
+                }
+
+                if (bodytimeType != null)
+                {
+                    body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
+                    bodypropCount++;
+                }
+
+                if (bodyholidayDate != null)
+                {
+                    body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
+                    bodypropCount++;
+                }
+
+                if (bodytime != null)
+                {
+                    body["time"] = ExpressionConverter.ConvertO(bodytime);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3LeaveHolidayInsertResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_07addShitTemplateInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _07addShitTemplateInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<int> bodymealTime = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_07addShitTemplateInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceAddressId = null, WorkflowExpression<int> bodymealTime = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/addShitTemplateInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressId != null)
+                {
+                    body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_07getAttendanceDataList))]
+        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> _07getAttendanceDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> __Build_07getAttendanceDataList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> attendCalculationId = null, WorkflowExpression<string> bizLabelIds = null, WorkflowExpression<string> hireTypeFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            WorkflowExpression.Validate(positionFilter, nameof(positionFilter), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(attendCalculationId, nameof(attendCalculationId), required: false);
+            WorkflowExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
+            WorkflowExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            return new DeferredBodyAction<ResultIPageV3MobileCardListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getAttendanceDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (attendCalculationId != null)
+                    callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                return new ApiConnectionAction<ResultIPageV3MobileCardListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_08deleteEmployeeHistoryById))]
+        public IBodyWorkflowAction<ResultBoolean> _08deleteEmployeeHistoryById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_08deleteEmployeeHistoryById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/employee/deleteEmployeeHistoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_08deleteLeaveApplicationById))]
+        public IBodyWorkflowAction<ResultBoolean> _08deleteLeaveApplicationById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_08deleteLeaveApplicationById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/leave/deleteLeaveApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_08deleteShiftTemplateById))]
+        public IBodyWorkflowAction<ResultBoolean> _08deleteShiftTemplateById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_08deleteShiftTemplateById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteShiftTemplateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_08getAttendanceDataInfoById))]
+        public IBodyWorkflowAction<ResultV3MobileCardInfoResp> _08getAttendanceDataInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3MobileCardInfoResp> __Build_08getAttendanceDataInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3MobileCardInfoResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getAttendanceDataInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3MobileCardInfoResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_09getAttendanceItemList))]
+        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> _09getAttendanceItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> __Build_09getAttendanceItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3AttendanceItemListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getAttendanceItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3AttendanceItemListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_09updateEmployeeHistoryById))]
+        public IBodyWorkflowAction<ResultBoolean> _09updateEmployeeHistoryById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<string> bodymajorWorkLocationId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_09updateEmployeeHistoryById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyentryDate, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodyhireType = null, WorkflowExpression<string> bodypositionId = null, WorkflowExpression<string> bodydepartmentId = null, WorkflowExpression<string> bodydirectSupervisorId = null, WorkflowExpression<string> bodyattendCalculationId = null, WorkflowExpression<string> bodypayrollRegulationId = null, WorkflowExpression<double> bodybasicPay = null, WorkflowExpression<string> bodycalculateSalaryType = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<string> bodycause = null, WorkflowExpression<string> bodymajorWorkLocationId = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
+            WorkflowExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
+            WorkflowExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
+            WorkflowExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
+            WorkflowExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            WorkflowExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
+            WorkflowExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
+            WorkflowExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
+            WorkflowExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
+            WorkflowExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
+            WorkflowExpression.Validate(bodycause, nameof(bodycause), required: false);
+            WorkflowExpression.Validate(bodymajorWorkLocationId, nameof(bodymajorWorkLocationId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/employee/updateEmployeeHistoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
+                    bodypropCount++;
+                }
+
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodycause != null)
+                {
+                    body["cause"] = ExpressionConverter.ConvertO(bodycause);
+                    bodypropCount++;
+                }
+
+                if (bodymajorWorkLocationId != null)
+                {
+                    body["majorWorkLocationId"] = ExpressionConverter.ConvertO(bodymajorWorkLocationId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_09updateLeaveApplicationById))]
+        public IBodyWorkflowAction<ResultBoolean> _09updateLeaveApplicationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyholidayType = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_09updateLeaveApplicationById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyholidayType = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<double> bodyleaveTime = null, WorkflowExpression<string> bodytimeType = null, WorkflowExpression<string> bodyholidayDate = null, WorkflowExpression<string> bodytime = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: false);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            WorkflowExpression.Validate(bodyleaveTime, nameof(bodyleaveTime), required: false);
+            WorkflowExpression.Validate(bodytimeType, nameof(bodytimeType), required: false);
+            WorkflowExpression.Validate(bodyholidayDate, nameof(bodyholidayDate), required: false);
+            WorkflowExpression.Validate(bodytime, nameof(bodytime), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/leave/updateLeaveApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyholidayType != null)
+                {
+                    body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyleaveTime != null)
+                {
+                    body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
+                    bodypropCount++;
+                }
+
+                if (bodytimeType != null)
+                {
+                    body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
+                    bodypropCount++;
+                }
+
+                if (bodyholidayDate != null)
+                {
+                    body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
+                    bodypropCount++;
+                }
+
+                if (bodytime != null)
+                {
+                    body["time"] = ExpressionConverter.ConvertO(bodytime);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_09updateShiftTemplateById))]
+        public IBodyWorkflowAction<ResultBoolean> _09updateShiftTemplateById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_09updateShiftTemplateById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyshiftIn, WorkflowExpression<string> bodyshiftOff, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyattendanceAddressId = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/updateShiftTemplateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressId != null)
+                {
+                    body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_10addTimesheetInfo))]
+        public IBodyWorkflowAction<ResultV3AddTimesheetResp> _10addTimesheetInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyworkOverTimeType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AddTimesheetResp> __Build_10addTimesheetInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string> bodyworkOverTimeType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: true);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            WorkflowExpression.Validate(bodyworkOverTimeType, nameof(bodyworkOverTimeType), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
+            WorkflowExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultV3AddTimesheetResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/addTimesheetInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodyworkOverTimeType != null)
+                {
+                    body["workOverTimeType"] = ExpressionConverter.ConvertO(bodyworkOverTimeType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                bodypropCount++;
+                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                bodypropCount++;
+                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3AddTimesheetResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_10getEmployeeHistoryList))]
+        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> _10getEmployeeHistoryList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> __Build_10getEmployeeHistoryList(WorkflowExpression<string> employeeId, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: true);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3EmployeeHistoryListResp>(() =>
+            {
+                var apiCallPath = "/v3/employee/getEmployeeHistoryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3EmployeeHistoryListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_10getLeaveApplicationList))]
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> _10getLeaveApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> employeeFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> holidayTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> recordStatusFilter = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> startDateFilter = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> __Build_10getLeaveApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> employeeFilter = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> holidayTypeFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> recordStatusFilter = null, WorkflowExpression<string> attendCalculationId = null, WorkflowExpression<string> bizLabelIds = null, WorkflowExpression<string> startDateFilter = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            WorkflowExpression.Validate(employeeFilter, nameof(employeeFilter), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(holidayTypeFilter, nameof(holidayTypeFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(recordStatusFilter, nameof(recordStatusFilter), required: false);
+            WorkflowExpression.Validate(attendCalculationId, nameof(attendCalculationId), required: false);
+            WorkflowExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
+            WorkflowExpression.Validate(startDateFilter, nameof(startDateFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeaveHolidayResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/getLeaveApplicationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                if (employeeFilter != null)
+                    callPayload.Queries["employeeFilter"] = ExpressionConverter.Convert(employeeFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (holidayTypeFilter != null)
+                    callPayload.Queries["holidayTypeFilter"] = ExpressionConverter.Convert(holidayTypeFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (recordStatusFilter != null)
+                    callPayload.Queries["recordStatusFilter"] = ExpressionConverter.Convert(recordStatusFilter);
+                if (attendCalculationId != null)
+                    callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
+                if (startDateFilter != null)
+                    callPayload.Queries["startDateFilter"] = ExpressionConverter.Convert(startDateFilter);
+                return new ApiConnectionAction<ResultIPageV3LeaveHolidayResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_10getShiftTemplateList))]
+        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> _10getShiftTemplateList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendanceAddressId = null, [WorkflowExpression] Func<string> dateType = null, [WorkflowExpression] Func<string> status = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> __Build_10getShiftTemplateList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendanceAddressId = null, WorkflowExpression<string> dateType = null, WorkflowExpression<string> status = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(attendanceAddressId, nameof(attendanceAddressId), required: false);
+            WorkflowExpression.Validate(dateType, nameof(dateType), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<ResultIPageV3ShiftTemplateListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/getShiftTemplateList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (attendanceAddressId != null)
+                    callPayload.Queries["attendanceAddressId"] = ExpressionConverter.Convert(attendanceAddressId);
+                if (dateType != null)
+                    callPayload.Queries["dateType"] = ExpressionConverter.Convert(dateType);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<ResultIPageV3ShiftTemplateListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_11addOpenShiftInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _11addOpenShiftInfo([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<int> bodyempPlanNo, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyshiftType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_11addOpenShiftInfo(WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<int> bodyempPlanNo, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<string> bodyshiftType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: true);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
+            WorkflowExpression.Validate(bodyempPlanNo, nameof(bodyempPlanNo), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
+            WorkflowExpression.Validate(bodyshiftType, nameof(bodyshiftType), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/addOpenShiftInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                if (bodylocationId != null)
+                {
+                    body["locationId"] = ExpressionConverter.ConvertO(bodylocationId);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftType != null)
+                {
+                    body["shiftType"] = ExpressionConverter.ConvertO(bodyshiftType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                bodypropCount++;
+                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                bodypropCount++;
                 body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
                 bodypropCount++;
-            }
+                body["empPlanNo"] = ExpressionConverter.ConvertO(bodyempPlanNo);
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
 
-            if (bodycostCenterId != null)
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_11deleteTimesheetById))]
+        public IBodyWorkflowAction<ResultBoolean> _11deleteTimesheetById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_11deleteTimesheetById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                var apiCallPath = "/v3/attendance/deleteTimesheetById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_11getLeaveApplicationInfoById))]
+        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> _11getLeaveApplicationInfoById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> __Build_11getLeaveApplicationInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3LeaveHolidayDetailResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/getLeaveApplicationInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3LeaveHolidayDetailResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_12deleteOpenShiftById))]
+        public IBodyWorkflowAction<ResultBoolean> _12deleteOpenShiftById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_12deleteOpenShiftById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteOpenShiftById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_12getLeaveApplicationApproveProcessById))]
+        public IBodyWorkflowAction<ResultListV3LeaveProcessResp> _12getLeaveApplicationApproveProcessById([WorkflowExpression] Func<string> recordId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultListV3LeaveProcessResp> __Build_12getLeaveApplicationApproveProcessById(WorkflowExpression<string> recordId)
+        {
+            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
+            return new DeferredBodyAction<ResultListV3LeaveProcessResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/getLeaveApplicationApproveProcessById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
+                return new ApiConnectionAction<ResultListV3LeaveProcessResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_12updateTimesheetById))]
+        public IBodyWorkflowAction<ResultBoolean> _12updateTimesheetById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyworkOverTimeType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_12updateTimesheetById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string> bodyworkOverTimeType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<string> bodyattendanceItemId = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: true);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            WorkflowExpression.Validate(bodyworkOverTimeType, nameof(bodyworkOverTimeType), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
+            WorkflowExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendance/updateTimesheetById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytierRate != null)
-            {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
                 bodypropCount++;
-            }
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodyworkOverTimeType != null)
+                {
+                    body["workOverTimeType"] = ExpressionConverter.ConvertO(bodyworkOverTimeType);
+                    bodypropCount++;
+                }
 
-            if (bodyscheduledAmount != null)
-            {
-                body["scheduledAmount"] = ExpressionConverter.ConvertO(bodyscheduledAmount);
                 bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _05deleteAttendanceDataById(Expression<Func<string>> ids)
-        {
-            var apiCallPath = "/v3/attendance/deleteAttendanceDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> _05getCustomizeUserFieldInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/settings/getCustomizeUserFieldInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3BizEmployeeCustomizationResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3EmployeeInfoResp> _05getEmployeeInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/employee/getEmployeeInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3EmployeeInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> _05GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> dateFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/expense/getExpenseApplicationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (dateFilter != null)
-                callPayload.Queries["dateFilter"] = ExpressionConverter.Convert(dateFilter);
-            if (reimbursementStatusFilter != null)
-                callPayload.Queries["reimbursementStatusFilter"] = ExpressionConverter.Convert(reimbursementStatusFilter);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3BizReimbursementResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> _05getLeaveBalanceList(Expression<Func<string>> holidayType, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> regularTypeFilter = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> sexFilter = null, Expression<Func<string>> leaveHolidayBalanceStatusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
-        {
-            var apiCallPath = "/v3/leave/getLeaveBalanceList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            if (regularTypeFilter != null)
-                callPayload.Queries["regularTypeFilter"] = ExpressionConverter.Convert(regularTypeFilter);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (sexFilter != null)
-                callPayload.Queries["sexFilter"] = ExpressionConverter.Convert(sexFilter);
-            if (leaveHolidayBalanceStatusFilter != null)
-                callPayload.Queries["leaveHolidayBalanceStatusFilter"] = ExpressionConverter.Convert(leaveHolidayBalanceStatusFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            return new ApiConnectionAction<ResultIPageV3LeaveBalanceResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3RosterListResp> _05getRosterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> dateType = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/getRosterList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendDay != null)
-                callPayload.Queries["attendDay"] = ExpressionConverter.Convert(attendDay);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (attendStatus != null)
-                callPayload.Queries["attendStatus"] = ExpressionConverter.Convert(attendStatus);
-            if (dateType != null)
-                callPayload.Queries["dateType"] = ExpressionConverter.Convert(dateType);
-            return new ApiConnectionAction<ResultIPageV3RosterListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> _06getApproveProcessList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/settings/getApproveProcessList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> _06GetExpenseApplicationById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/expense/getExpenseApplicationById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3BizReimbursementDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> _06GetLeaveBalanceInfoById(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType)
-        {
-            var apiCallPath = "/v3/leave/getLeaveBalanceInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            return new ApiConnectionAction<ResultV3LeaveBalanceDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3RosterInfoResp> _06getRosterInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/getRosterInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3RosterInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _06resign(Expression<Func<string>> bodyid, Expression<Func<string>> bodylastWorkingDate, Expression<Func<string>> bodyreasonsLeave, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/employee/resign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["lastWorkingDate"] = ExpressionConverter.ConvertO(bodylastWorkingDate);
-            bodypropCount++;
-            body["reasonsLeave"] = ExpressionConverter.ConvertO(bodyreasonsLeave);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _06updateAttendanceDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
-        {
-            var apiCallPath = "/v3/attendance/updateAttendanceDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodydate != null)
-            {
                 body["date"] = ExpressionConverter.ConvertO(bodydate);
                 bodypropCount++;
-            }
-
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
-
-            if (bodycardType != null)
-            {
-                body["cardType"] = ExpressionConverter.ConvertO(bodycardType);
-                bodypropCount++;
-            }
-
-            if (bodyactualLongitude != null)
-            {
-                body["actualLongitude"] = ExpressionConverter.ConvertO(bodyactualLongitude);
-                bodypropCount++;
-            }
-
-            if (bodyactualLatitude != null)
-            {
-                body["actualLatitude"] = ExpressionConverter.ConvertO(bodyactualLatitude);
-                bodypropCount++;
-            }
-
-            if (bodydeviceName != null)
-            {
-                body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
-                bodypropCount++;
-            }
-
-            if (bodycodeSource != null)
-            {
-                body["codeSource"] = ExpressionConverter.ConvertO(bodycodeSource);
-                bodypropCount++;
-            }
-
-            if (bodylocationName != null)
-            {
-                body["locationName"] = ExpressionConverter.ConvertO(bodylocationName);
-                bodypropCount++;
-            }
-
-            if (bodyworkLocationId != null)
-            {
-                body["workLocationId"] = ExpressionConverter.ConvertO(bodyworkLocationId);
-                bodypropCount++;
-            }
-
-            if (bodydeviceId != null)
-            {
-                body["deviceId"] = ExpressionConverter.ConvertO(bodydeviceId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> _07addEmployeeHistory(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodytakeEffectType, Expression<Func<string>> bodytakeEffectDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
-        {
-            var apiCallPath = "/v3/employee/addEmployeeHistory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
-            }
-
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
-
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
-
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodycause != null)
-            {
-                body["cause"] = ExpressionConverter.ConvertO(bodycause);
-                bodypropCount++;
-            }
-
-            if (bodymajorWorkLocationId != null)
-            {
-                body["majorWorkLocationId"] = ExpressionConverter.ConvertO(bodymajorWorkLocationId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["takeEffectType"] = ExpressionConverter.ConvertO(bodytakeEffectType);
-            bodypropCount++;
-            body["takeEffectDate"] = ExpressionConverter.ConvertO(bodytakeEffectDate);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddEmployeeHistoryResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> _07addLeaveApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/leave/addLeaveApplicationInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
                 body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
                 bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
                 body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
 
-            if (bodyleaveTime != null)
-            {
-                body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
-                bodypropCount++;
-            }
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                    bodypropCount++;
+                }
 
-            if (bodytimeType != null)
-            {
-                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-                bodypropCount++;
-            }
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                    bodypropCount++;
+                }
 
-            if (bodyholidayDate != null)
-            {
-                body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
-                bodypropCount++;
-            }
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
 
-            if (bodytime != null)
-            {
-                body["time"] = ExpressionConverter.ConvertO(bodytime);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3LeaveHolidayInsertResp>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _07addShitTemplateInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null)
+        [WorkflowExpressionFactory(nameof(__Build_13getLeaveTypeList))]
+        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> _13getLeaveTypeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> shortName = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addShitTemplateInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyattendanceAddressId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> __Build_13getLeaveTypeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> shortName = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(shortName, nameof(shortName), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeaveTypeResp>(() =>
             {
-                body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/leave/getLeaveTypeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (shortName != null)
+                    callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
+                return new ApiConnectionAction<ResultIPageV3LeaveTypeResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> _07getAttendanceDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        [WorkflowExpressionFactory(nameof(__Build_13getTimesheetList))]
+        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> _13getTimesheetList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> addressCardId = null, [WorkflowExpression] Func<string> typeFilter = null)
         {
-            var apiCallPath = "/v3/attendance/getAttendanceDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (attendCalculationId != null)
-                callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ResultIPageV3MobileCardListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> __Build_13getTimesheetList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> departmentFilter = null, WorkflowExpression<string> positionFilter = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> bizLabelIds = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> calculateSalaryTypeFilter = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> addressCardId = null, WorkflowExpression<string> typeFilter = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            WorkflowExpression.Validate(positionFilter, nameof(positionFilter), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            WorkflowExpression.Validate(addressCardId, nameof(addressCardId), required: false);
+            WorkflowExpression.Validate(typeFilter, nameof(typeFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV3TimesheetListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getTimesheetList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (addressCardId != null)
+                    callPayload.Queries["addressCardId"] = ExpressionConverter.Convert(addressCardId);
+                if (typeFilter != null)
+                    callPayload.Queries["typeFilter"] = ExpressionConverter.Convert(typeFilter);
+                return new ApiConnectionAction<ResultIPageV3TimesheetListResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteEmployeeHistoryById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_13updateOpenShiftById))]
+        public IBodyWorkflowAction<ResultBoolean> _13updateOpenShiftById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<int> bodyempPlanNo, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyshiftType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/employee/deleteEmployeeHistoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteLeaveApplicationById(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_13updateOpenShiftById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<int> bodyempPlanNo, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<string> bodyshiftType = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodycostCenterId = null, WorkflowExpression<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/leave/deleteLeaveApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteShiftTemplateById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/deleteShiftTemplateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3MobileCardInfoResp> _08getAttendanceDataInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendance/getAttendanceDataInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3MobileCardInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> _09getAttendanceItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/attendance/getAttendanceItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3AttendanceItemListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateEmployeeHistoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
-        {
-            var apiCallPath = "/v3/employee/updateEmployeeHistoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            if (bodyconfirmationDate != null)
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
+            WorkflowExpression.Validate(bodyempPlanNo, nameof(bodyempPlanNo), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
+            WorkflowExpression.Validate(bodyshiftType, nameof(bodyshiftType), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
+                var apiCallPath = "/v3/attendCalculation/updateOpenShiftById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
                 bodypropCount++;
-            }
+                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                if (bodylocationId != null)
+                {
+                    body["locationId"] = ExpressionConverter.ConvertO(bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
+                if (bodyshiftType != null)
+                {
+                    body["shiftType"] = ExpressionConverter.ConvertO(bodyshiftType);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
-
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
-
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodycause != null)
-            {
-                body["cause"] = ExpressionConverter.ConvertO(bodycause);
-                bodypropCount++;
-            }
-
-            if (bodymajorWorkLocationId != null)
-            {
-                body["majorWorkLocationId"] = ExpressionConverter.ConvertO(bodymajorWorkLocationId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateLeaveApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/leave/updateLeaveApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyholidayType != null)
-            {
-                body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
                 body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
                 bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
                 body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
                 bodypropCount++;
-            }
-
-            if (bodyleaveTime != null)
-            {
-                body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
+                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
                 bodypropCount++;
-            }
+                body["empPlanNo"] = ExpressionConverter.ConvertO(bodyempPlanNo);
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                    bodypropCount++;
+                }
 
-            if (bodytimeType != null)
-            {
-                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodyholidayDate != null)
-            {
-                body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodytime != null)
-            {
-                body["time"] = ExpressionConverter.ConvertO(bodytime);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateShiftTemplateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_14getLeavePolicyList))]
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> _14getLeavePolicyList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateShiftTemplateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyattendanceAddressId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> __Build_14getLeavePolicyList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeavePolicyResp>(() =>
             {
-                body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/leave/getLeavePolicyList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                return new ApiConnectionAction<ResultIPageV3LeavePolicyResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddTimesheetResp> _10addTimesheetInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_14getOpenShiftList))]
+        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> _14getOpenShiftList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> date = null)
         {
-            var apiCallPath = "/v3/attendance/addTimesheetInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyworkOverTimeType != null)
-            {
-                body["workOverTimeType"] = ExpressionConverter.ConvertO(bodyworkOverTimeType);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodymealTime != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> __Build_14getOpenShiftList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> locationId = null, WorkflowExpression<string> costCenterId = null, WorkflowExpression<string> date = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: false);
+            WorkflowExpression.Validate(locationId, nameof(locationId), required: false);
+            WorkflowExpression.Validate(costCenterId, nameof(costCenterId), required: false);
+            WorkflowExpression.Validate(date, nameof(date), required: false);
+            return new DeferredBodyAction<ResultIPageV3OpenShiftListResp>(() =>
             {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddTimesheetResp>(callPayload);
+                var apiCallPath = "/v3/attendCalculation/getOpenShiftList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                if (locationId != null)
+                    callPayload.Queries["locationId"] = ExpressionConverter.Convert(locationId);
+                if (costCenterId != null)
+                    callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
+                if (date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                return new ApiConnectionAction<ResultIPageV3OpenShiftListResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> _10getEmployeeHistoryList(Expression<Func<string>> employeeId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_14getTimesheetInfoById))]
+        public IBodyWorkflowAction<ResultV3TimesheetInfoResp> _14getTimesheetInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/employee/getEmployeeHistoryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3EmployeeHistoryListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> _10getLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> holidayTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> recordStatusFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> startDateFilter = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3TimesheetInfoResp> __Build_14getTimesheetInfoById(WorkflowExpression<string> id)
         {
-            var apiCallPath = "/v3/leave/getLeaveApplicationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (employeeFilter != null)
-                callPayload.Queries["employeeFilter"] = ExpressionConverter.Convert(employeeFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (holidayTypeFilter != null)
-                callPayload.Queries["holidayTypeFilter"] = ExpressionConverter.Convert(holidayTypeFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (recordStatusFilter != null)
-                callPayload.Queries["recordStatusFilter"] = ExpressionConverter.Convert(recordStatusFilter);
-            if (attendCalculationId != null)
-                callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            if (startDateFilter != null)
-                callPayload.Queries["startDateFilter"] = ExpressionConverter.Convert(startDateFilter);
-            return new ApiConnectionAction<ResultIPageV3LeaveHolidayResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> _10getShiftTemplateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendanceAddressId = null, Expression<Func<string>> dateType = null, Expression<Func<string>> status = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/getShiftTemplateList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendanceAddressId != null)
-                callPayload.Queries["attendanceAddressId"] = ExpressionConverter.Convert(attendanceAddressId);
-            if (dateType != null)
-                callPayload.Queries["dateType"] = ExpressionConverter.Convert(dateType);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV3ShiftTemplateListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _11addOpenShiftInfo(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/addOpenShiftInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycode != null)
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3TimesheetInfoResp>(() =>
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodylocationId != null)
-            {
-                body["locationId"] = ExpressionConverter.ConvertO(bodylocationId);
-                bodypropCount++;
-            }
-
-            if (bodyshiftType != null)
-            {
-                body["shiftType"] = ExpressionConverter.ConvertO(bodyshiftType);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            bodypropCount++;
-            body["empPlanNo"] = ExpressionConverter.ConvertO(bodyempPlanNo);
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _11deleteTimesheetById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendance/deleteTimesheetById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> _11getLeaveApplicationInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/leave/getLeaveApplicationInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3LeaveHolidayDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _12deleteOpenShiftById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/deleteOpenShiftById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3LeaveProcessResp> _12getLeaveApplicationApproveProcessById(Expression<Func<string>> recordId)
-        {
-            var apiCallPath = "/v3/leave/getLeaveApplicationApproveProcessById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
-            return new ApiConnectionAction<ResultListV3LeaveProcessResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _12updateTimesheetById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/attendance/updateTimesheetById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyworkOverTimeType != null)
-            {
-                body["workOverTimeType"] = ExpressionConverter.ConvertO(bodyworkOverTimeType);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> _13getLeaveTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> shortName = null)
-        {
-            var apiCallPath = "/v3/leave/getLeaveTypeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (shortName != null)
-                callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
-            return new ApiConnectionAction<ResultIPageV3LeaveTypeResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> _13getTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> addressCardId = null, Expression<Func<string>> typeFilter = null)
-        {
-            var apiCallPath = "/v3/attendance/getTimesheetList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (addressCardId != null)
-                callPayload.Queries["addressCardId"] = ExpressionConverter.Convert(addressCardId);
-            if (typeFilter != null)
-                callPayload.Queries["typeFilter"] = ExpressionConverter.Convert(typeFilter);
-            return new ApiConnectionAction<ResultIPageV3TimesheetListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _13updateOpenShiftById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/updateOpenShiftById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodylocationId != null)
-            {
-                body["locationId"] = ExpressionConverter.ConvertO(bodylocationId);
-                bodypropCount++;
-            }
-
-            if (bodyshiftType != null)
-            {
-                body["shiftType"] = ExpressionConverter.ConvertO(bodyshiftType);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            bodypropCount++;
-            body["empPlanNo"] = ExpressionConverter.ConvertO(bodyempPlanNo);
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> _14getLeavePolicyList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null)
-        {
-            var apiCallPath = "/v3/leave/getLeavePolicyList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            return new ApiConnectionAction<ResultIPageV3LeavePolicyResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> _14getOpenShiftList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> projectId = null, Expression<Func<string>> locationId = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> date = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/getOpenShiftList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (locationId != null)
-                callPayload.Queries["locationId"] = ExpressionConverter.Convert(locationId);
-            if (costCenterId != null)
-                callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            return new ApiConnectionAction<ResultIPageV3OpenShiftListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3TimesheetInfoResp> _14getTimesheetInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendance/getTimesheetInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3TimesheetInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> _15addCalendarRemarkInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/attendance/addCalendarRemarkInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
-            bodypropCount++;
-            body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyrecordDate != null)
-            {
-                body["recordDate"] = ExpressionConverter.ConvertO(bodyrecordDate);
-                bodypropCount++;
-            }
-
-            if (bodyexpectWorkLocation != null)
-            {
-                body["expectWorkLocation"] = ExpressionConverter.ConvertO(bodyexpectWorkLocation);
-                bodypropCount++;
-            }
-
-            if (bodyexpectWorkTimeTemplate != null)
-            {
-                body["expectWorkTimeTemplate"] = ExpressionConverter.ConvertO(bodyexpectWorkTimeTemplate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["expectWorkStartTime"] = ExpressionConverter.ConvertO(bodyexpectWorkStartTime);
-            bodypropCount++;
-            body["expectWorkEndTime"] = ExpressionConverter.ConvertO(bodyexpectWorkEndTime);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddCalendarRemarkInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> _15getLeavePolicyInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/leave/getLeavePolicyInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3LeavePolicyDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> _15getOpenShiftInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/getOpenShiftInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3OpenShiftInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _16addProjectCategoryInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/addProjectCategoryInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _16deleteCalendarRemarkById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendance/deleteCalendarRemarkById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> _16getLeavePolicyTypeList(Expression<Func<string>> regulationId, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> holidayId = null, Expression<Func<string>> generationFrequency = null)
-        {
-            var apiCallPath = "/v3/leave/getLeavePolicyTypeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (id != null)
+                var apiCallPath = "/v3/attendance/getTimesheetInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["regulationId"] = ExpressionConverter.Convert(regulationId);
-            if (holidayId != null)
-                callPayload.Queries["holidayId"] = ExpressionConverter.Convert(holidayId);
-            if (generationFrequency != null)
-                callPayload.Queries["generationFrequency"] = ExpressionConverter.Convert(generationFrequency);
-            return new ApiConnectionAction<ResultIPageV3LeavePolicyTypeResp>(callPayload);
+                return new ApiConnectionAction<ResultV3TimesheetInfoResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _17deleteProjectCategoryById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_15addCalendarRemarkInfo))]
+        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> _15addCalendarRemarkInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyemployeeStatus, [WorkflowExpression] Func<string> bodytimeType, [WorkflowExpression] Func<string> bodyexpectWorkStartTime, [WorkflowExpression] Func<string> bodyexpectWorkEndTime, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrecordDate = null, [WorkflowExpression] Func<string> bodyexpectWorkLocation = null, [WorkflowExpression] Func<string> bodyexpectWorkTimeTemplate = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteProjectCategoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> __Build_15addCalendarRemarkInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyemployeeStatus, WorkflowExpression<string> bodytimeType, WorkflowExpression<string> bodyexpectWorkStartTime, WorkflowExpression<string> bodyexpectWorkEndTime, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyrecordDate = null, WorkflowExpression<string> bodyexpectWorkLocation = null, WorkflowExpression<string> bodyexpectWorkTimeTemplate = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: true);
+            WorkflowExpression.Validate(bodytimeType, nameof(bodytimeType), required: true);
+            WorkflowExpression.Validate(bodyexpectWorkStartTime, nameof(bodyexpectWorkStartTime), required: true);
+            WorkflowExpression.Validate(bodyexpectWorkEndTime, nameof(bodyexpectWorkEndTime), required: true);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodyrecordDate, nameof(bodyrecordDate), required: false);
+            WorkflowExpression.Validate(bodyexpectWorkLocation, nameof(bodyexpectWorkLocation), required: false);
+            WorkflowExpression.Validate(bodyexpectWorkTimeTemplate, nameof(bodyexpectWorkTimeTemplate), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultV3AddCalendarRemarkInfoResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/addCalendarRemarkInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
+                bodypropCount++;
+                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyrecordDate != null)
+                {
+                    body["recordDate"] = ExpressionConverter.ConvertO(bodyrecordDate);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkLocation != null)
+                {
+                    body["expectWorkLocation"] = ExpressionConverter.ConvertO(bodyexpectWorkLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkTimeTemplate != null)
+                {
+                    body["expectWorkTimeTemplate"] = ExpressionConverter.ConvertO(bodyexpectWorkTimeTemplate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["expectWorkStartTime"] = ExpressionConverter.ConvertO(bodyexpectWorkStartTime);
+                bodypropCount++;
+                body["expectWorkEndTime"] = ExpressionConverter.ConvertO(bodyexpectWorkEndTime);
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultV3AddCalendarRemarkInfoResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _17updateCalendarRemarkById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__Build_15getLeavePolicyInfoById))]
+        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> _15getLeavePolicyInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/updateCalendarRemarkById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
-            bodypropCount++;
-            body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyendDate != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> __Build_15getLeavePolicyInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3LeavePolicyDetailResp>(() =>
             {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyrecordDate != null)
-            {
-                body["recordDate"] = ExpressionConverter.ConvertO(bodyrecordDate);
-                bodypropCount++;
-            }
-
-            if (bodyexpectWorkLocation != null)
-            {
-                body["expectWorkLocation"] = ExpressionConverter.ConvertO(bodyexpectWorkLocation);
-                bodypropCount++;
-            }
-
-            if (bodyexpectWorkTimeTemplate != null)
-            {
-                body["expectWorkTimeTemplate"] = ExpressionConverter.ConvertO(bodyexpectWorkTimeTemplate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["expectWorkStartTime"] = ExpressionConverter.ConvertO(bodyexpectWorkStartTime);
-            bodypropCount++;
-            body["expectWorkEndTime"] = ExpressionConverter.ConvertO(bodyexpectWorkEndTime);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/leave/getLeavePolicyInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3LeavePolicyDetailResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> _18getCalendarRemarkList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        [WorkflowExpressionFactory(nameof(__Build_15getOpenShiftInfoById))]
+        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> _15getOpenShiftInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/getCalendarRemarkList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIds != null)
-                callPayload.Queries["employeeIds"] = ExpressionConverter.Convert(employeeIds);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ResultIPageV3StatusFlagListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> __Build_15getOpenShiftInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3OpenShiftInfoResp>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/getOpenShiftInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3OpenShiftInfoResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _18updateProjectCategoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
+        [WorkflowExpressionFactory(nameof(__Build_16addProjectCategoryInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _16addProjectCategoryInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateProjectCategoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycode != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_16addProjectCategoryInfo(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyparentId = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
+                var apiCallPath = "/v3/attendCalculation/addProjectCategoryInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_16deleteCalendarRemarkById))]
+        public IBodyWorkflowAction<ResultBoolean> _16deleteCalendarRemarkById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_16deleteCalendarRemarkById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendance/deleteCalendarRemarkById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_16getLeavePolicyTypeList))]
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> _16getLeavePolicyTypeList([WorkflowExpression] Func<string> regulationId, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> holidayId = null, [WorkflowExpression] Func<string> generationFrequency = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> __Build_16getLeavePolicyTypeList(WorkflowExpression<string> regulationId, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> id = null, WorkflowExpression<string> holidayId = null, WorkflowExpression<string> generationFrequency = null)
+        {
+            WorkflowExpression.Validate(regulationId, nameof(regulationId), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(holidayId, nameof(holidayId), required: false);
+            WorkflowExpression.Validate(generationFrequency, nameof(generationFrequency), required: false);
+            return new DeferredBodyAction<ResultIPageV3LeavePolicyTypeResp>(() =>
+            {
+                var apiCallPath = "/v3/leave/getLeavePolicyTypeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["regulationId"] = ExpressionConverter.Convert(regulationId);
+                if (holidayId != null)
+                    callPayload.Queries["holidayId"] = ExpressionConverter.Convert(holidayId);
+                if (generationFrequency != null)
+                    callPayload.Queries["generationFrequency"] = ExpressionConverter.Convert(generationFrequency);
+                return new ApiConnectionAction<ResultIPageV3LeavePolicyTypeResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_17deleteProjectCategoryById))]
+        public IBodyWorkflowAction<ResultBoolean> _17deleteProjectCategoryById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_17deleteProjectCategoryById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteProjectCategoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_17updateCalendarRemarkById))]
+        public IBodyWorkflowAction<ResultBoolean> _17updateCalendarRemarkById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyemployeeStatus, [WorkflowExpression] Func<string> bodytimeType, [WorkflowExpression] Func<string> bodyexpectWorkStartTime, [WorkflowExpression] Func<string> bodyexpectWorkEndTime, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrecordDate = null, [WorkflowExpression] Func<string> bodyexpectWorkLocation = null, [WorkflowExpression] Func<string> bodyexpectWorkTimeTemplate = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_17updateCalendarRemarkById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyemployeeStatus, WorkflowExpression<string> bodytimeType, WorkflowExpression<string> bodyexpectWorkStartTime, WorkflowExpression<string> bodyexpectWorkEndTime, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyrecordDate = null, WorkflowExpression<string> bodyexpectWorkLocation = null, WorkflowExpression<string> bodyexpectWorkTimeTemplate = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: true);
+            WorkflowExpression.Validate(bodytimeType, nameof(bodytimeType), required: true);
+            WorkflowExpression.Validate(bodyexpectWorkStartTime, nameof(bodyexpectWorkStartTime), required: true);
+            WorkflowExpression.Validate(bodyexpectWorkEndTime, nameof(bodyexpectWorkEndTime), required: true);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodyrecordDate, nameof(bodyrecordDate), required: false);
+            WorkflowExpression.Validate(bodyexpectWorkLocation, nameof(bodyexpectWorkLocation), required: false);
+            WorkflowExpression.Validate(bodyexpectWorkTimeTemplate, nameof(bodyexpectWorkTimeTemplate), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendance/updateCalendarRemarkById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
+                bodypropCount++;
+                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyrecordDate != null)
+                {
+                    body["recordDate"] = ExpressionConverter.ConvertO(bodyrecordDate);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkLocation != null)
+                {
+                    body["expectWorkLocation"] = ExpressionConverter.ConvertO(bodyexpectWorkLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkTimeTemplate != null)
+                {
+                    body["expectWorkTimeTemplate"] = ExpressionConverter.ConvertO(bodyexpectWorkTimeTemplate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["expectWorkStartTime"] = ExpressionConverter.ConvertO(bodyexpectWorkStartTime);
+                bodypropCount++;
+                body["expectWorkEndTime"] = ExpressionConverter.ConvertO(bodyexpectWorkEndTime);
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_18getCalendarRemarkList))]
+        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> _18getCalendarRemarkList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIds = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> __Build_18getCalendarRemarkList(WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIds = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
+        {
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeIds, nameof(employeeIds), required: false);
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            return new DeferredBodyAction<ResultIPageV3StatusFlagListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendance/getCalendarRemarkList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeIds != null)
+                    callPayload.Queries["employeeIds"] = ExpressionConverter.Convert(employeeIds);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                return new ApiConnectionAction<ResultIPageV3StatusFlagListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_18updateProjectCategoryById))]
+        public IBodyWorkflowAction<ResultBoolean> _18updateProjectCategoryById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyparentId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_18updateProjectCategoryById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyparentId = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/updateProjectCategoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_19getProjectCategoryList))]
+        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> _19getProjectCategoryList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> __Build_19getProjectCategoryList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3ScheduleProjectCategoryListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectCategoryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3ScheduleProjectCategoryListResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_20addProjectInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _20addProjectInfo([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<double> bodyminRate = null, [WorkflowExpression] Func<double> bodymaxRate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_20addProjectInfo(WorkflowExpression<string> bodycode, WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<double> bodyminRate = null, WorkflowExpression<double> bodymaxRate = null)
+        {
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
+            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
+            WorkflowExpression.Validate(bodyminRate, nameof(bodyminRate), required: false);
+            WorkflowExpression.Validate(bodymaxRate, nameof(bodymaxRate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/addProjectInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["code"] = ExpressionConverter.ConvertO(bodycode);
+                if (bodycategoryId != null)
+                {
+                    body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
+                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
+                if (bodyminRate != null)
+                {
+                    body["minRate"] = ExpressionConverter.ConvertO(bodyminRate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodymaxRate != null)
+                {
+                    body["maxRate"] = ExpressionConverter.ConvertO(bodymaxRate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> _19getProjectCategoryList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_21deleteProjectById))]
+        public IBodyWorkflowAction<ResultBoolean> _21deleteProjectById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectCategoryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ScheduleProjectCategoryListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_21deleteProjectById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteProjectById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _20addProjectInfo(Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
+        [WorkflowExpressionFactory(nameof(__Build_22updateProjectById))]
+        public IBodyWorkflowAction<ResultBoolean> _22updateProjectById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<double> bodyminRate = null, [WorkflowExpression] Func<double> bodymaxRate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            if (bodycategoryId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_22updateProjectById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodycode, WorkflowExpression<string> bodyname, WorkflowExpression<double> bodyhourlyRate, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<double> bodyminRate = null, WorkflowExpression<double> bodymaxRate = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
+            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
+            WorkflowExpression.Validate(bodyminRate, nameof(bodyminRate), required: false);
+            WorkflowExpression.Validate(bodymaxRate, nameof(bodymaxRate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                var apiCallPath = "/v3/attendCalculation/updateProjectById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            if (bodyminRate != null)
-            {
-                body["minRate"] = ExpressionConverter.ConvertO(bodyminRate);
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
                 bodypropCount++;
-            }
+                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                if (bodycategoryId != null)
+                {
+                    body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                    bodypropCount++;
+                }
 
-            if (bodymaxRate != null)
-            {
-                body["maxRate"] = ExpressionConverter.ConvertO(bodymaxRate);
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
+                if (bodyminRate != null)
+                {
+                    body["minRate"] = ExpressionConverter.ConvertO(bodyminRate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodymaxRate != null)
+                {
+                    body["maxRate"] = ExpressionConverter.ConvertO(bodymaxRate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _21deleteProjectById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_23getProjectList))]
+        public IBodyWorkflowAction<ResultIPageV3ProjectListResp> _23getProjectList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteProjectById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ProjectListResp> __Build_23getProjectList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3ProjectListResp>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3ProjectListResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _22updateProjectById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
+        [WorkflowExpressionFactory(nameof(__Build_24getProjectInfoById))]
+        public IBodyWorkflowAction<ResultV3ProjectInfoResp> _24getProjectInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/updateProjectById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            if (bodycategoryId != null)
-            {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            if (bodyminRate != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultV3ProjectInfoResp> __Build_24getProjectInfoById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultV3ProjectInfoResp>(() =>
             {
-                body["minRate"] = ExpressionConverter.ConvertO(bodyminRate);
-                bodypropCount++;
-            }
-
-            if (bodymaxRate != null)
-            {
-                body["maxRate"] = ExpressionConverter.ConvertO(bodymaxRate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/attendCalculation/getProjectInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultV3ProjectInfoResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectListResp> _23getProjectList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__Build_25addProjectCertificateInfo))]
+        public IBodyWorkflowAction<ResultBoolean> _25addProjectCertificateInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<double> bodyshiftHours, [WorkflowExpression] Func<double> bodyworkedHours, [WorkflowExpression] Func<string> bodytier = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ProjectListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_25addProjectCertificateInfo(WorkflowExpression<string> bodyemployeeId, WorkflowExpression<string> bodyprojectId, WorkflowExpression<double> bodyshiftHours, WorkflowExpression<double> bodyworkedHours, WorkflowExpression<string> bodytier = null, WorkflowExpression<double> bodytierRate = null, WorkflowExpression<string> bodyreason = null)
+        {
+            WorkflowExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
+            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            WorkflowExpression.Validate(bodyshiftHours, nameof(bodyshiftHours), required: true);
+            WorkflowExpression.Validate(bodyworkedHours, nameof(bodyworkedHours), required: true);
+            WorkflowExpression.Validate(bodytier, nameof(bodytier), required: false);
+            WorkflowExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
+            WorkflowExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/addProjectCertificateInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
+                bodypropCount++;
+                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                if (bodytier != null)
+                {
+                    body["tier"] = ExpressionConverter.ConvertO(bodytier);
+                    bodypropCount++;
+                }
+
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["shiftHours"] = ExpressionConverter.ConvertO(bodyshiftHours);
+                bodypropCount++;
+                body["workedHours"] = ExpressionConverter.ConvertO(bodyworkedHours);
+                if (bodyreason != null)
+                {
+                    body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3ProjectInfoResp> _24getProjectInfoById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__Build_26updateProjectCertificateById))]
+        public IBodyWorkflowAction<ResultBoolean> _26updateProjectCertificateById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodytier = null, [WorkflowExpression] Func<double> bodytierRate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3ProjectInfoResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_26updateProjectCertificateById(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodytier = null, WorkflowExpression<double> bodytierRate = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodytier, nameof(bodytier), required: false);
+            WorkflowExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v3/attendCalculation/updateProjectCertificateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodytier != null)
+                {
+                    body["tier"] = ExpressionConverter.ConvertO(bodytier);
+                    bodypropCount++;
+                }
+
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _25addProjectCertificateInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyprojectId, Expression<Func<double>> bodyshiftHours, Expression<Func<double>> bodyworkedHours, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null, Expression<Func<string>> bodyreason = null)
+        [WorkflowExpressionFactory(nameof(__Build_27getProjectCertificateList))]
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> _27getProjectCertificateList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> projectId = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectCertificateInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodytier != null)
-            {
-                body["tier"] = ExpressionConverter.ConvertO(bodytier);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodytierRate != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> __Build_27getProjectCertificateList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<int> status = null, WorkflowExpression<string> hireType = null, WorkflowExpression<string> projectId = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(departmentId, nameof(departmentId), required: false);
+            WorkflowExpression.Validate(positionId, nameof(positionId), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(hireType, nameof(hireType), required: false);
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: false);
+            return new DeferredBodyAction<ResultIPageV3ProjectCertificateListResp>(() =>
             {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/attendCalculation/getProjectCertificateList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (hireType != null)
+                    callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionAction<ResultIPageV3ProjectCertificateListResp>(callPayload);
+            });
+        }
 
-            bodypropCount++;
-            body["shiftHours"] = ExpressionConverter.ConvertO(bodyshiftHours);
-            bodypropCount++;
-            body["workedHours"] = ExpressionConverter.ConvertO(bodyworkedHours);
-            if (bodyreason != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_28addProjectCertificateHours))]
+        public IBodyWorkflowAction<ResultBoolean> _28addProjectCertificateHours([WorkflowExpression] Func<string> bodyprojectCertificateId, [WorkflowExpression] Func<string> bodyoccurrenceTime, [WorkflowExpression] Func<double> bodybalance, [WorkflowExpression] Func<string> bodyreason)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_28addProjectCertificateHours(WorkflowExpression<string> bodyprojectCertificateId, WorkflowExpression<string> bodyoccurrenceTime, WorkflowExpression<double> bodybalance, WorkflowExpression<string> bodyreason)
+        {
+            WorkflowExpression.Validate(bodyprojectCertificateId, nameof(bodyprojectCertificateId), required: true);
+            WorkflowExpression.Validate(bodyoccurrenceTime, nameof(bodyoccurrenceTime), required: true);
+            WorkflowExpression.Validate(bodybalance, nameof(bodybalance), required: true);
+            WorkflowExpression.Validate(bodyreason, nameof(bodyreason), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
+                var apiCallPath = "/v3/attendCalculation/addProjectCertificateHours";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["projectCertificateId"] = ExpressionConverter.ConvertO(bodyprojectCertificateId);
+                bodypropCount++;
+                body["occurrenceTime"] = ExpressionConverter.ConvertO(bodyoccurrenceTime);
+                bodypropCount++;
+                body["balance"] = ExpressionConverter.ConvertO(bodybalance);
+                bodypropCount++;
                 body["reason"] = ExpressionConverter.ConvertO(bodyreason);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__Build_29deleteProjectCertificateHoursById))]
+        public IBodyWorkflowAction<ResultBoolean> _29deleteProjectCertificateHoursById([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __Build_29deleteProjectCertificateHoursById(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v3/attendCalculation/deleteProjectCertificateHoursById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _26updateProjectCertificateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null)
+        [WorkflowExpressionFactory(nameof(__Build_30getProjectCertificateHourList))]
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> _30getProjectCertificateHourList([WorkflowExpression] Func<string> projectCertificateId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateProjectCertificateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodytier != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> __Build_30getProjectCertificateHourList(WorkflowExpression<string> projectCertificateId, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(projectCertificateId, nameof(projectCertificateId), required: true);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV3ProjectCertificateHoursListResp>(() =>
             {
-                body["tier"] = ExpressionConverter.ConvertO(bodytier);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/attendCalculation/getProjectCertificateHourList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectCertificateId"] = ExpressionConverter.Convert(projectCertificateId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ResultIPageV3ProjectCertificateHoursListResp>(callPayload);
+            });
+        }
 
-            if (bodytierRate != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildGetAttendCalculationList))]
+        public IBodyWorkflowAction<ResultIPageV2AttendanceResp> GetAttendCalculationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendDay = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> attendStatus = null, [WorkflowExpression] Func<string> type = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2AttendanceResp> __BuildGetAttendCalculationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendDay = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> attendStatus = null, WorkflowExpression<string> type = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(attendDay, nameof(attendDay), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(attendStatus, nameof(attendStatus), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            return new DeferredBodyAction<ResultIPageV2AttendanceResp>(() =>
             {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v2/attendance/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (attendDay != null)
+                    callPayload.Queries["attendDay"] = ExpressionConverter.Convert(attendDay);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (attendStatus != null)
+                    callPayload.Queries["attendStatus"] = ExpressionConverter.Convert(attendStatus);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<ResultIPageV2AttendanceResp>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCostCenterList))]
+        public IBodyWorkflowAction<ResultIPageV2CostCenterResp> GetCostCenterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> costCenterCode = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2CostCenterResp> __BuildGetCostCenterList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> costCenterCode = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(costCenterCode, nameof(costCenterCode), required: false);
+            return new DeferredBodyAction<ResultIPageV2CostCenterResp>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v2/tenants/getCostCenterList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (costCenterCode != null)
+                    callPayload.Queries["costCenterCode"] = ExpressionConverter.Convert(costCenterCode);
+                return new ApiConnectionAction<ResultIPageV2CostCenterResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> _27getProjectCertificateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> projectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDepartmentList))]
+        public IBodyWorkflowAction<ResultIPageV2DepartmentResp> GetDepartmentList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> departmentCode = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectCertificateList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (hireType != null)
-                callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionAction<ResultIPageV3ProjectCertificateListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _28addProjectCertificateHours(Expression<Func<string>> bodyprojectCertificateId, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<double>> bodybalance, Expression<Func<string>> bodyreason)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2DepartmentResp> __BuildGetDepartmentList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> departmentCode = null, WorkflowExpression<string> parentId = null, WorkflowExpression<string> status = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectCertificateHours";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["projectCertificateId"] = ExpressionConverter.ConvertO(bodyprojectCertificateId);
-            bodypropCount++;
-            body["occurrenceTime"] = ExpressionConverter.ConvertO(bodyoccurrenceTime);
-            bodypropCount++;
-            body["balance"] = ExpressionConverter.ConvertO(bodybalance);
-            bodypropCount++;
-            body["reason"] = ExpressionConverter.ConvertO(bodyreason);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(departmentCode, nameof(departmentCode), required: false);
+            WorkflowExpression.Validate(parentId, nameof(parentId), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<ResultIPageV2DepartmentResp>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                var apiCallPath = "/v2/department/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (departmentCode != null)
+                    callPayload.Queries["departmentCode"] = ExpressionConverter.Convert(departmentCode);
+                if (parentId != null)
+                    callPayload.Queries["parentId"] = ExpressionConverter.Convert(parentId);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<ResultIPageV2DepartmentResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _29deleteProjectCertificateHoursById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetEmployeeList))]
+        public IBodyWorkflowAction<ResultIPageV2EmployeeResp> GetEmployeeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> englishName = null, [WorkflowExpression] Func<string> chineseName = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> education = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> bankCode = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> payrollRegulationId = null, [WorkflowExpression] Func<string> workDate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteProjectCertificateHoursById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2EmployeeResp> __BuildGetEmployeeList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> englishName = null, WorkflowExpression<string> chineseName = null, WorkflowExpression<string> email = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> code = null, WorkflowExpression<int> status = null, WorkflowExpression<string> education = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<string> hireType = null, WorkflowExpression<string> bankCode = null, WorkflowExpression<string> costCenterId = null, WorkflowExpression<string> payrollRegulationId = null, WorkflowExpression<string> workDate = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(englishName, nameof(englishName), required: false);
+            WorkflowExpression.Validate(chineseName, nameof(chineseName), required: false);
+            WorkflowExpression.Validate(email, nameof(email), required: false);
+            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            WorkflowExpression.Validate(phone, nameof(phone), required: false);
+            WorkflowExpression.Validate(code, nameof(code), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(education, nameof(education), required: false);
+            WorkflowExpression.Validate(departmentId, nameof(departmentId), required: false);
+            WorkflowExpression.Validate(positionId, nameof(positionId), required: false);
+            WorkflowExpression.Validate(hireType, nameof(hireType), required: false);
+            WorkflowExpression.Validate(bankCode, nameof(bankCode), required: false);
+            WorkflowExpression.Validate(costCenterId, nameof(costCenterId), required: false);
+            WorkflowExpression.Validate(payrollRegulationId, nameof(payrollRegulationId), required: false);
+            WorkflowExpression.Validate(workDate, nameof(workDate), required: false);
+            return new DeferredBodyAction<ResultIPageV2EmployeeResp>(() =>
+            {
+                var apiCallPath = "/v2/employee/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (englishName != null)
+                    callPayload.Queries["englishName"] = ExpressionConverter.Convert(englishName);
+                if (chineseName != null)
+                    callPayload.Queries["chineseName"] = ExpressionConverter.Convert(chineseName);
+                if (email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                if (countryCode != null)
+                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                if (phone != null)
+                    callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+                if (code != null)
+                    callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (education != null)
+                    callPayload.Queries["education"] = ExpressionConverter.Convert(education);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
+                if (hireType != null)
+                    callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
+                if (bankCode != null)
+                    callPayload.Queries["bankCode"] = ExpressionConverter.Convert(bankCode);
+                if (costCenterId != null)
+                    callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
+                if (payrollRegulationId != null)
+                    callPayload.Queries["payrollRegulationId"] = ExpressionConverter.Convert(payrollRegulationId);
+                if (workDate != null)
+                    callPayload.Queries["workDate"] = ExpressionConverter.Convert(workDate);
+                return new ApiConnectionAction<ResultIPageV2EmployeeResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> _30getProjectCertificateHourList(Expression<Func<string>> projectCertificateId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetExpenseApplicationList))]
+        public IBodyWorkflowAction<ResultIPageV2ExpenseResp> GetExpenseApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> reimbursementStatusFilter = null, [WorkflowExpression] Func<string> reimbursementName = null, [WorkflowExpression] Func<string> departmentFilter = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectCertificateHourList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectCertificateId"] = ExpressionConverter.Convert(projectCertificateId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ProjectCertificateHoursListResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2ExpenseResp> __BuildGetExpenseApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> reimbursementStatusFilter = null, WorkflowExpression<string> reimbursementName = null, WorkflowExpression<string> departmentFilter = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(reimbursementStatusFilter, nameof(reimbursementStatusFilter), required: false);
+            WorkflowExpression.Validate(reimbursementName, nameof(reimbursementName), required: false);
+            WorkflowExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV2ExpenseResp>(() =>
+            {
+                var apiCallPath = "/v2/tenants/getExpenseApplicationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (reimbursementStatusFilter != null)
+                    callPayload.Queries["reimbursementStatusFilter"] = ExpressionConverter.Convert(reimbursementStatusFilter);
+                if (reimbursementName != null)
+                    callPayload.Queries["reimbursementName"] = ExpressionConverter.Convert(reimbursementName);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
+                return new ApiConnectionAction<ResultIPageV2ExpenseResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2AttendanceResp> GetAttendCalculationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> type = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetExtPayItemData))]
+        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> GetExtPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> employeeCode = null, [WorkflowExpression] Func<string> businessSalaryItemId = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> businessSalaryItemFilter = null)
         {
-            var apiCallPath = "/v2/attendance/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendDay != null)
-                callPayload.Queries["attendDay"] = ExpressionConverter.Convert(attendDay);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (attendStatus != null)
-                callPayload.Queries["attendStatus"] = ExpressionConverter.Convert(attendStatus);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<ResultIPageV2AttendanceResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> __BuildGetExtPayItemData(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> employeeCode = null, WorkflowExpression<string> businessSalaryItemId = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> businessSalaryItemFilter = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(employeeCode, nameof(employeeCode), required: false);
+            WorkflowExpression.Validate(businessSalaryItemId, nameof(businessSalaryItemId), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(businessSalaryItemFilter, nameof(businessSalaryItemFilter), required: false);
+            return new DeferredBodyAction<ResultIPageV2ExternalPayItemResp>(() =>
+            {
+                var apiCallPath = "/v2/payroll/getExtPayItemData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (employeeCode != null)
+                    callPayload.Queries["employeeCode"] = ExpressionConverter.Convert(employeeCode);
+                if (businessSalaryItemId != null)
+                    callPayload.Queries["businessSalaryItemId"] = ExpressionConverter.Convert(businessSalaryItemId);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (businessSalaryItemFilter != null)
+                    callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(businessSalaryItemFilter);
+                return new ApiConnectionAction<ResultIPageV2ExternalPayItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2CostCenterResp> GetCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> costCenterCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetExtPayItemList))]
+        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> GetExtPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> paymentType = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/tenants/getCostCenterList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (costCenterCode != null)
-                callPayload.Queries["costCenterCode"] = ExpressionConverter.Convert(costCenterCode);
-            return new ApiConnectionAction<ResultIPageV2CostCenterResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> __BuildGetExtPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> paymentType = null, WorkflowExpression<string> status = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(paymentType, nameof(paymentType), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<ResultIPageV2ExtPayItemResp>(() =>
+            {
+                var apiCallPath = "/v2/payroll/getExtPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (paymentType != null)
+                    callPayload.Queries["paymentType"] = ExpressionConverter.Convert(paymentType);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<ResultIPageV2ExtPayItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2DepartmentResp> GetDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> departmentCode = null, Expression<Func<string>> parentId = null, Expression<Func<string>> status = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFixedPayItemData))]
+        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> GetFixedPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> payrollItemId = null)
         {
-            var apiCallPath = "/v2/department/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (departmentCode != null)
-                callPayload.Queries["departmentCode"] = ExpressionConverter.Convert(departmentCode);
-            if (parentId != null)
-                callPayload.Queries["parentId"] = ExpressionConverter.Convert(parentId);
-            if (status != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> __BuildGetFixedPayItemData(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> payrollItemId = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(payrollItemId, nameof(payrollItemId), required: false);
+            return new DeferredBodyAction<ResultIPageV2FixedPayItemResp>(() =>
+            {
+                var apiCallPath = "/v2/payroll/getFixedPayItemData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (payrollItemId != null)
+                    callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(payrollItemId);
+                return new ApiConnectionAction<ResultIPageV2FixedPayItemResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildGetLabelList))]
+        public IBodyWorkflowAction<ResultIPageV2LabelResp> GetLabelList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> labelCode = null, [WorkflowExpression] Func<string> labelName = null, [WorkflowExpression] Func<int> labelStatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2LabelResp> __BuildGetLabelList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> labelCode = null, WorkflowExpression<string> labelName = null, WorkflowExpression<int> labelStatus = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(labelCode, nameof(labelCode), required: false);
+            WorkflowExpression.Validate(labelName, nameof(labelName), required: false);
+            WorkflowExpression.Validate(labelStatus, nameof(labelStatus), required: false);
+            return new DeferredBodyAction<ResultIPageV2LabelResp>(() =>
+            {
+                var apiCallPath = "/v2/label/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (labelCode != null)
+                    callPayload.Queries["labelCode"] = ExpressionConverter.Convert(labelCode);
+                if (labelName != null)
+                    callPayload.Queries["labelName"] = ExpressionConverter.Convert(labelName);
+                if (labelStatus != null)
+                    callPayload.Queries["labelStatus"] = ExpressionConverter.Convert(labelStatus);
+                return new ApiConnectionAction<ResultIPageV2LabelResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildGetLeaveApplicationList))]
+        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> GetLeaveApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> holidayType = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> holidayDate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> __BuildGetLeaveApplicationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> holidayType = null, WorkflowExpression<string> status = null, WorkflowExpression<string> holidayDate = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(holidayType, nameof(holidayType), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(holidayDate, nameof(holidayDate), required: false);
+            return new DeferredBodyAction<ResultIPageV2LeaveApplicationResp>(() =>
+            {
+                var apiCallPath = "/v2/leave/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (holidayType != null)
+                    callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (holidayDate != null)
+                    callPayload.Queries["holidayDate"] = ExpressionConverter.Convert(holidayDate);
+                return new ApiConnectionAction<ResultIPageV2LeaveApplicationResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildGetPayItemList))]
+        public IBodyWorkflowAction<ResultIPageV2PayItemResp> GetPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> status = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2PayItemResp> __BuildGetPayItemList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> status = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<ResultIPageV2PayItemResp>(() =>
+            {
+                var apiCallPath = "/v2/payroll/getPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<ResultIPageV2PayItemResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildGetPayrunList))]
+        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> GetPayrunList([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> __BuildGetPayrunList(WorkflowExpression<string> status, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(status, nameof(status), required: true);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ResultIPageV2PayrollPlanResp>(() =>
+            {
+                var apiCallPath = "/v2/payroll/getPayrunList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
                 callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2DepartmentResp>(callPayload);
+                return new ApiConnectionAction<ResultIPageV2PayrollPlanResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2EmployeeResp> GetEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> englishName = null, Expression<Func<string>> chineseName = null, Expression<Func<string>> email = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phone = null, Expression<Func<string>> code = null, Expression<Func<int>> status = null, Expression<Func<string>> education = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> hireType = null, Expression<Func<string>> bankCode = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> workDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPositionList))]
+        public IBodyWorkflowAction<ResultIPageV2PositionResp> GetPositionList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> positionCode = null)
         {
-            var apiCallPath = "/v2/employee/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (englishName != null)
-                callPayload.Queries["englishName"] = ExpressionConverter.Convert(englishName);
-            if (chineseName != null)
-                callPayload.Queries["chineseName"] = ExpressionConverter.Convert(chineseName);
-            if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (countryCode != null)
-                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
-            if (phone != null)
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (education != null)
-                callPayload.Queries["education"] = ExpressionConverter.Convert(education);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (hireType != null)
-                callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
-            if (bankCode != null)
-                callPayload.Queries["bankCode"] = ExpressionConverter.Convert(bankCode);
-            if (costCenterId != null)
-                callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
-            if (payrollRegulationId != null)
-                callPayload.Queries["payrollRegulationId"] = ExpressionConverter.Convert(payrollRegulationId);
-            if (workDate != null)
-                callPayload.Queries["workDate"] = ExpressionConverter.Convert(workDate);
-            return new ApiConnectionAction<ResultIPageV2EmployeeResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2PositionResp> __BuildGetPositionList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> positionCode = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(positionCode, nameof(positionCode), required: false);
+            return new DeferredBodyAction<ResultIPageV2PositionResp>(() =>
+            {
+                var apiCallPath = "/v2/tenants/getPositionList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (positionCode != null)
+                    callPayload.Queries["positionCode"] = ExpressionConverter.Convert(positionCode);
+                return new ApiConnectionAction<ResultIPageV2PositionResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2ExpenseResp> GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<string>> reimbursementName = null, Expression<Func<string>> departmentFilter = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRosterDataList))]
+        public IBodyWorkflowAction<ResultListV2RosterResp> GetRosterDataList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> englishName = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> surnameEnglish = null, [WorkflowExpression] Func<string> personalNameEnglish = null)
         {
-            var apiCallPath = "/v2/tenants/getExpenseApplicationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (reimbursementStatusFilter != null)
-                callPayload.Queries["reimbursementStatusFilter"] = ExpressionConverter.Convert(reimbursementStatusFilter);
-            if (reimbursementName != null)
-                callPayload.Queries["reimbursementName"] = ExpressionConverter.Convert(reimbursementName);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            return new ApiConnectionAction<ResultIPageV2ExpenseResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> GetExtPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> employeeCode = null, Expression<Func<string>> businessSalaryItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> businessSalaryItemFilter = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultListV2RosterResp> __BuildGetRosterDataList(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> attendCalculationId = null, WorkflowExpression<string> departmentId = null, WorkflowExpression<string> positionId = null, WorkflowExpression<string> statusFilter = null, WorkflowExpression<string> englishName = null, WorkflowExpression<string> code = null, WorkflowExpression<string> surnameEnglish = null, WorkflowExpression<string> personalNameEnglish = null)
         {
-            var apiCallPath = "/v2/payroll/getExtPayItemData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (employeeCode != null)
-                callPayload.Queries["employeeCode"] = ExpressionConverter.Convert(employeeCode);
-            if (businessSalaryItemId != null)
-                callPayload.Queries["businessSalaryItemId"] = ExpressionConverter.Convert(businessSalaryItemId);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (businessSalaryItemFilter != null)
-                callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(businessSalaryItemFilter);
-            return new ApiConnectionAction<ResultIPageV2ExternalPayItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> GetExtPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> paymentType = null, Expression<Func<string>> status = null)
-        {
-            var apiCallPath = "/v2/payroll/getExtPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (paymentType != null)
-                callPayload.Queries["paymentType"] = ExpressionConverter.Convert(paymentType);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2ExtPayItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> GetFixedPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null)
-        {
-            var apiCallPath = "/v2/payroll/getFixedPayItemData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (payrollItemId != null)
-                callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(payrollItemId);
-            return new ApiConnectionAction<ResultIPageV2FixedPayItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2LabelResp> GetLabelList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> labelCode = null, Expression<Func<string>> labelName = null, Expression<Func<int>> labelStatus = null)
-        {
-            var apiCallPath = "/v2/label/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (labelCode != null)
-                callPayload.Queries["labelCode"] = ExpressionConverter.Convert(labelCode);
-            if (labelName != null)
-                callPayload.Queries["labelName"] = ExpressionConverter.Convert(labelName);
-            if (labelStatus != null)
-                callPayload.Queries["labelStatus"] = ExpressionConverter.Convert(labelStatus);
-            return new ApiConnectionAction<ResultIPageV2LabelResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> GetLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> holidayType = null, Expression<Func<string>> status = null, Expression<Func<string>> holidayDate = null)
-        {
-            var apiCallPath = "/v2/leave/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (holidayType != null)
-                callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (holidayDate != null)
-                callPayload.Queries["holidayDate"] = ExpressionConverter.Convert(holidayDate);
-            return new ApiConnectionAction<ResultIPageV2LeaveApplicationResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2PayItemResp> GetPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> status = null)
-        {
-            var apiCallPath = "/v2/payroll/getPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2PayItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> GetPayrunList(Expression<Func<string>> status, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v2/payroll/getPayrunList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2PayrollPlanResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2PositionResp> GetPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> positionCode = null)
-        {
-            var apiCallPath = "/v2/tenants/getPositionList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (positionCode != null)
-                callPayload.Queries["positionCode"] = ExpressionConverter.Convert(positionCode);
-            return new ApiConnectionAction<ResultIPageV2PositionResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV2RosterResp> GetRosterDataList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> englishName = null, Expression<Func<string>> code = null, Expression<Func<string>> surnameEnglish = null, Expression<Func<string>> personalNameEnglish = null)
-        {
-            var apiCallPath = "/v2/tenants/getRosterDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendCalculationId != null)
-                callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (englishName != null)
-                callPayload.Queries["englishName"] = ExpressionConverter.Convert(englishName);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            if (surnameEnglish != null)
-                callPayload.Queries["surnameEnglish"] = ExpressionConverter.Convert(surnameEnglish);
-            if (personalNameEnglish != null)
-                callPayload.Queries["personalNameEnglish"] = ExpressionConverter.Convert(personalNameEnglish);
-            return new ApiConnectionAction<ResultListV2RosterResp>(callPayload);
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(attendCalculationId, nameof(attendCalculationId), required: false);
+            WorkflowExpression.Validate(departmentId, nameof(departmentId), required: false);
+            WorkflowExpression.Validate(positionId, nameof(positionId), required: false);
+            WorkflowExpression.Validate(statusFilter, nameof(statusFilter), required: false);
+            WorkflowExpression.Validate(englishName, nameof(englishName), required: false);
+            WorkflowExpression.Validate(code, nameof(code), required: false);
+            WorkflowExpression.Validate(surnameEnglish, nameof(surnameEnglish), required: false);
+            WorkflowExpression.Validate(personalNameEnglish, nameof(personalNameEnglish), required: false);
+            return new DeferredBodyAction<ResultListV2RosterResp>(() =>
+            {
+                var apiCallPath = "/v2/tenants/getRosterDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (attendCalculationId != null)
+                    callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
+                if (englishName != null)
+                    callPayload.Queries["englishName"] = ExpressionConverter.Convert(englishName);
+                if (code != null)
+                    callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                if (surnameEnglish != null)
+                    callPayload.Queries["surnameEnglish"] = ExpressionConverter.Convert(surnameEnglish);
+                if (personalNameEnglish != null)
+                    callPayload.Queries["personalNameEnglish"] = ExpressionConverter.Convert(personalNameEnglish);
+                return new ApiConnectionAction<ResultListV2RosterResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
@@ -4814,1212 +7163,1587 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2TimesheetResp> GetTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> type = null, Expression<Func<string>> date = null, Expression<Func<string>> status = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetTimesheetList))]
+        public IBodyWorkflowAction<ResultIPageV2TimesheetResp> GetTimesheetList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/timesheet/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2TimesheetResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2TimesheetResp> __BuildGetTimesheetList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> type = null, WorkflowExpression<string> date = null, WorkflowExpression<string> status = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            WorkflowExpression.Validate(date, nameof(date), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<ResultIPageV2TimesheetResp>(() =>
+            {
+                var apiCallPath = "/v2/timesheet/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<ResultIPageV2TimesheetResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> GetVarPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> payrollPlanId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetVarPayItemData))]
+        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> GetVarPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> payrollItemId = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> payrollItemIdFilter = null, [WorkflowExpression] Func<string> payrollPlanId = null)
         {
-            var apiCallPath = "/v2/payroll/getVarPayItemData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (payrollItemId != null)
-                callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(payrollItemId);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (payrollItemIdFilter != null)
-                callPayload.Queries["payrollItemIdFilter"] = ExpressionConverter.Convert(payrollItemIdFilter);
-            if (payrollPlanId != null)
-                callPayload.Queries["payrollPlanId"] = ExpressionConverter.Convert(payrollPlanId);
-            return new ApiConnectionAction<ResultIPageV2VarPayItemResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> __BuildGetVarPayItemData(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> employeeId = null, WorkflowExpression<string> payrollItemId = null, WorkflowExpression<string> employeeIdFilter = null, WorkflowExpression<string> payrollItemIdFilter = null, WorkflowExpression<string> payrollPlanId = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(employeeId, nameof(employeeId), required: false);
+            WorkflowExpression.Validate(payrollItemId, nameof(payrollItemId), required: false);
+            WorkflowExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
+            WorkflowExpression.Validate(payrollItemIdFilter, nameof(payrollItemIdFilter), required: false);
+            WorkflowExpression.Validate(payrollPlanId, nameof(payrollPlanId), required: false);
+            return new DeferredBodyAction<ResultIPageV2VarPayItemResp>(() =>
+            {
+                var apiCallPath = "/v2/payroll/getVarPayItemData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
+                if (payrollItemId != null)
+                    callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(payrollItemId);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
+                if (payrollItemIdFilter != null)
+                    callPayload.Queries["payrollItemIdFilter"] = ExpressionConverter.Convert(payrollItemIdFilter);
+                if (payrollPlanId != null)
+                    callPayload.Queries["payrollPlanId"] = ExpressionConverter.Convert(payrollPlanId);
+                return new ApiConnectionAction<ResultIPageV2VarPayItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> GetWorkLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> attendanceAddressCode = null, Expression<Func<string>> status = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkLocationList))]
+        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> GetWorkLocationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> attendanceAddressCode = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/workLocation/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (attendanceAddressCode != null)
-                callPayload.Queries["attendanceAddressCode"] = ExpressionConverter.Convert(attendanceAddressCode);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2WorkLocationResp>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> __BuildGetWorkLocationList(WorkflowExpression<string> q = null, WorkflowExpression<int> current = null, WorkflowExpression<int> size = null, WorkflowExpression<string> name = null, WorkflowExpression<string> attendanceAddressCode = null, WorkflowExpression<string> status = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(current, nameof(current), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(attendanceAddressCode, nameof(attendanceAddressCode), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<ResultIPageV2WorkLocationResp>(() =>
+            {
+                var apiCallPath = "/v2/workLocation/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(current);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (attendanceAddressCode != null)
+                    callPayload.Queries["attendanceAddressCode"] = ExpressionConverter.Convert(attendanceAddressCode);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<ResultIPageV2WorkLocationResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateCardById(Expression<Func<string>> bodyid, Expression<Func<bool>> bodyisInValid = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateCardById))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateCardById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyisInValid = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v2/attendance/updateCardById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyisInValid != null)
-            {
-                body["isInValid"] = ExpressionConverter.ConvertO(bodyisInValid);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateCostCenterInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateCardById(WorkflowExpression<string> bodyid, WorkflowExpression<bool> bodyisInValid = null, WorkflowExpression<string> bodyremark = null)
         {
-            var apiCallPath = "/v2/tenants/updateCostCenterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterCode != null)
-            {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateDepartmentInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodystatus = null)
-        {
-            var apiCallPath = "/v2/department/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentCode != null)
-            {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateEmployeeInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyenglishName = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodybankCard = null, Expression<Func<string>> bodynickName = null, Expression<Func<string>> bodyeducation = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyregionCode = null, Expression<Func<string>> bodyidentityCardHk = null, Expression<Func<string>> bodypassportNumber = null, Expression<Func<string>> bodypassportIssuingPlace = null, Expression<Func<string>> bodyspouseName = null, Expression<Func<string>> bodyspouseIdentityCardHk = null, Expression<Func<string>> bodyspousePassportNumber = null, Expression<Func<string>> bodyspousePassportIssuingPlace = null, Expression<Func<string>> bodypostalAddress = null, Expression<Func<string>> bodyemployerName = null, Expression<Func<string>> bodyhometown = null, Expression<Func<string>> bodynation = null, Expression<Func<string>> bodypoliticalStatus = null, Expression<Func<string>> bodyhighestEducation = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyprobation = null, Expression<Func<bool>> bodyisDisabled = null, Expression<Func<bool>> bodyisForeignNationality = null, Expression<Func<string>> bodydomicileLocation = null, Expression<Func<string>> bodycertificateType = null, Expression<Func<string>> bodycertificateNumber = null, Expression<Func<bool>> bodyisMartyrDependents = null, Expression<Func<string>> bodyoccupationTaxNumber = null, Expression<Func<string>> bodynonLocalBlueCardNumber = null, Expression<Func<bool>> bodyisForeignEmployees = null, Expression<Func<string>> bodyweeklyLeaveWorkAgreement = null, Expression<Func<string>> bodyemployeeType = null, Expression<Func<string>> bodyjobLevel = null, Expression<Func<string>> bodypost = null, Expression<Func<string>> bodysalaryScale = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodyrecruitmentSource = null, Expression<Func<string>> bodygraduatedSchool = null, Expression<Func<string>> bodyprofession = null, Expression<Func<string>> bodyappellation = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomePhone = null, Expression<Func<string>> bodyofficePhone = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyprovince = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodypostcode = null, Expression<Func<string>> bodycontractEndDate = null, Expression<Func<string>> bodytaxIdentity = null, Expression<Func<string>> bodyotherIncomeName = null)
-        {
-            var apiCallPath = "/v2/employee/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyenglishName != null)
-            {
-                body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
-                bodypropCount++;
-            }
-
-            if (bodychineseName != null)
-            {
-                body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
-                bodypropCount++;
-            }
-
-            if (bodysex != null)
-            {
-                body["sex"] = ExpressionConverter.ConvertO(bodysex);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCard != null)
-            {
-                body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
-                bodypropCount++;
-            }
-
-            if (bodybankCard != null)
-            {
-                body["bankCard"] = ExpressionConverter.ConvertO(bodybankCard);
-                bodypropCount++;
-            }
-
-            if (bodynickName != null)
-            {
-                body["nickName"] = ExpressionConverter.ConvertO(bodynickName);
-                bodypropCount++;
-            }
-
-            if (bodyeducation != null)
-            {
-                body["education"] = ExpressionConverter.ConvertO(bodyeducation);
-                bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
-                bodypropCount++;
-            }
-
-            if (bodymaritalStatus != null)
-            {
-                body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactRelation != null)
-            {
-                body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactPhone != null)
-            {
-                body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
-                bodypropCount++;
-            }
-
-            if (bodybankName != null)
-            {
-                body["bankName"] = ExpressionConverter.ConvertO(bodybankName);
-                bodypropCount++;
-            }
-
-            if (bodybankBranchNumber != null)
-            {
-                body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodybankCode != null)
-            {
-                body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyregionCode != null)
-            {
-                body["regionCode"] = ExpressionConverter.ConvertO(bodyregionCode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCardHk != null)
-            {
-                body["identityCardHk"] = ExpressionConverter.ConvertO(bodyidentityCardHk);
-                bodypropCount++;
-            }
-
-            if (bodypassportNumber != null)
-            {
-                body["passportNumber"] = ExpressionConverter.ConvertO(bodypassportNumber);
-                bodypropCount++;
-            }
-
-            if (bodypassportIssuingPlace != null)
-            {
-                body["passportIssuingPlace"] = ExpressionConverter.ConvertO(bodypassportIssuingPlace);
-                bodypropCount++;
-            }
-
-            if (bodyspouseName != null)
-            {
-                body["spouseName"] = ExpressionConverter.ConvertO(bodyspouseName);
-                bodypropCount++;
-            }
-
-            if (bodyspouseIdentityCardHk != null)
-            {
-                body["spouseIdentityCardHk"] = ExpressionConverter.ConvertO(bodyspouseIdentityCardHk);
-                bodypropCount++;
-            }
-
-            if (bodyspousePassportNumber != null)
-            {
-                body["spousePassportNumber"] = ExpressionConverter.ConvertO(bodyspousePassportNumber);
-                bodypropCount++;
-            }
-
-            if (bodyspousePassportIssuingPlace != null)
-            {
-                body["spousePassportIssuingPlace"] = ExpressionConverter.ConvertO(bodyspousePassportIssuingPlace);
-                bodypropCount++;
-            }
-
-            if (bodypostalAddress != null)
-            {
-                body["postalAddress"] = ExpressionConverter.ConvertO(bodypostalAddress);
-                bodypropCount++;
-            }
-
-            if (bodyemployerName != null)
-            {
-                body["employerName"] = ExpressionConverter.ConvertO(bodyemployerName);
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyisInValid, nameof(bodyisInValid), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v2/attendance/updateCardById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyhometown != null)
-            {
-                body["hometown"] = ExpressionConverter.ConvertO(bodyhometown);
-                bodypropCount++;
-            }
-
-            if (bodynation != null)
-            {
-                body["nation"] = ExpressionConverter.ConvertO(bodynation);
-                bodypropCount++;
-            }
-
-            if (bodypoliticalStatus != null)
-            {
-                body["politicalStatus"] = ExpressionConverter.ConvertO(bodypoliticalStatus);
-                bodypropCount++;
-            }
-
-            if (bodyhighestEducation != null)
-            {
-                body["highestEducation"] = ExpressionConverter.ConvertO(bodyhighestEducation);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodyprobation != null)
-            {
-                body["probation"] = ExpressionConverter.ConvertO(bodyprobation);
-                bodypropCount++;
-            }
-
-            if (bodyisDisabled != null)
-            {
-                body["isDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
-                bodypropCount++;
-            }
-
-            if (bodyisForeignNationality != null)
-            {
-                body["isForeignNationality"] = ExpressionConverter.ConvertO(bodyisForeignNationality);
-                bodypropCount++;
-            }
-
-            if (bodydomicileLocation != null)
-            {
-                body["domicileLocation"] = ExpressionConverter.ConvertO(bodydomicileLocation);
-                bodypropCount++;
-            }
-
-            if (bodycertificateType != null)
-            {
-                body["certificateType"] = ExpressionConverter.ConvertO(bodycertificateType);
-                bodypropCount++;
-            }
-
-            if (bodycertificateNumber != null)
-            {
-                body["certificateNumber"] = ExpressionConverter.ConvertO(bodycertificateNumber);
-                bodypropCount++;
-            }
-
-            if (bodyisMartyrDependents != null)
-            {
-                body["isMartyrDependents"] = ExpressionConverter.ConvertO(bodyisMartyrDependents);
-                bodypropCount++;
-            }
-
-            if (bodyoccupationTaxNumber != null)
-            {
-                body["occupationTaxNumber"] = ExpressionConverter.ConvertO(bodyoccupationTaxNumber);
-                bodypropCount++;
-            }
-
-            if (bodynonLocalBlueCardNumber != null)
-            {
-                body["nonLocalBlueCardNumber"] = ExpressionConverter.ConvertO(bodynonLocalBlueCardNumber);
-                bodypropCount++;
-            }
-
-            if (bodyisForeignEmployees != null)
-            {
-                body["isForeignEmployees"] = ExpressionConverter.ConvertO(bodyisForeignEmployees);
-                bodypropCount++;
-            }
-
-            if (bodyweeklyLeaveWorkAgreement != null)
-            {
-                body["weeklyLeaveWorkAgreement"] = ExpressionConverter.ConvertO(bodyweeklyLeaveWorkAgreement);
-                bodypropCount++;
-            }
-
-            if (bodyemployeeType != null)
-            {
-                body["employeeType"] = ExpressionConverter.ConvertO(bodyemployeeType);
-                bodypropCount++;
-            }
-
-            if (bodyjobLevel != null)
-            {
-                body["jobLevel"] = ExpressionConverter.ConvertO(bodyjobLevel);
-                bodypropCount++;
-            }
-
-            if (bodypost != null)
-            {
-                body["post"] = ExpressionConverter.ConvertO(bodypost);
-                bodypropCount++;
-            }
-
-            if (bodysalaryScale != null)
-            {
-                body["salaryScale"] = ExpressionConverter.ConvertO(bodysalaryScale);
-                bodypropCount++;
-            }
-
-            if (bodyjobTitle != null)
-            {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
-                bodypropCount++;
-            }
-
-            if (bodyrecruitmentSource != null)
-            {
-                body["recruitmentSource"] = ExpressionConverter.ConvertO(bodyrecruitmentSource);
-                bodypropCount++;
-            }
-
-            if (bodygraduatedSchool != null)
-            {
-                body["graduatedSchool"] = ExpressionConverter.ConvertO(bodygraduatedSchool);
-                bodypropCount++;
-            }
-
-            if (bodyprofession != null)
-            {
-                body["profession"] = ExpressionConverter.ConvertO(bodyprofession);
-                bodypropCount++;
-            }
-
-            if (bodyappellation != null)
-            {
-                body["appellation"] = ExpressionConverter.ConvertO(bodyappellation);
-                bodypropCount++;
-            }
-
-            if (bodymiddleName != null)
-            {
-                body["middleName"] = ExpressionConverter.ConvertO(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodyhomePhone != null)
-            {
-                body["homePhone"] = ExpressionConverter.ConvertO(bodyhomePhone);
-                bodypropCount++;
-            }
-
-            if (bodyofficePhone != null)
-            {
-                body["officePhone"] = ExpressionConverter.ConvertO(bodyofficePhone);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodyprovince != null)
-            {
-                body["province"] = ExpressionConverter.ConvertO(bodyprovince);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodypostcode != null)
-            {
-                body["postcode"] = ExpressionConverter.ConvertO(bodypostcode);
-                bodypropCount++;
-            }
-
-            if (bodycontractEndDate != null)
-            {
-                body["contractEndDate"] = ExpressionConverter.ConvertO(bodycontractEndDate);
-                bodypropCount++;
-            }
-
-            if (bodytaxIdentity != null)
-            {
-                body["taxIdentity"] = ExpressionConverter.ConvertO(bodytaxIdentity);
-                bodypropCount++;
-            }
-
-            if (bodyotherIncomeName != null)
-            {
-                body["otherIncomeName"] = ExpressionConverter.ConvertO(bodyotherIncomeName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateExpenseApplication(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v2/tenants/updateExpenseApplication";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
-            {
                 body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
+                if (bodyisInValid != null)
+                {
+                    body["isInValid"] = ExpressionConverter.ConvertO(bodyisInValid);
+                    bodypropCount++;
+                }
 
-            if (bodyreimbursementName != null)
-            {
-                body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodyamount != null)
-            {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateExternalSalary(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodycode = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateCostCenterInfo))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateCostCenterInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v2/payroll/updateExternalSalary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateCostCenterInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycostCenterCode = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
+                var apiCallPath = "/v2/tenants/updateCostCenterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
+                if (bodycostCenterCode != null)
+                {
+                    body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
+                    bodypropCount++;
+                }
 
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyoccurrenceDate != null)
-            {
-                body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateFixedSalary(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateDepartmentInfo))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateDepartmentInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v2/payroll/updateFixedSalary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypayrollItemId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateDepartmentInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodyparentId = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
+            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                var apiCallPath = "/v2/department/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                    bodypropCount++;
+                }
 
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateLabelInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateEmployeeInfo))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateEmployeeInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyenglishName = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodybankCard = null, [WorkflowExpression] Func<string> bodynickName = null, [WorkflowExpression] Func<string> bodyeducation = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankName = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyregionCode = null, [WorkflowExpression] Func<string> bodyidentityCardHk = null, [WorkflowExpression] Func<string> bodypassportNumber = null, [WorkflowExpression] Func<string> bodypassportIssuingPlace = null, [WorkflowExpression] Func<string> bodyspouseName = null, [WorkflowExpression] Func<string> bodyspouseIdentityCardHk = null, [WorkflowExpression] Func<string> bodyspousePassportNumber = null, [WorkflowExpression] Func<string> bodyspousePassportIssuingPlace = null, [WorkflowExpression] Func<string> bodypostalAddress = null, [WorkflowExpression] Func<string> bodyemployerName = null, [WorkflowExpression] Func<string> bodyhometown = null, [WorkflowExpression] Func<string> bodynation = null, [WorkflowExpression] Func<string> bodypoliticalStatus = null, [WorkflowExpression] Func<string> bodyhighestEducation = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyprobation = null, [WorkflowExpression] Func<bool> bodyisDisabled = null, [WorkflowExpression] Func<bool> bodyisForeignNationality = null, [WorkflowExpression] Func<string> bodydomicileLocation = null, [WorkflowExpression] Func<string> bodycertificateType = null, [WorkflowExpression] Func<string> bodycertificateNumber = null, [WorkflowExpression] Func<bool> bodyisMartyrDependents = null, [WorkflowExpression] Func<string> bodyoccupationTaxNumber = null, [WorkflowExpression] Func<string> bodynonLocalBlueCardNumber = null, [WorkflowExpression] Func<bool> bodyisForeignEmployees = null, [WorkflowExpression] Func<string> bodyweeklyLeaveWorkAgreement = null, [WorkflowExpression] Func<string> bodyemployeeType = null, [WorkflowExpression] Func<string> bodyjobLevel = null, [WorkflowExpression] Func<string> bodypost = null, [WorkflowExpression] Func<string> bodysalaryScale = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodyrecruitmentSource = null, [WorkflowExpression] Func<string> bodygraduatedSchool = null, [WorkflowExpression] Func<string> bodyprofession = null, [WorkflowExpression] Func<string> bodyappellation = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodyhomePhone = null, [WorkflowExpression] Func<string> bodyofficePhone = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodyprovince = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodypostcode = null, [WorkflowExpression] Func<string> bodycontractEndDate = null, [WorkflowExpression] Func<string> bodytaxIdentity = null, [WorkflowExpression] Func<string> bodyotherIncomeName = null)
         {
-            var apiCallPath = "/v2/label/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodylabelCode != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateEmployeeInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyenglishName = null, WorkflowExpression<string> bodychineseName = null, WorkflowExpression<string> bodysex = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<string> bodyidentityCard = null, WorkflowExpression<string> bodybankCard = null, WorkflowExpression<string> bodynickName = null, WorkflowExpression<string> bodyeducation = null, WorkflowExpression<string> bodynationality = null, WorkflowExpression<string> bodymaritalStatus = null, WorkflowExpression<string> bodyemergencyContactName = null, WorkflowExpression<string> bodyemergencyContactRelation = null, WorkflowExpression<string> bodyemergencyContactPhone = null, WorkflowExpression<string> bodybankName = null, WorkflowExpression<string> bodybankBranchNumber = null, WorkflowExpression<string> bodybankAccountNo = null, WorkflowExpression<string> bodybankCode = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyregionCode = null, WorkflowExpression<string> bodyidentityCardHk = null, WorkflowExpression<string> bodypassportNumber = null, WorkflowExpression<string> bodypassportIssuingPlace = null, WorkflowExpression<string> bodyspouseName = null, WorkflowExpression<string> bodyspouseIdentityCardHk = null, WorkflowExpression<string> bodyspousePassportNumber = null, WorkflowExpression<string> bodyspousePassportIssuingPlace = null, WorkflowExpression<string> bodypostalAddress = null, WorkflowExpression<string> bodyemployerName = null, WorkflowExpression<string> bodyhometown = null, WorkflowExpression<string> bodynation = null, WorkflowExpression<string> bodypoliticalStatus = null, WorkflowExpression<string> bodyhighestEducation = null, WorkflowExpression<string> bodyworkDate = null, WorkflowExpression<string> bodyconfirmationDate = null, WorkflowExpression<string> bodyprobation = null, WorkflowExpression<bool> bodyisDisabled = null, WorkflowExpression<bool> bodyisForeignNationality = null, WorkflowExpression<string> bodydomicileLocation = null, WorkflowExpression<string> bodycertificateType = null, WorkflowExpression<string> bodycertificateNumber = null, WorkflowExpression<bool> bodyisMartyrDependents = null, WorkflowExpression<string> bodyoccupationTaxNumber = null, WorkflowExpression<string> bodynonLocalBlueCardNumber = null, WorkflowExpression<bool> bodyisForeignEmployees = null, WorkflowExpression<string> bodyweeklyLeaveWorkAgreement = null, WorkflowExpression<string> bodyemployeeType = null, WorkflowExpression<string> bodyjobLevel = null, WorkflowExpression<string> bodypost = null, WorkflowExpression<string> bodysalaryScale = null, WorkflowExpression<string> bodyjobTitle = null, WorkflowExpression<string> bodyrecruitmentSource = null, WorkflowExpression<string> bodygraduatedSchool = null, WorkflowExpression<string> bodyprofession = null, WorkflowExpression<string> bodyappellation = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodyhomePhone = null, WorkflowExpression<string> bodyofficePhone = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodyprovince = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodypostcode = null, WorkflowExpression<string> bodycontractEndDate = null, WorkflowExpression<string> bodytaxIdentity = null, WorkflowExpression<string> bodyotherIncomeName = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyenglishName, nameof(bodyenglishName), required: false);
+            WorkflowExpression.Validate(bodychineseName, nameof(bodychineseName), required: false);
+            WorkflowExpression.Validate(bodysex, nameof(bodysex), required: false);
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodyidentityCard, nameof(bodyidentityCard), required: false);
+            WorkflowExpression.Validate(bodybankCard, nameof(bodybankCard), required: false);
+            WorkflowExpression.Validate(bodynickName, nameof(bodynickName), required: false);
+            WorkflowExpression.Validate(bodyeducation, nameof(bodyeducation), required: false);
+            WorkflowExpression.Validate(bodynationality, nameof(bodynationality), required: false);
+            WorkflowExpression.Validate(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactRelation, nameof(bodyemergencyContactRelation), required: false);
+            WorkflowExpression.Validate(bodyemergencyContactPhone, nameof(bodyemergencyContactPhone), required: false);
+            WorkflowExpression.Validate(bodybankName, nameof(bodybankName), required: false);
+            WorkflowExpression.Validate(bodybankBranchNumber, nameof(bodybankBranchNumber), required: false);
+            WorkflowExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
+            WorkflowExpression.Validate(bodybankCode, nameof(bodybankCode), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyregionCode, nameof(bodyregionCode), required: false);
+            WorkflowExpression.Validate(bodyidentityCardHk, nameof(bodyidentityCardHk), required: false);
+            WorkflowExpression.Validate(bodypassportNumber, nameof(bodypassportNumber), required: false);
+            WorkflowExpression.Validate(bodypassportIssuingPlace, nameof(bodypassportIssuingPlace), required: false);
+            WorkflowExpression.Validate(bodyspouseName, nameof(bodyspouseName), required: false);
+            WorkflowExpression.Validate(bodyspouseIdentityCardHk, nameof(bodyspouseIdentityCardHk), required: false);
+            WorkflowExpression.Validate(bodyspousePassportNumber, nameof(bodyspousePassportNumber), required: false);
+            WorkflowExpression.Validate(bodyspousePassportIssuingPlace, nameof(bodyspousePassportIssuingPlace), required: false);
+            WorkflowExpression.Validate(bodypostalAddress, nameof(bodypostalAddress), required: false);
+            WorkflowExpression.Validate(bodyemployerName, nameof(bodyemployerName), required: false);
+            WorkflowExpression.Validate(bodyhometown, nameof(bodyhometown), required: false);
+            WorkflowExpression.Validate(bodynation, nameof(bodynation), required: false);
+            WorkflowExpression.Validate(bodypoliticalStatus, nameof(bodypoliticalStatus), required: false);
+            WorkflowExpression.Validate(bodyhighestEducation, nameof(bodyhighestEducation), required: false);
+            WorkflowExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
+            WorkflowExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
+            WorkflowExpression.Validate(bodyprobation, nameof(bodyprobation), required: false);
+            WorkflowExpression.Validate(bodyisDisabled, nameof(bodyisDisabled), required: false);
+            WorkflowExpression.Validate(bodyisForeignNationality, nameof(bodyisForeignNationality), required: false);
+            WorkflowExpression.Validate(bodydomicileLocation, nameof(bodydomicileLocation), required: false);
+            WorkflowExpression.Validate(bodycertificateType, nameof(bodycertificateType), required: false);
+            WorkflowExpression.Validate(bodycertificateNumber, nameof(bodycertificateNumber), required: false);
+            WorkflowExpression.Validate(bodyisMartyrDependents, nameof(bodyisMartyrDependents), required: false);
+            WorkflowExpression.Validate(bodyoccupationTaxNumber, nameof(bodyoccupationTaxNumber), required: false);
+            WorkflowExpression.Validate(bodynonLocalBlueCardNumber, nameof(bodynonLocalBlueCardNumber), required: false);
+            WorkflowExpression.Validate(bodyisForeignEmployees, nameof(bodyisForeignEmployees), required: false);
+            WorkflowExpression.Validate(bodyweeklyLeaveWorkAgreement, nameof(bodyweeklyLeaveWorkAgreement), required: false);
+            WorkflowExpression.Validate(bodyemployeeType, nameof(bodyemployeeType), required: false);
+            WorkflowExpression.Validate(bodyjobLevel, nameof(bodyjobLevel), required: false);
+            WorkflowExpression.Validate(bodypost, nameof(bodypost), required: false);
+            WorkflowExpression.Validate(bodysalaryScale, nameof(bodysalaryScale), required: false);
+            WorkflowExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            WorkflowExpression.Validate(bodyrecruitmentSource, nameof(bodyrecruitmentSource), required: false);
+            WorkflowExpression.Validate(bodygraduatedSchool, nameof(bodygraduatedSchool), required: false);
+            WorkflowExpression.Validate(bodyprofession, nameof(bodyprofession), required: false);
+            WorkflowExpression.Validate(bodyappellation, nameof(bodyappellation), required: false);
+            WorkflowExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
+            WorkflowExpression.Validate(bodyhomePhone, nameof(bodyhomePhone), required: false);
+            WorkflowExpression.Validate(bodyofficePhone, nameof(bodyofficePhone), required: false);
+            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: false);
+            WorkflowExpression.Validate(bodyprovince, nameof(bodyprovince), required: false);
+            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
+            WorkflowExpression.Validate(bodypostcode, nameof(bodypostcode), required: false);
+            WorkflowExpression.Validate(bodycontractEndDate, nameof(bodycontractEndDate), required: false);
+            WorkflowExpression.Validate(bodytaxIdentity, nameof(bodytaxIdentity), required: false);
+            WorkflowExpression.Validate(bodyotherIncomeName, nameof(bodyotherIncomeName), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                var apiCallPath = "/v2/employee/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyenglishName != null)
+                {
+                    body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
+                    bodypropCount++;
+                }
 
-            if (bodylabelName != null)
-            {
-                body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
-                bodypropCount++;
-            }
+                if (bodychineseName != null)
+                {
+                    body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
+                    bodypropCount++;
+                }
 
-            if (bodylabelStatus != null)
-            {
-                body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
-                bodypropCount++;
-            }
+                if (bodysex != null)
+                {
+                    body["sex"] = ExpressionConverter.ConvertO(bodysex);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyaddress != null)
+                {
+                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCard != null)
+                {
+                    body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
+                    bodypropCount++;
+                }
+
+                if (bodybankCard != null)
+                {
+                    body["bankCard"] = ExpressionConverter.ConvertO(bodybankCard);
+                    bodypropCount++;
+                }
+
+                if (bodynickName != null)
+                {
+                    body["nickName"] = ExpressionConverter.ConvertO(bodynickName);
+                    bodypropCount++;
+                }
+
+                if (bodyeducation != null)
+                {
+                    body["education"] = ExpressionConverter.ConvertO(bodyeducation);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodymaritalStatus != null)
+                {
+                    body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactRelation != null)
+                {
+                    body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactPhone != null)
+                {
+                    body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
+                    bodypropCount++;
+                }
+
+                if (bodybankName != null)
+                {
+                    body["bankName"] = ExpressionConverter.ConvertO(bodybankName);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchNumber != null)
+                {
+                    body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodybankCode != null)
+                {
+                    body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyregionCode != null)
+                {
+                    body["regionCode"] = ExpressionConverter.ConvertO(bodyregionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCardHk != null)
+                {
+                    body["identityCardHk"] = ExpressionConverter.ConvertO(bodyidentityCardHk);
+                    bodypropCount++;
+                }
+
+                if (bodypassportNumber != null)
+                {
+                    body["passportNumber"] = ExpressionConverter.ConvertO(bodypassportNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypassportIssuingPlace != null)
+                {
+                    body["passportIssuingPlace"] = ExpressionConverter.ConvertO(bodypassportIssuingPlace);
+                    bodypropCount++;
+                }
+
+                if (bodyspouseName != null)
+                {
+                    body["spouseName"] = ExpressionConverter.ConvertO(bodyspouseName);
+                    bodypropCount++;
+                }
+
+                if (bodyspouseIdentityCardHk != null)
+                {
+                    body["spouseIdentityCardHk"] = ExpressionConverter.ConvertO(bodyspouseIdentityCardHk);
+                    bodypropCount++;
+                }
+
+                if (bodyspousePassportNumber != null)
+                {
+                    body["spousePassportNumber"] = ExpressionConverter.ConvertO(bodyspousePassportNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyspousePassportIssuingPlace != null)
+                {
+                    body["spousePassportIssuingPlace"] = ExpressionConverter.ConvertO(bodyspousePassportIssuingPlace);
+                    bodypropCount++;
+                }
+
+                if (bodypostalAddress != null)
+                {
+                    body["postalAddress"] = ExpressionConverter.ConvertO(bodypostalAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemployerName != null)
+                {
+                    body["employerName"] = ExpressionConverter.ConvertO(bodyemployerName);
+                    bodypropCount++;
+                }
+
+                if (bodyhometown != null)
+                {
+                    body["hometown"] = ExpressionConverter.ConvertO(bodyhometown);
+                    bodypropCount++;
+                }
+
+                if (bodynation != null)
+                {
+                    body["nation"] = ExpressionConverter.ConvertO(bodynation);
+                    bodypropCount++;
+                }
+
+                if (bodypoliticalStatus != null)
+                {
+                    body["politicalStatus"] = ExpressionConverter.ConvertO(bodypoliticalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyhighestEducation != null)
+                {
+                    body["highestEducation"] = ExpressionConverter.ConvertO(bodyhighestEducation);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyprobation != null)
+                {
+                    body["probation"] = ExpressionConverter.ConvertO(bodyprobation);
+                    bodypropCount++;
+                }
+
+                if (bodyisDisabled != null)
+                {
+                    body["isDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
+                    bodypropCount++;
+                }
+
+                if (bodyisForeignNationality != null)
+                {
+                    body["isForeignNationality"] = ExpressionConverter.ConvertO(bodyisForeignNationality);
+                    bodypropCount++;
+                }
+
+                if (bodydomicileLocation != null)
+                {
+                    body["domicileLocation"] = ExpressionConverter.ConvertO(bodydomicileLocation);
+                    bodypropCount++;
+                }
+
+                if (bodycertificateType != null)
+                {
+                    body["certificateType"] = ExpressionConverter.ConvertO(bodycertificateType);
+                    bodypropCount++;
+                }
+
+                if (bodycertificateNumber != null)
+                {
+                    body["certificateNumber"] = ExpressionConverter.ConvertO(bodycertificateNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyisMartyrDependents != null)
+                {
+                    body["isMartyrDependents"] = ExpressionConverter.ConvertO(bodyisMartyrDependents);
+                    bodypropCount++;
+                }
+
+                if (bodyoccupationTaxNumber != null)
+                {
+                    body["occupationTaxNumber"] = ExpressionConverter.ConvertO(bodyoccupationTaxNumber);
+                    bodypropCount++;
+                }
+
+                if (bodynonLocalBlueCardNumber != null)
+                {
+                    body["nonLocalBlueCardNumber"] = ExpressionConverter.ConvertO(bodynonLocalBlueCardNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyisForeignEmployees != null)
+                {
+                    body["isForeignEmployees"] = ExpressionConverter.ConvertO(bodyisForeignEmployees);
+                    bodypropCount++;
+                }
+
+                if (bodyweeklyLeaveWorkAgreement != null)
+                {
+                    body["weeklyLeaveWorkAgreement"] = ExpressionConverter.ConvertO(bodyweeklyLeaveWorkAgreement);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeType != null)
+                {
+                    body["employeeType"] = ExpressionConverter.ConvertO(bodyemployeeType);
+                    bodypropCount++;
+                }
+
+                if (bodyjobLevel != null)
+                {
+                    body["jobLevel"] = ExpressionConverter.ConvertO(bodyjobLevel);
+                    bodypropCount++;
+                }
+
+                if (bodypost != null)
+                {
+                    body["post"] = ExpressionConverter.ConvertO(bodypost);
+                    bodypropCount++;
+                }
+
+                if (bodysalaryScale != null)
+                {
+                    body["salaryScale"] = ExpressionConverter.ConvertO(bodysalaryScale);
+                    bodypropCount++;
+                }
+
+                if (bodyjobTitle != null)
+                {
+                    body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyrecruitmentSource != null)
+                {
+                    body["recruitmentSource"] = ExpressionConverter.ConvertO(bodyrecruitmentSource);
+                    bodypropCount++;
+                }
+
+                if (bodygraduatedSchool != null)
+                {
+                    body["graduatedSchool"] = ExpressionConverter.ConvertO(bodygraduatedSchool);
+                    bodypropCount++;
+                }
+
+                if (bodyprofession != null)
+                {
+                    body["profession"] = ExpressionConverter.ConvertO(bodyprofession);
+                    bodypropCount++;
+                }
+
+                if (bodyappellation != null)
+                {
+                    body["appellation"] = ExpressionConverter.ConvertO(bodyappellation);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["middleName"] = ExpressionConverter.ConvertO(bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (bodyhomePhone != null)
+                {
+                    body["homePhone"] = ExpressionConverter.ConvertO(bodyhomePhone);
+                    bodypropCount++;
+                }
+
+                if (bodyofficePhone != null)
+                {
+                    body["officePhone"] = ExpressionConverter.ConvertO(bodyofficePhone);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodyprovince != null)
+                {
+                    body["province"] = ExpressionConverter.ConvertO(bodyprovince);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodypostcode != null)
+                {
+                    body["postcode"] = ExpressionConverter.ConvertO(bodypostcode);
+                    bodypropCount++;
+                }
+
+                if (bodycontractEndDate != null)
+                {
+                    body["contractEndDate"] = ExpressionConverter.ConvertO(bodycontractEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodytaxIdentity != null)
+                {
+                    body["taxIdentity"] = ExpressionConverter.ConvertO(bodytaxIdentity);
+                    bodypropCount++;
+                }
+
+                if (bodyotherIncomeName != null)
+                {
+                    body["otherIncomeName"] = ExpressionConverter.ConvertO(bodyotherIncomeName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateLeaveApplication(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateExpenseApplication))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateExpenseApplication([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyreimbursementName = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v2/leave/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyholidayType != null)
-            {
-                body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodystartDate != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateExpenseApplication(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyreimbursementName = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
+            WorkflowExpression.Validate(bodyreimbursementName, nameof(bodyreimbursementName), required: false);
+            WorkflowExpression.Validate(bodyamount, nameof(bodyamount), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v2/tenants/updateExpenseApplication";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    bodypropCount++;
+                }
 
-            if (bodystartTime != null)
-            {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
+                if (bodyreimbursementName != null)
+                {
+                    body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (bodyamount != null)
+                {
+                    body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                    bodypropCount++;
+                }
 
-            if (bodyendTime != null)
-            {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodyleaveTime != null)
-            {
-                body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodytimeType != null)
-            {
-                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyholidayDate != null)
-            {
-                body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
-                bodypropCount++;
-            }
-
-            if (bodytime != null)
-            {
-                body["time"] = ExpressionConverter.ConvertO(bodytime);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdatePositionInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateExternalSalary))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateExternalSalary([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyoccurrenceDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            var apiCallPath = "/v2/tenants/updatePositionInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypositionCode != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateExternalSalary(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyoccurrenceDate = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyexpirationDate = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v2/payroll/updateExternalSalary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodyoccurrenceDate != null)
+                {
+                    body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateRosterData(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyacrossTheNight = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateFixedSalary))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateFixedSalary([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypayrollItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null)
         {
-            var apiCallPath = "/v2/tenants/updateRosterData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyshiftIn != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateFixedSalary(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodypayrollItemId = null, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: false);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                var apiCallPath = "/v2/payroll/updateFixedSalary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypayrollItemId != null)
+                {
+                    body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                    bodypropCount++;
+                }
 
-            if (bodyshiftOff != null)
-            {
-                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-                bodypropCount++;
-            }
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
 
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyacrossTheNight != null)
-            {
-                body["acrossTheNight"] = ExpressionConverter.ConvertO(bodyacrossTheNight);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateRosterItem(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateLabelInfo))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateLabelInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<string> bodylabelName = null, [WorkflowExpression] Func<int> bodylabelStatus = null)
         {
-            var apiCallPath = "/v2/attendance/updateRosterItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateLabelInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodylabelCode = null, WorkflowExpression<string> bodylabelName = null, WorkflowExpression<int> bodylabelStatus = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodylabelCode, nameof(bodylabelCode), required: false);
+            WorkflowExpression.Validate(bodylabelName, nameof(bodylabelName), required: false);
+            WorkflowExpression.Validate(bodylabelStatus, nameof(bodylabelStatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/label/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodylabelCode != null)
+                {
+                    body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                    bodypropCount++;
+                }
 
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
+                if (bodylabelName != null)
+                {
+                    body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylabelStatus != null)
+                {
+                    body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateShiftTemplate(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodylunchStartTime = null, Expression<Func<string>> bodylunchEndTime = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateLeaveApplication))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateLeaveApplication([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyholidayType = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null)
         {
-            var apiCallPath = "/v2/attendance/updateShiftTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateLeaveApplication(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyholidayType = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<double> bodyleaveTime = null, WorkflowExpression<string> bodytimeType = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyholidayDate = null, WorkflowExpression<string> bodytime = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: false);
+            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            WorkflowExpression.Validate(bodyleaveTime, nameof(bodyleaveTime), required: false);
+            WorkflowExpression.Validate(bodytimeType, nameof(bodytimeType), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyholidayDate, nameof(bodyholidayDate), required: false);
+            WorkflowExpression.Validate(bodytime, nameof(bodytime), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/leave/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyholidayType != null)
+                {
+                    body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
+                    bodypropCount++;
+                }
 
-            if (bodyshiftIn != null)
-            {
-                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-                bodypropCount++;
-            }
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyshiftOff != null)
-            {
-                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-                bodypropCount++;
-            }
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
 
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyattendanceAddressId != null)
-            {
-                body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
-                bodypropCount++;
-            }
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                    bodypropCount++;
+                }
 
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
+                if (bodyleaveTime != null)
+                {
+                    body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
+                    bodypropCount++;
+                }
 
-            if (bodylunchStartTime != null)
-            {
-                body["lunchStartTime"] = ExpressionConverter.ConvertO(bodylunchStartTime);
-                bodypropCount++;
-            }
+                if (bodytimeType != null)
+                {
+                    body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
+                    bodypropCount++;
+                }
 
-            if (bodylunchEndTime != null)
-            {
-                body["lunchEndTime"] = ExpressionConverter.ConvertO(bodylunchEndTime);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyholidayDate != null)
+                {
+                    body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodytime != null)
+                {
+                    body["time"] = ExpressionConverter.ConvertO(bodytime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateTenantInfo(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodybusinessRegistrationNumber = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchCode = null, Expression<Func<string>> bodybankAccountNo = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdatePositionInfo))]
+        public IBodyWorkflowAction<ResultBoolean> UpdatePositionInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v2/tenant/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdatePositionInfo(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypositionCode = null, WorkflowExpression<string> bodystatus = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/tenants/updatePositionInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodybusinessRegistrationNumber != null)
-            {
-                body["businessRegistrationNumber"] = ExpressionConverter.ConvertO(bodybusinessRegistrationNumber);
-                bodypropCount++;
-            }
+                if (bodypositionCode != null)
+                {
+                    body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
+                    bodypropCount++;
+                }
 
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodybankName != null)
-            {
-                body["bankName"] = ExpressionConverter.ConvertO(bodybankName);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodybankBranchCode != null)
-            {
-                body["bankBranchCode"] = ExpressionConverter.ConvertO(bodybankBranchCode);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateTimesheet(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisCrossTheSky = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodymealTime = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateRosterData))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateRosterData([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyshiftIn = null, [WorkflowExpression] Func<string> bodyshiftOff = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyacrossTheNight = null)
         {
-            var apiCallPath = "/v2/timesheet/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodydate != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateRosterData(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyshiftIn = null, WorkflowExpression<string> bodyshiftOff = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyshiftStatus = null, WorkflowExpression<string> bodyaddressCardId = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodyacrossTheNight = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: false);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
+            WorkflowExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodyacrossTheNight, nameof(bodyacrossTheNight), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                var apiCallPath = "/v2/tenants/updateRosterData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyshiftIn != null)
+                {
+                    body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                    bodypropCount++;
+                }
 
-            if (bodyisCrossTheSky != null)
-            {
-                body["isCrossTheSky"] = ExpressionConverter.ConvertO(bodyisCrossTheSky);
-                bodypropCount++;
-            }
+                if (bodyshiftOff != null)
+                {
+                    body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                    bodypropCount++;
+                }
 
-            if (bodystartTime != null)
-            {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
 
-            if (bodyendTime != null)
-            {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
+                    bodypropCount++;
+                }
 
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyacrossTheNight != null)
+                {
+                    body["acrossTheNight"] = ExpressionConverter.ConvertO(bodyacrossTheNight);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateVarSalary(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateRosterItem))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateRosterItem([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            var apiCallPath = "/v2/payroll/updateVarSalary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodymoney != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateRosterItem(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycode = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                var apiCallPath = "/v2/attendance/updateRosterItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodycode != null)
+                {
+                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateWorkLocation(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyregion = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyareaCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateShiftTemplate))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateShiftTemplate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyshiftIn = null, [WorkflowExpression] Func<string> bodyshiftOff = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodylunchStartTime = null, [WorkflowExpression] Func<string> bodylunchEndTime = null)
         {
-            var apiCallPath = "/v2/workLocation/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateShiftTemplate(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyshiftIn = null, WorkflowExpression<string> bodyshiftOff = null, WorkflowExpression<int> bodymealTime = null, WorkflowExpression<string> bodyattendanceAddressId = null, WorkflowExpression<string> bodydateType = null, WorkflowExpression<string> bodylunchStartTime = null, WorkflowExpression<string> bodylunchEndTime = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: false);
+            WorkflowExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            WorkflowExpression.Validate(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
+            WorkflowExpression.Validate(bodydateType, nameof(bodydateType), required: false);
+            WorkflowExpression.Validate(bodylunchStartTime, nameof(bodylunchStartTime), required: false);
+            WorkflowExpression.Validate(bodylunchEndTime, nameof(bodylunchEndTime), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/attendance/updateShiftTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
+                if (bodyshiftIn != null)
+                {
+                    body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftOff != null)
+                {
+                    body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressId != null)
+                {
+                    body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodylunchStartTime != null)
+                {
+                    body["lunchStartTime"] = ExpressionConverter.ConvertO(bodylunchStartTime);
+                    bodypropCount++;
+                }
+
+                if (bodylunchEndTime != null)
+                {
+                    body["lunchEndTime"] = ExpressionConverter.ConvertO(bodylunchEndTime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateTenantInfo))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateTenantInfo([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodybusinessRegistrationNumber = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodybankName = null, [WorkflowExpression] Func<string> bodybankBranchCode = null, [WorkflowExpression] Func<string> bodybankAccountNo = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateTenantInfo(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodybusinessRegistrationNumber = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodybankName = null, WorkflowExpression<string> bodybankBranchCode = null, WorkflowExpression<string> bodybankAccountNo = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodybusinessRegistrationNumber, nameof(bodybusinessRegistrationNumber), required: false);
+            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            WorkflowExpression.Validate(bodybankName, nameof(bodybankName), required: false);
+            WorkflowExpression.Validate(bodybankBranchCode, nameof(bodybankBranchCode), required: false);
+            WorkflowExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                var apiCallPath = "/v2/tenant/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodybusinessRegistrationNumber != null)
+                {
+                    body["businessRegistrationNumber"] = ExpressionConverter.ConvertO(bodybusinessRegistrationNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodybankName != null)
+                {
+                    body["bankName"] = ExpressionConverter.ConvertO(bodybankName);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchCode != null)
+                {
+                    body["bankBranchCode"] = ExpressionConverter.ConvertO(bodybankBranchCode);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateTimesheet))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateTimesheet([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisCrossTheSky = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodymealTime = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateTimesheet(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodydate = null, WorkflowExpression<bool> bodyisCrossTheSky = null, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<int> bodymealTime = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
+            WorkflowExpression.Validate(bodyisCrossTheSky, nameof(bodyisCrossTheSky), required: false);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            WorkflowExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
+            {
+                var apiCallPath = "/v2/timesheet/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodydate != null)
+                {
+                    body["date"] = ExpressionConverter.ConvertO(bodydate);
+                    bodypropCount++;
+                }
 
-            if (bodyattendanceAddressCode != null)
+                if (bodyisCrossTheSky != null)
+                {
+                    body["isCrossTheSky"] = ExpressionConverter.ConvertO(bodyisCrossTheSky);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateVarSalary))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateVarSalary([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateVarSalary(WorkflowExpression<string> bodyid, WorkflowExpression<double> bodymoney = null, WorkflowExpression<string> bodyremark = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodymoney, nameof(bodymoney), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
+                var apiCallPath = "/v2/payroll/updateVarSalary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodymoney != null)
+                {
+                    body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkLocation))]
+        public IBodyWorkflowAction<ResultBoolean> UpdateWorkLocation([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyareaCode = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResultBoolean> __BuildUpdateWorkLocation(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null, WorkflowExpression<int> bodyregion = null, WorkflowExpression<string> bodyattendanceAddressCode = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyareaCode = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodyareaCode, nameof(bodyareaCode), required: false);
+            return new DeferredBodyAction<ResultBoolean>(() =>
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                var apiCallPath = "/v2/workLocation/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyareaCode != null)
-            {
-                body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyattendanceAddressCode != null)
+                {
+                    body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyareaCode != null)
+                {
+                    body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResultBoolean>(callPayload);
+            });
         }
     }
 

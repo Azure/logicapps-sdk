@@ -4,165 +4,201 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodystartInfoprocessName = null, Expression<Func<int>> bodystartInfojobsCount = null, Expression<Func<bodystartInfosourceInput>> bodystartInfosource = null, Expression<Func<bodystartInfojobPriorityInput>> bodystartInfojobPriority = null, Expression<Func<bodystartInforuntimeTypeInput>> bodystartInforuntimeType = null, Expression<Func<string>> bodystartInfoinputArguments = null, Expression<Func<string>> bodystartInforeference = null)
+        [WorkflowExpressionFactory(nameof(__BuildStartJobs))]
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodystartInfoprocessName = null, [WorkflowExpression] Func<int> bodystartInfojobsCount = null, [WorkflowExpression] Func<bodystartInfosourceInput> bodystartInfosource = null, [WorkflowExpression] Func<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, [WorkflowExpression] Func<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, [WorkflowExpression] Func<string> bodystartInfoinputArguments = null, [WorkflowExpression] Func<string> bodystartInforeference = null)
         {
-            var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var startInfoObject = new JObject();
-            var startInfoObjectpropCount = 0;
-            if (bodystartInfoprocessName != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> __BuildStartJobs(WorkflowExpression<int> xUIPATHOrganizationUnitId, WorkflowExpression<string> bodystartInfoprocessName = null, WorkflowExpression<int> bodystartInfojobsCount = null, WorkflowExpression<bodystartInfosourceInput> bodystartInfosource = null, WorkflowExpression<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, WorkflowExpression<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, WorkflowExpression<string> bodystartInfoinputArguments = null, WorkflowExpression<string> bodystartInforeference = null)
+        {
+            WorkflowExpression.Validate(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            WorkflowExpression.Validate(bodystartInfoprocessName, nameof(bodystartInfoprocessName), required: false);
+            WorkflowExpression.Validate(bodystartInfojobsCount, nameof(bodystartInfojobsCount), required: false);
+            WorkflowExpression.Validate(bodystartInfosource, nameof(bodystartInfosource), required: false);
+            WorkflowExpression.Validate(bodystartInfojobPriority, nameof(bodystartInfojobPriority), required: false);
+            WorkflowExpression.Validate(bodystartInforuntimeType, nameof(bodystartInforuntimeType), required: false);
+            WorkflowExpression.Validate(bodystartInfoinputArguments, nameof(bodystartInfoinputArguments), required: false);
+            WorkflowExpression.Validate(bodystartInforeference, nameof(bodystartInforeference), required: false);
+            return new DeferredBodyAction<ODataValueOfIEnumerableOfJobDto>(() =>
             {
-                startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(bodystartInfoprocessName);
+                var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var startInfoObject = new JObject();
+                var startInfoObjectpropCount = 0;
+                if (bodystartInfoprocessName != null)
+                {
+                    startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(bodystartInfoprocessName);
+                    startInfoObjectpropCount++;
+                }
+
+                startInfoObject["Strategy"] = "ModernJobsCount";
                 startInfoObjectpropCount++;
-            }
+                if (bodystartInfojobsCount != null)
+                {
+                    startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(bodystartInfojobsCount);
+                    startInfoObjectpropCount++;
+                }
 
-            startInfoObject["Strategy"] = "ModernJobsCount";
-            startInfoObjectpropCount++;
-            if (bodystartInfojobsCount != null)
-            {
-                startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(bodystartInfojobsCount);
-                startInfoObjectpropCount++;
-            }
+                if (bodystartInfosource != null)
+                {
+                    startInfoObject["Source"] = ExpressionConverter.ConvertO(bodystartInfosource);
+                    startInfoObjectpropCount++;
+                }
 
-            if (bodystartInfosource != null)
-            {
-                startInfoObject["Source"] = ExpressionConverter.ConvertO(bodystartInfosource);
-                startInfoObjectpropCount++;
-            }
+                if (bodystartInfojobPriority != null)
+                {
+                    startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(bodystartInfojobPriority);
+                    startInfoObjectpropCount++;
+                }
 
-            if (bodystartInfojobPriority != null)
-            {
-                startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(bodystartInfojobPriority);
-                startInfoObjectpropCount++;
-            }
+                if (bodystartInforuntimeType != null)
+                {
+                    startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(bodystartInforuntimeType);
+                    startInfoObjectpropCount++;
+                }
 
-            if (bodystartInforuntimeType != null)
-            {
-                startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(bodystartInforuntimeType);
-                startInfoObjectpropCount++;
-            }
+                if (bodystartInfoinputArguments != null)
+                {
+                    startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(bodystartInfoinputArguments);
+                    startInfoObjectpropCount++;
+                }
 
-            if (bodystartInfoinputArguments != null)
-            {
-                startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(bodystartInfoinputArguments);
-                startInfoObjectpropCount++;
-            }
+                if (bodystartInforeference != null)
+                {
+                    startInfoObject["Reference"] = ExpressionConverter.ConvertO(bodystartInforeference);
+                    startInfoObjectpropCount++;
+                }
 
-            if (bodystartInforeference != null)
-            {
-                startInfoObject["Reference"] = ExpressionConverter.ConvertO(bodystartInforeference);
-                startInfoObjectpropCount++;
-            }
+                if (startInfoObjectpropCount > 0)
+                {
+                    body["startInfo"] = startInfoObject;
+                    bodypropCount++;
+                }
 
-            if (startInfoObjectpropCount > 0)
-            {
-                body["startInfo"] = startInfoObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
+                return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<QueueItemDto> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataname = null, Expression<Func<bodyitemDatapriorityInput>> bodyitemDatapriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDatareference = null, Expression<Func<string>> bodyitemDataprogress = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddQueueItem))]
+        public IBodyWorkflowAction<QueueItemDto> AddQueueItem([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodyitemDataname = null, [WorkflowExpression] Func<bodyitemDatapriorityInput> bodyitemDatapriority = null, [WorkflowExpression] Func<string> bodyitemDatadeferDate = null, [WorkflowExpression] Func<string> bodyitemDatadueDate = null, [WorkflowExpression] Func<string> bodyitemDatariskSLADate = null, [WorkflowExpression] Func<string> bodyitemDatareference = null, [WorkflowExpression] Func<string> bodyitemDataprogress = null)
         {
-            var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var itemDataObject = new JObject();
-            var itemDataObjectpropCount = 0;
-            if (bodyitemDataname != null)
-            {
-                itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataname);
-                itemDataObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyitemDatapriority != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QueueItemDto> __BuildAddQueueItem(WorkflowExpression<int> xUIPATHOrganizationUnitId, WorkflowExpression<string> bodyitemDataname = null, WorkflowExpression<bodyitemDatapriorityInput> bodyitemDatapriority = null, WorkflowExpression<string> bodyitemDatadeferDate = null, WorkflowExpression<string> bodyitemDatadueDate = null, WorkflowExpression<string> bodyitemDatariskSLADate = null, WorkflowExpression<string> bodyitemDatareference = null, WorkflowExpression<string> bodyitemDataprogress = null)
+        {
+            WorkflowExpression.Validate(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            WorkflowExpression.Validate(bodyitemDataname, nameof(bodyitemDataname), required: false);
+            WorkflowExpression.Validate(bodyitemDatapriority, nameof(bodyitemDatapriority), required: false);
+            WorkflowExpression.Validate(bodyitemDatadeferDate, nameof(bodyitemDatadeferDate), required: false);
+            WorkflowExpression.Validate(bodyitemDatadueDate, nameof(bodyitemDatadueDate), required: false);
+            WorkflowExpression.Validate(bodyitemDatariskSLADate, nameof(bodyitemDatariskSLADate), required: false);
+            WorkflowExpression.Validate(bodyitemDatareference, nameof(bodyitemDatareference), required: false);
+            WorkflowExpression.Validate(bodyitemDataprogress, nameof(bodyitemDataprogress), required: false);
+            return new DeferredBodyAction<QueueItemDto>(() =>
             {
-                if (bodyitemDatapriority != null)
+                var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var itemDataObject = new JObject();
+                var itemDataObjectpropCount = 0;
+                if (bodyitemDataname != null)
                 {
-                    itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                    itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataname);
                     itemDataObjectpropCount++;
                 }
 
-                itemDataObjectpropCount++;
-            }
-            else
-            {
-                itemDataObject["Priority"] = "Normal";
-                itemDataObjectpropCount++;
-            }
+                if (bodyitemDatapriority != null)
+                {
+                    if (bodyitemDatapriority != null)
+                    {
+                        itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                        itemDataObjectpropCount++;
+                    }
 
-            var specificContentObject = new JObject();
-            var specificContentObjectpropCount = 0;
-            if (specificContentObjectpropCount > 0)
-            {
-                itemDataObject["SpecificContent"] = specificContentObject;
-                itemDataObjectpropCount++;
-            }
+                    itemDataObjectpropCount++;
+                }
+                else
+                {
+                    itemDataObject["Priority"] = "Normal";
+                    itemDataObjectpropCount++;
+                }
 
-            if (bodyitemDatadeferDate != null)
-            {
-                itemDataObject["DeferDate"] = ExpressionConverter.ConvertO(bodyitemDatadeferDate);
-                itemDataObjectpropCount++;
-            }
+                var specificContentObject = new JObject();
+                var specificContentObjectpropCount = 0;
+                if (specificContentObjectpropCount > 0)
+                {
+                    itemDataObject["SpecificContent"] = specificContentObject;
+                    itemDataObjectpropCount++;
+                }
 
-            if (bodyitemDatadueDate != null)
-            {
-                itemDataObject["DueDate"] = ExpressionConverter.ConvertO(bodyitemDatadueDate);
-                itemDataObjectpropCount++;
-            }
+                if (bodyitemDatadeferDate != null)
+                {
+                    itemDataObject["DeferDate"] = ExpressionConverter.ConvertO(bodyitemDatadeferDate);
+                    itemDataObjectpropCount++;
+                }
 
-            if (bodyitemDatariskSLADate != null)
-            {
-                itemDataObject["RiskSlaDate"] = ExpressionConverter.ConvertO(bodyitemDatariskSLADate);
-                itemDataObjectpropCount++;
-            }
+                if (bodyitemDatadueDate != null)
+                {
+                    itemDataObject["DueDate"] = ExpressionConverter.ConvertO(bodyitemDatadueDate);
+                    itemDataObjectpropCount++;
+                }
 
-            if (bodyitemDatareference != null)
-            {
-                itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDatareference);
-                itemDataObjectpropCount++;
-            }
+                if (bodyitemDatariskSLADate != null)
+                {
+                    itemDataObject["RiskSlaDate"] = ExpressionConverter.ConvertO(bodyitemDatariskSLADate);
+                    itemDataObjectpropCount++;
+                }
 
-            if (bodyitemDataprogress != null)
-            {
-                itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataprogress);
-                itemDataObjectpropCount++;
-            }
+                if (bodyitemDatareference != null)
+                {
+                    itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDatareference);
+                    itemDataObjectpropCount++;
+                }
 
-            if (itemDataObjectpropCount > 0)
-            {
-                body["itemData"] = itemDataObject;
-                bodypropCount++;
-            }
+                if (bodyitemDataprogress != null)
+                {
+                    itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataprogress);
+                    itemDataObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (itemDataObjectpropCount > 0)
+                {
+                    body["itemData"] = itemDataObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<QueueItemDto>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<QueueItemDto>(callPayload);
+            });
         }
     }
 
@@ -213,6 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoStateType
     {
         Pending,
@@ -226,6 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Resumed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoJobPriorityType
     {
         Low,
@@ -258,6 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoTypeType
     {
         NonProduction,
@@ -274,18 +313,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         TestAutomation
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoHostingTypeType
     {
         Standard,
         Floating
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoProvisionTypeType
     {
         Manual,
         Automatic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoCredentialTypeType
     {
         Default,
@@ -303,6 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvironmentDtoTypeType
     {
         Dev,
@@ -358,11 +401,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntryPointDataVariationDtoContentTypeType
     {
         Json
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleReleaseDtoProcessTypeType
     {
         Undefined,
@@ -395,6 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public bool AlwaysRunning { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleReleaseDtoJobPriorityType
     {
         Low,
@@ -402,6 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoSourceTypeType
     {
         Manual,
@@ -411,18 +458,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         StudioWeb
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoTypeType
     {
         Unattended,
         Attended
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoStopStrategyType
     {
         SoftStop,
         Kill
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoRuntimeTypeType
     {
         NonProduction,
@@ -439,6 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         TestAutomation
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoProcessTypeType
     {
         Undefined,
@@ -464,12 +515,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MachineDtoTypeType
     {
         Standard,
         Template
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MachineDtoScopeType
     {
         Default,
@@ -492,6 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public bool HasTriggers { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MachineDtoAutoScalingProfileType
     {
         CostEfficient,
@@ -500,6 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystartInfosourceInput
     {
         Manual,
@@ -508,6 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         StudioWeb
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystartInfojobPriorityInput
     {
         Low,
@@ -515,6 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystartInforuntimeTypeInput
     {
         NonProduction,
@@ -598,12 +655,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public string CreationTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProcessingExceptionDtoTypeType
     {
         ApplicationException,
         BusinessException
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoStatusType
     {
         New,
@@ -615,6 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Deleted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoReviewStatusType
     {
         None,
@@ -672,6 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserRoleDtoRoleTypeType
     {
         Mixed,
@@ -685,6 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleUserDtoTypeType
     {
         User,
@@ -693,12 +755,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         DirectoryGroup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleUserDtoProvisionTypeType
     {
         Manual,
         Automatic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleUserDtoLicenseTypeType
     {
         NonProduction,
@@ -723,6 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public AttendedRobotDtoRobotTypeType RobotType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AttendedRobotDtoRobotTypeType
     {
         NonProduction,
@@ -752,6 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int MachineMappingsCount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UnattendedRobotDtoCredentialTypeType
     {
         Default,
@@ -772,12 +838,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public bool CloudRobots { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoProcessingExceptionTypeType
     {
         ApplicationException,
         BusinessException
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoPriorityType
     {
         High,
@@ -785,6 +853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyitemDatapriorityInput
     {
         High,

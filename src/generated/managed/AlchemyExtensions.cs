@@ -4,29 +4,40 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AlchemyActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
-        {
-            var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<GetSelfHelpInsightsResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSelfHelpInsights))]
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights([WorkflowExpression] Func<string> bodytext)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> __BuildGetSelfHelpInsights(WorkflowExpression<string> bodytext)
+        {
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<GetSelfHelpInsightsResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetSelfHelpInsightsResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,32 +22,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
     public class AppfiguresTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Event[]> OnNewEvent(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[]> OnNewEvent(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/event_trigger/events";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Event[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewReview))]
+        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview([WorkflowExpression] Func<string> products = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/reviews_trigger/reviews";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (products != null)
-                callPayload.Queries["products"] = ExpressionConverter.Convert(products);
-            return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ReviewInfo[]> __BuildOnNewReview(WorkflowExpression<string> products = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/ratings_trigger/ratings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (products != null)
-                callPayload.Queries["products"] = ExpressionConverter.Convert(products);
-            return new ApiConnectionTrigger<Rating[]>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(products, nameof(products), required: false);
+            return new DeferredBodyTrigger<ReviewInfo[]>(() =>
+            {
+                var apiCallPath = "/reviews_trigger/reviews";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (products != null)
+                    callPayload.Queries["products"] = ExpressionConverter.Convert(products);
+                return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewRating))]
+        public IBodyWorkflowTrigger<Rating[]> OnNewRating([WorkflowExpression] Func<string> products = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Rating[]> __BuildOnNewRating(WorkflowExpression<string> products = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(products, nameof(products), required: false);
+            return new DeferredBodyTrigger<Rating[]>(() =>
+            {
+                var apiCallPath = "/ratings_trigger/ratings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (products != null)
+                    callPayload.Queries["products"] = ExpressionConverter.Convert(products);
+                return new ApiConnectionTrigger<Rating[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

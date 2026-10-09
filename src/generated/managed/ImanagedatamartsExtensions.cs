@@ -4,43 +4,65 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ImanagedatamartsActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
-        {
-            var apiCallPath = String.Format("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(itemType, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<ItemBatchResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteSourceMetadataInBatch))]
+        public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch([WorkflowExpression] Func<string> itemType)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemBatchResponse> __BuildDeleteSourceMetadataInBatch(WorkflowExpression<string> itemType)
+        {
+            WorkflowExpression.Validate(itemType, nameof(itemType), required: true);
+            return new DeferredBodyAction<ItemBatchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(itemType, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ItemBatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateSourceMetadataInBatch))]
+        public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch([WorkflowExpression] Func<string> itemType)
         {
-            var apiCallPath = String.Format("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(itemType, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ItemBatchResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemBatchResponse> __BuildUpdateSourceMetadataInBatch(WorkflowExpression<string> itemType)
+        {
+            WorkflowExpression.Validate(itemType, nameof(itemType), required: true);
+            return new DeferredBodyAction<ItemBatchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(itemType, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ItemBatchResponse>(callPayload);
+            });
         }
     }
 

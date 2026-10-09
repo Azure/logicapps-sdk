@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,28 +20,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<FileLoadResponse> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileLoad))]
+        public IBodyWorkflowAction<FileLoadResponse> FileLoad([WorkflowExpression] Func<string> columnDelimiter, [WorkflowExpression] Func<string> dataLoadRuleName = null, [WorkflowExpression] Func<object> file = null)
         {
-            var apiCallPath = "/financemodel/data/transferfile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dataLoadRuleName != null)
-                callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(dataLoadRuleName);
-            callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(columnDelimiter);
-            return new ApiConnectionAction<FileLoadResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileLoadResponse> __BuildFileLoad(WorkflowExpression<string> columnDelimiter, WorkflowExpression<string> dataLoadRuleName = null, WorkflowExpression<object> file = null)
+        {
+            WorkflowExpression.Validate(columnDelimiter, nameof(columnDelimiter), required: true);
+            WorkflowExpression.Validate(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
+            WorkflowExpression.Validate(file, nameof(file), required: false);
+            return new DeferredBodyAction<FileLoadResponse>(() =>
+            {
+                var apiCallPath = "/financemodel/data/transferfile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (dataLoadRuleName != null)
+                    callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(dataLoadRuleName);
+                callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(columnDelimiter);
+                return new ApiConnectionAction<FileLoadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetGLdata))]
+        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<int> fiscalYear, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/financemodel/data/extract/gldata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Scenario"] = ExpressionConverter.Convert(scenario);
-            callPayload.Queries["FiscalYear"] = ExpressionConverter.Convert(fiscalYear);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGLdataResponseItem[]> __BuildGetGLdata(WorkflowExpression<string> scenario, WorkflowExpression<int> fiscalYear, WorkflowExpression<string> filter = null)
+        {
+            WorkflowExpression.Validate(scenario, nameof(scenario), required: true);
+            WorkflowExpression.Validate(fiscalYear, nameof(fiscalYear), required: true);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            return new DeferredBodyAction<GetGLdataResponseItem[]>(() =>
+            {
+                var apiCallPath = "/financemodel/data/extract/gldata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Scenario"] = ExpressionConverter.Convert(scenario);
+                callPayload.Queries["FiscalYear"] = ExpressionConverter.Convert(fiscalYear);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
+            });
         }
     }
 

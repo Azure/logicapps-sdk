@@ -1,209 +1,324 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ProcessstreetActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<CreateWorkflowRunResponse> CreateWorkflowRun(Expression<Func<string>> bodyworkflowID, Expression<Func<string>> bodyname, Expression<Func<string>> bodydueDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkflowRun))]
+        public IBodyWorkflowAction<CreateWorkflowRunResponse> CreateWorkflowRun([WorkflowExpression] Func<string> bodyworkflowID, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydueDate = null)
         {
-            var apiCallPath = "/workflow-runs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydueDate != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateWorkflowRunResponse> __BuildCreateWorkflowRun(WorkflowExpression<string> bodyworkflowID, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydueDate = null)
+        {
+            WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            return new DeferredBodyAction<CreateWorkflowRunResponse>(() =>
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                var apiCallPath = "/workflow-runs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateWorkflowRunResponse>(callPayload);
+                return new ApiConnectionAction<CreateWorkflowRunResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<SimpleUser> GetUser(Expression<Func<string>> userId)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<SimpleUser> GetUser([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SimpleUser>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SimpleUser> __BuildGetUser(WorkflowExpression<string> userId)
+        {
+            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<SimpleUser>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SimpleUser>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<WorkflowRunResponse> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydueDate, Expression<Func<bool>> bodyshared)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkflowRun))]
+        public IBodyWorkflowAction<WorkflowRunResponse> UpdateWorkflowRun([WorkflowExpression] Func<string> workflowRunId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydueDate, [WorkflowExpression] Func<bool> bodyshared)
         {
-            var apiCallPath = String.Format("/workflow-runs/{0}", ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
-            bodypropCount++;
-            body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-            bodypropCount++;
-            body["shared"] = ExpressionConverter.ConvertO(bodyshared);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkflowRunResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<FindWorkflowRunsResponse> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodyassignees = null, Expression<Func<object>> bodyformFields = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkflowRunResponse> __BuildUpdateWorkflowRun(WorkflowExpression<string> workflowRunId, WorkflowExpression<string> bodyname, WorkflowExpression<bodystatusInput> bodystatus, WorkflowExpression<string> bodydueDate, WorkflowExpression<bool> bodyshared)
         {
-            var apiCallPath = String.Format("/workflows/{0}/workflow-runs/search", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            WorkflowExpression.Validate(workflowRunId, nameof(workflowRunId), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: true);
+            WorkflowExpression.Validate(bodydueDate, nameof(bodydueDate), required: true);
+            WorkflowExpression.Validate(bodyshared, nameof(bodyshared), required: true);
+            return new DeferredBodyAction<WorkflowRunResponse>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}", ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodyassignees != null)
-            {
-                body["assignees"] = ExpressionConverter.ConvertO(bodyassignees);
+                body["status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
-            }
-
-            if (bodyformFields != null)
-            {
-                body["formFields"] = ExpressionConverter.ConvertO(bodyformFields);
+                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
                 bodypropCount++;
-            }
+                body["shared"] = ExpressionConverter.ConvertO(bodyshared);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FindWorkflowRunsResponse>(callPayload);
+                return new ApiConnectionAction<WorkflowRunResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<JToken> ListFormFieldValues(Expression<Func<string>> workflowRunId, Expression<Func<string>> workflowId, Expression<Func<string>> taskId = null)
+        [WorkflowExpressionFactory(nameof(__BuildFindWorkflowRuns))]
+        public IBodyWorkflowAction<FindWorkflowRunsResponse> FindWorkflowRuns([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string[]> bodyassignees = null, [WorkflowExpression] Func<object> bodyformFields = null)
         {
-            var apiCallPath = String.Format("/workflow-runs/{0}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workflowId"] = ExpressionConverter.Convert(workflowId);
-            if (taskId != null)
-                callPayload.Queries["taskId"] = ExpressionConverter.Convert(taskId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FindWorkflowRunsResponse> __BuildFindWorkflowRuns(WorkflowExpression<string> workflowId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string[]> bodyassignees = null, WorkflowExpression<object> bodyformFields = null)
+        {
+            WorkflowExpression.Validate(workflowId, nameof(workflowId), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyassignees, nameof(bodyassignees), required: false);
+            WorkflowExpression.Validate(bodyformFields, nameof(bodyformFields), required: false);
+            return new DeferredBodyAction<FindWorkflowRunsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/search", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyassignees != null)
+                {
+                    body["assignees"] = ExpressionConverter.ConvertO(bodyassignees);
+                    bodypropCount++;
+                }
+
+                if (bodyformFields != null)
+                {
+                    body["formFields"] = ExpressionConverter.ConvertO(bodyformFields);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FindWorkflowRunsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> UpdateFormFieldValuesWithWorkflowId(Expression<Func<string>> workflowId, Expression<Func<string>> workflowRunId, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildListFormFieldValues))]
+        public IBodyWorkflowAction<JToken> ListFormFieldValues([WorkflowExpression] Func<string> workflowRunId, [WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> taskId = null)
         {
-            var apiCallPath = String.Format("/workflows/{0}/workflow-runs/{1}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<UpdateMultipleFormFieldValuesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildListFormFieldValues(WorkflowExpression<string> workflowRunId, WorkflowExpression<string> workflowId, WorkflowExpression<string> taskId = null)
+        {
+            WorkflowExpression.Validate(workflowRunId, nameof(workflowRunId), required: true);
+            WorkflowExpression.Validate(workflowId, nameof(workflowId), required: true);
+            WorkflowExpression.Validate(taskId, nameof(taskId), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workflowId"] = ExpressionConverter.Convert(workflowId);
+                if (taskId != null)
+                    callPayload.Queries["taskId"] = ExpressionConverter.Convert(taskId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateFormFieldValuesWithWorkflowId))]
+        public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> UpdateFormFieldValuesWithWorkflowId([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> workflowRunId, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> __BuildUpdateFormFieldValuesWithWorkflowId(WorkflowExpression<string> workflowId, WorkflowExpression<string> workflowRunId, WorkflowExpression<object> body = null)
+        {
+            WorkflowExpression.Validate(workflowId, nameof(workflowId), required: true);
+            WorkflowExpression.Validate(workflowRunId, nameof(workflowRunId), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<UpdateMultipleFormFieldValuesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<UpdateMultipleFormFieldValuesResponse>(callPayload);
+            });
         }
     }
 
     public class ProcessstreetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTaskStateChangedTrigger(Expression<Func<bodytaskStateInput>> bodytaskState, Expression<Func<string>> bodyworkflowID = null, Expression<Func<string>> bodytaskID = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateTaskStateChangedTrigger))]
+        public IWorkflowTrigger CreateTaskStateChangedTrigger([WorkflowExpression] Func<bodytaskStateInput> bodytaskState,[WorkflowExpression] Func<string> bodyworkflowID = null,[WorkflowExpression] Func<string> bodytaskID = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/triggers/task-state-changed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyworkflowID != null)
-            {
-                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
-                bodypropCount++;
-            }
-
-            if (bodytaskID != null)
-            {
-                body["taskId"] = ExpressionConverter.ConvertO(bodytaskID);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["triggerType"] = ExpressionConverter.ConvertO(bodytaskState);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CreateWorkflowRunCreatedTrigger(Expression<Func<string>> bodyworkflowID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateTaskStateChangedTrigger(WorkflowExpression<bodytaskStateInput> bodytaskState,WorkflowExpression<string> bodyworkflowID = null,WorkflowExpression<string> bodytaskID = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/triggers/workflow-run-created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyworkflowID != null)
+            WorkflowExpression.Validate(bodytaskState, nameof(bodytaskState), required: true);
+            WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: false);
+            WorkflowExpression.Validate(bodytaskID, nameof(bodytaskID), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                var apiCallPath = "/triggers/task-state-changed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyworkflowID != null)
+                {
+                    body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytaskID != null)
+                {
+                    body["taskId"] = ExpressionConverter.ConvertO(bodytaskID);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                bodypropCount++;
+                body["triggerType"] = ExpressionConverter.ConvertO(bodytaskState);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger CreateWorkflowRunCompletedTrigger(Expression<Func<string>> bodyworkflowID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkflowRunCreatedTrigger))]
+        public IWorkflowTrigger CreateWorkflowRunCreatedTrigger([WorkflowExpression] Func<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/triggers/workflow-run-completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyworkflowID != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateWorkflowRunCreatedTrigger(WorkflowExpression<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                var apiCallPath = "/triggers/workflow-run-created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyworkflowID != null)
+                {
+                    body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkflowRunCompletedTrigger))]
+        public IWorkflowTrigger CreateWorkflowRunCompletedTrigger([WorkflowExpression] Func<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateWorkflowRunCompletedTrigger(WorkflowExpression<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/triggers/workflow-run-completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodyworkflowID != null)
+                {
+                    body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -261,6 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string WorkflowUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkflowRunResponseStatusType
     {
         Active,
@@ -287,6 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string TimeZone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Active,
@@ -322,6 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string TaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskStateInput
     {
         [EnumMember(Value = "Task Checked")]

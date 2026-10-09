@@ -4,9 +4,13 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
     /// Indicates the type of retry policy to use.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RetryType
     {
         /// <summary>

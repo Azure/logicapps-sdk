@@ -4,9 +4,13 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
     /// The agent history reduction type.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum AgentHistoryReductionType
     {
         /// <summary>

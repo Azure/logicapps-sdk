@@ -4,83 +4,206 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MeaningcloudipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
+        [WorkflowExpressionFactory(nameof(__BuildSentimentAnalysis))]
+        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<txtfInput> txtf = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<uwInput> uw = null)
         {
-            var apiCallPath = "/sentiment-2.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SentimentAnalysisResponse> __BuildSentimentAnalysis(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<string> lang, WorkflowExpression<ofInput> of = null, WorkflowExpression<txtfInput> txtf = null, WorkflowExpression<string> model = null, WorkflowExpression<verboseInput> verbose = null, WorkflowExpression<uwInput> uw = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(lang, nameof(lang), required: true);
+            WorkflowExpression.Validate(of, nameof(of), required: false);
+            WorkflowExpression.Validate(txtf, nameof(txtf), required: false);
+            WorkflowExpression.Validate(model, nameof(model), required: false);
+            WorkflowExpression.Validate(verbose, nameof(verbose), required: false);
+            WorkflowExpression.Validate(uw, nameof(uw), required: false);
+            return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/sentiment-2.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClassificationResponse> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
+        [WorkflowExpressionFactory(nameof(__BuildTextClassification))]
+        public IBodyWorkflowAction<TextClassificationResponse> TextClassification([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<debugInput> debug = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<expandHierarchyInput> expandHierarchy = null)
         {
-            var apiCallPath = "/class-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TextClassificationResponse> __BuildTextClassification(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<modelInput> model, WorkflowExpression<string> title = null, WorkflowExpression<debugInput> debug = null, WorkflowExpression<verboseInput> verbose = null, WorkflowExpression<expandHierarchyInput> expandHierarchy = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(model, nameof(model), required: true);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(debug, nameof(debug), required: false);
+            WorkflowExpression.Validate(verbose, nameof(verbose), required: false);
+            WorkflowExpression.Validate(expandHierarchy, nameof(expandHierarchy), required: false);
+            return new DeferredBodyAction<TextClassificationResponse>(() =>
+            {
+                var apiCallPath = "/class-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
+        [WorkflowExpressionFactory(nameof(__BuildCorporateReputation))]
+        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> model = null)
         {
-            var apiCallPath = "/reputation-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CorporateReputationResponse> __BuildCorporateReputation(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<string> lang, WorkflowExpression<string> model = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(lang, nameof(lang), required: true);
+            WorkflowExpression.Validate(model, nameof(model), required: false);
+            return new DeferredBodyAction<CorporateReputationResponse>(() =>
+            {
+                var apiCallPath = "/reputation-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
+        [WorkflowExpressionFactory(nameof(__BuildSummarization))]
+        public IBodyWorkflowAction<SummarizationResponse> Summarization([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<int> sentences = null, [WorkflowExpression] Func<ofInput> of = null)
         {
-            var apiCallPath = "/summarization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SummarizationResponse> __BuildSummarization(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<string> lang, WorkflowExpression<int> sentences = null, WorkflowExpression<ofInput> of = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(lang, nameof(lang), required: true);
+            WorkflowExpression.Validate(sentences, nameof(sentences), required: false);
+            WorkflowExpression.Validate(of, nameof(of), required: false);
+            return new DeferredBodyAction<SummarizationResponse>(() =>
+            {
+                var apiCallPath = "/summarization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeepCategorization))]
+        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<debugInput> debug = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<polarityInput> polarity = null)
         {
-            var apiCallPath = "/deepcategorization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeepCategorizationResponse> __BuildDeepCategorization(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<modelInput> model, WorkflowExpression<string> title = null, WorkflowExpression<ofInput> of = null, WorkflowExpression<debugInput> debug = null, WorkflowExpression<verboseInput> verbose = null, WorkflowExpression<polarityInput> polarity = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(model, nameof(model), required: true);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(of, nameof(of), required: false);
+            WorkflowExpression.Validate(debug, nameof(debug), required: false);
+            WorkflowExpression.Validate(verbose, nameof(verbose), required: false);
+            WorkflowExpression.Validate(polarity, nameof(polarity), required: false);
+            return new DeferredBodyAction<DeepCategorizationResponse>(() =>
+            {
+                var apiCallPath = "/deepcategorization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
+        [WorkflowExpressionFactory(nameof(__BuildLanguageIdentification))]
+        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt)
         {
-            var apiCallPath = "/lang-4.0/identification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LanguageIdentificationResponse> __BuildLanguageIdentification(WorkflowExpression<string> key, WorkflowExpression<string> txt)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            return new DeferredBodyAction<LanguageIdentificationResponse>(() =>
+            {
+                var apiCallPath = "/lang-4.0/identification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClusteringResponse> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
+        [WorkflowExpressionFactory(nameof(__BuildTextClustering))]
+        public IBodyWorkflowAction<TextClusteringResponse> TextClustering([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<langInput> lang, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<swInput> sw = null)
         {
-            var apiCallPath = "/clustering-1.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TextClusteringResponse> __BuildTextClustering(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<langInput> lang, WorkflowExpression<ofInput> of = null, WorkflowExpression<modeInput> mode = null, WorkflowExpression<swInput> sw = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(lang, nameof(lang), required: true);
+            WorkflowExpression.Validate(of, nameof(of), required: false);
+            WorkflowExpression.Validate(mode, nameof(mode), required: false);
+            WorkflowExpression.Validate(sw, nameof(sw), required: false);
+            return new DeferredBodyAction<TextClusteringResponse>(() =>
+            {
+                var apiCallPath = "/clustering-1.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
+        [WorkflowExpressionFactory(nameof(__BuildDocumentStructure))]
+        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<ofInput> of = null)
         {
-            var apiCallPath = "/documentstructure-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentStructureResponse> __BuildDocumentStructure(WorkflowExpression<string> key, WorkflowExpression<string> txt, WorkflowExpression<ofInput> of = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(txt, nameof(txt), required: true);
+            WorkflowExpression.Validate(of, nameof(of), required: false);
+            return new DeferredBodyAction<DocumentStructureResponse>(() =>
+            {
+                var apiCallPath = "/documentstructure-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            });
         }
     }
 
@@ -244,6 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string RemainingCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ofInput
     {
         [EnumMember(Value = "json")]
@@ -252,6 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum txtfInput
     {
         [EnumMember(Value = "plain")]
@@ -260,6 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Markup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum verboseInput
     {
         [EnumMember(Value = "y")]
@@ -268,6 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         N
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uwInput
     {
         [EnumMember(Value = "y")]
@@ -315,6 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string RemainingCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "IAB_2.0")]
@@ -343,6 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         VoEExitInterview
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum debugInput
     {
         [EnumMember(Value = "y")]
@@ -351,6 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         N
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum expandHierarchyInput
     {
         [EnumMember(Value = "n")]
@@ -499,6 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string Relevance { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum polarityInput
     {
         [EnumMember(Value = "y")]
@@ -630,6 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string Document10 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]
@@ -660,6 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Ar
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modeInput
     {
         [EnumMember(Value = "tm")]
@@ -668,6 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Dg
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum swInput
     {
         [EnumMember(Value = "y")]
