@@ -236,6 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Address.City);
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Address?.City);
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Address?.Country?.Code);
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.Address?.Country.Code);
                     }
                 }
                 """;
@@ -245,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Empty(result.Diagnostics);
             var programs = RenderPrograms(result.Sources["Consumer.cs"], """outputs("Customer")""");
 
-            Assert.Equal(6, programs.Length);
+            Assert.Equal(7, programs.Length);
             AssertReturnExpression(
                 """(outputs("Customer")["optional_name"])?.ToObject<string>() ?? default(string)""",
                 programs[0]);
@@ -288,6 +289,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     .Select(statement => statement.DescendantNodes().OfType<ElementAccessExpressionSyntax>().Single()
                         .ArgumentList.Arguments.Single().Expression.ToString())
                     .ToArray());
+
+            var mixedConditionalPath = ReturnExpression(programs[6]).DescendantNodesAndSelf()
+                .OfType<ParenthesizedLambdaExpressionSyntax>().Single();
+            var mixedConditionalBody = Assert.IsType<BlockSyntax>(mixedConditionalPath.Body);
+            Assert.Single(mixedConditionalBody.Statements.OfType<IfStatementSyntax>());
+            Assert.Equal(
+                new[] { "\"address\"", "\"country\"", "\"code\"" },
+                mixedConditionalBody.Statements.OfType<ExpressionStatementSyntax>()
+                    .Select(statement => statement.DescendantNodes().OfType<ElementAccessExpressionSyntax>().Single()
+                        .ArgumentList.Arguments.Single().Expression.ToString())
+                    .ToArray());
+        }
+
+        [Fact]
+        public void GeneratedPlaceholdersAvoidAuthoredIdentifiers()
+        {
+            const string Source = """
+                using Microsoft.Azure.Workflows.Sdk;
+                public sealed class Address { public string City { get; set; } }
+                public sealed class Customer { public Address Address { get; set; } }
+                public sealed class Consumer {
+                    public void Build(IOutputWorkflowAction<Customer> customer) {
+                        var __capture0 = "capture";
+                        WorkflowActions.BuiltIn.Compose(() => {
+                            var __binding0 = "binding";
+                            var __path0 = "path";
+                            return customer.Output.Address?.City + __binding0 + __path0 + __capture0;
+                        });
+                    }
+                }
+                """;
+            var compilation = CSharpCompilation.Create("Consumer", new[] { CSharpSyntaxTree.ParseText(Source, path: "Consumer.cs") },
+                References(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+            var result = ExpressionCompiler.Transform(compilation);
+            Assert.Empty(result.Diagnostics);
+            var program = Assert.Single(RenderPrograms(result.Sources["Consumer.cs"], """outputs("Customer")"""));
+            var names = ProgramExpression(program).DescendantNodes().OfType<VariableDeclaratorSyntax>()
+                .Select(variable => variable.Identifier.ValueText)
+                .ToArray();
+
+            Assert.Contains("__binding0", names);
+            Assert.Contains("__capture1", names);
+            Assert.Contains("__path0", names);
+            Assert.Contains("__path1", names);
+            Assert.DoesNotContain("__binding1", names);
         }
 
         [Fact]

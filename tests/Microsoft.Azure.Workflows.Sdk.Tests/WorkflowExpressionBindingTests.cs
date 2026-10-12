@@ -8,6 +8,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
     public class WorkflowExpressionBindingTests
     {
+        private sealed class ToolParameters
+        {
+            public string Name { get; set; }
+        }
+
         private IOutputWorkflowAction<string> instanceSource;
 
         [Fact]
@@ -57,6 +62,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             AssertReturnExpression(
                 """(triggerBody()).ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.ReceiveQueueMessagesOutputItem[]>()[0].MessageId""",
                 Input(action));
+        }
+
+        [Fact]
+        public void AgentToolParametersUseAgentParameterBindings()
+        {
+            var context = new AgentToolContext<ToolParameters>(new ToolParameters());
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => context.Parameters.Name.ToUpperInvariant());
+
+            AssertReturnExpression(
+                """(agentparameters("Name")).ToObject<string>().ToUpperInvariant()""",
+                Input(action));
+        }
+
+        [Fact]
+        public void RepeatedReferencesReuseCapturesButRetainWorkflowReads()
+        {
+            var suffix = "!";
+            var source = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => source.Output + source.Output + suffix + suffix);
+
+            var expression = Input(action);
+            Assert.Equal(2, expression.Split("""outputs("Source")""").Length - 1);
+            Assert.Single(CaptureInitializers(expression));
+            Assert.Equal(3, expression.Split("__capture0").Length - 1);
         }
 
         [Fact]
