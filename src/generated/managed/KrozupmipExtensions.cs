@@ -4,449 +4,842 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class KrozupmipActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyUserProfileResponse> GetMyUserProfile(Expression<Func<string>> accept)
-        {
-            var apiCallPath = "/api/v1.00/user/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyUserProfileResponse>(callPayload);
-        }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyBoardsResponseItem[]> GetMyBoards(Expression<Func<string>> accept)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyUserProfile))]
+        public IBodyWorkflowAction<GetMyUserProfileResponse> GetMyUserProfile([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1.00/boards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyBoardsResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyOwnedTreesResponseItem[]> GetMyOwnedTrees(Expression<Func<string>> accept)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyUserProfileResponse> __BuildGetMyUserProfile(WorkflowExpression<string> accept)
         {
-            var apiCallPath = "/api/v1.00/owned";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyOwnedTreesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyAssignedBoardsResponseItem[]> GetMyAssignedBoards(Expression<Func<string>> accept)
-        {
-            var apiCallPath = "/api/v1.00/assigned";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyAssignedBoardsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardGroupsResponseItem[]> GetBoardGroups(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/boardgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetBoardGroupsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyNotificationsResponse> GetMyNotifications(Expression<Func<string>> accept)
-        {
-            var apiCallPath = "/api/v1.00/notifications";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyNotificationsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyTasksAllResponse> GetMyTasksAll(Expression<Func<string>> accept)
-        {
-            var apiCallPath = "/api/v1.00/tasks/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyTasksAllResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyTasksNewResponse> GetMyTasksNew(Expression<Func<string>> accept)
-        {
-            var apiCallPath = "/api/v1.00/tasks/new";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyTasksNewResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetMyTasksOverdueResponse> GetMyTasksOverdue(Expression<Func<string>> accept)
-        {
-            var apiCallPath = "/api/v1.00/tasks/overdue";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetMyTasksOverdueResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardListsResponseItem[]> GetBoardLists(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/boardlists/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetBoardListsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardCardsResponseItem[]> GetBoardCards(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/boardcards/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetBoardCardsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetListCardsResponseItem[]> GetListCards(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/listcards/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetListCardsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetListResponseItem[]> GetList(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetListResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetCardResponseItem[]> GetCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCardResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<JToken> GetBoardMessages(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardMembersResponse> GetBoardMembers(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/members/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetBoardMembersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardRecordsResponseItem[]> GetBoardRecords(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/boardrecords/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetBoardRecordsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetListRecordsResponseItem[]> GetListRecords(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/listrecords/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetListRecordsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetTreeClientsResponse> GetTreeClients(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/clients/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetTreeClientsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardHierarchyResponseItem[]> GetBoardHierarchy(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
-        {
-            var apiCallPath = String.Format("/api/v1.00/boardhierarchy/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetBoardHierarchyResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddCardResponse> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistuuid)
-        {
-            var apiCallPath = String.Format("/api/v1.00/add/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["listuuid"] = ExpressionConverter.ConvertO(bodylistuuid);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyUserProfileResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ActionAddCardResponse>(callPayload);
+                var apiCallPath = "/api/v1.00/user/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyUserProfileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionDeleteCardResponse> ActionDeleteCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<int>> bodyconfirmed)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyBoards))]
+        public IBodyWorkflowAction<GetMyBoardsResponseItem[]> GetMyBoards([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/delete/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["confirmed"] = ExpressionConverter.ConvertO(bodyconfirmed);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionDeleteCardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyBoardsResponseItem[]> __BuildGetMyBoards(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyBoardsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1.00/boards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyBoardsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddMessageToBoardResponse> ActionAddMessageToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodymessage)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyOwnedTrees))]
+        public IBodyWorkflowAction<GetMyOwnedTreesResponseItem[]> GetMyOwnedTrees([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/add/message/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionAddMessageToBoardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyOwnedTreesResponseItem[]> __BuildGetMyOwnedTrees(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyOwnedTreesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1.00/owned";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyOwnedTreesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddChecklistToCardResponse> ActionAddChecklistToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyAssignedBoards))]
+        public IBodyWorkflowAction<GetMyAssignedBoardsResponseItem[]> GetMyAssignedBoards([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/add/checklist/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionAddChecklistToCardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyAssignedBoardsResponseItem[]> __BuildGetMyAssignedBoards(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyAssignedBoardsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1.00/assigned";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyAssignedBoardsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddListResponse> ActionAddList(Expression<Func<string>> baordUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardGroups))]
+        public IBodyWorkflowAction<GetBoardGroupsResponseItem[]> GetBoardGroups([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/add/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(baordUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionAddListResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardGroupsResponseItem[]> __BuildGetBoardGroups(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetBoardGroupsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetBoardGroupsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionListRenameResponse> ActionListRename(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyNotifications))]
+        public IBodyWorkflowAction<GetMyNotificationsResponse> GetMyNotifications([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/rename/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionListRenameResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyNotificationsResponse> __BuildGetMyNotifications(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyNotificationsResponse>(() =>
+            {
+                var apiCallPath = "/api/v1.00/notifications";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyNotificationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionBoardRenameResponse> ActionBoardRename(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyTasksAll))]
+        public IBodyWorkflowAction<GetMyTasksAllResponse> GetMyTasksAll([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/rename/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionBoardRenameResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyTasksAllResponse> __BuildGetMyTasksAll(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyTasksAllResponse>(() =>
+            {
+                var apiCallPath = "/api/v1.00/tasks/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyTasksAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAssignToCardResponse> ActionAssignToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyTasksNew))]
+        public IBodyWorkflowAction<GetMyTasksNewResponse> GetMyTasksNew([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/assign/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionAssignToCardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyTasksNewResponse> __BuildGetMyTasksNew(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyTasksNewResponse>(() =>
+            {
+                var apiCallPath = "/api/v1.00/tasks/new";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyTasksNewResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAssignToBoardResponse> ActionAssignToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
+        [WorkflowExpressionFactory(nameof(__BuildGetMyTasksOverdue))]
+        public IBodyWorkflowAction<GetMyTasksOverdueResponse> GetMyTasksOverdue([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/assign/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionAssignToBoardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMyTasksOverdueResponse> __BuildGetMyTasksOverdue(WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetMyTasksOverdueResponse>(() =>
+            {
+                var apiCallPath = "/api/v1.00/tasks/overdue";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetMyTasksOverdueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionUnassignFromCardResponse> ActionUnassignFromCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardLists))]
+        public IBodyWorkflowAction<GetBoardListsResponseItem[]> GetBoardLists([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/unassign/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionUnassignFromCardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardListsResponseItem[]> __BuildGetBoardLists(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetBoardListsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardlists/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetBoardListsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionUnassignFromBoardResponse> ActionUnassignFromBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardCards))]
+        public IBodyWorkflowAction<GetBoardCardsResponseItem[]> GetBoardCards([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/unassign/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionUnassignFromBoardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardCardsResponseItem[]> __BuildGetBoardCards(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetBoardCardsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardcards/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetBoardCardsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionDeleteListResponse> ActionDeleteList(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<int>> bodyconfirm)
+        [WorkflowExpressionFactory(nameof(__BuildGetListCards))]
+        public IBodyWorkflowAction<GetListCardsResponseItem[]> GetListCards([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = String.Format("/api/v1.00/delete/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["confirm"] = ExpressionConverter.ConvertO(bodyconfirm);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ActionDeleteListResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetListCardsResponseItem[]> __BuildGetListCards(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(listUUID, nameof(listUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetListCardsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/listcards/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetListCardsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetList))]
+        public IBodyWorkflowAction<GetListResponseItem[]> GetList([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetListResponseItem[]> __BuildGetList(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(listUUID, nameof(listUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetListResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetListResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCard))]
+        public IBodyWorkflowAction<GetCardResponseItem[]> GetCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCardResponseItem[]> __BuildGetCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(cardUUID, nameof(cardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetCardResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetCardResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardMessages))]
+        public IBodyWorkflowAction<JToken> GetBoardMessages([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetBoardMessages(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardMembers))]
+        public IBodyWorkflowAction<GetBoardMembersResponse> GetBoardMembers([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardMembersResponse> __BuildGetBoardMembers(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetBoardMembersResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/members/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetBoardMembersResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardRecords))]
+        public IBodyWorkflowAction<GetBoardRecordsResponseItem[]> GetBoardRecords([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardRecordsResponseItem[]> __BuildGetBoardRecords(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetBoardRecordsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardrecords/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetBoardRecordsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetListRecords))]
+        public IBodyWorkflowAction<GetListRecordsResponseItem[]> GetListRecords([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetListRecordsResponseItem[]> __BuildGetListRecords(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(listUUID, nameof(listUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetListRecordsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/listrecords/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetListRecordsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTreeClients))]
+        public IBodyWorkflowAction<GetTreeClientsResponse> GetTreeClients([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTreeClientsResponse> __BuildGetTreeClients(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetTreeClientsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/clients/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetTreeClientsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBoardHierarchy))]
+        public IBodyWorkflowAction<GetBoardHierarchyResponseItem[]> GetBoardHierarchy([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardHierarchyResponseItem[]> __BuildGetBoardHierarchy(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetBoardHierarchyResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardhierarchy/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetBoardHierarchyResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionAddCard))]
+        public IBodyWorkflowAction<ActionAddCardResponse> ActionAddCard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodylistuuid)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionAddCardResponse> __BuildActionAddCard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodylistuuid)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodylistuuid, nameof(bodylistuuid), required: true);
+            return new DeferredBodyAction<ActionAddCardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["listuuid"] = ExpressionConverter.ConvertO(bodylistuuid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionAddCardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionDeleteCard))]
+        public IBodyWorkflowAction<ActionDeleteCardResponse> ActionDeleteCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<int> bodyconfirmed)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionDeleteCardResponse> __BuildActionDeleteCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<int> bodyconfirmed)
+        {
+            WorkflowExpression.Validate(cardUUID, nameof(cardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyconfirmed, nameof(bodyconfirmed), required: true);
+            return new DeferredBodyAction<ActionDeleteCardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/delete/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["confirmed"] = ExpressionConverter.ConvertO(bodyconfirmed);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionDeleteCardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionAddMessageToBoard))]
+        public IBodyWorkflowAction<ActionAddMessageToBoardResponse> ActionAddMessageToBoard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodymessage)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionAddMessageToBoardResponse> __BuildActionAddMessageToBoard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodymessage)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            return new DeferredBodyAction<ActionAddMessageToBoardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/message/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionAddMessageToBoardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionAddChecklistToCard))]
+        public IBodyWorkflowAction<ActionAddChecklistToCardResponse> ActionAddChecklistToCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionAddChecklistToCardResponse> __BuildActionAddChecklistToCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
+        {
+            WorkflowExpression.Validate(cardUUID, nameof(cardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<ActionAddChecklistToCardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/checklist/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionAddChecklistToCardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionAddList))]
+        public IBodyWorkflowAction<ActionAddListResponse> ActionAddList([WorkflowExpression] Func<string> baordUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionAddListResponse> __BuildActionAddList(WorkflowExpression<string> baordUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
+        {
+            WorkflowExpression.Validate(baordUUID, nameof(baordUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<ActionAddListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(baordUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionAddListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionListRename))]
+        public IBodyWorkflowAction<ActionListRenameResponse> ActionListRename([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionListRenameResponse> __BuildActionListRename(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
+        {
+            WorkflowExpression.Validate(listUUID, nameof(listUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<ActionListRenameResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/rename/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionListRenameResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionBoardRename))]
+        public IBodyWorkflowAction<ActionBoardRenameResponse> ActionBoardRename([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionBoardRenameResponse> __BuildActionBoardRename(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyname)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<ActionBoardRenameResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/rename/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionBoardRenameResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionAssignToCard))]
+        public IBodyWorkflowAction<ActionAssignToCardResponse> ActionAssignToCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionAssignToCardResponse> __BuildActionAssignToCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
+        {
+            WorkflowExpression.Validate(cardUUID, nameof(cardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: true);
+            return new DeferredBodyAction<ActionAssignToCardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/assign/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionAssignToCardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionAssignToBoard))]
+        public IBodyWorkflowAction<ActionAssignToBoardResponse> ActionAssignToBoard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionAssignToBoardResponse> __BuildActionAssignToBoard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: true);
+            return new DeferredBodyAction<ActionAssignToBoardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/assign/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionAssignToBoardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionUnassignFromCard))]
+        public IBodyWorkflowAction<ActionUnassignFromCardResponse> ActionUnassignFromCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionUnassignFromCardResponse> __BuildActionUnassignFromCard(WorkflowExpression<string> cardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
+        {
+            WorkflowExpression.Validate(cardUUID, nameof(cardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: true);
+            return new DeferredBodyAction<ActionUnassignFromCardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/unassign/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionUnassignFromCardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionUnassignFromBoard))]
+        public IBodyWorkflowAction<ActionUnassignFromBoardResponse> ActionUnassignFromBoard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionUnassignFromBoardResponse> __BuildActionUnassignFromBoard(WorkflowExpression<string> boardUUID, WorkflowExpression<string> accept, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyrole)
+        {
+            WorkflowExpression.Validate(boardUUID, nameof(boardUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: true);
+            return new DeferredBodyAction<ActionUnassignFromBoardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/unassign/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionUnassignFromBoardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
+        [WorkflowExpressionFactory(nameof(__BuildActionDeleteList))]
+        public IBodyWorkflowAction<ActionDeleteListResponse> ActionDeleteList([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<int> bodyconfirm)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionDeleteListResponse> __BuildActionDeleteList(WorkflowExpression<string> listUUID, WorkflowExpression<string> accept, WorkflowExpression<int> bodyconfirm)
+        {
+            WorkflowExpression.Validate(listUUID, nameof(listUUID), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: true);
+            WorkflowExpression.Validate(bodyconfirm, nameof(bodyconfirm), required: true);
+            return new DeferredBodyAction<ActionDeleteListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/delete/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(listUUID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["confirm"] = ExpressionConverter.ConvertO(bodyconfirm);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionDeleteListResponse>(callPayload);
+            });
         }
     }
 

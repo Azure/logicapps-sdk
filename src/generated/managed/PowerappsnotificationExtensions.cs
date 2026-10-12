@@ -4,53 +4,66 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PowerappsnotificationActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
-        public IWorkflowAction SendPushNotification(Expression<Func<string[]>> payloadrecipients = null, Expression<Func<string>> payloadmessage = null, Expression<Func<bool>> payloadopenApp = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendPushNotification))]
+        public IWorkflowAction SendPushNotification([WorkflowExpression] Func<string[]> payloadrecipients = null, [WorkflowExpression] Func<string> payloadmessage = null, [WorkflowExpression] Func<bool> payloadopenApp = null)
         {
-            var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var payload = new JObject();
-            var payloadpropCount = 0;
-            if (payloadrecipients != null)
-            {
-                payload["recipients"] = ExpressionConverter.ConvertO(payloadrecipients);
-                payloadpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (payloadmessage != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendPushNotification(WorkflowExpression<string[]> payloadrecipients = null, WorkflowExpression<string> payloadmessage = null, WorkflowExpression<bool> payloadopenApp = null)
+        {
+            WorkflowExpression.Validate(payloadrecipients, nameof(payloadrecipients), required: false);
+            WorkflowExpression.Validate(payloadmessage, nameof(payloadmessage), required: false);
+            WorkflowExpression.Validate(payloadopenApp, nameof(payloadopenApp), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                payload["message"] = ExpressionConverter.ConvertO(payloadmessage);
-                payloadpropCount++;
-            }
+                var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var payload = new JObject();
+                var payloadpropCount = 0;
+                if (payloadrecipients != null)
+                {
+                    payload["recipients"] = ExpressionConverter.ConvertO(payloadrecipients);
+                    payloadpropCount++;
+                }
 
-            if (payloadopenApp != null)
-            {
-                payload["openApp"] = ExpressionConverter.ConvertO(payloadopenApp);
-                payloadpropCount++;
-            }
+                if (payloadmessage != null)
+                {
+                    payload["message"] = ExpressionConverter.ConvertO(payloadmessage);
+                    payloadpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                payload["params"] = @paramsObject;
-                payloadpropCount++;
-            }
+                if (payloadopenApp != null)
+                {
+                    payload["openApp"] = ExpressionConverter.ConvertO(payloadopenApp);
+                    payloadpropCount++;
+                }
 
-            if (payloadpropCount > 0)
-            {
-                callPayload.Body = payload;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    payload["params"] = @paramsObject;
+                    payloadpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (payloadpropCount > 0)
+                {
+                    callPayload.Body = payload;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

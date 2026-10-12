@@ -4,263 +4,445 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FieldequipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCustomer))]
+        public IWorkflowAction CreateCustomer([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = "/api/v1/customer/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateCustomer(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/customer/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateCustomer))]
+        public IWorkflowAction UpdateCustomer([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateCustomer(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/customer/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkOrders))]
+        public IWorkflowAction CreateWorkOrders([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem2[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateWorkOrders(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem2[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v3/workorder/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkOrders))]
+        public IWorkflowAction UpdateWorkOrders([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem2[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateWorkOrders(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem2[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v3/workorder/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateItems))]
+        public IWorkflowAction CreateItems([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem22[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateItems(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem22[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/item/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateItems))]
+        public IWorkflowAction UpdateItems([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem22[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateItems(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<bodyInputItem22[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/item/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateInventory))]
+        public IWorkflowAction CreateInventory([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<string> warehouseRefNum = null, [WorkflowExpression] Func<bodyInputItem222[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateInventory(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<string> warehouseRefNum = null, WorkflowExpression<bodyInputItem222[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(warehouseRefNum, nameof(warehouseRefNum), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/warehouse/inventory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                if (warehouseRefNum != null)
+                    callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(warehouseRefNum);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateItemAdjustment))]
+        public IWorkflowAction CreateItemAdjustment([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<string> warehouseRefNum = null, [WorkflowExpression] Func<bodyInputItem2222[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateItemAdjustment(WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> companyId = null, WorkflowExpression<string> warehouseRefNum = null, WorkflowExpression<bodyInputItem2222[]> body = null)
+        {
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: false);
+            WorkflowExpression.Validate(warehouseRefNum, nameof(warehouseRefNum), required: false);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/warehouse/inventory/adjustment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (companyId != null)
+                    callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                if (warehouseRefNum != null)
+                    callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(warehouseRefNum);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateLocations))]
+        public IWorkflowAction CreateLocations([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<bodyInputItem22222[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateLocations(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<bodyInputItem22222[]> body = null)
+        {
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: true);
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/location/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction UpdateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateLocations))]
+        public IWorkflowAction UpdateLocations([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<bodyInputItem22222[]> body = null)
         {
-            var apiCallPath = "/api/v1/customer/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateLocations(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<bodyInputItem22222[]> body = null)
+        {
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: true);
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/location/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem2[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateUsers))]
+        public IWorkflowAction CreateUsers([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<bodyInputItem222222[]> body = null)
         {
-            var apiCallPath = "/api/v3/workorder/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateUsers(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<bodyInputItem222222[]> body = null)
+        {
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: true);
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/user/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction UpdateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem2[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateUsers))]
+        public IWorkflowAction UpdateUsers([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> bodycompanyId = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodybusinessUnitCode = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodypayrollCode = null, [WorkflowExpression] Func<string> bodyplantId = null, [WorkflowExpression] Func<string> bodyempId = null, [WorkflowExpression] Func<string> bodymobileNumber = null, [WorkflowExpression] Func<string> bodyreportingManager = null, [WorkflowExpression] Func<string> bodyempType = null, [WorkflowExpression] Func<string> bodystateCode = null)
         {
-            var apiCallPath = "/api/v3/workorder/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateUsers(WorkflowExpression<string> companyId, WorkflowExpression<string> xApiKey, WorkflowExpression<string> xOrigin, WorkflowExpression<string> bodycompanyId = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodybusinessUnitCode = null, WorkflowExpression<string> bodydepartmentCode = null, WorkflowExpression<string> bodypayrollCode = null, WorkflowExpression<string> bodyplantId = null, WorkflowExpression<string> bodyempId = null, WorkflowExpression<string> bodymobileNumber = null, WorkflowExpression<string> bodyreportingManager = null, WorkflowExpression<string> bodyempType = null, WorkflowExpression<string> bodystateCode = null)
+        {
+            WorkflowExpression.Validate(companyId, nameof(companyId), required: true);
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: true);
+            WorkflowExpression.Validate(xOrigin, nameof(xOrigin), required: true);
+            WorkflowExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowExpression.Validate(bodybusinessUnitCode, nameof(bodybusinessUnitCode), required: false);
+            WorkflowExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
+            WorkflowExpression.Validate(bodypayrollCode, nameof(bodypayrollCode), required: false);
+            WorkflowExpression.Validate(bodyplantId, nameof(bodyplantId), required: false);
+            WorkflowExpression.Validate(bodyempId, nameof(bodyempId), required: false);
+            WorkflowExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
+            WorkflowExpression.Validate(bodyreportingManager, nameof(bodyreportingManager), required: false);
+            WorkflowExpression.Validate(bodyempType, nameof(bodyempType), required: false);
+            WorkflowExpression.Validate(bodystateCode, nameof(bodystateCode), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v1/user/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycompanyId != null)
+                {
+                    body["companyId"] = ExpressionConverter.ConvertO(bodycompanyId);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem22[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/item/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction UpdateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem22[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/item/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodylastName != null)
+                {
+                    body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateInventory(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<bodyInputItem222[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/warehouse/inventory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            if (warehouseRefNum != null)
-                callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(warehouseRefNum);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateItemAdjustment(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<bodyInputItem2222[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/warehouse/inventory/adjustment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            if (warehouseRefNum != null)
-                callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(warehouseRefNum);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodybusinessUnitCode != null)
+                {
+                    body["businessUnitCode"] = ExpressionConverter.ConvertO(bodybusinessUnitCode);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem22222[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/location/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction UpdateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem22222[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/location/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodypayrollCode != null)
+                {
+                    body["payrollCode"] = ExpressionConverter.ConvertO(bodypayrollCode);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction CreateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem222222[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/user/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodyplantId != null)
+                {
+                    body["plantId"] = ExpressionConverter.ConvertO(bodyplantId);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction UpdateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> bodycompanyId = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodybusinessUnitCode = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodypayrollCode = null, Expression<Func<string>> bodyplantId = null, Expression<Func<string>> bodyempId = null, Expression<Func<string>> bodymobileNumber = null, Expression<Func<string>> bodyreportingManager = null, Expression<Func<string>> bodyempType = null, Expression<Func<string>> bodystateCode = null)
-        {
-            var apiCallPath = "/api/v1/user/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycompanyId != null)
-            {
-                body["companyId"] = ExpressionConverter.ConvertO(bodycompanyId);
-                bodypropCount++;
-            }
+                if (bodyempId != null)
+                {
+                    body["empId"] = ExpressionConverter.ConvertO(bodyempId);
+                    bodypropCount++;
+                }
 
-            if (bodyfirstName != null)
-            {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
+                if (bodymobileNumber != null)
+                {
+                    body["mobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodyreportingManager != null)
+                {
+                    body["reportingManager"] = ExpressionConverter.ConvertO(bodyreportingManager);
+                    bodypropCount++;
+                }
 
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                if (bodyempType != null)
+                {
+                    body["empType"] = ExpressionConverter.ConvertO(bodyempType);
+                    bodypropCount++;
+                }
 
-            if (bodybusinessUnitCode != null)
-            {
-                body["businessUnitCode"] = ExpressionConverter.ConvertO(bodybusinessUnitCode);
-                bodypropCount++;
-            }
+                if (bodystateCode != null)
+                {
+                    body["stateCode"] = ExpressionConverter.ConvertO(bodystateCode);
+                    bodypropCount++;
+                }
 
-            if (bodydepartmentCode != null)
-            {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypayrollCode != null)
-            {
-                body["payrollCode"] = ExpressionConverter.ConvertO(bodypayrollCode);
-                bodypropCount++;
-            }
-
-            if (bodyplantId != null)
-            {
-                body["plantId"] = ExpressionConverter.ConvertO(bodyplantId);
-                bodypropCount++;
-            }
-
-            if (bodyempId != null)
-            {
-                body["empId"] = ExpressionConverter.ConvertO(bodyempId);
-                bodypropCount++;
-            }
-
-            if (bodymobileNumber != null)
-            {
-                body["mobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
-                bodypropCount++;
-            }
-
-            if (bodyreportingManager != null)
-            {
-                body["reportingManager"] = ExpressionConverter.ConvertO(bodyreportingManager);
-                bodypropCount++;
-            }
-
-            if (bodyempType != null)
-            {
-                body["empType"] = ExpressionConverter.ConvertO(bodyempType);
-                bodypropCount++;
-            }
-
-            if (bodystateCode != null)
-            {
-                body["stateCode"] = ExpressionConverter.ConvertO(bodystateCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

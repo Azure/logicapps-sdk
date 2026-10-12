@@ -4,21 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractemailvalidat
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbstractemailvalidatActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractemailvalidat")]
-        public IBodyWorkflowAction<ValidationResponse> Validation(Expression<Func<string>> email)
+        [WorkflowExpressionFactory(nameof(__BuildValidation))]
+        public IBodyWorkflowAction<ValidationResponse> Validation([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildValidation(WorkflowExpression<string> email)
+        {
+            WorkflowExpression.Validate(email, nameof(email), required: true);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
         }
     }
 

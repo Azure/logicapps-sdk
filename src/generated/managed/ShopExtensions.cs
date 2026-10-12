@@ -4,40 +4,66 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ShopActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query = null, Expression<Func<double>> priceMin = null, Expression<Func<double>> priceMax = null, Expression<Func<string>> similarToId = null, Expression<Func<string>> numResults = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<double> priceMin = null, [WorkflowExpression] Func<double> priceMax = null, [WorkflowExpression] Func<string> similarToId = null, [WorkflowExpression] Func<string> numResults = null)
         {
-            var apiCallPath = "/openai/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (priceMin != null)
-                callPayload.Queries["price_min"] = ExpressionConverter.Convert(priceMin);
-            if (priceMax != null)
-                callPayload.Queries["price_max"] = ExpressionConverter.Convert(priceMax);
-            if (similarToId != null)
-                callPayload.Queries["similar_to_id"] = ExpressionConverter.Convert(similarToId);
-            if (numResults != null)
-                callPayload.Queries["num_results"] = ExpressionConverter.Convert(numResults);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> query = null, WorkflowExpression<double> priceMin = null, WorkflowExpression<double> priceMax = null, WorkflowExpression<string> similarToId = null, WorkflowExpression<string> numResults = null)
+        {
+            WorkflowExpression.Validate(query, nameof(query), required: false);
+            WorkflowExpression.Validate(priceMin, nameof(priceMin), required: false);
+            WorkflowExpression.Validate(priceMax, nameof(priceMax), required: false);
+            WorkflowExpression.Validate(similarToId, nameof(similarToId), required: false);
+            WorkflowExpression.Validate(numResults, nameof(numResults), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/openai/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                if (priceMin != null)
+                    callPayload.Queries["price_min"] = ExpressionConverter.Convert(priceMin);
+                if (priceMax != null)
+                    callPayload.Queries["price_max"] = ExpressionConverter.Convert(priceMax);
+                if (similarToId != null)
+                    callPayload.Queries["similar_to_id"] = ExpressionConverter.Convert(similarToId);
+                if (numResults != null)
+                    callPayload.Queries["num_results"] = ExpressionConverter.Convert(numResults);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
-        public IBodyWorkflowAction<SearchResponse> Details(Expression<Func<string>> ids)
+        [WorkflowExpressionFactory(nameof(__BuildDetails))]
+        public IBodyWorkflowAction<SearchResponse> Details([WorkflowExpression] Func<string> ids)
         {
-            var apiCallPath = "/openai/details";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildDetails(WorkflowExpression<string> ids)
+        {
+            WorkflowExpression.Validate(ids, nameof(ids), required: true);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/openai/details";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
     }
 

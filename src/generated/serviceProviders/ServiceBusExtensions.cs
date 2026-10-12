@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 {
     using System;
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -13,773 +12,1305 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
     public class ServiceBusActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageInputMessageType>> message)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
+        public IOutputWorkflowAction<JToken> SendMessage([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessageInputMessageType> message)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildSendMessage(WorkflowExpression<string> entityName, WorkflowExpression<SendMessageInputMessageType> message)
+        {
+            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
+            WorkflowExpression.Validate(message, nameof(message), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> SendMessages(Expression<Func<string>> entityName, Expression<Func<SendMessagesInputMessagesTypeItem[]>> messages)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessages))]
+        public IOutputWorkflowAction<JToken> SendMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessagesInputMessagesTypeItem[]> messages)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildSendMessages(WorkflowExpression<string> entityName, WorkflowExpression<SendMessagesInputMessagesTypeItem[]> messages)
+        {
+            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
+            WorkflowExpression.Validate(messages, nameof(messages), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
+                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> ReplicateMessages(Expression<Func<string>> entityName, Expression<Func<bool>> skipAlreadyReplicated)
+        [WorkflowExpressionFactory(nameof(__BuildReplicateMessages))]
+        public IOutputWorkflowAction<JToken> ReplicateMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<bool> skipAlreadyReplicated)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildReplicateMessages(WorkflowExpression<string> entityName, WorkflowExpression<bool> skipAlreadyReplicated)
+        {
+            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
+            WorkflowExpression.Validate(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
+                serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
+        [WorkflowExpressionFactory(nameof(__BuildCompleteQueueMessageV2))]
+        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildCompleteQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            if (deadLetterReason != null)
-            {
-                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
-            }
-
-            if (deadLetterErrorDescription != null)
-            {
-                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2(Expression<Func<string>> queueName, Expression<Func<int>> maxMessages = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (maxMessages != null)
-            {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            if (deadLetterReason != null)
-            {
-                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
-            }
-
-            if (deadLetterErrorDescription != null)
-            {
-                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessages = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            if (maxMessages != null)
-            {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName, Expression<Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType>> topicSubscriptionFilterType, Expression<Func<object>> topicSubscriptionCorrelationFilter = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
-            serviceProviderParameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(topicSubscriptionFilterType);
-            if (topicSubscriptionCorrelationFilter != null)
-            {
-                serviceProviderParameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(topicSubscriptionCorrelationFilter);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "createTopicSubscription", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            if (lockToken != null)
-            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
                 serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeMessageInSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildAbandonQueueMessageV2))]
+        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            if (lockToken != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildAbandonQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
                 serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonMessageInSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeadLetterQueueMessageV2))]
+        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            if (lockToken != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeadLetterQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
+            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            return new DeferredOutputAction<JToken>(() =>
             {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
                 serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            }
+                if (deadLetterReason != null)
+                {
+                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                }
 
-            if (deadLetterReason != null)
-            {
-                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
-            }
+                if (deadLetterErrorDescription != null)
+                {
+                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                }
 
-            if (deadLetterErrorDescription != null)
-            {
-                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterMessageInSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildRenewLockQueueMessageV2))]
+        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            if (lockToken != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildRenewLockQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
                 serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferMessageInSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeferQueueMessageV2))]
+        public IOutputWorkflowAction<JToken> DeferQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-            if (sessionId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeferQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromQueueV2))]
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> __BuildGetDeferredMessageFromQueueV2(WorkflowExpression<string> queueName, WorkflowExpression<string> sequenceNumber)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            return new DeferredBodyAction<GetDeferredMessageFromQueueV2Output>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueueV2))]
+        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> __BuildGetMessagesFromQueueV2(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessages = null)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            return new DeferredBodyAction<GetMessagesFromQueueV2OutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildCompleteTopicMessageV2))]
+        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildCompleteTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildAbandonTopicMessageV2))]
+        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildAbandonTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildDeadLetterTopicMessageV2))]
+        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeadLetterTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
+            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                if (deadLetterReason != null)
+                {
+                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                }
+
+                if (deadLetterErrorDescription != null)
+                {
+                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildRenewLockTopicMessageV2))]
+        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildRenewLockTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildDeferTopicMessageV2))]
+        public IOutputWorkflowAction<JToken> DeferTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeferTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromTopicV2))]
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> __BuildGetDeferredMessageFromTopicV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sequenceNumber)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            return new DeferredBodyAction<GetDeferredMessageFromTopicV2Output>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopicV2))]
+        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> __BuildGetMessagesFromTopicV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessages = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            return new DeferredBodyAction<GetMessagesFromTopicV2OutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateTopicSubscription))]
+        public IOutputWorkflowAction<JToken> CreateTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> topicSubscriptionName, [WorkflowExpression] Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType> topicSubscriptionFilterType, [WorkflowExpression] Func<object> topicSubscriptionCorrelationFilter = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildCreateTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> topicSubscriptionName, WorkflowExpression<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType> topicSubscriptionFilterType, WorkflowExpression<object> topicSubscriptionCorrelationFilter = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
+            WorkflowExpression.Validate(topicSubscriptionFilterType, nameof(topicSubscriptionFilterType), required: true);
+            WorkflowExpression.Validate(topicSubscriptionCorrelationFilter, nameof(topicSubscriptionCorrelationFilter), required: false);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
+                serviceProviderParameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(topicSubscriptionFilterType);
+                if (topicSubscriptionCorrelationFilter != null)
+                {
+                    serviceProviderParameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(topicSubscriptionCorrelationFilter);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "createTopicSubscription", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteTopicSubscription))]
+        public IOutputWorkflowAction<JToken> DeleteTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> topicSubscriptionName)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeleteTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> topicSubscriptionName)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildCompleteMessageInSession))]
+        public IOutputWorkflowAction<JToken> CompleteMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildCompleteMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
+        {
+            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+                if (lockToken != null)
+                {
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeMessageInSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildAbandonMessageInSession))]
+        public IOutputWorkflowAction<JToken> AbandonMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildAbandonMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
+        {
+            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+                if (lockToken != null)
+                {
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonMessageInSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildDeadLetterMessageInSession))]
+        public IOutputWorkflowAction<JToken> DeadLetterMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeadLetterMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
+        {
+            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
+            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+                if (lockToken != null)
+                {
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                }
+
+                if (deadLetterReason != null)
+                {
+                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                }
+
+                if (deadLetterErrorDescription != null)
+                {
+                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterMessageInSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildDeferMessageInSession))]
+        public IOutputWorkflowAction<JToken> DeferMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeferMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
+        {
+            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+                if (lockToken != null)
+                {
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferMessageInSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromQueueSession))]
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> __BuildGetDeferredMessageFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sequenceNumber, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> acquireNewSession = null)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            return new DeferredBodyAction<GetDeferredMessageFromQueueSessionOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+                if (sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                }
+
+                if (acquireNewSession != null)
+                {
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetDeferredMessageFromQueueSessionOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromTopicSession))]
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> __BuildGetDeferredMessageFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sequenceNumber, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> acquireNewSession = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            return new DeferredBodyAction<GetDeferredMessageFromTopicSessionOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+                if (sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                }
+
+                if (acquireNewSession != null)
+                {
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetDeferredMessageFromTopicSessionOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueueSession))]
+        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<int> maxMessages = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> __BuildGetMessagesFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId, WorkflowExpression<int> maxMessages = null, WorkflowExpression<bool> acquireNewSession = null)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            return new DeferredBodyAction<GetMessagesFromQueueSessionOutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
                 serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                }
 
-            if (acquireNewSession != null)
-            {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
-            }
+                if (acquireNewSession != null)
+                {
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetDeferredMessageFromQueueSessionOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetMessagesFromQueueSessionOutputItem[]>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopicSession))]
+        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<int> maxMessages = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-            if (sessionId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> __BuildGetMessagesFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId, WorkflowExpression<int> maxMessages = null, WorkflowExpression<bool> acquireNewSession = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            return new DeferredBodyAction<GetMessagesFromTopicSessionOutputItem[]>(() =>
             {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
                 serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                }
 
-            if (acquireNewSession != null)
-            {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
-            }
+                if (acquireNewSession != null)
+                {
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetDeferredMessageFromTopicSessionOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetMessagesFromTopicSessionOutputItem[]>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
+        [WorkflowExpressionFactory(nameof(__BuildRenewQueueSession))]
+        public IOutputWorkflowAction<JToken> RenewQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            if (maxMessages != null)
-            {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (acquireNewSession != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildRenewQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetMessagesFromQueueSessionOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
+        [WorkflowExpressionFactory(nameof(__BuildRenewTopicSession))]
+        public IOutputWorkflowAction<JToken> RenewTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            if (maxMessages != null)
-            {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (acquireNewSession != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildRenewTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetMessagesFromTopicSessionOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
+        [WorkflowExpressionFactory(nameof(__BuildCloseQueueSession))]
+        public IOutputWorkflowAction<JToken> CloseQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildCloseQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
+        [WorkflowExpressionFactory(nameof(__BuildCloseTopicSession))]
+        public IOutputWorkflowAction<JToken> CloseTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CloseQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildCloseTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CloseTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
     }
 
     public class ServiceBusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildReceiveQueueMessages))]
+        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (isSessionsEnabled != null)
-            {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
-            }
-            else
-            {
-                serviceProviderParameters["isSessionsEnabled"] = false;
-            }
-
-            if (maxMessageBatchSize != null)
-            {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(serviceProviderInput);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> __BuildReceiveQueueMessages(WorkflowExpression<string> queueName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            if (isSessionsEnabled != null)
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            return new DeferredBodyTrigger<ReceiveQueueMessagesOutputItem[]>(() =>
             {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
-            }
-            else
-            {
-                serviceProviderParameters["isSessionsEnabled"] = false;
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (isSessionsEnabled != null)
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                }
+                else
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = false;
+                }
 
-            if (maxMessageBatchSize != null)
-            {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
-            }
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(serviceProviderInput);
+            });
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        [WorkflowExpressionFactory(nameof(__BuildReceiveTopicMessages))]
+        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (isSessionsEnabled != null)
-            {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
-            }
-            else
-            {
-                serviceProviderParameters["isSessionsEnabled"] = false;
-            }
-
-            if (maxMessageBatchSize != null)
-            {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessagesForReplication", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> __BuildReceiveTopicMessages(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            if (isSessionsEnabled != null)
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            return new DeferredBodyTrigger<ReceiveTopicMessagesOutputItem[]>(() =>
             {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
-            }
-            else
-            {
-                serviceProviderParameters["isSessionsEnabled"] = false;
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                if (isSessionsEnabled != null)
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                }
+                else
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = false;
+                }
 
-            if (maxMessageBatchSize != null)
-            {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
-            }
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessagesForReplication", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(serviceProviderInput);
+            });
         }
 
-        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2(Expression<Func<string>> queueName, Expression<Func<double>> maxMessageBatchSize = null)
+        [WorkflowExpressionFactory(nameof(__BuildReceiveQueueMessagesForReplication))]
+        public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (maxMessageBatchSize != null)
-            {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockQueueMessagesV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(serviceProviderInput);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<double>> maxMessageBatchSize = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowTrigger<JToken> __BuildReceiveQueueMessagesForReplication(WorkflowExpression<string> queueName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            if (maxMessageBatchSize != null)
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            return new DeferredOutputTrigger<JToken>(() =>
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (isSessionsEnabled != null)
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                }
+                else
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = false;
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockTopicMessagesV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(serviceProviderInput);
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessagesForReplication", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildReceiveTopicMessagesForReplication))]
+        public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (sessionId != null)
-            {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
-
-            if (maxMessages != null)
-            {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromQueueSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowTrigger<JToken> __BuildReceiveTopicMessagesForReplication(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            if (sessionId != null)
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            return new DeferredOutputTrigger<JToken>(() =>
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                if (isSessionsEnabled != null)
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                }
+                else
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = false;
+                }
 
-            if (maxMessages != null)
-            {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
-            }
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromTopicSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessagesForReplication", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPeekLockQueueMessagesV2))]
+        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (sessionId != null)
-            {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromQueueSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> __BuildPeekLockQueueMessagesV2(WorkflowExpression<string> queueName, WorkflowExpression<double> maxMessageBatchSize = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            if (sessionId != null)
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            return new DeferredBodyTrigger<PeekLockQueueMessagesV2OutputItem[]>(() =>
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockQueueMessagesV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(serviceProviderInput);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPeekLockTopicMessagesV2))]
+        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> __BuildPeekLockTopicMessagesV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<double> maxMessageBatchSize = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            return new DeferredBodyTrigger<PeekLockTopicMessagesV2OutputItem[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromTopicSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockTopicMessagesV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(serviceProviderInput);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewMessagesFromQueueSession))]
+        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<int> maxMessages = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> __BuildOnNewMessagesFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId = null, WorkflowExpression<int> maxMessages = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            return new DeferredBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                }
+
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromQueueSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewMessagesFromTopicSession))]
+        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<int> maxMessages = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> __BuildOnNewMessagesFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId = null, WorkflowExpression<int> maxMessages = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            return new DeferredBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                if (sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                }
+
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromTopicSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnSingleNewMessageFromQueueSession))]
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> __BuildOnSingleNewMessageFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyTrigger<OnSingleNewMessageFromQueueSessionOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromQueueSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnSingleNewMessageFromTopicSession))]
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> __BuildOnSingleNewMessageFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
+            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyTrigger<OnSingleNewMessageFromTopicSessionOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+                if (sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromTopicSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
         }
     }
 
@@ -1581,7 +2112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string SequenceNumber { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType
     {
         None,

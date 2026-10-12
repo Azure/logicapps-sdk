@@ -1,273 +1,452 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BitbucketActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<IssueResponse> CreateIssue(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> bodyissueTitle, Expression<Func<bodyissueTypeInput>> bodyissueType, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodycontentdescription = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycomponentcomponent = null, Expression<Func<string>> bodymilestonemilestone = null, Expression<Func<string>> bodyversionversion = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateIssue))]
+        public IBodyWorkflowAction<IssueResponse> CreateIssue([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> bodyissueTitle, [WorkflowExpression] Func<bodyissueTypeInput> bodyissueType, [WorkflowExpression] Func<bodypriorityInput> bodypriority, [WorkflowExpression] Func<string> bodycontentdescription = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycomponentcomponent = null, [WorkflowExpression] Func<string> bodymilestonemilestone = null, [WorkflowExpression] Func<string> bodyversionversion = null)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/issues", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodyissueTitle);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            if (bodycontentdescription != null)
-            {
-                contentObject["raw"] = ExpressionConverter.ConvertO(bodycontentdescription);
-                contentObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (contentObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IssueResponse> __BuildCreateIssue(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> bodyissueTitle, WorkflowExpression<bodyissueTypeInput> bodyissueType, WorkflowExpression<bodypriorityInput> bodypriority, WorkflowExpression<string> bodycontentdescription = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodycomponentcomponent = null, WorkflowExpression<string> bodymilestonemilestone = null, WorkflowExpression<string> bodyversionversion = null)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            WorkflowExpression.Validate(bodyissueTitle, nameof(bodyissueTitle), required: true);
+            WorkflowExpression.Validate(bodyissueType, nameof(bodyissueType), required: true);
+            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: true);
+            WorkflowExpression.Validate(bodycontentdescription, nameof(bodycontentdescription), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodycomponentcomponent, nameof(bodycomponentcomponent), required: false);
+            WorkflowExpression.Validate(bodymilestonemilestone, nameof(bodymilestonemilestone), required: false);
+            WorkflowExpression.Validate(bodyversionversion, nameof(bodyversionversion), required: false);
+            return new DeferredBodyAction<IssueResponse>(() =>
             {
-                body["content"] = contentObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(bodyissueTitle);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                if (bodycontentdescription != null)
+                {
+                    contentObject["raw"] = ExpressionConverter.ConvertO(bodycontentdescription);
+                    contentObjectpropCount++;
+                }
 
-            bodypropCount++;
-            body["kind"] = ExpressionConverter.ConvertO(bodyissueType);
-            bodypropCount++;
-            body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            var componentObject = new JObject();
-            var componentObjectpropCount = 0;
-            if (bodycomponentcomponent != null)
-            {
-                componentObject["name"] = ExpressionConverter.ConvertO(bodycomponentcomponent);
-                componentObjectpropCount++;
-            }
-
-            if (componentObjectpropCount > 0)
-            {
-                body["component"] = componentObject;
+                body["kind"] = ExpressionConverter.ConvertO(bodyissueType);
                 bodypropCount++;
-            }
+                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            var milestoneObject = new JObject();
-            var milestoneObjectpropCount = 0;
-            if (bodymilestonemilestone != null)
-            {
-                milestoneObject["name"] = ExpressionConverter.ConvertO(bodymilestonemilestone);
-                milestoneObjectpropCount++;
-            }
+                var componentObject = new JObject();
+                var componentObjectpropCount = 0;
+                if (bodycomponentcomponent != null)
+                {
+                    componentObject["name"] = ExpressionConverter.ConvertO(bodycomponentcomponent);
+                    componentObjectpropCount++;
+                }
 
-            if (milestoneObjectpropCount > 0)
-            {
-                body["milestone"] = milestoneObject;
-                bodypropCount++;
-            }
+                if (componentObjectpropCount > 0)
+                {
+                    body["component"] = componentObject;
+                    bodypropCount++;
+                }
 
-            var versionObject = new JObject();
-            var versionObjectpropCount = 0;
-            if (bodyversionversion != null)
-            {
-                versionObject["name"] = ExpressionConverter.ConvertO(bodyversionversion);
-                versionObjectpropCount++;
-            }
+                var milestoneObject = new JObject();
+                var milestoneObjectpropCount = 0;
+                if (bodymilestonemilestone != null)
+                {
+                    milestoneObject["name"] = ExpressionConverter.ConvertO(bodymilestonemilestone);
+                    milestoneObjectpropCount++;
+                }
 
-            if (versionObjectpropCount > 0)
-            {
-                body["version"] = versionObject;
-                bodypropCount++;
-            }
+                if (milestoneObjectpropCount > 0)
+                {
+                    body["milestone"] = milestoneObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var versionObject = new JObject();
+                var versionObjectpropCount = 0;
+                if (bodyversionversion != null)
+                {
+                    versionObject["name"] = ExpressionConverter.ConvertO(bodyversionversion);
+                    versionObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<IssueResponse>(callPayload);
+                if (versionObjectpropCount > 0)
+                {
+                    body["version"] = versionObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<IssueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<IssueResponse> GetIssueById(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> issueId)
+        [WorkflowExpressionFactory(nameof(__BuildGetIssueById))]
+        public IBodyWorkflowAction<IssueResponse> GetIssueById([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> issueId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/issues/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IssueResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IssueResponse> __BuildGetIssueById(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> issueId)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            WorkflowExpression.Validate(issueId, nameof(issueId), required: true);
+            return new DeferredBodyAction<IssueResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IssueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<ApprovePullRequestResponse> ApprovePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
+        [WorkflowExpressionFactory(nameof(__BuildApprovePullRequest))]
+        public IBodyWorkflowAction<ApprovePullRequestResponse> ApprovePullRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> pullrequestId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ApprovePullRequestResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApprovePullRequestResponse> __BuildApprovePullRequest(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> pullrequestId)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            WorkflowExpression.Validate(pullrequestId, nameof(pullrequestId), required: true);
+            return new DeferredBodyAction<ApprovePullRequestResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ApprovePullRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> DeclinePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
+        [WorkflowExpressionFactory(nameof(__BuildDeclinePullRequest))]
+        public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> DeclinePullRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> pullrequestId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> __BuildDeclinePullRequest(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> pullrequestId)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            WorkflowExpression.Validate(pullrequestId, nameof(pullrequestId), required: true);
+            return new DeferredBodyAction<DeclineOrMergePullRequestResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> MergePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
+        [WorkflowExpressionFactory(nameof(__BuildMergePullRequest))]
+        public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> MergePullRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> pullrequestId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> __BuildMergePullRequest(WorkflowExpression<string> account, WorkflowExpression<string> slug, WorkflowExpression<string> pullrequestId)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            WorkflowExpression.Validate(pullrequestId, nameof(pullrequestId), required: true);
+            return new DeferredBodyAction<DeclineOrMergePullRequestResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<UserResponse> GetUserById(Expression<Func<string>> userId)
+        [WorkflowExpressionFactory(nameof(__BuildGetUserById))]
+        public IBodyWorkflowAction<UserResponse> GetUserById([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/2.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserResponse> __BuildGetUserById(WorkflowExpression<string> userId)
+        {
+            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<UserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
     }
 
     public class BitbucketTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo(Expression<Func<string>> account, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewRepo))]
+        public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo([WorkflowExpression] Func<string> account,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ListRepositoriesResponse> __BuildOnNewRepo(WorkflowExpression<string> account,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            return new DeferredBodyTrigger<ListRepositoriesResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookIssueCreated))]
+        public IWorkflowTrigger CreateHookIssueCreated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookIssueCreated(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookIssueUpdated))]
+        public IWorkflowTrigger CreateHookIssueUpdated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookIssueUpdated(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestApproved))]
+        public IWorkflowTrigger CreateHookPullRequestApproved([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookPullRequestApproved(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestCreated))]
+        public IWorkflowTrigger CreateHookPullRequestCreated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookPullRequestCreated(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestDeclined))]
+        public IWorkflowTrigger CreateHookPullRequestDeclined([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookPullRequestDeclined(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestMerged))]
+        public IWorkflowTrigger CreateHookPullRequestMerged([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookPullRequestMerged(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateHookRepositoryPush))]
+        public IWorkflowTrigger CreateHookRepositoryPush([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateHookRepositoryPush(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(account, nameof(account), required: true);
+            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -385,6 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Milestone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyissueTypeInput
     {
         [EnumMember(Value = "bug")]
@@ -397,6 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         TaskObject
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         [EnumMember(Value = "trivial")]
@@ -411,6 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         Blocker
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         [EnumMember(Value = "new")]

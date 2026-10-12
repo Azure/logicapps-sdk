@@ -4,45 +4,79 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BinanceusipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLiveTickerPrice))]
+        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice([WorkflowExpression] Func<string> symbol = null)
         {
-            var apiCallPath = "/ticker/price";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLiveTickerPriceResponse> __BuildGetLiveTickerPrice(WorkflowExpression<string> symbol = null)
+        {
+            WorkflowExpression.Validate(symbol, nameof(symbol), required: false);
+            return new DeferredBodyAction<GetLiveTickerPriceResponse>(() =>
+            {
+                var apiCallPath = "/ticker/price";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (symbol != null)
+                    callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation(Expression<Func<string>> symbol = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetExchangeInformation))]
+        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation([WorkflowExpression] Func<string> symbol = null)
         {
-            var apiCallPath = "/exchangeInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetExchangeInfoResponse> __BuildGetExchangeInformation(WorkflowExpression<string> symbol = null)
+        {
+            WorkflowExpression.Validate(symbol, nameof(symbol), required: false);
+            return new DeferredBodyAction<GetExchangeInfoResponse>(() =>
+            {
+                var apiCallPath = "/exchangeInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (symbol != null)
+                    callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRecentTrades))]
+        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/trades";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRecentTradesResponse> __BuildGetRecentTrades(WorkflowExpression<string> symbol, WorkflowExpression<int> limit = null)
+        {
+            WorkflowExpression.Validate(symbol, nameof(symbol), required: true);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetRecentTradesResponse>(() =>
+            {
+                var apiCallPath = "/trades";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            });
         }
     }
 

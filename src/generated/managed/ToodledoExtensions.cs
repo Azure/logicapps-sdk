@@ -1,158 +1,215 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ToodledoActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject[]> ListTasks(Expression<Func<int>> comp = null)
+        [WorkflowExpressionFactory(nameof(__BuildListTasks))]
+        public IBodyWorkflowAction<TaskObject[]> ListTasks([WorkflowExpression] Func<int> comp = null)
         {
-            var apiCallPath = "/tasks/get.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["comp"] = Convert.ToString(-1);
-            if (comp != null)
-                callPayload.Queries["comp"] = ExpressionConverter.Convert(comp);
-            return new ApiConnectionAction<TaskObject[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskObject[]> __BuildListTasks(WorkflowExpression<int> comp = null)
+        {
+            WorkflowExpression.Validate(comp, nameof(comp), required: false);
+            return new DeferredBodyAction<TaskObject[]>(() =>
+            {
+                var apiCallPath = "/tasks/get.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["comp"] = Convert.ToString(-1);
+                if (comp != null)
+                    callPayload.Queries["comp"] = ExpressionConverter.Convert(comp);
+                return new ApiConnectionAction<TaskObject[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject> CreateTask(Expression<Func<string>> tasktitle = null, Expression<Func<int>> taskfolderId = null, Expression<Func<int>> taskpriority = null, Expression<Func<string>> tasknote = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
+        public IBodyWorkflowAction<TaskObject> CreateTask([WorkflowExpression] Func<string> tasktitle = null, [WorkflowExpression] Func<int> taskfolderId = null, [WorkflowExpression] Func<int> taskpriority = null, [WorkflowExpression] Func<string> tasknote = null, [WorkflowExpression] Func<string> taskdueDate = null, [WorkflowExpression] Func<string> taskdueTime = null)
         {
-            var apiCallPath = "/tasks/add.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            if (tasktitle != null)
-            {
-                task["title"] = ExpressionConverter.ConvertO(tasktitle);
-                taskpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (taskfolderId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskObject> __BuildCreateTask(WorkflowExpression<string> tasktitle = null, WorkflowExpression<int> taskfolderId = null, WorkflowExpression<int> taskpriority = null, WorkflowExpression<string> tasknote = null, WorkflowExpression<string> taskdueDate = null, WorkflowExpression<string> taskdueTime = null)
+        {
+            WorkflowExpression.Validate(tasktitle, nameof(tasktitle), required: false);
+            WorkflowExpression.Validate(taskfolderId, nameof(taskfolderId), required: false);
+            WorkflowExpression.Validate(taskpriority, nameof(taskpriority), required: false);
+            WorkflowExpression.Validate(tasknote, nameof(tasknote), required: false);
+            WorkflowExpression.Validate(taskdueDate, nameof(taskdueDate), required: false);
+            WorkflowExpression.Validate(taskdueTime, nameof(taskdueTime), required: false);
+            return new DeferredBodyAction<TaskObject>(() =>
             {
-                task["folder"] = ExpressionConverter.ConvertO(taskfolderId);
-                taskpropCount++;
-            }
+                var apiCallPath = "/tasks/add.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                if (tasktitle != null)
+                {
+                    task["title"] = ExpressionConverter.ConvertO(tasktitle);
+                    taskpropCount++;
+                }
 
-            if (taskpriority != null)
-            {
-                task["priority"] = ExpressionConverter.ConvertO(taskpriority);
-                taskpropCount++;
-            }
+                if (taskfolderId != null)
+                {
+                    task["folder"] = ExpressionConverter.ConvertO(taskfolderId);
+                    taskpropCount++;
+                }
 
-            if (tasknote != null)
-            {
-                task["note"] = ExpressionConverter.ConvertO(tasknote);
-                taskpropCount++;
-            }
+                if (taskpriority != null)
+                {
+                    task["priority"] = ExpressionConverter.ConvertO(taskpriority);
+                    taskpropCount++;
+                }
 
-            if (taskdueDate != null)
-            {
-                task["duedate"] = ExpressionConverter.ConvertO(taskdueDate);
-                taskpropCount++;
-            }
+                if (tasknote != null)
+                {
+                    task["note"] = ExpressionConverter.ConvertO(tasknote);
+                    taskpropCount++;
+                }
 
-            if (taskdueTime != null)
-            {
-                task["duetime"] = ExpressionConverter.ConvertO(taskdueTime);
-                taskpropCount++;
-            }
+                if (taskdueDate != null)
+                {
+                    task["duedate"] = ExpressionConverter.ConvertO(taskdueDate);
+                    taskpropCount++;
+                }
 
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
+                if (taskdueTime != null)
+                {
+                    task["duetime"] = ExpressionConverter.ConvertO(taskdueTime);
+                    taskpropCount++;
+                }
 
-            return new ApiConnectionAction<TaskObject>(callPayload);
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+
+                return new ApiConnectionAction<TaskObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject> GetTaskById(Expression<Func<int>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetTaskById))]
+        public IBodyWorkflowAction<TaskObject> GetTaskById([WorkflowExpression] Func<int> id)
         {
-            var apiCallPath = "/tasks/getById.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<TaskObject>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskObject> __BuildGetTaskById(WorkflowExpression<int> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<TaskObject>(() =>
+            {
+                var apiCallPath = "/tasks/getById.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<TaskObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject> UpdateTask(Expression<Func<int>> taskid = null, Expression<Func<string>> tasktitle = null, Expression<Func<string>> taskcompleted = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null, Expression<Func<string>> tasknote = null, Expression<Func<int>> taskpriority = null, Expression<Func<int>> taskfolder = null, Expression<Func<string>> taskmodified = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateTask))]
+        public IBodyWorkflowAction<TaskObject> UpdateTask([WorkflowExpression] Func<int> taskid = null, [WorkflowExpression] Func<string> tasktitle = null, [WorkflowExpression] Func<string> taskcompleted = null, [WorkflowExpression] Func<string> taskdueDate = null, [WorkflowExpression] Func<string> taskdueTime = null, [WorkflowExpression] Func<string> tasknote = null, [WorkflowExpression] Func<int> taskpriority = null, [WorkflowExpression] Func<int> taskfolder = null, [WorkflowExpression] Func<string> taskmodified = null)
         {
-            var apiCallPath = "/tasks/edit.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            if (taskid != null)
-            {
-                task["id"] = ExpressionConverter.ConvertO(taskid);
-                taskpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (tasktitle != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskObject> __BuildUpdateTask(WorkflowExpression<int> taskid = null, WorkflowExpression<string> tasktitle = null, WorkflowExpression<string> taskcompleted = null, WorkflowExpression<string> taskdueDate = null, WorkflowExpression<string> taskdueTime = null, WorkflowExpression<string> tasknote = null, WorkflowExpression<int> taskpriority = null, WorkflowExpression<int> taskfolder = null, WorkflowExpression<string> taskmodified = null)
+        {
+            WorkflowExpression.Validate(taskid, nameof(taskid), required: false);
+            WorkflowExpression.Validate(tasktitle, nameof(tasktitle), required: false);
+            WorkflowExpression.Validate(taskcompleted, nameof(taskcompleted), required: false);
+            WorkflowExpression.Validate(taskdueDate, nameof(taskdueDate), required: false);
+            WorkflowExpression.Validate(taskdueTime, nameof(taskdueTime), required: false);
+            WorkflowExpression.Validate(tasknote, nameof(tasknote), required: false);
+            WorkflowExpression.Validate(taskpriority, nameof(taskpriority), required: false);
+            WorkflowExpression.Validate(taskfolder, nameof(taskfolder), required: false);
+            WorkflowExpression.Validate(taskmodified, nameof(taskmodified), required: false);
+            return new DeferredBodyAction<TaskObject>(() =>
             {
-                task["title"] = ExpressionConverter.ConvertO(tasktitle);
-                taskpropCount++;
-            }
+                var apiCallPath = "/tasks/edit.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                if (taskid != null)
+                {
+                    task["id"] = ExpressionConverter.ConvertO(taskid);
+                    taskpropCount++;
+                }
 
-            if (taskcompleted != null)
-            {
-                task["completed"] = ExpressionConverter.ConvertO(taskcompleted);
-                taskpropCount++;
-            }
+                if (tasktitle != null)
+                {
+                    task["title"] = ExpressionConverter.ConvertO(tasktitle);
+                    taskpropCount++;
+                }
 
-            if (taskdueDate != null)
-            {
-                task["duedate"] = ExpressionConverter.ConvertO(taskdueDate);
-                taskpropCount++;
-            }
+                if (taskcompleted != null)
+                {
+                    task["completed"] = ExpressionConverter.ConvertO(taskcompleted);
+                    taskpropCount++;
+                }
 
-            if (taskdueTime != null)
-            {
-                task["duetime"] = ExpressionConverter.ConvertO(taskdueTime);
-                taskpropCount++;
-            }
+                if (taskdueDate != null)
+                {
+                    task["duedate"] = ExpressionConverter.ConvertO(taskdueDate);
+                    taskpropCount++;
+                }
 
-            if (tasknote != null)
-            {
-                task["note"] = ExpressionConverter.ConvertO(tasknote);
-                taskpropCount++;
-            }
+                if (taskdueTime != null)
+                {
+                    task["duetime"] = ExpressionConverter.ConvertO(taskdueTime);
+                    taskpropCount++;
+                }
 
-            if (taskpriority != null)
-            {
-                task["priority"] = ExpressionConverter.ConvertO(taskpriority);
-                taskpropCount++;
-            }
+                if (tasknote != null)
+                {
+                    task["note"] = ExpressionConverter.ConvertO(tasknote);
+                    taskpropCount++;
+                }
 
-            if (taskfolder != null)
-            {
-                task["folder"] = ExpressionConverter.ConvertO(taskfolder);
-                taskpropCount++;
-            }
+                if (taskpriority != null)
+                {
+                    task["priority"] = ExpressionConverter.ConvertO(taskpriority);
+                    taskpropCount++;
+                }
 
-            if (taskmodified != null)
-            {
-                task["modified"] = ExpressionConverter.ConvertO(taskmodified);
-                taskpropCount++;
-            }
+                if (taskfolder != null)
+                {
+                    task["folder"] = ExpressionConverter.ConvertO(taskfolder);
+                    taskpropCount++;
+                }
 
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
+                if (taskmodified != null)
+                {
+                    task["modified"] = ExpressionConverter.ConvertO(taskmodified);
+                    taskpropCount++;
+                }
 
-            return new ApiConnectionAction<TaskObject>(callPayload);
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+
+                return new ApiConnectionAction<TaskObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
@@ -167,12 +224,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
 
     public class ToodledoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskObject[]> TrigOnNewTask(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskObject[]> TrigOnNewTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/tasks/get.php";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskObject[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TaskObject[]>(callPayload, recurrence: recurrence);
         }
     }
 

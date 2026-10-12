@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,305 +20,363 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IWorkflowAction POSTHttp(Expression<Func<string>> path = null)
+        [WorkflowExpressionFactory(nameof(__BuildPOSTHttp))]
+        public IWorkflowAction POSTHttp([WorkflowExpression] Func<string> path = null)
         {
-            var apiCallPath = "/v2/autoreview/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (path != null)
-                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var configsObject = new JObject();
-            var configsObjectpropCount = 0;
-            if (configsObjectpropCount > 0)
-            {
-                body["configs"] = configsObject;
-                bodypropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTJsonResponse> POSTJson(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<string[]>> bodyconfigscomplexity = null, Expression<Func<string[]>> bodyconfigsscoring = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPOSTHttp(WorkflowExpression<string> path = null)
         {
-            var apiCallPath = "/v2/autoreview/json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodyflowPropertiesdisplayName != null)
+            WorkflowExpression.Validate(path, nameof(path), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesflowId != null)
-            {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesowner != null)
-            {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesenvironment != null)
-            {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
-                propertiesObjectpropCount++;
-            }
-
-            var definitionObject = new JObject();
-            var definitionObjectpropCount = 0;
-            if (definitionObjectpropCount > 0)
-            {
-                propertiesObject["definition"] = definitionObject;
-                propertiesObjectpropCount++;
-            }
-
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            var configsObject = new JObject();
-            var configsObjectpropCount = 0;
-            var namingObject = new JObject();
-            var namingObjectpropCount = 0;
-            if (namingObjectpropCount > 0)
-            {
-                configsObject["naming"] = namingObject;
-                configsObjectpropCount++;
-            }
-
-            if (bodyconfigscomplexity != null)
-            {
-                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigscomplexity);
-                configsObjectpropCount++;
-            }
-
-            var ratingsObject = new JObject();
-            var ratingsObjectpropCount = 0;
-            if (ratingsObjectpropCount > 0)
-            {
-                configsObject["ratings"] = ratingsObject;
-                configsObjectpropCount++;
-            }
-
-            if (bodyconfigsscoring != null)
-            {
-                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigsscoring);
-                configsObjectpropCount++;
-            }
-
-            configsObject["type"] = "json";
-            configsObjectpropCount++;
-            if (configsObjectpropCount > 0)
-            {
-                body["configs"] = configsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTJsonResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IWorkflowAction POSTFile(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
-        {
-            var apiCallPath = "/v1/autoreview/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodyflowPropertiesdisplayName != null)
-            {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesflowId != null)
-            {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesowner != null)
-            {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesenvironment != null)
-            {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
-                propertiesObjectpropCount++;
-            }
-
-            var definitionObject = new JObject();
-            var definitionObjectpropCount = 0;
-            if (definitionObjectpropCount > 0)
-            {
-                propertiesObject["definition"] = definitionObject;
-                propertiesObjectpropCount++;
-            }
-
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            var configsObject = new JObject();
-            var configsObjectpropCount = 0;
-            if (bodyconfigfileType != null)
-            {
-                if (bodyconfigfileType != null)
+                var apiCallPath = "/v2/autoreview/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (path != null)
+                    callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var configsObject = new JObject();
+                var configsObjectpropCount = 0;
+                if (configsObjectpropCount > 0)
                 {
-                    configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                    body["configs"] = configsObject;
+                    bodypropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        [WorkflowExpressionFactory(nameof(__BuildPOSTJson))]
+        public IBodyWorkflowAction<POSTJsonResponse> POSTJson([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<string[]> bodyconfigscomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigsscoring = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<POSTJsonResponse> __BuildPOSTJson(WorkflowExpression<string> bodyflowPropertiesdisplayName = null, WorkflowExpression<string> bodyflowPropertiesflowId = null, WorkflowExpression<string> bodyflowPropertiesowner = null, WorkflowExpression<string> bodyflowPropertiesenvironment = null, WorkflowExpression<string[]> bodyconfigscomplexity = null, WorkflowExpression<string[]> bodyconfigsscoring = null)
+        {
+            WorkflowExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
+            WorkflowExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
+            WorkflowExpression.Validate(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
+            WorkflowExpression.Validate(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
+            WorkflowExpression.Validate(bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
+            WorkflowExpression.Validate(bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
+            return new DeferredBodyAction<POSTJsonResponse>(() =>
+            {
+                var apiCallPath = "/v2/autoreview/json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (bodyflowPropertiesdisplayName != null)
+                {
+                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodyflowPropertiesflowId != null)
+                {
+                    propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodyflowPropertiesowner != null)
+                {
+                    propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodyflowPropertiesenvironment != null)
+                {
+                    propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                    propertiesObjectpropCount++;
+                }
+
+                var definitionObject = new JObject();
+                var definitionObjectpropCount = 0;
+                if (definitionObjectpropCount > 0)
+                {
+                    propertiesObject["definition"] = definitionObject;
+                    propertiesObjectpropCount++;
+                }
+
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                var configsObject = new JObject();
+                var configsObjectpropCount = 0;
+                var namingObject = new JObject();
+                var namingObjectpropCount = 0;
+                if (namingObjectpropCount > 0)
+                {
+                    configsObject["naming"] = namingObject;
                     configsObjectpropCount++;
                 }
 
+                if (bodyconfigscomplexity != null)
+                {
+                    configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigscomplexity);
+                    configsObjectpropCount++;
+                }
+
+                var ratingsObject = new JObject();
+                var ratingsObjectpropCount = 0;
+                if (ratingsObjectpropCount > 0)
+                {
+                    configsObject["ratings"] = ratingsObject;
+                    configsObjectpropCount++;
+                }
+
+                if (bodyconfigsscoring != null)
+                {
+                    configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigsscoring);
+                    configsObjectpropCount++;
+                }
+
+                configsObject["type"] = "json";
                 configsObjectpropCount++;
-            }
-            else
-            {
-                configsObject["type"] = "review";
-                configsObjectpropCount++;
-            }
+                if (configsObjectpropCount > 0)
+                {
+                    body["configs"] = configsObject;
+                    bodypropCount++;
+                }
 
-            var namingObject = new JObject();
-            var namingObjectpropCount = 0;
-            if (namingObjectpropCount > 0)
-            {
-                configsObject["naming"] = namingObject;
-                configsObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyconfigcomplexity != null)
-            {
-                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
-                configsObjectpropCount++;
-            }
-
-            var ratingsObject = new JObject();
-            var ratingsObjectpropCount = 0;
-            if (ratingsObjectpropCount > 0)
-            {
-                configsObject["ratings"] = ratingsObject;
-                configsObjectpropCount++;
-            }
-
-            if (bodyconfigscoring != null)
-            {
-                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
-                configsObjectpropCount++;
-            }
-
-            if (configsObjectpropCount > 0)
-            {
-                body["configs"] = configsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<POSTJsonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram(Expression<Func<string>> bodypropertiesdisplayName = null, Expression<Func<string>> bodypropertiesflowId = null, Expression<Func<string>> bodypropertiesowner = null, Expression<Func<string>> bodypropertiesenvironment = null)
+        [WorkflowExpressionFactory(nameof(__BuildPOSTFile))]
+        public IWorkflowAction POSTFile([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<bodyconfigfileTypeInput> bodyconfigfileType = null, [WorkflowExpression] Func<string[]> bodyconfigcomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigscoring = null)
         {
-            var apiCallPath = "/v2/autoreview/diagram";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodypropertiesdisplayName != null)
-            {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodypropertiesdisplayName);
-                propertiesObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropertiesflowId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPOSTFile(WorkflowExpression<string> bodyflowPropertiesdisplayName = null, WorkflowExpression<string> bodyflowPropertiesflowId = null, WorkflowExpression<string> bodyflowPropertiesowner = null, WorkflowExpression<string> bodyflowPropertiesenvironment = null, WorkflowExpression<bodyconfigfileTypeInput> bodyconfigfileType = null, WorkflowExpression<string[]> bodyconfigcomplexity = null, WorkflowExpression<string[]> bodyconfigscoring = null)
+        {
+            WorkflowExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
+            WorkflowExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
+            WorkflowExpression.Validate(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
+            WorkflowExpression.Validate(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
+            WorkflowExpression.Validate(bodyconfigfileType, nameof(bodyconfigfileType), required: false);
+            WorkflowExpression.Validate(bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
+            WorkflowExpression.Validate(bodyconfigscoring, nameof(bodyconfigscoring), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodypropertiesflowId);
-                propertiesObjectpropCount++;
-            }
+                var apiCallPath = "/v1/autoreview/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (bodyflowPropertiesdisplayName != null)
+                {
+                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                    propertiesObjectpropCount++;
+                }
 
-            if (bodypropertiesowner != null)
+                if (bodyflowPropertiesflowId != null)
+                {
+                    propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodyflowPropertiesowner != null)
+                {
+                    propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodyflowPropertiesenvironment != null)
+                {
+                    propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                    propertiesObjectpropCount++;
+                }
+
+                var definitionObject = new JObject();
+                var definitionObjectpropCount = 0;
+                if (definitionObjectpropCount > 0)
+                {
+                    propertiesObject["definition"] = definitionObject;
+                    propertiesObjectpropCount++;
+                }
+
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                var configsObject = new JObject();
+                var configsObjectpropCount = 0;
+                if (bodyconfigfileType != null)
+                {
+                    if (bodyconfigfileType != null)
+                    {
+                        configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                        configsObjectpropCount++;
+                    }
+
+                    configsObjectpropCount++;
+                }
+                else
+                {
+                    configsObject["type"] = "review";
+                    configsObjectpropCount++;
+                }
+
+                var namingObject = new JObject();
+                var namingObjectpropCount = 0;
+                if (namingObjectpropCount > 0)
+                {
+                    configsObject["naming"] = namingObject;
+                    configsObjectpropCount++;
+                }
+
+                if (bodyconfigcomplexity != null)
+                {
+                    configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
+                    configsObjectpropCount++;
+                }
+
+                var ratingsObject = new JObject();
+                var ratingsObjectpropCount = 0;
+                if (ratingsObjectpropCount > 0)
+                {
+                    configsObject["ratings"] = ratingsObject;
+                    configsObjectpropCount++;
+                }
+
+                if (bodyconfigscoring != null)
+                {
+                    configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
+                    configsObjectpropCount++;
+                }
+
+                if (configsObjectpropCount > 0)
+                {
+                    body["configs"] = configsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        [WorkflowExpressionFactory(nameof(__BuildPOSTDiagram))]
+        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram([WorkflowExpression] Func<string> bodypropertiesdisplayName = null, [WorkflowExpression] Func<string> bodypropertiesflowId = null, [WorkflowExpression] Func<string> bodypropertiesowner = null, [WorkflowExpression] Func<string> bodypropertiesenvironment = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<POSTDiagramResponse> __BuildPOSTDiagram(WorkflowExpression<string> bodypropertiesdisplayName = null, WorkflowExpression<string> bodypropertiesflowId = null, WorkflowExpression<string> bodypropertiesowner = null, WorkflowExpression<string> bodypropertiesenvironment = null)
+        {
+            WorkflowExpression.Validate(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
+            WorkflowExpression.Validate(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
+            WorkflowExpression.Validate(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
+            WorkflowExpression.Validate(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
+            return new DeferredBodyAction<POSTDiagramResponse>(() =>
             {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodypropertiesowner);
-                propertiesObjectpropCount++;
-            }
+                var apiCallPath = "/v2/autoreview/diagram";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (bodypropertiesdisplayName != null)
+                {
+                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodypropertiesdisplayName);
+                    propertiesObjectpropCount++;
+                }
 
-            if (bodypropertiesenvironment != null)
-            {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodypropertiesenvironment);
-                propertiesObjectpropCount++;
-            }
+                if (bodypropertiesflowId != null)
+                {
+                    propertiesObject["name"] = ExpressionConverter.ConvertO(bodypropertiesflowId);
+                    propertiesObjectpropCount++;
+                }
 
-            var definitionObject = new JObject();
-            var definitionObjectpropCount = 0;
-            if (definitionObjectpropCount > 0)
-            {
-                propertiesObject["definition"] = definitionObject;
-                propertiesObjectpropCount++;
-            }
+                if (bodypropertiesowner != null)
+                {
+                    propertiesObject["owner"] = ExpressionConverter.ConvertO(bodypropertiesowner);
+                    propertiesObjectpropCount++;
+                }
 
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (bodypropertiesenvironment != null)
+                {
+                    propertiesObject["environment"] = ExpressionConverter.ConvertO(bodypropertiesenvironment);
+                    propertiesObjectpropCount++;
+                }
 
-            var configsObject = new JObject();
-            var configsObjectpropCount = 0;
-            configsObject["type"] = "SVG";
-            configsObjectpropCount++;
-            if (configsObjectpropCount > 0)
-            {
-                body["configs"] = configsObject;
-                bodypropCount++;
-            }
+                var definitionObject = new JObject();
+                var definitionObjectpropCount = 0;
+                if (definitionObjectpropCount > 0)
+                {
+                    propertiesObject["definition"] = definitionObject;
+                    propertiesObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<POSTDiagramResponse>(callPayload);
+                var configsObject = new JObject();
+                var configsObjectpropCount = 0;
+                configsObject["type"] = "SVG";
+                configsObjectpropCount++;
+                if (configsObjectpropCount > 0)
+                {
+                    body["configs"] = configsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<POSTDiagramResponse>(callPayload);
+            });
         }
     }
 
@@ -780,6 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Parent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyconfigfileTypeInput
     {
         [EnumMember(Value = "review")]

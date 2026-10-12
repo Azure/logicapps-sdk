@@ -4,30 +4,46 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class JirasearchActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jirasearch")]
-        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> jql, Expression<Func<string>> hostname, Expression<Func<string>> fields, Expression<Func<string>> expand = null, Expression<Func<int>> startAt = null, Expression<Func<int>> maxResults = null)
+        [WorkflowExpressionFactory(nameof(__BuildSimpleSearch))]
+        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch([WorkflowExpression] Func<string> jql, [WorkflowExpression] Func<string> hostname, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> startAt = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/rest/api/2/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jql"] = ExpressionConverter.Convert(jql);
-            if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-            callPayload.Queries["hostname"] = ExpressionConverter.Convert(hostname);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (startAt != null)
-                callPayload.Queries["startAt"] = ExpressionConverter.Convert(startAt);
-            callPayload.Queries["maxResults"] = Convert.ToString(50);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SimpleSearchResponse> __BuildSimpleSearch(WorkflowExpression<string> jql, WorkflowExpression<string> hostname, WorkflowExpression<string> fields, WorkflowExpression<string> expand = null, WorkflowExpression<int> startAt = null, WorkflowExpression<int> maxResults = null)
+        {
+            WorkflowExpression.Validate(jql, nameof(jql), required: true);
+            WorkflowExpression.Validate(hostname, nameof(hostname), required: true);
+            WorkflowExpression.Validate(fields, nameof(fields), required: true);
+            WorkflowExpression.Validate(expand, nameof(expand), required: false);
+            WorkflowExpression.Validate(startAt, nameof(startAt), required: false);
+            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<SimpleSearchResponse>(() =>
+            {
+                var apiCallPath = "/rest/api/2/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["jql"] = ExpressionConverter.Convert(jql);
+                if (expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["hostname"] = ExpressionConverter.Convert(hostname);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (startAt != null)
+                    callPayload.Queries["startAt"] = ExpressionConverter.Convert(startAt);
+                callPayload.Queries["maxResults"] = Convert.ToString(50);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
+            });
         }
     }
 

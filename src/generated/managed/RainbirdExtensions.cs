@@ -4,123 +4,212 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RainbirdActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<StartResponse> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmID)
-        {
-            var apiCallPath = String.Format("/start/{0}", ExpressionConverter.ConvertWithUrlEncoding(kmID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            return new ApiConnectionAction<StartResponse>(callPayload);
-        }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<InjectResponse> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyInputItem[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildStart))]
+        public IBodyWorkflowAction<StartResponse> Start([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> kmID)
         {
-            var apiCallPath = String.Format("/{0}/inject", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<InjectResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StartResponse> __BuildStart(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> kmID)
         {
-            var apiCallPath = String.Format("/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysubject != null)
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            WorkflowExpression.Validate(kmID, nameof(kmID), required: true);
+            return new DeferredBodyAction<StartResponse>(() =>
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/start/{0}", ExpressionConverter.ConvertWithUrlEncoding(kmID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                return new ApiConnectionAction<StartResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
+        [WorkflowExpressionFactory(nameof(__BuildInject))]
+        public IBodyWorkflowAction<InjectResponse> Inject([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID, [WorkflowExpression] Func<bodyInputItem[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InjectResponse> __BuildInject(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID, WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            WorkflowExpression.Validate(sessionID, nameof(sessionID), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<InjectResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/inject", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<InjectResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
+        [WorkflowExpressionFactory(nameof(__BuildQuery))]
+        public IBodyWorkflowAction<JToken> Query([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID, [WorkflowExpression] Func<string> bodyrelationship, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyObject = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildQuery(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID, WorkflowExpression<string> bodyrelationship, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyObject = null)
+        {
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            WorkflowExpression.Validate(sessionID, nameof(sessionID), required: true);
+            WorkflowExpression.Validate(bodyrelationship, nameof(bodyrelationship), required: true);
+            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["relationship"] = ExpressionConverter.ConvertO(bodyrelationship);
+                if (bodyObject != null)
+                {
+                    body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["relationship"] = ExpressionConverter.ConvertO(bodyrelationship);
-            if (bodyObject != null)
-            {
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
+        [WorkflowExpressionFactory(nameof(__BuildResponse))]
+        public IBodyWorkflowAction<JToken> Response([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID, [WorkflowExpression] Func<bodyanswersInputItem[]> bodyanswers = null)
         {
-            var apiCallPath = String.Format("/{0}/response", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyanswers != null)
-            {
-                body["answers"] = ExpressionConverter.ConvertO(bodyanswers);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildResponse(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID, WorkflowExpression<bodyanswersInputItem[]> bodyanswers = null)
+        {
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            WorkflowExpression.Validate(sessionID, nameof(sessionID), required: true);
+            WorkflowExpression.Validate(bodyanswers, nameof(bodyanswers), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/response", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyanswers != null)
+                {
+                    body["answers"] = ExpressionConverter.ConvertO(bodyanswers);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID)
+        [WorkflowExpressionFactory(nameof(__BuildUndo))]
+        public IBodyWorkflowAction<JToken> Undo([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID)
         {
-            var apiCallPath = String.Format("/{0}/undo", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUndo(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> sessionID)
+        {
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            WorkflowExpression.Validate(sessionID, nameof(sessionID), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/undo", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<EvidenceResponse> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factID, Expression<Func<string>> sessionID)
+        [WorkflowExpressionFactory(nameof(__BuildEvidence))]
+        public IBodyWorkflowAction<EvidenceResponse> Evidence([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> factID, [WorkflowExpression] Func<string> sessionID)
         {
-            var apiCallPath = String.Format("/analysis/evidence/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(factID, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            return new ApiConnectionAction<EvidenceResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EvidenceResponse> __BuildEvidence(WorkflowExpression<environmentInput> environment, WorkflowExpression<string> factID, WorkflowExpression<string> sessionID)
+        {
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            WorkflowExpression.Validate(factID, nameof(factID), required: true);
+            WorkflowExpression.Validate(sessionID, nameof(sessionID), required: true);
+            return new DeferredBodyAction<EvidenceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analysis/evidence/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(factID, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                return new ApiConnectionAction<EvidenceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<string> Version(Expression<Func<environmentInput>> environment)
+        [WorkflowExpressionFactory(nameof(__BuildVersion))]
+        public IBodyWorkflowAction<string> Version([WorkflowExpression] Func<environmentInput> environment)
         {
-            var apiCallPath = "/version";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVersion(WorkflowExpression<environmentInput> environment)
+        {
+            WorkflowExpression.Validate(environment, nameof(environment), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/version";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -143,6 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum environmentInput
     {
         [EnumMember(Value = "enterprise-api.rainbird.ai")]

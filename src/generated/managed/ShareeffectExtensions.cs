@@ -4,162 +4,241 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ShareeffectActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddUpdateTerm))]
+        public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm([WorkflowExpression] Func<bool> bodyisavailable, [WorkflowExpression] Func<string> bodytermlabel, [WorkflowExpression] Func<string> bodytermsgroup, [WorkflowExpression] Func<string> bodytermsset, [WorkflowExpression] Func<string> bodyotherlabels = null, [WorkflowExpression] Func<string> bodyparentterm = null)
         {
-            var apiCallPath = "/AddUpdateTerm";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["isavailable"] = ExpressionConverter.ConvertO(bodyisavailable);
-            if (bodyotherlabels != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddUpdateTermResponse> __BuildAddUpdateTerm(WorkflowExpression<bool> bodyisavailable, WorkflowExpression<string> bodytermlabel, WorkflowExpression<string> bodytermsgroup, WorkflowExpression<string> bodytermsset, WorkflowExpression<string> bodyotherlabels = null, WorkflowExpression<string> bodyparentterm = null)
+        {
+            WorkflowExpression.Validate(bodyisavailable, nameof(bodyisavailable), required: true);
+            WorkflowExpression.Validate(bodytermlabel, nameof(bodytermlabel), required: true);
+            WorkflowExpression.Validate(bodytermsgroup, nameof(bodytermsgroup), required: true);
+            WorkflowExpression.Validate(bodytermsset, nameof(bodytermsset), required: true);
+            WorkflowExpression.Validate(bodyotherlabels, nameof(bodyotherlabels), required: false);
+            WorkflowExpression.Validate(bodyparentterm, nameof(bodyparentterm), required: false);
+            return new DeferredBodyAction<AddUpdateTermResponse>(() =>
             {
-                body["otherlabels"] = ExpressionConverter.ConvertO(bodyotherlabels);
+                var apiCallPath = "/AddUpdateTerm";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["isavailable"] = ExpressionConverter.ConvertO(bodyisavailable);
+                if (bodyotherlabels != null)
+                {
+                    body["otherlabels"] = ExpressionConverter.ConvertO(bodyotherlabels);
+                    bodypropCount++;
+                }
 
-            if (bodyparentterm != null)
-            {
-                body["parentterm"] = ExpressionConverter.ConvertO(bodyparentterm);
+                if (bodyparentterm != null)
+                {
+                    body["parentterm"] = ExpressionConverter.ConvertO(bodyparentterm);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["termlabel"] = ExpressionConverter.ConvertO(bodytermlabel);
+                bodypropCount++;
+                body["termsgroup"] = ExpressionConverter.ConvertO(bodytermsgroup);
+                bodypropCount++;
+                body["termsset"] = ExpressionConverter.ConvertO(bodytermsset);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["termlabel"] = ExpressionConverter.ConvertO(bodytermlabel);
-            bodypropCount++;
-            body["termsgroup"] = ExpressionConverter.ConvertO(bodytermsgroup);
-            bodypropCount++;
-            body["termsset"] = ExpressionConverter.ConvertO(bodytermsset);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddUpdateTermResponse>(callPayload);
+                return new ApiConnectionAction<AddUpdateTermResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodykeyvalue, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddUpdateTermByKeyValue))]
+        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue([WorkflowExpression] Func<bool> bodyisavailable, [WorkflowExpression] Func<string> bodykeyvalue, [WorkflowExpression] Func<string> bodytermlabel, [WorkflowExpression] Func<string> bodytermsgroup, [WorkflowExpression] Func<string> bodytermsset, [WorkflowExpression] Func<string> bodyotherlabels = null, [WorkflowExpression] Func<string> bodyparentterm = null)
         {
-            var apiCallPath = "/AddUpdateTermByKeyvalue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["isavailable"] = ExpressionConverter.ConvertO(bodyisavailable);
-            bodypropCount++;
-            body["keyvalue"] = ExpressionConverter.ConvertO(bodykeyvalue);
-            if (bodyotherlabels != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> __BuildAddUpdateTermByKeyValue(WorkflowExpression<bool> bodyisavailable, WorkflowExpression<string> bodykeyvalue, WorkflowExpression<string> bodytermlabel, WorkflowExpression<string> bodytermsgroup, WorkflowExpression<string> bodytermsset, WorkflowExpression<string> bodyotherlabels = null, WorkflowExpression<string> bodyparentterm = null)
+        {
+            WorkflowExpression.Validate(bodyisavailable, nameof(bodyisavailable), required: true);
+            WorkflowExpression.Validate(bodykeyvalue, nameof(bodykeyvalue), required: true);
+            WorkflowExpression.Validate(bodytermlabel, nameof(bodytermlabel), required: true);
+            WorkflowExpression.Validate(bodytermsgroup, nameof(bodytermsgroup), required: true);
+            WorkflowExpression.Validate(bodytermsset, nameof(bodytermsset), required: true);
+            WorkflowExpression.Validate(bodyotherlabels, nameof(bodyotherlabels), required: false);
+            WorkflowExpression.Validate(bodyparentterm, nameof(bodyparentterm), required: false);
+            return new DeferredBodyAction<AddUpdateTermByKeyValueResponse>(() =>
             {
-                body["otherlabels"] = ExpressionConverter.ConvertO(bodyotherlabels);
+                var apiCallPath = "/AddUpdateTermByKeyvalue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyparentterm != null)
-            {
-                body["parentterm"] = ExpressionConverter.ConvertO(bodyparentterm);
+                body["isavailable"] = ExpressionConverter.ConvertO(bodyisavailable);
                 bodypropCount++;
-            }
+                body["keyvalue"] = ExpressionConverter.ConvertO(bodykeyvalue);
+                if (bodyotherlabels != null)
+                {
+                    body["otherlabels"] = ExpressionConverter.ConvertO(bodyotherlabels);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["termlabel"] = ExpressionConverter.ConvertO(bodytermlabel);
-            bodypropCount++;
-            body["termsgroup"] = ExpressionConverter.ConvertO(bodytermsgroup);
-            bodypropCount++;
-            body["termsset"] = ExpressionConverter.ConvertO(bodytermsset);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyparentterm != null)
+                {
+                    body["parentterm"] = ExpressionConverter.ConvertO(bodyparentterm);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<AddUpdateTermByKeyValueResponse>(callPayload);
+                bodypropCount++;
+                body["termlabel"] = ExpressionConverter.ConvertO(bodytermlabel);
+                bodypropCount++;
+                body["termsgroup"] = ExpressionConverter.ConvertO(bodytermsgroup);
+                bodypropCount++;
+                body["termsset"] = ExpressionConverter.ConvertO(bodytermsset);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddUpdateTermByKeyValueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue(Expression<Func<string>> searchValue)
+        [WorkflowExpressionFactory(nameof(__BuildGetTermByKeyValue))]
+        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue([WorkflowExpression] Func<string> searchValue)
         {
-            var apiCallPath = "/GetTermsByProperty";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchProperty"] = Convert.ToString("KeyValue");
-            callPayload.Queries["searchValue"] = ExpressionConverter.Convert(searchValue);
-            return new ApiConnectionAction<GetTermByKeyValueResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel(Expression<Func<string>> searchValue)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> __BuildGetTermByKeyValue(WorkflowExpression<string> searchValue)
         {
-            var apiCallPath = "/GetTermsByTermLabel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchValue"] = ExpressionConverter.Convert(searchValue);
-            return new ApiConnectionAction<GetTermByLabelResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytemplate)
-        {
-            var apiCallPath = "/uploadtemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
-            bodypropCount++;
-            body["template"] = ExpressionConverter.ConvertO(bodytemplate);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(searchValue, nameof(searchValue), required: true);
+            return new DeferredBodyAction<GetTermByKeyValueResponseItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UploadTemplateResponse>(callPayload);
+                var apiCallPath = "/GetTermsByProperty";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchProperty"] = Convert.ToString("KeyValue");
+                callPayload.Queries["searchValue"] = ExpressionConverter.Convert(searchValue);
+                return new ApiConnectionAction<GetTermByKeyValueResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<bodyoutputformatInput>> bodyoutputformat)
+        [WorkflowExpressionFactory(nameof(__BuildGetTermByLabel))]
+        public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel([WorkflowExpression] Func<string> searchValue)
         {
-            var apiCallPath = "/GenerateDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
-            bodypropCount++;
-            body["outputformat"] = ExpressionConverter.ConvertO(bodyoutputformat);
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTermByLabelResponseItem[]> __BuildGetTermByLabel(WorkflowExpression<string> searchValue)
+        {
+            WorkflowExpression.Validate(searchValue, nameof(searchValue), required: true);
+            return new DeferredBodyAction<GetTermByLabelResponseItem[]>(() =>
             {
-                body["data"] = dataObject;
+                var apiCallPath = "/GetTermsByTermLabel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchValue"] = ExpressionConverter.Convert(searchValue);
+                return new ApiConnectionAction<GetTermByLabelResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
+        [WorkflowExpressionFactory(nameof(__BuildUploadTemplate))]
+        public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodytemplate)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadTemplateResponse> __BuildUploadTemplate(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodytemplate)
+        {
+            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            WorkflowExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
+            return new DeferredBodyAction<UploadTemplateResponse>(() =>
+            {
+                var apiCallPath = "/uploadtemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
+                body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
                 bodypropCount++;
-            }
+                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
+                return new ApiConnectionAction<UploadTemplateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
+        [WorkflowExpressionFactory(nameof(__BuildGenerateDocument))]
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<bodyoutputformatInput> bodyoutputformat)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GenerateDocumentResponse> __BuildGenerateDocument(WorkflowExpression<string> bodytemplateId, WorkflowExpression<bodyoutputformatInput> bodyoutputformat)
+        {
+            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            WorkflowExpression.Validate(bodyoutputformat, nameof(bodyoutputformat), required: true);
+            return new DeferredBodyAction<GenerateDocumentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/GenerateDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                bodypropCount++;
+                body["outputformat"] = ExpressionConverter.ConvertO(bodyoutputformat);
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+            });
         }
     }
 
@@ -212,6 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputformatInput
     {
         [EnumMember(Value = "docx")]

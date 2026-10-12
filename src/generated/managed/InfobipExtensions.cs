@@ -1,68 +1,95 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class InfobipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<SendSMSSuccessResponseBody> SendInfobipSMS(Expression<Func<string>> requestBodyrecipientSPhoneNumber, Expression<Func<string>> requestBodymessage, Expression<Func<string>> requestBodysenderSPhoneNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendInfobipSMS))]
+        public IBodyWorkflowAction<SendSMSSuccessResponseBody> SendInfobipSMS([WorkflowExpression] Func<string> requestBodyrecipientSPhoneNumber, [WorkflowExpression] Func<string> requestBodymessage, [WorkflowExpression] Func<string> requestBodysenderSPhoneNumber = null)
         {
-            var apiCallPath = "/sms/1/text/single";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodysenderSPhoneNumber != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSMSSuccessResponseBody> __BuildSendInfobipSMS(WorkflowExpression<string> requestBodyrecipientSPhoneNumber, WorkflowExpression<string> requestBodymessage, WorkflowExpression<string> requestBodysenderSPhoneNumber = null)
+        {
+            WorkflowExpression.Validate(requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
+            WorkflowExpression.Validate(requestBodymessage, nameof(requestBodymessage), required: true);
+            WorkflowExpression.Validate(requestBodysenderSPhoneNumber, nameof(requestBodysenderSPhoneNumber), required: false);
+            return new DeferredBodyAction<SendSMSSuccessResponseBody>(() =>
             {
-                requestBody["from"] = ExpressionConverter.ConvertO(requestBodysenderSPhoneNumber);
+                var apiCallPath = "/sms/1/text/single";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodysenderSPhoneNumber != null)
+                {
+                    requestBody["from"] = ExpressionConverter.ConvertO(requestBodysenderSPhoneNumber);
+                    requestBodypropCount++;
+                }
+
                 requestBodypropCount++;
-            }
+                requestBody["to"] = ExpressionConverter.ConvertO(requestBodyrecipientSPhoneNumber);
+                requestBodypropCount++;
+                requestBody["text"] = ExpressionConverter.ConvertO(requestBodymessage);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            requestBodypropCount++;
-            requestBody["to"] = ExpressionConverter.ConvertO(requestBodyrecipientSPhoneNumber);
-            requestBodypropCount++;
-            requestBody["text"] = ExpressionConverter.ConvertO(requestBodymessage);
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<SendSMSSuccessResponseBody>(callPayload);
+                return new ApiConnectionAction<SendSMSSuccessResponseBody>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<VoiceCallSuccessResponseBody> MakeInfobipVoiceCall(Expression<Func<string>> requestBodyrecipientSPhoneNumber, Expression<Func<string>> requestBodymessage, Expression<Func<requestBodylanguageInput>> requestBodylanguage, Expression<Func<string>> requestBodycallerSPhoneNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildMakeInfobipVoiceCall))]
+        public IBodyWorkflowAction<VoiceCallSuccessResponseBody> MakeInfobipVoiceCall([WorkflowExpression] Func<string> requestBodyrecipientSPhoneNumber, [WorkflowExpression] Func<string> requestBodymessage, [WorkflowExpression] Func<requestBodylanguageInput> requestBodylanguage, [WorkflowExpression] Func<string> requestBodycallerSPhoneNumber = null)
         {
-            var apiCallPath = "/tts/3/single";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodycallerSPhoneNumber != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VoiceCallSuccessResponseBody> __BuildMakeInfobipVoiceCall(WorkflowExpression<string> requestBodyrecipientSPhoneNumber, WorkflowExpression<string> requestBodymessage, WorkflowExpression<requestBodylanguageInput> requestBodylanguage, WorkflowExpression<string> requestBodycallerSPhoneNumber = null)
+        {
+            WorkflowExpression.Validate(requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
+            WorkflowExpression.Validate(requestBodymessage, nameof(requestBodymessage), required: true);
+            WorkflowExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: true);
+            WorkflowExpression.Validate(requestBodycallerSPhoneNumber, nameof(requestBodycallerSPhoneNumber), required: false);
+            return new DeferredBodyAction<VoiceCallSuccessResponseBody>(() =>
             {
-                requestBody["from"] = ExpressionConverter.ConvertO(requestBodycallerSPhoneNumber);
+                var apiCallPath = "/tts/3/single";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodycallerSPhoneNumber != null)
+                {
+                    requestBody["from"] = ExpressionConverter.ConvertO(requestBodycallerSPhoneNumber);
+                    requestBodypropCount++;
+                }
+
                 requestBodypropCount++;
-            }
+                requestBody["to"] = ExpressionConverter.ConvertO(requestBodyrecipientSPhoneNumber);
+                requestBodypropCount++;
+                requestBody["text"] = ExpressionConverter.ConvertO(requestBodymessage);
+                requestBodypropCount++;
+                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            requestBodypropCount++;
-            requestBody["to"] = ExpressionConverter.ConvertO(requestBodyrecipientSPhoneNumber);
-            requestBodypropCount++;
-            requestBody["text"] = ExpressionConverter.ConvertO(requestBodymessage);
-            requestBodypropCount++;
-            requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<VoiceCallSuccessResponseBody>(callPayload);
+                return new ApiConnectionAction<VoiceCallSuccessResponseBody>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
@@ -77,25 +104,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class InfobipTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook(Expression<Func<string>> requestBodyOfWebhookphoneNumber, Expression<Func<string>> requestBodyOfWebhookkeyword, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/sms/1/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["phoneNumber"] = ExpressionConverter.ConvertO(requestBodyOfWebhookphoneNumber);
-            requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["keyword"] = ExpressionConverter.ConvertO(requestBodyOfWebhookkeyword);
-            requestBodyOfWebhook["webhookUrl"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
 
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildCreateInfobipSMSWebhook))]
+        public IBodyWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook([WorkflowExpression] Func<string> requestBodyOfWebhookphoneNumber,[WorkflowExpression] Func<string> requestBodyOfWebhookkeyword,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildCreateInfobipSMSWebhook(WorkflowExpression<string> requestBodyOfWebhookphoneNumber,WorkflowExpression<string> requestBodyOfWebhookkeyword,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(requestBodyOfWebhookphoneNumber, nameof(requestBodyOfWebhookphoneNumber), required: true);
+            WorkflowExpression.Validate(requestBodyOfWebhookkeyword, nameof(requestBodyOfWebhookkeyword), required: true);
+            return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
+            {
+                var apiCallPath = "/sms/1/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhookpropCount++;
+                requestBodyOfWebhook["phoneNumber"] = ExpressionConverter.ConvertO(requestBodyOfWebhookphoneNumber);
+                requestBodyOfWebhookpropCount++;
+                requestBodyOfWebhook["keyword"] = ExpressionConverter.ConvertO(requestBodyOfWebhookkeyword);
+                requestBodyOfWebhook["webhookUrl"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -159,6 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string DescriptionOfMessageSendingStatus { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodylanguageInput
     {
         [EnumMember(Value = "en")]

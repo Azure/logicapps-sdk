@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,99 +20,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IBodyWorkflowAction<AddSystemResponse> AddSystem(Expression<Func<string>> bodytitle = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddSystem))]
+        public IBodyWorkflowAction<AddSystemResponse> AddSystem([WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = "/api/external/systems/topics/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddSystemResponse> __BuildAddSystem(WorkflowExpression<string> bodytitle = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<AddSystemResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/external/systems/topics/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<AddSystemResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddSystemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IWorkflowAction AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddSystemAdvanced))]
+        public IWorkflowAction AddSystemAdvanced([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyfieldssystemNickname = null, [WorkflowExpression] Func<string> bodyfieldssystemOwner = null, [WorkflowExpression] Func<string> bodyfieldssystemAdministrator = null, [WorkflowExpression] Func<string> bodyfieldscostCenter = null, [WorkflowExpression] Func<string[]> bodyfieldslinkedSystems = null, [WorkflowExpression] Func<string> bodyfieldsdataSystemPurpose = null, [WorkflowExpression] Func<string[]> bodyfieldslinkedSystemProviders = null, [WorkflowExpression] Func<string> bodyfieldspartnerResponsibilityDetails = null)
         {
-            var apiCallPath = "/api/external/systems/topics/advanced/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (bodyfieldssystemNickname != null)
-            {
-                fieldsObject["additional-name"] = ExpressionConverter.ConvertO(bodyfieldssystemNickname);
-                fieldsObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyfieldssystemOwner != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddSystemAdvanced(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyfieldssystemNickname = null, WorkflowExpression<string> bodyfieldssystemOwner = null, WorkflowExpression<string> bodyfieldssystemAdministrator = null, WorkflowExpression<string> bodyfieldscostCenter = null, WorkflowExpression<string[]> bodyfieldslinkedSystems = null, WorkflowExpression<string> bodyfieldsdataSystemPurpose = null, WorkflowExpression<string[]> bodyfieldslinkedSystemProviders = null, WorkflowExpression<string> bodyfieldspartnerResponsibilityDetails = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowExpression.Validate(bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
+            WorkflowExpression.Validate(bodyfieldssystemOwner, nameof(bodyfieldssystemOwner), required: false);
+            WorkflowExpression.Validate(bodyfieldssystemAdministrator, nameof(bodyfieldssystemAdministrator), required: false);
+            WorkflowExpression.Validate(bodyfieldscostCenter, nameof(bodyfieldscostCenter), required: false);
+            WorkflowExpression.Validate(bodyfieldslinkedSystems, nameof(bodyfieldslinkedSystems), required: false);
+            WorkflowExpression.Validate(bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
+            WorkflowExpression.Validate(bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
+            WorkflowExpression.Validate(bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                fieldsObject["additional-owner"] = ExpressionConverter.ConvertO(bodyfieldssystemOwner);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldssystemAdministrator != null)
-            {
-                fieldsObject["additional-admin"] = ExpressionConverter.ConvertO(bodyfieldssystemAdministrator);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldscostCenter != null)
-            {
-                fieldsObject["additional-cost"] = ExpressionConverter.ConvertO(bodyfieldscostCenter);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldslinkedSystems != null)
-            {
-                fieldsObject["additional-linksystems"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystems);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldsdataSystemPurpose != null)
-            {
-                fieldsObject["units-purpose"] = ExpressionConverter.ConvertO(bodyfieldsdataSystemPurpose);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldslinkedSystemProviders != null)
-            {
-                fieldsObject["processors-block"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystemProviders);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldspartnerResponsibilityDetails != null)
-            {
-                fieldsObject["processors-resptext"] = ExpressionConverter.ConvertO(bodyfieldspartnerResponsibilityDetails);
-                fieldsObjectpropCount++;
-            }
-
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
+                var apiCallPath = "/api/external/systems/topics/advanced/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (bodyfieldssystemNickname != null)
+                {
+                    fieldsObject["additional-name"] = ExpressionConverter.ConvertO(bodyfieldssystemNickname);
+                    fieldsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfieldssystemOwner != null)
+                {
+                    fieldsObject["additional-owner"] = ExpressionConverter.ConvertO(bodyfieldssystemOwner);
+                    fieldsObjectpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodyfieldssystemAdministrator != null)
+                {
+                    fieldsObject["additional-admin"] = ExpressionConverter.ConvertO(bodyfieldssystemAdministrator);
+                    fieldsObjectpropCount++;
+                }
+
+                if (bodyfieldscostCenter != null)
+                {
+                    fieldsObject["additional-cost"] = ExpressionConverter.ConvertO(bodyfieldscostCenter);
+                    fieldsObjectpropCount++;
+                }
+
+                if (bodyfieldslinkedSystems != null)
+                {
+                    fieldsObject["additional-linksystems"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystems);
+                    fieldsObjectpropCount++;
+                }
+
+                if (bodyfieldsdataSystemPurpose != null)
+                {
+                    fieldsObject["units-purpose"] = ExpressionConverter.ConvertO(bodyfieldsdataSystemPurpose);
+                    fieldsObjectpropCount++;
+                }
+
+                if (bodyfieldslinkedSystemProviders != null)
+                {
+                    fieldsObject["processors-block"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystemProviders);
+                    fieldsObjectpropCount++;
+                }
+
+                if (bodyfieldspartnerResponsibilityDetails != null)
+                {
+                    fieldsObject["processors-resptext"] = ExpressionConverter.ConvertO(bodyfieldspartnerResponsibilityDetails);
+                    fieldsObjectpropCount++;
+                }
+
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

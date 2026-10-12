@@ -4,21 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2whoisip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Ip2whoisipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2whoisip")]
-        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain)
+        [WorkflowExpressionFactory(nameof(__BuildCheckDomain))]
+        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = "/v2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckDomainResponse> __BuildCheckDomain(WorkflowExpression<string> domain)
+        {
+            WorkflowExpression.Validate(domain, nameof(domain), required: true);
+            return new DeferredBodyAction<CheckDomainResponse>(() =>
+            {
+                var apiCallPath = "/v2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            });
         }
     }
 

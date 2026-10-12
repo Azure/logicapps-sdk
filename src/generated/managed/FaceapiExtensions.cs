@@ -4,210 +4,349 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FaceapiActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetFaceListResponse> GetFaceList(Expression<Func<string>> faceListId)
+        [WorkflowExpressionFactory(nameof(__BuildGetFaceList))]
+        public IBodyWorkflowAction<GetFaceListResponse> GetFaceList([WorkflowExpression] Func<string> faceListId)
         {
-            var apiCallPath = String.Format("/face/v1.0/facelists/{0}/", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFaceListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFaceListResponse> __BuildGetFaceList(WorkflowExpression<string> faceListId)
+        {
+            WorkflowExpression.Validate(faceListId, nameof(faceListId), required: true);
+            return new DeferredBodyAction<GetFaceListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/facelists/{0}/", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetFaceListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IWorkflowAction CreateFaceList(Expression<Func<string>> faceListId, Expression<Func<string>> bodyfaceListName, Expression<Func<string>> bodyuserData = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateFaceList))]
+        public IWorkflowAction CreateFaceList([WorkflowExpression] Func<string> faceListId, [WorkflowExpression] Func<string> bodyfaceListName, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            var apiCallPath = String.Format("/face/v1.0/facelists/{0}/", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyfaceListName);
-            if (bodyuserData != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateFaceList(WorkflowExpression<string> faceListId, WorkflowExpression<string> bodyfaceListName, WorkflowExpression<string> bodyuserData = null)
+        {
+            WorkflowExpression.Validate(faceListId, nameof(faceListId), required: true);
+            WorkflowExpression.Validate(bodyfaceListName, nameof(bodyfaceListName), required: true);
+            WorkflowExpression.Validate(bodyuserData, nameof(bodyuserData), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/facelists/{0}/", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyfaceListName);
+                if (bodyuserData != null)
+                {
+                    body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<DetectResponseItem[]> Detect(Expression<Func<string>> bodyimageUrl)
+        [WorkflowExpressionFactory(nameof(__BuildDetect))]
+        public IBodyWorkflowAction<DetectResponseItem[]> Detect([WorkflowExpression] Func<string> bodyimageUrl)
         {
-            var apiCallPath = "/face/v1.0/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["returnFaceId"] = Convert.ToString("true");
-            callPayload.Queries["returnFaceAttributes"] = Convert.ToString("headPose,glasses");
-            callPayload.Queries["returnFaceLandmarks"] = Convert.ToString("true");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DetectResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<AddPersonFaceResponse> AddPersonFace(Expression<Func<string>> personGroupId, Expression<Func<string>> personId, Expression<Func<string>> bodyimageUrl, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectResponseItem[]> __BuildDetect(WorkflowExpression<string> bodyimageUrl)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons/{1}/persistedFaces", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (targetFace != null)
-                callPayload.Queries["targetFace"] = ExpressionConverter.Convert(targetFace);
-            if (userData != null)
-                callPayload.Queries["userData"] = ExpressionConverter.Convert(userData);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: true);
+            return new DeferredBodyAction<DetectResponseItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<AddPersonFaceResponse> AddFaceToFaceList(Expression<Func<string>> faceListId, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
-        {
-            var apiCallPath = String.Format("/face/v1.0/facelists/{0}/persistedFaces", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (targetFace != null)
-                callPayload.Queries["targetFace"] = ExpressionConverter.Convert(targetFace);
-            if (userData != null)
-                callPayload.Queries["userData"] = ExpressionConverter.Convert(userData);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimageUrl != null)
-            {
+                var apiCallPath = "/face/v1.0/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["returnFaceId"] = Convert.ToString("true");
+                callPayload.Queries["returnFaceAttributes"] = Convert.ToString("headPose,glasses");
+                callPayload.Queries["returnFaceLandmarks"] = Convert.ToString("true");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DetectResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        [WorkflowExpressionFactory(nameof(__BuildAddPersonFace))]
+        public IBodyWorkflowAction<AddPersonFaceResponse> AddPersonFace([WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> bodyimageUrl, [WorkflowExpression] Func<string> targetFace = null, [WorkflowExpression] Func<string> userData = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddPersonFaceResponse> __BuildAddPersonFace(WorkflowExpression<string> personGroupId, WorkflowExpression<string> personId, WorkflowExpression<string> bodyimageUrl, WorkflowExpression<string> targetFace = null, WorkflowExpression<string> userData = null)
+        {
+            WorkflowExpression.Validate(personGroupId, nameof(personGroupId), required: true);
+            WorkflowExpression.Validate(personId, nameof(personId), required: true);
+            WorkflowExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: true);
+            WorkflowExpression.Validate(targetFace, nameof(targetFace), required: false);
+            WorkflowExpression.Validate(userData, nameof(userData), required: false);
+            return new DeferredBodyAction<AddPersonFaceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/persongroups/{0}/persons/{1}/persistedFaces", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (targetFace != null)
+                    callPayload.Queries["targetFace"] = ExpressionConverter.Convert(targetFace);
+                if (userData != null)
+                    callPayload.Queries["userData"] = ExpressionConverter.Convert(userData);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
+                return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetPersonGroupResponse> GetPersonGroup(Expression<Func<string>> personGroupId)
+        [WorkflowExpressionFactory(nameof(__BuildAddFaceToFaceList))]
+        public IBodyWorkflowAction<AddPersonFaceResponse> AddFaceToFaceList([WorkflowExpression] Func<string> faceListId, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> targetFace = null, [WorkflowExpression] Func<string> userData = null)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPersonGroupResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddPersonFaceResponse> __BuildAddFaceToFaceList(WorkflowExpression<string> faceListId, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<string> targetFace = null, WorkflowExpression<string> userData = null)
+        {
+            WorkflowExpression.Validate(faceListId, nameof(faceListId), required: true);
+            WorkflowExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
+            WorkflowExpression.Validate(targetFace, nameof(targetFace), required: false);
+            WorkflowExpression.Validate(userData, nameof(userData), required: false);
+            return new DeferredBodyAction<AddPersonFaceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/facelists/{0}/persistedFaces", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (targetFace != null)
+                    callPayload.Queries["targetFace"] = ExpressionConverter.Convert(targetFace);
+                if (userData != null)
+                    callPayload.Queries["userData"] = ExpressionConverter.Convert(userData);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyimageUrl != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IWorkflowAction CreatePersonGroup(Expression<Func<string>> personGroupId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyuserData = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPersonGroup))]
+        public IBodyWorkflowAction<GetPersonGroupResponse> GetPersonGroup([WorkflowExpression] Func<string> personGroupId)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyuserData != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPersonGroupResponse> __BuildGetPersonGroup(WorkflowExpression<string> personGroupId)
+        {
+            WorkflowExpression.Validate(personGroupId, nameof(personGroupId), required: true);
+            return new DeferredBodyAction<GetPersonGroupResponse>(() =>
             {
-                body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/persongroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPersonGroupResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        [WorkflowExpressionFactory(nameof(__BuildCreatePersonGroup))]
+        public IWorkflowAction CreatePersonGroup([WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyuserData = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreatePersonGroup(WorkflowExpression<string> personGroupId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyuserData = null)
+        {
+            WorkflowExpression.Validate(personGroupId, nameof(personGroupId), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyuserData, nameof(bodyuserData), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/persongroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodyuserData != null)
+                {
+                    body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<VerifyResponse> Verify(Expression<Func<string>> bodyfaceId, Expression<Func<string>> bodypersonGroupId, Expression<Func<string>> bodypersonId)
+        [WorkflowExpressionFactory(nameof(__BuildVerify))]
+        public IBodyWorkflowAction<VerifyResponse> Verify([WorkflowExpression] Func<string> bodyfaceId, [WorkflowExpression] Func<string> bodypersonGroupId, [WorkflowExpression] Func<string> bodypersonId)
         {
-            var apiCallPath = "/face/v1.0/verify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["faceId"] = ExpressionConverter.ConvertO(bodyfaceId);
-            bodypropCount++;
-            body["personGroupId"] = ExpressionConverter.ConvertO(bodypersonGroupId);
-            bodypropCount++;
-            body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<VerifyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetPersonFaceResponse> GetPersonFace(Expression<Func<string>> personGroupId, Expression<Func<string>> personId, Expression<Func<string>> persistedFaceId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VerifyResponse> __BuildVerify(WorkflowExpression<string> bodyfaceId, WorkflowExpression<string> bodypersonGroupId, WorkflowExpression<string> bodypersonId)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons/{1}/persistedFaces/{2}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1), ExpressionConverter.ConvertWithUrlEncoding(persistedFaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPersonFaceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson(Expression<Func<string>> personGroupId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyuserData = null)
-        {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyuserData != null)
+            WorkflowExpression.Validate(bodyfaceId, nameof(bodyfaceId), required: true);
+            WorkflowExpression.Validate(bodypersonGroupId, nameof(bodypersonGroupId), required: true);
+            WorkflowExpression.Validate(bodypersonId, nameof(bodypersonId), required: true);
+            return new DeferredBodyAction<VerifyResponse>(() =>
             {
-                body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                var apiCallPath = "/face/v1.0/verify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["faceId"] = ExpressionConverter.ConvertO(bodyfaceId);
+                bodypropCount++;
+                body["personGroupId"] = ExpressionConverter.ConvertO(bodypersonGroupId);
+                bodypropCount++;
+                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+                return new ApiConnectionAction<VerifyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetPersonResponse> GetPerson(Expression<Func<string>> personGroupId, Expression<Func<string>> personId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPersonFace))]
+        public IBodyWorkflowAction<GetPersonFaceResponse> GetPersonFace([WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> persistedFaceId)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons/{1}/", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPersonResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPersonFaceResponse> __BuildGetPersonFace(WorkflowExpression<string> personGroupId, WorkflowExpression<string> personId, WorkflowExpression<string> persistedFaceId)
+        {
+            WorkflowExpression.Validate(personGroupId, nameof(personGroupId), required: true);
+            WorkflowExpression.Validate(personId, nameof(personId), required: true);
+            WorkflowExpression.Validate(persistedFaceId, nameof(persistedFaceId), required: true);
+            return new DeferredBodyAction<GetPersonFaceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/persongroups/{0}/persons/{1}/persistedFaces/{2}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1), ExpressionConverter.ConvertWithUrlEncoding(persistedFaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPersonFaceResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        [WorkflowExpressionFactory(nameof(__BuildCreatePerson))]
+        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson([WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyuserData = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatePersonResponse> __BuildCreatePerson(WorkflowExpression<string> personGroupId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyuserData = null)
+        {
+            WorkflowExpression.Validate(personGroupId, nameof(personGroupId), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyuserData, nameof(bodyuserData), required: false);
+            return new DeferredBodyAction<CreatePersonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/persongroups/{0}/persons", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodyuserData != null)
+                {
+                    body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        [WorkflowExpressionFactory(nameof(__BuildGetPerson))]
+        public IBodyWorkflowAction<GetPersonResponse> GetPerson([WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPersonResponse> __BuildGetPerson(WorkflowExpression<string> personGroupId, WorkflowExpression<string> personId)
+        {
+            WorkflowExpression.Validate(personGroupId, nameof(personGroupId), required: true);
+            WorkflowExpression.Validate(personId, nameof(personId), required: true);
+            return new DeferredBodyAction<GetPersonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/face/v1.0/persongroups/{0}/persons/{1}/", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPersonResponse>(callPayload);
+            });
         }
     }
 

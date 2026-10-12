@@ -1,260 +1,354 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NimflowActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction(Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandreference, Expression<Func<string>> commandaction, Expression<Func<string>> commandsubject = null)
+        [WorkflowExpressionFactory(nameof(__BuildContextsDispatchAction))]
+        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction([WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandreference, [WorkflowExpression] Func<string> commandaction, [WorkflowExpression] Func<string> commandsubject = null)
         {
-            var apiCallPath = "/Contexts/DispatchAction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var command = new JObject();
-            var commandpropCount = 0;
-            commandpropCount++;
-            command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
-            commandpropCount++;
-            command["reference"] = ExpressionConverter.ConvertO(commandreference);
-            commandpropCount++;
-            command["action"] = ExpressionConverter.ConvertO(commandaction);
-            var payloadObject = new JObject();
-            var payloadObjectpropCount = 0;
-            if (payloadObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DispatchContextActionResult> __BuildContextsDispatchAction(WorkflowExpression<string> commandcontextTypeName, WorkflowExpression<string> commandreference, WorkflowExpression<string> commandaction, WorkflowExpression<string> commandsubject = null)
+        {
+            WorkflowExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            WorkflowExpression.Validate(commandreference, nameof(commandreference), required: true);
+            WorkflowExpression.Validate(commandaction, nameof(commandaction), required: true);
+            WorkflowExpression.Validate(commandsubject, nameof(commandsubject), required: false);
+            return new DeferredBodyAction<DispatchContextActionResult>(() =>
             {
-                command["payload"] = payloadObject;
+                var apiCallPath = "/Contexts/DispatchAction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var command = new JObject();
+                var commandpropCount = 0;
                 commandpropCount++;
-            }
-
-            if (commandsubject != null)
-            {
-                command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
                 commandpropCount++;
-            }
+                command["reference"] = ExpressionConverter.ConvertO(commandreference);
+                commandpropCount++;
+                command["action"] = ExpressionConverter.ConvertO(commandaction);
+                var payloadObject = new JObject();
+                var payloadObjectpropCount = 0;
+                if (payloadObjectpropCount > 0)
+                {
+                    command["payload"] = payloadObject;
+                    commandpropCount++;
+                }
 
-            if (commandpropCount > 0)
-            {
-                callPayload.Body = command;
-            }
+                if (commandsubject != null)
+                {
+                    command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                    commandpropCount++;
+                }
 
-            return new ApiConnectionAction<DispatchContextActionResult>(callPayload);
+                if (commandpropCount > 0)
+                {
+                    callPayload.Body = command;
+                }
+
+                return new ApiConnectionAction<DispatchContextActionResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse(Expression<Func<string>> commandcontextReference, Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandtaskTypeName, Expression<Func<string>> commandresponseTypeName, Expression<Func<string>> commandsentBy = null, Expression<Func<string>> commandstartedOn = null, Expression<Func<string>> commandsentOn = null, Expression<Func<string>> commandsubject = null, Expression<Func<string>> commanditemKey = null)
+        [WorkflowExpressionFactory(nameof(__BuildTasksAddResponse))]
+        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse([WorkflowExpression] Func<string> commandcontextReference, [WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandtaskTypeName, [WorkflowExpression] Func<string> commandresponseTypeName, [WorkflowExpression] Func<string> commandsentBy = null, [WorkflowExpression] Func<string> commandstartedOn = null, [WorkflowExpression] Func<string> commandsentOn = null, [WorkflowExpression] Func<string> commandsubject = null, [WorkflowExpression] Func<string> commanditemKey = null)
         {
-            var apiCallPath = "/Tasks/AddResponse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var command = new JObject();
-            var commandpropCount = 0;
-            commandpropCount++;
-            command["contextReference"] = ExpressionConverter.ConvertO(commandcontextReference);
-            if (commandsentBy != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddTaskResponseResult> __BuildTasksAddResponse(WorkflowExpression<string> commandcontextReference, WorkflowExpression<string> commandcontextTypeName, WorkflowExpression<string> commandtaskTypeName, WorkflowExpression<string> commandresponseTypeName, WorkflowExpression<string> commandsentBy = null, WorkflowExpression<string> commandstartedOn = null, WorkflowExpression<string> commandsentOn = null, WorkflowExpression<string> commandsubject = null, WorkflowExpression<string> commanditemKey = null)
+        {
+            WorkflowExpression.Validate(commandcontextReference, nameof(commandcontextReference), required: true);
+            WorkflowExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            WorkflowExpression.Validate(commandtaskTypeName, nameof(commandtaskTypeName), required: true);
+            WorkflowExpression.Validate(commandresponseTypeName, nameof(commandresponseTypeName), required: true);
+            WorkflowExpression.Validate(commandsentBy, nameof(commandsentBy), required: false);
+            WorkflowExpression.Validate(commandstartedOn, nameof(commandstartedOn), required: false);
+            WorkflowExpression.Validate(commandsentOn, nameof(commandsentOn), required: false);
+            WorkflowExpression.Validate(commandsubject, nameof(commandsubject), required: false);
+            WorkflowExpression.Validate(commanditemKey, nameof(commanditemKey), required: false);
+            return new DeferredBodyAction<AddTaskResponseResult>(() =>
             {
-                command["sentBy"] = ExpressionConverter.ConvertO(commandsentBy);
+                var apiCallPath = "/Tasks/AddResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var command = new JObject();
+                var commandpropCount = 0;
                 commandpropCount++;
-            }
+                command["contextReference"] = ExpressionConverter.ConvertO(commandcontextReference);
+                if (commandsentBy != null)
+                {
+                    command["sentBy"] = ExpressionConverter.ConvertO(commandsentBy);
+                    commandpropCount++;
+                }
 
-            var payloadObject = new JObject();
-            var payloadObjectpropCount = 0;
-            if (payloadObjectpropCount > 0)
-            {
-                command["payload"] = payloadObject;
+                var payloadObject = new JObject();
+                var payloadObjectpropCount = 0;
+                if (payloadObjectpropCount > 0)
+                {
+                    command["payload"] = payloadObject;
+                    commandpropCount++;
+                }
+
+                if (commandstartedOn != null)
+                {
+                    command["startedOn"] = ExpressionConverter.ConvertO(commandstartedOn);
+                    commandpropCount++;
+                }
+
+                if (commandsentOn != null)
+                {
+                    command["sentOn"] = ExpressionConverter.ConvertO(commandsentOn);
+                    commandpropCount++;
+                }
+
+                if (commandsubject != null)
+                {
+                    command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                    commandpropCount++;
+                }
+
                 commandpropCount++;
-            }
-
-            if (commandstartedOn != null)
-            {
-                command["startedOn"] = ExpressionConverter.ConvertO(commandstartedOn);
+                command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
                 commandpropCount++;
-            }
-
-            if (commandsentOn != null)
-            {
-                command["sentOn"] = ExpressionConverter.ConvertO(commandsentOn);
+                command["taskTypeName"] = ExpressionConverter.ConvertO(commandtaskTypeName);
                 commandpropCount++;
-            }
+                command["responseTypeName"] = ExpressionConverter.ConvertO(commandresponseTypeName);
+                if (commanditemKey != null)
+                {
+                    command["itemKey"] = ExpressionConverter.ConvertO(commanditemKey);
+                    commandpropCount++;
+                }
 
-            if (commandsubject != null)
-            {
-                command["subject"] = ExpressionConverter.ConvertO(commandsubject);
-                commandpropCount++;
-            }
+                if (commandpropCount > 0)
+                {
+                    callPayload.Body = command;
+                }
 
-            commandpropCount++;
-            command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
-            commandpropCount++;
-            command["taskTypeName"] = ExpressionConverter.ConvertO(commandtaskTypeName);
-            commandpropCount++;
-            command["responseTypeName"] = ExpressionConverter.ConvertO(commandresponseTypeName);
-            if (commanditemKey != null)
-            {
-                command["itemKey"] = ExpressionConverter.ConvertO(commanditemKey);
-                commandpropCount++;
-            }
-
-            if (commandpropCount > 0)
-            {
-                callPayload.Body = command;
-            }
-
-            return new ApiConnectionAction<AddTaskResponseResult>(callPayload);
+                return new ApiConnectionAction<AddTaskResponseResult>(callPayload);
+            });
         }
     }
 
     public class NimflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildWhenTaskCreatedPost))]
+        public IWorkflowTrigger WhenTaskCreatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenTaskCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
-            {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
-                requestpropCount++;
-            }
-
-            if (requesttaskTypeName != null)
-            {
-                request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWhenTaskCreatedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenTaskUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                var apiCallPath = "/WhenTaskCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-            }
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    requestpropCount++;
+                }
 
-            if (requesttaskTypeName != null)
-            {
-                request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
-                requestpropCount++;
-            }
+                if (requesttaskTypeName != null)
+                {
+                    request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildWhenTaskUpdatedPost))]
+        public IWorkflowTrigger WhenTaskUpdatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenTaskArchived";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
-            {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
-                requestpropCount++;
-            }
-
-            if (requesttaskTypeName != null)
-            {
-                request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWhenTaskUpdatedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenMilestoneReached";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                var apiCallPath = "/WhenTaskUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-            }
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    requestpropCount++;
+                }
 
-            if (requestmilestoneName != null)
-            {
-                request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
-                requestpropCount++;
-            }
+                if (requesttaskTypeName != null)
+                {
+                    request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildWhenTaskArchivedPost))]
+        public IWorkflowTrigger WhenTaskArchivedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenMilestoneCleared";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWhenTaskArchivedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                var apiCallPath = "/WhenTaskArchived";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-            }
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    requestpropCount++;
+                }
 
-            if (requestmilestoneName != null)
+                if (requesttaskTypeName != null)
+                {
+                    request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWhenMilestoneReachedPost))]
+        public IWorkflowTrigger WhenMilestoneReachedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWhenMilestoneReachedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            WorkflowExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                var apiCallPath = "/WhenMilestoneReached";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-            }
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
+                if (requestmilestoneName != null)
+                {
+                    request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWhenMilestoneClearedPost))]
+        public IWorkflowTrigger WhenMilestoneClearedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWhenMilestoneClearedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            WorkflowExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/WhenMilestoneCleared";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (requestmilestoneName != null)
+                {
+                    request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,52 +20,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<FormGetResponse> FormGet(Expression<Func<string>> formId)
+        [WorkflowExpressionFactory(nameof(__BuildFormGet))]
+        public IBodyWorkflowAction<FormGetResponse> FormGet([WorkflowExpression] Func<string> formId)
         {
-            var apiCallPath = String.Format("/form/{0}/", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FormGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormGetResponse> __BuildFormGet(WorkflowExpression<string> formId)
+        {
+            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            return new DeferredBodyAction<FormGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/form/{0}/", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FormGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IWorkflowAction Form(Expression<Func<string>> bodyformId = null, Expression<Func<string>> bodytemplateFormId = null, Expression<Func<bodystepsInputItem[]>> bodysteps = null, Expression<Func<bodynavigationRulesInputItem[]>> bodynavigationRules = null)
+        [WorkflowExpressionFactory(nameof(__BuildForm))]
+        public IWorkflowAction Form([WorkflowExpression] Func<string> bodyformId = null, [WorkflowExpression] Func<string> bodytemplateFormId = null, [WorkflowExpression] Func<bodystepsInputItem[]> bodysteps = null, [WorkflowExpression] Func<bodynavigationRulesInputItem[]> bodynavigationRules = null)
         {
-            var apiCallPath = "/form/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyformId != null)
-            {
-                body["form_id"] = ExpressionConverter.ConvertO(bodyformId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodytemplateFormId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildForm(WorkflowExpression<string> bodyformId = null, WorkflowExpression<string> bodytemplateFormId = null, WorkflowExpression<bodystepsInputItem[]> bodysteps = null, WorkflowExpression<bodynavigationRulesInputItem[]> bodynavigationRules = null)
+        {
+            WorkflowExpression.Validate(bodyformId, nameof(bodyformId), required: false);
+            WorkflowExpression.Validate(bodytemplateFormId, nameof(bodytemplateFormId), required: false);
+            WorkflowExpression.Validate(bodysteps, nameof(bodysteps), required: false);
+            WorkflowExpression.Validate(bodynavigationRules, nameof(bodynavigationRules), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["template_form_id"] = ExpressionConverter.ConvertO(bodytemplateFormId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/form/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyformId != null)
+                {
+                    body["form_id"] = ExpressionConverter.ConvertO(bodyformId);
+                    bodypropCount++;
+                }
 
-            if (bodysteps != null)
-            {
-                body["steps"] = ExpressionConverter.ConvertO(bodysteps);
-                bodypropCount++;
-            }
+                if (bodytemplateFormId != null)
+                {
+                    body["template_form_id"] = ExpressionConverter.ConvertO(bodytemplateFormId);
+                    bodypropCount++;
+                }
 
-            if (bodynavigationRules != null)
-            {
-                body["navigation_rules"] = ExpressionConverter.ConvertO(bodynavigationRules);
-                bodypropCount++;
-            }
+                if (bodysteps != null)
+                {
+                    body["steps"] = ExpressionConverter.ConvertO(bodysteps);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodynavigationRules != null)
+                {
+                    body["navigation_rules"] = ExpressionConverter.ConvertO(bodynavigationRules);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
@@ -79,84 +103,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserSessionGetResponse> UserSessionGet(Expression<Func<string>> userId, Expression<Func<string>> formKey)
+        [WorkflowExpressionFactory(nameof(__BuildUserSessionGet))]
+        public IBodyWorkflowAction<UserSessionGetResponse> UserSessionGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> formKey)
         {
-            var apiCallPath = String.Format("/user/{0}/session/{1}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(formKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserSessionGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserSessionGetResponse> __BuildUserSessionGet(WorkflowExpression<string> userId, WorkflowExpression<string> formKey)
+        {
+            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            WorkflowExpression.Validate(formKey, nameof(formKey), required: true);
+            return new DeferredBodyAction<UserSessionGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}/session/{1}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(formKey, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserSessionGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null)
+        [WorkflowExpressionFactory(nameof(__BuildUser))]
+        public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null)
         {
-            var apiCallPath = "/user/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyname = null)
+        {
+            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            return new DeferredBodyAction<UserPostResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/user/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UserPostResponse>(callPayload);
+                return new ApiConnectionAction<UserPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<string> UserDelete(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildUserDelete))]
+        public IBodyWorkflowAction<string> UserDelete([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildUserDelete(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserFieldsGetResponseItem[]> UserFieldsGet(Expression<Func<string>> id = null)
+        [WorkflowExpressionFactory(nameof(__BuildUserFieldsGet))]
+        public IBodyWorkflowAction<UserFieldsGetResponseItem[]> UserFieldsGet([WorkflowExpression] Func<string> id = null)
         {
-            var apiCallPath = "/field/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<UserFieldsGetResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserFieldsGetResponseItem[]> __BuildUserFieldsGet(WorkflowExpression<string> id = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            return new DeferredBodyAction<UserFieldsGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/field/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<UserFieldsGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserFieldPostResponse> UserField(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
+        [WorkflowExpressionFactory(nameof(__BuildUserField))]
+        public IBodyWorkflowAction<UserFieldPostResponse> UserField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            var apiCallPath = String.Format("/field/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldId != null)
-            {
-                body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyvalue != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserFieldPostResponse> __BuildUserField(WorkflowExpression<string> id, WorkflowExpression<string> bodyfieldId = null, WorkflowExpression<string> bodyvalue = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
+            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            return new DeferredBodyAction<UserFieldPostResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/field/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldId != null)
+                {
+                    body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UserFieldPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserFieldPostResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,22 +14,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(workspaceID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceID,[WorkflowExpression] Func<string> formID,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookTrigger(WorkflowExpression<string> workspaceID,WorkflowExpression<string> formID,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(workspaceID, nameof(workspaceID), required: true);
+            WorkflowExpression.Validate(formID, nameof(formID), required: true);
+            return new DeferredBodyTrigger<WebhookResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(workspaceID);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

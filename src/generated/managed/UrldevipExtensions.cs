@@ -4,81 +4,116 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class UrldevipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
+        [WorkflowExpressionFactory(nameof(__BuildLink))]
+        public IBodyWorkflowAction<LinkPostResponse> Link([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyttl = null)
         {
-            var apiCallPath = "/create/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodyttl != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinkPostResponse> __BuildLink(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodyttl = null)
+        {
+            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            WorkflowExpression.Validate(bodyttl, nameof(bodyttl), required: false);
+            return new DeferredBodyAction<LinkPostResponse>(() =>
             {
-                body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                var apiCallPath = "/create/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                if (bodyttl != null)
+                {
+                    body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<LinkPostResponse>(callPayload);
+                return new ApiConnectionAction<LinkPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<bool> LinkDelete(Expression<Func<string>> bodykey = null)
+        [WorkflowExpressionFactory(nameof(__BuildLinkDelete))]
+        public IBodyWorkflowAction<bool> LinkDelete([WorkflowExpression] Func<string> bodykey = null)
         {
-            var apiCallPath = "/destroy/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodykey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<bool> __BuildLinkDelete(WorkflowExpression<string> bodykey = null)
+        {
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            return new DeferredBodyAction<bool>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/destroy/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<bool>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<bool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
+        [WorkflowExpressionFactory(nameof(__BuildMessage))]
+        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<int> bodyttl = null)
         {
-            var apiCallPath = "/messages/create/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodyttl != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<string> bodymessage, WorkflowExpression<int> bodyttl = null)
+        {
+            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowExpression.Validate(bodyttl, nameof(bodyttl), required: false);
+            return new DeferredBodyAction<MessagePostResponse>(() =>
             {
-                body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                var apiCallPath = "/messages/create/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                if (bodyttl != null)
+                {
+                    body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+            });
         }
     }
 

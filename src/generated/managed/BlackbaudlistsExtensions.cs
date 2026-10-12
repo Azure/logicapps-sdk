@@ -4,59 +4,87 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction AppendIDsToList(Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<string>> bodylist, Expression<Func<string[]>> bodyiDS)
-        {
-            var apiCallPath = "/list/v1/appendidstolist";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["list_type"] = ExpressionConverter.ConvertO(bodylistType);
-            bodypropCount++;
-            body["list_id"] = ExpressionConverter.ConvertO(bodylist);
-            bodypropCount++;
-            body["ids"] = ExpressionConverter.ConvertO(bodyiDS);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
+        [WorkflowExpressionFactory(nameof(__BuildAppendIDsToList))]
+        public IWorkflowAction AppendIDsToList([WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<string> bodylist, [WorkflowExpression] Func<string[]> bodyiDS)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAppendIDsToList(WorkflowExpression<bodylistTypeInput> bodylistType, WorkflowExpression<string> bodylist, WorkflowExpression<string[]> bodyiDS)
+        {
+            WorkflowExpression.Validate(bodylistType, nameof(bodylistType), required: true);
+            WorkflowExpression.Validate(bodylist, nameof(bodylist), required: true);
+            WorkflowExpression.Validate(bodyiDS, nameof(bodyiDS), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/list/v1/appendidstolist";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["list_type"] = ExpressionConverter.ConvertO(bodylistType);
+                bodypropCount++;
+                body["list_id"] = ExpressionConverter.ConvertO(bodylist);
+                bodypropCount++;
+                body["ids"] = ExpressionConverter.ConvertO(bodyiDS);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IBodyWorkflowAction<ListApiCreatedList> CreateListFromIDs(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<bodypermissionsInput>> bodypermissions, Expression<Func<string[]>> bodyiDS)
+        [WorkflowExpressionFactory(nameof(__BuildCreateListFromIDs))]
+        public IBodyWorkflowAction<ListApiCreatedList> CreateListFromIDs([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<bodypermissionsInput> bodypermissions, [WorkflowExpression] Func<string[]> bodyiDS)
         {
-            var apiCallPath = "/list/v1/createlistfromids";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            bodypropCount++;
-            body["list_type"] = ExpressionConverter.ConvertO(bodylistType);
-            bodypropCount++;
-            body["list_permissions"] = ExpressionConverter.ConvertO(bodypermissions);
-            bodypropCount++;
-            body["ids"] = ExpressionConverter.ConvertO(bodyiDS);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ListApiCreatedList>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListApiCreatedList> __BuildCreateListFromIDs(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodydescription, WorkflowExpression<bodylistTypeInput> bodylistType, WorkflowExpression<bodypermissionsInput> bodypermissions, WorkflowExpression<string[]> bodyiDS)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
+            WorkflowExpression.Validate(bodylistType, nameof(bodylistType), required: true);
+            WorkflowExpression.Validate(bodypermissions, nameof(bodypermissions), required: true);
+            WorkflowExpression.Validate(bodyiDS, nameof(bodyiDS), required: true);
+            return new DeferredBodyAction<ListApiCreatedList>(() =>
+            {
+                var apiCallPath = "/list/v1/createlistfromids";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                bodypropCount++;
+                body["list_type"] = ExpressionConverter.ConvertO(bodylistType);
+                bodypropCount++;
+                body["list_permissions"] = ExpressionConverter.ConvertO(bodypermissions);
+                bodypropCount++;
+                body["ids"] = ExpressionConverter.ConvertO(bodyiDS);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ListApiCreatedList>(callPayload);
+            });
         }
     }
 
@@ -64,6 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylistTypeInput
     {
         Constituent,
@@ -78,6 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypermissionsInput
     {
         OnlyOwnerCanAccess,

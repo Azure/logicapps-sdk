@@ -4,47 +4,91 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FantasypremierleagueipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<ManagerUsersHistoryResponse> ManagerUsersHistory(Expression<Func<string>> managerId)
+        [WorkflowExpressionFactory(nameof(__BuildManagerUsersHistory))]
+        public IBodyWorkflowAction<ManagerUsersHistoryResponse> ManagerUsersHistory([WorkflowExpression] Func<string> managerId)
         {
-            var apiCallPath = String.Format("/api/entry/{0}/history/", ExpressionConverter.ConvertWithUrlEncoding(managerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ManagerUsersHistoryResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ManagerUsersHistoryResponse> __BuildManagerUsersHistory(WorkflowExpression<string> managerId)
+        {
+            WorkflowExpression.Validate(managerId, nameof(managerId), required: true);
+            return new DeferredBodyAction<ManagerUsersHistoryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/entry/{0}/history/", ExpressionConverter.ConvertWithUrlEncoding(managerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ManagerUsersHistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> ManagerUsersBasicInformation(Expression<Func<string>> managerId)
+        [WorkflowExpressionFactory(nameof(__BuildManagerUsersBasicInformation))]
+        public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> ManagerUsersBasicInformation([WorkflowExpression] Func<string> managerId)
         {
-            var apiCallPath = String.Format("/api/entry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(managerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ManagerUsersBasicInformationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> __BuildManagerUsersBasicInformation(WorkflowExpression<string> managerId)
+        {
+            WorkflowExpression.Validate(managerId, nameof(managerId), required: true);
+            return new DeferredBodyAction<ManagerUsersBasicInformationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/entry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(managerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ManagerUsersBasicInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<GameWeekLiveDataResponse> GameWeekLiveData(Expression<Func<string>> eventId)
+        [WorkflowExpressionFactory(nameof(__BuildGameWeekLiveData))]
+        public IBodyWorkflowAction<GameWeekLiveDataResponse> GameWeekLiveData([WorkflowExpression] Func<string> eventId)
         {
-            var apiCallPath = String.Format("/api/event/{0}/live/", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GameWeekLiveDataResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GameWeekLiveDataResponse> __BuildGameWeekLiveData(WorkflowExpression<string> eventId)
+        {
+            WorkflowExpression.Validate(eventId, nameof(eventId), required: true);
+            return new DeferredBodyAction<GameWeekLiveDataResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/event/{0}/live/", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GameWeekLiveDataResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<PlayersDetailedDataResponse> PlayersDetailedData(Expression<Func<string>> elementId)
+        [WorkflowExpressionFactory(nameof(__BuildPlayersDetailedData))]
+        public IBodyWorkflowAction<PlayersDetailedDataResponse> PlayersDetailedData([WorkflowExpression] Func<string> elementId)
         {
-            var apiCallPath = String.Format("/api/element-summary/{0}/", ExpressionConverter.ConvertWithUrlEncoding(elementId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PlayersDetailedDataResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlayersDetailedDataResponse> __BuildPlayersDetailedData(WorkflowExpression<string> elementId)
+        {
+            WorkflowExpression.Validate(elementId, nameof(elementId), required: true);
+            return new DeferredBodyAction<PlayersDetailedDataResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/element-summary/{0}/", ExpressionConverter.ConvertWithUrlEncoding(elementId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PlayersDetailedDataResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
@@ -66,12 +110,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<ClassicLeagueStandingsResponse> ClassicLeagueStandings(Expression<Func<string>> leagueId)
+        [WorkflowExpressionFactory(nameof(__BuildClassicLeagueStandings))]
+        public IBodyWorkflowAction<ClassicLeagueStandingsResponse> ClassicLeagueStandings([WorkflowExpression] Func<string> leagueId)
         {
-            var apiCallPath = String.Format("/api/leagues-classic/{0}/standings/", ExpressionConverter.ConvertWithUrlEncoding(leagueId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ClassicLeagueStandingsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ClassicLeagueStandingsResponse> __BuildClassicLeagueStandings(WorkflowExpression<string> leagueId)
+        {
+            WorkflowExpression.Validate(leagueId, nameof(leagueId), required: true);
+            return new DeferredBodyAction<ClassicLeagueStandingsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/leagues-classic/{0}/standings/", ExpressionConverter.ConvertWithUrlEncoding(leagueId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ClassicLeagueStandingsResponse>(callPayload);
+            });
         }
     }
 

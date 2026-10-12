@@ -1,696 +1,862 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WorkdayhcmActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateAddressInformation(Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem[]>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
-        {
-            var apiCallPath = "/Add_or_Update_Address_Information";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addOrUpdateAddressInformationForPersonEventRequest = new JObject();
-            var addOrUpdateAddressInformationForPersonEventRequestpropCount = 0;
-            var addOrUpdateAddressInformationForPersonEventRequestObject = new JObject();
-            var addOrUpdateAddressInformationForPersonEventRequestObjectpropCount = 0;
-            var addOrUpdateAddressInformationDataObject = new JObject();
-            var addOrUpdateAddressInformationDataObjectpropCount = 0;
-            var workerReferenceObject = new JObject();
-            var workerReferenceObjectpropCount = 0;
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType);
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID);
-            if (workerReferenceObjectpropCount > 0)
-            {
-                addOrUpdateAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
-                addOrUpdateAddressInformationDataObjectpropCount++;
-            }
 
-            addOrUpdateAddressInformationDataObjectpropCount++;
-            addOrUpdateAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
-            var addressInformationDataObject = new JObject();
-            var addressInformationDataObjectpropCount = 0;
-            var countryReferenceObject = new JObject();
-            var countryReferenceObjectpropCount = 0;
-            countryReferenceObject["CountryIDType"] = "ISO 3166-1 Alpha-3 Code";
-            countryReferenceObjectpropCount++;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
+        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateAddressInformation))]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateAddressInformation([WorkflowExpression] Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType, [WorkflowExpression] Func<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID, [WorkflowExpression] Func<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, [WorkflowExpression] Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID = null, [WorkflowExpression] Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem[]> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = null, [WorkflowExpression] Func<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = null, [WorkflowExpression] Func<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID = null, [WorkflowExpression] Func<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = null, [WorkflowExpression] Func<bool> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = null, [WorkflowExpression] Func<bool> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = null, [WorkflowExpression] Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> __BuildAddOrUpdateAddressInformation(WorkflowExpression<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType, WorkflowExpression<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID, WorkflowExpression<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, WorkflowExpression<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID = null, WorkflowExpression<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem[]> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = null, WorkflowExpression<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = null, WorkflowExpression<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID = null, WorkflowExpression<string> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = null, WorkflowExpression<bool> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = null, WorkflowExpression<bool> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = null, WorkflowExpression<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        {
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType), required: true);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID), required: true);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate), required: true);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary), required: false);
+            WorkflowExpression.Validate(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID), required: false);
+            return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(() =>
             {
-                countryReferenceObject["CountryID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID);
+                var apiCallPath = "/Add_or_Update_Address_Information";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addOrUpdateAddressInformationForPersonEventRequest = new JObject();
+                var addOrUpdateAddressInformationForPersonEventRequestpropCount = 0;
+                var addOrUpdateAddressInformationForPersonEventRequestObject = new JObject();
+                var addOrUpdateAddressInformationForPersonEventRequestObjectpropCount = 0;
+                var addOrUpdateAddressInformationDataObject = new JObject();
+                var addOrUpdateAddressInformationDataObjectpropCount = 0;
+                var workerReferenceObject = new JObject();
+                var workerReferenceObjectpropCount = 0;
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType);
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID);
+                if (workerReferenceObjectpropCount > 0)
+                {
+                    addOrUpdateAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                    addOrUpdateAddressInformationDataObjectpropCount++;
+                }
+
+                addOrUpdateAddressInformationDataObjectpropCount++;
+                addOrUpdateAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
+                var addressInformationDataObject = new JObject();
+                var addressInformationDataObjectpropCount = 0;
+                var countryReferenceObject = new JObject();
+                var countryReferenceObjectpropCount = 0;
+                countryReferenceObject["CountryIDType"] = "ISO 3166-1 Alpha-3 Code";
                 countryReferenceObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID != null)
+                {
+                    countryReferenceObject["CountryID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID);
+                    countryReferenceObjectpropCount++;
+                }
 
-            if (countryReferenceObjectpropCount > 0)
-            {
-                addressInformationDataObject["country_Reference"] = countryReferenceObject;
-                addressInformationDataObjectpropCount++;
-            }
+                if (countryReferenceObjectpropCount > 0)
+                {
+                    addressInformationDataObject["country_Reference"] = countryReferenceObject;
+                    addressInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData != null)
-            {
-                addressInformationDataObject["address_Line_Data"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
-                addressInformationDataObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData != null)
+                {
+                    addressInformationDataObject["address_Line_Data"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
+                    addressInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality != null)
-            {
-                addressInformationDataObject["municipality"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
-                addressInformationDataObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality != null)
+                {
+                    addressInformationDataObject["municipality"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
+                    addressInformationDataObjectpropCount++;
+                }
 
-            var countryRegionReferenceObject = new JObject();
-            var countryRegionReferenceObjectpropCount = 0;
-            countryRegionReferenceObject["CountryRegionIDType"] = "ISO 3166-2 Code";
-            countryRegionReferenceObjectpropCount++;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID != null)
-            {
-                countryRegionReferenceObject["CountryRegionID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID);
+                var countryRegionReferenceObject = new JObject();
+                var countryRegionReferenceObjectpropCount = 0;
+                countryRegionReferenceObject["CountryRegionIDType"] = "ISO 3166-2 Code";
                 countryRegionReferenceObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID != null)
+                {
+                    countryRegionReferenceObject["CountryRegionID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID);
+                    countryRegionReferenceObjectpropCount++;
+                }
 
-            if (countryRegionReferenceObjectpropCount > 0)
-            {
-                addressInformationDataObject["country_Region_Reference"] = countryRegionReferenceObject;
-                addressInformationDataObjectpropCount++;
-            }
+                if (countryRegionReferenceObjectpropCount > 0)
+                {
+                    addressInformationDataObject["country_Region_Reference"] = countryRegionReferenceObject;
+                    addressInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode != null)
-            {
-                addressInformationDataObject["postal_Code"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
-                addressInformationDataObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode != null)
+                {
+                    addressInformationDataObject["postal_Code"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
+                    addressInformationDataObjectpropCount++;
+                }
 
-            var usageDataObject = new JObject();
-            var usageDataObjectpropCount = 0;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic != null)
-            {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
-                usageDataObjectpropCount++;
-            }
+                var usageDataObject = new JObject();
+                var usageDataObjectpropCount = 0;
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic != null)
+                {
+                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
+                    usageDataObjectpropCount++;
+                }
 
-            var typeDataObject = new JObject();
-            var typeDataObjectpropCount = 0;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary != null)
-            {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
-                typeDataObjectpropCount++;
-            }
+                var typeDataObject = new JObject();
+                var typeDataObjectpropCount = 0;
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary != null)
+                {
+                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
+                    typeDataObjectpropCount++;
+                }
 
-            var typeReferenceObject = new JObject();
-            var typeReferenceObjectpropCount = 0;
-            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            typeReferenceObjectpropCount++;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
-            {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                var typeReferenceObject = new JObject();
+                var typeReferenceObjectpropCount = 0;
+                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
                 typeReferenceObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
+                {
+                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                    typeReferenceObjectpropCount++;
+                }
 
-            if (typeReferenceObjectpropCount > 0)
-            {
-                typeDataObject["type_Reference"] = typeReferenceObject;
-                typeDataObjectpropCount++;
-            }
+                if (typeReferenceObjectpropCount > 0)
+                {
+                    typeDataObject["type_Reference"] = typeReferenceObject;
+                    typeDataObjectpropCount++;
+                }
 
-            if (typeDataObjectpropCount > 0)
-            {
-                usageDataObject["type_Data"] = typeDataObject;
-                usageDataObjectpropCount++;
-            }
+                if (typeDataObjectpropCount > 0)
+                {
+                    usageDataObject["type_Data"] = typeDataObject;
+                    usageDataObjectpropCount++;
+                }
 
-            if (usageDataObjectpropCount > 0)
-            {
-                addressInformationDataObject["usage_Data"] = usageDataObject;
-                addressInformationDataObjectpropCount++;
-            }
+                if (usageDataObjectpropCount > 0)
+                {
+                    addressInformationDataObject["usage_Data"] = usageDataObject;
+                    addressInformationDataObjectpropCount++;
+                }
 
-            if (addressInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateAddressInformationDataObject["address_Information_Data"] = addressInformationDataObject;
-                addOrUpdateAddressInformationDataObjectpropCount++;
-            }
+                if (addressInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateAddressInformationDataObject["address_Information_Data"] = addressInformationDataObject;
+                    addOrUpdateAddressInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateAddressInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateAddressInformationForPersonEventRequestObject["add_or_Update_Address_Information_Data"] = addOrUpdateAddressInformationDataObject;
-                addOrUpdateAddressInformationForPersonEventRequestObjectpropCount++;
-            }
+                if (addOrUpdateAddressInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateAddressInformationForPersonEventRequestObject["add_or_Update_Address_Information_Data"] = addOrUpdateAddressInformationDataObject;
+                    addOrUpdateAddressInformationForPersonEventRequestObjectpropCount++;
+                }
 
-            if (addOrUpdateAddressInformationForPersonEventRequestObjectpropCount > 0)
-            {
-                addOrUpdateAddressInformationForPersonEventRequest["add_or_Update_Address_Information_for_Person_Event_Request"] = addOrUpdateAddressInformationForPersonEventRequestObject;
-                addOrUpdateAddressInformationForPersonEventRequestpropCount++;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestObjectpropCount > 0)
+                {
+                    addOrUpdateAddressInformationForPersonEventRequest["add_or_Update_Address_Information_for_Person_Event_Request"] = addOrUpdateAddressInformationForPersonEventRequestObject;
+                    addOrUpdateAddressInformationForPersonEventRequestpropCount++;
+                }
 
-            if (addOrUpdateAddressInformationForPersonEventRequestpropCount > 0)
-            {
-                callPayload.Body = addOrUpdateAddressInformationForPersonEventRequest;
-            }
+                if (addOrUpdateAddressInformationForPersonEventRequestpropCount > 0)
+                {
+                    callPayload.Body = addOrUpdateAddressInformationForPersonEventRequest;
+                }
 
-            return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+                return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdatePhoneInformation(Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdatePhoneInformation))]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdatePhoneInformation([WorkflowExpression] Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType, [WorkflowExpression] Func<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID, [WorkflowExpression] Func<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, [WorkflowExpression] Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = null, [WorkflowExpression] Func<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = null, [WorkflowExpression] Func<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = null, [WorkflowExpression] Func<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = null, [WorkflowExpression] Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID = null, [WorkflowExpression] Func<bool> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = null, [WorkflowExpression] Func<bool> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = null, [WorkflowExpression] Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
-            var apiCallPath = "/Add_or_Update_Phone_Information";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addOrUpdatePhoneInformationForPersonEventRequest = new JObject();
-            var addOrUpdatePhoneInformationForPersonEventRequestpropCount = 0;
-            var addOrUpdatePhoneInformationForPersonEventRequestObject = new JObject();
-            var addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount = 0;
-            var addOrUpdatePhoneInformationDataObject = new JObject();
-            var addOrUpdatePhoneInformationDataObjectpropCount = 0;
-            var workerReferenceObject = new JObject();
-            var workerReferenceObjectpropCount = 0;
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType);
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID);
-            if (workerReferenceObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> __BuildAddOrUpdatePhoneInformation(WorkflowExpression<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType, WorkflowExpression<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID, WorkflowExpression<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, WorkflowExpression<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = null, WorkflowExpression<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = null, WorkflowExpression<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = null, WorkflowExpression<string> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = null, WorkflowExpression<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID = null, WorkflowExpression<bool> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = null, WorkflowExpression<bool> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = null, WorkflowExpression<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        {
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType), required: true);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID), required: true);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate), required: true);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary), required: false);
+            WorkflowExpression.Validate(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID), required: false);
+            return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(() =>
             {
-                addOrUpdatePhoneInformationDataObject["worker_Reference"] = workerReferenceObject;
+                var apiCallPath = "/Add_or_Update_Phone_Information";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addOrUpdatePhoneInformationForPersonEventRequest = new JObject();
+                var addOrUpdatePhoneInformationForPersonEventRequestpropCount = 0;
+                var addOrUpdatePhoneInformationForPersonEventRequestObject = new JObject();
+                var addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount = 0;
+                var addOrUpdatePhoneInformationDataObject = new JObject();
+                var addOrUpdatePhoneInformationDataObjectpropCount = 0;
+                var workerReferenceObject = new JObject();
+                var workerReferenceObjectpropCount = 0;
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType);
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID);
+                if (workerReferenceObjectpropCount > 0)
+                {
+                    addOrUpdatePhoneInformationDataObject["worker_Reference"] = workerReferenceObject;
+                    addOrUpdatePhoneInformationDataObjectpropCount++;
+                }
+
                 addOrUpdatePhoneInformationDataObjectpropCount++;
-            }
+                addOrUpdatePhoneInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
+                var phoneInformationDataObject = new JObject();
+                var phoneInformationDataObjectpropCount = 0;
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode != null)
+                {
+                    phoneInformationDataObject["country_ISO_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
+                    phoneInformationDataObjectpropCount++;
+                }
 
-            addOrUpdatePhoneInformationDataObjectpropCount++;
-            addOrUpdatePhoneInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
-            var phoneInformationDataObject = new JObject();
-            var phoneInformationDataObjectpropCount = 0;
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode != null)
-            {
-                phoneInformationDataObject["country_ISO_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
-                phoneInformationDataObjectpropCount++;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode != null)
+                {
+                    phoneInformationDataObject["area_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
+                    phoneInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode != null)
-            {
-                phoneInformationDataObject["area_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
-                phoneInformationDataObjectpropCount++;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber != null)
+                {
+                    phoneInformationDataObject["phone_Number"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
+                    phoneInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber != null)
-            {
-                phoneInformationDataObject["phone_Number"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
-                phoneInformationDataObjectpropCount++;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension != null)
+                {
+                    phoneInformationDataObject["phone_Extension"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
+                    phoneInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension != null)
-            {
-                phoneInformationDataObject["phone_Extension"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
-                phoneInformationDataObjectpropCount++;
-            }
-
-            var phoneDeviceTypeReferenceObject = new JObject();
-            var phoneDeviceTypeReferenceObjectpropCount = 0;
-            phoneDeviceTypeReferenceObject["PhoneDeviceTypeIDType"] = "Phone_Device_Type_ID";
-            phoneDeviceTypeReferenceObjectpropCount++;
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID != null)
-            {
-                phoneDeviceTypeReferenceObject["PhoneDeviceTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID);
+                var phoneDeviceTypeReferenceObject = new JObject();
+                var phoneDeviceTypeReferenceObjectpropCount = 0;
+                phoneDeviceTypeReferenceObject["PhoneDeviceTypeIDType"] = "Phone_Device_Type_ID";
                 phoneDeviceTypeReferenceObjectpropCount++;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID != null)
+                {
+                    phoneDeviceTypeReferenceObject["PhoneDeviceTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID);
+                    phoneDeviceTypeReferenceObjectpropCount++;
+                }
 
-            if (phoneDeviceTypeReferenceObjectpropCount > 0)
-            {
-                phoneInformationDataObject["phone_Device_Type_Reference"] = phoneDeviceTypeReferenceObject;
-                phoneInformationDataObjectpropCount++;
-            }
+                if (phoneDeviceTypeReferenceObjectpropCount > 0)
+                {
+                    phoneInformationDataObject["phone_Device_Type_Reference"] = phoneDeviceTypeReferenceObject;
+                    phoneInformationDataObjectpropCount++;
+                }
 
-            var usageDataObject = new JObject();
-            var usageDataObjectpropCount = 0;
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic != null)
-            {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
-                usageDataObjectpropCount++;
-            }
+                var usageDataObject = new JObject();
+                var usageDataObjectpropCount = 0;
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic != null)
+                {
+                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
+                    usageDataObjectpropCount++;
+                }
 
-            var typeDataObject = new JObject();
-            var typeDataObjectpropCount = 0;
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary != null)
-            {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
-                typeDataObjectpropCount++;
-            }
+                var typeDataObject = new JObject();
+                var typeDataObjectpropCount = 0;
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary != null)
+                {
+                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
+                    typeDataObjectpropCount++;
+                }
 
-            var typeReferenceObject = new JObject();
-            var typeReferenceObjectpropCount = 0;
-            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            typeReferenceObjectpropCount++;
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
-            {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                var typeReferenceObject = new JObject();
+                var typeReferenceObjectpropCount = 0;
+                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
                 typeReferenceObjectpropCount++;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
+                {
+                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                    typeReferenceObjectpropCount++;
+                }
 
-            if (typeReferenceObjectpropCount > 0)
-            {
-                typeDataObject["type_Reference"] = typeReferenceObject;
-                typeDataObjectpropCount++;
-            }
+                if (typeReferenceObjectpropCount > 0)
+                {
+                    typeDataObject["type_Reference"] = typeReferenceObject;
+                    typeDataObjectpropCount++;
+                }
 
-            if (typeDataObjectpropCount > 0)
-            {
-                usageDataObject["type_Data"] = typeDataObject;
-                usageDataObjectpropCount++;
-            }
+                if (typeDataObjectpropCount > 0)
+                {
+                    usageDataObject["type_Data"] = typeDataObject;
+                    usageDataObjectpropCount++;
+                }
 
-            if (usageDataObjectpropCount > 0)
-            {
-                phoneInformationDataObject["usage_Data"] = usageDataObject;
-                phoneInformationDataObjectpropCount++;
-            }
+                if (usageDataObjectpropCount > 0)
+                {
+                    phoneInformationDataObject["usage_Data"] = usageDataObject;
+                    phoneInformationDataObjectpropCount++;
+                }
 
-            if (phoneInformationDataObjectpropCount > 0)
-            {
-                addOrUpdatePhoneInformationDataObject["phone_Information_Data"] = phoneInformationDataObject;
-                addOrUpdatePhoneInformationDataObjectpropCount++;
-            }
+                if (phoneInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdatePhoneInformationDataObject["phone_Information_Data"] = phoneInformationDataObject;
+                    addOrUpdatePhoneInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdatePhoneInformationDataObjectpropCount > 0)
-            {
-                addOrUpdatePhoneInformationForPersonEventRequestObject["add_or_Update_Phone_Information_Data"] = addOrUpdatePhoneInformationDataObject;
-                addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount++;
-            }
+                if (addOrUpdatePhoneInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdatePhoneInformationForPersonEventRequestObject["add_or_Update_Phone_Information_Data"] = addOrUpdatePhoneInformationDataObject;
+                    addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount++;
+                }
 
-            if (addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount > 0)
-            {
-                addOrUpdatePhoneInformationForPersonEventRequest["add_or_Update_Phone_Information_for_Person_Event_Request"] = addOrUpdatePhoneInformationForPersonEventRequestObject;
-                addOrUpdatePhoneInformationForPersonEventRequestpropCount++;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount > 0)
+                {
+                    addOrUpdatePhoneInformationForPersonEventRequest["add_or_Update_Phone_Information_for_Person_Event_Request"] = addOrUpdatePhoneInformationForPersonEventRequestObject;
+                    addOrUpdatePhoneInformationForPersonEventRequestpropCount++;
+                }
 
-            if (addOrUpdatePhoneInformationForPersonEventRequestpropCount > 0)
-            {
-                callPayload.Body = addOrUpdatePhoneInformationForPersonEventRequest;
-            }
+                if (addOrUpdatePhoneInformationForPersonEventRequestpropCount > 0)
+                {
+                    callPayload.Body = addOrUpdatePhoneInformationForPersonEventRequest;
+                }
 
-            return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+                return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateEmailAddressInformation(Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateEmailAddressInformation))]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateEmailAddressInformation([WorkflowExpression] Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType, [WorkflowExpression] Func<string> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID, [WorkflowExpression] Func<string> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, [WorkflowExpression] Func<string> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = null, [WorkflowExpression] Func<bool> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = null, [WorkflowExpression] Func<bool> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = null, [WorkflowExpression] Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
-            var apiCallPath = "/Add_or_Update_Email_Address_Information";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addOrUpdateEmailAddressInformationForPersonEventRequest = new JObject();
-            var addOrUpdateEmailAddressInformationForPersonEventRequestpropCount = 0;
-            var addOrUpdateEmailAddressInformationForPersonEventRequestObject = new JObject();
-            var addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount = 0;
-            var addOrUpdateEmailAddressInformationDataObject = new JObject();
-            var addOrUpdateEmailAddressInformationDataObjectpropCount = 0;
-            var workerReferenceObject = new JObject();
-            var workerReferenceObjectpropCount = 0;
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType);
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID);
-            if (workerReferenceObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> __BuildAddOrUpdateEmailAddressInformation(WorkflowExpression<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType, WorkflowExpression<string> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID, WorkflowExpression<string> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, WorkflowExpression<string> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = null, WorkflowExpression<bool> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = null, WorkflowExpression<bool> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = null, WorkflowExpression<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        {
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType), required: true);
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID), required: true);
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate), required: true);
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress), required: false);
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic), required: false);
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary), required: false);
+            WorkflowExpression.Validate(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID), required: false);
+            return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(() =>
             {
-                addOrUpdateEmailAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                var apiCallPath = "/Add_or_Update_Email_Address_Information";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addOrUpdateEmailAddressInformationForPersonEventRequest = new JObject();
+                var addOrUpdateEmailAddressInformationForPersonEventRequestpropCount = 0;
+                var addOrUpdateEmailAddressInformationForPersonEventRequestObject = new JObject();
+                var addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount = 0;
+                var addOrUpdateEmailAddressInformationDataObject = new JObject();
+                var addOrUpdateEmailAddressInformationDataObjectpropCount = 0;
+                var workerReferenceObject = new JObject();
+                var workerReferenceObjectpropCount = 0;
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType);
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID);
+                if (workerReferenceObjectpropCount > 0)
+                {
+                    addOrUpdateEmailAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                    addOrUpdateEmailAddressInformationDataObjectpropCount++;
+                }
+
                 addOrUpdateEmailAddressInformationDataObjectpropCount++;
-            }
+                addOrUpdateEmailAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
+                var emailAddressInformationDataObject = new JObject();
+                var emailAddressInformationDataObjectpropCount = 0;
+                if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress != null)
+                {
+                    emailAddressInformationDataObject["email_Address"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
+                    emailAddressInformationDataObjectpropCount++;
+                }
 
-            addOrUpdateEmailAddressInformationDataObjectpropCount++;
-            addOrUpdateEmailAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
-            var emailAddressInformationDataObject = new JObject();
-            var emailAddressInformationDataObjectpropCount = 0;
-            if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress != null)
-            {
-                emailAddressInformationDataObject["email_Address"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
-                emailAddressInformationDataObjectpropCount++;
-            }
+                var usageDataObject = new JObject();
+                var usageDataObjectpropCount = 0;
+                if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic != null)
+                {
+                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
+                    usageDataObjectpropCount++;
+                }
 
-            var usageDataObject = new JObject();
-            var usageDataObjectpropCount = 0;
-            if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic != null)
-            {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
-                usageDataObjectpropCount++;
-            }
+                var typeDataObject = new JObject();
+                var typeDataObjectpropCount = 0;
+                if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary != null)
+                {
+                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
+                    typeDataObjectpropCount++;
+                }
 
-            var typeDataObject = new JObject();
-            var typeDataObjectpropCount = 0;
-            if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary != null)
-            {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
-                typeDataObjectpropCount++;
-            }
-
-            var typeReferenceObject = new JObject();
-            var typeReferenceObjectpropCount = 0;
-            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            typeReferenceObjectpropCount++;
-            if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
-            {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                var typeReferenceObject = new JObject();
+                var typeReferenceObjectpropCount = 0;
+                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
                 typeReferenceObjectpropCount++;
-            }
+                if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
+                {
+                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                    typeReferenceObjectpropCount++;
+                }
 
-            if (typeReferenceObjectpropCount > 0)
-            {
-                typeDataObject["type_Reference"] = typeReferenceObject;
-                typeDataObjectpropCount++;
-            }
+                if (typeReferenceObjectpropCount > 0)
+                {
+                    typeDataObject["type_Reference"] = typeReferenceObject;
+                    typeDataObjectpropCount++;
+                }
 
-            if (typeDataObjectpropCount > 0)
-            {
-                usageDataObject["type_Data"] = typeDataObject;
-                usageDataObjectpropCount++;
-            }
+                if (typeDataObjectpropCount > 0)
+                {
+                    usageDataObject["type_Data"] = typeDataObject;
+                    usageDataObjectpropCount++;
+                }
 
-            if (usageDataObjectpropCount > 0)
-            {
-                emailAddressInformationDataObject["usage_Data"] = usageDataObject;
-                emailAddressInformationDataObjectpropCount++;
-            }
+                if (usageDataObjectpropCount > 0)
+                {
+                    emailAddressInformationDataObject["usage_Data"] = usageDataObject;
+                    emailAddressInformationDataObjectpropCount++;
+                }
 
-            if (emailAddressInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateEmailAddressInformationDataObject["email_Address_Information_Data"] = emailAddressInformationDataObject;
-                addOrUpdateEmailAddressInformationDataObjectpropCount++;
-            }
+                if (emailAddressInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateEmailAddressInformationDataObject["email_Address_Information_Data"] = emailAddressInformationDataObject;
+                    addOrUpdateEmailAddressInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateEmailAddressInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateEmailAddressInformationForPersonEventRequestObject["add_or_Update_Email_Address_Information_Data"] = addOrUpdateEmailAddressInformationDataObject;
-                addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount++;
-            }
+                if (addOrUpdateEmailAddressInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateEmailAddressInformationForPersonEventRequestObject["add_or_Update_Email_Address_Information_Data"] = addOrUpdateEmailAddressInformationDataObject;
+                    addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount++;
+                }
 
-            if (addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount > 0)
-            {
-                addOrUpdateEmailAddressInformationForPersonEventRequest["add_or_Update_Email_Address_Information_for_Person_Event_Request"] = addOrUpdateEmailAddressInformationForPersonEventRequestObject;
-                addOrUpdateEmailAddressInformationForPersonEventRequestpropCount++;
-            }
+                if (addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount > 0)
+                {
+                    addOrUpdateEmailAddressInformationForPersonEventRequest["add_or_Update_Email_Address_Information_for_Person_Event_Request"] = addOrUpdateEmailAddressInformationForPersonEventRequestObject;
+                    addOrUpdateEmailAddressInformationForPersonEventRequestpropCount++;
+                }
 
-            if (addOrUpdateEmailAddressInformationForPersonEventRequestpropCount > 0)
-            {
-                callPayload.Body = addOrUpdateEmailAddressInformationForPersonEventRequest;
-            }
+                if (addOrUpdateEmailAddressInformationForPersonEventRequestpropCount > 0)
+                {
+                    callPayload.Body = addOrUpdateEmailAddressInformationForPersonEventRequest;
+                }
 
-            return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+                return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateInstantMessengerInformation(Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateInstantMessengerInformation))]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateInstantMessengerInformation([WorkflowExpression] Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType, [WorkflowExpression] Func<string> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID, [WorkflowExpression] Func<string> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, [WorkflowExpression] Func<string> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = null, [WorkflowExpression] Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID = null, [WorkflowExpression] Func<bool> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = null, [WorkflowExpression] Func<bool> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = null, [WorkflowExpression] Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
-            var apiCallPath = "/Add_or_Update_Instant_Messenger_Information";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addOrUpdateInstantMessengerInformationForPersonEventRequest = new JObject();
-            var addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount = 0;
-            var addOrUpdateInstantMessengerInformationForPersonEventRequestObject = new JObject();
-            var addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount = 0;
-            var addOrUpdateInstantMessengerInformationDataObject = new JObject();
-            var addOrUpdateInstantMessengerInformationDataObjectpropCount = 0;
-            var workerReferenceObject = new JObject();
-            var workerReferenceObjectpropCount = 0;
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType);
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID);
-            if (workerReferenceObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> __BuildAddOrUpdateInstantMessengerInformation(WorkflowExpression<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType, WorkflowExpression<string> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID, WorkflowExpression<string> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, WorkflowExpression<string> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = null, WorkflowExpression<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID = null, WorkflowExpression<bool> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = null, WorkflowExpression<bool> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = null, WorkflowExpression<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        {
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType), required: true);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID), required: true);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate), required: true);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress), required: false);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID), required: false);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic), required: false);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary), required: false);
+            WorkflowExpression.Validate(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID), required: false);
+            return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(() =>
             {
-                addOrUpdateInstantMessengerInformationDataObject["worker_Reference"] = workerReferenceObject;
+                var apiCallPath = "/Add_or_Update_Instant_Messenger_Information";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addOrUpdateInstantMessengerInformationForPersonEventRequest = new JObject();
+                var addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount = 0;
+                var addOrUpdateInstantMessengerInformationForPersonEventRequestObject = new JObject();
+                var addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount = 0;
+                var addOrUpdateInstantMessengerInformationDataObject = new JObject();
+                var addOrUpdateInstantMessengerInformationDataObjectpropCount = 0;
+                var workerReferenceObject = new JObject();
+                var workerReferenceObjectpropCount = 0;
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType);
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID);
+                if (workerReferenceObjectpropCount > 0)
+                {
+                    addOrUpdateInstantMessengerInformationDataObject["worker_Reference"] = workerReferenceObject;
+                    addOrUpdateInstantMessengerInformationDataObjectpropCount++;
+                }
+
                 addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-            }
+                addOrUpdateInstantMessengerInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
+                var instantMessengerInformationDataObject = new JObject();
+                var instantMessengerInformationDataObjectpropCount = 0;
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress != null)
+                {
+                    instantMessengerInformationDataObject["instant_Messenger_Address"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
+                    instantMessengerInformationDataObjectpropCount++;
+                }
 
-            addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-            addOrUpdateInstantMessengerInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
-            var instantMessengerInformationDataObject = new JObject();
-            var instantMessengerInformationDataObjectpropCount = 0;
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress != null)
-            {
-                instantMessengerInformationDataObject["instant_Messenger_Address"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
-                instantMessengerInformationDataObjectpropCount++;
-            }
-
-            var instantMessengerTypeReferenceObject = new JObject();
-            var instantMessengerTypeReferenceObjectpropCount = 0;
-            instantMessengerTypeReferenceObject["InstantMessengerTypeIDType"] = "Instant_Messenger_Type_ID";
-            instantMessengerTypeReferenceObjectpropCount++;
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID != null)
-            {
-                instantMessengerTypeReferenceObject["InstantMessengerTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID);
+                var instantMessengerTypeReferenceObject = new JObject();
+                var instantMessengerTypeReferenceObjectpropCount = 0;
+                instantMessengerTypeReferenceObject["InstantMessengerTypeIDType"] = "Instant_Messenger_Type_ID";
                 instantMessengerTypeReferenceObjectpropCount++;
-            }
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID != null)
+                {
+                    instantMessengerTypeReferenceObject["InstantMessengerTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID);
+                    instantMessengerTypeReferenceObjectpropCount++;
+                }
 
-            if (instantMessengerTypeReferenceObjectpropCount > 0)
-            {
-                instantMessengerInformationDataObject["instant_Messenger_Type_Reference"] = instantMessengerTypeReferenceObject;
-                instantMessengerInformationDataObjectpropCount++;
-            }
+                if (instantMessengerTypeReferenceObjectpropCount > 0)
+                {
+                    instantMessengerInformationDataObject["instant_Messenger_Type_Reference"] = instantMessengerTypeReferenceObject;
+                    instantMessengerInformationDataObjectpropCount++;
+                }
 
-            var usageDataObject = new JObject();
-            var usageDataObjectpropCount = 0;
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic != null)
-            {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
-                usageDataObjectpropCount++;
-            }
+                var usageDataObject = new JObject();
+                var usageDataObjectpropCount = 0;
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic != null)
+                {
+                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
+                    usageDataObjectpropCount++;
+                }
 
-            var typeDataObject = new JObject();
-            var typeDataObjectpropCount = 0;
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary != null)
-            {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
-                typeDataObjectpropCount++;
-            }
+                var typeDataObject = new JObject();
+                var typeDataObjectpropCount = 0;
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary != null)
+                {
+                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
+                    typeDataObjectpropCount++;
+                }
 
-            var typeReferenceObject = new JObject();
-            var typeReferenceObjectpropCount = 0;
-            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            typeReferenceObjectpropCount++;
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
-            {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                var typeReferenceObject = new JObject();
+                var typeReferenceObjectpropCount = 0;
+                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
                 typeReferenceObjectpropCount++;
-            }
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
+                {
+                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                    typeReferenceObjectpropCount++;
+                }
 
-            if (typeReferenceObjectpropCount > 0)
-            {
-                typeDataObject["type_Reference"] = typeReferenceObject;
-                typeDataObjectpropCount++;
-            }
+                if (typeReferenceObjectpropCount > 0)
+                {
+                    typeDataObject["type_Reference"] = typeReferenceObject;
+                    typeDataObjectpropCount++;
+                }
 
-            if (typeDataObjectpropCount > 0)
-            {
-                usageDataObject["type_Data"] = typeDataObject;
-                usageDataObjectpropCount++;
-            }
+                if (typeDataObjectpropCount > 0)
+                {
+                    usageDataObject["type_Data"] = typeDataObject;
+                    usageDataObjectpropCount++;
+                }
 
-            if (usageDataObjectpropCount > 0)
-            {
-                instantMessengerInformationDataObject["usage_Data"] = usageDataObject;
-                instantMessengerInformationDataObjectpropCount++;
-            }
+                if (usageDataObjectpropCount > 0)
+                {
+                    instantMessengerInformationDataObject["usage_Data"] = usageDataObject;
+                    instantMessengerInformationDataObjectpropCount++;
+                }
 
-            if (instantMessengerInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateInstantMessengerInformationDataObject["instant_Messenger_Information_Data"] = instantMessengerInformationDataObject;
-                addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-            }
+                if (instantMessengerInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateInstantMessengerInformationDataObject["instant_Messenger_Information_Data"] = instantMessengerInformationDataObject;
+                    addOrUpdateInstantMessengerInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateInstantMessengerInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateInstantMessengerInformationForPersonEventRequestObject["add_or_Update_Instant_Messenger_Information_Data"] = addOrUpdateInstantMessengerInformationDataObject;
-                addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount++;
-            }
+                if (addOrUpdateInstantMessengerInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateInstantMessengerInformationForPersonEventRequestObject["add_or_Update_Instant_Messenger_Information_Data"] = addOrUpdateInstantMessengerInformationDataObject;
+                    addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount++;
+                }
 
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount > 0)
-            {
-                addOrUpdateInstantMessengerInformationForPersonEventRequest["add_or_Update_Instant_Messenger_Information_for_Person_Event_Request"] = addOrUpdateInstantMessengerInformationForPersonEventRequestObject;
-                addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount++;
-            }
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount > 0)
+                {
+                    addOrUpdateInstantMessengerInformationForPersonEventRequest["add_or_Update_Instant_Messenger_Information_for_Person_Event_Request"] = addOrUpdateInstantMessengerInformationForPersonEventRequestObject;
+                    addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount++;
+                }
 
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount > 0)
-            {
-                callPayload.Body = addOrUpdateInstantMessengerInformationForPersonEventRequest;
-            }
+                if (addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount > 0)
+                {
+                    callPayload.Body = addOrUpdateInstantMessengerInformationForPersonEventRequest;
+                }
 
-            return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+                return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateWebAddressInformation(Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateWebAddressInformation))]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateWebAddressInformation([WorkflowExpression] Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType, [WorkflowExpression] Func<string> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID, [WorkflowExpression] Func<string> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, [WorkflowExpression] Func<string> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = null, [WorkflowExpression] Func<bool> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = null, [WorkflowExpression] Func<bool> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = null, [WorkflowExpression] Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
-            var apiCallPath = "/Add_or_Update_Web_Address_Information";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addOrUpdateWebAddressInformationForPersonEventRequest = new JObject();
-            var addOrUpdateWebAddressInformationForPersonEventRequestpropCount = 0;
-            var addOrUpdateWebAddressInformationForPersonEventRequestObject = new JObject();
-            var addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount = 0;
-            var addOrUpdateWebAddressInformationDataObject = new JObject();
-            var addOrUpdateWebAddressInformationDataObjectpropCount = 0;
-            var workerReferenceObject = new JObject();
-            var workerReferenceObjectpropCount = 0;
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType);
-            workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID);
-            if (workerReferenceObjectpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> __BuildAddOrUpdateWebAddressInformation(WorkflowExpression<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType, WorkflowExpression<string> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID, WorkflowExpression<string> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, WorkflowExpression<string> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = null, WorkflowExpression<bool> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = null, WorkflowExpression<bool> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = null, WorkflowExpression<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        {
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType), required: true);
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID), required: true);
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate), required: true);
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress), required: false);
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic), required: false);
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary), required: false);
+            WorkflowExpression.Validate(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID), required: false);
+            return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(() =>
             {
-                addOrUpdateWebAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                var apiCallPath = "/Add_or_Update_Web_Address_Information";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addOrUpdateWebAddressInformationForPersonEventRequest = new JObject();
+                var addOrUpdateWebAddressInformationForPersonEventRequestpropCount = 0;
+                var addOrUpdateWebAddressInformationForPersonEventRequestObject = new JObject();
+                var addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount = 0;
+                var addOrUpdateWebAddressInformationDataObject = new JObject();
+                var addOrUpdateWebAddressInformationDataObjectpropCount = 0;
+                var workerReferenceObject = new JObject();
+                var workerReferenceObjectpropCount = 0;
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType);
+                workerReferenceObjectpropCount++;
+                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID);
+                if (workerReferenceObjectpropCount > 0)
+                {
+                    addOrUpdateWebAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                    addOrUpdateWebAddressInformationDataObjectpropCount++;
+                }
+
                 addOrUpdateWebAddressInformationDataObjectpropCount++;
-            }
+                addOrUpdateWebAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
+                var webAddressInformationDataObject = new JObject();
+                var webAddressInformationDataObjectpropCount = 0;
+                if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress != null)
+                {
+                    webAddressInformationDataObject["web_Address"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
+                    webAddressInformationDataObjectpropCount++;
+                }
 
-            addOrUpdateWebAddressInformationDataObjectpropCount++;
-            addOrUpdateWebAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
-            var webAddressInformationDataObject = new JObject();
-            var webAddressInformationDataObjectpropCount = 0;
-            if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress != null)
-            {
-                webAddressInformationDataObject["web_Address"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
-                webAddressInformationDataObjectpropCount++;
-            }
+                var usageDataObject = new JObject();
+                var usageDataObjectpropCount = 0;
+                if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic != null)
+                {
+                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
+                    usageDataObjectpropCount++;
+                }
 
-            var usageDataObject = new JObject();
-            var usageDataObjectpropCount = 0;
-            if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic != null)
-            {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
-                usageDataObjectpropCount++;
-            }
+                var typeDataObject = new JObject();
+                var typeDataObjectpropCount = 0;
+                if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary != null)
+                {
+                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
+                    typeDataObjectpropCount++;
+                }
 
-            var typeDataObject = new JObject();
-            var typeDataObjectpropCount = 0;
-            if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary != null)
-            {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
-                typeDataObjectpropCount++;
-            }
-
-            var typeReferenceObject = new JObject();
-            var typeReferenceObjectpropCount = 0;
-            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            typeReferenceObjectpropCount++;
-            if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
-            {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                var typeReferenceObject = new JObject();
+                var typeReferenceObjectpropCount = 0;
+                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
                 typeReferenceObjectpropCount++;
-            }
+                if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
+                {
+                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                    typeReferenceObjectpropCount++;
+                }
 
-            if (typeReferenceObjectpropCount > 0)
-            {
-                typeDataObject["type_Reference"] = typeReferenceObject;
-                typeDataObjectpropCount++;
-            }
+                if (typeReferenceObjectpropCount > 0)
+                {
+                    typeDataObject["type_Reference"] = typeReferenceObject;
+                    typeDataObjectpropCount++;
+                }
 
-            if (typeDataObjectpropCount > 0)
-            {
-                usageDataObject["type_Data"] = typeDataObject;
-                usageDataObjectpropCount++;
-            }
+                if (typeDataObjectpropCount > 0)
+                {
+                    usageDataObject["type_Data"] = typeDataObject;
+                    usageDataObjectpropCount++;
+                }
 
-            if (usageDataObjectpropCount > 0)
-            {
-                webAddressInformationDataObject["usage_Data"] = usageDataObject;
-                webAddressInformationDataObjectpropCount++;
-            }
+                if (usageDataObjectpropCount > 0)
+                {
+                    webAddressInformationDataObject["usage_Data"] = usageDataObject;
+                    webAddressInformationDataObjectpropCount++;
+                }
 
-            if (webAddressInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateWebAddressInformationDataObject["web_Address_Information_Data"] = webAddressInformationDataObject;
-                addOrUpdateWebAddressInformationDataObjectpropCount++;
-            }
+                if (webAddressInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateWebAddressInformationDataObject["web_Address_Information_Data"] = webAddressInformationDataObject;
+                    addOrUpdateWebAddressInformationDataObjectpropCount++;
+                }
 
-            if (addOrUpdateWebAddressInformationDataObjectpropCount > 0)
-            {
-                addOrUpdateWebAddressInformationForPersonEventRequestObject["add_or_Update_Web_Address_Information_Data"] = addOrUpdateWebAddressInformationDataObject;
-                addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount++;
-            }
+                if (addOrUpdateWebAddressInformationDataObjectpropCount > 0)
+                {
+                    addOrUpdateWebAddressInformationForPersonEventRequestObject["add_or_Update_Web_Address_Information_Data"] = addOrUpdateWebAddressInformationDataObject;
+                    addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount++;
+                }
 
-            if (addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount > 0)
-            {
-                addOrUpdateWebAddressInformationForPersonEventRequest["add_or_Update_Web_Address_Information_for_Person_Event_Request"] = addOrUpdateWebAddressInformationForPersonEventRequestObject;
-                addOrUpdateWebAddressInformationForPersonEventRequestpropCount++;
-            }
+                if (addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount > 0)
+                {
+                    addOrUpdateWebAddressInformationForPersonEventRequest["add_or_Update_Web_Address_Information_for_Person_Event_Request"] = addOrUpdateWebAddressInformationForPersonEventRequestObject;
+                    addOrUpdateWebAddressInformationForPersonEventRequestpropCount++;
+                }
 
-            if (addOrUpdateWebAddressInformationForPersonEventRequestpropCount > 0)
-            {
-                callPayload.Body = addOrUpdateWebAddressInformationForPersonEventRequest;
-            }
+                if (addOrUpdateWebAddressInformationForPersonEventRequestpropCount > 0)
+                {
+                    callPayload.Body = addOrUpdateWebAddressInformationForPersonEventRequest;
+                }
 
-            return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+                return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeePersonalInfoInfo> GetEmployeePersonalInfo(Expression<Func<systemIDTypeInput>> systemIDType, Expression<Func<string>> systemID)
+        [WorkflowExpressionFactory(nameof(__BuildGetEmployeePersonalInfo))]
+        public IBodyWorkflowAction<EmployeePersonalInfoInfo> GetEmployeePersonalInfo([WorkflowExpression] Func<systemIDTypeInput> systemIDType, [WorkflowExpression] Func<string> systemID)
         {
-            var apiCallPath = "/Get_Employee_Personal_Info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
-            return new ApiConnectionAction<EmployeePersonalInfoInfo>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmployeePersonalInfoInfo> __BuildGetEmployeePersonalInfo(WorkflowExpression<systemIDTypeInput> systemIDType, WorkflowExpression<string> systemID)
+        {
+            WorkflowExpression.Validate(systemIDType, nameof(systemIDType), required: true);
+            WorkflowExpression.Validate(systemID, nameof(systemID), required: true);
+            return new DeferredBodyAction<EmployeePersonalInfoInfo>(() =>
+            {
+                var apiCallPath = "/Get_Employee_Personal_Info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
+                callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+                return new ApiConnectionAction<EmployeePersonalInfoInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeeIdentityInfo> GetEmployeeIdentityInfo(Expression<Func<systemIDTypeInput>> systemIDType, Expression<Func<string>> systemID)
+        [WorkflowExpressionFactory(nameof(__BuildGetEmployeeIdentityInfo))]
+        public IBodyWorkflowAction<EmployeeIdentityInfo> GetEmployeeIdentityInfo([WorkflowExpression] Func<systemIDTypeInput> systemIDType, [WorkflowExpression] Func<string> systemID)
         {
-            var apiCallPath = "/Get_Employee_Identity_Info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
-            return new ApiConnectionAction<EmployeeIdentityInfo>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmployeeIdentityInfo> __BuildGetEmployeeIdentityInfo(WorkflowExpression<systemIDTypeInput> systemIDType, WorkflowExpression<string> systemID)
+        {
+            WorkflowExpression.Validate(systemIDType, nameof(systemIDType), required: true);
+            WorkflowExpression.Validate(systemID, nameof(systemID), required: true);
+            return new DeferredBodyAction<EmployeeIdentityInfo>(() =>
+            {
+                var apiCallPath = "/Get_Employee_Identity_Info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
+                callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+                return new ApiConnectionAction<EmployeeIdentityInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeeQualificationInfo> GetEmployeeQualificationInfo(Expression<Func<systemIDTypeInput>> systemIDType, Expression<Func<string>> systemID)
+        [WorkflowExpressionFactory(nameof(__BuildGetEmployeeQualificationInfo))]
+        public IBodyWorkflowAction<EmployeeQualificationInfo> GetEmployeeQualificationInfo([WorkflowExpression] Func<systemIDTypeInput> systemIDType, [WorkflowExpression] Func<string> systemID)
         {
-            var apiCallPath = "/Get_Employee_Qualification_Info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
-            return new ApiConnectionAction<EmployeeQualificationInfo>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmployeeQualificationInfo> __BuildGetEmployeeQualificationInfo(WorkflowExpression<systemIDTypeInput> systemIDType, WorkflowExpression<string> systemID)
+        {
+            WorkflowExpression.Validate(systemIDType, nameof(systemIDType), required: true);
+            WorkflowExpression.Validate(systemID, nameof(systemID), required: true);
+            return new DeferredBodyAction<EmployeeQualificationInfo>(() =>
+            {
+                var apiCallPath = "/Get_Employee_Qualification_Info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
+                callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+                return new ApiConnectionAction<EmployeeQualificationInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeeEmploymentInfoInfo> GetEmployeeEmploymentInfo(Expression<Func<systemIDTypeInput>> systemIDType, Expression<Func<string>> systemID)
+        [WorkflowExpressionFactory(nameof(__BuildGetEmployeeEmploymentInfo))]
+        public IBodyWorkflowAction<EmployeeEmploymentInfoInfo> GetEmployeeEmploymentInfo([WorkflowExpression] Func<systemIDTypeInput> systemIDType, [WorkflowExpression] Func<string> systemID)
         {
-            var apiCallPath = "/Get_Employee_Employment_Info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
-            return new ApiConnectionAction<EmployeeEmploymentInfoInfo>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmployeeEmploymentInfoInfo> __BuildGetEmployeeEmploymentInfo(WorkflowExpression<systemIDTypeInput> systemIDType, WorkflowExpression<string> systemID)
+        {
+            WorkflowExpression.Validate(systemIDType, nameof(systemIDType), required: true);
+            WorkflowExpression.Validate(systemID, nameof(systemID), required: true);
+            return new DeferredBodyAction<EmployeeEmploymentInfoInfo>(() =>
+            {
+                var apiCallPath = "/Get_Employee_Employment_Info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
+                callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+                return new ApiConnectionAction<EmployeeEmploymentInfoInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildSOAPOperation))]
+        public IBodyWorkflowAction<string> SOAPOperation([WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/SOAP_Operation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildSOAPOperation(WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/SOAP_Operation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class WorkdayhcmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EmployeeInfo> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<dateCriteriaInput>> dateCriteria, Expression<Func<businessProcessTypeInput>> businessProcessType = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildWhenAnEmployeeIsAddedOrUpdated))]
+        public IBodyWorkflowTrigger<EmployeeInfo> WhenAnEmployeeIsAddedOrUpdated([WorkflowExpression] Func<dateCriteriaInput> dateCriteria,[WorkflowExpression] Func<businessProcessTypeInput> businessProcessType = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/When_an_Employee_is_Added_or_Updated";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["dateCriteria"] = ExpressionConverter.Convert(dateCriteria);
-            if (businessProcessType != null)
-                callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(businessProcessType);
-            return new ApiConnectionTrigger<EmployeeInfo>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EmployeeInfo> __BuildWhenAnEmployeeIsAddedOrUpdated(WorkflowExpression<dateCriteriaInput> dateCriteria,WorkflowExpression<businessProcessTypeInput> businessProcessType = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(dateCriteria, nameof(dateCriteria), required: true);
+            WorkflowExpression.Validate(businessProcessType, nameof(businessProcessType), required: false);
+            return new DeferredBodyTrigger<EmployeeInfo>(() =>
+            {
+                var apiCallPath = "/When_an_Employee_is_Added_or_Updated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["dateCriteria"] = ExpressionConverter.Convert(dateCriteria);
+                if (businessProcessType != null)
+                    callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(businessProcessType);
+                return new ApiConnectionTrigger<EmployeeInfo>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -712,6 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string PersonID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -722,6 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput
     {
         USA,
@@ -739,6 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string AddressLine { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItemAddessLineTypeType
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
@@ -749,12 +918,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ADDRESSLINE3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -765,6 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput
     {
         USA,
@@ -776,6 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput
     {
         Mobile,
@@ -784,12 +957,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Pager
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -800,12 +975,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -816,6 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput
     {
         AIM,
@@ -828,12 +1006,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Yahoo
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -844,6 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
@@ -970,6 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType CommunicationUsageTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDTypeType
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
@@ -977,6 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType
     {
         Home,
@@ -1010,6 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public PhoneInformationDataUsageDataType UsageData { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataCountryISOCodeType
     {
         USA,
@@ -1027,6 +1211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIDType PhoneDeviceTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIDTypeType
     {
         [EnumMember(Value = "Phone_Device_Type_ID")]
@@ -1034,6 +1219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIDType
     {
         Mobile,
@@ -1069,6 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType CommunicationUsageTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDTypeType
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
@@ -1076,6 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType
     {
         Home,
@@ -1115,6 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public AddressInformationDataCountryReferenceTypeCountryIDType CountryID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataCountryReferenceTypeCountryIDTypeType
     {
         [EnumMember(Value = "ISO 3166-1 Alpha-2 Code")]
@@ -1125,6 +1314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ISO31661Numeric3Code
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataCountryReferenceTypeCountryIDType
     {
         USA,
@@ -1142,6 +1332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string AddressLine { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataAddressLineDataTypeItemAddessLineTypeType
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
@@ -1158,6 +1349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string CountryRegionID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataCountryRegionReferenceTypeCountryRegionIDTypeType
     {
         [EnumMember(Value = "Country Region ID")]
@@ -1193,6 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType CommunicationUsageTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDTypeType
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
@@ -1200,6 +1393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType
     {
         Home,
@@ -1230,6 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIDType InstantMessengerTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIDTypeType
     {
         [EnumMember(Value = "Instant_Messenger_Type_ID")]
@@ -1237,6 +1432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIDType
     {
         AIM,
@@ -1396,6 +1592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public bool ReceiveEmailNotifications { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum systemIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -2127,6 +2324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public int WorkerID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dateCriteriaInput
     {
         [EnumMember(Value = "Effective Date")]
@@ -2135,6 +2333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         UpdatedDate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum businessProcessTypeInput
     {
         [EnumMember(Value = "Hire Employee")]

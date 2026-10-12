@@ -4,23 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioint01
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Loopioint01Actions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loopioint01")]
-        public IBodyWorkflowAction<ListStacksResponse> ListStacks(Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListStacks))]
+        public IBodyWorkflowAction<ListStacksResponse> ListStacks([WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/stacks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("@wide");
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<ListStacksResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListStacksResponse> __BuildListStacks(WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<ListStacksResponse>(() =>
+            {
+                var apiCallPath = "/stacks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("@wide");
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<ListStacksResponse>(callPayload);
+            });
         }
     }
 

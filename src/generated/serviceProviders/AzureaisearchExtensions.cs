@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
 {
     using System;
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -13,154 +12,261 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
 
     public class AzureaisearchActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IOutputWorkflowAction<JToken> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
+        [WorkflowExpressionFactory(nameof(__BuildIndexDocuments))]
+        public IOutputWorkflowAction<JToken> IndexDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documents)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["documents"] = ExpressionConverter.ConvertO(documents);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildIndexDocuments(WorkflowExpression<string> indexName, WorkflowExpression<JToken[]> documents)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(documents, nameof(documents), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocuments", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["documents"] = ExpressionConverter.ConvertO(documents);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocuments", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IOutputWorkflowAction<JToken> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        [WorkflowExpressionFactory(nameof(__BuildIndexDocument))]
+        public IOutputWorkflowAction<JToken> IndexDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildIndexDocument(WorkflowExpression<string> indexName, WorkflowExpression<object> document)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(document, nameof(document), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> VectorSearch(Expression<Func<string>> indexName, Expression<Func<VectorSearchInputSearchVectorType>> searchVector, Expression<Func<int>> kNearestNeighbors, Expression<Func<string>> search = null, Expression<Func<VectorSearchInputSearchModeType>> searchMode = null, Expression<Func<string>> filter = null)
+        [WorkflowExpressionFactory(nameof(__BuildVectorSearch))]
+        public IBodyWorkflowAction<JToken> VectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<VectorSearchInputSearchVectorType> searchVector, [WorkflowExpression] Func<int> kNearestNeighbors, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<VectorSearchInputSearchModeType> searchMode = null, [WorkflowExpression] Func<string> filter = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["searchVector"] = ExpressionConverter.ConvertO(searchVector);
-            serviceProviderParameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
-            if (search != null)
-            {
-                serviceProviderParameters["search"] = ExpressionConverter.ConvertO(search);
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (searchMode != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildVectorSearch(WorkflowExpression<string> indexName, WorkflowExpression<VectorSearchInputSearchVectorType> searchVector, WorkflowExpression<int> kNearestNeighbors, WorkflowExpression<string> search = null, WorkflowExpression<VectorSearchInputSearchModeType> searchMode = null, WorkflowExpression<string> filter = null)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(searchVector, nameof(searchVector), required: true);
+            WorkflowExpression.Validate(kNearestNeighbors, nameof(kNearestNeighbors), required: true);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(searchMode, nameof(searchMode), required: false);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                serviceProviderParameters["searchMode"] = ExpressionConverter.ConvertO(searchMode);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["searchVector"] = ExpressionConverter.ConvertO(searchVector);
+                serviceProviderParameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
+                if (search != null)
+                {
+                    serviceProviderParameters["search"] = ExpressionConverter.ConvertO(search);
+                }
 
-            if (filter != null)
-            {
-                serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
-            }
+                if (searchMode != null)
+                {
+                    serviceProviderParameters["searchMode"] = ExpressionConverter.ConvertO(searchMode);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "vectorSearch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                if (filter != null)
+                {
+                    serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "vectorSearch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> searchText, Expression<Func<int>> kNearestNeighbors, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<JToken[]>> vectorizedSearchFields = null, Expression<Func<JToken[]>> selectFields = null)
+        [WorkflowExpressionFactory(nameof(__BuildIntegratedVectorSearch))]
+        public IBodyWorkflowAction<JToken> IntegratedVectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> searchText, [WorkflowExpression] Func<int> kNearestNeighbors, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<JToken[]> vectorizedSearchFields = null, [WorkflowExpression] Func<JToken[]> selectFields = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["searchText"] = ExpressionConverter.ConvertO(searchText);
-            serviceProviderParameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
-            if (search != null)
-            {
-                serviceProviderParameters["search"] = ExpressionConverter.ConvertO(search);
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (filter != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildIntegratedVectorSearch(WorkflowExpression<string> indexName, WorkflowExpression<string> searchText, WorkflowExpression<int> kNearestNeighbors, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<JToken[]> vectorizedSearchFields = null, WorkflowExpression<JToken[]> selectFields = null)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(searchText, nameof(searchText), required: true);
+            WorkflowExpression.Validate(kNearestNeighbors, nameof(kNearestNeighbors), required: true);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            WorkflowExpression.Validate(vectorizedSearchFields, nameof(vectorizedSearchFields), required: false);
+            WorkflowExpression.Validate(selectFields, nameof(selectFields), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["searchText"] = ExpressionConverter.ConvertO(searchText);
+                serviceProviderParameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
+                if (search != null)
+                {
+                    serviceProviderParameters["search"] = ExpressionConverter.ConvertO(search);
+                }
 
-            if (vectorizedSearchFields != null)
-            {
-                serviceProviderParameters["vectorizedSearchFields"] = ExpressionConverter.ConvertO(vectorizedSearchFields);
-            }
+                if (filter != null)
+                {
+                    serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
+                }
 
-            if (selectFields != null)
-            {
-                serviceProviderParameters["selectFields"] = ExpressionConverter.ConvertO(selectFields);
-            }
+                if (vectorizedSearchFields != null)
+                {
+                    serviceProviderParameters["vectorizedSearchFields"] = ExpressionConverter.ConvertO(vectorizedSearchFields);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "integratedVectorSearch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                if (selectFields != null)
+                {
+                    serviceProviderParameters["selectFields"] = ExpressionConverter.ConvertO(selectFields);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "integratedVectorSearch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IOutputWorkflowAction<JToken> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteDocument))]
+        public IOutputWorkflowAction<JToken> DeleteDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeleteDocument(WorkflowExpression<string> indexName, WorkflowExpression<object> document)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(document, nameof(document), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IOutputWorkflowAction<JToken> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteDocuments))]
+        public IOutputWorkflowAction<JToken> DeleteDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documents)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["documents"] = ExpressionConverter.ConvertO(documents);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildDeleteDocuments(WorkflowExpression<string> indexName, WorkflowExpression<JToken[]> documents)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(documents, nameof(documents), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocuments", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["documents"] = ExpressionConverter.ConvertO(documents);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocuments", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IOutputWorkflowAction<JToken> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        [WorkflowExpressionFactory(nameof(__BuildMergeDocument))]
+        public IOutputWorkflowAction<JToken> MergeDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildMergeDocument(WorkflowExpression<string> indexName, WorkflowExpression<object> document)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(document, nameof(document), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "mergeDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "mergeDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> KnowledgeAgentRetrieval(Expression<Func<string>> indexName, Expression<Func<string>> agentName, Expression<Func<KnowledgeAgentRetrievalInputAgentMessageContentTypeItem[]>> agentMessageContent)
+        [WorkflowExpressionFactory(nameof(__BuildKnowledgeAgentRetrieval))]
+        public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> KnowledgeAgentRetrieval([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> agentName, [WorkflowExpression] Func<KnowledgeAgentRetrievalInputAgentMessageContentTypeItem[]> agentMessageContent)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            serviceProviderParameters["agentName"] = ExpressionConverter.ConvertO(agentName);
-            serviceProviderParameters["agentMessageContent"] = ExpressionConverter.ConvertO(agentMessageContent);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> __BuildKnowledgeAgentRetrieval(WorkflowExpression<string> indexName, WorkflowExpression<string> agentName, WorkflowExpression<KnowledgeAgentRetrievalInputAgentMessageContentTypeItem[]> agentMessageContent)
+        {
+            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            WorkflowExpression.Validate(agentName, nameof(agentName), required: true);
+            WorkflowExpression.Validate(agentMessageContent, nameof(agentMessageContent), required: true);
+            return new DeferredBodyAction<KnowledgeAgentRetrievalOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "knowledgeAgentRetrieval", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<KnowledgeAgentRetrievalOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+                serviceProviderParameters["agentName"] = ExpressionConverter.ConvertO(agentName);
+                serviceProviderParameters["agentMessageContent"] = ExpressionConverter.ConvertO(agentMessageContent);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "knowledgeAgentRetrieval", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<KnowledgeAgentRetrievalOutput>(serviceProviderInput);
+            });
         }
     }
 
@@ -173,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         public double[] Vector { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VectorSearchInputSearchModeType
     {
         Any,
@@ -211,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         public string Content { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType
     {
         User,

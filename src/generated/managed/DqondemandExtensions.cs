@@ -4,22 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DqondemandActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsage> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate)
+        [WorkflowExpressionFactory(nameof(__BuildUsageGet))]
+        public IBodyWorkflowAction<GetUsage> UsageGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
         {
-            var apiCallPath = "/Account/Usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<GetUsage>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUsage> __BuildUsageGet(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate)
+        {
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
+            return new DeferredBodyAction<GetUsage>(() =>
+            {
+                var apiCallPath = "/Account/Usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+                return new ApiConnectionAction<GetUsage>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -41,939 +53,1919 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> CaseSingular(Expression<Func<string>> input, Expression<Func<caseTypeInput>> caseType, Expression<Func<languageInput>> language)
+        [WorkflowExpressionFactory(nameof(__BuildCaseSingular))]
+        public IBodyWorkflowAction<DQGlobal> CaseSingular([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<caseTypeInput> caseType, [WorkflowExpression] Func<languageInput> language)
         {
-            var apiCallPath = "/Case";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CaseType"] = ExpressionConverter.Convert(caseType);
-            callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ClassifyGetResponse> ClassifyGet(Expression<Func<string>> input, Expression<Func<categoriesInput>> categories, Expression<Func<languageInput>> language = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildCaseSingular(WorkflowExpression<string> input, WorkflowExpression<caseTypeInput> caseType, WorkflowExpression<languageInput> language)
         {
-            var apiCallPath = "/Classify";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["Categories"] = ExpressionConverter.Convert(categories);
-            callPayload.Queries["Language"] = Convert.ToString("English");
-            if (language != null)
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(caseType, nameof(caseType), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Case";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CaseType"] = ExpressionConverter.Convert(caseType);
                 callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<ClassifyGetResponse>(callPayload);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalFloat> CompareGet(Expression<Func<string>> input1, Expression<Func<string>> input2, Expression<Func<comparisonAlgorithmInput>> comparisonAlgorithm)
+        [WorkflowExpressionFactory(nameof(__BuildClassifyGet))]
+        public IBodyWorkflowAction<ClassifyGetResponse> ClassifyGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<categoriesInput> categories, [WorkflowExpression] Func<languageInput> language = null)
         {
-            var apiCallPath = "/Compare";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input1"] = ExpressionConverter.Convert(input1);
-            callPayload.Queries["Input2"] = ExpressionConverter.Convert(input2);
-            callPayload.Queries["ComparisonAlgorithm"] = ExpressionConverter.Convert(comparisonAlgorithm);
-            return new ApiConnectionAction<DQGlobalFloat>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ClassifyGetResponse> __BuildClassifyGet(WorkflowExpression<string> input, WorkflowExpression<categoriesInput> categories, WorkflowExpression<languageInput> language = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(categories, nameof(categories), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            return new DeferredBodyAction<ClassifyGetResponse>(() =>
+            {
+                var apiCallPath = "/Classify";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["Categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["Language"] = Convert.ToString("English");
+                if (language != null)
+                    callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+                return new ApiConnectionAction<ClassifyGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> EmailCongruenceGet(Expression<Func<string>> email, Expression<Func<string>> firstName, Expression<Func<string>> lastName)
+        [WorkflowExpressionFactory(nameof(__BuildCompareGet))]
+        public IBodyWorkflowAction<DQGlobalFloat> CompareGet([WorkflowExpression] Func<string> input1, [WorkflowExpression] Func<string> input2, [WorkflowExpression] Func<comparisonAlgorithmInput> comparisonAlgorithm)
         {
-            var apiCallPath = "/Congruence/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalFloat> __BuildCompareGet(WorkflowExpression<string> input1, WorkflowExpression<string> input2, WorkflowExpression<comparisonAlgorithmInput> comparisonAlgorithm)
+        {
+            WorkflowExpression.Validate(input1, nameof(input1), required: true);
+            WorkflowExpression.Validate(input2, nameof(input2), required: true);
+            WorkflowExpression.Validate(comparisonAlgorithm, nameof(comparisonAlgorithm), required: true);
+            return new DeferredBodyAction<DQGlobalFloat>(() =>
+            {
+                var apiCallPath = "/Compare";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input1"] = ExpressionConverter.Convert(input1);
+                callPayload.Queries["Input2"] = ExpressionConverter.Convert(input2);
+                callPayload.Queries["ComparisonAlgorithm"] = ExpressionConverter.Convert(comparisonAlgorithm);
+                return new ApiConnectionAction<DQGlobalFloat>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> CountryCongruenceGet(Expression<Func<string>> input, Expression<Func<string>> country, Expression<Func<actionTypeInput>> actionType)
+        [WorkflowExpressionFactory(nameof(__BuildEmailCongruenceGet))]
+        public IBodyWorkflowAction<CongruenceResultSingle> EmailCongruenceGet([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<string> lastName)
         {
-            var apiCallPath = "/Congruence/Country";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["ActionType"] = ExpressionConverter.Convert(actionType);
-            return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> SalutationCongruenceGet(Expression<Func<string>> salutation, Expression<Func<string>> firstName, Expression<Func<languageInput>> language)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CongruenceResultSingle> __BuildEmailCongruenceGet(WorkflowExpression<string> email, WorkflowExpression<string> firstName, WorkflowExpression<string> lastName)
         {
-            var apiCallPath = "/Congruence/Salutation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Salutation"] = ExpressionConverter.Convert(salutation);
-            callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveGenderGetResponse> DeriveGenderGet(Expression<Func<string>> input)
-        {
-            var apiCallPath = "/Derive/Gender";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DeriveGenderGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveCityGetResponse> DeriveCityGet(Expression<Func<string>> input)
-        {
-            var apiCallPath = "/Derive/CountryFromCity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DeriveCityGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DerivePostCodeGetResponse> DerivePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
-        {
-            var apiCallPath = "/Derive/FromPostalCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DerivePostCodeGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveEmailGetResponse> DeriveEmailGet(Expression<Func<string>> input)
-        {
-            var apiCallPath = "/Derive/EmailType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DeriveEmailGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveISOGetResponse> DeriveISOGet(Expression<Func<string>> email = null, Expression<Func<string>> url = null, Expression<Func<string>> phone = null, Expression<Func<string>> country = null, Expression<Func<string>> city = null, Expression<Func<int>> threshold = null, Expression<Func<bool>> onlyReturnBest = null, Expression<Func<bool>> defaultToCountry = null)
-        {
-            var apiCallPath = "/DeriveISO";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (email != null)
+            WorkflowExpression.Validate(email, nameof(email), required: true);
+            WorkflowExpression.Validate(firstName, nameof(firstName), required: true);
+            WorkflowExpression.Validate(lastName, nameof(lastName), required: true);
+            return new DeferredBodyAction<CongruenceResultSingle>(() =>
+            {
+                var apiCallPath = "/Congruence/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            if (url != null)
-                callPayload.Queries["Url"] = ExpressionConverter.Convert(url);
-            if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
-            if (country != null)
+                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildCountryCongruenceGet))]
+        public IBodyWorkflowAction<CongruenceResultSingle> CountryCongruenceGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<actionTypeInput> actionType)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CongruenceResultSingle> __BuildCountryCongruenceGet(WorkflowExpression<string> input, WorkflowExpression<string> country, WorkflowExpression<actionTypeInput> actionType)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(country, nameof(country), required: true);
+            WorkflowExpression.Validate(actionType, nameof(actionType), required: true);
+            return new DeferredBodyAction<CongruenceResultSingle>(() =>
+            {
+                var apiCallPath = "/Congruence/Country";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
                 callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-            if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
-            callPayload.Queries["Threshold"] = Convert.ToString(70);
-            if (threshold != null)
-                callPayload.Queries["Threshold"] = ExpressionConverter.Convert(threshold);
-            callPayload.Queries["OnlyReturnBest"] = Convert.ToString(false);
-            if (onlyReturnBest != null)
-                callPayload.Queries["OnlyReturnBest"] = ExpressionConverter.Convert(onlyReturnBest);
-            callPayload.Queries["DefaultToCountry"] = Convert.ToString(false);
-            if (defaultToCountry != null)
-                callPayload.Queries["DefaultToCountry"] = ExpressionConverter.Convert(defaultToCountry);
-            return new ApiConnectionAction<DeriveISOGetResponse>(callPayload);
+                callPayload.Queries["ActionType"] = ExpressionConverter.Convert(actionType);
+                return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatEmailGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildSalutationCongruenceGet))]
+        public IBodyWorkflowAction<CongruenceResultSingle> SalutationCongruenceGet([WorkflowExpression] Func<string> salutation, [WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<languageInput> language)
         {
-            var apiCallPath = "/Format/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CongruenceResultSingle> __BuildSalutationCongruenceGet(WorkflowExpression<string> salutation, WorkflowExpression<string> firstName, WorkflowExpression<languageInput> language)
         {
-            var apiCallPath = "/Format/PostCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatE164Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
-        {
-            var apiCallPath = "/Format/TelephoneE164";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatInternationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
-        {
-            var apiCallPath = "/Format/TelephoneInternational";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatNationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
-        {
-            var apiCallPath = "/Format/TelephoneNational";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatRFC3966Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
-        {
-            var apiCallPath = "/Format/TelephoneRFC3966";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatURLGet(Expression<Func<string>> input, Expression<Func<string>> uRLPrefix)
-        {
-            var apiCallPath = "/Format/UrlAddress";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["URLPrefix"] = ExpressionConverter.Convert(uRLPrefix);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GeneratePatternResponse> GeneratePattern(Expression<Func<inputInputItem[]>> input = null)
-        {
-            var apiCallPath = "/Generate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
-            return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> GenerateTokenGet(Expression<Func<string>> input, Expression<Func<generateAlgorithmTypeInput>> generateAlgorithmType, Expression<Func<languageInput>> language = null)
-        {
-            var apiCallPath = "/GenerateToken";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["generateAlgorithmType"] = ExpressionConverter.Convert(generateAlgorithmType);
-            callPayload.Queries["Language"] = Convert.ToString("English");
-            if (language != null)
+            WorkflowExpression.Validate(salutation, nameof(salutation), required: true);
+            WorkflowExpression.Validate(firstName, nameof(firstName), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: true);
+            return new DeferredBodyAction<CongruenceResultSingle>(() =>
+            {
+                var apiCallPath = "/Congruence/Salutation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Salutation"] = ExpressionConverter.Convert(salutation);
+                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
                 callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+                return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParsePhoneGetResponse> ParsePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildDeriveGenderGet))]
+        public IBodyWorkflowAction<DeriveGenderGetResponse> DeriveGenderGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Parse/PhoneNumber";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<ParsePhoneGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeriveGenderGetResponse> __BuildDeriveGenderGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DeriveGenderGetResponse>(() =>
+            {
+                var apiCallPath = "/Derive/Gender";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DeriveGenderGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParseEmailGetResponse> ParseEmailGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildDeriveCityGet))]
+        public IBodyWorkflowAction<DeriveCityGetResponse> DeriveCityGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Parse/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ParseEmailGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeriveCityGetResponse> __BuildDeriveCityGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DeriveCityGetResponse>(() =>
+            {
+                var apiCallPath = "/Derive/CountryFromCity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DeriveCityGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParseURLGetResponse> ParseURLGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildDerivePostCodeGet))]
+        public IBodyWorkflowAction<DerivePostCodeGetResponse> DerivePostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Parse/URL";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ParseURLGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DerivePostCodeGetResponse> __BuildDerivePostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DerivePostCodeGetResponse>(() =>
+            {
+                var apiCallPath = "/Derive/FromPostalCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DerivePostCodeGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ScoringResponse> Scoring(Expression<Func<inputInputItem2[]>> input = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeriveEmailGet))]
+        public IBodyWorkflowAction<DeriveEmailGetResponse> DeriveEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Scoring";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
-            return new ApiConnectionAction<ScoringResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeriveEmailGetResponse> __BuildDeriveEmailGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DeriveEmailGetResponse>(() =>
+            {
+                var apiCallPath = "/Derive/EmailType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DeriveEmailGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> TransformGet(Expression<Func<string>> input, Expression<Func<entityTypeInput>> entityType, Expression<Func<operationTypeInput>> operationType, Expression<Func<languageInput>> language = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeriveISOGet))]
+        public IBodyWorkflowAction<DeriveISOGetResponse> DeriveISOGet([WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> threshold = null, [WorkflowExpression] Func<bool> onlyReturnBest = null, [WorkflowExpression] Func<bool> defaultToCountry = null)
         {
-            var apiCallPath = "/Transform";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            callPayload.Queries["OperationType"] = ExpressionConverter.Convert(operationType);
-            callPayload.Queries["Language"] = Convert.ToString("English");
-            if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeriveISOGetResponse> __BuildDeriveISOGet(WorkflowExpression<string> email = null, WorkflowExpression<string> url = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> country = null, WorkflowExpression<string> city = null, WorkflowExpression<int> threshold = null, WorkflowExpression<bool> onlyReturnBest = null, WorkflowExpression<bool> defaultToCountry = null)
+        {
+            WorkflowExpression.Validate(email, nameof(email), required: false);
+            WorkflowExpression.Validate(url, nameof(url), required: false);
+            WorkflowExpression.Validate(phone, nameof(phone), required: false);
+            WorkflowExpression.Validate(country, nameof(country), required: false);
+            WorkflowExpression.Validate(city, nameof(city), required: false);
+            WorkflowExpression.Validate(threshold, nameof(threshold), required: false);
+            WorkflowExpression.Validate(onlyReturnBest, nameof(onlyReturnBest), required: false);
+            WorkflowExpression.Validate(defaultToCountry, nameof(defaultToCountry), required: false);
+            return new DeferredBodyAction<DeriveISOGetResponse>(() =>
+            {
+                var apiCallPath = "/DeriveISO";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (email != null)
+                    callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                if (url != null)
+                    callPayload.Queries["Url"] = ExpressionConverter.Convert(url);
+                if (phone != null)
+                    callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                if (country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                if (city != null)
+                    callPayload.Queries["City"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["Threshold"] = Convert.ToString(70);
+                if (threshold != null)
+                    callPayload.Queries["Threshold"] = ExpressionConverter.Convert(threshold);
+                callPayload.Queries["OnlyReturnBest"] = Convert.ToString(false);
+                if (onlyReturnBest != null)
+                    callPayload.Queries["OnlyReturnBest"] = ExpressionConverter.Convert(onlyReturnBest);
+                callPayload.Queries["DefaultToCountry"] = Convert.ToString(false);
+                if (defaultToCountry != null)
+                    callPayload.Queries["DefaultToCountry"] = ExpressionConverter.Convert(defaultToCountry);
+                return new ApiConnectionAction<DeriveISOGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform(Expression<Func<inputInputItem22[]>> input = null)
+        [WorkflowExpressionFactory(nameof(__BuildFormatEmailGet))]
+        public IBodyWorkflowAction<DQGlobal> FormatEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/SequenceTransform";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
-            return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatEmailGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateEmailGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildFormatPostCodeGet))]
+        public IBodyWorkflowAction<DQGlobal> FormatPostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatPostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/PostCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidatePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildFormatE164Get))]
+        public IBodyWorkflowAction<DQGlobal> FormatE164Get([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/PostCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatE164Get(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/TelephoneE164";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateURLGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildFormatInternationalGet))]
+        public IBodyWorkflowAction<DQGlobal> FormatInternationalGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/UrlAddress";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatInternationalGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/TelephoneInternational";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidatePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildFormatNationalGet))]
+        public IBodyWorkflowAction<DQGlobal> FormatNationalGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/Telephone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatNationalGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/TelephoneNational";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateDateTimeGet(Expression<Func<string>> input, Expression<Func<string>> dateTimeFormat)
+        [WorkflowExpressionFactory(nameof(__BuildFormatRFC3966Get))]
+        public IBodyWorkflowAction<DQGlobal> FormatRFC3966Get([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/DateTime";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["DateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatRFC3966Get(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/TelephoneRFC3966";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusEmailGetResponse> ValidatePlusEmailGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildFormatURLGet))]
+        public IBodyWorkflowAction<DQGlobal> FormatURLGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> uRLPrefix)
         {
-            var apiCallPath = "/ValidatePlus/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ValidatePlusEmailGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildFormatURLGet(WorkflowExpression<string> input, WorkflowExpression<string> uRLPrefix)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(uRLPrefix, nameof(uRLPrefix), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Format/UrlAddress";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["URLPrefix"] = ExpressionConverter.Convert(uRLPrefix);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> ValidatePlusPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildGeneratePattern))]
+        public IBodyWorkflowAction<GeneratePatternResponse> GeneratePattern([WorkflowExpression] Func<inputInputItem[]> input = null)
         {
-            var apiCallPath = "/ValidatePlus/PostCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GeneratePatternResponse> __BuildGeneratePattern(WorkflowExpression<inputInputItem[]> input = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: false);
+            return new DeferredBodyAction<GeneratePatternResponse>(() =>
+            {
+                var apiCallPath = "/Generate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(input);
+                return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusURLGetResponse> ValidatePlusURLGet(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateTokenGet))]
+        public IBodyWorkflowAction<DQGlobal> GenerateTokenGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<generateAlgorithmTypeInput> generateAlgorithmType, [WorkflowExpression] Func<languageInput> language = null)
         {
-            var apiCallPath = "/ValidatePlus/UrlAddress";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ValidatePlusURLGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildGenerateTokenGet(WorkflowExpression<string> input, WorkflowExpression<generateAlgorithmTypeInput> generateAlgorithmType, WorkflowExpression<languageInput> language = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(generateAlgorithmType, nameof(generateAlgorithmType), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/GenerateToken";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["generateAlgorithmType"] = ExpressionConverter.Convert(generateAlgorithmType);
+                callPayload.Queries["Language"] = Convert.ToString("English");
+                if (language != null)
+                    callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet(Expression<Func<providerInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
+        [WorkflowExpressionFactory(nameof(__BuildParsePhoneGet))]
+        public IBodyWorkflowAction<ParsePhoneGetResponse> ParsePhoneGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Verify/Address/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
-            if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
-            if (state != null)
-                callPayload.Queries["State"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            callPayload.Queries["Geocode"] = ExpressionConverter.Convert(geocode);
-            return new ApiConnectionAction<VerifyAddressGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParsePhoneGetResponse> __BuildParsePhoneGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<ParsePhoneGetResponse>(() =>
+            {
+                var apiCallPath = "/Parse/PhoneNumber";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<ParsePhoneGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildParseEmailGet))]
+        public IBodyWorkflowAction<ParseEmailGetResponse> ParseEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = String.Format("/Search/Address/Find/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SearchAddressFindResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParseEmailGetResponse> __BuildParseEmailGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<ParseEmailGetResponse>(() =>
+            {
+                var apiCallPath = "/Parse/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<ParseEmailGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildParseURLGet))]
+        public IBodyWorkflowAction<ParseURLGetResponse> ParseURLGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = String.Format("/Search/Address/Retrieve/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SearchAddressRetrieveResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParseURLGetResponse> __BuildParseURLGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<ParseURLGetResponse>(() =>
+            {
+                var apiCallPath = "/Parse/URL";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<ParseURLGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        [WorkflowExpressionFactory(nameof(__BuildScoring))]
+        public IBodyWorkflowAction<ScoringResponse> Scoring([WorkflowExpression] Func<inputInputItem2[]> input = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/Deceased/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
-            if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SuppressDeceasedResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScoringResponse> __BuildScoring(WorkflowExpression<inputInputItem2[]> input = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: false);
+            return new DeferredBodyAction<ScoringResponse>(() =>
+            {
+                var apiCallPath = "/Scoring";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(input);
+                return new ApiConnectionAction<ScoringResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        [WorkflowExpressionFactory(nameof(__BuildTransformGet))]
+        public IBodyWorkflowAction<DQGlobal> TransformGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<operationTypeInput> operationType, [WorkflowExpression] Func<languageInput> language = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/GoneAway/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
-            if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
-            return new ApiConnectionAction<SuppressGoneAwayResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildTransformGet(WorkflowExpression<string> input, WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<operationTypeInput> operationType, WorkflowExpression<languageInput> language = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(entityType, nameof(entityType), required: true);
+            WorkflowExpression.Validate(operationType, nameof(operationType), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/Transform";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
+                callPayload.Queries["OperationType"] = ExpressionConverter.Convert(operationType);
+                callPayload.Queries["Language"] = Convert.ToString("English");
+                if (language != null)
+                    callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        [WorkflowExpressionFactory(nameof(__BuildSequenceTransform))]
+        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform([WorkflowExpression] Func<inputInputItem22[]> input = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/Relocated/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
-            if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
-            return new ApiConnectionAction<SuppressRelocatedResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SequenceTransformResponse> __BuildSequenceTransform(WorkflowExpression<inputInputItem22[]> input = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: false);
+            return new DeferredBodyAction<SequenceTransformResponse>(() =>
+            {
+                var apiCallPath = "/SequenceTransform";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(input);
+                return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildValidateEmailGet))]
+        public IBodyWorkflowAction<DQGlobalBool> ValidateEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = String.Format("/Suppress/Phone/Personal/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SuppressPhonePersonalResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildValidateEmailGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/Validate/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildValidatePostCodeGet))]
+        public IBodyWorkflowAction<DQGlobalBool> ValidatePostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Suppress/Phone/Corporate/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SuppressPhoneCorporateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildValidatePostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/Validate/PostCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
+        [WorkflowExpressionFactory(nameof(__BuildValidateURLGet))]
+        public IBodyWorkflowAction<DQGlobalBool> ValidateURLGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = String.Format("/Authenticate/Email/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            return new ApiConnectionAction<AuthenticateEmailGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildValidateURLGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/Validate/UrlAddress";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildValidatePhoneGet))]
+        public IBodyWorkflowAction<DQGlobalBool> ValidatePhoneGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Authenticate/Phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<AuthenticatePhoneGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildValidatePhoneGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/Validate/Telephone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllUpper(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildValidateDateTimeGet))]
+        public IBodyWorkflowAction<DQGlobalBool> ValidateDateTimeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> dateTimeFormat)
         {
-            var apiCallPath = "/StringExtension/IsAllUpper";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildValidateDateTimeGet(WorkflowExpression<string> input, WorkflowExpression<string> dateTimeFormat)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(dateTimeFormat, nameof(dateTimeFormat), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/Validate/DateTime";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["DateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllLower(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildValidatePlusEmailGet))]
+        public IBodyWorkflowAction<ValidatePlusEmailGetResponse> ValidatePlusEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsAllLower";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidatePlusEmailGetResponse> __BuildValidatePlusEmailGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<ValidatePlusEmailGetResponse>(() =>
+            {
+                var apiCallPath = "/ValidatePlus/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<ValidatePlusEmailGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsMixedCase(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildValidatePlusPostCodeGet))]
+        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> ValidatePlusPostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/StringExtension/IsMixedCase";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> __BuildValidatePlusPostCodeGet(WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<ValidatePlusPostCodeGetResponse>(() =>
+            {
+                var apiCallPath = "/ValidatePlus/PostCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAlphaNumeric(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildValidatePlusURLGet))]
+        public IBodyWorkflowAction<ValidatePlusURLGetResponse> ValidatePlusURLGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsAlphaNumeric";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidatePlusURLGetResponse> __BuildValidatePlusURLGet(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<ValidatePlusURLGetResponse>(() =>
+            {
+                var apiCallPath = "/ValidatePlus/UrlAddress";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<ValidatePlusURLGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsNumeric(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildVerifyAddressGet))]
+        public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> countryIdentifier, [WorkflowExpression] Func<bool> geocode, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null)
         {
-            var apiCallPath = "/StringExtension/IsNumeric";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VerifyAddressGetResponse> __BuildVerifyAddressGet(WorkflowExpression<providerInput> provider, WorkflowExpression<string> countryIdentifier, WorkflowExpression<bool> geocode, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            WorkflowExpression.Validate(geocode, nameof(geocode), required: true);
+            WorkflowExpression.Validate(line1, nameof(line1), required: false);
+            WorkflowExpression.Validate(line2, nameof(line2), required: false);
+            WorkflowExpression.Validate(line3, nameof(line3), required: false);
+            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
+            WorkflowExpression.Validate(city, nameof(city), required: false);
+            WorkflowExpression.Validate(state, nameof(state), required: false);
+            return new DeferredBodyAction<VerifyAddressGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Verify/Address/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                if (postalCode != null)
+                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                if (city != null)
+                    callPayload.Queries["City"] = ExpressionConverter.Convert(city);
+                if (state != null)
+                    callPayload.Queries["State"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                callPayload.Queries["Geocode"] = ExpressionConverter.Convert(geocode);
+                return new ApiConnectionAction<VerifyAddressGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO4217(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildSearchAddressFind))]
+        public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchAddressFindResponse> __BuildSearchAddressFind(WorkflowExpression<providerInput> provider, WorkflowExpression<string> query, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(query, nameof(query), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<SearchAddressFindResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Search/Address/Find/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<SearchAddressFindResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO2(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildSearchAddressRetrieve))]
+        public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/StringExtension/IsISO2Code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchAddressRetrieveResponse> __BuildSearchAddressRetrieve(WorkflowExpression<providerInput> provider, WorkflowExpression<string> id, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<SearchAddressRetrieveResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Search/Address/Retrieve/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<SearchAddressRetrieveResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO3(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildSuppressDeceased))]
+        public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> countryIdentifier, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            var apiCallPath = "/StringExtension/IsISO3Code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuppressDeceasedResponse> __BuildSuppressDeceased(WorkflowExpression<providerInput> provider, WorkflowExpression<string> lastName, WorkflowExpression<string> postcode, WorkflowExpression<string> countryIdentifier, WorkflowExpression<string> title = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> town = null, WorkflowExpression<string> county = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(lastName, nameof(lastName), required: true);
+            WorkflowExpression.Validate(postcode, nameof(postcode), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(firstName, nameof(firstName), required: false);
+            WorkflowExpression.Validate(line1, nameof(line1), required: false);
+            WorkflowExpression.Validate(line2, nameof(line2), required: false);
+            WorkflowExpression.Validate(line3, nameof(line3), required: false);
+            WorkflowExpression.Validate(town, nameof(town), required: false);
+            WorkflowExpression.Validate(county, nameof(county), required: false);
+            return new DeferredBodyAction<SuppressDeceasedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Deceased/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                if (town != null)
+                    callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
+                if (county != null)
+                    callPayload.Queries["County"] = ExpressionConverter.Convert(county);
+                callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<SuppressDeceasedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveLeading(Expression<Func<string>> input, Expression<Func<string>> valToRemove, Expression<Func<bool>> leaveOneAtStart)
+        [WorkflowExpressionFactory(nameof(__BuildSuppressGoneAway))]
+        public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> iSO2, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            var apiCallPath = "/StringExtension/RemoveLeading";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["ValToRemove"] = ExpressionConverter.Convert(valToRemove);
-            callPayload.Queries["LeaveOneAtStart"] = ExpressionConverter.Convert(leaveOneAtStart);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuppressGoneAwayResponse> __BuildSuppressGoneAway(WorkflowExpression<providerInput> provider, WorkflowExpression<string> lastName, WorkflowExpression<string> postcode, WorkflowExpression<string> iSO2, WorkflowExpression<string> title = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> town = null, WorkflowExpression<string> county = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(lastName, nameof(lastName), required: true);
+            WorkflowExpression.Validate(postcode, nameof(postcode), required: true);
+            WorkflowExpression.Validate(iSO2, nameof(iSO2), required: true);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(firstName, nameof(firstName), required: false);
+            WorkflowExpression.Validate(line1, nameof(line1), required: false);
+            WorkflowExpression.Validate(line2, nameof(line2), required: false);
+            WorkflowExpression.Validate(line3, nameof(line3), required: false);
+            WorkflowExpression.Validate(town, nameof(town), required: false);
+            WorkflowExpression.Validate(county, nameof(county), required: false);
+            return new DeferredBodyAction<SuppressGoneAwayResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Address/GoneAway/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                if (town != null)
+                    callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
+                if (county != null)
+                    callPayload.Queries["County"] = ExpressionConverter.Convert(county);
+                callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
+                callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
+                return new ApiConnectionAction<SuppressGoneAwayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveChars(Expression<Func<string>> input, Expression<Func<characterTypeInput>> characterType)
+        [WorkflowExpressionFactory(nameof(__BuildSuppressRelocated))]
+        public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> iSO2, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            var apiCallPath = "/StringExtension/RemoveCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["characterType"] = ExpressionConverter.Convert(characterType);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuppressRelocatedResponse> __BuildSuppressRelocated(WorkflowExpression<providerInput> provider, WorkflowExpression<string> lastName, WorkflowExpression<string> postcode, WorkflowExpression<string> iSO2, WorkflowExpression<string> title = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> line1 = null, WorkflowExpression<string> line2 = null, WorkflowExpression<string> line3 = null, WorkflowExpression<string> town = null, WorkflowExpression<string> county = null)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(lastName, nameof(lastName), required: true);
+            WorkflowExpression.Validate(postcode, nameof(postcode), required: true);
+            WorkflowExpression.Validate(iSO2, nameof(iSO2), required: true);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(firstName, nameof(firstName), required: false);
+            WorkflowExpression.Validate(line1, nameof(line1), required: false);
+            WorkflowExpression.Validate(line2, nameof(line2), required: false);
+            WorkflowExpression.Validate(line3, nameof(line3), required: false);
+            WorkflowExpression.Validate(town, nameof(town), required: false);
+            WorkflowExpression.Validate(county, nameof(county), required: false);
+            return new DeferredBodyAction<SuppressRelocatedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Relocated/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                if (town != null)
+                    callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
+                if (county != null)
+                    callPayload.Queries["County"] = ExpressionConverter.Convert(county);
+                callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
+                callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
+                return new ApiConnectionAction<SuppressRelocatedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveSingleWords(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildSuppressPhonePersonal))]
+        public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuppressPhonePersonalResponse> __BuildSuppressPhonePersonal(WorkflowExpression<providerInput> provider, WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<SuppressPhonePersonalResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Personal/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<SuppressPhonePersonalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceRepeatingText(Expression<Func<string>> input, Expression<Func<string>> repeatingValue, Expression<Func<string>> replacement)
+        [WorkflowExpressionFactory(nameof(__BuildSuppressPhoneCorporate))]
+        public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["RepeatingValue"] = ExpressionConverter.Convert(repeatingValue);
-            callPayload.Queries["Replacement"] = ExpressionConverter.Convert(replacement);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuppressPhoneCorporateResponse> __BuildSuppressPhoneCorporate(WorkflowExpression<providerInput> provider, WorkflowExpression<string> input, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<SuppressPhoneCorporateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Corporate/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<SuppressPhoneCorporateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceEndsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
+        [WorkflowExpressionFactory(nameof(__BuildAuthenticateEmailGet))]
+        public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AuthenticateEmailGetResponse> __BuildAuthenticateEmailGet(WorkflowExpression<providerInput> provider, WorkflowExpression<string> email)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(email, nameof(email), required: true);
+            return new DeferredBodyAction<AuthenticateEmailGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Authenticate/Email/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                return new ApiConnectionAction<AuthenticateEmailGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceStartsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
+        [WorkflowExpressionFactory(nameof(__BuildAuthenticatePhoneGet))]
+        public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AuthenticatePhoneGetResponse> __BuildAuthenticatePhoneGet(WorkflowExpression<providerInput> provider, WorkflowExpression<string> phone, WorkflowExpression<string> countryIdentifier)
+        {
+            WorkflowExpression.Validate(provider, nameof(provider), required: true);
+            WorkflowExpression.Validate(phone, nameof(phone), required: true);
+            WorkflowExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
+            return new DeferredBodyAction<AuthenticatePhoneGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Authenticate/Phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                return new ApiConnectionAction<AuthenticatePhoneGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtStringToBinary(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsAllUpper))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllUpper([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/StringToBinary";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsAllUpper(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsAllUpper";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtBinaryToString(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsAllLower))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllLower([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/BinaryToString";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsAllLower(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsAllLower";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtStringToHex(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsMixedCase))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsMixedCase([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/StringToHex";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsMixedCase(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsMixedCase";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtHexToString(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsAlphaNumeric))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAlphaNumeric([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/HexToString";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsAlphaNumeric(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsAlphaNumeric";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReverse(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsNumeric))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsNumeric([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/Reverse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsNumeric(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsNumeric";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtNormWhiteSpace(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsISO4217))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO4217([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsISO4217(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtNormPhone(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsISO2))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO2([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsISO2(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsISO2Code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedChars(Expression<Func<string>> input, Expression<Func<bool>> collapseNumerics, Expression<Func<int>> maximumRepeat = null)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtIsISO3))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO3([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["collapseNumerics"] = ExpressionConverter.Convert(collapseNumerics);
-            if (maximumRepeat != null)
-                callPayload.Queries["maximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtIsISO3(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/IsISO3Code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedType(Expression<Func<string>> input, Expression<Func<int>> maximumRepeat, Expression<Func<typeInput>> type)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtRemoveLeading))]
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveLeading([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> valToRemove, [WorkflowExpression] Func<bool> leaveOneAtStart)
         {
-            var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["MaximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveLeading(WorkflowExpression<string> input, WorkflowExpression<string> valToRemove, WorkflowExpression<bool> leaveOneAtStart)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(valToRemove, nameof(valToRemove), required: true);
+            WorkflowExpression.Validate(leaveOneAtStart, nameof(leaveOneAtStart), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/RemoveLeading";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["ValToRemove"] = ExpressionConverter.Convert(valToRemove);
+                callPayload.Queries["LeaveOneAtStart"] = ExpressionConverter.Convert(leaveOneAtStart);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveStopWords(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtRemoveChars))]
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<characterTypeInput> characterType)
         {
-            var apiCallPath = "/StringExtension/FilterStopWords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveChars(WorkflowExpression<string> input, WorkflowExpression<characterTypeInput> characterType)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(characterType, nameof(characterType), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/RemoveCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["characterType"] = ExpressionConverter.Convert(characterType);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRetainChars(Expression<Func<string>> input, Expression<Func<string>> replacement, Expression<Func<string>> charactersToRetain)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtRemoveSingleWords))]
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveSingleWords([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/RetainCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            callPayload.Queries["charactersToRetain"] = ExpressionConverter.Convert(charactersToRetain);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveSingleWords(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtExtractChars(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtReplaceRepeatingText))]
+        public IBodyWorkflowAction<DQGlobal> StringExtReplaceRepeatingText([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> repeatingValue, [WorkflowExpression] Func<string> replacement)
         {
-            var apiCallPath = "/StringExtension/ExtractCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
-            callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtReplaceRepeatingText(WorkflowExpression<string> input, WorkflowExpression<string> repeatingValue, WorkflowExpression<string> replacement)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(repeatingValue, nameof(repeatingValue), required: true);
+            WorkflowExpression.Validate(replacement, nameof(replacement), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["RepeatingValue"] = ExpressionConverter.Convert(repeatingValue);
+                callPayload.Queries["Replacement"] = ExpressionConverter.Convert(replacement);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtExtractWords(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtReplaceEndsWith))]
+        public IBodyWorkflowAction<DQGlobal> StringExtReplaceEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> stringToReplace, [WorkflowExpression] Func<string> replacement)
         {
-            var apiCallPath = "/StringExtension/ExtractWords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
-            callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtReplaceEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> stringToReplace, WorkflowExpression<string> replacement)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(stringToReplace, nameof(stringToReplace), required: true);
+            WorkflowExpression.Validate(replacement, nameof(replacement), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
+                callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveHTML(Expression<Func<string>> input)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtReplaceStartsWith))]
+        public IBodyWorkflowAction<DQGlobal> StringExtReplaceStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> stringToReplace, [WorkflowExpression] Func<string> replacement)
         {
-            var apiCallPath = "/StringExtension/RemoveHTML";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtReplaceStartsWith(WorkflowExpression<string> input, WorkflowExpression<string> stringToReplace, WorkflowExpression<string> replacement)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(stringToReplace, nameof(stringToReplace), required: true);
+            WorkflowExpression.Validate(replacement, nameof(replacement), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
+                callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtStringToBinary))]
+        public IBodyWorkflowAction<DQGlobal> StringExtStringToBinary([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/EndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtStringToBinary(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/StringToBinary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtBinaryToString))]
+        public IBodyWorkflowAction<DQGlobal> StringExtBinaryToString([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/StartsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtBinaryToString(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/BinaryToString";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtStringToHex))]
+        public IBodyWorkflowAction<DQGlobal> StringExtStringToHex([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/EnsureEndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtStringToHex(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/StringToHex";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtHexToString))]
+        public IBodyWorkflowAction<DQGlobal> StringExtHexToString([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtHexToString(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/HexToString";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtReverse))]
+        public IBodyWorkflowAction<DQGlobal> StringExtReverse([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/EnsureStartsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtReverse(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/Reverse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtStartWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtNormWhiteSpace))]
+        public IBodyWorkflowAction<DQGlobal> StringExtNormWhiteSpace([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/StartsWithType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtNormWhiteSpace(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        [WorkflowExpressionFactory(nameof(__BuildStringExtNormPhone))]
+        public IBodyWorkflowAction<DQGlobal> StringExtNormPhone([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/EndsWithType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtNormPhone(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtCollapseRepeatedChars))]
+        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<bool> collapseNumerics, [WorkflowExpression] Func<int> maximumRepeat = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtCollapseRepeatedChars(WorkflowExpression<string> input, WorkflowExpression<bool> collapseNumerics, WorkflowExpression<int> maximumRepeat = null)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(collapseNumerics, nameof(collapseNumerics), required: true);
+            WorkflowExpression.Validate(maximumRepeat, nameof(maximumRepeat), required: false);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["collapseNumerics"] = ExpressionConverter.Convert(collapseNumerics);
+                if (maximumRepeat != null)
+                    callPayload.Queries["maximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtCollapseRepeatedType))]
+        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> maximumRepeat, [WorkflowExpression] Func<typeInput> type)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtCollapseRepeatedType(WorkflowExpression<string> input, WorkflowExpression<int> maximumRepeat, WorkflowExpression<typeInput> type)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(maximumRepeat, nameof(maximumRepeat), required: true);
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["MaximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtRemoveStopWords))]
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveStopWords([WorkflowExpression] Func<string> input)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveStopWords(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/FilterStopWords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtRetainChars))]
+        public IBodyWorkflowAction<DQGlobal> StringExtRetainChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> replacement, [WorkflowExpression] Func<string> charactersToRetain)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtRetainChars(WorkflowExpression<string> input, WorkflowExpression<string> replacement, WorkflowExpression<string> charactersToRetain)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(replacement, nameof(replacement), required: true);
+            WorkflowExpression.Validate(charactersToRetain, nameof(charactersToRetain), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/RetainCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
+                callPayload.Queries["charactersToRetain"] = ExpressionConverter.Convert(charactersToRetain);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtExtractChars))]
+        public IBodyWorkflowAction<DQGlobal> StringExtExtractChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> extractLength, [WorkflowExpression] Func<extractFromInput> extractFrom)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtExtractChars(WorkflowExpression<string> input, WorkflowExpression<int> extractLength, WorkflowExpression<extractFromInput> extractFrom)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(extractLength, nameof(extractLength), required: true);
+            WorkflowExpression.Validate(extractFrom, nameof(extractFrom), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/ExtractCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
+                callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtExtractWords))]
+        public IBodyWorkflowAction<DQGlobal> StringExtExtractWords([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> extractLength, [WorkflowExpression] Func<extractFromInput> extractFrom)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtExtractWords(WorkflowExpression<string> input, WorkflowExpression<int> extractLength, WorkflowExpression<extractFromInput> extractFrom)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(extractLength, nameof(extractLength), required: true);
+            WorkflowExpression.Validate(extractFrom, nameof(extractFrom), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/ExtractWords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
+                callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtRemoveHTML))]
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveHTML([WorkflowExpression] Func<string> input)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtRemoveHTML(WorkflowExpression<string> input)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/RemoveHTML";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtEndsWith))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkfor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkfor)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(checkfor, nameof(checkfor), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/EndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtStartsWith))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkfor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtStartsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkfor)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(checkfor, nameof(checkfor), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/StartsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtEnsureEndsWith))]
+        public IBodyWorkflowAction<DQGlobal> StringExtEnsureEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtEnsureEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkFor)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(checkFor, nameof(checkFor), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/EnsureEndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtEnsureStartEndsWith))]
+        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtEnsureStartEndsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkFor)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(checkFor, nameof(checkFor), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtEnsureStartsWith))]
+        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobal> __BuildStringExtEnsureStartsWith(WorkflowExpression<string> input, WorkflowExpression<string> checkFor)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(checkFor, nameof(checkFor), required: true);
+            return new DeferredBodyAction<DQGlobal>(() =>
+            {
+                var apiCallPath = "/StringExtension/EnsureStartsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
+                return new ApiConnectionAction<DQGlobal>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtStartWithType))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtStartWithType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<typeInput> type)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtStartWithType(WorkflowExpression<string> input, WorkflowExpression<typeInput> type)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/StartsWithType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        [WorkflowExpressionFactory(nameof(__BuildStringExtEndsWithType))]
+        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWithType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<typeInput> type)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DQGlobalBool> __BuildStringExtEndsWithType(WorkflowExpression<string> input, WorkflowExpression<typeInput> type)
+        {
+            WorkflowExpression.Validate(input, nameof(input), required: true);
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            return new DeferredBodyAction<DQGlobalBool>(() =>
+            {
+                var apiCallPath = "/StringExtension/EndsWithType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            });
         }
     }
 
@@ -1083,6 +2075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum caseTypeInput
     {
         [EnumMember(Value = "ProperCase_FamilyName")]
@@ -1094,6 +2087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         TitleCase
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         English,
@@ -1157,6 +2151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string[] Salacious { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoriesInput
     {
         All,
@@ -1187,6 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public double Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum comparisonAlgorithmInput
     {
         JaroWinkler,
@@ -1222,6 +2218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Code { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionTypeInput
     {
         CountryToEmail,
@@ -1403,6 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public GenerateNonPrintingSettings NonPrintingSettings { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateSettingsExcludeFromTokenTypeItem
     {
         WhiteSpace,
@@ -1421,12 +2419,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public GenerateLetterSettingsCollapseTypeItem[] Collapse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateLetterSettingsExcludeTypeItem
     {
         Vowels,
         Consonants
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateLetterSettingsCollapseTypeItem
     {
         Vowels,
@@ -1440,12 +2440,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public GenerateNumberSettingsCollapseTypeItem[] Collapse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateNumberSettingsExcludeTypeItem
     {
         Odd,
         Even
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateNumberSettingsCollapseTypeItem
     {
         Odd,
@@ -1470,6 +2472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public bool Collapse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum generateAlgorithmTypeInput
     {
         DQFonetix,
@@ -1510,6 +2513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public ParsePhoneGetResponseDataTypeNumberTypeType NumberType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParsePhoneGetResponseDataTypeNumberTypeType
     {
         [EnumMember(Value = "FIXED_LINE")]
@@ -1589,6 +2593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Port { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParseURLGetResponseDataTypeHostNameTypeType
     {
         Unknown,
@@ -1730,12 +2735,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType InterScoreSettings { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType
     {
         InterScore,
         IntraScore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType
     {
         EditDistanceScore,
@@ -1756,6 +2763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         DateProportional
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType
     {
         JaroWinkler,
@@ -1770,6 +2778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         HammingChangeCount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType
     {
         AscCharacters,
@@ -1779,6 +2788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType
     {
         DDMMYYYY,
@@ -1794,6 +2804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public int Threshold { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType
     {
         AnyMatch,
@@ -1809,6 +2820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string TokenValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entityTypeInput
     {
         Addresses,
@@ -1826,6 +2838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Salacious
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum operationTypeInput
     {
         Elaborate,
@@ -1884,6 +2897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public inputInputItemSettingsTypeItemLanguageType Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemSettingsTypeItemCategoryType
     {
         Addresses,
@@ -1901,6 +2915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Salacious
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemSettingsTypeItemActionType
     {
         Elaborate,
@@ -1910,6 +2925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Transliterate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemSettingsTypeItemLanguageType
     {
         English,
@@ -2054,6 +3070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VerifyAddressGetResponseDataTypeStatusType
     {
         VERIFIED,
@@ -2061,6 +3078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         UNVERIFIED
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum providerInput
     {
         Default,
@@ -2172,6 +3190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SuppressDeceasedResponseDataTypeStatusType
     {
         Suppressed,
@@ -2203,6 +3222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SuppressGoneAwayResponseDataTypeStatusType
     {
         Suppressed,
@@ -2237,6 +3257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SuppressRelocatedResponseDataTypeStatusType
     {
         Suppressed,
@@ -2394,6 +3415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuthenticatePhoneGetResponseDataTypeNumberTypeType
     {
         Mobile,
@@ -2402,6 +3424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum characterTypeInput
     {
         Digit,
@@ -2421,6 +3444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         NonPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         Letter,
@@ -2438,6 +3462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         NonPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum extractFromInput
     {
         Start,

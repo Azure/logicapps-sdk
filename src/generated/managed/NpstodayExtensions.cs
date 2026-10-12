@@ -1,189 +1,246 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NpstodayActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction SendSurvey(Expression<Func<string>> campaign, Expression<Func<string>> bodyrespondentemailAddress = null, Expression<Func<string>> bodyrespondentfirstName = null, Expression<Func<string>> bodyrespondentlastName = null, Expression<Func<string>> bodyrespondentphoneNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSurvey))]
+        public IWorkflowAction SendSurvey([WorkflowExpression] Func<string> campaign, [WorkflowExpression] Func<string> bodyrespondentemailAddress = null, [WorkflowExpression] Func<string> bodyrespondentfirstName = null, [WorkflowExpression] Func<string> bodyrespondentlastName = null, [WorkflowExpression] Func<string> bodyrespondentphoneNumber = null)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(campaign, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var respondentObject = new JObject();
-            var respondentObjectpropCount = 0;
-            if (bodyrespondentemailAddress != null)
-            {
-                respondentObject["emailAddress"] = ExpressionConverter.ConvertO(bodyrespondentemailAddress);
-                respondentObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyrespondentfirstName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendSurvey(WorkflowExpression<string> campaign, WorkflowExpression<string> bodyrespondentemailAddress = null, WorkflowExpression<string> bodyrespondentfirstName = null, WorkflowExpression<string> bodyrespondentlastName = null, WorkflowExpression<string> bodyrespondentphoneNumber = null)
+        {
+            WorkflowExpression.Validate(campaign, nameof(campaign), required: true);
+            WorkflowExpression.Validate(bodyrespondentemailAddress, nameof(bodyrespondentemailAddress), required: false);
+            WorkflowExpression.Validate(bodyrespondentfirstName, nameof(bodyrespondentfirstName), required: false);
+            WorkflowExpression.Validate(bodyrespondentlastName, nameof(bodyrespondentlastName), required: false);
+            WorkflowExpression.Validate(bodyrespondentphoneNumber, nameof(bodyrespondentphoneNumber), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                respondentObject["firstName"] = ExpressionConverter.ConvertO(bodyrespondentfirstName);
-                respondentObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(campaign, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var respondentObject = new JObject();
+                var respondentObjectpropCount = 0;
+                if (bodyrespondentemailAddress != null)
+                {
+                    respondentObject["emailAddress"] = ExpressionConverter.ConvertO(bodyrespondentemailAddress);
+                    respondentObjectpropCount++;
+                }
 
-            if (bodyrespondentlastName != null)
-            {
-                respondentObject["lastName"] = ExpressionConverter.ConvertO(bodyrespondentlastName);
-                respondentObjectpropCount++;
-            }
+                if (bodyrespondentfirstName != null)
+                {
+                    respondentObject["firstName"] = ExpressionConverter.ConvertO(bodyrespondentfirstName);
+                    respondentObjectpropCount++;
+                }
 
-            if (bodyrespondentphoneNumber != null)
-            {
-                respondentObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyrespondentphoneNumber);
-                respondentObjectpropCount++;
-            }
+                if (bodyrespondentlastName != null)
+                {
+                    respondentObject["lastName"] = ExpressionConverter.ConvertO(bodyrespondentlastName);
+                    respondentObjectpropCount++;
+                }
 
-            if (respondentObjectpropCount > 0)
-            {
-                body["respondent"] = respondentObject;
-                bodypropCount++;
-            }
+                if (bodyrespondentphoneNumber != null)
+                {
+                    respondentObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyrespondentphoneNumber);
+                    respondentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (respondentObjectpropCount > 0)
+                {
+                    body["respondent"] = respondentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction AddEmployee(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyteam = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<bool>> bodyactive = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddEmployee))]
+        public IWorkflowAction AddEmployee([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyteam = null, [WorkflowExpression] Func<string> bodydivision = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<bool> bodyactive = null)
         {
-            var apiCallPath = "/profile/employees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyfirstName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddEmployee(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyteam = null, WorkflowExpression<string> bodydivision = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<bool> bodyactive = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
+            WorkflowExpression.Validate(bodyteam, nameof(bodyteam), required: false);
+            WorkflowExpression.Validate(bodydivision, nameof(bodydivision), required: false);
+            WorkflowExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            WorkflowExpression.Validate(bodyactive, nameof(bodyactive), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/profile/employees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodylastName != null)
+                {
+                    body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodydepartment != null)
-            {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
-                bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyteam != null)
-            {
-                body["team"] = ExpressionConverter.ConvertO(bodyteam);
-                bodypropCount++;
-            }
+                if (bodydepartment != null)
+                {
+                    body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                    bodypropCount++;
+                }
 
-            if (bodydivision != null)
-            {
-                body["division"] = ExpressionConverter.ConvertO(bodydivision);
-                bodypropCount++;
-            }
+                if (bodyteam != null)
+                {
+                    body["team"] = ExpressionConverter.ConvertO(bodyteam);
+                    bodypropCount++;
+                }
 
-            if (bodyphoneNumber != null)
-            {
-                body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-                bodypropCount++;
-            }
+                if (bodydivision != null)
+                {
+                    body["division"] = ExpressionConverter.ConvertO(bodydivision);
+                    bodypropCount++;
+                }
 
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
+                if (bodyphoneNumber != null)
+                {
+                    body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyactive != null)
+                {
+                    body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class NpstodayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewResponse(Expression<Func<int>> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildNewResponse))]
+        public IBodyWorkflowTrigger<JToken> NewResponse([WorkflowExpression] Func<int> bodycampaignId = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscriptions/responses";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycampaignId != null)
-            {
-                body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
-                bodypropCount++;
-            }
-
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["eventType"] = "NewResponse";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<JToken> NewCampaignMember(Expression<Func<int>> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<JToken> __BuildNewResponse(WorkflowExpression<int> bodycampaignId = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscriptions/campaignmembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycampaignId != null)
+            WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                var apiCallPath = "/webhooks/subscriptions/responses";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycampaignId != null)
+                {
+                    body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                    bodypropCount++;
+                }
+
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                body["eventType"] = "NewResponse";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["eventType"] = "NewCampaignMember";
-            bodypropCount++;
-            if (bodypropCount > 0)
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildNewCampaignMember))]
+        public IBodyWorkflowTrigger<JToken> NewCampaignMember([WorkflowExpression] Func<int> bodycampaignId = null,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<JToken> __BuildNewCampaignMember(WorkflowExpression<int> bodycampaignId = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscriptions/campaignmembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycampaignId != null)
+                {
+                    body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["eventType"] = "NewCampaignMember";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

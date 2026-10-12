@@ -4,165 +4,307 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VideoindexerActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> UploadVideo(Expression<Func<string>> videoUrl, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
-        {
-            var apiCallPath = "/Api/Partner/Breakdowns";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["videoUrl"] = ExpressionConverter.Convert(videoUrl);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            if (metadata != null)
-                callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
-            if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
-            if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
-            return new ApiConnectionAction<string>(callPayload);
-        }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> UploadVideoFileContent(Expression<Func<string>> fileContent, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildUploadVideo))]
+        public IBodyWorkflowAction<string> UploadVideo([WorkflowExpression] Func<string> videoUrl, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<privacyInput> privacy, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> callbackUrl = null)
         {
-            var apiCallPath = "/Api/Partner/Breakdowns/FileContent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            if (metadata != null)
-                callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
-            if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
-            if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildUploadVideo(WorkflowExpression<string> videoUrl, WorkflowExpression<string> name, WorkflowExpression<privacyInput> privacy, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> metadata = null, WorkflowExpression<string> description = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> callbackUrl = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/State", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProcessingStateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> face = null, Expression<Func<string>> query = null, Expression<Func<string>> searchInPublicAccount = null, Expression<Func<privacyInput>> privacy = null, Expression<Func<textScopeInput>> textScope = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> id = null, Expression<Func<string>> partition = null, Expression<Func<string>> owner = null, Expression<Func<double>> pageSize = null, Expression<Func<double>> skip = null, Expression<Func<string>> externalId = null)
-        {
-            var apiCallPath = "/Api/Partner/Breakdowns/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (face != null)
-                callPayload.Queries["face"] = ExpressionConverter.Convert(face);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (searchInPublicAccount != null)
-                callPayload.Queries["searchInPublicAccount"] = ExpressionConverter.Convert(searchInPublicAccount);
-            if (privacy != null)
+            WorkflowExpression.Validate(videoUrl, nameof(videoUrl), required: true);
+            WorkflowExpression.Validate(name, nameof(name), required: true);
+            WorkflowExpression.Validate(privacy, nameof(privacy), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
+            WorkflowExpression.Validate(metadata, nameof(metadata), required: false);
+            WorkflowExpression.Validate(description, nameof(description), required: false);
+            WorkflowExpression.Validate(partition, nameof(partition), required: false);
+            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/Api/Partner/Breakdowns";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["videoUrl"] = ExpressionConverter.Convert(videoUrl);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                if (metadata != null)
+                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
+                if (description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                if (partition != null)
+                    callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
                 callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
-            if (textScope != null)
-                callPayload.Queries["textScope"] = ExpressionConverter.Convert(textScope);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-            if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (externalId != null)
+                if (callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildUploadVideoFileContent))]
+        public IBodyWorkflowAction<string> UploadVideoFileContent([WorkflowExpression] Func<string> fileContent, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<privacyInput> privacy, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> callbackUrl = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildUploadVideoFileContent(WorkflowExpression<string> fileContent, WorkflowExpression<string> name, WorkflowExpression<privacyInput> privacy, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> metadata = null, WorkflowExpression<string> description = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> callbackUrl = null)
+        {
+            WorkflowExpression.Validate(fileContent, nameof(fileContent), required: true);
+            WorkflowExpression.Validate(name, nameof(name), required: true);
+            WorkflowExpression.Validate(privacy, nameof(privacy), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
+            WorkflowExpression.Validate(metadata, nameof(metadata), required: false);
+            WorkflowExpression.Validate(description, nameof(description), required: false);
+            WorkflowExpression.Validate(partition, nameof(partition), required: false);
+            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/Api/Partner/Breakdowns/FileContent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                if (metadata != null)
+                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
+                if (description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                if (partition != null)
+                    callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
+                if (callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProcessingState))]
+        public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProcessingStateResponse> __BuildGetProcessingState(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetProcessingStateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/State", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetProcessingStateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> face = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> searchInPublicAccount = null, [WorkflowExpression] Func<privacyInput> privacy = null, [WorkflowExpression] Func<textScopeInput> textScope = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> owner = null, [WorkflowExpression] Func<double> pageSize = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> externalId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> face = null, WorkflowExpression<string> query = null, WorkflowExpression<string> searchInPublicAccount = null, WorkflowExpression<privacyInput> privacy = null, WorkflowExpression<textScopeInput> textScope = null, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> id = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> owner = null, WorkflowExpression<double> pageSize = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> externalId = null)
+        {
+            WorkflowExpression.Validate(face, nameof(face), required: false);
+            WorkflowExpression.Validate(query, nameof(query), required: false);
+            WorkflowExpression.Validate(searchInPublicAccount, nameof(searchInPublicAccount), required: false);
+            WorkflowExpression.Validate(privacy, nameof(privacy), required: false);
+            WorkflowExpression.Validate(textScope, nameof(textScope), required: false);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(partition, nameof(partition), required: false);
+            WorkflowExpression.Validate(owner, nameof(owner), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(skip, nameof(skip), required: false);
+            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/Api/Partner/Breakdowns/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (face != null)
+                    callPayload.Queries["face"] = ExpressionConverter.Convert(face);
+                if (query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                if (searchInPublicAccount != null)
+                    callPayload.Queries["searchInPublicAccount"] = ExpressionConverter.Convert(searchInPublicAccount);
+                if (privacy != null)
+                    callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
+                if (textScope != null)
+                    callPayload.Queries["textScope"] = ExpressionConverter.Convert(textScope);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (partition != null)
+                    callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
+                if (owner != null)
+                    callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                if (skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                if (externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBreakdown))]
+        public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<languageInput> language = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBreakdownResponse> __BuildGetBreakdown(WorkflowExpression<string> id, WorkflowExpression<languageInput> language = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            return new DeferredBodyAction<GetBreakdownResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                return new ApiConnectionAction<GetBreakdownResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteBreakdown))]
+        public IBodyWorkflowAction<JToken> DeleteBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> deleteInsights = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildDeleteBreakdown(WorkflowExpression<string> id, WorkflowExpression<bool> deleteInsights = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(deleteInsights, nameof(deleteInsights), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (deleteInsights != null)
+                    callPayload.Queries["deleteInsights"] = ExpressionConverter.Convert(deleteInsights);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInsightsWidgetUrl))]
+        public IBodyWorkflowAction<string> GetInsightsWidgetUrl([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<widgetTypeInput> widgetType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetInsightsWidgetUrl(WorkflowExpression<string> id, WorkflowExpression<widgetTypeInput> widgetType = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(widgetType, nameof(widgetType), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (widgetType != null)
+                    callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildGetPlayerWidgetUrl))]
+        public IBodyWorkflowAction<string> GetPlayerWidgetUrl([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetPlayerWidgetUrl(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildGetVttUrl))]
+        public IBodyWorkflowAction<string> GetVttUrl([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<languageInput> language = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetVttUrl(WorkflowExpression<string> id, WorkflowExpression<languageInput> language = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/VttUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInsightsWidgetUrlByExternalId))]
+        public IBodyWorkflowAction<string> GetInsightsWidgetUrlByExternalId([WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<widgetTypeInput> widgetType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetInsightsWidgetUrlByExternalId(WorkflowExpression<string> externalId, WorkflowExpression<widgetTypeInput> widgetType = null)
+        {
+            WorkflowExpression.Validate(externalId, nameof(externalId), required: true);
+            WorkflowExpression.Validate(widgetType, nameof(widgetType), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/Api/Partner/Breakdowns/GetInsightsWidgetUrlByExternalId";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
-        {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<GetBreakdownResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<JToken> DeleteBreakdown(Expression<Func<string>> id, Expression<Func<bool>> deleteInsights = null)
-        {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (deleteInsights != null)
-                callPayload.Queries["deleteInsights"] = ExpressionConverter.Convert(deleteInsights);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> GetInsightsWidgetUrl(Expression<Func<string>> id, Expression<Func<widgetTypeInput>> widgetType = null)
-        {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (widgetType != null)
-                callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> GetPlayerWidgetUrl(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> GetVttUrl(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
-        {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/VttUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> GetInsightsWidgetUrlByExternalId(Expression<Func<string>> externalId, Expression<Func<widgetTypeInput>> widgetType = null)
-        {
-            var apiCallPath = "/Api/Partner/Breakdowns/GetInsightsWidgetUrlByExternalId";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            if (widgetType != null)
-                callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
-            return new ApiConnectionAction<string>(callPayload);
+                if (widgetType != null)
+                    callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
@@ -175,36 +317,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<JToken> ReIndexBreakdown(Expression<Func<string>> id, Expression<Func<string>> callbackUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildReIndexBreakdown))]
+        public IBodyWorkflowAction<JToken> ReIndexBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> callbackUrl = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/reindex/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildReIndexBreakdown(WorkflowExpression<string> id, WorkflowExpression<string> callbackUrl = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindex/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId(Expression<Func<string>> externalId, Expression<Func<string>> callbackUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildReIndexBreakdownByExternalId))]
+        public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId([WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<string> callbackUrl = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildReIndexBreakdownByExternalId(WorkflowExpression<string> externalId, WorkflowExpression<string> callbackUrl = null)
+        {
+            WorkflowExpression.Validate(externalId, nameof(externalId), required: true);
+            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<JToken> UpdateFaceName(Expression<Func<string>> id, Expression<Func<double>> faceId, Expression<Func<string>> newName)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateFaceName))]
+        public IBodyWorkflowAction<JToken> UpdateFaceName([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<double> faceId, [WorkflowExpression] Func<string> newName)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/UpdateFaceName/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["faceId"] = ExpressionConverter.Convert(faceId);
-            callPayload.Queries["newName"] = ExpressionConverter.Convert(newName);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUpdateFaceName(WorkflowExpression<string> id, WorkflowExpression<double> faceId, WorkflowExpression<string> newName)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(faceId, nameof(faceId), required: true);
+            WorkflowExpression.Validate(newName, nameof(newName), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/UpdateFaceName/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["faceId"] = ExpressionConverter.Convert(faceId);
+                callPayload.Queries["newName"] = ExpressionConverter.Convert(newName);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
@@ -212,6 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum privacyInput
     {
         Private,
@@ -219,6 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         English,
@@ -334,6 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         public bool Done { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum textScopeInput
     {
         Transcript,
@@ -403,6 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         public int Views { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum widgetTypeInput
     {
         People,

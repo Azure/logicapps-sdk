@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,12 +20,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
+        [WorkflowExpressionFactory(nameof(__BuildTextTitle))]
+        public IBodyWorkflowAction<TextTitleResponse> TextTitle([WorkflowExpression] Func<titleInput> title)
         {
-            var apiCallPath = String.Format("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(title, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextTitleResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TextTitleResponse> __BuildTextTitle(WorkflowExpression<titleInput> title)
+        {
+            WorkflowExpression.Validate(title, nameof(title), required: true);
+            return new DeferredBodyAction<TextTitleResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(title, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextTitleResponse>(callPayload);
+            });
         }
     }
 
@@ -64,6 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         public string[] Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum titleInput
     {
         [EnumMember(Value = "adventures-sherlock-holmes")]

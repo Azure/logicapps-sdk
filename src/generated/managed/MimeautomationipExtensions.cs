@@ -4,47 +4,69 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MimeautomationipActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<Attachment[]> ExtractFiles(Expression<Func<string>> bodycontent)
-        {
-            var apiCallPath = "/MimeAutomation/ExtractFiles";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<Attachment[]>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
+        [WorkflowExpressionFactory(nameof(__BuildExtractFiles))]
+        public IBodyWorkflowAction<Attachment[]> ExtractFiles([WorkflowExpression] Func<string> bodycontent)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Attachment[]> __BuildExtractFiles(WorkflowExpression<string> bodycontent)
+        {
+            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            return new DeferredBodyAction<Attachment[]>(() =>
+            {
+                var apiCallPath = "/MimeAutomation/ExtractFiles";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Attachment[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml(Expression<Func<string>> bodycontent)
+        [WorkflowExpressionFactory(nameof(__BuildExtractFilesFromEml))]
+        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml([WorkflowExpression] Func<string> bodycontent)
         {
-            var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<MimeAttachment[]>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MimeAttachment[]> __BuildExtractFilesFromEml(WorkflowExpression<string> bodycontent)
+        {
+            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            return new DeferredBodyAction<MimeAttachment[]>(() =>
+            {
+                var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MimeAttachment[]>(callPayload);
+            });
         }
     }
 

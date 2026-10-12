@@ -1,128 +1,171 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TodoistActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<TaskV2> CreateItem(Expression<Func<string>> newItemtitle, Expression<Func<string>> newItemprojectId = null, Expression<Func<string>> newItemdueDate = null, Expression<Func<int>> newItempriority = null, Expression<Func<string>> newItemparentId = null, Expression<Func<int>> newItemchildOrder = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateItem))]
+        public IBodyWorkflowAction<TaskV2> CreateItem([WorkflowExpression] Func<string> newItemtitle, [WorkflowExpression] Func<string> newItemprojectId = null, [WorkflowExpression] Func<string> newItemdueDate = null, [WorkflowExpression] Func<int> newItempriority = null, [WorkflowExpression] Func<string> newItemparentId = null, [WorkflowExpression] Func<int> newItemchildOrder = null)
         {
-            var apiCallPath = "/v4/tasks/createTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newItem = new JObject();
-            var newItempropCount = 0;
-            newItempropCount++;
-            newItem["content"] = ExpressionConverter.ConvertO(newItemtitle);
-            if (newItemprojectId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskV2> __BuildCreateItem(WorkflowExpression<string> newItemtitle, WorkflowExpression<string> newItemprojectId = null, WorkflowExpression<string> newItemdueDate = null, WorkflowExpression<int> newItempriority = null, WorkflowExpression<string> newItemparentId = null, WorkflowExpression<int> newItemchildOrder = null)
+        {
+            WorkflowExpression.Validate(newItemtitle, nameof(newItemtitle), required: true);
+            WorkflowExpression.Validate(newItemprojectId, nameof(newItemprojectId), required: false);
+            WorkflowExpression.Validate(newItemdueDate, nameof(newItemdueDate), required: false);
+            WorkflowExpression.Validate(newItempriority, nameof(newItempriority), required: false);
+            WorkflowExpression.Validate(newItemparentId, nameof(newItemparentId), required: false);
+            WorkflowExpression.Validate(newItemchildOrder, nameof(newItemchildOrder), required: false);
+            return new DeferredBodyAction<TaskV2>(() =>
             {
-                newItem["project_id"] = ExpressionConverter.ConvertO(newItemprojectId);
+                var apiCallPath = "/v4/tasks/createTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var newItem = new JObject();
+                var newItempropCount = 0;
                 newItempropCount++;
-            }
+                newItem["content"] = ExpressionConverter.ConvertO(newItemtitle);
+                if (newItemprojectId != null)
+                {
+                    newItem["project_id"] = ExpressionConverter.ConvertO(newItemprojectId);
+                    newItempropCount++;
+                }
 
-            if (newItemdueDate != null)
-            {
-                newItem["due_string"] = ExpressionConverter.ConvertO(newItemdueDate);
-                newItempropCount++;
-            }
+                if (newItemdueDate != null)
+                {
+                    newItem["due_string"] = ExpressionConverter.ConvertO(newItemdueDate);
+                    newItempropCount++;
+                }
 
-            if (newItempriority != null)
-            {
-                newItem["priority"] = ExpressionConverter.ConvertO(newItempriority);
-                newItempropCount++;
-            }
+                if (newItempriority != null)
+                {
+                    newItem["priority"] = ExpressionConverter.ConvertO(newItempriority);
+                    newItempropCount++;
+                }
 
-            if (newItemparentId != null)
-            {
-                newItem["parent_id"] = ExpressionConverter.ConvertO(newItemparentId);
-                newItempropCount++;
-            }
+                if (newItemparentId != null)
+                {
+                    newItem["parent_id"] = ExpressionConverter.ConvertO(newItemparentId);
+                    newItempropCount++;
+                }
 
-            if (newItemchildOrder != null)
-            {
-                newItem["order"] = ExpressionConverter.ConvertO(newItemchildOrder);
-                newItempropCount++;
-            }
+                if (newItemchildOrder != null)
+                {
+                    newItem["order"] = ExpressionConverter.ConvertO(newItemchildOrder);
+                    newItempropCount++;
+                }
 
-            if (newItempropCount > 0)
-            {
-                callPayload.Body = newItem;
-            }
+                if (newItempropCount > 0)
+                {
+                    callPayload.Body = newItem;
+                }
 
-            return new ApiConnectionAction<TaskV2>(callPayload);
+                return new ApiConnectionAction<TaskV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<LabelV4> CreateLabel(Expression<Func<string>> newLabelname, Expression<Func<string>> newLabelcolor = null, Expression<Func<int>> newLabelorder = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateLabel))]
+        public IBodyWorkflowAction<LabelV4> CreateLabel([WorkflowExpression] Func<string> newLabelname, [WorkflowExpression] Func<string> newLabelcolor = null, [WorkflowExpression] Func<int> newLabelorder = null)
         {
-            var apiCallPath = "/v4/labels/createLabel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newLabel = new JObject();
-            var newLabelpropCount = 0;
-            newLabelpropCount++;
-            newLabel["name"] = ExpressionConverter.ConvertO(newLabelname);
-            if (newLabelcolor != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LabelV4> __BuildCreateLabel(WorkflowExpression<string> newLabelname, WorkflowExpression<string> newLabelcolor = null, WorkflowExpression<int> newLabelorder = null)
+        {
+            WorkflowExpression.Validate(newLabelname, nameof(newLabelname), required: true);
+            WorkflowExpression.Validate(newLabelcolor, nameof(newLabelcolor), required: false);
+            WorkflowExpression.Validate(newLabelorder, nameof(newLabelorder), required: false);
+            return new DeferredBodyAction<LabelV4>(() =>
             {
-                newLabel["color"] = ExpressionConverter.ConvertO(newLabelcolor);
+                var apiCallPath = "/v4/labels/createLabel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var newLabel = new JObject();
+                var newLabelpropCount = 0;
                 newLabelpropCount++;
-            }
+                newLabel["name"] = ExpressionConverter.ConvertO(newLabelname);
+                if (newLabelcolor != null)
+                {
+                    newLabel["color"] = ExpressionConverter.ConvertO(newLabelcolor);
+                    newLabelpropCount++;
+                }
 
-            if (newLabelorder != null)
-            {
-                newLabel["order"] = ExpressionConverter.ConvertO(newLabelorder);
-                newLabelpropCount++;
-            }
+                if (newLabelorder != null)
+                {
+                    newLabel["order"] = ExpressionConverter.ConvertO(newLabelorder);
+                    newLabelpropCount++;
+                }
 
-            if (newLabelpropCount > 0)
-            {
-                callPayload.Body = newLabel;
-            }
+                if (newLabelpropCount > 0)
+                {
+                    callPayload.Body = newLabel;
+                }
 
-            return new ApiConnectionAction<LabelV4>(callPayload);
+                return new ApiConnectionAction<LabelV4>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4> CreateProject(Expression<Func<string>> newProjectname, Expression<Func<string>> newProjectcolor = null, Expression<Func<string>> newProjectparentId = null, Expression<Func<bool>> newProjectisFavorite = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateProject))]
+        public IBodyWorkflowAction<ProjectV4> CreateProject([WorkflowExpression] Func<string> newProjectname, [WorkflowExpression] Func<string> newProjectcolor = null, [WorkflowExpression] Func<string> newProjectparentId = null, [WorkflowExpression] Func<bool> newProjectisFavorite = null)
         {
-            var apiCallPath = "/v4/projects/createProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newProject = new JObject();
-            var newProjectpropCount = 0;
-            newProjectpropCount++;
-            newProject["name"] = ExpressionConverter.ConvertO(newProjectname);
-            if (newProjectcolor != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectV4> __BuildCreateProject(WorkflowExpression<string> newProjectname, WorkflowExpression<string> newProjectcolor = null, WorkflowExpression<string> newProjectparentId = null, WorkflowExpression<bool> newProjectisFavorite = null)
+        {
+            WorkflowExpression.Validate(newProjectname, nameof(newProjectname), required: true);
+            WorkflowExpression.Validate(newProjectcolor, nameof(newProjectcolor), required: false);
+            WorkflowExpression.Validate(newProjectparentId, nameof(newProjectparentId), required: false);
+            WorkflowExpression.Validate(newProjectisFavorite, nameof(newProjectisFavorite), required: false);
+            return new DeferredBodyAction<ProjectV4>(() =>
             {
-                newProject["color"] = ExpressionConverter.ConvertO(newProjectcolor);
+                var apiCallPath = "/v4/projects/createProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var newProject = new JObject();
+                var newProjectpropCount = 0;
                 newProjectpropCount++;
-            }
+                newProject["name"] = ExpressionConverter.ConvertO(newProjectname);
+                if (newProjectcolor != null)
+                {
+                    newProject["color"] = ExpressionConverter.ConvertO(newProjectcolor);
+                    newProjectpropCount++;
+                }
 
-            if (newProjectparentId != null)
-            {
-                newProject["parent_id"] = ExpressionConverter.ConvertO(newProjectparentId);
-                newProjectpropCount++;
-            }
+                if (newProjectparentId != null)
+                {
+                    newProject["parent_id"] = ExpressionConverter.ConvertO(newProjectparentId);
+                    newProjectpropCount++;
+                }
 
-            if (newProjectisFavorite != null)
-            {
-                newProject["is_favorite"] = ExpressionConverter.ConvertO(newProjectisFavorite);
-                newProjectpropCount++;
-            }
+                if (newProjectisFavorite != null)
+                {
+                    newProject["is_favorite"] = ExpressionConverter.ConvertO(newProjectisFavorite);
+                    newProjectpropCount++;
+                }
 
-            if (newProjectpropCount > 0)
-            {
-                callPayload.Body = newProject;
-            }
+                if (newProjectpropCount > 0)
+                {
+                    callPayload.Body = newProject;
+                }
 
-            return new ApiConnectionAction<ProjectV4>(callPayload);
+                return new ApiConnectionAction<ProjectV4>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -135,13 +178,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<TaskV2[]> ListItemsByProject(Expression<Func<string>> projectId)
+        [WorkflowExpressionFactory(nameof(__BuildListItemsByProject))]
+        public IBodyWorkflowAction<TaskV2[]> ListItemsByProject([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = "/v4/tasks/getTasksByProject";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionAction<TaskV2[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskV2[]> __BuildListItemsByProject(WorkflowExpression<string> projectId)
+        {
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<TaskV2[]>(() =>
+            {
+                var apiCallPath = "/v4/tasks/getTasksByProject";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionAction<TaskV2[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -163,135 +217,212 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4> ShareProject(Expression<Func<string>> projectId, Expression<Func<string>> shareProjectemail)
+        [WorkflowExpressionFactory(nameof(__BuildShareProject))]
+        public IBodyWorkflowAction<ProjectV4> ShareProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> shareProjectemail)
         {
-            var apiCallPath = "/v4/sync/shareProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            var shareProject = new JObject();
-            var shareProjectpropCount = 0;
-            shareProjectpropCount++;
-            shareProject["email"] = ExpressionConverter.ConvertO(shareProjectemail);
-            if (shareProjectpropCount > 0)
-            {
-                callPayload.Body = shareProject;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<ProjectV4>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectV4> __BuildShareProject(WorkflowExpression<string> projectId, WorkflowExpression<string> shareProjectemail)
+        {
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            WorkflowExpression.Validate(shareProjectemail, nameof(shareProjectemail), required: true);
+            return new DeferredBodyAction<ProjectV4>(() =>
+            {
+                var apiCallPath = "/v4/sync/shareProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                var shareProject = new JObject();
+                var shareProjectpropCount = 0;
+                shareProjectpropCount++;
+                shareProject["email"] = ExpressionConverter.ConvertO(shareProjectemail);
+                if (shareProjectpropCount > 0)
+                {
+                    callPayload.Body = shareProject;
+                }
+
+                return new ApiConnectionAction<ProjectV4>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction UpdateItem(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<string>> changeItemtitle, Expression<Func<int>> changeItempriority = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateItem))]
+        public IWorkflowAction UpdateItem([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeItemtitle, [WorkflowExpression] Func<int> changeItempriority = null)
         {
-            var apiCallPath = "/v4/tasks/updateTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var changeItem = new JObject();
-            var changeItempropCount = 0;
-            changeItempropCount++;
-            changeItem["content"] = ExpressionConverter.ConvertO(changeItemtitle);
-            if (changeItempriority != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateItem(WorkflowExpression<string> projectId, WorkflowExpression<string> id, WorkflowExpression<string> changeItemtitle, WorkflowExpression<int> changeItempriority = null)
+        {
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(changeItemtitle, nameof(changeItemtitle), required: true);
+            WorkflowExpression.Validate(changeItempriority, nameof(changeItempriority), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                changeItem["priority"] = ExpressionConverter.ConvertO(changeItempriority);
+                var apiCallPath = "/v4/tasks/updateTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                var changeItem = new JObject();
+                var changeItempropCount = 0;
                 changeItempropCount++;
-            }
+                changeItem["content"] = ExpressionConverter.ConvertO(changeItemtitle);
+                if (changeItempriority != null)
+                {
+                    changeItem["priority"] = ExpressionConverter.ConvertO(changeItempriority);
+                    changeItempropCount++;
+                }
 
-            if (changeItempropCount > 0)
-            {
-                callPayload.Body = changeItem;
-            }
+                if (changeItempropCount > 0)
+                {
+                    callPayload.Body = changeItem;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction UpdateLabel(Expression<Func<string>> id, Expression<Func<string>> changeLabelname = null, Expression<Func<string>> changeLabelcolor = null, Expression<Func<int>> changeLabelorder = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateLabel))]
+        public IWorkflowAction UpdateLabel([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeLabelname = null, [WorkflowExpression] Func<string> changeLabelcolor = null, [WorkflowExpression] Func<int> changeLabelorder = null)
         {
-            var apiCallPath = "/v4/labels/updateLabel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var changeLabel = new JObject();
-            var changeLabelpropCount = 0;
-            if (changeLabelname != null)
-            {
-                changeLabel["name"] = ExpressionConverter.ConvertO(changeLabelname);
-                changeLabelpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (changeLabelcolor != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateLabel(WorkflowExpression<string> id, WorkflowExpression<string> changeLabelname = null, WorkflowExpression<string> changeLabelcolor = null, WorkflowExpression<int> changeLabelorder = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(changeLabelname, nameof(changeLabelname), required: false);
+            WorkflowExpression.Validate(changeLabelcolor, nameof(changeLabelcolor), required: false);
+            WorkflowExpression.Validate(changeLabelorder, nameof(changeLabelorder), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                changeLabel["color"] = ExpressionConverter.ConvertO(changeLabelcolor);
-                changeLabelpropCount++;
-            }
+                var apiCallPath = "/v4/labels/updateLabel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                var changeLabel = new JObject();
+                var changeLabelpropCount = 0;
+                if (changeLabelname != null)
+                {
+                    changeLabel["name"] = ExpressionConverter.ConvertO(changeLabelname);
+                    changeLabelpropCount++;
+                }
 
-            if (changeLabelorder != null)
-            {
-                changeLabel["order"] = ExpressionConverter.ConvertO(changeLabelorder);
-                changeLabelpropCount++;
-            }
+                if (changeLabelcolor != null)
+                {
+                    changeLabel["color"] = ExpressionConverter.ConvertO(changeLabelcolor);
+                    changeLabelpropCount++;
+                }
 
-            if (changeLabelpropCount > 0)
-            {
-                callPayload.Body = changeLabel;
-            }
+                if (changeLabelorder != null)
+                {
+                    changeLabel["order"] = ExpressionConverter.ConvertO(changeLabelorder);
+                    changeLabelpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (changeLabelpropCount > 0)
+                {
+                    callPayload.Body = changeLabel;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction UpdateProject(Expression<Func<string>> id, Expression<Func<string>> changeProjectname, Expression<Func<string>> changeProjectcolor = null, Expression<Func<bool>> changeProjectisFavorite = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateProject))]
+        public IWorkflowAction UpdateProject([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeProjectname, [WorkflowExpression] Func<string> changeProjectcolor = null, [WorkflowExpression] Func<bool> changeProjectisFavorite = null)
         {
-            var apiCallPath = "/v4/projects/updateProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var changeProject = new JObject();
-            var changeProjectpropCount = 0;
-            changeProjectpropCount++;
-            changeProject["name"] = ExpressionConverter.ConvertO(changeProjectname);
-            if (changeProjectcolor != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateProject(WorkflowExpression<string> id, WorkflowExpression<string> changeProjectname, WorkflowExpression<string> changeProjectcolor = null, WorkflowExpression<bool> changeProjectisFavorite = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(changeProjectname, nameof(changeProjectname), required: true);
+            WorkflowExpression.Validate(changeProjectcolor, nameof(changeProjectcolor), required: false);
+            WorkflowExpression.Validate(changeProjectisFavorite, nameof(changeProjectisFavorite), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                changeProject["color"] = ExpressionConverter.ConvertO(changeProjectcolor);
+                var apiCallPath = "/v4/projects/updateProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                var changeProject = new JObject();
+                var changeProjectpropCount = 0;
                 changeProjectpropCount++;
-            }
+                changeProject["name"] = ExpressionConverter.ConvertO(changeProjectname);
+                if (changeProjectcolor != null)
+                {
+                    changeProject["color"] = ExpressionConverter.ConvertO(changeProjectcolor);
+                    changeProjectpropCount++;
+                }
 
-            if (changeProjectisFavorite != null)
-            {
-                changeProject["is_favorite"] = ExpressionConverter.ConvertO(changeProjectisFavorite);
-                changeProjectpropCount++;
-            }
+                if (changeProjectisFavorite != null)
+                {
+                    changeProject["is_favorite"] = ExpressionConverter.ConvertO(changeProjectisFavorite);
+                    changeProjectpropCount++;
+                }
 
-            if (changeProjectpropCount > 0)
-            {
-                callPayload.Body = changeProject;
-            }
+                if (changeProjectpropCount > 0)
+                {
+                    callPayload.Body = changeProject;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class TodoistTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildOnItemCompleted))]
+        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v4/trigger/completed/get_all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnItemCompletedV4Response> __BuildOnItemCompleted(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v4/trigger/sync";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyTrigger<OnItemCompletedV4Response>(() =>
+            {
+                var apiCallPath = "/v4/trigger/completed/get_all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnItemCreated))]
+        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnItemCreatedV4Response> __BuildOnItemCreated(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyTrigger<OnItemCreatedV4Response>(() =>
+            {
+                var apiCallPath = "/v4/trigger/sync";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

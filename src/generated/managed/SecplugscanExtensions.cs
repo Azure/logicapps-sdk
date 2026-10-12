@@ -4,67 +4,95 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SecplugscanActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<FilescanResponse> Filescan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
-        {
-            var apiCallPath = "/file/jsonupload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("");
-            if (xApiKey != null)
-                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-client-id"] = Convert.ToString("");
-            if (xClientId != null)
-                callPayload.Headers["x-client-id"] = ExpressionConverter.Convert(xClientId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
-            body["filetype"] = "text/plain";
-            bodypropCount++;
-            body["cte"] = "base64";
-            bodypropCount++;
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<FilescanResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
+        [WorkflowExpressionFactory(nameof(__BuildFilescan))]
+        public IBodyWorkflowAction<FilescanResponse> Filescan([WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> xApiKey = null, [WorkflowExpression] Func<string> xClientId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilescanResponse> __BuildFilescan(WorkflowExpression<string> bodyfilename, WorkflowExpression<string> bodydata, WorkflowExpression<string> xApiKey = null, WorkflowExpression<string> xClientId = null)
+        {
+            WorkflowExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: false);
+            WorkflowExpression.Validate(xClientId, nameof(xClientId), required: false);
+            return new DeferredBodyAction<FilescanResponse>(() =>
+            {
+                var apiCallPath = "/file/jsonupload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("");
+                if (xApiKey != null)
+                    callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-client-id"] = Convert.ToString("");
+                if (xClientId != null)
+                    callPayload.Headers["x-client-id"] = ExpressionConverter.Convert(xClientId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+                body["filetype"] = "text/plain";
+                bodypropCount++;
+                body["cte"] = "base64";
+                bodypropCount++;
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FilescanResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<EmailScanResponse> EmailScan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
+        [WorkflowExpressionFactory(nameof(__BuildEmailScan))]
+        public IBodyWorkflowAction<EmailScanResponse> EmailScan([WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> xApiKey = null, [WorkflowExpression] Func<string> xClientId = null)
         {
-            var apiCallPath = "/email/jsonupload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xApiKey != null)
-                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            if (xClientId != null)
-                callPayload.Headers["x-client-id"] = ExpressionConverter.Convert(xClientId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
-            body["cte"] = "base64";
-            bodypropCount++;
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<EmailScanResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmailScanResponse> __BuildEmailScan(WorkflowExpression<string> bodyfilename, WorkflowExpression<string> bodydata, WorkflowExpression<string> xApiKey = null, WorkflowExpression<string> xClientId = null)
+        {
+            WorkflowExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowExpression.Validate(xApiKey, nameof(xApiKey), required: false);
+            WorkflowExpression.Validate(xClientId, nameof(xClientId), required: false);
+            return new DeferredBodyAction<EmailScanResponse>(() =>
+            {
+                var apiCallPath = "/email/jsonupload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xApiKey != null)
+                    callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                if (xClientId != null)
+                    callPayload.Headers["x-client-id"] = ExpressionConverter.Convert(xClientId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+                body["cte"] = "base64";
+                bodypropCount++;
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EmailScanResponse>(callPayload);
+            });
         }
     }
 

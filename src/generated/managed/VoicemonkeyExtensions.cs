@@ -4,167 +4,217 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VoicemonkeyActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement(Expression<Func<string>> bodydeviceID, Expression<Func<string>> bodytext = null, Expression<Func<bodyvoiceInput>> bodyvoice = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodychimeInput>> bodychime = null, Expression<Func<string>> bodyaudio = null, Expression<Func<string>> bodybackgroundAudio = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodynoBackground = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodymediaWidth = null, Expression<Func<int>> bodymediaHeight = null, Expression<Func<bodymediaScalingInput>> bodymediaScaling = null, Expression<Func<bodymediaAlignmentInput>> bodymediaAlignment = null, Expression<Func<int>> bodymediaRadius = null, Expression<Func<string>> bodyvideo = null, Expression<Func<int>> bodyvideoRepeat = null, Expression<Func<string>> bodyechoDotWithClockDisplay = null)
+        [WorkflowExpressionFactory(nameof(__BuildMakeAnnouncement))]
+        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement([WorkflowExpression] Func<string> bodydeviceID, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodychimeInput> bodychime = null, [WorkflowExpression] Func<string> bodyaudio = null, [WorkflowExpression] Func<string> bodybackgroundAudio = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodynoBackground = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodymediaWidth = null, [WorkflowExpression] Func<int> bodymediaHeight = null, [WorkflowExpression] Func<bodymediaScalingInput> bodymediaScaling = null, [WorkflowExpression] Func<bodymediaAlignmentInput> bodymediaAlignment = null, [WorkflowExpression] Func<int> bodymediaRadius = null, [WorkflowExpression] Func<string> bodyvideo = null, [WorkflowExpression] Func<int> bodyvideoRepeat = null, [WorkflowExpression] Func<string> bodyechoDotWithClockDisplay = null)
         {
-            var apiCallPath = "/announcement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
-            if (bodytext != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MakeAnnouncementResponse> __BuildMakeAnnouncement(WorkflowExpression<string> bodydeviceID, WorkflowExpression<string> bodytext = null, WorkflowExpression<bodyvoiceInput> bodyvoice = null, WorkflowExpression<bodylanguageInput> bodylanguage = null, WorkflowExpression<bodychimeInput> bodychime = null, WorkflowExpression<string> bodyaudio = null, WorkflowExpression<string> bodybackgroundAudio = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<bool> bodynoBackground = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<int> bodymediaWidth = null, WorkflowExpression<int> bodymediaHeight = null, WorkflowExpression<bodymediaScalingInput> bodymediaScaling = null, WorkflowExpression<bodymediaAlignmentInput> bodymediaAlignment = null, WorkflowExpression<int> bodymediaRadius = null, WorkflowExpression<string> bodyvideo = null, WorkflowExpression<int> bodyvideoRepeat = null, WorkflowExpression<string> bodyechoDotWithClockDisplay = null)
+        {
+            WorkflowExpression.Validate(bodydeviceID, nameof(bodydeviceID), required: true);
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            WorkflowExpression.Validate(bodyvoice, nameof(bodyvoice), required: false);
+            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowExpression.Validate(bodychime, nameof(bodychime), required: false);
+            WorkflowExpression.Validate(bodyaudio, nameof(bodyaudio), required: false);
+            WorkflowExpression.Validate(bodybackgroundAudio, nameof(bodybackgroundAudio), required: false);
+            WorkflowExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
+            WorkflowExpression.Validate(bodynoBackground, nameof(bodynoBackground), required: false);
+            WorkflowExpression.Validate(bodyimage, nameof(bodyimage), required: false);
+            WorkflowExpression.Validate(bodymediaWidth, nameof(bodymediaWidth), required: false);
+            WorkflowExpression.Validate(bodymediaHeight, nameof(bodymediaHeight), required: false);
+            WorkflowExpression.Validate(bodymediaScaling, nameof(bodymediaScaling), required: false);
+            WorkflowExpression.Validate(bodymediaAlignment, nameof(bodymediaAlignment), required: false);
+            WorkflowExpression.Validate(bodymediaRadius, nameof(bodymediaRadius), required: false);
+            WorkflowExpression.Validate(bodyvideo, nameof(bodyvideo), required: false);
+            WorkflowExpression.Validate(bodyvideoRepeat, nameof(bodyvideoRepeat), required: false);
+            WorkflowExpression.Validate(bodyechoDotWithClockDisplay, nameof(bodyechoDotWithClockDisplay), required: false);
+            return new DeferredBodyAction<MakeAnnouncementResponse>(() =>
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                var apiCallPath = "/announcement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodyvoice != null)
-            {
-                body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
-                bodypropCount++;
-            }
+                if (bodyvoice != null)
+                {
+                    body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
+                    bodypropCount++;
+                }
 
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodychime != null)
-            {
-                body["chime"] = ExpressionConverter.ConvertO(bodychime);
-                bodypropCount++;
-            }
+                if (bodychime != null)
+                {
+                    body["chime"] = ExpressionConverter.ConvertO(bodychime);
+                    bodypropCount++;
+                }
 
-            if (bodyaudio != null)
-            {
-                body["audio"] = ExpressionConverter.ConvertO(bodyaudio);
-                bodypropCount++;
-            }
+                if (bodyaudio != null)
+                {
+                    body["audio"] = ExpressionConverter.ConvertO(bodyaudio);
+                    bodypropCount++;
+                }
 
-            if (bodybackgroundAudio != null)
-            {
-                body["background_audio"] = ExpressionConverter.ConvertO(bodybackgroundAudio);
-                bodypropCount++;
-            }
+                if (bodybackgroundAudio != null)
+                {
+                    body["background_audio"] = ExpressionConverter.ConvertO(bodybackgroundAudio);
+                    bodypropCount++;
+                }
 
-            if (bodywebsite != null)
-            {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
-                bodypropCount++;
-            }
+                if (bodywebsite != null)
+                {
+                    body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                    bodypropCount++;
+                }
 
-            if (bodynoBackground != null)
-            {
-                body["no_bg"] = ExpressionConverter.ConvertO(bodynoBackground);
-                bodypropCount++;
-            }
+                if (bodynoBackground != null)
+                {
+                    body["no_bg"] = ExpressionConverter.ConvertO(bodynoBackground);
+                    bodypropCount++;
+                }
 
-            if (bodyimage != null)
-            {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
-                bodypropCount++;
-            }
+                if (bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    bodypropCount++;
+                }
 
-            if (bodymediaWidth != null)
-            {
-                body["media_width"] = ExpressionConverter.ConvertO(bodymediaWidth);
-                bodypropCount++;
-            }
+                if (bodymediaWidth != null)
+                {
+                    body["media_width"] = ExpressionConverter.ConvertO(bodymediaWidth);
+                    bodypropCount++;
+                }
 
-            if (bodymediaHeight != null)
-            {
-                body["media_height"] = ExpressionConverter.ConvertO(bodymediaHeight);
-                bodypropCount++;
-            }
+                if (bodymediaHeight != null)
+                {
+                    body["media_height"] = ExpressionConverter.ConvertO(bodymediaHeight);
+                    bodypropCount++;
+                }
 
-            if (bodymediaScaling != null)
-            {
-                body["media_scaling"] = ExpressionConverter.ConvertO(bodymediaScaling);
-                bodypropCount++;
-            }
+                if (bodymediaScaling != null)
+                {
+                    body["media_scaling"] = ExpressionConverter.ConvertO(bodymediaScaling);
+                    bodypropCount++;
+                }
 
-            if (bodymediaAlignment != null)
-            {
-                body["media_align"] = ExpressionConverter.ConvertO(bodymediaAlignment);
-                bodypropCount++;
-            }
+                if (bodymediaAlignment != null)
+                {
+                    body["media_align"] = ExpressionConverter.ConvertO(bodymediaAlignment);
+                    bodypropCount++;
+                }
 
-            if (bodymediaRadius != null)
-            {
-                body["media_radius"] = ExpressionConverter.ConvertO(bodymediaRadius);
-                bodypropCount++;
-            }
+                if (bodymediaRadius != null)
+                {
+                    body["media_radius"] = ExpressionConverter.ConvertO(bodymediaRadius);
+                    bodypropCount++;
+                }
 
-            if (bodyvideo != null)
-            {
-                body["video"] = ExpressionConverter.ConvertO(bodyvideo);
-                bodypropCount++;
-            }
+                if (bodyvideo != null)
+                {
+                    body["video"] = ExpressionConverter.ConvertO(bodyvideo);
+                    bodypropCount++;
+                }
 
-            if (bodyvideoRepeat != null)
-            {
-                body["video_repeat"] = ExpressionConverter.ConvertO(bodyvideoRepeat);
-                bodypropCount++;
-            }
+                if (bodyvideoRepeat != null)
+                {
+                    body["video_repeat"] = ExpressionConverter.ConvertO(bodyvideoRepeat);
+                    bodypropCount++;
+                }
 
-            if (bodyechoDotWithClockDisplay != null)
-            {
-                body["character_display"] = ExpressionConverter.ConvertO(bodyechoDotWithClockDisplay);
-                bodypropCount++;
-            }
+                if (bodyechoDotWithClockDisplay != null)
+                {
+                    body["character_display"] = ExpressionConverter.ConvertO(bodyechoDotWithClockDisplay);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MakeAnnouncementResponse>(callPayload);
+                return new ApiConnectionAction<MakeAnnouncementResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine(Expression<Func<string>> bodydeviceID)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerRoutine))]
+        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine([WorkflowExpression] Func<string> bodydeviceID)
         {
-            var apiCallPath = "/trigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<TriggerRoutineResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TriggerRoutineResponse> __BuildTriggerRoutine(WorkflowExpression<string> bodydeviceID)
+        {
+            WorkflowExpression.Validate(bodydeviceID, nameof(bodydeviceID), required: true);
+            return new DeferredBodyAction<TriggerRoutineResponse>(() =>
+            {
+                var apiCallPath = "/trigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TriggerRoutineResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow(Expression<Func<int>> bodyflowID)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerFlow))]
+        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow([WorkflowExpression] Func<int> bodyflowID)
         {
-            var apiCallPath = "/flows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["flow"] = ExpressionConverter.ConvertO(bodyflowID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction<TriggerFlowResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TriggerFlowResponse> __BuildTriggerFlow(WorkflowExpression<int> bodyflowID)
+        {
+            WorkflowExpression.Validate(bodyflowID, nameof(bodyflowID), required: true);
+            return new DeferredBodyAction<TriggerFlowResponse>(() =>
+            {
+                var apiCallPath = "/flows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["flow"] = ExpressionConverter.ConvertO(bodyflowID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TriggerFlowResponse>(callPayload);
+            });
         }
     }
 
@@ -181,6 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvoiceInput
     {
         Nicole,
@@ -223,6 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         Miguel
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "de-DE")]
@@ -257,6 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         PtBR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodychimeInput
     {
         [EnumMember(Value = "soundbank://soundlibrary/alarms/air_horns/air_horn_01")]
@@ -305,6 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         SoundbankSoundlibraryAlarmsBeepsAndBloopsWoosh02
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymediaScalingInput
     {
         [EnumMember(Value = "none")]
@@ -319,6 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         BestFitDown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymediaAlignmentInput
     {
         [EnumMember(Value = "bottom")]

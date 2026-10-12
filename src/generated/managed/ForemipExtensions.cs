@@ -4,48 +4,79 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ForemipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
-        public IBodyWorkflowAction<Articles200Item[]> GetArticles(Expression<Func<int>> page, Expression<Func<int>> perPage, Expression<Func<string>> tag, Expression<Func<string>> tags = null, Expression<Func<string>> tagsExclude = null, Expression<Func<string>> username = null, Expression<Func<string>> state = null, Expression<Func<string>> top = null, Expression<Func<string>> collectionId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetArticles))]
+        public IBodyWorkflowAction<Articles200Item[]> GetArticles([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> perPage, [WorkflowExpression] Func<string> tag, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagsExclude = null, [WorkflowExpression] Func<string> username = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> collectionId = null)
         {
-            var apiCallPath = "/api/articles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-            if (tags != null)
-                callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
-            if (tagsExclude != null)
-                callPayload.Queries["tags_exclude"] = ExpressionConverter.Convert(tagsExclude);
-            if (username != null)
-                callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["state"] = Convert.ToString("fresh");
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["top"] = Convert.ToString("2");
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["collection_id"] = Convert.ToString("99");
-            if (collectionId != null)
-                callPayload.Queries["collection_id"] = ExpressionConverter.Convert(collectionId);
-            return new ApiConnectionAction<Articles200Item[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Articles200Item[]> __BuildGetArticles(WorkflowExpression<int> page, WorkflowExpression<int> perPage, WorkflowExpression<string> tag, WorkflowExpression<string> tags = null, WorkflowExpression<string> tagsExclude = null, WorkflowExpression<string> username = null, WorkflowExpression<string> state = null, WorkflowExpression<string> top = null, WorkflowExpression<string> collectionId = null)
+        {
+            WorkflowExpression.Validate(page, nameof(page), required: true);
+            WorkflowExpression.Validate(perPage, nameof(perPage), required: true);
+            WorkflowExpression.Validate(tag, nameof(tag), required: true);
+            WorkflowExpression.Validate(tags, nameof(tags), required: false);
+            WorkflowExpression.Validate(tagsExclude, nameof(tagsExclude), required: false);
+            WorkflowExpression.Validate(username, nameof(username), required: false);
+            WorkflowExpression.Validate(state, nameof(state), required: false);
+            WorkflowExpression.Validate(top, nameof(top), required: false);
+            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: false);
+            return new DeferredBodyAction<Articles200Item[]>(() =>
+            {
+                var apiCallPath = "/api/articles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                if (tags != null)
+                    callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
+                if (tagsExclude != null)
+                    callPayload.Queries["tags_exclude"] = ExpressionConverter.Convert(tagsExclude);
+                if (username != null)
+                    callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+                callPayload.Queries["state"] = Convert.ToString("fresh");
+                if (state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["top"] = Convert.ToString("2");
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["collection_id"] = Convert.ToString("99");
+                if (collectionId != null)
+                    callPayload.Queries["collection_id"] = ExpressionConverter.Convert(collectionId);
+                return new ApiConnectionAction<Articles200Item[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
-        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId, Expression<Func<string>> url)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> url)
         {
-            var apiCallPath = String.Format("/api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<User>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<User> __BuildGetUser(WorkflowExpression<string> userId, WorkflowExpression<string> url)
+        {
+            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            WorkflowExpression.Validate(url, nameof(url), required: true);
+            return new DeferredBodyAction<User>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                return new ApiConnectionAction<User>(callPayload);
+            });
         }
     }
 

@@ -4,43 +4,78 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NewyorktimesipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildArticleSearch))]
+        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            var apiCallPath = "/search/v2/articlesearch.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (beginDate != null)
-                callPayload.Queries["begin_date"] = ExpressionConverter.Convert(beginDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArticleSearchResponse> __BuildArticleSearch(WorkflowExpression<string> q, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            return new DeferredBodyAction<ArticleSearchResponse>(() =>
+            {
+                var apiCallPath = "/search/v2/articlesearch.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (beginDate != null)
+                    callPayload.Queries["begin_date"] = ExpressionConverter.Convert(beginDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
+        [WorkflowExpressionFactory(nameof(__BuildTopStories))]
+        public IBodyWorkflowAction<TopStoriesResponse> TopStories([WorkflowExpression] Func<sectionInput> section)
         {
-            var apiCallPath = String.Format("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(section, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TopStoriesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TopStoriesResponse> __BuildTopStories(WorkflowExpression<sectionInput> section)
+        {
+            WorkflowExpression.Validate(section, nameof(section), required: true);
+            return new DeferredBodyAction<TopStoriesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(section, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TopStoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
+        [WorkflowExpressionFactory(nameof(__BuildMostViewed))]
+        public IBodyWorkflowAction<MostViewedResponse> MostViewed([WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = String.Format("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MostViewedResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MostViewedResponse> __BuildMostViewed(WorkflowExpression<periodInput> period)
+        {
+            WorkflowExpression.Validate(period, nameof(period), required: true);
+            return new DeferredBodyAction<MostViewedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MostViewedResponse>(callPayload);
+            });
         }
     }
 
@@ -165,6 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public Article[] Results { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sectionInput
     {
         [EnumMember(Value = "arts")]
@@ -311,6 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public string Format { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
         [EnumMember(Value = "1")]

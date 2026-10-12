@@ -4,1328 +4,2232 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Powerplatformadminv2Actions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<AdvisorActionResponse> ExecuteRecommendationAction(Expression<Func<string>> bodyrecommendationName, Expression<Func<object>> bodyparameters, Expression<Func<string>> actionName, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildExecuteRecommendationAction))]
+        public IBodyWorkflowAction<AdvisorActionResponse> ExecuteRecommendationAction([WorkflowExpression] Func<string> bodyrecommendationName, [WorkflowExpression] Func<object> bodyparameters, [WorkflowExpression] Func<string> actionName, [WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = String.Format("/analytics/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["scenario"] = ExpressionConverter.ConvertO(bodyrecommendationName);
-            bodypropCount++;
-            body["actionParameters"] = ExpressionConverter.ConvertO(bodyparameters);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AdvisorActionResponse> __BuildExecuteRecommendationAction(WorkflowExpression<string> bodyrecommendationName, WorkflowExpression<object> bodyparameters, WorkflowExpression<string> actionName, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(bodyrecommendationName, nameof(bodyrecommendationName), required: true);
+            WorkflowExpression.Validate(bodyparameters, nameof(bodyparameters), required: true);
+            WorkflowExpression.Validate(actionName, nameof(actionName), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<AdvisorActionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AdvisorActionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> GetRecommendations(Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = "/analytics/advisorRecommendations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<AdvisorRecommendationIEnumerableResponseWithContinuation>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation> GetRecommendationResources(Expression<Func<string>> scenario, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/analytics/advisorRecommendations/{0}/resources", ExpressionConverter.ConvertWithUrlEncoding(scenario, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<TenantApplicationPackageContinuationResponse> GetTenantApplicationPackage(Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = "/appmanagement/applicationPackages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<TenantApplicationPackageContinuationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ApplicationPackageContinuationResponse> GetEnvironmentApplicationPackage(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<appInstallStateInput>> appInstallState = null, Expression<Func<string>> lcid = null)
-        {
-            var apiCallPath = String.Format("/appmanagement/environments/{0}/applicationPackages", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (appInstallState != null)
-                callPayload.Queries["appInstallState"] = ExpressionConverter.Convert(appInstallState);
-            if (lcid != null)
-                callPayload.Queries["lcid"] = ExpressionConverter.Convert(lcid);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ApplicationPackageContinuationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<InstancePackage> InstallApplicationPackage(Expression<Func<string>> environmentId, Expression<Func<string>> uniqueName, Expression<Func<string>> apiVersion, Expression<Func<string>> bodypayloadValue = null)
-        {
-            var apiCallPath = String.Format("/appmanagement/environments/{0}/applicationPackages/{1}/install", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(uniqueName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypayloadValue != null)
-            {
-                body["payloadValue"] = ExpressionConverter.ConvertO(bodypayloadValue);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analytics/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<InstancePackage>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<InstancePackageOperationPollingResponse> GetApplicationPackageInstallStatus(Expression<Func<string>> environmentId, Expression<Func<string>> operationId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/appmanagement/environments/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<InstancePackageOperationPollingResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RoleAssignmentResponse> ListRoleAssignments(Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = "/authorization/roleAssignments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<RoleAssignmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RoleAssignmentResponse> CreateRoleAssignment(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyprincipalObjectId = null, Expression<Func<string>> bodyroleDefinitionId = null, Expression<Func<string>> bodyscope = null, Expression<Func<string>> bodyprincipalType = null)
-        {
-            var apiCallPath = "/authorization/roleAssignments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprincipalObjectId != null)
-            {
-                body["principalObjectId"] = ExpressionConverter.ConvertO(bodyprincipalObjectId);
+                body["scenario"] = ExpressionConverter.ConvertO(bodyrecommendationName);
                 bodypropCount++;
-            }
+                body["actionParameters"] = ExpressionConverter.ConvertO(bodyparameters);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyroleDefinitionId != null)
+                return new ApiConnectionAction<AdvisorActionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetRecommendations))]
+        public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> GetRecommendations([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> __BuildGetRecommendations(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<AdvisorRecommendationIEnumerableResponseWithContinuation>(() =>
             {
-                body["roleDefinitionId"] = ExpressionConverter.ConvertO(bodyroleDefinitionId);
+                var apiCallPath = "/analytics/advisorRecommendations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<AdvisorRecommendationIEnumerableResponseWithContinuation>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetRecommendationResources))]
+        public IBodyWorkflowAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation> GetRecommendationResources([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation> __BuildGetRecommendationResources(WorkflowExpression<string> scenario, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(scenario, nameof(scenario), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analytics/advisorRecommendations/{0}/resources", ExpressionConverter.ConvertWithUrlEncoding(scenario, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTenantApplicationPackage))]
+        public IBodyWorkflowAction<TenantApplicationPackageContinuationResponse> GetTenantApplicationPackage([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TenantApplicationPackageContinuationResponse> __BuildGetTenantApplicationPackage(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<TenantApplicationPackageContinuationResponse>(() =>
+            {
+                var apiCallPath = "/appmanagement/applicationPackages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<TenantApplicationPackageContinuationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvironmentApplicationPackage))]
+        public IBodyWorkflowAction<ApplicationPackageContinuationResponse> GetEnvironmentApplicationPackage([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<appInstallStateInput> appInstallState = null, [WorkflowExpression] Func<string> lcid = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApplicationPackageContinuationResponse> __BuildGetEnvironmentApplicationPackage(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<appInstallStateInput> appInstallState = null, WorkflowExpression<string> lcid = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(appInstallState, nameof(appInstallState), required: false);
+            WorkflowExpression.Validate(lcid, nameof(lcid), required: false);
+            return new DeferredBodyAction<ApplicationPackageContinuationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (appInstallState != null)
+                    callPayload.Queries["appInstallState"] = ExpressionConverter.Convert(appInstallState);
+                if (lcid != null)
+                    callPayload.Queries["lcid"] = ExpressionConverter.Convert(lcid);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ApplicationPackageContinuationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildInstallApplicationPackage))]
+        public IBodyWorkflowAction<InstancePackage> InstallApplicationPackage([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> uniqueName, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodypayloadValue = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InstancePackage> __BuildInstallApplicationPackage(WorkflowExpression<string> environmentId, WorkflowExpression<string> uniqueName, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodypayloadValue = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(uniqueName, nameof(uniqueName), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodypayloadValue, nameof(bodypayloadValue), required: false);
+            return new DeferredBodyAction<InstancePackage>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages/{1}/install", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(uniqueName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypayloadValue != null)
+                {
+                    body["payloadValue"] = ExpressionConverter.ConvertO(bodypayloadValue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<InstancePackage>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetApplicationPackageInstallStatus))]
+        public IBodyWorkflowAction<InstancePackageOperationPollingResponse> GetApplicationPackageInstallStatus([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InstancePackageOperationPollingResponse> __BuildGetApplicationPackageInstallStatus(WorkflowExpression<string> environmentId, WorkflowExpression<string> operationId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(operationId, nameof(operationId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<InstancePackageOperationPollingResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<InstancePackageOperationPollingResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRoleAssignments))]
+        public IBodyWorkflowAction<RoleAssignmentResponse> ListRoleAssignments([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RoleAssignmentResponse> __BuildListRoleAssignments(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<RoleAssignmentResponse>(() =>
+            {
+                var apiCallPath = "/authorization/roleAssignments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<RoleAssignmentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateRoleAssignment))]
+        public IBodyWorkflowAction<RoleAssignmentResponse> CreateRoleAssignment([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyprincipalObjectId = null, [WorkflowExpression] Func<string> bodyroleDefinitionId = null, [WorkflowExpression] Func<string> bodyscope = null, [WorkflowExpression] Func<string> bodyprincipalType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RoleAssignmentResponse> __BuildCreateRoleAssignment(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyprincipalObjectId = null, WorkflowExpression<string> bodyroleDefinitionId = null, WorkflowExpression<string> bodyscope = null, WorkflowExpression<string> bodyprincipalType = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
+            WorkflowExpression.Validate(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
+            WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            WorkflowExpression.Validate(bodyprincipalType, nameof(bodyprincipalType), required: false);
+            return new DeferredBodyAction<RoleAssignmentResponse>(() =>
+            {
+                var apiCallPath = "/authorization/roleAssignments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprincipalObjectId != null)
+                {
+                    body["principalObjectId"] = ExpressionConverter.ConvertO(bodyprincipalObjectId);
+                    bodypropCount++;
+                }
+
+                if (bodyroleDefinitionId != null)
+                {
+                    body["roleDefinitionId"] = ExpressionConverter.ConvertO(bodyroleDefinitionId);
+                    bodypropCount++;
+                }
+
+                if (bodyscope != null)
+                {
+                    body["scope"] = ExpressionConverter.ConvertO(bodyscope);
+                    bodypropCount++;
+                }
+
+                if (bodyprincipalType != null)
+                {
+                    body["principalType"] = ExpressionConverter.ConvertO(bodyprincipalType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RoleAssignmentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteRoleAssignment))]
+        public IWorkflowAction DeleteRoleAssignment([WorkflowExpression] Func<string> roleAssignmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteRoleAssignment(WorkflowExpression<string> roleAssignmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(roleAssignmentId, nameof(roleAssignmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/authorization/roleAssignments/{0}", ExpressionConverter.ConvertWithUrlEncoding(roleAssignmentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRoleDefinitions))]
+        public IBodyWorkflowAction<RoleDefinitionResponse> ListRoleDefinitions([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RoleDefinitionResponse> __BuildListRoleDefinitions(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<RoleDefinitionResponse>(() =>
+            {
+                var apiCallPath = "/authorization/roleDefinitions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<RoleDefinitionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListConnectors))]
+        public IBodyWorkflowAction<ListConnectorsResponse> ListConnectors([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListConnectorsResponse> __BuildListConnectors(WorkflowExpression<string> environmentId, WorkflowExpression<string> filter, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(filter, nameof(filter), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ListConnectorsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ListConnectorsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetConnectorById))]
+        public IBodyWorkflowAction<GetConnectorByIdResponse> GetConnectorById([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> connectorId, [WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetConnectorByIdResponse> __BuildGetConnectorById(WorkflowExpression<string> environmentId, WorkflowExpression<string> connectorId, WorkflowExpression<string> filter, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(connectorId, nameof(connectorId), required: true);
+            WorkflowExpression.Validate(filter, nameof(filter), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<GetConnectorByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(connectorId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<GetConnectorByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBotQuarantineStatus))]
+        public IBodyWorkflowAction<BotQuarantineStatus> GetBotQuarantineStatus([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BotQuarantineStatus> __BuildGetBotQuarantineStatus(WorkflowExpression<string> environmentId, WorkflowExpression<string> botId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(botId, nameof(botId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BotQuarantineStatus>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildSetBotAsQuarantined))]
+        public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsQuarantined([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BotQuarantineStatus> __BuildSetBotAsQuarantined(WorkflowExpression<string> environmentId, WorkflowExpression<string> botId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(botId, nameof(botId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BotQuarantineStatus>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsQuarantined", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildSetBotAsUnquarantined))]
+        public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsUnquarantined([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BotQuarantineStatus> __BuildSetBotAsUnquarantined(WorkflowExpression<string> environmentId, WorkflowExpression<string> botId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(botId, nameof(botId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BotQuarantineStatus>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsUnquarantined", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteEnvironmentBackup))]
+        public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentBackup([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> backupId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildDeleteEnvironmentBackup(WorkflowExpression<string> environmentId, WorkflowExpression<string> backupId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(backupId, nameof(backupId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/backups/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(backupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDisableEnvironment))]
+        public IBodyWorkflowAction<ValidationResponse> DisableEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<string> bodyreason = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildDisableEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<string> bodyreason = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            WorkflowExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Disable", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyreason != null)
+                {
+                    body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDisableDisasterRecovery))]
+        public IBodyWorkflowAction<OperationExecutionResult> DisableDisasterRecovery([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationExecutionResult> __BuildDisableDisasterRecovery(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            return new DeferredBodyAction<OperationExecutionResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<OperationExecutionResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildPerformDRDrill))]
+        public IBodyWorkflowAction<OperationExecutionResult> PerformDRDrill([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationExecutionResult> __BuildPerformDRDrill(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            return new DeferredBodyAction<OperationExecutionResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disasterRecoveryDrill", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<OperationExecutionResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildEnableEnvironment))]
+        public IBodyWorkflowAction<ValidationResponse> EnableEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<string> bodyreason = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildEnableEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<string> bodyreason = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            WorkflowExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Enable", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyreason != null)
+                {
+                    body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildEnableDisasterRecovery))]
+        public IBodyWorkflowAction<OperationExecutionResult> EnableDisasterRecovery([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationExecutionResult> __BuildEnableDisasterRecovery(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            return new DeferredBodyAction<OperationExecutionResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/enableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<OperationExecutionResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildPerformForceFailover))]
+        public IBodyWorkflowAction<OperationExecutionResult> PerformForceFailover([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodylastSyncTime, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationExecutionResult> __BuildPerformForceFailover(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodylastSyncTime, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodylastSyncTime, nameof(bodylastSyncTime), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            return new DeferredBodyAction<OperationExecutionResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/forceFailover", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["lastSyncTime"] = ExpressionConverter.ConvertO(bodylastSyncTime);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyscope != null)
+                return new ApiConnectionAction<OperationExecutionResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildRecoverEnvironment))]
+        public IBodyWorkflowAction<ValidationResponse> RecoverEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildRecoverEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                body["scope"] = ExpressionConverter.ConvertO(bodyscope);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/recover", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCopyEnvironment))]
+        public IBodyWorkflowAction<ValidationResponse> CopyEnvironment([WorkflowExpression] Func<string> targetEnvironmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodysourceEnvironmentId, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<bodycopyTypeInput> bodycopyType = null, [WorkflowExpression] Func<string> bodycopyOptionsenvironmentNameToOverride = null, [WorkflowExpression] Func<string> bodycopyOptionssecurityGroupIdToOverride = null, [WorkflowExpression] Func<bool> bodycopyOptionsskipAuditData = null, [WorkflowExpression] Func<bool> bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildCopyEnvironment(WorkflowExpression<string> targetEnvironmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodysourceEnvironmentId, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<bodycopyTypeInput> bodycopyType = null, WorkflowExpression<string> bodycopyOptionsenvironmentNameToOverride = null, WorkflowExpression<string> bodycopyOptionssecurityGroupIdToOverride = null, WorkflowExpression<bool> bodycopyOptionsskipAuditData = null, WorkflowExpression<bool> bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = null)
+        {
+            WorkflowExpression.Validate(targetEnvironmentId, nameof(targetEnvironmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            WorkflowExpression.Validate(bodycopyType, nameof(bodycopyType), required: false);
+            WorkflowExpression.Validate(bodycopyOptionsenvironmentNameToOverride, nameof(bodycopyOptionsenvironmentNameToOverride), required: false);
+            WorkflowExpression.Validate(bodycopyOptionssecurityGroupIdToOverride, nameof(bodycopyOptionssecurityGroupIdToOverride), required: false);
+            WorkflowExpression.Validate(bodycopyOptionsskipAuditData, nameof(bodycopyOptionsskipAuditData), required: false);
+            WorkflowExpression.Validate(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations, nameof(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations), required: false);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(targetEnvironmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["sourceEnvironmentId"] = ExpressionConverter.ConvertO(bodysourceEnvironmentId);
+                if (bodycopyType != null)
+                {
+                    body["copyType"] = ExpressionConverter.ConvertO(bodycopyType);
+                    bodypropCount++;
+                }
 
-            if (bodyprincipalType != null)
+                var copyOptionsObject = new JObject();
+                var copyOptionsObjectpropCount = 0;
+                if (bodycopyOptionsenvironmentNameToOverride != null)
+                {
+                    copyOptionsObject["environmentNameToOverride"] = ExpressionConverter.ConvertO(bodycopyOptionsenvironmentNameToOverride);
+                    copyOptionsObjectpropCount++;
+                }
+
+                if (bodycopyOptionssecurityGroupIdToOverride != null)
+                {
+                    copyOptionsObject["securityGroupIdToOverride"] = ExpressionConverter.ConvertO(bodycopyOptionssecurityGroupIdToOverride);
+                    copyOptionsObjectpropCount++;
+                }
+
+                if (bodycopyOptionsskipAuditData != null)
+                {
+                    copyOptionsObject["skipAuditData"] = ExpressionConverter.ConvertO(bodycopyOptionsskipAuditData);
+                    copyOptionsObjectpropCount++;
+                }
+
+                if (bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations != null)
+                {
+                    copyOptionsObject["executeAdvancedCopyForFinanceAndOperations"] = ExpressionConverter.ConvertO(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations);
+                    copyOptionsObjectpropCount++;
+                }
+
+                if (copyOptionsObjectpropCount > 0)
+                {
+                    body["copyOptions"] = copyOptionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildRestoreEnvironment))]
+        public IBodyWorkflowAction<ValidationResponse> RestoreEnvironment([WorkflowExpression] Func<string> targetEnvironmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyrestorePointDateTime, [WorkflowExpression] Func<string> bodysourceEnvironmentId, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<bool> bodyskipAuditData = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildRestoreEnvironment(WorkflowExpression<string> targetEnvironmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyrestorePointDateTime, WorkflowExpression<string> bodysourceEnvironmentId, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null, WorkflowExpression<bool> bodyskipAuditData = null)
+        {
+            WorkflowExpression.Validate(targetEnvironmentId, nameof(targetEnvironmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyrestorePointDateTime, nameof(bodyrestorePointDateTime), required: true);
+            WorkflowExpression.Validate(bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            WorkflowExpression.Validate(bodyskipAuditData, nameof(bodyskipAuditData), required: false);
+            return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                body["principalType"] = ExpressionConverter.ConvertO(bodyprincipalType);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Restore", ExpressionConverter.ConvertWithUrlEncoding(targetEnvironmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["restorePointDateTime"] = ExpressionConverter.ConvertO(bodyrestorePointDateTime);
+                if (bodyskipAuditData != null)
+                {
+                    body["skipAuditData"] = ExpressionConverter.ConvertO(bodyskipAuditData);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RoleAssignmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction DeleteRoleAssignment(Expression<Func<string>> roleAssignmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/authorization/roleAssignments/{0}", ExpressionConverter.ConvertWithUrlEncoding(roleAssignmentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RoleDefinitionResponse> ListRoleDefinitions(Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = "/authorization/roleDefinitions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<RoleDefinitionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ListConnectorsResponse> ListConnectors(Expression<Func<string>> environmentId, Expression<Func<string>> filter, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/connectivity/environments/{0}/connectors", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ListConnectorsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<GetConnectorByIdResponse> GetConnectorById(Expression<Func<string>> environmentId, Expression<Func<string>> connectorId, Expression<Func<string>> filter, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/connectivity/environments/{0}/connectors/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(connectorId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<GetConnectorByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BotQuarantineStatus> GetBotQuarantineStatus(Expression<Func<string>> environmentId, Expression<Func<string>> botId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsQuarantined(Expression<Func<string>> environmentId, Expression<Func<string>> botId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsQuarantined", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsUnquarantined(Expression<Func<string>> environmentId, Expression<Func<string>> botId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsUnquarantined", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentBackup(Expression<Func<string>> environmentId, Expression<Func<string>> backupId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/backups/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(backupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> DisableEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<string>> bodyreason = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/Disable", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyreason != null)
-            {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
                 bodypropCount++;
-            }
+                body["sourceEnvironmentId"] = ExpressionConverter.ConvertO(bodysourceEnvironmentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvironmentGroupOperation))]
+        public IBodyWorkflowAction<ProblemDetails> GetEnvironmentGroupOperation([WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetails> __BuildGetEnvironmentGroupOperation(WorkflowExpression<string> operationId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(operationId, nameof(operationId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroupOperations/{0}", ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> DisableDisasterRecovery(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteEnvironmentGroup))]
+        public IBodyWorkflowAction<ProblemDetails> DeleteEnvironmentGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/disableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<OperationExecutionResult>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> PerformDRDrill(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetails> __BuildDeleteEnvironmentGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> apiVersion)
         {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/disasterRecoveryDrill", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> EnableEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<string>> bodyreason = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/Enable", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyreason != null)
+            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildAddEnvironmentToGroup))]
+        public IBodyWorkflowAction<ProblemDetails> AddEnvironmentToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetails> __BuildAddEnvironmentToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ProblemDetails>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/addEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildRemoveEnvironmentFromGroup))]
+        public IBodyWorkflowAction<ProblemDetails> RemoveEnvironmentFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetails> __BuildRemoveEnvironmentFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ProblemDetails>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/removeEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListEnvironmentsForUser))]
+        public IBodyWorkflowAction<EnvironmentList> ListEnvironmentsForUser([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EnvironmentList> __BuildListEnvironmentsForUser(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<EnvironmentList>(() =>
+            {
+                var apiCallPath = "/environmentmanagement/environments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<EnvironmentList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvironmentByIdForUser))]
+        public IBodyWorkflowAction<EnvironmentResponse> GetEnvironmentByIdForUser([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EnvironmentResponse> __BuildGetEnvironmentByIdForUser(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<EnvironmentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<EnvironmentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteEnvironmentByID))]
+        public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentByID([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidationResponse> __BuildDeleteEnvironmentByID(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<bool> validateOnly = null, WorkflowExpression<string> validateProperties = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(validateOnly, nameof(validateOnly), required: false);
+            WorkflowExpression.Validate(validateProperties, nameof(validateProperties), required: false);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (validateOnly != null)
+                    callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
+                if (validateProperties != null)
+                    callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateRuleBasedPolicy))]
+        public IBodyWorkflowAction<Policy> CreateRuleBasedPolicy([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Policy> __BuildCreateRuleBasedPolicy(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<RuleSet[]> bodyruleSets = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
+            return new DeferredBodyAction<Policy>(() =>
+            {
+                var apiCallPath = "/governance/ruleBasedPolicies";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyruleSets != null)
+                {
+                    body["ruleSets"] = ExpressionConverter.ConvertO(bodyruleSets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Policy>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRuleBasedPolicies))]
+        public IBodyWorkflowAction<ListPolicyResponse> ListRuleBasedPolicies([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListPolicyResponse> __BuildListRuleBasedPolicies(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<ListPolicyResponse>(() =>
+            {
+                var apiCallPath = "/governance/ruleBasedPolicies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ListPolicyResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetRuleBasedPolicyByID))]
+        public IBodyWorkflowAction<Policy> GetRuleBasedPolicyByID([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Policy> __BuildGetRuleBasedPolicyByID(WorkflowExpression<string> policyId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(policyId, nameof(policyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<Policy>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<Policy>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateRuleBasedPolicyByID))]
+        public IBodyWorkflowAction<RuleAssignment> UpdateRuleBasedPolicyByID([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RuleAssignment> __BuildUpdateRuleBasedPolicyByID(WorkflowExpression<string> policyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<RuleSet[]> bodyruleSets = null)
+        {
+            WorkflowExpression.Validate(policyId, nameof(policyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
+            return new DeferredBodyAction<RuleAssignment>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyruleSets != null)
+                {
+                    body["ruleSets"] = ExpressionConverter.ConvertO(bodyruleSets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RuleAssignment>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRuleAssignmentsByPolicyId))]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByPolicyId([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignmentsByPolicyId(WorkflowExpression<string> policyId, WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(policyId, nameof(policyId), required: true);
+            WorkflowExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRuleAssignments))]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignments([WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignments(WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
+            {
+                var apiCallPath = "/governance/ruleBasedPolicies/assignments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRuleAssignmentsByEnvironmentGroupId))]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentGroupId([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignmentsByEnvironmentGroupId(WorkflowExpression<string> environmentGroupId, WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
+            WorkflowExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environmentGroups/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(environmentGroupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListRuleAssignmentsByEnvironmentId))]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentId([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RuleAssignmentsResponse> __BuildListRuleAssignmentsByEnvironmentId(WorkflowExpression<string> environmentId, WorkflowExpression<bool> includeRuleSetCounts, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environments/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListCrossTenantConnectionReports))]
+        public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation> ListCrossTenantConnectionReports([WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation> __BuildListCrossTenantConnectionReports(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<CrossTenantConnectionReportsResponseWithOdataContinuation>(() =>
+            {
+                var apiCallPath = "/governance/crossTenantConnectionReports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<CrossTenantConnectionReportsResponseWithOdataContinuation>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCrossTenantConnectionReport))]
+        public IBodyWorkflowAction<CrossTenantConnectionReport> GetCrossTenantConnectionReport([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CrossTenantConnectionReport> __BuildGetCrossTenantConnectionReport(WorkflowExpression<string> reportId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(reportId, nameof(reportId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<CrossTenantConnectionReport>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/crossTenantConnectionReports/{0}", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<CrossTenantConnectionReport>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildQueryResources))]
+        public IBodyWorkflowAction<ResourceQueryResponse> QueryResources([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodytableName, [WorkflowExpression] Func<Clause[]> bodyclauses, [WorkflowExpression] Func<int> bodyoptionstop = null, [WorkflowExpression] Func<int> bodyoptionsskip = null, [WorkflowExpression] Func<string> bodyoptionsskipToken = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResourceQueryResponse> __BuildQueryResources(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodytableName, WorkflowExpression<Clause[]> bodyclauses, WorkflowExpression<int> bodyoptionstop = null, WorkflowExpression<int> bodyoptionsskip = null, WorkflowExpression<string> bodyoptionsskipToken = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodytableName, nameof(bodytableName), required: true);
+            WorkflowExpression.Validate(bodyclauses, nameof(bodyclauses), required: true);
+            WorkflowExpression.Validate(bodyoptionstop, nameof(bodyoptionstop), required: false);
+            WorkflowExpression.Validate(bodyoptionsskip, nameof(bodyoptionsskip), required: false);
+            WorkflowExpression.Validate(bodyoptionsskipToken, nameof(bodyoptionsskipToken), required: false);
+            return new DeferredBodyAction<ResourceQueryResponse>(() =>
+            {
+                var apiCallPath = "/resourcequery/resources/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> EnableDisasterRecovery(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/enableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> PerformForceFailover(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodylastSyncTime, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/forceFailover", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["lastSyncTime"] = ExpressionConverter.ConvertO(bodylastSyncTime);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> RecoverEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/recover", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> CopyEnvironment(Expression<Func<string>> targetEnvironmentId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodysourceEnvironmentId, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<bodycopyTypeInput>> bodycopyType = null, Expression<Func<string>> bodycopyOptionsenvironmentNameToOverride = null, Expression<Func<string>> bodycopyOptionssecurityGroupIdToOverride = null, Expression<Func<bool>> bodycopyOptionsskipAuditData = null, Expression<Func<bool>> bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(targetEnvironmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sourceEnvironmentId"] = ExpressionConverter.ConvertO(bodysourceEnvironmentId);
-            if (bodycopyType != null)
-            {
-                body["copyType"] = ExpressionConverter.ConvertO(bodycopyType);
+                body["TableName"] = ExpressionConverter.ConvertO(bodytableName);
                 bodypropCount++;
-            }
+                body["Clauses"] = ExpressionConverter.ConvertO(bodyclauses);
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (bodyoptionstop != null)
+                {
+                    optionsObject["Top"] = ExpressionConverter.ConvertO(bodyoptionstop);
+                    optionsObjectpropCount++;
+                }
 
-            var copyOptionsObject = new JObject();
-            var copyOptionsObjectpropCount = 0;
-            if (bodycopyOptionsenvironmentNameToOverride != null)
-            {
-                copyOptionsObject["environmentNameToOverride"] = ExpressionConverter.ConvertO(bodycopyOptionsenvironmentNameToOverride);
-                copyOptionsObjectpropCount++;
-            }
+                if (bodyoptionsskip != null)
+                {
+                    optionsObject["Skip"] = ExpressionConverter.ConvertO(bodyoptionsskip);
+                    optionsObjectpropCount++;
+                }
 
-            if (bodycopyOptionssecurityGroupIdToOverride != null)
-            {
-                copyOptionsObject["securityGroupIdToOverride"] = ExpressionConverter.ConvertO(bodycopyOptionssecurityGroupIdToOverride);
-                copyOptionsObjectpropCount++;
-            }
+                if (bodyoptionsskipToken != null)
+                {
+                    optionsObject["SkipToken"] = ExpressionConverter.ConvertO(bodyoptionsskipToken);
+                    optionsObjectpropCount++;
+                }
 
-            if (bodycopyOptionsskipAuditData != null)
-            {
-                copyOptionsObject["skipAuditData"] = ExpressionConverter.ConvertO(bodycopyOptionsskipAuditData);
-                copyOptionsObjectpropCount++;
-            }
+                if (optionsObjectpropCount > 0)
+                {
+                    body["Options"] = optionsObject;
+                    bodypropCount++;
+                }
 
-            if (bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations != null)
-            {
-                copyOptionsObject["executeAdvancedCopyForFinanceAndOperations"] = ExpressionConverter.ConvertO(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations);
-                copyOptionsObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (copyOptionsObjectpropCount > 0)
+                return new ApiConnectionAction<ResourceQueryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListBillingPolicies))]
+        public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation> ListBillingPolicies([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> top = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation> __BuildListBillingPolicies(WorkflowExpression<string> apiVersion, WorkflowExpression<string> top = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<BillingPolicyResponseModelResponseWithOdataContinuation>(() =>
             {
-                body["copyOptions"] = copyOptionsObject;
+                var apiCallPath = "/licensing/billingPolicies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BillingPolicyResponseModelResponseWithOdataContinuation>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateBillingPolicy))]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> CreateBillingPolicy([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodybillingInstrumentsubscriptionId = null, [WorkflowExpression] Func<string> bodybillingInstrumentresourceGroup = null, [WorkflowExpression] Func<string> bodybillingInstrumentid = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildCreateBillingPolicy(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodybillingInstrumentsubscriptionId = null, WorkflowExpression<string> bodybillingInstrumentresourceGroup = null, WorkflowExpression<string> bodybillingInstrumentid = null, WorkflowExpression<bodystatusInput> bodystatus = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodylocation, nameof(bodylocation), required: false);
+            WorkflowExpression.Validate(bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
+            WorkflowExpression.Validate(bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
+            WorkflowExpression.Validate(bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
+            {
+                var apiCallPath = "/licensing/billingPolicies";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodylocation != null)
+                {
+                    body["location"] = ExpressionConverter.ConvertO(bodylocation);
+                    bodypropCount++;
+                }
+
+                var billingInstrumentObject = new JObject();
+                var billingInstrumentObjectpropCount = 0;
+                if (bodybillingInstrumentsubscriptionId != null)
+                {
+                    billingInstrumentObject["subscriptionId"] = ExpressionConverter.ConvertO(bodybillingInstrumentsubscriptionId);
+                    billingInstrumentObjectpropCount++;
+                }
+
+                if (bodybillingInstrumentresourceGroup != null)
+                {
+                    billingInstrumentObject["resourceGroup"] = ExpressionConverter.ConvertO(bodybillingInstrumentresourceGroup);
+                    billingInstrumentObjectpropCount++;
+                }
+
+                if (bodybillingInstrumentid != null)
+                {
+                    billingInstrumentObject["id"] = ExpressionConverter.ConvertO(bodybillingInstrumentid);
+                    billingInstrumentObjectpropCount++;
+                }
+
+                if (billingInstrumentObjectpropCount > 0)
+                {
+                    body["billingInstrument"] = billingInstrumentObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBillingPolicy))]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> GetBillingPolicy([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildGetBillingPolicy(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateBillingPolicy))]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> UpdateBillingPolicy([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildUpdateBillingPolicy(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodystatusInput> bodystatus = null)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteBillingPolicy))]
+        public IWorkflowAction DeleteBillingPolicy([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteBillingPolicy(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListBillingPolicyEnvironments))]
+        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation> ListBillingPolicyEnvironments([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation> __BuildListBillingPolicyEnvironments(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetBillingPolicyEnvironment))]
+        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1> GetBillingPolicyEnvironment([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1> __BuildGetBillingPolicyEnvironment(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/{1}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildAddBillingPolicyEnvironment))]
+        public IWorkflowAction AddBillingPolicyEnvironment([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string[]> bodyenvironmentIds = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddBillingPolicyEnvironment(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string[]> bodyenvironmentIds = null)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/add", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyenvironmentIds != null)
+                {
+                    body["environmentIds"] = ExpressionConverter.ConvertO(bodyenvironmentIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildRemoveBillingPolicyEnvironment))]
+        public IWorkflowAction RemoveBillingPolicyEnvironment([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string[]> bodyenvironmentIds = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRemoveBillingPolicyEnvironment(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion, WorkflowExpression<string[]> bodyenvironmentIds = null)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/remove", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyenvironmentIds != null)
+                {
+                    body["environmentIds"] = ExpressionConverter.ConvertO(bodyenvironmentIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildRefreshProvisioningStatus))]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> RefreshProvisioningStatus([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildRefreshProvisioningStatus(WorkflowExpression<string> billingPolicyId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/refreshProvisioningStatus", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCurrencyAllocationByEnvironment))]
+        public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> GetCurrencyAllocationByEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> __BuildGetCurrencyAllocationByEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<AllocationsByEnvironmentResponseModelV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<AllocationsByEnvironmentResponseModelV1>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildPatchCurrencyAllocationByEnvironment))]
+        public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> PatchCurrencyAllocationByEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<CurrencyAllocationRequestModelV1[]> bodycurrencyAllocations = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> __BuildPatchCurrencyAllocationByEnvironment(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<CurrencyAllocationRequestModelV1[]> bodycurrencyAllocations = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
+            return new DeferredBodyAction<AllocationsByEnvironmentResponseModelV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycurrencyAllocations != null)
+                {
+                    body["currencyAllocations"] = ExpressionConverter.ConvertO(bodycurrencyAllocations);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AllocationsByEnvironmentResponseModelV1>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvironmentBillingPolicy))]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> GetEnvironmentBillingPolicy([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BillingPolicyResponseModel> __BuildGetEnvironmentBillingPolicy(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/billingPolicy", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListISVContracts))]
+        public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation> ListISVContracts([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> top = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation> __BuildListISVContracts(WorkflowExpression<string> apiVersion, WorkflowExpression<string> top = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<IsvContractResponseModelResponseWithOdataContinuation>(() =>
+            {
+                var apiCallPath = "/licensing/isvContracts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<IsvContractResponseModelResponseWithOdataContinuation>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateISVContract))]
+        public IBodyWorkflowAction<IsvContractResponseModel> CreateISVContract([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodygeo, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyconsumertenantId = null, [WorkflowExpression] Func<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, [WorkflowExpression] Func<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, [WorkflowExpression] Func<string> bodybillingInstrumentsubscriptionId = null, [WorkflowExpression] Func<string> bodybillingInstrumentresourceGroup = null, [WorkflowExpression] Func<string> bodybillingInstrumentid = null, [WorkflowExpression] Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IsvContractResponseModel> __BuildCreateISVContract(WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodygeo, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<string> bodyconsumertenantId = null, WorkflowExpression<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, WorkflowExpression<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, WorkflowExpression<string> bodybillingInstrumentsubscriptionId = null, WorkflowExpression<string> bodybillingInstrumentresourceGroup = null, WorkflowExpression<string> bodybillingInstrumentid = null, WorkflowExpression<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodygeo, nameof(bodygeo), required: true);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodyconsumertenantId, nameof(bodyconsumertenantId), required: false);
+            WorkflowExpression.Validate(bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
+            WorkflowExpression.Validate(bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
+            WorkflowExpression.Validate(bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
+            WorkflowExpression.Validate(bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
+            WorkflowExpression.Validate(bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
+            WorkflowExpression.Validate(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
+            WorkflowExpression.Validate(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
+            WorkflowExpression.Validate(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
+            return new DeferredBodyAction<IsvContractResponseModel>(() =>
+            {
+                var apiCallPath = "/licensing/isvContracts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> RestoreEnvironment(Expression<Func<string>> targetEnvironmentId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyrestorePointDateTime, Expression<Func<string>> bodysourceEnvironmentId, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<bool>> bodyskipAuditData = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}/Restore", ExpressionConverter.ConvertWithUrlEncoding(targetEnvironmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["restorePointDateTime"] = ExpressionConverter.ConvertO(bodyrestorePointDateTime);
-            if (bodyskipAuditData != null)
-            {
-                body["skipAuditData"] = ExpressionConverter.ConvertO(bodyskipAuditData);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["sourceEnvironmentId"] = ExpressionConverter.ConvertO(bodysourceEnvironmentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ProblemDetails> GetEnvironmentGroupOperation(Expression<Func<string>> operationId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environmentGroupOperations/{0}", ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ProblemDetails> DeleteEnvironmentGroup(Expression<Func<string>> groupId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environmentGroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ProblemDetails> AddEnvironmentToGroup(Expression<Func<string>> groupId, Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environmentGroups/{0}/addEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ProblemDetails> RemoveEnvironmentFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environmentGroups/{0}/removeEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<EnvironmentList> ListEnvironmentsForUser(Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = "/environmentmanagement/environments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<EnvironmentList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<EnvironmentResponse> GetEnvironmentByIdForUser(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<EnvironmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentByID(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
-        {
-            var apiCallPath = String.Format("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (validateOnly != null)
-                callPayload.Queries["ValidateOnly"] = ExpressionConverter.Convert(validateOnly);
-            if (validateProperties != null)
-                callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(validateProperties);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<Policy> CreateRuleBasedPolicy(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<RuleSet[]>> bodyruleSets = null)
-        {
-            var apiCallPath = "/governance/ruleBasedPolicies";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["geo"] = ExpressionConverter.ConvertO(bodygeo);
+                var consumerObject = new JObject();
+                var consumerObjectpropCount = 0;
+                if (bodyconsumertenantId != null)
+                {
+                    consumerObject["tenantId"] = ExpressionConverter.ConvertO(bodyconsumertenantId);
+                    consumerObjectpropCount++;
+                }
 
-            if (bodyruleSets != null)
-            {
-                body["ruleSets"] = ExpressionConverter.ConvertO(bodyruleSets);
-                bodypropCount++;
-            }
+                if (consumerObjectpropCount > 0)
+                {
+                    body["consumer"] = consumerObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var conditionsObject = new JObject();
+                var conditionsObjectpropCount = 0;
+                var apiFilterObject = new JObject();
+                var apiFilterObjectpropCount = 0;
+                if (bodyconditionsapiFilterallowOtherPremiumConnectors != null)
+                {
+                    apiFilterObject["allowOtherPremiumConnectors"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterallowOtherPremiumConnectors);
+                    apiFilterObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<Policy>(callPayload);
+                if (bodyconditionsapiFilterrequiredApis != null)
+                {
+                    apiFilterObject["requiredApis"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterrequiredApis);
+                    apiFilterObjectpropCount++;
+                }
+
+                if (apiFilterObjectpropCount > 0)
+                {
+                    conditionsObject["apiFilter"] = apiFilterObject;
+                    conditionsObjectpropCount++;
+                }
+
+                if (conditionsObjectpropCount > 0)
+                {
+                    body["conditions"] = conditionsObject;
+                    bodypropCount++;
+                }
+
+                var billingInstrumentObject = new JObject();
+                var billingInstrumentObjectpropCount = 0;
+                if (bodybillingInstrumentsubscriptionId != null)
+                {
+                    billingInstrumentObject["subscriptionId"] = ExpressionConverter.ConvertO(bodybillingInstrumentsubscriptionId);
+                    billingInstrumentObjectpropCount++;
+                }
+
+                if (bodybillingInstrumentresourceGroup != null)
+                {
+                    billingInstrumentObject["resourceGroup"] = ExpressionConverter.ConvertO(bodybillingInstrumentresourceGroup);
+                    billingInstrumentObjectpropCount++;
+                }
+
+                if (bodybillingInstrumentid != null)
+                {
+                    billingInstrumentObject["id"] = ExpressionConverter.ConvertO(bodybillingInstrumentid);
+                    billingInstrumentObjectpropCount++;
+                }
+
+                if (billingInstrumentObjectpropCount > 0)
+                {
+                    body["billingInstrument"] = billingInstrumentObject;
+                    bodypropCount++;
+                }
+
+                var powerAutomatePolicyObject = new JObject();
+                var powerAutomatePolicyObjectpropCount = 0;
+                if (bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState != null)
+                {
+                    powerAutomatePolicyObject["cloudFlowRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState);
+                    powerAutomatePolicyObjectpropCount++;
+                }
+
+                if (bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState != null)
+                {
+                    powerAutomatePolicyObject["desktopFlowUnattendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState);
+                    powerAutomatePolicyObjectpropCount++;
+                }
+
+                if (bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState != null)
+                {
+                    powerAutomatePolicyObject["desktopFlowAttendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState);
+                    powerAutomatePolicyObjectpropCount++;
+                }
+
+                if (powerAutomatePolicyObjectpropCount > 0)
+                {
+                    body["powerAutomatePolicy"] = powerAutomatePolicyObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ListPolicyResponse> ListRuleBasedPolicies(Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildGetISVContract))]
+        public IBodyWorkflowAction<IsvContractResponseModel> GetISVContract([WorkflowExpression] Func<string> isvContractId, [WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = "/governance/ruleBasedPolicies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ListPolicyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IsvContractResponseModel> __BuildGetISVContract(WorkflowExpression<string> isvContractId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(isvContractId, nameof(isvContractId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<IsvContractResponseModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(isvContractId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<Policy> GetRuleBasedPolicyByID(Expression<Func<string>> policyId, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateISVContract))]
+        public IBodyWorkflowAction<IsvContractResponseModel> UpdateISVContract([WorkflowExpression] Func<string> isvContractId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, [WorkflowExpression] Func<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, [WorkflowExpression] Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
-            var apiCallPath = String.Format("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<Policy>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IsvContractResponseModel> __BuildUpdateISVContract(WorkflowExpression<string> isvContractId, WorkflowExpression<string> apiVersion, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodystatusInput> bodystatus = null, WorkflowExpression<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, WorkflowExpression<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, WorkflowExpression<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, WorkflowExpression<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
+        {
+            WorkflowExpression.Validate(isvContractId, nameof(isvContractId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowExpression.Validate(bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
+            WorkflowExpression.Validate(bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
+            WorkflowExpression.Validate(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
+            WorkflowExpression.Validate(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
+            WorkflowExpression.Validate(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
+            return new DeferredBodyAction<IsvContractResponseModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(isvContractId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                var conditionsObject = new JObject();
+                var conditionsObjectpropCount = 0;
+                var apiFilterObject = new JObject();
+                var apiFilterObjectpropCount = 0;
+                if (bodyconditionsapiFilterallowOtherPremiumConnectors != null)
+                {
+                    apiFilterObject["allowOtherPremiumConnectors"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterallowOtherPremiumConnectors);
+                    apiFilterObjectpropCount++;
+                }
+
+                if (bodyconditionsapiFilterrequiredApis != null)
+                {
+                    apiFilterObject["requiredApis"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterrequiredApis);
+                    apiFilterObjectpropCount++;
+                }
+
+                if (apiFilterObjectpropCount > 0)
+                {
+                    conditionsObject["apiFilter"] = apiFilterObject;
+                    conditionsObjectpropCount++;
+                }
+
+                if (conditionsObjectpropCount > 0)
+                {
+                    body["conditions"] = conditionsObject;
+                    bodypropCount++;
+                }
+
+                var powerAutomatePolicyObject = new JObject();
+                var powerAutomatePolicyObjectpropCount = 0;
+                if (bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState != null)
+                {
+                    powerAutomatePolicyObject["cloudFlowRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState);
+                    powerAutomatePolicyObjectpropCount++;
+                }
+
+                if (bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState != null)
+                {
+                    powerAutomatePolicyObject["desktopFlowUnattendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState);
+                    powerAutomatePolicyObjectpropCount++;
+                }
+
+                if (bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState != null)
+                {
+                    powerAutomatePolicyObject["desktopFlowAttendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState);
+                    powerAutomatePolicyObjectpropCount++;
+                }
+
+                if (powerAutomatePolicyObjectpropCount > 0)
+                {
+                    body["powerAutomatePolicy"] = powerAutomatePolicyObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RuleAssignment> UpdateRuleBasedPolicyByID(Expression<Func<string>> policyId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<RuleSet[]>> bodyruleSets = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteISVContract))]
+        public IWorkflowAction DeleteISVContract([WorkflowExpression] Func<string> isvContractId, [WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = String.Format("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyruleSets != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteISVContract(WorkflowExpression<string> isvContractId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(isvContractId, nameof(isvContractId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                body["ruleSets"] = ExpressionConverter.ConvertO(bodyruleSets);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RuleAssignment>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(isvContractId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByPolicyId(Expression<Func<string>> policyId, Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildGetTenantCapacityDetails))]
+        public IBodyWorkflowAction<TenantCapacityDetailsModel> GetTenantCapacityDetails([WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = String.Format("/governance/ruleBasedPolicies/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TenantCapacityDetailsModel> __BuildGetTenantCapacityDetails(WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<TenantCapacityDetailsModel>(() =>
+            {
+                var apiCallPath = "/licensing/tenantCapacity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<TenantCapacityDetailsModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignments(Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildListCurrencyReports))]
+        public IBodyWorkflowAction<CurrencyReportV2[]> ListCurrencyReports([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> includeAllocations = null, [WorkflowExpression] Func<bool> includeConsumptions = null)
         {
-            var apiCallPath = "/governance/ruleBasedPolicies/assignments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CurrencyReportV2[]> __BuildListCurrencyReports(WorkflowExpression<string> apiVersion, WorkflowExpression<bool> includeAllocations = null, WorkflowExpression<bool> includeConsumptions = null)
+        {
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(includeAllocations, nameof(includeAllocations), required: false);
+            WorkflowExpression.Validate(includeConsumptions, nameof(includeConsumptions), required: false);
+            return new DeferredBodyAction<CurrencyReportV2[]>(() =>
+            {
+                var apiCallPath = "/licensing/tenantCapacity/currencyReports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeAllocations"] = Convert.ToString(true);
+                if (includeAllocations != null)
+                    callPayload.Queries["includeAllocations"] = ExpressionConverter.Convert(includeAllocations);
+                callPayload.Queries["includeConsumptions"] = Convert.ToString(false);
+                if (includeConsumptions != null)
+                    callPayload.Queries["includeConsumptions"] = ExpressionConverter.Convert(includeConsumptions);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<CurrencyReportV2[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentGroupId(Expression<Func<string>> environmentGroupId, Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildGetAdminApps))]
+        public IBodyWorkflowAction<ResourceArrayPowerApp> GetAdminApps([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            var apiCallPath = String.Format("/governance/ruleBasedPolicies/environmentGroups/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(environmentGroupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResourceArrayPowerApp> __BuildGetAdminApps(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion, WorkflowExpression<int> top = null, WorkflowExpression<string> skiptoken = null)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            WorkflowExpression.Validate(top, nameof(top), required: false);
+            WorkflowExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            return new DeferredBodyAction<ResourceArrayPowerApp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(250);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<ResourceArrayPowerApp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentId(Expression<Func<string>> environmentId, Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildGetAdminApp))]
+        public IBodyWorkflowAction<PowerApp> GetAdminApp([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> app, [WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = String.Format("/governance/ruleBasedPolicies/environments/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(includeRuleSetCounts);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PowerApp> __BuildGetAdminApp(WorkflowExpression<string> environmentId, WorkflowExpression<string> app, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(app, nameof(app), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<PowerApp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(app, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction<PowerApp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation> ListCrossTenantConnectionReports(Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildApplyAdminRole))]
+        public IWorkflowAction ApplyAdminRole([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = "/governance/crossTenantConnectionReports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<CrossTenantConnectionReportsResponseWithOdataContinuation>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildApplyAdminRole(WorkflowExpression<string> environmentId, WorkflowExpression<string> apiVersion)
+        {
+            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/usermanagement/environments/{0}/user/applyAdminRole", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<CrossTenantConnectionReport> GetCrossTenantConnectionReport(Expression<Func<string>> reportId, Expression<Func<string>> apiVersion)
+        [WorkflowExpressionFactory(nameof(__BuildMcpEnvironmentManagement))]
+        public IBodyWorkflowAction<MCPQueryResponse> McpEnvironmentManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            var apiCallPath = String.Format("/governance/crossTenantConnectionReports/{0}", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<CrossTenantConnectionReport>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ResourceQueryResponse> QueryResources(Expression<Func<string>> apiVersion, Expression<Func<string>> bodytableName, Expression<Func<Clause[]>> bodyclauses, Expression<Func<int>> bodyoptionstop = null, Expression<Func<int>> bodyoptionsskip = null, Expression<Func<string>> bodyoptionsskipToken = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MCPQueryResponse> __BuildMcpEnvironmentManagement(WorkflowExpression<string> queryRequestjsonrpc = null, WorkflowExpression<string> queryRequestid = null, WorkflowExpression<string> queryRequestmethod = null, WorkflowExpression<string> sessionId = null)
         {
-            var apiCallPath = "/resourcequery/resources/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["TableName"] = ExpressionConverter.ConvertO(bodytableName);
-            bodypropCount++;
-            body["Clauses"] = ExpressionConverter.ConvertO(bodyclauses);
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionstop != null)
+            WorkflowExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyAction<MCPQueryResponse>(() =>
             {
-                optionsObject["Top"] = ExpressionConverter.ConvertO(bodyoptionstop);
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsskip != null)
-            {
-                optionsObject["Skip"] = ExpressionConverter.ConvertO(bodyoptionsskip);
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsskipToken != null)
-            {
-                optionsObject["SkipToken"] = ExpressionConverter.ConvertO(bodyoptionsskipToken);
-                optionsObjectpropCount++;
-            }
-
-            if (optionsObjectpropCount > 0)
-            {
-                body["Options"] = optionsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResourceQueryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation> ListBillingPolicies(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
-        {
-            var apiCallPath = "/licensing/billingPolicies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BillingPolicyResponseModelResponseWithOdataContinuation>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModel> CreateBillingPolicy(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodybillingInstrumentsubscriptionId = null, Expression<Func<string>> bodybillingInstrumentresourceGroup = null, Expression<Func<string>> bodybillingInstrumentid = null, Expression<Func<bodystatusInput>> bodystatus = null)
-        {
-            var apiCallPath = "/licensing/billingPolicies";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodylocation != null)
-            {
-                body["location"] = ExpressionConverter.ConvertO(bodylocation);
-                bodypropCount++;
-            }
-
-            var billingInstrumentObject = new JObject();
-            var billingInstrumentObjectpropCount = 0;
-            if (bodybillingInstrumentsubscriptionId != null)
-            {
-                billingInstrumentObject["subscriptionId"] = ExpressionConverter.ConvertO(bodybillingInstrumentsubscriptionId);
-                billingInstrumentObjectpropCount++;
-            }
-
-            if (bodybillingInstrumentresourceGroup != null)
-            {
-                billingInstrumentObject["resourceGroup"] = ExpressionConverter.ConvertO(bodybillingInstrumentresourceGroup);
-                billingInstrumentObjectpropCount++;
-            }
-
-            if (bodybillingInstrumentid != null)
-            {
-                billingInstrumentObject["id"] = ExpressionConverter.ConvertO(bodybillingInstrumentid);
-                billingInstrumentObjectpropCount++;
-            }
-
-            if (billingInstrumentObjectpropCount > 0)
-            {
-                body["billingInstrument"] = billingInstrumentObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModel> GetBillingPolicy(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModel> UpdateBillingPolicy(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<bodystatusInput>> bodystatus = null)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction DeleteBillingPolicy(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation> ListBillingPolicyEnvironments(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}/environments", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1> GetBillingPolicyEnvironment(Expression<Func<string>> billingPolicyId, Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}/environments/{1}", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction AddBillingPolicyEnvironment(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion, Expression<Func<string[]>> bodyenvironmentIds = null)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}/environments/add", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyenvironmentIds != null)
-            {
-                body["environmentIds"] = ExpressionConverter.ConvertO(bodyenvironmentIds);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction RemoveBillingPolicyEnvironment(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion, Expression<Func<string[]>> bodyenvironmentIds = null)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}/environments/remove", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyenvironmentIds != null)
-            {
-                body["environmentIds"] = ExpressionConverter.ConvertO(bodyenvironmentIds);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModel> RefreshProvisioningStatus(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/billingPolicies/{0}/refreshProvisioningStatus", ExpressionConverter.ConvertWithUrlEncoding(billingPolicyId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> GetCurrencyAllocationByEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<AllocationsByEnvironmentResponseModelV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> PatchCurrencyAllocationByEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<CurrencyAllocationRequestModelV1[]>> bodycurrencyAllocations = null)
-        {
-            var apiCallPath = String.Format("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycurrencyAllocations != null)
-            {
-                body["currencyAllocations"] = ExpressionConverter.ConvertO(bodycurrencyAllocations);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AllocationsByEnvironmentResponseModelV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModel> GetEnvironmentBillingPolicy(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/environments/{0}/billingPolicy", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation> ListISVContracts(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
-        {
-            var apiCallPath = "/licensing/isvContracts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<IsvContractResponseModelResponseWithOdataContinuation>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel> CreateISVContract(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname, Expression<Func<string>> bodygeo, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyconsumertenantId = null, Expression<Func<bool>> bodyconditionsapiFilterallowOtherPremiumConnectors = null, Expression<Func<BillingPolicyConditionsApiModel[]>> bodyconditionsapiFilterrequiredApis = null, Expression<Func<string>> bodybillingInstrumentsubscriptionId = null, Expression<Func<string>> bodybillingInstrumentresourceGroup = null, Expression<Func<string>> bodybillingInstrumentid = null, Expression<Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput>> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
-        {
-            var apiCallPath = "/licensing/isvContracts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["geo"] = ExpressionConverter.ConvertO(bodygeo);
-            var consumerObject = new JObject();
-            var consumerObjectpropCount = 0;
-            if (bodyconsumertenantId != null)
-            {
-                consumerObject["tenantId"] = ExpressionConverter.ConvertO(bodyconsumertenantId);
-                consumerObjectpropCount++;
-            }
-
-            if (consumerObjectpropCount > 0)
-            {
-                body["consumer"] = consumerObject;
-                bodypropCount++;
-            }
-
-            var conditionsObject = new JObject();
-            var conditionsObjectpropCount = 0;
-            var apiFilterObject = new JObject();
-            var apiFilterObjectpropCount = 0;
-            if (bodyconditionsapiFilterallowOtherPremiumConnectors != null)
-            {
-                apiFilterObject["allowOtherPremiumConnectors"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterallowOtherPremiumConnectors);
-                apiFilterObjectpropCount++;
-            }
-
-            if (bodyconditionsapiFilterrequiredApis != null)
-            {
-                apiFilterObject["requiredApis"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterrequiredApis);
-                apiFilterObjectpropCount++;
-            }
-
-            if (apiFilterObjectpropCount > 0)
-            {
-                conditionsObject["apiFilter"] = apiFilterObject;
-                conditionsObjectpropCount++;
-            }
-
-            if (conditionsObjectpropCount > 0)
-            {
-                body["conditions"] = conditionsObject;
-                bodypropCount++;
-            }
-
-            var billingInstrumentObject = new JObject();
-            var billingInstrumentObjectpropCount = 0;
-            if (bodybillingInstrumentsubscriptionId != null)
-            {
-                billingInstrumentObject["subscriptionId"] = ExpressionConverter.ConvertO(bodybillingInstrumentsubscriptionId);
-                billingInstrumentObjectpropCount++;
-            }
-
-            if (bodybillingInstrumentresourceGroup != null)
-            {
-                billingInstrumentObject["resourceGroup"] = ExpressionConverter.ConvertO(bodybillingInstrumentresourceGroup);
-                billingInstrumentObjectpropCount++;
-            }
-
-            if (bodybillingInstrumentid != null)
-            {
-                billingInstrumentObject["id"] = ExpressionConverter.ConvertO(bodybillingInstrumentid);
-                billingInstrumentObjectpropCount++;
-            }
-
-            if (billingInstrumentObjectpropCount > 0)
-            {
-                body["billingInstrument"] = billingInstrumentObject;
-                bodypropCount++;
-            }
-
-            var powerAutomatePolicyObject = new JObject();
-            var powerAutomatePolicyObjectpropCount = 0;
-            if (bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState != null)
-            {
-                powerAutomatePolicyObject["cloudFlowRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState);
-                powerAutomatePolicyObjectpropCount++;
-            }
-
-            if (bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState != null)
-            {
-                powerAutomatePolicyObject["desktopFlowUnattendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState);
-                powerAutomatePolicyObjectpropCount++;
-            }
-
-            if (bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState != null)
-            {
-                powerAutomatePolicyObject["desktopFlowAttendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState);
-                powerAutomatePolicyObjectpropCount++;
-            }
-
-            if (powerAutomatePolicyObjectpropCount > 0)
-            {
-                body["powerAutomatePolicy"] = powerAutomatePolicyObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel> GetISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(isvContractId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel> UpdateISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bool>> bodyconditionsapiFilterallowOtherPremiumConnectors = null, Expression<Func<BillingPolicyConditionsApiModel[]>> bodyconditionsapiFilterrequiredApis = null, Expression<Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput>> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
-        {
-            var apiCallPath = String.Format("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(isvContractId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            var conditionsObject = new JObject();
-            var conditionsObjectpropCount = 0;
-            var apiFilterObject = new JObject();
-            var apiFilterObjectpropCount = 0;
-            if (bodyconditionsapiFilterallowOtherPremiumConnectors != null)
-            {
-                apiFilterObject["allowOtherPremiumConnectors"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterallowOtherPremiumConnectors);
-                apiFilterObjectpropCount++;
-            }
-
-            if (bodyconditionsapiFilterrequiredApis != null)
-            {
-                apiFilterObject["requiredApis"] = ExpressionConverter.ConvertO(bodyconditionsapiFilterrequiredApis);
-                apiFilterObjectpropCount++;
-            }
-
-            if (apiFilterObjectpropCount > 0)
-            {
-                conditionsObject["apiFilter"] = apiFilterObject;
-                conditionsObjectpropCount++;
-            }
-
-            if (conditionsObjectpropCount > 0)
-            {
-                body["conditions"] = conditionsObject;
-                bodypropCount++;
-            }
-
-            var powerAutomatePolicyObject = new JObject();
-            var powerAutomatePolicyObjectpropCount = 0;
-            if (bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState != null)
-            {
-                powerAutomatePolicyObject["cloudFlowRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState);
-                powerAutomatePolicyObjectpropCount++;
-            }
-
-            if (bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState != null)
-            {
-                powerAutomatePolicyObject["desktopFlowUnattendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState);
-                powerAutomatePolicyObjectpropCount++;
-            }
-
-            if (bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState != null)
-            {
-                powerAutomatePolicyObject["desktopFlowAttendedRunsPayAsYouGoState"] = ExpressionConverter.ConvertO(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState);
-                powerAutomatePolicyObjectpropCount++;
-            }
-
-            if (powerAutomatePolicyObjectpropCount > 0)
-            {
-                body["powerAutomatePolicy"] = powerAutomatePolicyObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction DeleteISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(isvContractId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<TenantCapacityDetailsModel> GetTenantCapacityDetails(Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = "/licensing/tenantCapacity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<TenantCapacityDetailsModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<CurrencyReportV2[]> ListCurrencyReports(Expression<Func<string>> apiVersion, Expression<Func<bool>> includeAllocations = null, Expression<Func<bool>> includeConsumptions = null)
-        {
-            var apiCallPath = "/licensing/tenantCapacity/currencyReports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeAllocations"] = Convert.ToString(true);
-            if (includeAllocations != null)
-                callPayload.Queries["includeAllocations"] = ExpressionConverter.Convert(includeAllocations);
-            callPayload.Queries["includeConsumptions"] = Convert.ToString(false);
-            if (includeConsumptions != null)
-                callPayload.Queries["includeConsumptions"] = ExpressionConverter.Convert(includeConsumptions);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<CurrencyReportV2[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ResourceArrayPowerApp> GetAdminApps(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null)
-        {
-            var apiCallPath = String.Format("/powerapps/environments/{0}/apps", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(250);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ResourceArrayPowerApp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<PowerApp> GetAdminApp(Expression<Func<string>> environmentId, Expression<Func<string>> app, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/powerapps/environments/{0}/apps/{1}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(app, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<PowerApp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction ApplyAdminRole(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
-        {
-            var apiCallPath = String.Format("/usermanagement/environments/{0}/user/applyAdminRole", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<MCPQueryResponse> McpEnvironmentManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
-        {
-            var apiCallPath = "/mcp/EnvironmentManagement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
-
-            if (queryRequestid != null)
-            {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
-
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
-
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
-
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
-
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
-
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
-
-            return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                var apiCallPath = "/mcp/EnvironmentManagement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
+
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
+
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
+
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+            });
         }
     }
 
@@ -1486,6 +2390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ErrorDetails LastError { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CatalogVisibility
     {
         None,
@@ -1494,6 +2399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ApplicationVisibility
     {
         None,
@@ -1605,6 +2511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string[] SupportedCountries { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstancePackageState
     {
         None,
@@ -1621,6 +2528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         TemplateInstalled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum appInstallStateInput
     {
         All,
@@ -1727,6 +2635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string OperationId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstancePackageOperationStatus
     {
         NotStarted,
@@ -1952,6 +2861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public StageStatus[] StageStatuses { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationStatus
     {
         Queued,
@@ -2005,6 +2915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ErrorInfo ErrorDetail { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycopyTypeInput
     {
         Minimal,
@@ -2161,6 +3072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public RuleAssignmentResourceTypeType ResourceType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RuleAssignmentResourceTypeType
     {
         NotSpecified,
@@ -2210,6 +3122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string NextLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CrossTenantConnectionReportStatusType
     {
         Received,
@@ -2227,6 +3140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public CrossTenantConnectionConnectionTypeType ConnectionType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CrossTenantConnectionConnectionTypeType
     {
         Inbound,
@@ -2251,6 +3165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ResourceItem[] Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ResourceQueryResponseResultTruncatedType
     {
         [EnumMember(Value = "0")]
@@ -2334,6 +3249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ClauseTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ClauseTypeType
     {
         [EnumMember(Value = "where")]
@@ -2395,6 +3311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public Principal LastModifiedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BillingPolicyStatus
     {
         Enabled,
@@ -2434,6 +3351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string UserPrincipalName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Enabled,
@@ -2476,6 +3394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public int Allocated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExternalCurrencyType
     {
         AI,
@@ -2594,24 +3513,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public PayAsYouGoState DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PayAsYouGoState
     {
         Enabled,
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput
     {
         Enabled,
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput
     {
         Enabled,
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput
     {
         Enabled,
@@ -2639,6 +3562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public TemporaryLicenseInfo TemporaryLicenseInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LicenseModel
     {
         None,
@@ -2667,6 +3591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public CapacityStatusMessageCode FinOpsStatusMessageCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityAvailabilityStatus
     {
         None,
@@ -2675,6 +3600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         NotAvailable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityStatusMessageCode
     {
         AllCapacityAvailable,
@@ -2734,6 +3660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public TenantCapacityEntitlementModel[] CapacityEntitlements { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityType
     {
         None,
@@ -2756,6 +3683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         PIProcess
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityUnits
     {
         None,
@@ -2805,6 +3733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public LicenseDetailsModel[] Licenses { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityEntitlementType
     {
         None,

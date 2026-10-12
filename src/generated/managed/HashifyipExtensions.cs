@@ -4,223 +4,461 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class HashifyipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4GETResponse> MD4GET(Expression<Func<string>> value)
+        [WorkflowExpressionFactory(nameof(__BuildMD4GET))]
+        public IBodyWorkflowAction<MD4GETResponse> MD4GET([WorkflowExpression] Func<string> value)
         {
-            var apiCallPath = "/hash/md4/hex";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<MD4GETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MD4GETResponse> __BuildMD4GET(WorkflowExpression<string> value)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            return new DeferredBodyAction<MD4GETResponse>(() =>
+            {
+                var apiCallPath = "/hash/md4/hex";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<MD4GETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4POSTResponse> MD4POST(Expression<Func<string>> value, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMD4POST))]
+        public IBodyWorkflowAction<MD4POSTResponse> MD4POST([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/md4/hex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<MD4POSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MD4POSTResponse> __BuildMD4POST(WorkflowExpression<string> value, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<MD4POSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/md4/hex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<MD4POSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4POSTFileResponse> MD4POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
+        [WorkflowExpressionFactory(nameof(__BuildMD4POSTFile))]
+        public IBodyWorkflowAction<MD4POSTFileResponse> MD4POSTFile([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> file)
         {
-            var apiCallPath = "/hash/md4/base64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<MD4POSTFileResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MD4POSTFileResponse> __BuildMD4POSTFile(WorkflowExpression<string> value, WorkflowExpression<string> file)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            return new DeferredBodyAction<MD4POSTFileResponse>(() =>
+            {
+                var apiCallPath = "/hash/md4/base64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<MD4POSTFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5GETResponse> MD5GET(Expression<Func<string>> value)
+        [WorkflowExpressionFactory(nameof(__BuildMD5GET))]
+        public IBodyWorkflowAction<MD5GETResponse> MD5GET([WorkflowExpression] Func<string> value)
         {
-            var apiCallPath = "/hash/md5/hex";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<MD5GETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MD5GETResponse> __BuildMD5GET(WorkflowExpression<string> value)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            return new DeferredBodyAction<MD5GETResponse>(() =>
+            {
+                var apiCallPath = "/hash/md5/hex";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<MD5GETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5POSTResponse> MD5POST(Expression<Func<string>> value, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMD5POST))]
+        public IBodyWorkflowAction<MD5POSTResponse> MD5POST([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/md5/hex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<MD5POSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MD5POSTResponse> __BuildMD5POST(WorkflowExpression<string> value, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<MD5POSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/md5/hex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<MD5POSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5POSTFileResponse> MD5POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
+        [WorkflowExpressionFactory(nameof(__BuildMD5POSTFile))]
+        public IBodyWorkflowAction<MD5POSTFileResponse> MD5POSTFile([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> file)
         {
-            var apiCallPath = "/hash/md5/base64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<MD5POSTFileResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MD5POSTFileResponse> __BuildMD5POSTFile(WorkflowExpression<string> value, WorkflowExpression<string> file)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            return new DeferredBodyAction<MD5POSTFileResponse>(() =>
+            {
+                var apiCallPath = "/hash/md5/base64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<MD5POSTFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway256POSTResponse> Highway256POST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildHighway256POST))]
+        public IBodyWorkflowAction<Highway256POSTResponse> Highway256POST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/highway/base64url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Highway256POSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway256POSTResponse> __BuildHighway256POST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            WorkflowExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<Highway256POSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway/base64url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<Highway256POSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway256RandomPOSTResponse> Highway256RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildHighway256RandomPOST))]
+        public IBodyWorkflowAction<Highway256RandomPOSTResponse> Highway256RandomPOST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/highway/base32";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Highway256RandomPOSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway256RandomPOSTResponse> __BuildHighway256RandomPOST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            WorkflowExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<Highway256RandomPOSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway/base32";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<Highway256RandomPOSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway64RandomPOSTResponse> Highway64RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildHighway64RandomPOST))]
+        public IBodyWorkflowAction<Highway64RandomPOSTResponse> Highway64RandomPOST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/highway-64/base32";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Highway64RandomPOSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway64RandomPOSTResponse> __BuildHighway64RandomPOST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            WorkflowExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<Highway64RandomPOSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway-64/base32";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<Highway64RandomPOSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway128GETResponse> Highway128GET(Expression<Func<string>> value, Expression<Func<string>> key)
+        [WorkflowExpressionFactory(nameof(__BuildHighway128GET))]
+        public IBodyWorkflowAction<Highway128GETResponse> Highway128GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = "/hash/highway-128/hex";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            return new ApiConnectionAction<Highway128GETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway128GETResponse> __BuildHighway128GET(WorkflowExpression<string> value, WorkflowExpression<string> key)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            return new DeferredBodyAction<Highway128GETResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway-128/hex";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                return new ApiConnectionAction<Highway128GETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway128RandomPOSTResponse> Highway128RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildHighway128RandomPOST))]
+        public IBodyWorkflowAction<Highway128RandomPOSTResponse> Highway128RandomPOST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/highway-128/hex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Highway128RandomPOSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway128RandomPOSTResponse> __BuildHighway128RandomPOST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            WorkflowExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<Highway128RandomPOSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway-128/hex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<Highway128RandomPOSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway128RandomGETResponse> Highway128RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
+        [WorkflowExpressionFactory(nameof(__BuildHighway128RandomGET))]
+        public IBodyWorkflowAction<Highway128RandomGETResponse> Highway128RandomGET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = "/hash/highway128";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            return new ApiConnectionAction<Highway128RandomGETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway128RandomGETResponse> __BuildHighway128RandomGET(WorkflowExpression<string> value, WorkflowExpression<string> key)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            return new DeferredBodyAction<Highway128RandomGETResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway128";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                return new ApiConnectionAction<Highway128RandomGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway64RandomGETResponse> Highway64RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
+        [WorkflowExpressionFactory(nameof(__BuildHighway64RandomGET))]
+        public IBodyWorkflowAction<Highway64RandomGETResponse> Highway64RandomGET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = "/hash/highway64";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            return new ApiConnectionAction<Highway64RandomGETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway64RandomGETResponse> __BuildHighway64RandomGET(WorkflowExpression<string> value, WorkflowExpression<string> key)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            return new DeferredBodyAction<Highway64RandomGETResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway64";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                return new ApiConnectionAction<Highway64RandomGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway64POSTResponse> Highway64POST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildHighway64POST))]
+        public IBodyWorkflowAction<Highway64POSTResponse> Highway64POST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/hash/highway64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Highway64POSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway64POSTResponse> __BuildHighway64POST(WorkflowExpression<string> key, WorkflowExpression<string> contentType, WorkflowExpression<string> xHashifyKey, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            WorkflowExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<Highway64POSTResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<Highway64POSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway256RandomGETResponse> Highway256RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
+        [WorkflowExpressionFactory(nameof(__BuildHighway256RandomGET))]
+        public IBodyWorkflowAction<Highway256RandomGETResponse> Highway256RandomGET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = "/hash/highway";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            return new ApiConnectionAction<Highway256RandomGETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Highway256RandomGETResponse> __BuildHighway256RandomGET(WorkflowExpression<string> value, WorkflowExpression<string> key)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(key, nameof(key), required: true);
+            return new DeferredBodyAction<Highway256RandomGETResponse>(() =>
+            {
+                var apiCallPath = "/hash/highway";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+                return new ApiConnectionAction<Highway256RandomGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<SHA1GETResponse> SHA1GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
+        [WorkflowExpressionFactory(nameof(__BuildSHA1GET))]
+        public IBodyWorkflowAction<SHA1GETResponse> SHA1GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat)
         {
-            var apiCallPath = String.Format("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<SHA1GETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SHA1GETResponse> __BuildSHA1GET(WorkflowExpression<string> value, WorkflowExpression<string> digestFormat)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(digestFormat, nameof(digestFormat), required: true);
+            return new DeferredBodyAction<SHA1GETResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<SHA1GETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200> SHA1POSTForm(Expression<Func<string>> xHashifyProcess, Expression<Func<string>> digestFormat, Expression<Func<string>> file)
+        [WorkflowExpressionFactory(nameof(__BuildSHA1POSTForm))]
+        public IBodyWorkflowAction<M200> SHA1POSTForm([WorkflowExpression] Func<string> xHashifyProcess, [WorkflowExpression] Func<string> digestFormat, [WorkflowExpression] Func<string> file)
         {
-            var apiCallPath = String.Format("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Hashify-Process"] = ExpressionConverter.Convert(xHashifyProcess);
-            return new ApiConnectionAction<M200>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<M200> __BuildSHA1POSTForm(WorkflowExpression<string> xHashifyProcess, WorkflowExpression<string> digestFormat, WorkflowExpression<string> file)
+        {
+            WorkflowExpression.Validate(xHashifyProcess, nameof(xHashifyProcess), required: true);
+            WorkflowExpression.Validate(digestFormat, nameof(digestFormat), required: true);
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            return new DeferredBodyAction<M200>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Hashify-Process"] = ExpressionConverter.Convert(xHashifyProcess);
+                return new ApiConnectionAction<M200>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<SHA256GETResponse> SHA256GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
+        [WorkflowExpressionFactory(nameof(__BuildSHA256GET))]
+        public IBodyWorkflowAction<SHA256GETResponse> SHA256GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat)
         {
-            var apiCallPath = String.Format("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<SHA256GETResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SHA256GETResponse> __BuildSHA256GET(WorkflowExpression<string> value, WorkflowExpression<string> digestFormat)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(digestFormat, nameof(digestFormat), required: true);
+            return new DeferredBodyAction<SHA256GETResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<SHA256GETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<SHA256BodyPOSTResponse> SHA256BodyPOST(Expression<Func<string>> value, Expression<Func<string>> digestFormat, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildSHA256BodyPOST))]
+        public IBodyWorkflowAction<SHA256BodyPOSTResponse> SHA256BodyPOST([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = String.Format("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SHA256BodyPOSTResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SHA256BodyPOSTResponse> __BuildSHA256BodyPOST(WorkflowExpression<string> value, WorkflowExpression<string> digestFormat, WorkflowExpression<string> body = null)
+        {
+            WorkflowExpression.Validate(value, nameof(value), required: true);
+            WorkflowExpression.Validate(digestFormat, nameof(digestFormat), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<SHA256BodyPOSTResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<SHA256BodyPOSTResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -242,12 +480,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200> Keygen(Expression<Func<string>> keyLength)
+        [WorkflowExpressionFactory(nameof(__BuildKeygen))]
+        public IBodyWorkflowAction<M200> Keygen([WorkflowExpression] Func<string> keyLength)
         {
-            var apiCallPath = String.Format("/keygen/{0}", ExpressionConverter.ConvertWithUrlEncoding(keyLength, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<M200>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<M200> __BuildKeygen(WorkflowExpression<string> keyLength)
+        {
+            WorkflowExpression.Validate(keyLength, nameof(keyLength), required: true);
+            return new DeferredBodyAction<M200>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keygen/{0}", ExpressionConverter.ConvertWithUrlEncoding(keyLength, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<M200>(callPayload);
+            });
         }
     }
 

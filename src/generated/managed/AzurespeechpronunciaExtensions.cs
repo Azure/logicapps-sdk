@@ -4,33 +4,51 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AzurespeechpronunciaActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurespeechpronuncia")]
-        public IWorkflowAction SpeechRecognitionConversationCognitiveServices(Expression<Func<string>> referenceText, Expression<Func<string>> language, Expression<Func<string>> audioContent = null, Expression<Func<gradingSystemInput>> gradingSystem = null, Expression<Func<granularityInput>> granularity = null, Expression<Func<dimensionInput>> dimension = null, Expression<Func<bool>> enableMiscue = null, Expression<Func<string>> scenarioId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSpeechRecognitionConversationCognitiveServices))]
+        public IWorkflowAction SpeechRecognitionConversationCognitiveServices([WorkflowExpression] Func<string> referenceText, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> audioContent = null, [WorkflowExpression] Func<gradingSystemInput> gradingSystem = null, [WorkflowExpression] Func<granularityInput> granularity = null, [WorkflowExpression] Func<dimensionInput> dimension = null, [WorkflowExpression] Func<bool> enableMiscue = null, [WorkflowExpression] Func<string> scenarioId = null)
         {
-            var apiCallPath = "/conversation/cognitiveservices/v1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Headers["ReferenceText"] = ExpressionConverter.Convert(referenceText);
-            if (gradingSystem != null)
-                callPayload.Headers["GradingSystem"] = ExpressionConverter.Convert(gradingSystem);
-            if (granularity != null)
-                callPayload.Headers["Granularity"] = ExpressionConverter.Convert(granularity);
-            if (dimension != null)
-                callPayload.Headers["Dimension"] = ExpressionConverter.Convert(dimension);
-            if (enableMiscue != null)
-                callPayload.Headers["EnableMiscue"] = ExpressionConverter.Convert(enableMiscue);
-            if (scenarioId != null)
-                callPayload.Headers["ScenarioId"] = ExpressionConverter.Convert(scenarioId);
-            callPayload.Body = ExpressionConverter.ConvertO(audioContent);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSpeechRecognitionConversationCognitiveServices(WorkflowExpression<string> referenceText, WorkflowExpression<string> language, WorkflowExpression<string> audioContent = null, WorkflowExpression<gradingSystemInput> gradingSystem = null, WorkflowExpression<granularityInput> granularity = null, WorkflowExpression<dimensionInput> dimension = null, WorkflowExpression<bool> enableMiscue = null, WorkflowExpression<string> scenarioId = null)
+        {
+            WorkflowExpression.Validate(referenceText, nameof(referenceText), required: true);
+            WorkflowExpression.Validate(language, nameof(language), required: true);
+            WorkflowExpression.Validate(audioContent, nameof(audioContent), required: false);
+            WorkflowExpression.Validate(gradingSystem, nameof(gradingSystem), required: false);
+            WorkflowExpression.Validate(granularity, nameof(granularity), required: false);
+            WorkflowExpression.Validate(dimension, nameof(dimension), required: false);
+            WorkflowExpression.Validate(enableMiscue, nameof(enableMiscue), required: false);
+            WorkflowExpression.Validate(scenarioId, nameof(scenarioId), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/conversation/cognitiveservices/v1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Headers["ReferenceText"] = ExpressionConverter.Convert(referenceText);
+                if (gradingSystem != null)
+                    callPayload.Headers["GradingSystem"] = ExpressionConverter.Convert(gradingSystem);
+                if (granularity != null)
+                    callPayload.Headers["Granularity"] = ExpressionConverter.Convert(granularity);
+                if (dimension != null)
+                    callPayload.Headers["Dimension"] = ExpressionConverter.Convert(dimension);
+                if (enableMiscue != null)
+                    callPayload.Headers["EnableMiscue"] = ExpressionConverter.Convert(enableMiscue);
+                if (scenarioId != null)
+                    callPayload.Headers["ScenarioId"] = ExpressionConverter.Convert(scenarioId);
+                callPayload.Body = ExpressionConverter.ConvertO(audioContent);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -38,12 +56,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum gradingSystemInput
     {
         FivePoint,
         HundredMark
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum granularityInput
     {
         Phoneme,
@@ -51,6 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
         FullText
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dimensionInput
     {
         Basic,

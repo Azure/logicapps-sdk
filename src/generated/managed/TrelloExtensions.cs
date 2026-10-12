@@ -4,154 +4,258 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TrelloActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card[]> ListCards(Expression<Func<string>> boardId, Expression<Func<string>> actions = null, Expression<Func<bool>> attachments = null, Expression<Func<string>> attachmentFields = null, Expression<Func<bool>> stickers = null, Expression<Func<bool>> members = null, Expression<Func<string>> memeberFields = null, Expression<Func<bool>> checkItemStates = null, Expression<Func<checklistsInput>> checklists = null, Expression<Func<int>> limit = null, Expression<Func<string>> since = null, Expression<Func<string>> before = null, Expression<Func<filterInput>> filter = null, Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListCards))]
+        public IBodyWorkflowAction<Card[]> ListCards([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> attachments = null, [WorkflowExpression] Func<string> attachmentFields = null, [WorkflowExpression] Func<bool> stickers = null, [WorkflowExpression] Func<bool> members = null, [WorkflowExpression] Func<string> memeberFields = null, [WorkflowExpression] Func<bool> checkItemStates = null, [WorkflowExpression] Func<checklistsInput> checklists = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = String.Format("/boards/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (actions != null)
-                callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
-            if (attachments != null)
-                callPayload.Queries["attachments"] = ExpressionConverter.Convert(attachments);
-            if (attachmentFields != null)
-                callPayload.Queries["attachment_fields"] = ExpressionConverter.Convert(attachmentFields);
-            if (stickers != null)
-                callPayload.Queries["stickers"] = ExpressionConverter.Convert(stickers);
-            if (members != null)
-                callPayload.Queries["members"] = ExpressionConverter.Convert(members);
-            if (memeberFields != null)
-                callPayload.Queries["memeber_fields"] = ExpressionConverter.Convert(memeberFields);
-            if (checkItemStates != null)
-                callPayload.Queries["checkItemStates"] = ExpressionConverter.Convert(checkItemStates);
-            if (checklists != null)
-                callPayload.Queries["checklists"] = ExpressionConverter.Convert(checklists);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (since != null)
-                callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<Card[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Card[]> __BuildListCards(WorkflowExpression<string> boardId, WorkflowExpression<string> actions = null, WorkflowExpression<bool> attachments = null, WorkflowExpression<string> attachmentFields = null, WorkflowExpression<bool> stickers = null, WorkflowExpression<bool> members = null, WorkflowExpression<string> memeberFields = null, WorkflowExpression<bool> checkItemStates = null, WorkflowExpression<checklistsInput> checklists = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> since = null, WorkflowExpression<string> before = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(actions, nameof(actions), required: false);
+            WorkflowExpression.Validate(attachments, nameof(attachments), required: false);
+            WorkflowExpression.Validate(attachmentFields, nameof(attachmentFields), required: false);
+            WorkflowExpression.Validate(stickers, nameof(stickers), required: false);
+            WorkflowExpression.Validate(members, nameof(members), required: false);
+            WorkflowExpression.Validate(memeberFields, nameof(memeberFields), required: false);
+            WorkflowExpression.Validate(checkItemStates, nameof(checkItemStates), required: false);
+            WorkflowExpression.Validate(checklists, nameof(checklists), required: false);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(since, nameof(since), required: false);
+            WorkflowExpression.Validate(before, nameof(before), required: false);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<Card[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (actions != null)
+                    callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
+                if (attachments != null)
+                    callPayload.Queries["attachments"] = ExpressionConverter.Convert(attachments);
+                if (attachmentFields != null)
+                    callPayload.Queries["attachment_fields"] = ExpressionConverter.Convert(attachmentFields);
+                if (stickers != null)
+                    callPayload.Queries["stickers"] = ExpressionConverter.Convert(stickers);
+                if (members != null)
+                    callPayload.Queries["members"] = ExpressionConverter.Convert(members);
+                if (memeberFields != null)
+                    callPayload.Queries["memeber_fields"] = ExpressionConverter.Convert(memeberFields);
+                if (checkItemStates != null)
+                    callPayload.Queries["checkItemStates"] = ExpressionConverter.Convert(checkItemStates);
+                if (checklists != null)
+                    callPayload.Queries["checklists"] = ExpressionConverter.Convert(checklists);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (since != null)
+                    callPayload.Queries["since"] = ExpressionConverter.Convert(since);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<Card[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card[]> ListCardsSimple(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildListCardsSimple))]
+        public IBodyWorkflowAction<Card[]> ListCardsSimple([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/simple/boards/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Card[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Card[]> __BuildListCardsSimple(WorkflowExpression<string> boardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<Card[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/simple/boards/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Card[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<CardWithChecklists> GetCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<bool>> actionsDisplay = null, Expression<Func<int>> actionsLimit = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> actionMemberCreatorFields = null, Expression<Func<bool>> attachments = null, Expression<Func<string>> attachmentFields = null, Expression<Func<bool>> members = null, Expression<Func<string>> memberFields = null, Expression<Func<bool>> membersVoted = null, Expression<Func<string>> memberVotedFields = null, Expression<Func<bool>> checkItemStates = null, Expression<Func<string>> checkItemStateFields = null, Expression<Func<checklistsInput>> checklists = null, Expression<Func<string>> checklistFields = null, Expression<Func<bool>> board = null, Expression<Func<string>> boardFields = null, Expression<Func<bool>> list = null, Expression<Func<string>> listFields = null, Expression<Func<bool>> stickers = null, Expression<Func<string>> stickerFields = null, Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCard))]
+        public IBodyWorkflowAction<CardWithChecklists> GetCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> actionsEntities = null, [WorkflowExpression] Func<bool> actionsDisplay = null, [WorkflowExpression] Func<int> actionsLimit = null, [WorkflowExpression] Func<string> actionFields = null, [WorkflowExpression] Func<string> actionMemberCreatorFields = null, [WorkflowExpression] Func<bool> attachments = null, [WorkflowExpression] Func<string> attachmentFields = null, [WorkflowExpression] Func<bool> members = null, [WorkflowExpression] Func<string> memberFields = null, [WorkflowExpression] Func<bool> membersVoted = null, [WorkflowExpression] Func<string> memberVotedFields = null, [WorkflowExpression] Func<bool> checkItemStates = null, [WorkflowExpression] Func<string> checkItemStateFields = null, [WorkflowExpression] Func<checklistsInput> checklists = null, [WorkflowExpression] Func<string> checklistFields = null, [WorkflowExpression] Func<bool> board = null, [WorkflowExpression] Func<string> boardFields = null, [WorkflowExpression] Func<bool> list = null, [WorkflowExpression] Func<string> listFields = null, [WorkflowExpression] Func<bool> stickers = null, [WorkflowExpression] Func<string> stickerFields = null, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = String.Format("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            if (actions != null)
-                callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
-            if (actionsEntities != null)
-                callPayload.Queries["actions_entities"] = ExpressionConverter.Convert(actionsEntities);
-            if (actionsDisplay != null)
-                callPayload.Queries["actions_display"] = ExpressionConverter.Convert(actionsDisplay);
-            if (actionsLimit != null)
-                callPayload.Queries["actions_limit"] = ExpressionConverter.Convert(actionsLimit);
-            if (actionFields != null)
-                callPayload.Queries["action_fields"] = ExpressionConverter.Convert(actionFields);
-            if (actionMemberCreatorFields != null)
-                callPayload.Queries["action_memberCreator_fields"] = ExpressionConverter.Convert(actionMemberCreatorFields);
-            if (attachments != null)
-                callPayload.Queries["attachments"] = ExpressionConverter.Convert(attachments);
-            if (attachmentFields != null)
-                callPayload.Queries["attachment_fields"] = ExpressionConverter.Convert(attachmentFields);
-            if (members != null)
-                callPayload.Queries["members"] = ExpressionConverter.Convert(members);
-            if (memberFields != null)
-                callPayload.Queries["member_fields"] = ExpressionConverter.Convert(memberFields);
-            if (membersVoted != null)
-                callPayload.Queries["membersVoted"] = ExpressionConverter.Convert(membersVoted);
-            if (memberVotedFields != null)
-                callPayload.Queries["memberVoted_fields"] = ExpressionConverter.Convert(memberVotedFields);
-            if (checkItemStates != null)
-                callPayload.Queries["checkItemStates"] = ExpressionConverter.Convert(checkItemStates);
-            if (checkItemStateFields != null)
-                callPayload.Queries["checkItemState_fields"] = ExpressionConverter.Convert(checkItemStateFields);
-            if (checklists != null)
-                callPayload.Queries["checklists"] = ExpressionConverter.Convert(checklists);
-            if (checklistFields != null)
-                callPayload.Queries["checklist_fields"] = ExpressionConverter.Convert(checklistFields);
-            if (board != null)
-                callPayload.Queries["board"] = ExpressionConverter.Convert(board);
-            if (boardFields != null)
-                callPayload.Queries["board_fields"] = ExpressionConverter.Convert(boardFields);
-            if (list != null)
-                callPayload.Queries["list"] = ExpressionConverter.Convert(list);
-            if (listFields != null)
-                callPayload.Queries["list_fields"] = ExpressionConverter.Convert(listFields);
-            if (stickers != null)
-                callPayload.Queries["stickers"] = ExpressionConverter.Convert(stickers);
-            if (stickerFields != null)
-                callPayload.Queries["sticker_fields"] = ExpressionConverter.Convert(stickerFields);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<CardWithChecklists>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardWithChecklists> __BuildGetCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> actions = null, WorkflowExpression<bool> actionsEntities = null, WorkflowExpression<bool> actionsDisplay = null, WorkflowExpression<int> actionsLimit = null, WorkflowExpression<string> actionFields = null, WorkflowExpression<string> actionMemberCreatorFields = null, WorkflowExpression<bool> attachments = null, WorkflowExpression<string> attachmentFields = null, WorkflowExpression<bool> members = null, WorkflowExpression<string> memberFields = null, WorkflowExpression<bool> membersVoted = null, WorkflowExpression<string> memberVotedFields = null, WorkflowExpression<bool> checkItemStates = null, WorkflowExpression<string> checkItemStateFields = null, WorkflowExpression<checklistsInput> checklists = null, WorkflowExpression<string> checklistFields = null, WorkflowExpression<bool> board = null, WorkflowExpression<string> boardFields = null, WorkflowExpression<bool> list = null, WorkflowExpression<string> listFields = null, WorkflowExpression<bool> stickers = null, WorkflowExpression<string> stickerFields = null, WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            WorkflowExpression.Validate(actions, nameof(actions), required: false);
+            WorkflowExpression.Validate(actionsEntities, nameof(actionsEntities), required: false);
+            WorkflowExpression.Validate(actionsDisplay, nameof(actionsDisplay), required: false);
+            WorkflowExpression.Validate(actionsLimit, nameof(actionsLimit), required: false);
+            WorkflowExpression.Validate(actionFields, nameof(actionFields), required: false);
+            WorkflowExpression.Validate(actionMemberCreatorFields, nameof(actionMemberCreatorFields), required: false);
+            WorkflowExpression.Validate(attachments, nameof(attachments), required: false);
+            WorkflowExpression.Validate(attachmentFields, nameof(attachmentFields), required: false);
+            WorkflowExpression.Validate(members, nameof(members), required: false);
+            WorkflowExpression.Validate(memberFields, nameof(memberFields), required: false);
+            WorkflowExpression.Validate(membersVoted, nameof(membersVoted), required: false);
+            WorkflowExpression.Validate(memberVotedFields, nameof(memberVotedFields), required: false);
+            WorkflowExpression.Validate(checkItemStates, nameof(checkItemStates), required: false);
+            WorkflowExpression.Validate(checkItemStateFields, nameof(checkItemStateFields), required: false);
+            WorkflowExpression.Validate(checklists, nameof(checklists), required: false);
+            WorkflowExpression.Validate(checklistFields, nameof(checklistFields), required: false);
+            WorkflowExpression.Validate(board, nameof(board), required: false);
+            WorkflowExpression.Validate(boardFields, nameof(boardFields), required: false);
+            WorkflowExpression.Validate(list, nameof(list), required: false);
+            WorkflowExpression.Validate(listFields, nameof(listFields), required: false);
+            WorkflowExpression.Validate(stickers, nameof(stickers), required: false);
+            WorkflowExpression.Validate(stickerFields, nameof(stickerFields), required: false);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<CardWithChecklists>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                if (actions != null)
+                    callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
+                if (actionsEntities != null)
+                    callPayload.Queries["actions_entities"] = ExpressionConverter.Convert(actionsEntities);
+                if (actionsDisplay != null)
+                    callPayload.Queries["actions_display"] = ExpressionConverter.Convert(actionsDisplay);
+                if (actionsLimit != null)
+                    callPayload.Queries["actions_limit"] = ExpressionConverter.Convert(actionsLimit);
+                if (actionFields != null)
+                    callPayload.Queries["action_fields"] = ExpressionConverter.Convert(actionFields);
+                if (actionMemberCreatorFields != null)
+                    callPayload.Queries["action_memberCreator_fields"] = ExpressionConverter.Convert(actionMemberCreatorFields);
+                if (attachments != null)
+                    callPayload.Queries["attachments"] = ExpressionConverter.Convert(attachments);
+                if (attachmentFields != null)
+                    callPayload.Queries["attachment_fields"] = ExpressionConverter.Convert(attachmentFields);
+                if (members != null)
+                    callPayload.Queries["members"] = ExpressionConverter.Convert(members);
+                if (memberFields != null)
+                    callPayload.Queries["member_fields"] = ExpressionConverter.Convert(memberFields);
+                if (membersVoted != null)
+                    callPayload.Queries["membersVoted"] = ExpressionConverter.Convert(membersVoted);
+                if (memberVotedFields != null)
+                    callPayload.Queries["memberVoted_fields"] = ExpressionConverter.Convert(memberVotedFields);
+                if (checkItemStates != null)
+                    callPayload.Queries["checkItemStates"] = ExpressionConverter.Convert(checkItemStates);
+                if (checkItemStateFields != null)
+                    callPayload.Queries["checkItemState_fields"] = ExpressionConverter.Convert(checkItemStateFields);
+                if (checklists != null)
+                    callPayload.Queries["checklists"] = ExpressionConverter.Convert(checklists);
+                if (checklistFields != null)
+                    callPayload.Queries["checklist_fields"] = ExpressionConverter.Convert(checklistFields);
+                if (board != null)
+                    callPayload.Queries["board"] = ExpressionConverter.Convert(board);
+                if (boardFields != null)
+                    callPayload.Queries["board_fields"] = ExpressionConverter.Convert(boardFields);
+                if (list != null)
+                    callPayload.Queries["list"] = ExpressionConverter.Convert(list);
+                if (listFields != null)
+                    callPayload.Queries["list_fields"] = ExpressionConverter.Convert(listFields);
+                if (stickers != null)
+                    callPayload.Queries["stickers"] = ExpressionConverter.Convert(stickers);
+                if (stickerFields != null)
+                    callPayload.Queries["sticker_fields"] = ExpressionConverter.Convert(stickerFields);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<CardWithChecklists>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<JToken> DeleteCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteCard))]
+        public IBodyWorkflowAction<JToken> DeleteCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildDeleteCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board[]> ListBoards(Expression<Func<string>> filter = null, Expression<Func<string>> fields = null, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<int>> actionsLimit = null, Expression<Func<actionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> lists = null)
+        [WorkflowExpressionFactory(nameof(__BuildListBoards))]
+        public IBodyWorkflowAction<Board[]> ListBoards([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> actionsEntities = null, [WorkflowExpression] Func<int> actionsLimit = null, [WorkflowExpression] Func<actionsFormatInput> actionsFormat = null, [WorkflowExpression] Func<string> actionsSince = null, [WorkflowExpression] Func<string> actionFields = null, [WorkflowExpression] Func<string> memberships = null, [WorkflowExpression] Func<bool> organization = null, [WorkflowExpression] Func<string> organizationFields = null, [WorkflowExpression] Func<string> lists = null)
         {
-            var apiCallPath = "/member/me/boards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (actions != null)
-                callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
-            if (actionsEntities != null)
-                callPayload.Queries["actions_entities"] = ExpressionConverter.Convert(actionsEntities);
-            if (actionsLimit != null)
-                callPayload.Queries["actions_limit"] = ExpressionConverter.Convert(actionsLimit);
-            if (actionsFormat != null)
-                callPayload.Queries["actions_format"] = ExpressionConverter.Convert(actionsFormat);
-            if (actionsSince != null)
-                callPayload.Queries["actions_since"] = ExpressionConverter.Convert(actionsSince);
-            if (actionFields != null)
-                callPayload.Queries["action_fields"] = ExpressionConverter.Convert(actionFields);
-            if (memberships != null)
-                callPayload.Queries["memberships"] = ExpressionConverter.Convert(memberships);
-            if (organization != null)
-                callPayload.Queries["organization"] = ExpressionConverter.Convert(organization);
-            if (organizationFields != null)
-                callPayload.Queries["organization_fields"] = ExpressionConverter.Convert(organizationFields);
-            if (lists != null)
-                callPayload.Queries["lists"] = ExpressionConverter.Convert(lists);
-            return new ApiConnectionAction<Board[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Board[]> __BuildListBoards(WorkflowExpression<string> filter = null, WorkflowExpression<string> fields = null, WorkflowExpression<string> actions = null, WorkflowExpression<bool> actionsEntities = null, WorkflowExpression<int> actionsLimit = null, WorkflowExpression<actionsFormatInput> actionsFormat = null, WorkflowExpression<string> actionsSince = null, WorkflowExpression<string> actionFields = null, WorkflowExpression<string> memberships = null, WorkflowExpression<bool> organization = null, WorkflowExpression<string> organizationFields = null, WorkflowExpression<string> lists = null)
+        {
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            WorkflowExpression.Validate(actions, nameof(actions), required: false);
+            WorkflowExpression.Validate(actionsEntities, nameof(actionsEntities), required: false);
+            WorkflowExpression.Validate(actionsLimit, nameof(actionsLimit), required: false);
+            WorkflowExpression.Validate(actionsFormat, nameof(actionsFormat), required: false);
+            WorkflowExpression.Validate(actionsSince, nameof(actionsSince), required: false);
+            WorkflowExpression.Validate(actionFields, nameof(actionFields), required: false);
+            WorkflowExpression.Validate(memberships, nameof(memberships), required: false);
+            WorkflowExpression.Validate(organization, nameof(organization), required: false);
+            WorkflowExpression.Validate(organizationFields, nameof(organizationFields), required: false);
+            WorkflowExpression.Validate(lists, nameof(lists), required: false);
+            return new DeferredBodyAction<Board[]>(() =>
+            {
+                var apiCallPath = "/member/me/boards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (actions != null)
+                    callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
+                if (actionsEntities != null)
+                    callPayload.Queries["actions_entities"] = ExpressionConverter.Convert(actionsEntities);
+                if (actionsLimit != null)
+                    callPayload.Queries["actions_limit"] = ExpressionConverter.Convert(actionsLimit);
+                if (actionsFormat != null)
+                    callPayload.Queries["actions_format"] = ExpressionConverter.Convert(actionsFormat);
+                if (actionsSince != null)
+                    callPayload.Queries["actions_since"] = ExpressionConverter.Convert(actionsSince);
+                if (actionFields != null)
+                    callPayload.Queries["action_fields"] = ExpressionConverter.Convert(actionFields);
+                if (memberships != null)
+                    callPayload.Queries["memberships"] = ExpressionConverter.Convert(memberships);
+                if (organization != null)
+                    callPayload.Queries["organization"] = ExpressionConverter.Convert(organization);
+                if (organizationFields != null)
+                    callPayload.Queries["organization_fields"] = ExpressionConverter.Convert(organizationFields);
+                if (lists != null)
+                    callPayload.Queries["lists"] = ExpressionConverter.Convert(lists);
+                return new ApiConnectionAction<Board[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
@@ -164,251 +268,393 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<BoardWithChecklists> GetBoard(Expression<Func<string>> boardId, Expression<Func<string>> actions = null, Expression<Func<bool>> actionEntities = null, Expression<Func<bool>> actionsDisplay = null, Expression<Func<actionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<int>> actionsLimit = null, Expression<Func<string>> actionFields = null, Expression<Func<bool>> actionMember = null, Expression<Func<string>> actionMemberFields = null, Expression<Func<bool>> actionMemberCreator = null, Expression<Func<string>> actionMemberCreatorFields = null, Expression<Func<cardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<bool>> cardAttachments = null, Expression<Func<string>> cardAttachmentFields = null, Expression<Func<cardChecklistsInput>> cardChecklists = null, Expression<Func<bool>> cardStickers = null, Expression<Func<boardStarsInput>> boardStars = null, Expression<Func<labelsInput>> labels = null, Expression<Func<string>> labelFields = null, Expression<Func<int>> labelsLimit = null, Expression<Func<listsInput>> lists = null, Expression<Func<string>> listFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> membershipsMember = null, Expression<Func<string>> membershipsMemberFields = null, Expression<Func<membersInput>> members = null, Expression<Func<string>> memberFields = null, Expression<Func<membersInvitedInput>> membersInvited = null, Expression<Func<string>> membersInvitedFields = null, Expression<Func<checklistsInput>> checklists = null, Expression<Func<string>> checklistFields = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> organizationMemberships = null, Expression<Func<bool>> myPerfs = null, Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetBoard))]
+        public IBodyWorkflowAction<BoardWithChecklists> GetBoard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> actionEntities = null, [WorkflowExpression] Func<bool> actionsDisplay = null, [WorkflowExpression] Func<actionsFormatInput> actionsFormat = null, [WorkflowExpression] Func<string> actionsSince = null, [WorkflowExpression] Func<int> actionsLimit = null, [WorkflowExpression] Func<string> actionFields = null, [WorkflowExpression] Func<bool> actionMember = null, [WorkflowExpression] Func<string> actionMemberFields = null, [WorkflowExpression] Func<bool> actionMemberCreator = null, [WorkflowExpression] Func<string> actionMemberCreatorFields = null, [WorkflowExpression] Func<cardsInput> cards = null, [WorkflowExpression] Func<string> cardFields = null, [WorkflowExpression] Func<bool> cardAttachments = null, [WorkflowExpression] Func<string> cardAttachmentFields = null, [WorkflowExpression] Func<cardChecklistsInput> cardChecklists = null, [WorkflowExpression] Func<bool> cardStickers = null, [WorkflowExpression] Func<boardStarsInput> boardStars = null, [WorkflowExpression] Func<labelsInput> labels = null, [WorkflowExpression] Func<string> labelFields = null, [WorkflowExpression] Func<int> labelsLimit = null, [WorkflowExpression] Func<listsInput> lists = null, [WorkflowExpression] Func<string> listFields = null, [WorkflowExpression] Func<string> memberships = null, [WorkflowExpression] Func<bool> membershipsMember = null, [WorkflowExpression] Func<string> membershipsMemberFields = null, [WorkflowExpression] Func<membersInput> members = null, [WorkflowExpression] Func<string> memberFields = null, [WorkflowExpression] Func<membersInvitedInput> membersInvited = null, [WorkflowExpression] Func<string> membersInvitedFields = null, [WorkflowExpression] Func<checklistsInput> checklists = null, [WorkflowExpression] Func<string> checklistFields = null, [WorkflowExpression] Func<bool> organization = null, [WorkflowExpression] Func<string> organizationFields = null, [WorkflowExpression] Func<string> organizationMemberships = null, [WorkflowExpression] Func<bool> myPerfs = null, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = String.Format("/boards/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (actions != null)
-                callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
-            if (actionEntities != null)
-                callPayload.Queries["action_entities"] = ExpressionConverter.Convert(actionEntities);
-            if (actionsDisplay != null)
-                callPayload.Queries["actions_display"] = ExpressionConverter.Convert(actionsDisplay);
-            if (actionsFormat != null)
-                callPayload.Queries["actions_format"] = ExpressionConverter.Convert(actionsFormat);
-            if (actionsSince != null)
-                callPayload.Queries["actions_since"] = ExpressionConverter.Convert(actionsSince);
-            if (actionsLimit != null)
-                callPayload.Queries["actions_limit"] = ExpressionConverter.Convert(actionsLimit);
-            if (actionFields != null)
-                callPayload.Queries["action_fields"] = ExpressionConverter.Convert(actionFields);
-            if (actionMember != null)
-                callPayload.Queries["action_member"] = ExpressionConverter.Convert(actionMember);
-            if (actionMemberFields != null)
-                callPayload.Queries["action_member_fields"] = ExpressionConverter.Convert(actionMemberFields);
-            if (actionMemberCreator != null)
-                callPayload.Queries["action_memberCreator"] = ExpressionConverter.Convert(actionMemberCreator);
-            if (actionMemberCreatorFields != null)
-                callPayload.Queries["action_memberCreator_fields"] = ExpressionConverter.Convert(actionMemberCreatorFields);
-            if (cards != null)
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            if (cardFields != null)
-                callPayload.Queries["card_fields"] = ExpressionConverter.Convert(cardFields);
-            if (cardAttachments != null)
-                callPayload.Queries["card_attachments"] = ExpressionConverter.Convert(cardAttachments);
-            if (cardAttachmentFields != null)
-                callPayload.Queries["card_attachment_fields"] = ExpressionConverter.Convert(cardAttachmentFields);
-            if (cardChecklists != null)
-                callPayload.Queries["card_checklists"] = ExpressionConverter.Convert(cardChecklists);
-            if (cardStickers != null)
-                callPayload.Queries["card_stickers"] = ExpressionConverter.Convert(cardStickers);
-            if (boardStars != null)
-                callPayload.Queries["boardStars"] = ExpressionConverter.Convert(boardStars);
-            if (labels != null)
-                callPayload.Queries["labels"] = ExpressionConverter.Convert(labels);
-            if (labelFields != null)
-                callPayload.Queries["label_fields"] = ExpressionConverter.Convert(labelFields);
-            if (labelsLimit != null)
-                callPayload.Queries["labels_limit"] = ExpressionConverter.Convert(labelsLimit);
-            if (lists != null)
-                callPayload.Queries["lists"] = ExpressionConverter.Convert(lists);
-            if (listFields != null)
-                callPayload.Queries["list_fields"] = ExpressionConverter.Convert(listFields);
-            if (memberships != null)
-                callPayload.Queries["memberships"] = ExpressionConverter.Convert(memberships);
-            if (membershipsMember != null)
-                callPayload.Queries["memberships_member"] = ExpressionConverter.Convert(membershipsMember);
-            if (membershipsMemberFields != null)
-                callPayload.Queries["memberships_member_fields"] = ExpressionConverter.Convert(membershipsMemberFields);
-            if (members != null)
-                callPayload.Queries["members"] = ExpressionConverter.Convert(members);
-            if (memberFields != null)
-                callPayload.Queries["member_fields"] = ExpressionConverter.Convert(memberFields);
-            if (membersInvited != null)
-                callPayload.Queries["membersInvited"] = ExpressionConverter.Convert(membersInvited);
-            if (membersInvitedFields != null)
-                callPayload.Queries["membersInvited_fields"] = ExpressionConverter.Convert(membersInvitedFields);
-            if (checklists != null)
-                callPayload.Queries["checklists"] = ExpressionConverter.Convert(checklists);
-            if (checklistFields != null)
-                callPayload.Queries["checklist_fields"] = ExpressionConverter.Convert(checklistFields);
-            if (organization != null)
-                callPayload.Queries["organization"] = ExpressionConverter.Convert(organization);
-            if (organizationFields != null)
-                callPayload.Queries["organization_fields"] = ExpressionConverter.Convert(organizationFields);
-            if (organizationMemberships != null)
-                callPayload.Queries["organization_memberships"] = ExpressionConverter.Convert(organizationMemberships);
-            if (myPerfs != null)
-                callPayload.Queries["myPerfs"] = ExpressionConverter.Convert(myPerfs);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<BoardWithChecklists>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BoardWithChecklists> __BuildGetBoard(WorkflowExpression<string> boardId, WorkflowExpression<string> actions = null, WorkflowExpression<bool> actionEntities = null, WorkflowExpression<bool> actionsDisplay = null, WorkflowExpression<actionsFormatInput> actionsFormat = null, WorkflowExpression<string> actionsSince = null, WorkflowExpression<int> actionsLimit = null, WorkflowExpression<string> actionFields = null, WorkflowExpression<bool> actionMember = null, WorkflowExpression<string> actionMemberFields = null, WorkflowExpression<bool> actionMemberCreator = null, WorkflowExpression<string> actionMemberCreatorFields = null, WorkflowExpression<cardsInput> cards = null, WorkflowExpression<string> cardFields = null, WorkflowExpression<bool> cardAttachments = null, WorkflowExpression<string> cardAttachmentFields = null, WorkflowExpression<cardChecklistsInput> cardChecklists = null, WorkflowExpression<bool> cardStickers = null, WorkflowExpression<boardStarsInput> boardStars = null, WorkflowExpression<labelsInput> labels = null, WorkflowExpression<string> labelFields = null, WorkflowExpression<int> labelsLimit = null, WorkflowExpression<listsInput> lists = null, WorkflowExpression<string> listFields = null, WorkflowExpression<string> memberships = null, WorkflowExpression<bool> membershipsMember = null, WorkflowExpression<string> membershipsMemberFields = null, WorkflowExpression<membersInput> members = null, WorkflowExpression<string> memberFields = null, WorkflowExpression<membersInvitedInput> membersInvited = null, WorkflowExpression<string> membersInvitedFields = null, WorkflowExpression<checklistsInput> checklists = null, WorkflowExpression<string> checklistFields = null, WorkflowExpression<bool> organization = null, WorkflowExpression<string> organizationFields = null, WorkflowExpression<string> organizationMemberships = null, WorkflowExpression<bool> myPerfs = null, WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(actions, nameof(actions), required: false);
+            WorkflowExpression.Validate(actionEntities, nameof(actionEntities), required: false);
+            WorkflowExpression.Validate(actionsDisplay, nameof(actionsDisplay), required: false);
+            WorkflowExpression.Validate(actionsFormat, nameof(actionsFormat), required: false);
+            WorkflowExpression.Validate(actionsSince, nameof(actionsSince), required: false);
+            WorkflowExpression.Validate(actionsLimit, nameof(actionsLimit), required: false);
+            WorkflowExpression.Validate(actionFields, nameof(actionFields), required: false);
+            WorkflowExpression.Validate(actionMember, nameof(actionMember), required: false);
+            WorkflowExpression.Validate(actionMemberFields, nameof(actionMemberFields), required: false);
+            WorkflowExpression.Validate(actionMemberCreator, nameof(actionMemberCreator), required: false);
+            WorkflowExpression.Validate(actionMemberCreatorFields, nameof(actionMemberCreatorFields), required: false);
+            WorkflowExpression.Validate(cards, nameof(cards), required: false);
+            WorkflowExpression.Validate(cardFields, nameof(cardFields), required: false);
+            WorkflowExpression.Validate(cardAttachments, nameof(cardAttachments), required: false);
+            WorkflowExpression.Validate(cardAttachmentFields, nameof(cardAttachmentFields), required: false);
+            WorkflowExpression.Validate(cardChecklists, nameof(cardChecklists), required: false);
+            WorkflowExpression.Validate(cardStickers, nameof(cardStickers), required: false);
+            WorkflowExpression.Validate(boardStars, nameof(boardStars), required: false);
+            WorkflowExpression.Validate(labels, nameof(labels), required: false);
+            WorkflowExpression.Validate(labelFields, nameof(labelFields), required: false);
+            WorkflowExpression.Validate(labelsLimit, nameof(labelsLimit), required: false);
+            WorkflowExpression.Validate(lists, nameof(lists), required: false);
+            WorkflowExpression.Validate(listFields, nameof(listFields), required: false);
+            WorkflowExpression.Validate(memberships, nameof(memberships), required: false);
+            WorkflowExpression.Validate(membershipsMember, nameof(membershipsMember), required: false);
+            WorkflowExpression.Validate(membershipsMemberFields, nameof(membershipsMemberFields), required: false);
+            WorkflowExpression.Validate(members, nameof(members), required: false);
+            WorkflowExpression.Validate(memberFields, nameof(memberFields), required: false);
+            WorkflowExpression.Validate(membersInvited, nameof(membersInvited), required: false);
+            WorkflowExpression.Validate(membersInvitedFields, nameof(membersInvitedFields), required: false);
+            WorkflowExpression.Validate(checklists, nameof(checklists), required: false);
+            WorkflowExpression.Validate(checklistFields, nameof(checklistFields), required: false);
+            WorkflowExpression.Validate(organization, nameof(organization), required: false);
+            WorkflowExpression.Validate(organizationFields, nameof(organizationFields), required: false);
+            WorkflowExpression.Validate(organizationMemberships, nameof(organizationMemberships), required: false);
+            WorkflowExpression.Validate(myPerfs, nameof(myPerfs), required: false);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<BoardWithChecklists>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (actions != null)
+                    callPayload.Queries["actions"] = ExpressionConverter.Convert(actions);
+                if (actionEntities != null)
+                    callPayload.Queries["action_entities"] = ExpressionConverter.Convert(actionEntities);
+                if (actionsDisplay != null)
+                    callPayload.Queries["actions_display"] = ExpressionConverter.Convert(actionsDisplay);
+                if (actionsFormat != null)
+                    callPayload.Queries["actions_format"] = ExpressionConverter.Convert(actionsFormat);
+                if (actionsSince != null)
+                    callPayload.Queries["actions_since"] = ExpressionConverter.Convert(actionsSince);
+                if (actionsLimit != null)
+                    callPayload.Queries["actions_limit"] = ExpressionConverter.Convert(actionsLimit);
+                if (actionFields != null)
+                    callPayload.Queries["action_fields"] = ExpressionConverter.Convert(actionFields);
+                if (actionMember != null)
+                    callPayload.Queries["action_member"] = ExpressionConverter.Convert(actionMember);
+                if (actionMemberFields != null)
+                    callPayload.Queries["action_member_fields"] = ExpressionConverter.Convert(actionMemberFields);
+                if (actionMemberCreator != null)
+                    callPayload.Queries["action_memberCreator"] = ExpressionConverter.Convert(actionMemberCreator);
+                if (actionMemberCreatorFields != null)
+                    callPayload.Queries["action_memberCreator_fields"] = ExpressionConverter.Convert(actionMemberCreatorFields);
+                if (cards != null)
+                    callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                if (cardFields != null)
+                    callPayload.Queries["card_fields"] = ExpressionConverter.Convert(cardFields);
+                if (cardAttachments != null)
+                    callPayload.Queries["card_attachments"] = ExpressionConverter.Convert(cardAttachments);
+                if (cardAttachmentFields != null)
+                    callPayload.Queries["card_attachment_fields"] = ExpressionConverter.Convert(cardAttachmentFields);
+                if (cardChecklists != null)
+                    callPayload.Queries["card_checklists"] = ExpressionConverter.Convert(cardChecklists);
+                if (cardStickers != null)
+                    callPayload.Queries["card_stickers"] = ExpressionConverter.Convert(cardStickers);
+                if (boardStars != null)
+                    callPayload.Queries["boardStars"] = ExpressionConverter.Convert(boardStars);
+                if (labels != null)
+                    callPayload.Queries["labels"] = ExpressionConverter.Convert(labels);
+                if (labelFields != null)
+                    callPayload.Queries["label_fields"] = ExpressionConverter.Convert(labelFields);
+                if (labelsLimit != null)
+                    callPayload.Queries["labels_limit"] = ExpressionConverter.Convert(labelsLimit);
+                if (lists != null)
+                    callPayload.Queries["lists"] = ExpressionConverter.Convert(lists);
+                if (listFields != null)
+                    callPayload.Queries["list_fields"] = ExpressionConverter.Convert(listFields);
+                if (memberships != null)
+                    callPayload.Queries["memberships"] = ExpressionConverter.Convert(memberships);
+                if (membershipsMember != null)
+                    callPayload.Queries["memberships_member"] = ExpressionConverter.Convert(membershipsMember);
+                if (membershipsMemberFields != null)
+                    callPayload.Queries["memberships_member_fields"] = ExpressionConverter.Convert(membershipsMemberFields);
+                if (members != null)
+                    callPayload.Queries["members"] = ExpressionConverter.Convert(members);
+                if (memberFields != null)
+                    callPayload.Queries["member_fields"] = ExpressionConverter.Convert(memberFields);
+                if (membersInvited != null)
+                    callPayload.Queries["membersInvited"] = ExpressionConverter.Convert(membersInvited);
+                if (membersInvitedFields != null)
+                    callPayload.Queries["membersInvited_fields"] = ExpressionConverter.Convert(membersInvitedFields);
+                if (checklists != null)
+                    callPayload.Queries["checklists"] = ExpressionConverter.Convert(checklists);
+                if (checklistFields != null)
+                    callPayload.Queries["checklist_fields"] = ExpressionConverter.Convert(checklistFields);
+                if (organization != null)
+                    callPayload.Queries["organization"] = ExpressionConverter.Convert(organization);
+                if (organizationFields != null)
+                    callPayload.Queries["organization_fields"] = ExpressionConverter.Convert(organizationFields);
+                if (organizationMemberships != null)
+                    callPayload.Queries["organization_memberships"] = ExpressionConverter.Convert(organizationMemberships);
+                if (myPerfs != null)
+                    callPayload.Queries["myPerfs"] = ExpressionConverter.Convert(myPerfs);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<BoardWithChecklists>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board> UpdateBoard(Expression<Func<string>> boardId, Expression<Func<string>> boardboardName = null, Expression<Func<boardcreateDefaultListsInput>> boardcreateDefaultLists = null, Expression<Func<string>> boardboardDescription = null, Expression<Func<string>> boardteamId = null, Expression<Func<boardpermissionLevelInput>> boardpermissionLevel = null, Expression<Func<boardcommentPreferencesInput>> boardcommentPreferences = null, Expression<Func<boardinvitationPreferencesInput>> boardinvitationPreferences = null, Expression<Func<boarduseCardCoversInput>> boarduseCardCovers = null, Expression<Func<boardbackgroundColorInput>> boardbackgroundColor = null, Expression<Func<boardvotingPowerUpPreferencesInput>> boardvotingPowerUpPreferences = null, Expression<Func<boardcardAgingPowerUpPreferencesInput>> boardcardAgingPowerUpPreferences = null, Expression<Func<boardenableCalendarPowerUpInput>> boardenableCalendarPowerUp = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateBoard))]
+        public IBodyWorkflowAction<Board> UpdateBoard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> boardboardName = null, [WorkflowExpression] Func<boardcreateDefaultListsInput> boardcreateDefaultLists = null, [WorkflowExpression] Func<string> boardboardDescription = null, [WorkflowExpression] Func<string> boardteamId = null, [WorkflowExpression] Func<boardpermissionLevelInput> boardpermissionLevel = null, [WorkflowExpression] Func<boardcommentPreferencesInput> boardcommentPreferences = null, [WorkflowExpression] Func<boardinvitationPreferencesInput> boardinvitationPreferences = null, [WorkflowExpression] Func<boarduseCardCoversInput> boarduseCardCovers = null, [WorkflowExpression] Func<boardbackgroundColorInput> boardbackgroundColor = null, [WorkflowExpression] Func<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, [WorkflowExpression] Func<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, [WorkflowExpression] Func<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
         {
-            var apiCallPath = String.Format("/boards/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var board = new JObject();
-            var boardpropCount = 0;
-            if (boardboardName != null)
-            {
-                board["name"] = ExpressionConverter.ConvertO(boardboardName);
-                boardpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (boardcreateDefaultLists != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Board> __BuildUpdateBoard(WorkflowExpression<string> boardId, WorkflowExpression<string> boardboardName = null, WorkflowExpression<boardcreateDefaultListsInput> boardcreateDefaultLists = null, WorkflowExpression<string> boardboardDescription = null, WorkflowExpression<string> boardteamId = null, WorkflowExpression<boardpermissionLevelInput> boardpermissionLevel = null, WorkflowExpression<boardcommentPreferencesInput> boardcommentPreferences = null, WorkflowExpression<boardinvitationPreferencesInput> boardinvitationPreferences = null, WorkflowExpression<boarduseCardCoversInput> boarduseCardCovers = null, WorkflowExpression<boardbackgroundColorInput> boardbackgroundColor = null, WorkflowExpression<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, WorkflowExpression<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, WorkflowExpression<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(boardboardName, nameof(boardboardName), required: false);
+            WorkflowExpression.Validate(boardcreateDefaultLists, nameof(boardcreateDefaultLists), required: false);
+            WorkflowExpression.Validate(boardboardDescription, nameof(boardboardDescription), required: false);
+            WorkflowExpression.Validate(boardteamId, nameof(boardteamId), required: false);
+            WorkflowExpression.Validate(boardpermissionLevel, nameof(boardpermissionLevel), required: false);
+            WorkflowExpression.Validate(boardcommentPreferences, nameof(boardcommentPreferences), required: false);
+            WorkflowExpression.Validate(boardinvitationPreferences, nameof(boardinvitationPreferences), required: false);
+            WorkflowExpression.Validate(boarduseCardCovers, nameof(boarduseCardCovers), required: false);
+            WorkflowExpression.Validate(boardbackgroundColor, nameof(boardbackgroundColor), required: false);
+            WorkflowExpression.Validate(boardvotingPowerUpPreferences, nameof(boardvotingPowerUpPreferences), required: false);
+            WorkflowExpression.Validate(boardcardAgingPowerUpPreferences, nameof(boardcardAgingPowerUpPreferences), required: false);
+            WorkflowExpression.Validate(boardenableCalendarPowerUp, nameof(boardenableCalendarPowerUp), required: false);
+            return new DeferredBodyAction<Board>(() =>
             {
-                board["defaultLists"] = ExpressionConverter.ConvertO(boardcreateDefaultLists);
-                boardpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var board = new JObject();
+                var boardpropCount = 0;
+                if (boardboardName != null)
+                {
+                    board["name"] = ExpressionConverter.ConvertO(boardboardName);
+                    boardpropCount++;
+                }
 
-            if (boardboardDescription != null)
-            {
-                board["desc"] = ExpressionConverter.ConvertO(boardboardDescription);
-                boardpropCount++;
-            }
+                if (boardcreateDefaultLists != null)
+                {
+                    board["defaultLists"] = ExpressionConverter.ConvertO(boardcreateDefaultLists);
+                    boardpropCount++;
+                }
 
-            if (boardteamId != null)
-            {
-                board["idOrganization"] = ExpressionConverter.ConvertO(boardteamId);
-                boardpropCount++;
-            }
+                if (boardboardDescription != null)
+                {
+                    board["desc"] = ExpressionConverter.ConvertO(boardboardDescription);
+                    boardpropCount++;
+                }
 
-            if (boardpermissionLevel != null)
-            {
-                board["prefs_permissionLevel"] = ExpressionConverter.ConvertO(boardpermissionLevel);
-                boardpropCount++;
-            }
+                if (boardteamId != null)
+                {
+                    board["idOrganization"] = ExpressionConverter.ConvertO(boardteamId);
+                    boardpropCount++;
+                }
 
-            if (boardcommentPreferences != null)
-            {
-                board["prefs_comments"] = ExpressionConverter.ConvertO(boardcommentPreferences);
-                boardpropCount++;
-            }
+                if (boardpermissionLevel != null)
+                {
+                    board["prefs_permissionLevel"] = ExpressionConverter.ConvertO(boardpermissionLevel);
+                    boardpropCount++;
+                }
 
-            if (boardinvitationPreferences != null)
-            {
-                board["prefs_invitations"] = ExpressionConverter.ConvertO(boardinvitationPreferences);
-                boardpropCount++;
-            }
+                if (boardcommentPreferences != null)
+                {
+                    board["prefs_comments"] = ExpressionConverter.ConvertO(boardcommentPreferences);
+                    boardpropCount++;
+                }
 
-            if (boarduseCardCovers != null)
-            {
-                board["prefs_cardCovers"] = ExpressionConverter.ConvertO(boarduseCardCovers);
-                boardpropCount++;
-            }
+                if (boardinvitationPreferences != null)
+                {
+                    board["prefs_invitations"] = ExpressionConverter.ConvertO(boardinvitationPreferences);
+                    boardpropCount++;
+                }
 
-            if (boardbackgroundColor != null)
-            {
-                board["prefs_background"] = ExpressionConverter.ConvertO(boardbackgroundColor);
-                boardpropCount++;
-            }
+                if (boarduseCardCovers != null)
+                {
+                    board["prefs_cardCovers"] = ExpressionConverter.ConvertO(boarduseCardCovers);
+                    boardpropCount++;
+                }
 
-            if (boardvotingPowerUpPreferences != null)
-            {
-                board["prefs_voting"] = ExpressionConverter.ConvertO(boardvotingPowerUpPreferences);
-                boardpropCount++;
-            }
+                if (boardbackgroundColor != null)
+                {
+                    board["prefs_background"] = ExpressionConverter.ConvertO(boardbackgroundColor);
+                    boardpropCount++;
+                }
 
-            if (boardcardAgingPowerUpPreferences != null)
-            {
-                board["prefs_cardAging"] = ExpressionConverter.ConvertO(boardcardAgingPowerUpPreferences);
-                boardpropCount++;
-            }
+                if (boardvotingPowerUpPreferences != null)
+                {
+                    board["prefs_voting"] = ExpressionConverter.ConvertO(boardvotingPowerUpPreferences);
+                    boardpropCount++;
+                }
 
-            if (boardenableCalendarPowerUp != null)
-            {
-                board["enable_calendar"] = ExpressionConverter.ConvertO(boardenableCalendarPowerUp);
-                boardpropCount++;
-            }
+                if (boardcardAgingPowerUpPreferences != null)
+                {
+                    board["prefs_cardAging"] = ExpressionConverter.ConvertO(boardcardAgingPowerUpPreferences);
+                    boardpropCount++;
+                }
 
-            if (boardpropCount > 0)
-            {
-                callPayload.Body = board;
-            }
+                if (boardenableCalendarPowerUp != null)
+                {
+                    board["enable_calendar"] = ExpressionConverter.ConvertO(boardenableCalendarPowerUp);
+                    boardpropCount++;
+                }
 
-            return new ApiConnectionAction<Board>(callPayload);
+                if (boardpropCount > 0)
+                {
+                    callPayload.Body = board;
+                }
+
+                return new ApiConnectionAction<Board>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<List[]> ListLists(Expression<Func<string>> boardId, Expression<Func<cardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<filterInput>> filter = null, Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListLists))]
+        public IBodyWorkflowAction<List[]> ListLists([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<cardsInput> cards = null, [WorkflowExpression] Func<string> cardFields = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = String.Format("/boards/{0}/lists", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (cards != null)
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            if (cardFields != null)
-                callPayload.Queries["card_fields"] = ExpressionConverter.Convert(cardFields);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<List[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List[]> __BuildListLists(WorkflowExpression<string> boardId, WorkflowExpression<cardsInput> cards = null, WorkflowExpression<string> cardFields = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cards, nameof(cards), required: false);
+            WorkflowExpression.Validate(cardFields, nameof(cardFields), required: false);
+            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<List[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/lists", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (cards != null)
+                    callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                if (cardFields != null)
+                    callPayload.Queries["card_fields"] = ExpressionConverter.Convert(cardFields);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<List[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<List[]> ListListsSimple(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildListListsSimple))]
+        public IBodyWorkflowAction<List[]> ListListsSimple([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/simple/boards/{0}/lists", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<List[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List[]> __BuildListListsSimple(WorkflowExpression<string> boardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<List[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/simple/boards/{0}/lists", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<List[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<List> GetList(Expression<Func<string>> boardId, Expression<Func<string>> listId, Expression<Func<cardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<bool>> board = null, Expression<Func<string>> boardFields = null, Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetList))]
+        public IBodyWorkflowAction<List> GetList([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<cardsInput> cards = null, [WorkflowExpression] Func<string> cardFields = null, [WorkflowExpression] Func<bool> board = null, [WorkflowExpression] Func<string> boardFields = null, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            if (cards != null)
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            if (cardFields != null)
-                callPayload.Queries["card_fields"] = ExpressionConverter.Convert(cardFields);
-            if (board != null)
-                callPayload.Queries["board"] = ExpressionConverter.Convert(board);
-            if (boardFields != null)
-                callPayload.Queries["board_fields"] = ExpressionConverter.Convert(boardFields);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<List>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List> __BuildGetList(WorkflowExpression<string> boardId, WorkflowExpression<string> listId, WorkflowExpression<cardsInput> cards = null, WorkflowExpression<string> cardFields = null, WorkflowExpression<bool> board = null, WorkflowExpression<string> boardFields = null, WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(listId, nameof(listId), required: true);
+            WorkflowExpression.Validate(cards, nameof(cards), required: false);
+            WorkflowExpression.Validate(cardFields, nameof(cardFields), required: false);
+            WorkflowExpression.Validate(board, nameof(board), required: false);
+            WorkflowExpression.Validate(boardFields, nameof(boardFields), required: false);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<List>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                if (cards != null)
+                    callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                if (cardFields != null)
+                    callPayload.Queries["card_fields"] = ExpressionConverter.Convert(cardFields);
+                if (board != null)
+                    callPayload.Queries["board"] = ExpressionConverter.Convert(board);
+                if (boardFields != null)
+                    callPayload.Queries["board_fields"] = ExpressionConverter.Convert(boardFields);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<List>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<CreateListResponse> UpdateList(Expression<Func<string>> boardId, Expression<Func<string>> listId, Expression<Func<string>> name = null, Expression<Func<closedInput>> closed = null, Expression<Func<string>> idBoard = null, Expression<Func<posInput>> pos = null, Expression<Func<subscribedInput>> subscribed = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateList))]
+        public IBodyWorkflowAction<CreateListResponse> UpdateList([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<closedInput> closed = null, [WorkflowExpression] Func<string> idBoard = null, [WorkflowExpression] Func<posInput> pos = null, [WorkflowExpression] Func<subscribedInput> subscribed = null)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (closed != null)
-                callPayload.Queries["closed"] = ExpressionConverter.Convert(closed);
-            if (idBoard != null)
-                callPayload.Queries["idBoard"] = ExpressionConverter.Convert(idBoard);
-            if (pos != null)
-                callPayload.Queries["pos"] = ExpressionConverter.Convert(pos);
-            if (subscribed != null)
-                callPayload.Queries["subscribed"] = ExpressionConverter.Convert(subscribed);
-            return new ApiConnectionAction<CreateListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateListResponse> __BuildUpdateList(WorkflowExpression<string> boardId, WorkflowExpression<string> listId, WorkflowExpression<string> name = null, WorkflowExpression<closedInput> closed = null, WorkflowExpression<string> idBoard = null, WorkflowExpression<posInput> pos = null, WorkflowExpression<subscribedInput> subscribed = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(listId, nameof(listId), required: true);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(closed, nameof(closed), required: false);
+            WorkflowExpression.Validate(idBoard, nameof(idBoard), required: false);
+            WorkflowExpression.Validate(pos, nameof(pos), required: false);
+            WorkflowExpression.Validate(subscribed, nameof(subscribed), required: false);
+            return new DeferredBodyAction<CreateListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (closed != null)
+                    callPayload.Queries["closed"] = ExpressionConverter.Convert(closed);
+                if (idBoard != null)
+                    callPayload.Queries["idBoard"] = ExpressionConverter.Convert(idBoard);
+                if (pos != null)
+                    callPayload.Queries["pos"] = ExpressionConverter.Convert(pos);
+                if (subscribed != null)
+                    callPayload.Queries["subscribed"] = ExpressionConverter.Convert(subscribed);
+                return new ApiConnectionAction<CreateListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<JToken> GetUserProfile(Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetUserProfile))]
+        public IBodyWorkflowAction<JToken> GetUserProfile([WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/members/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetUserProfile(WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/members/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
@@ -421,452 +667,661 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Member[]> ListTeamMembers(Expression<Func<string>> teamId)
+        [WorkflowExpressionFactory(nameof(__BuildListTeamMembers))]
+        public IBodyWorkflowAction<Member[]> ListTeamMembers([WorkflowExpression] Func<string> teamId)
         {
-            var apiCallPath = String.Format("/organizations/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Member[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Member[]> __BuildListTeamMembers(WorkflowExpression<string> teamId)
+        {
+            WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
+            return new DeferredBodyAction<Member[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Member[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Member[]> ListBoardMembers(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildListBoardMembers))]
+        public IBodyWorkflowAction<Member[]> ListBoardMembers([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/boards/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Member[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Member[]> __BuildListBoardMembers(WorkflowExpression<string> boardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<Member[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Member[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<BoardLabel[]> ListBoardLabels(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildListBoardLabels))]
+        public IBodyWorkflowAction<BoardLabel[]> ListBoardLabels([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/boards/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(1000);
-            return new ApiConnectionAction<BoardLabel[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BoardLabel[]> __BuildListBoardLabels(WorkflowExpression<string> boardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<BoardLabel[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(1000);
+                return new ApiConnectionAction<BoardLabel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Team> GetTeamForBoard(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildGetTeamForBoard))]
+        public IBodyWorkflowAction<Team> GetTeamForBoard([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/boards/{0}/organization", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Team>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Team> __BuildGetTeamForBoard(WorkflowExpression<string> boardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<Team>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/organization", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Team>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Member[]> ListCardMembers(Expression<Func<string>> boardId, Expression<Func<string>> cardId)
+        [WorkflowExpressionFactory(nameof(__BuildListCardMembers))]
+        public IBodyWorkflowAction<Member[]> ListCardMembers([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/cards/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            return new ApiConnectionAction<Member[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Member[]> __BuildListCardMembers(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<Member[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                return new ApiConnectionAction<Member[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Comment[]> ListCardComments(Expression<Func<string>> boardId, Expression<Func<string>> cardId)
+        [WorkflowExpressionFactory(nameof(__BuildListCardComments))]
+        public IBodyWorkflowAction<Comment[]> ListCardComments([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/cards/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            return new ApiConnectionAction<Comment[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Comment[]> __BuildListCardComments(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<Comment[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                return new ApiConnectionAction<Comment[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Comment> AddCommentToCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> commentcommentText = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddCommentToCard))]
+        public IBodyWorkflowAction<Comment> AddCommentToCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> commentcommentText = null)
         {
-            var apiCallPath = String.Format("/cards/{0}/actions/comments", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            if (commentcommentText != null)
-            {
-                comment["text"] = ExpressionConverter.ConvertO(commentcommentText);
-                commentpropCount++;
-            }
-
-            if (commentpropCount > 0)
-            {
-                callPayload.Body = comment;
-            }
-
-            return new ApiConnectionAction<Comment>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Member[]> AddMemberToCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> memberId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Comment> __BuildAddCommentToCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> commentcommentText = null)
         {
-            var apiCallPath = String.Format("/cards/{0}/idMembers", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["memberId"] = ExpressionConverter.Convert(memberId);
-            return new ApiConnectionAction<Member[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board> CreateBoard(Expression<Func<string>> boardboardName, Expression<Func<boardcreateDefaultListsInput>> boardcreateDefaultLists = null, Expression<Func<string>> boardboardDescription = null, Expression<Func<string>> boardteamId = null, Expression<Func<boardpermissionLevelInput>> boardpermissionLevel = null, Expression<Func<boardcommentPreferencesInput>> boardcommentPreferences = null, Expression<Func<boardinvitationPreferencesInput>> boardinvitationPreferences = null, Expression<Func<boarduseCardCoversInput>> boarduseCardCovers = null, Expression<Func<boardbackgroundColorInput>> boardbackgroundColor = null, Expression<Func<boardvotingPowerUpPreferencesInput>> boardvotingPowerUpPreferences = null, Expression<Func<boardcardAgingPowerUpPreferencesInput>> boardcardAgingPowerUpPreferences = null, Expression<Func<boardenableCalendarPowerUpInput>> boardenableCalendarPowerUp = null)
-        {
-            var apiCallPath = "/boards";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var board = new JObject();
-            var boardpropCount = 0;
-            boardpropCount++;
-            board["name"] = ExpressionConverter.ConvertO(boardboardName);
-            if (boardcreateDefaultLists != null)
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            WorkflowExpression.Validate(commentcommentText, nameof(commentcommentText), required: false);
+            return new DeferredBodyAction<Comment>(() =>
             {
-                board["defaultLists"] = ExpressionConverter.ConvertO(boardcreateDefaultLists);
-                boardpropCount++;
-            }
-
-            if (boardboardDescription != null)
-            {
-                board["desc"] = ExpressionConverter.ConvertO(boardboardDescription);
-                boardpropCount++;
-            }
-
-            if (boardteamId != null)
-            {
-                board["idOrganization"] = ExpressionConverter.ConvertO(boardteamId);
-                boardpropCount++;
-            }
-
-            if (boardpermissionLevel != null)
-            {
-                board["prefs_permissionLevel"] = ExpressionConverter.ConvertO(boardpermissionLevel);
-                boardpropCount++;
-            }
-
-            if (boardcommentPreferences != null)
-            {
-                board["prefs_comments"] = ExpressionConverter.ConvertO(boardcommentPreferences);
-                boardpropCount++;
-            }
-
-            if (boardinvitationPreferences != null)
-            {
-                board["prefs_invitations"] = ExpressionConverter.ConvertO(boardinvitationPreferences);
-                boardpropCount++;
-            }
-
-            if (boarduseCardCovers != null)
-            {
-                board["prefs_cardCovers"] = ExpressionConverter.ConvertO(boarduseCardCovers);
-                boardpropCount++;
-            }
-
-            if (boardbackgroundColor != null)
-            {
-                board["prefs_background"] = ExpressionConverter.ConvertO(boardbackgroundColor);
-                boardpropCount++;
-            }
-
-            if (boardvotingPowerUpPreferences != null)
-            {
-                board["prefs_voting"] = ExpressionConverter.ConvertO(boardvotingPowerUpPreferences);
-                boardpropCount++;
-            }
-
-            if (boardcardAgingPowerUpPreferences != null)
-            {
-                board["prefs_cardAging"] = ExpressionConverter.ConvertO(boardcardAgingPowerUpPreferences);
-                boardpropCount++;
-            }
-
-            if (boardenableCalendarPowerUp != null)
-            {
-                board["enable_calendar"] = ExpressionConverter.ConvertO(boardenableCalendarPowerUp);
-                boardpropCount++;
-            }
-
-            if (boardpropCount > 0)
-            {
-                callPayload.Body = board;
-            }
-
-            return new ApiConnectionAction<Board>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<CreateListResponse> CreateList(Expression<Func<string>> listlistName, Expression<Func<string>> listboardId, Expression<Func<listlistPositionInput>> listlistPosition = null, Expression<Func<string>> listlistSource = null)
-        {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var list = new JObject();
-            var listpropCount = 0;
-            listpropCount++;
-            list["name"] = ExpressionConverter.ConvertO(listlistName);
-            listpropCount++;
-            list["idBoard"] = ExpressionConverter.ConvertO(listboardId);
-            if (listlistPosition != null)
-            {
-                list["pos"] = ExpressionConverter.ConvertO(listlistPosition);
-                listpropCount++;
-            }
-
-            if (listlistSource != null)
-            {
-                list["idListSource"] = ExpressionConverter.ConvertO(listlistSource);
-                listpropCount++;
-            }
-
-            if (listpropCount > 0)
-            {
-                callPayload.Body = list;
-            }
-
-            return new ApiConnectionAction<CreateListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board> CloseBoard(Expression<Func<string>> boardId)
-        {
-            var apiCallPath = String.Format("/boards/{0}/closed", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Board>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card> CreateCard(Expression<Func<string>> boardId, Expression<Func<string>> newCardparentListId, Expression<Func<string>> newCardcardName, Expression<Func<string>> newCardcardDescription = null, Expression<Func<newCardcardPositionInput>> newCardcardPosition = null, Expression<Func<string[]>> newCardmemberIds = null, Expression<Func<string[]>> newCardlabelIds = null, Expression<Func<string>> newCardsourceUrl = null, Expression<Func<string>> newCardsourceFile = null, Expression<Func<string>> newCardsourceCardId = null, Expression<Func<string>> newCardpropertiesFromSourceCard = null, Expression<Func<string>> newCarddueDate = null)
-        {
-            var apiCallPath = "/v2/cards";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            var newCard = new JObject();
-            var newCardpropCount = 0;
-            newCardpropCount++;
-            newCard["idList"] = ExpressionConverter.ConvertO(newCardparentListId);
-            newCardpropCount++;
-            newCard["name"] = ExpressionConverter.ConvertO(newCardcardName);
-            if (newCardcardDescription != null)
-            {
-                newCard["desc"] = ExpressionConverter.ConvertO(newCardcardDescription);
-                newCardpropCount++;
-            }
-
-            if (newCardcardPosition != null)
-            {
-                newCard["pos"] = ExpressionConverter.ConvertO(newCardcardPosition);
-                newCardpropCount++;
-            }
-
-            if (newCardmemberIds != null)
-            {
-                newCard["idMembersArray"] = ExpressionConverter.ConvertO(newCardmemberIds);
-                newCardpropCount++;
-            }
-
-            if (newCardlabelIds != null)
-            {
-                newCard["idLabelsArray"] = ExpressionConverter.ConvertO(newCardlabelIds);
-                newCardpropCount++;
-            }
-
-            if (newCardsourceUrl != null)
-            {
-                if (newCardsourceUrl != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/actions/comments", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                if (commentcommentText != null)
                 {
-                    newCard["urlSource"] = ExpressionConverter.ConvertO(newCardsourceUrl);
+                    comment["text"] = ExpressionConverter.ConvertO(commentcommentText);
+                    commentpropCount++;
+                }
+
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
+
+                return new ApiConnectionAction<Comment>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        [WorkflowExpressionFactory(nameof(__BuildAddMemberToCard))]
+        public IBodyWorkflowAction<Member[]> AddMemberToCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> memberId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Member[]> __BuildAddMemberToCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> memberId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            WorkflowExpression.Validate(memberId, nameof(memberId), required: true);
+            return new DeferredBodyAction<Member[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/idMembers", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                callPayload.Queries["memberId"] = ExpressionConverter.Convert(memberId);
+                return new ApiConnectionAction<Member[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateBoard))]
+        public IBodyWorkflowAction<Board> CreateBoard([WorkflowExpression] Func<string> boardboardName, [WorkflowExpression] Func<boardcreateDefaultListsInput> boardcreateDefaultLists = null, [WorkflowExpression] Func<string> boardboardDescription = null, [WorkflowExpression] Func<string> boardteamId = null, [WorkflowExpression] Func<boardpermissionLevelInput> boardpermissionLevel = null, [WorkflowExpression] Func<boardcommentPreferencesInput> boardcommentPreferences = null, [WorkflowExpression] Func<boardinvitationPreferencesInput> boardinvitationPreferences = null, [WorkflowExpression] Func<boarduseCardCoversInput> boarduseCardCovers = null, [WorkflowExpression] Func<boardbackgroundColorInput> boardbackgroundColor = null, [WorkflowExpression] Func<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, [WorkflowExpression] Func<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, [WorkflowExpression] Func<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Board> __BuildCreateBoard(WorkflowExpression<string> boardboardName, WorkflowExpression<boardcreateDefaultListsInput> boardcreateDefaultLists = null, WorkflowExpression<string> boardboardDescription = null, WorkflowExpression<string> boardteamId = null, WorkflowExpression<boardpermissionLevelInput> boardpermissionLevel = null, WorkflowExpression<boardcommentPreferencesInput> boardcommentPreferences = null, WorkflowExpression<boardinvitationPreferencesInput> boardinvitationPreferences = null, WorkflowExpression<boarduseCardCoversInput> boarduseCardCovers = null, WorkflowExpression<boardbackgroundColorInput> boardbackgroundColor = null, WorkflowExpression<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, WorkflowExpression<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, WorkflowExpression<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
+        {
+            WorkflowExpression.Validate(boardboardName, nameof(boardboardName), required: true);
+            WorkflowExpression.Validate(boardcreateDefaultLists, nameof(boardcreateDefaultLists), required: false);
+            WorkflowExpression.Validate(boardboardDescription, nameof(boardboardDescription), required: false);
+            WorkflowExpression.Validate(boardteamId, nameof(boardteamId), required: false);
+            WorkflowExpression.Validate(boardpermissionLevel, nameof(boardpermissionLevel), required: false);
+            WorkflowExpression.Validate(boardcommentPreferences, nameof(boardcommentPreferences), required: false);
+            WorkflowExpression.Validate(boardinvitationPreferences, nameof(boardinvitationPreferences), required: false);
+            WorkflowExpression.Validate(boarduseCardCovers, nameof(boarduseCardCovers), required: false);
+            WorkflowExpression.Validate(boardbackgroundColor, nameof(boardbackgroundColor), required: false);
+            WorkflowExpression.Validate(boardvotingPowerUpPreferences, nameof(boardvotingPowerUpPreferences), required: false);
+            WorkflowExpression.Validate(boardcardAgingPowerUpPreferences, nameof(boardcardAgingPowerUpPreferences), required: false);
+            WorkflowExpression.Validate(boardenableCalendarPowerUp, nameof(boardenableCalendarPowerUp), required: false);
+            return new DeferredBodyAction<Board>(() =>
+            {
+                var apiCallPath = "/boards";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var board = new JObject();
+                var boardpropCount = 0;
+                boardpropCount++;
+                board["name"] = ExpressionConverter.ConvertO(boardboardName);
+                if (boardcreateDefaultLists != null)
+                {
+                    board["defaultLists"] = ExpressionConverter.ConvertO(boardcreateDefaultLists);
+                    boardpropCount++;
+                }
+
+                if (boardboardDescription != null)
+                {
+                    board["desc"] = ExpressionConverter.ConvertO(boardboardDescription);
+                    boardpropCount++;
+                }
+
+                if (boardteamId != null)
+                {
+                    board["idOrganization"] = ExpressionConverter.ConvertO(boardteamId);
+                    boardpropCount++;
+                }
+
+                if (boardpermissionLevel != null)
+                {
+                    board["prefs_permissionLevel"] = ExpressionConverter.ConvertO(boardpermissionLevel);
+                    boardpropCount++;
+                }
+
+                if (boardcommentPreferences != null)
+                {
+                    board["prefs_comments"] = ExpressionConverter.ConvertO(boardcommentPreferences);
+                    boardpropCount++;
+                }
+
+                if (boardinvitationPreferences != null)
+                {
+                    board["prefs_invitations"] = ExpressionConverter.ConvertO(boardinvitationPreferences);
+                    boardpropCount++;
+                }
+
+                if (boarduseCardCovers != null)
+                {
+                    board["prefs_cardCovers"] = ExpressionConverter.ConvertO(boarduseCardCovers);
+                    boardpropCount++;
+                }
+
+                if (boardbackgroundColor != null)
+                {
+                    board["prefs_background"] = ExpressionConverter.ConvertO(boardbackgroundColor);
+                    boardpropCount++;
+                }
+
+                if (boardvotingPowerUpPreferences != null)
+                {
+                    board["prefs_voting"] = ExpressionConverter.ConvertO(boardvotingPowerUpPreferences);
+                    boardpropCount++;
+                }
+
+                if (boardcardAgingPowerUpPreferences != null)
+                {
+                    board["prefs_cardAging"] = ExpressionConverter.ConvertO(boardcardAgingPowerUpPreferences);
+                    boardpropCount++;
+                }
+
+                if (boardenableCalendarPowerUp != null)
+                {
+                    board["enable_calendar"] = ExpressionConverter.ConvertO(boardenableCalendarPowerUp);
+                    boardpropCount++;
+                }
+
+                if (boardpropCount > 0)
+                {
+                    callPayload.Body = board;
+                }
+
+                return new ApiConnectionAction<Board>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateList))]
+        public IBodyWorkflowAction<CreateListResponse> CreateList([WorkflowExpression] Func<string> listlistName, [WorkflowExpression] Func<string> listboardId, [WorkflowExpression] Func<listlistPositionInput> listlistPosition = null, [WorkflowExpression] Func<string> listlistSource = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateListResponse> __BuildCreateList(WorkflowExpression<string> listlistName, WorkflowExpression<string> listboardId, WorkflowExpression<listlistPositionInput> listlistPosition = null, WorkflowExpression<string> listlistSource = null)
+        {
+            WorkflowExpression.Validate(listlistName, nameof(listlistName), required: true);
+            WorkflowExpression.Validate(listboardId, nameof(listboardId), required: true);
+            WorkflowExpression.Validate(listlistPosition, nameof(listlistPosition), required: false);
+            WorkflowExpression.Validate(listlistSource, nameof(listlistSource), required: false);
+            return new DeferredBodyAction<CreateListResponse>(() =>
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var list = new JObject();
+                var listpropCount = 0;
+                listpropCount++;
+                list["name"] = ExpressionConverter.ConvertO(listlistName);
+                listpropCount++;
+                list["idBoard"] = ExpressionConverter.ConvertO(listboardId);
+                if (listlistPosition != null)
+                {
+                    list["pos"] = ExpressionConverter.ConvertO(listlistPosition);
+                    listpropCount++;
+                }
+
+                if (listlistSource != null)
+                {
+                    list["idListSource"] = ExpressionConverter.ConvertO(listlistSource);
+                    listpropCount++;
+                }
+
+                if (listpropCount > 0)
+                {
+                    callPayload.Body = list;
+                }
+
+                return new ApiConnectionAction<CreateListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        [WorkflowExpressionFactory(nameof(__BuildCloseBoard))]
+        public IBodyWorkflowAction<Board> CloseBoard([WorkflowExpression] Func<string> boardId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Board> __BuildCloseBoard(WorkflowExpression<string> boardId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<Board>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/closed", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Board>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateCard))]
+        public IBodyWorkflowAction<Card> CreateCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> newCardparentListId, [WorkflowExpression] Func<string> newCardcardName, [WorkflowExpression] Func<string> newCardcardDescription = null, [WorkflowExpression] Func<newCardcardPositionInput> newCardcardPosition = null, [WorkflowExpression] Func<string[]> newCardmemberIds = null, [WorkflowExpression] Func<string[]> newCardlabelIds = null, [WorkflowExpression] Func<string> newCardsourceUrl = null, [WorkflowExpression] Func<string> newCardsourceFile = null, [WorkflowExpression] Func<string> newCardsourceCardId = null, [WorkflowExpression] Func<string> newCardpropertiesFromSourceCard = null, [WorkflowExpression] Func<string> newCarddueDate = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Card> __BuildCreateCard(WorkflowExpression<string> boardId, WorkflowExpression<string> newCardparentListId, WorkflowExpression<string> newCardcardName, WorkflowExpression<string> newCardcardDescription = null, WorkflowExpression<newCardcardPositionInput> newCardcardPosition = null, WorkflowExpression<string[]> newCardmemberIds = null, WorkflowExpression<string[]> newCardlabelIds = null, WorkflowExpression<string> newCardsourceUrl = null, WorkflowExpression<string> newCardsourceFile = null, WorkflowExpression<string> newCardsourceCardId = null, WorkflowExpression<string> newCardpropertiesFromSourceCard = null, WorkflowExpression<string> newCarddueDate = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(newCardparentListId, nameof(newCardparentListId), required: true);
+            WorkflowExpression.Validate(newCardcardName, nameof(newCardcardName), required: true);
+            WorkflowExpression.Validate(newCardcardDescription, nameof(newCardcardDescription), required: false);
+            WorkflowExpression.Validate(newCardcardPosition, nameof(newCardcardPosition), required: false);
+            WorkflowExpression.Validate(newCardmemberIds, nameof(newCardmemberIds), required: false);
+            WorkflowExpression.Validate(newCardlabelIds, nameof(newCardlabelIds), required: false);
+            WorkflowExpression.Validate(newCardsourceUrl, nameof(newCardsourceUrl), required: false);
+            WorkflowExpression.Validate(newCardsourceFile, nameof(newCardsourceFile), required: false);
+            WorkflowExpression.Validate(newCardsourceCardId, nameof(newCardsourceCardId), required: false);
+            WorkflowExpression.Validate(newCardpropertiesFromSourceCard, nameof(newCardpropertiesFromSourceCard), required: false);
+            WorkflowExpression.Validate(newCarddueDate, nameof(newCarddueDate), required: false);
+            return new DeferredBodyAction<Card>(() =>
+            {
+                var apiCallPath = "/v2/cards";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                var newCard = new JObject();
+                var newCardpropCount = 0;
+                newCardpropCount++;
+                newCard["idList"] = ExpressionConverter.ConvertO(newCardparentListId);
+                newCardpropCount++;
+                newCard["name"] = ExpressionConverter.ConvertO(newCardcardName);
+                if (newCardcardDescription != null)
+                {
+                    newCard["desc"] = ExpressionConverter.ConvertO(newCardcardDescription);
                     newCardpropCount++;
                 }
 
-                newCardpropCount++;
-            }
-            else
-            {
-                newCard["urlSource"] = "null";
-                newCardpropCount++;
-            }
+                if (newCardcardPosition != null)
+                {
+                    newCard["pos"] = ExpressionConverter.ConvertO(newCardcardPosition);
+                    newCardpropCount++;
+                }
 
-            if (newCardsourceFile != null)
-            {
-                newCard["fileSource"] = ExpressionConverter.ConvertO(newCardsourceFile);
-                newCardpropCount++;
-            }
+                if (newCardmemberIds != null)
+                {
+                    newCard["idMembersArray"] = ExpressionConverter.ConvertO(newCardmemberIds);
+                    newCardpropCount++;
+                }
 
-            if (newCardsourceCardId != null)
-            {
-                newCard["idCardSource"] = ExpressionConverter.ConvertO(newCardsourceCardId);
-                newCardpropCount++;
-            }
+                if (newCardlabelIds != null)
+                {
+                    newCard["idLabelsArray"] = ExpressionConverter.ConvertO(newCardlabelIds);
+                    newCardpropCount++;
+                }
 
-            if (newCardpropertiesFromSourceCard != null)
-            {
-                newCard["keepFromSource"] = ExpressionConverter.ConvertO(newCardpropertiesFromSourceCard);
-                newCardpropCount++;
-            }
+                if (newCardsourceUrl != null)
+                {
+                    if (newCardsourceUrl != null)
+                    {
+                        newCard["urlSource"] = ExpressionConverter.ConvertO(newCardsourceUrl);
+                        newCardpropCount++;
+                    }
 
-            if (newCarddueDate != null)
-            {
-                newCard["due"] = ExpressionConverter.ConvertO(newCarddueDate);
-                newCardpropCount++;
-            }
+                    newCardpropCount++;
+                }
+                else
+                {
+                    newCard["urlSource"] = "null";
+                    newCardpropCount++;
+                }
 
-            if (newCardpropCount > 0)
-            {
-                callPayload.Body = newCard;
-            }
+                if (newCardsourceFile != null)
+                {
+                    newCard["fileSource"] = ExpressionConverter.ConvertO(newCardsourceFile);
+                    newCardpropCount++;
+                }
 
-            return new ApiConnectionAction<Card>(callPayload);
+                if (newCardsourceCardId != null)
+                {
+                    newCard["idCardSource"] = ExpressionConverter.ConvertO(newCardsourceCardId);
+                    newCardpropCount++;
+                }
+
+                if (newCardpropertiesFromSourceCard != null)
+                {
+                    newCard["keepFromSource"] = ExpressionConverter.ConvertO(newCardpropertiesFromSourceCard);
+                    newCardpropCount++;
+                }
+
+                if (newCarddueDate != null)
+                {
+                    newCard["due"] = ExpressionConverter.ConvertO(newCarddueDate);
+                    newCardpropCount++;
+                }
+
+                if (newCardpropCount > 0)
+                {
+                    callPayload.Body = newCard;
+                }
+
+                return new ApiConnectionAction<Card>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card> UpdateCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> updateCardname, Expression<Func<string>> updateCarddescription = null, Expression<Func<bool>> updateCardisClosed = null, Expression<Func<string[]>> updateCardmemberIds = null, Expression<Func<string>> updateCardcoverAttachmentIds = null, Expression<Func<string>> updateCardboardId = null, Expression<Func<string>> updateCardlistId = null, Expression<Func<string>> updateCardposition = null, Expression<Func<string>> updateCarddueDate = null, Expression<Func<bool>> updateCardsubscribedToCard = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateCard))]
+        public IBodyWorkflowAction<Card> UpdateCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> updateCardname, [WorkflowExpression] Func<string> updateCarddescription = null, [WorkflowExpression] Func<bool> updateCardisClosed = null, [WorkflowExpression] Func<string[]> updateCardmemberIds = null, [WorkflowExpression] Func<string> updateCardcoverAttachmentIds = null, [WorkflowExpression] Func<string> updateCardboardId = null, [WorkflowExpression] Func<string> updateCardlistId = null, [WorkflowExpression] Func<string> updateCardposition = null, [WorkflowExpression] Func<string> updateCarddueDate = null, [WorkflowExpression] Func<bool> updateCardsubscribedToCard = null)
         {
-            var apiCallPath = String.Format("/v2/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            var updateCard = new JObject();
-            var updateCardpropCount = 0;
-            updateCardpropCount++;
-            updateCard["name"] = ExpressionConverter.ConvertO(updateCardname);
-            if (updateCarddescription != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Card> __BuildUpdateCard(WorkflowExpression<string> boardId, WorkflowExpression<string> cardId, WorkflowExpression<string> updateCardname, WorkflowExpression<string> updateCarddescription = null, WorkflowExpression<bool> updateCardisClosed = null, WorkflowExpression<string[]> updateCardmemberIds = null, WorkflowExpression<string> updateCardcoverAttachmentIds = null, WorkflowExpression<string> updateCardboardId = null, WorkflowExpression<string> updateCardlistId = null, WorkflowExpression<string> updateCardposition = null, WorkflowExpression<string> updateCarddueDate = null, WorkflowExpression<bool> updateCardsubscribedToCard = null)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            WorkflowExpression.Validate(updateCardname, nameof(updateCardname), required: true);
+            WorkflowExpression.Validate(updateCarddescription, nameof(updateCarddescription), required: false);
+            WorkflowExpression.Validate(updateCardisClosed, nameof(updateCardisClosed), required: false);
+            WorkflowExpression.Validate(updateCardmemberIds, nameof(updateCardmemberIds), required: false);
+            WorkflowExpression.Validate(updateCardcoverAttachmentIds, nameof(updateCardcoverAttachmentIds), required: false);
+            WorkflowExpression.Validate(updateCardboardId, nameof(updateCardboardId), required: false);
+            WorkflowExpression.Validate(updateCardlistId, nameof(updateCardlistId), required: false);
+            WorkflowExpression.Validate(updateCardposition, nameof(updateCardposition), required: false);
+            WorkflowExpression.Validate(updateCarddueDate, nameof(updateCarddueDate), required: false);
+            WorkflowExpression.Validate(updateCardsubscribedToCard, nameof(updateCardsubscribedToCard), required: false);
+            return new DeferredBodyAction<Card>(() =>
             {
-                updateCard["desc"] = ExpressionConverter.ConvertO(updateCarddescription);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                var updateCard = new JObject();
+                var updateCardpropCount = 0;
                 updateCardpropCount++;
-            }
+                updateCard["name"] = ExpressionConverter.ConvertO(updateCardname);
+                if (updateCarddescription != null)
+                {
+                    updateCard["desc"] = ExpressionConverter.ConvertO(updateCarddescription);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardisClosed != null)
-            {
-                updateCard["closed"] = ExpressionConverter.ConvertO(updateCardisClosed);
-                updateCardpropCount++;
-            }
+                if (updateCardisClosed != null)
+                {
+                    updateCard["closed"] = ExpressionConverter.ConvertO(updateCardisClosed);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardmemberIds != null)
-            {
-                updateCard["idMembersArray"] = ExpressionConverter.ConvertO(updateCardmemberIds);
-                updateCardpropCount++;
-            }
+                if (updateCardmemberIds != null)
+                {
+                    updateCard["idMembersArray"] = ExpressionConverter.ConvertO(updateCardmemberIds);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardcoverAttachmentIds != null)
-            {
-                updateCard["idAttachmentCover"] = ExpressionConverter.ConvertO(updateCardcoverAttachmentIds);
-                updateCardpropCount++;
-            }
+                if (updateCardcoverAttachmentIds != null)
+                {
+                    updateCard["idAttachmentCover"] = ExpressionConverter.ConvertO(updateCardcoverAttachmentIds);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardboardId != null)
-            {
-                updateCard["idBoard"] = ExpressionConverter.ConvertO(updateCardboardId);
-                updateCardpropCount++;
-            }
+                if (updateCardboardId != null)
+                {
+                    updateCard["idBoard"] = ExpressionConverter.ConvertO(updateCardboardId);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardlistId != null)
-            {
-                updateCard["idList"] = ExpressionConverter.ConvertO(updateCardlistId);
-                updateCardpropCount++;
-            }
+                if (updateCardlistId != null)
+                {
+                    updateCard["idList"] = ExpressionConverter.ConvertO(updateCardlistId);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardposition != null)
-            {
-                updateCard["pos"] = ExpressionConverter.ConvertO(updateCardposition);
-                updateCardpropCount++;
-            }
+                if (updateCardposition != null)
+                {
+                    updateCard["pos"] = ExpressionConverter.ConvertO(updateCardposition);
+                    updateCardpropCount++;
+                }
 
-            if (updateCarddueDate != null)
-            {
-                updateCard["due"] = ExpressionConverter.ConvertO(updateCarddueDate);
-                updateCardpropCount++;
-            }
+                if (updateCarddueDate != null)
+                {
+                    updateCard["due"] = ExpressionConverter.ConvertO(updateCarddueDate);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardsubscribedToCard != null)
-            {
-                updateCard["subscribed"] = ExpressionConverter.ConvertO(updateCardsubscribedToCard);
-                updateCardpropCount++;
-            }
+                if (updateCardsubscribedToCard != null)
+                {
+                    updateCard["subscribed"] = ExpressionConverter.ConvertO(updateCardsubscribedToCard);
+                    updateCardpropCount++;
+                }
 
-            if (updateCardpropCount > 0)
-            {
-                callPayload.Body = updateCard;
-            }
+                if (updateCardpropCount > 0)
+                {
+                    callPayload.Body = updateCard;
+                }
 
-            return new ApiConnectionAction<Card>(callPayload);
+                return new ApiConnectionAction<Card>(callPayload);
+            });
         }
     }
 
     public class TrelloTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoard(Expression<Func<string>> boardId, string triggerName = null)
-        {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
-                {
-                    Template = "/v3/trigger/boards/{0}/actions"
-                },
-                Method = "get",
-            };
-            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
-                {
-                    Template = "/OnBoardChangesSubscription/{0}"
-                },
-                Method = "post",
-            };
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationURL"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                input.Subscribe.Body = subscription;
-            }
 
-            return new ApiConnectionTrigger<CardInAction[]>(input);
+        [WorkflowExpressionFactory(nameof(__BuildOnNewCardInBoard))]
+        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoard([WorkflowExpression] Func<string> boardId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInList(Expression<Func<string>> boardId, Expression<Func<string>> listId, string triggerName = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CardInAction[]> __BuildOnNewCardInBoard(WorkflowExpression<string> boardId)
         {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyTrigger<CardInAction[]>(() =>
             {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                var input = new ApiConnectionNotificationActionInput(connectionId);
+                input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
                 {
-                    Template = "/v3/trigger/lists/{0}/actions"
-                },
-                Method = "get",
-            };
-            input.Fetch.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/v3/trigger/boards/{0}/actions"
+                    },
+                    Method = "get",
+                };
+                input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
-                    Template = "/OnListChangesSubscription/{0}"
-                },
-                Method = "post",
-            };
-            input.Subscribe.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationURL"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                input.Subscribe.Body = subscription;
-            }
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/OnBoardChangesSubscription/{0}"
+                    },
+                    Method = "post",
+                };
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationURL"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    input.Subscribe.Body = subscription;
+                }
 
-            return new ApiConnectionTrigger<CardInAction[]>(input);
+                return new ApiConnectionTrigger<CardInAction[]>(input);
+            });
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewCardInList))]
+        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInList([WorkflowExpression] Func<string> boardId,[WorkflowExpression] Func<string> listId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CardInAction[]> __BuildOnNewCardInList(WorkflowExpression<string> boardId,WorkflowExpression<string> listId)
+        {
+            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
+            WorkflowExpression.Validate(listId, nameof(listId), required: true);
+            return new DeferredBodyTrigger<CardInAction[]>(() =>
+            {
+                var input = new ApiConnectionNotificationActionInput(connectionId);
+                input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+                {
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/v3/trigger/lists/{0}/actions"
+                    },
+                    Method = "get",
+                };
+                input.Fetch.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+                {
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/OnListChangesSubscription/{0}"
+                    },
+                    Method = "post",
+                };
+                input.Subscribe.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationURL"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    input.Subscribe.Body = subscription;
+                }
+
+                return new ApiConnectionTrigger<CardInAction[]>(input);
+            });
         }
     }
 
@@ -1013,6 +1468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string ChecklistId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum checklistsInput
     {
         [EnumMember(Value = "all")]
@@ -1021,6 +1477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         [EnumMember(Value = "all")]
@@ -1261,6 +1718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public bool CanInvite { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionsFormatInput
     {
         [EnumMember(Value = "count")]
@@ -1334,6 +1792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public Checklist[] Checklists { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cardsInput
     {
         [EnumMember(Value = "all")]
@@ -1346,6 +1805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Open
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cardChecklistsInput
     {
         [EnumMember(Value = "all")]
@@ -1354,6 +1814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardStarsInput
     {
         [EnumMember(Value = "mine")]
@@ -1362,6 +1823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum labelsInput
     {
         [EnumMember(Value = "all")]
@@ -1370,6 +1832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum listsInput
     {
         [EnumMember(Value = "all")]
@@ -1382,6 +1845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Open
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum membersInput
     {
         [EnumMember(Value = "admins")]
@@ -1396,6 +1860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Owners
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum membersInvitedInput
     {
         [EnumMember(Value = "admin")]
@@ -1410,6 +1875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Owners
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardcreateDefaultListsInput
     {
         [EnumMember(Value = "true")]
@@ -1418,6 +1884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardpermissionLevelInput
     {
         [EnumMember(Value = "org")]
@@ -1428,6 +1895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardcommentPreferencesInput
     {
         [EnumMember(Value = "disabled")]
@@ -1442,6 +1910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardinvitationPreferencesInput
     {
         [EnumMember(Value = "admins")]
@@ -1450,6 +1919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Members
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boarduseCardCoversInput
     {
         [EnumMember(Value = "true")]
@@ -1458,6 +1928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardbackgroundColorInput
     {
         [EnumMember(Value = "blue")]
@@ -1480,6 +1951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Grey
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardvotingPowerUpPreferencesInput
     {
         [EnumMember(Value = "disabled")]
@@ -1494,6 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardcardAgingPowerUpPreferencesInput
     {
         [EnumMember(Value = "disabled")]
@@ -1504,6 +1977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Regular
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardenableCalendarPowerUpInput
     {
         [EnumMember(Value = "true")]
@@ -1554,6 +2028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public double ListPosition { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum closedInput
     {
         [EnumMember(Value = "true")]
@@ -1562,6 +2037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum posInput
     {
         [EnumMember(Value = "top")]
@@ -1570,6 +2046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Bottom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum subscribedInput
     {
         [EnumMember(Value = "true")]
@@ -1650,6 +2127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string DatetimeCreated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum listlistPositionInput
     {
         [EnumMember(Value = "top")]
@@ -1658,6 +2136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Bottom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newCardcardPositionInput
     {
         [EnumMember(Value = "top")]

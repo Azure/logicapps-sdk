@@ -4,20 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ApyhubdocumentreadabilityActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubdocumentreadability")]
-        public IBodyWorkflowAction<ScorePostResponse> Score(Expression<Func<object>> file, Expression<Func<contentTypeInput>> contentType)
+        [WorkflowExpressionFactory(nameof(__BuildScore))]
+        public IBodyWorkflowAction<ScorePostResponse> Score([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<contentTypeInput> contentType)
         {
-            var apiCallPath = "/extract/document/readability-score/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ScorePostResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScorePostResponse> __BuildScore(WorkflowExpression<object> file, WorkflowExpression<contentTypeInput> contentType)
+        {
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            return new DeferredBodyAction<ScorePostResponse>(() =>
+            {
+                var apiCallPath = "/extract/document/readability-score/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ScorePostResponse>(callPayload);
+            });
         }
     }
 
@@ -88,6 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability
         public double AvgParagraphLength { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "application/pdf")]

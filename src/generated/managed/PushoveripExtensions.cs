@@ -4,79 +4,99 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PushoveripActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodydevice = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodyhtmlInput> bodyhtml = null, [WorkflowExpression] Func<string> bodysound = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyurlTitle = null)
         {
-            var apiCallPath = "/1/messages.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
-            if (bodydevice != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> bodyuser, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodydevice = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodyhtmlInput> bodyhtml = null, WorkflowExpression<string> bodysound = null, WorkflowExpression<string> bodytimestamp = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodyurlTitle = null)
+        {
+            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: true);
+            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowExpression.Validate(bodydevice, nameof(bodydevice), required: false);
+            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: false);
+            WorkflowExpression.Validate(bodysound, nameof(bodysound), required: false);
+            WorkflowExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
+            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
+            WorkflowExpression.Validate(bodyurlTitle, nameof(bodyurlTitle), required: false);
+            return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                var apiCallPath = "/1/messages.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                if (bodydevice != null)
+                {
+                    body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                if (bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodyhtml != null)
+                {
+                    body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                if (bodysound != null)
+                {
+                    body["sound"] = ExpressionConverter.ConvertO(bodysound);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodytimestamp != null)
+                {
+                    body["timestamp"] = ExpressionConverter.ConvertO(bodytimestamp);
+                    bodypropCount++;
+                }
 
-            if (bodyhtml != null)
-            {
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-                bodypropCount++;
-            }
+                if (bodyurl != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodysound != null)
-            {
-                body["sound"] = ExpressionConverter.ConvertO(bodysound);
-                bodypropCount++;
-            }
+                if (bodyurlTitle != null)
+                {
+                    body["url_title"] = ExpressionConverter.ConvertO(bodyurlTitle);
+                    bodypropCount++;
+                }
 
-            if (bodytimestamp != null)
-            {
-                body["timestamp"] = ExpressionConverter.ConvertO(bodytimestamp);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyurl != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
-
-            if (bodyurlTitle != null)
-            {
-                body["url_title"] = ExpressionConverter.ConvertO(bodyurlTitle);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+                return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
@@ -89,27 +109,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
+        [WorkflowExpressionFactory(nameof(__BuildValidateKey))]
+        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodydevice = null)
         {
-            var apiCallPath = "/1/users/validate.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
-            if (bodydevice != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateKeyResponse> __BuildValidateKey(WorkflowExpression<string> bodyuser, WorkflowExpression<string> bodydevice = null)
+        {
+            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: true);
+            WorkflowExpression.Validate(bodydevice, nameof(bodydevice), required: false);
+            return new DeferredBodyAction<ValidateKeyResponse>(() =>
             {
-                body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                var apiCallPath = "/1/users/validate.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                if (bodydevice != null)
+                {
+                    body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
+                return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
@@ -135,6 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Request { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         [EnumMember(Value = "-2")]
@@ -149,6 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhtmlInput
     {
         [EnumMember(Value = "1")]

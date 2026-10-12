@@ -4,46 +4,83 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EveryipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<BrowseResponse> Browse(Expression<Func<string>> cause, Expression<Func<int>> take = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrowse))]
+        public IBodyWorkflowAction<BrowseResponse> Browse([WorkflowExpression] Func<string> cause, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/browse/{0}", ExpressionConverter.ConvertWithUrlEncoding(cause, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (take != null)
-                callPayload.Queries["take"] = ExpressionConverter.Convert(take);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<BrowseResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BrowseResponse> __BuildBrowse(WorkflowExpression<string> cause, WorkflowExpression<int> take = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(cause, nameof(cause), required: true);
+            WorkflowExpression.Validate(take, nameof(take), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<BrowseResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/browse/{0}", ExpressionConverter.ConvertWithUrlEncoding(cause, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (take != null)
+                    callPayload.Queries["take"] = ExpressionConverter.Convert(take);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<BrowseResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> term, Expression<Func<int>> take = null, Expression<Func<string>> cause = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<string> cause = null)
         {
-            var apiCallPath = String.Format("/search/{0}", ExpressionConverter.ConvertWithUrlEncoding(term, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (take != null)
-                callPayload.Queries["take"] = ExpressionConverter.Convert(take);
-            if (cause != null)
-                callPayload.Queries["cause"] = ExpressionConverter.Convert(cause);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> term, WorkflowExpression<int> take = null, WorkflowExpression<string> cause = null)
+        {
+            WorkflowExpression.Validate(term, nameof(term), required: true);
+            WorkflowExpression.Validate(take, nameof(take), required: false);
+            WorkflowExpression.Validate(cause, nameof(cause), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/search/{0}", ExpressionConverter.ConvertWithUrlEncoding(term, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (take != null)
+                    callPayload.Queries["take"] = ExpressionConverter.Convert(take);
+                if (cause != null)
+                    callPayload.Queries["cause"] = ExpressionConverter.Convert(cause);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<DetailsResponse> Details(Expression<Func<string>> identifier)
+        [WorkflowExpressionFactory(nameof(__BuildDetails))]
+        public IBodyWorkflowAction<DetailsResponse> Details([WorkflowExpression] Func<string> identifier)
         {
-            var apiCallPath = String.Format("/nonprofit/{0}", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DetailsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetailsResponse> __BuildDetails(WorkflowExpression<string> identifier)
+        {
+            WorkflowExpression.Validate(identifier, nameof(identifier), required: true);
+            return new DeferredBodyAction<DetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/nonprofit/{0}", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DetailsResponse>(callPayload);
+            });
         }
     }
 

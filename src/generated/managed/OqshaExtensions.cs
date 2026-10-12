@@ -4,123 +4,158 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OqshaActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateIncident))]
+        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accessToken = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<double> bodylatitude = null, [WorkflowExpression] Func<double> bodylongitude = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<bool> bodyanonymouslyReported = null, [WorkflowExpression] Func<bodycheckListDataInputItem[]> bodycheckListData = null)
         {
-            var apiCallPath = "/Organisations/3/Incidents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            if (accessToken != null)
-                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylocation != null)
-            {
-                body["Location"] = ExpressionConverter.ConvertO(bodylocation);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodylocationId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateIncidentResponse> __BuildCreateIncident(WorkflowExpression<string> contentType = null, WorkflowExpression<string> accessToken = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<double> bodylatitude = null, WorkflowExpression<double> bodylongitude = null, WorkflowExpression<string> bodydivisionId = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<bool> bodyanonymouslyReported = null, WorkflowExpression<bodycheckListDataInputItem[]> bodycheckListData = null)
+        {
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            WorkflowExpression.Validate(accessToken, nameof(accessToken), required: false);
+            WorkflowExpression.Validate(bodylocation, nameof(bodylocation), required: false);
+            WorkflowExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
+            WorkflowExpression.Validate(bodylatitude, nameof(bodylatitude), required: false);
+            WorkflowExpression.Validate(bodylongitude, nameof(bodylongitude), required: false);
+            WorkflowExpression.Validate(bodydivisionId, nameof(bodydivisionId), required: false);
+            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            WorkflowExpression.Validate(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
+            WorkflowExpression.Validate(bodycheckListData, nameof(bodycheckListData), required: false);
+            return new DeferredBodyAction<CreateIncidentResponse>(() =>
             {
-                body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/Organisations/3/Incidents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (accessToken != null)
+                    callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodylocation != null)
+                {
+                    body["Location"] = ExpressionConverter.ConvertO(bodylocation);
+                    bodypropCount++;
+                }
 
-            if (bodylatitude != null)
-            {
-                body["Latitude"] = ExpressionConverter.ConvertO(bodylatitude);
-                bodypropCount++;
-            }
+                if (bodylocationId != null)
+                {
+                    body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodylongitude != null)
-            {
-                body["Longitude"] = ExpressionConverter.ConvertO(bodylongitude);
-                bodypropCount++;
-            }
+                if (bodylatitude != null)
+                {
+                    body["Latitude"] = ExpressionConverter.ConvertO(bodylatitude);
+                    bodypropCount++;
+                }
 
-            if (bodydivisionId != null)
-            {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
-                bodypropCount++;
-            }
+                if (bodylongitude != null)
+                {
+                    body["Longitude"] = ExpressionConverter.ConvertO(bodylongitude);
+                    bodypropCount++;
+                }
 
-            if (bodyuserId != null)
-            {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
+                if (bodydivisionId != null)
+                {
+                    body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
+                    bodypropCount++;
+                }
 
-            if (bodyanonymouslyReported != null)
-            {
-                body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyanonymouslyReported);
-                bodypropCount++;
-            }
+                if (bodyuserId != null)
+                {
+                    body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodycheckListData != null)
-            {
-                body["CheckListData"] = ExpressionConverter.ConvertO(bodycheckListData);
-                bodypropCount++;
-            }
+                if (bodyanonymouslyReported != null)
+                {
+                    body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyanonymouslyReported);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodycheckListData != null)
+                {
+                    body["CheckListData"] = ExpressionConverter.ConvertO(bodycheckListData);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateIncidentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateIncidentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
+        [WorkflowExpressionFactory(nameof(__BuildLogin))]
+        public IBodyWorkflowAction<LoginResponse> Login([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodyuserUid = null, [WorkflowExpression] Func<string> bodyappPassword = null, [WorkflowExpression] Func<bool> bodyacceptConditions = null, [WorkflowExpression] Func<bool> bodyisOqsha = null)
         {
-            var apiCallPath = "/App/Login";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserUid != null)
-            {
-                body["UserUid"] = ExpressionConverter.ConvertO(bodyuserUid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyappPassword != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LoginResponse> __BuildLogin(WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodyuserUid = null, WorkflowExpression<string> bodyappPassword = null, WorkflowExpression<bool> bodyacceptConditions = null, WorkflowExpression<bool> bodyisOqsha = null)
+        {
+            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            WorkflowExpression.Validate(bodyuserUid, nameof(bodyuserUid), required: false);
+            WorkflowExpression.Validate(bodyappPassword, nameof(bodyappPassword), required: false);
+            WorkflowExpression.Validate(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
+            WorkflowExpression.Validate(bodyisOqsha, nameof(bodyisOqsha), required: false);
+            return new DeferredBodyAction<LoginResponse>(() =>
             {
-                body["AppPassword"] = ExpressionConverter.ConvertO(bodyappPassword);
-                bodypropCount++;
-            }
+                var apiCallPath = "/App/Login";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserUid != null)
+                {
+                    body["UserUid"] = ExpressionConverter.ConvertO(bodyuserUid);
+                    bodypropCount++;
+                }
 
-            if (bodyacceptConditions != null)
-            {
-                body["acceptConditions"] = ExpressionConverter.ConvertO(bodyacceptConditions);
-                bodypropCount++;
-            }
+                if (bodyappPassword != null)
+                {
+                    body["AppPassword"] = ExpressionConverter.ConvertO(bodyappPassword);
+                    bodypropCount++;
+                }
 
-            if (bodyisOqsha != null)
-            {
-                body["IsOqsha"] = ExpressionConverter.ConvertO(bodyisOqsha);
-                bodypropCount++;
-            }
+                if (bodyacceptConditions != null)
+                {
+                    body["acceptConditions"] = ExpressionConverter.ConvertO(bodyacceptConditions);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyisOqsha != null)
+                {
+                    body["IsOqsha"] = ExpressionConverter.ConvertO(bodyisOqsha);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<LoginResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LoginResponse>(callPayload);
+            });
         }
     }
 

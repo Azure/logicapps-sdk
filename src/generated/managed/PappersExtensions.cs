@@ -4,51 +4,89 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PappersActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<CompanyFormat> CompanyGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> companyNumber, Expression<Func<fieldsInput>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildCompanyGet))]
+        public IBodyWorkflowAction<CompanyFormat> CompanyGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<fieldsInput> fields = null)
         {
-            var apiCallPath = "/company";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["company_number"] = ExpressionConverter.Convert(companyNumber);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<CompanyFormat>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanyFormat> __BuildCompanyGet(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> companyNumber, WorkflowExpression<fieldsInput> fields = null)
+        {
+            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<CompanyFormat>(() =>
+            {
+                var apiCallPath = "/company";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["company_number"] = ExpressionConverter.Convert(companyNumber);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<CompanyFormat>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<SearchResponse> SearchGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> q, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
+        public IBodyWorkflowAction<SearchResponse> SearchGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["per_page"] = Convert.ToString(10);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearchGet(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> q, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
+        {
+            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["per_page"] = Convert.ToString(10);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet(Expression<Func<string>> token)
+        [WorkflowExpressionFactory(nameof(__BuildDocumentGet))]
+        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet([WorkflowExpression] Func<string> token)
         {
-            var apiCallPath = "/download-file";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["token"] = ExpressionConverter.Convert(token);
-            return new ApiConnectionAction<DocumentGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentGetResponse> __BuildDocumentGet(WorkflowExpression<string> token)
+        {
+            WorkflowExpression.Validate(token, nameof(token), required: true);
+            return new DeferredBodyAction<DocumentGetResponse>(() =>
+            {
+                var apiCallPath = "/download-file";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+                return new ApiConnectionAction<DocumentGetResponse>(callPayload);
+            });
         }
     }
 
@@ -176,6 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string Classification { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompanyFormatStatusType
     {
         [EnumMember(Value = "active")]
@@ -205,6 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string CountryCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompanyFormatCommercialRegisterRegistrationStatusType
     {
         [EnumMember(Value = "registered")]
@@ -274,6 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string CountryCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficerTypeType
     {
         [EnumMember(Value = "legal")]
@@ -282,6 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         Physical
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficerGenderType
     {
         M,
@@ -336,6 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string VotingPercentage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UboGenderType
     {
         M,
@@ -369,6 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public RelatedDocument[] RelatedDocuments { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialTypeType
     {
         [EnumMember(Value = "accounts")]
@@ -377,6 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         ConsolidatedAccounts
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialAvailabilityType
     {
         [EnumMember(Value = "available")]
@@ -599,6 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string Country { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EstablishmentStatusType
     {
         [EnumMember(Value = "active")]
@@ -616,6 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContactTypeType
     {
         [EnumMember(Value = "website")]
@@ -626,6 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         Phone
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countryCodeInput
     {
         UK,
@@ -634,6 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         CH
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldsInput
     {
         [EnumMember(Value = "officers")]
@@ -699,6 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public SearchFormatHeadOfficeType HeadOffice { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchFormatStatusType
     {
         [EnumMember(Value = "active")]

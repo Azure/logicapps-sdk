@@ -1,88 +1,116 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class StormboardActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea(Expression<Func<int>> bodystormid, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydata, Expression<Func<bodycolorInput>> bodycolor)
-        {
-            var apiCallPath = "/ideas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["stormid"] = ExpressionConverter.ConvertO(bodystormid);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateIdea))]
+        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea([WorkflowExpression] Func<int> bodystormid, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<bodycolorInput> bodycolor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateIdeaResponse> __BuildCreateIdea(WorkflowExpression<int> bodystormid, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodydata, WorkflowExpression<bodycolorInput> bodycolor)
+        {
+            WorkflowExpression.Validate(bodystormid, nameof(bodystormid), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowExpression.Validate(bodycolor, nameof(bodycolor), required: true);
+            return new DeferredBodyAction<CreateIdeaResponse>(() =>
+            {
+                var apiCallPath = "/ideas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["stormid"] = ExpressionConverter.ConvertO(bodystormid);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                bodypropCount++;
+                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateStormResponse> CreateStorm(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyplan, Expression<Func<string>> bodygoals = null, Expression<Func<bool>> bodyideacreator = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateStorm))]
+        public IBodyWorkflowAction<CreateStormResponse> CreateStorm([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyplan, [WorkflowExpression] Func<string> bodygoals = null, [WorkflowExpression] Func<bool> bodyideacreator = null)
         {
-            var apiCallPath = "/storms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["plan"] = ExpressionConverter.ConvertO(bodyplan);
-            if (bodygoals != null)
-            {
-                body["goals"] = ExpressionConverter.ConvertO(bodygoals);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyideacreator != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateStormResponse> __BuildCreateStorm(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyplan, WorkflowExpression<string> bodygoals = null, WorkflowExpression<bool> bodyideacreator = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowExpression.Validate(bodyplan, nameof(bodyplan), required: true);
+            WorkflowExpression.Validate(bodygoals, nameof(bodygoals), required: false);
+            WorkflowExpression.Validate(bodyideacreator, nameof(bodyideacreator), required: false);
+            return new DeferredBodyAction<CreateStormResponse>(() =>
             {
-                if (bodyideacreator != null)
+                var apiCallPath = "/storms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                bodypropCount++;
+                body["plan"] = ExpressionConverter.ConvertO(bodyplan);
+                if (bodygoals != null)
                 {
-                    body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                    body["goals"] = ExpressionConverter.ConvertO(bodygoals);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ideacreator"] = true;
-                bodypropCount++;
-            }
+                if (bodyideacreator != null)
+                {
+                    if (bodyideacreator != null)
+                    {
+                        body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ideacreator"] = true;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateStormResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateStormResponse>(callPayload);
+            });
         }
     }
 
     public class StormboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger LegendChange(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LegendChange(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks";
             var apiCallHttpMethod = "post";
@@ -92,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.color";
             bodypropCount++;
@@ -101,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger IdeaSection(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaSection(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/ideaSection";
             var apiCallHttpMethod = "post";
@@ -114,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.section";
             bodypropCount++;
@@ -123,10 +151,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger IdeaCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/ideaCreated";
             var apiCallHttpMethod = "post";
@@ -136,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.create";
             bodypropCount++;
@@ -145,10 +173,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger IdeaDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/ideaDeleted";
             var apiCallHttpMethod = "post";
@@ -158,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.delete";
             bodypropCount++;
@@ -167,10 +195,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CommentCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CommentCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/commentCreated";
             var apiCallHttpMethod = "post";
@@ -180,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "comment.create";
             bodypropCount++;
@@ -189,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 
@@ -238,6 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "text")]
@@ -246,6 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         Title
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycolorInput
     {
         [EnumMember(Value = "yellow")]

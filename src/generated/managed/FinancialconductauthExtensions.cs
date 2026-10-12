@@ -4,184 +4,396 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FinancialconductauthActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<CommonSearchResponse> CommonSearch(Expression<Func<string>> q, Expression<Func<typeInput>> type)
+        [WorkflowExpressionFactory(nameof(__BuildCommonSearch))]
+        public IBodyWorkflowAction<CommonSearchResponse> CommonSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<typeInput> type)
         {
-            var apiCallPath = "/services/V0.1/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<CommonSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommonSearchResponse> __BuildCommonSearch(WorkflowExpression<string> q, WorkflowExpression<typeInput> type)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            return new DeferredBodyAction<CommonSearchResponse>(() =>
+            {
+                var apiCallPath = "/services/V0.1/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<CommonSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN(Expression<Func<string>> iRN)
+        [WorkflowExpressionFactory(nameof(__BuildIndividualsDetailsByIRN))]
+        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN([WorkflowExpression] Func<string> iRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Individuals/{0}", ExpressionConverter.ConvertWithUrlEncoding(iRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndividualsDetailsByIRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> __BuildIndividualsDetailsByIRN(WorkflowExpression<string> iRN)
+        {
+            WorkflowExpression.Validate(iRN, nameof(iRN), required: true);
+            return new DeferredBodyAction<IndividualsDetailsByIRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}", ExpressionConverter.ConvertWithUrlEncoding(iRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IndividualsDetailsByIRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmDetailsByFRN))]
+        public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmDetailsByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmDetailsByFRNResponse> __BuildFirmDetailsByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmDetailsByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmDetailsByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN(Expression<Func<string>> pRN)
+        [WorkflowExpressionFactory(nameof(__BuildProductDetailsByPRN))]
+        public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/CIS/{0}", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProductDetailsByPRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProductDetailsByPRNResponse> __BuildProductDetailsByPRN(WorkflowExpression<string> pRN)
+        {
+            WorkflowExpression.Validate(pRN, nameof(pRN), required: true);
+            return new DeferredBodyAction<ProductDetailsByPRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProductDetailsByPRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN(Expression<Func<string>> pRN)
+        [WorkflowExpressionFactory(nameof(__BuildSubfundDetailsByPRN))]
+        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/CIS/{0}/Subfund", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubfundDetailsByPRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> __BuildSubfundDetailsByPRN(WorkflowExpression<string> pRN)
+        {
+            WorkflowExpression.Validate(pRN, nameof(pRN), required: true);
+            return new DeferredBodyAction<SubfundDetailsByPRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Subfund", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SubfundDetailsByPRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN(Expression<Func<string>> pRN)
+        [WorkflowExpressionFactory(nameof(__BuildProductOtherNameDetailsByPRN))]
+        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/CIS/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProductOtherNameDetailsByPRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> __BuildProductOtherNameDetailsByPRN(WorkflowExpression<string> pRN)
+        {
+            WorkflowExpression.Validate(pRN, nameof(pRN), required: true);
+            return new DeferredBodyAction<ProductOtherNameDetailsByPRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProductOtherNameDetailsByPRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN(Expression<Func<string>> iRN)
+        [WorkflowExpressionFactory(nameof(__BuildIndividualDisciplinaryHistoryByIRN))]
+        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN([WorkflowExpression] Func<string> iRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Individuals/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(iRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndividualDisciplinaryHistoryByIRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> __BuildIndividualDisciplinaryHistoryByIRN(WorkflowExpression<string> iRN)
+        {
+            WorkflowExpression.Validate(iRN, nameof(iRN), required: true);
+            return new DeferredBodyAction<IndividualDisciplinaryHistoryByIRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(iRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IndividualDisciplinaryHistoryByIRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmOtherNamesByFRN))]
+        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmOtherNamesByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> __BuildFirmOtherNamesByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmOtherNamesByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmOtherNamesByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmAddressByFRN))]
+        public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Address", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmAddressByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmAddressByFRNResponse> __BuildFirmAddressByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmAddressByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Address", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmAddressByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmIndividualsByFRN))]
+        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Individuals", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmIndividualsByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> __BuildFirmIndividualsByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmIndividualsByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Individuals", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmIndividualsByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmActivitiesAndPermissionsByFRN))]
+        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Permissions", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmActivitiesAndPermissionsByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> __BuildFirmActivitiesAndPermissionsByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmActivitiesAndPermissionsByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Permissions", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmActivitiesAndPermissionsByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF(Expression<Func<string>> fRN, Expression<Func<string>> rEQREF)
+        [WorkflowExpressionFactory(nameof(__BuildFirmRequirementsInvestmentTypesByFRNandREQREF))]
+        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF([WorkflowExpression] Func<string> fRN, [WorkflowExpression] Func<string> rEQREF)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(rEQREF, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> __BuildFirmRequirementsInvestmentTypesByFRNandREQREF(WorkflowExpression<string> fRN, WorkflowExpression<string> rEQREF)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            WorkflowExpression.Validate(rEQREF, nameof(rEQREF), required: true);
+            return new DeferredBodyAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(rEQREF, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmRegulatorsByFRN))]
+        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Regulators/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmRegulatorsByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> __BuildFirmRegulatorsByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmRegulatorsByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Regulators/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmRegulatorsByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmPassportByFRN))]
+        public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Passports/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmPassportByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmPassportByFRNResponse> __BuildFirmPassportByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmPassportByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmPassportByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmExclusionsByFRN))]
+        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Exclusions", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmExclusionsByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> __BuildFirmExclusionsByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmExclusionsByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Exclusions", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmExclusionsByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmDisciplinaryHistoryByFRN))]
+        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmDisciplinaryHistoryByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> __BuildFirmDisciplinaryHistoryByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmDisciplinaryHistoryByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmDisciplinaryHistoryByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmRequirementsByFRN))]
+        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Requirements", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmRequirementsByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> __BuildFirmRequirementsByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmRequirementsByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmRequirementsByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN(Expression<Func<string>> fRN)
+        [WorkflowExpressionFactory(nameof(__BuildFirmWaiverByFRN))]
+        public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Waivers", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmWaiverByFRNResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmWaiverByFRNResponse> __BuildFirmWaiverByFRN(WorkflowExpression<string> fRN)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            return new DeferredBodyAction<FirmWaiverByFRNResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Waivers", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmWaiverByFRNResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry(Expression<Func<string>> fRN, Expression<Func<string>> country)
+        [WorkflowExpressionFactory(nameof(__BuildFirmPassportPermissionByFRNandCountry))]
+        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry([WorkflowExpression] Func<string> fRN, [WorkflowExpression] Func<string> country)
         {
-            var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmPassportPermissionByFRNandCountryResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> __BuildFirmPassportPermissionByFRNandCountry(WorkflowExpression<string> fRN, WorkflowExpression<string> country)
+        {
+            WorkflowExpression.Validate(fRN, nameof(fRN), required: true);
+            WorkflowExpression.Validate(country, nameof(country), required: true);
+            return new DeferredBodyAction<FirmPassportPermissionByFRNandCountryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FirmPassportPermissionByFRNandCountryResponse>(callPayload);
+            });
         }
     }
 
@@ -222,6 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "individual")]

@@ -4,331 +4,435 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AikidocsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectGoodService(Expression<Func<string>> bodymessage = null)
+        [WorkflowExpressionFactory(nameof(__BuildValidateConnectGoodService))]
+        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectGoodService([WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = "/good";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
-            {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateConnectionResponse> __BuildValidateConnectGoodService(WorkflowExpression<string> bodymessage = null)
+        {
+            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            return new DeferredBodyAction<ValidateConnectionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/good";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ValidateConnectionResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidateConnectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectBadService(Expression<Func<string>> bodymessage = null)
+        [WorkflowExpressionFactory(nameof(__BuildValidateConnectBadService))]
+        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectBadService([WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = "/bad";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
-            {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateConnectionResponse> __BuildValidateConnectBadService(WorkflowExpression<string> bodymessage = null)
+        {
+            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            return new DeferredBodyAction<ValidateConnectionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/bad";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ValidateConnectionResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidateConnectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<AppendDocumentResponse> WordAppendDocuments(Expression<Func<string[]>> bodyappendDocumentList = null)
+        [WorkflowExpressionFactory(nameof(__BuildWordAppendDocuments))]
+        public IBodyWorkflowAction<AppendDocumentResponse> WordAppendDocuments([WorkflowExpression] Func<string[]> bodyappendDocumentList = null)
         {
-            var apiCallPath = "/api/WordAppendDocuments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyappendDocumentList != null)
-            {
-                body["appendDocumentList"] = ExpressionConverter.ConvertO(bodyappendDocumentList);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AppendDocumentResponse> __BuildWordAppendDocuments(WorkflowExpression<string[]> bodyappendDocumentList = null)
+        {
+            WorkflowExpression.Validate(bodyappendDocumentList, nameof(bodyappendDocumentList), required: false);
+            return new DeferredBodyAction<AppendDocumentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/WordAppendDocuments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyappendDocumentList != null)
+                {
+                    body["appendDocumentList"] = ExpressionConverter.ConvertO(bodyappendDocumentList);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<AppendDocumentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AppendDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByHeadingResponse> WordExtractContentByHeading(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingStyleName = null)
+        [WorkflowExpressionFactory(nameof(__BuildWordExtractContentByHeading))]
+        public IBodyWorkflowAction<ExtractContentByHeadingResponse> WordExtractContentByHeading([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodyheadingStyleName = null)
         {
-            var apiCallPath = "/api/WordExtractContent/ByHeading";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (bodysourceDocumentdocumentContent != null)
-            {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
-                sourceDocumentObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodysourceDocumentdocumentName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractContentByHeadingResponse> __BuildWordExtractContentByHeading(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodyheadingStyleName = null)
+        {
+            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            WorkflowExpression.Validate(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
+            return new DeferredBodyAction<ExtractContentByHeadingResponse>(() =>
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
-                sourceDocumentObjectpropCount++;
-            }
+                var apiCallPath = "/api/WordExtractContent/ByHeading";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var sourceDocumentObject = new JObject();
+                var sourceDocumentObjectpropCount = 0;
+                if (bodysourceDocumentdocumentContent != null)
+                {
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                body["sourceDocument"] = sourceDocumentObject;
-                bodypropCount++;
-            }
+                if (bodysourceDocumentdocumentName != null)
+                {
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (bodyheadingStyleName != null)
-            {
-                body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
-                bodypropCount++;
-            }
+                if (sourceDocumentObjectpropCount > 0)
+                {
+                    body["sourceDocument"] = sourceDocumentObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyheadingStyleName != null)
+                {
+                    body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractContentByHeadingResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractContentByHeadingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractSectionByTitleResponse> WordExtractContentByTitle(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingText = null, Expression<Func<string>> bodyheadingStyleName = null, Expression<Func<string[]>> bodyheadingEscapeStyleNames = null)
+        [WorkflowExpressionFactory(nameof(__BuildWordExtractContentByTitle))]
+        public IBodyWorkflowAction<ExtractSectionByTitleResponse> WordExtractContentByTitle([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodyheadingText = null, [WorkflowExpression] Func<string> bodyheadingStyleName = null, [WorkflowExpression] Func<string[]> bodyheadingEscapeStyleNames = null)
         {
-            var apiCallPath = "/api/WordExtractContent/ByTitle";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (bodysourceDocumentdocumentContent != null)
-            {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
-                sourceDocumentObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodysourceDocumentdocumentName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractSectionByTitleResponse> __BuildWordExtractContentByTitle(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodyheadingText = null, WorkflowExpression<string> bodyheadingStyleName = null, WorkflowExpression<string[]> bodyheadingEscapeStyleNames = null)
+        {
+            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            WorkflowExpression.Validate(bodyheadingText, nameof(bodyheadingText), required: false);
+            WorkflowExpression.Validate(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
+            WorkflowExpression.Validate(bodyheadingEscapeStyleNames, nameof(bodyheadingEscapeStyleNames), required: false);
+            return new DeferredBodyAction<ExtractSectionByTitleResponse>(() =>
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
-                sourceDocumentObjectpropCount++;
-            }
+                var apiCallPath = "/api/WordExtractContent/ByTitle";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var sourceDocumentObject = new JObject();
+                var sourceDocumentObjectpropCount = 0;
+                if (bodysourceDocumentdocumentContent != null)
+                {
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                body["sourceDocument"] = sourceDocumentObject;
-                bodypropCount++;
-            }
+                if (bodysourceDocumentdocumentName != null)
+                {
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (bodyheadingText != null)
-            {
-                body["headingText"] = ExpressionConverter.ConvertO(bodyheadingText);
-                bodypropCount++;
-            }
+                if (sourceDocumentObjectpropCount > 0)
+                {
+                    body["sourceDocument"] = sourceDocumentObject;
+                    bodypropCount++;
+                }
 
-            if (bodyheadingStyleName != null)
-            {
-                body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
-                bodypropCount++;
-            }
+                if (bodyheadingText != null)
+                {
+                    body["headingText"] = ExpressionConverter.ConvertO(bodyheadingText);
+                    bodypropCount++;
+                }
 
-            if (bodyheadingEscapeStyleNames != null)
-            {
-                body["headingEscapeStyleNames"] = ExpressionConverter.ConvertO(bodyheadingEscapeStyleNames);
-                bodypropCount++;
-            }
+                if (bodyheadingStyleName != null)
+                {
+                    body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyheadingEscapeStyleNames != null)
+                {
+                    body["headingEscapeStyleNames"] = ExpressionConverter.ConvertO(bodyheadingEscapeStyleNames);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractSectionByTitleResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractSectionByTitleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> WordExtractContentByBookmarks(Expression<Func<string>> bodystartBookMark = null, Expression<Func<string>> bodyendBookMark = null, Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null)
+        [WorkflowExpressionFactory(nameof(__BuildWordExtractContentByBookmarks))]
+        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> WordExtractContentByBookmarks([WorkflowExpression] Func<string> bodystartBookMark = null, [WorkflowExpression] Func<string> bodyendBookMark = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null)
         {
-            var apiCallPath = "/api/WordExtractContent/ByBookMarks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystartBookMark != null)
-            {
-                body["startBookMark"] = ExpressionConverter.ConvertO(bodystartBookMark);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyendBookMark != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> __BuildWordExtractContentByBookmarks(WorkflowExpression<string> bodystartBookMark = null, WorkflowExpression<string> bodyendBookMark = null, WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null)
+        {
+            WorkflowExpression.Validate(bodystartBookMark, nameof(bodystartBookMark), required: false);
+            WorkflowExpression.Validate(bodyendBookMark, nameof(bodyendBookMark), required: false);
+            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            return new DeferredBodyAction<ExtractContentByBookMarksResponse>(() =>
             {
-                body["endBookMark"] = ExpressionConverter.ConvertO(bodyendBookMark);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/WordExtractContent/ByBookMarks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystartBookMark != null)
+                {
+                    body["startBookMark"] = ExpressionConverter.ConvertO(bodystartBookMark);
+                    bodypropCount++;
+                }
 
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (bodysourceDocumentdocumentContent != null)
-            {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
-                sourceDocumentObjectpropCount++;
-            }
+                if (bodyendBookMark != null)
+                {
+                    body["endBookMark"] = ExpressionConverter.ConvertO(bodyendBookMark);
+                    bodypropCount++;
+                }
 
-            if (bodysourceDocumentdocumentName != null)
-            {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
-                sourceDocumentObjectpropCount++;
-            }
+                var sourceDocumentObject = new JObject();
+                var sourceDocumentObjectpropCount = 0;
+                if (bodysourceDocumentdocumentContent != null)
+                {
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                body["sourceDocument"] = sourceDocumentObject;
-                bodypropCount++;
-            }
+                if (bodysourceDocumentdocumentName != null)
+                {
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (sourceDocumentObjectpropCount > 0)
+                {
+                    body["sourceDocument"] = sourceDocumentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractContentByBookMarksResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractContentByBookMarksResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<InsertDocumentResponse> WordInsertDocuments(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string[]>> bodyinsertDocumentList = null, Expression<Func<string>> bodybookmarkName = null, Expression<Func<bool>> bodydeleteBookmark = null)
+        [WorkflowExpressionFactory(nameof(__BuildWordInsertDocuments))]
+        public IBodyWorkflowAction<InsertDocumentResponse> WordInsertDocuments([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string[]> bodyinsertDocumentList = null, [WorkflowExpression] Func<string> bodybookmarkName = null, [WorkflowExpression] Func<bool> bodydeleteBookmark = null)
         {
-            var apiCallPath = "/api/WordInsertDocuments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (bodysourceDocumentdocumentContent != null)
-            {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
-                sourceDocumentObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodysourceDocumentdocumentName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InsertDocumentResponse> __BuildWordInsertDocuments(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string[]> bodyinsertDocumentList = null, WorkflowExpression<string> bodybookmarkName = null, WorkflowExpression<bool> bodydeleteBookmark = null)
+        {
+            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            WorkflowExpression.Validate(bodyinsertDocumentList, nameof(bodyinsertDocumentList), required: false);
+            WorkflowExpression.Validate(bodybookmarkName, nameof(bodybookmarkName), required: false);
+            WorkflowExpression.Validate(bodydeleteBookmark, nameof(bodydeleteBookmark), required: false);
+            return new DeferredBodyAction<InsertDocumentResponse>(() =>
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
-                sourceDocumentObjectpropCount++;
-            }
+                var apiCallPath = "/api/WordInsertDocuments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var sourceDocumentObject = new JObject();
+                var sourceDocumentObjectpropCount = 0;
+                if (bodysourceDocumentdocumentContent != null)
+                {
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                body["sourceDocument"] = sourceDocumentObject;
-                bodypropCount++;
-            }
+                if (bodysourceDocumentdocumentName != null)
+                {
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (bodyinsertDocumentList != null)
-            {
-                body["insertDocumentList"] = ExpressionConverter.ConvertO(bodyinsertDocumentList);
-                bodypropCount++;
-            }
+                if (sourceDocumentObjectpropCount > 0)
+                {
+                    body["sourceDocument"] = sourceDocumentObject;
+                    bodypropCount++;
+                }
 
-            if (bodybookmarkName != null)
-            {
-                body["bookmarkName"] = ExpressionConverter.ConvertO(bodybookmarkName);
-                bodypropCount++;
-            }
+                if (bodyinsertDocumentList != null)
+                {
+                    body["insertDocumentList"] = ExpressionConverter.ConvertO(bodyinsertDocumentList);
+                    bodypropCount++;
+                }
 
-            if (bodydeleteBookmark != null)
-            {
-                body["deleteBookmark"] = ExpressionConverter.ConvertO(bodydeleteBookmark);
-                bodypropCount++;
-            }
+                if (bodybookmarkName != null)
+                {
+                    body["bookmarkName"] = ExpressionConverter.ConvertO(bodybookmarkName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodydeleteBookmark != null)
+                {
+                    body["deleteBookmark"] = ExpressionConverter.ConvertO(bodydeleteBookmark);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ApplyStylesResponse> WordApplyStyleToDocument(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodydestinationDocumentdocumentContent = null, Expression<Func<string>> bodydestinationDocumentdocumentName = null)
+        [WorkflowExpressionFactory(nameof(__BuildWordApplyStyleToDocument))]
+        public IBodyWorkflowAction<ApplyStylesResponse> WordApplyStyleToDocument([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodydestinationDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodydestinationDocumentdocumentName = null)
         {
-            var apiCallPath = "/api/WordStyles/ApplyStyleToDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (bodysourceDocumentdocumentContent != null)
-            {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
-                sourceDocumentObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodysourceDocumentdocumentName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApplyStylesResponse> __BuildWordApplyStyleToDocument(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodydestinationDocumentdocumentContent = null, WorkflowExpression<string> bodydestinationDocumentdocumentName = null)
+        {
+            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            WorkflowExpression.Validate(bodydestinationDocumentdocumentContent, nameof(bodydestinationDocumentdocumentContent), required: false);
+            WorkflowExpression.Validate(bodydestinationDocumentdocumentName, nameof(bodydestinationDocumentdocumentName), required: false);
+            return new DeferredBodyAction<ApplyStylesResponse>(() =>
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
-                sourceDocumentObjectpropCount++;
-            }
+                var apiCallPath = "/api/WordStyles/ApplyStyleToDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var sourceDocumentObject = new JObject();
+                var sourceDocumentObjectpropCount = 0;
+                if (bodysourceDocumentdocumentContent != null)
+                {
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                body["sourceDocument"] = sourceDocumentObject;
-                bodypropCount++;
-            }
+                if (bodysourceDocumentdocumentName != null)
+                {
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObjectpropCount++;
+                }
 
-            var destinationDocumentObject = new JObject();
-            var destinationDocumentObjectpropCount = 0;
-            if (bodysourceDocumentdocumentContent != null)
-            {
-                destinationDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
-                destinationDocumentObjectpropCount++;
-            }
+                if (sourceDocumentObjectpropCount > 0)
+                {
+                    body["sourceDocument"] = sourceDocumentObject;
+                    bodypropCount++;
+                }
 
-            if (bodysourceDocumentdocumentName != null)
-            {
-                destinationDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
-                destinationDocumentObjectpropCount++;
-            }
+                var destinationDocumentObject = new JObject();
+                var destinationDocumentObjectpropCount = 0;
+                if (bodysourceDocumentdocumentContent != null)
+                {
+                    destinationDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    destinationDocumentObjectpropCount++;
+                }
 
-            if (destinationDocumentObjectpropCount > 0)
-            {
-                body["destinationDocument"] = destinationDocumentObject;
-                bodypropCount++;
-            }
+                if (bodysourceDocumentdocumentName != null)
+                {
+                    destinationDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    destinationDocumentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (destinationDocumentObjectpropCount > 0)
+                {
+                    body["destinationDocument"] = destinationDocumentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ApplyStylesResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ApplyStylesResponse>(callPayload);
+            });
         }
     }
 

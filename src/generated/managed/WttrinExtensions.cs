@@ -4,25 +4,38 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WttrinActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
-        public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
+        [WorkflowExpressionFactory(nameof(__BuildWeatherGet))]
+        public IBodyWorkflowAction<string> WeatherGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<viewInput> view = null, [WorkflowExpression] Func<langInput> lang = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-            callPayload.Queries["lang"] = Convert.ToString("en");
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildWeatherGet(WorkflowExpression<string> location, WorkflowExpression<viewInput> view = null, WorkflowExpression<langInput> lang = null)
+        {
+            WorkflowExpression.Validate(location, nameof(location), required: true);
+            WorkflowExpression.Validate(view, nameof(view), required: false);
+            WorkflowExpression.Validate(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(view);
+                callPayload.Queries["lang"] = Convert.ToString("en");
+                if (lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -30,6 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum viewInput
     {
         [EnumMember(Value = "1")]
@@ -50,6 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         SwitchTerminalSequencesOffNoColors
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]

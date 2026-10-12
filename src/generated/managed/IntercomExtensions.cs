@@ -1,50 +1,64 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IntercomActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
+        public IBodyWorkflowAction<UserResponse> CreateUser([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycompanyId = null)
         {
-            var apiCallPath = "/users";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserResponse> __BuildCreateUser(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycompanyId = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            WorkflowExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            return new DeferredBodyAction<UserResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/users";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
+                if (bodyphone != null)
+                {
+                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    bodypropCount++;
+                }
 
-            if (bodycompanyId != null)
-            {
-                body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
-                bodypropCount++;
-            }
+                if (bodycompanyId != null)
+                {
+                    body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UserResponse>(callPayload);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
@@ -57,106 +71,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateLead))]
+        public IBodyWorkflowAction<LeadResponse> CreateLead([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyavatarimageURL = null, [WorkflowExpression] Func<string> bodycompanyId = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyname != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadResponse> __BuildCreateLead(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodyavatarimageURL = null, WorkflowExpression<string> bodycompanyId = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            WorkflowExpression.Validate(bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
+            WorkflowExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            return new DeferredBodyAction<LeadResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
+                if (bodyphone != null)
+                {
+                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    bodypropCount++;
+                }
 
-            var avatarObject = new JObject();
-            var avatarObjectpropCount = 0;
-            if (bodyavatarimageURL != null)
-            {
-                avatarObject["image_url"] = ExpressionConverter.ConvertO(bodyavatarimageURL);
-                avatarObjectpropCount++;
-            }
+                var avatarObject = new JObject();
+                var avatarObjectpropCount = 0;
+                if (bodyavatarimageURL != null)
+                {
+                    avatarObject["image_url"] = ExpressionConverter.ConvertO(bodyavatarimageURL);
+                    avatarObjectpropCount++;
+                }
 
-            if (avatarObjectpropCount > 0)
-            {
-                body["avatar"] = avatarObject;
-                bodypropCount++;
-            }
+                if (avatarObjectpropCount > 0)
+                {
+                    body["avatar"] = avatarObject;
+                    bodypropCount++;
+                }
 
-            if (bodycompanyId != null)
-            {
-                body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
-                bodypropCount++;
-            }
+                if (bodycompanyId != null)
+                {
+                    body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<LeadResponse>(callPayload);
+                return new ApiConnectionAction<LeadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<UserResponse> GetUser([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserResponse> __BuildGetUser(WorkflowExpression<string> userId)
+        {
+            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<UserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse> GetLead(Expression<Func<string>> contactId)
+        [WorkflowExpressionFactory(nameof(__BuildGetLead))]
+        public IBodyWorkflowAction<LeadResponse> GetLead([WorkflowExpression] Func<string> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LeadResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LeadResponse> __BuildGetLead(WorkflowExpression<string> contactId)
+        {
+            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
+            return new DeferredBodyAction<LeadResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LeadResponse>(callPayload);
+            });
         }
     }
 
     public class IntercomTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_lead_trigger/contacts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigNewUser(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigNewUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_user_trigger/users";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/update_user_trigger/users";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_conversation_trigger/conversations";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, recurrence: recurrence);
         }
     }
 

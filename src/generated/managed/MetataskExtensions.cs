@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,37 +14,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class MetataskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateSubscriptionProcessCompleted(Expression<Func<string>> webhookRequestBodyconditionstemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateSubscriptionProcessCompleted))]
+        public IWorkflowTrigger CreateSubscriptionProcessCompleted([WorkflowExpression] Func<string> webhookRequestBodyconditionstemplate = null,FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/oauth/subscription/process_completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webhookRequestBody = new JObject();
-            var webhookRequestBodypropCount = 0;
-            webhookRequestBody["event"] = "PROCESS_COMPLETED";
-            webhookRequestBodypropCount++;
-            webhookRequestBody["target_url"] = "@listCallbackUrl()";
-            webhookRequestBodypropCount++;
-            var conditionsObject = new JObject();
-            var conditionsObjectpropCount = 0;
-            if (webhookRequestBodyconditionstemplate != null)
-            {
-                conditionsObject["templateId"] = ExpressionConverter.ConvertO(webhookRequestBodyconditionstemplate);
-                conditionsObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (conditionsObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateSubscriptionProcessCompleted(WorkflowExpression<string> webhookRequestBodyconditionstemplate = null,FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(webhookRequestBodyconditionstemplate, nameof(webhookRequestBodyconditionstemplate), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                webhookRequestBody["conditions"] = conditionsObject;
+                var apiCallPath = "/oauth/subscription/process_completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webhookRequestBody = new JObject();
+                var webhookRequestBodypropCount = 0;
+                webhookRequestBody["event"] = "PROCESS_COMPLETED";
                 webhookRequestBodypropCount++;
-            }
+                webhookRequestBody["target_url"] = "#{listCallbackUrl()}";
+                webhookRequestBodypropCount++;
+                var conditionsObject = new JObject();
+                var conditionsObjectpropCount = 0;
+                if (webhookRequestBodyconditionstemplate != null)
+                {
+                    conditionsObject["templateId"] = ExpressionConverter.ConvertO(webhookRequestBodyconditionstemplate);
+                    conditionsObjectpropCount++;
+                }
 
-            if (webhookRequestBodypropCount > 0)
-            {
-                callPayload.Body = webhookRequestBody;
-            }
+                if (conditionsObjectpropCount > 0)
+                {
+                    webhookRequestBody["conditions"] = conditionsObject;
+                    webhookRequestBodypropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (webhookRequestBodypropCount > 0)
+                {
+                    callPayload.Body = webhookRequestBody;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

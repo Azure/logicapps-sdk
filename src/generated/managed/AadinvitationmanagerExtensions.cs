@@ -4,89 +4,108 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AadinvitationmanagerActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aadinvitationmanager")]
-        public IBodyWorkflowAction<CreateInvitationResponse> CreateInvitation(Expression<Func<string>> bodyinvitedUserDisplayName = null, Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]>> bodyinvitedUserMessageInfoccRecipients = null, Expression<Func<string>> bodyinvitedUserMessageInfocustomizedMessageBody = null, Expression<Func<string>> bodyinvitedUserMessageInfomessageLanguage = null, Expression<Func<string>> bodyinvitedUserType = null, Expression<Func<string>> bodyinviteRedirectUrl = null, Expression<Func<bool>> bodyresetRedemption = null, Expression<Func<bool>> bodysendInvitationMessage = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateInvitation))]
+        public IBodyWorkflowAction<CreateInvitationResponse> CreateInvitation([WorkflowExpression] Func<string> bodyinvitedUserDisplayName = null, [WorkflowExpression] Func<string> bodyinvitedUserEmailAddress = null, [WorkflowExpression] Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]> bodyinvitedUserMessageInfoccRecipients = null, [WorkflowExpression] Func<string> bodyinvitedUserMessageInfocustomizedMessageBody = null, [WorkflowExpression] Func<string> bodyinvitedUserMessageInfomessageLanguage = null, [WorkflowExpression] Func<string> bodyinvitedUserType = null, [WorkflowExpression] Func<string> bodyinviteRedirectUrl = null, [WorkflowExpression] Func<bool> bodyresetRedemption = null, [WorkflowExpression] Func<bool> bodysendInvitationMessage = null)
         {
-            var apiCallPath = "/v1.0/invitations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinvitedUserDisplayName != null)
-            {
-                body["invitedUserDisplayName"] = ExpressionConverter.ConvertO(bodyinvitedUserDisplayName);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyinvitedUserEmailAddress != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateInvitationResponse> __BuildCreateInvitation(WorkflowExpression<string> bodyinvitedUserDisplayName = null, WorkflowExpression<string> bodyinvitedUserEmailAddress = null, WorkflowExpression<bodyinvitedUserMessageInfoccRecipientsInputItem[]> bodyinvitedUserMessageInfoccRecipients = null, WorkflowExpression<string> bodyinvitedUserMessageInfocustomizedMessageBody = null, WorkflowExpression<string> bodyinvitedUserMessageInfomessageLanguage = null, WorkflowExpression<string> bodyinvitedUserType = null, WorkflowExpression<string> bodyinviteRedirectUrl = null, WorkflowExpression<bool> bodyresetRedemption = null, WorkflowExpression<bool> bodysendInvitationMessage = null)
+        {
+            WorkflowExpression.Validate(bodyinvitedUserDisplayName, nameof(bodyinvitedUserDisplayName), required: false);
+            WorkflowExpression.Validate(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
+            WorkflowExpression.Validate(bodyinvitedUserMessageInfoccRecipients, nameof(bodyinvitedUserMessageInfoccRecipients), required: false);
+            WorkflowExpression.Validate(bodyinvitedUserMessageInfocustomizedMessageBody, nameof(bodyinvitedUserMessageInfocustomizedMessageBody), required: false);
+            WorkflowExpression.Validate(bodyinvitedUserMessageInfomessageLanguage, nameof(bodyinvitedUserMessageInfomessageLanguage), required: false);
+            WorkflowExpression.Validate(bodyinvitedUserType, nameof(bodyinvitedUserType), required: false);
+            WorkflowExpression.Validate(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
+            WorkflowExpression.Validate(bodyresetRedemption, nameof(bodyresetRedemption), required: false);
+            WorkflowExpression.Validate(bodysendInvitationMessage, nameof(bodysendInvitationMessage), required: false);
+            return new DeferredBodyAction<CreateInvitationResponse>(() =>
             {
-                body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(bodyinvitedUserEmailAddress);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1.0/invitations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinvitedUserDisplayName != null)
+                {
+                    body["invitedUserDisplayName"] = ExpressionConverter.ConvertO(bodyinvitedUserDisplayName);
+                    bodypropCount++;
+                }
 
-            var invitedUserMessageInfoObject = new JObject();
-            var invitedUserMessageInfoObjectpropCount = 0;
-            if (bodyinvitedUserMessageInfoccRecipients != null)
-            {
-                invitedUserMessageInfoObject["ccRecipients"] = ExpressionConverter.ConvertO(bodyinvitedUserMessageInfoccRecipients);
-                invitedUserMessageInfoObjectpropCount++;
-            }
+                if (bodyinvitedUserEmailAddress != null)
+                {
+                    body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(bodyinvitedUserEmailAddress);
+                    bodypropCount++;
+                }
 
-            if (bodyinvitedUserMessageInfocustomizedMessageBody != null)
-            {
-                invitedUserMessageInfoObject["customizedMessageBody"] = ExpressionConverter.ConvertO(bodyinvitedUserMessageInfocustomizedMessageBody);
-                invitedUserMessageInfoObjectpropCount++;
-            }
+                var invitedUserMessageInfoObject = new JObject();
+                var invitedUserMessageInfoObjectpropCount = 0;
+                if (bodyinvitedUserMessageInfoccRecipients != null)
+                {
+                    invitedUserMessageInfoObject["ccRecipients"] = ExpressionConverter.ConvertO(bodyinvitedUserMessageInfoccRecipients);
+                    invitedUserMessageInfoObjectpropCount++;
+                }
 
-            if (bodyinvitedUserMessageInfomessageLanguage != null)
-            {
-                invitedUserMessageInfoObject["messageLanguage"] = ExpressionConverter.ConvertO(bodyinvitedUserMessageInfomessageLanguage);
-                invitedUserMessageInfoObjectpropCount++;
-            }
+                if (bodyinvitedUserMessageInfocustomizedMessageBody != null)
+                {
+                    invitedUserMessageInfoObject["customizedMessageBody"] = ExpressionConverter.ConvertO(bodyinvitedUserMessageInfocustomizedMessageBody);
+                    invitedUserMessageInfoObjectpropCount++;
+                }
 
-            if (invitedUserMessageInfoObjectpropCount > 0)
-            {
-                body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
-                bodypropCount++;
-            }
+                if (bodyinvitedUserMessageInfomessageLanguage != null)
+                {
+                    invitedUserMessageInfoObject["messageLanguage"] = ExpressionConverter.ConvertO(bodyinvitedUserMessageInfomessageLanguage);
+                    invitedUserMessageInfoObjectpropCount++;
+                }
 
-            if (bodyinvitedUserType != null)
-            {
-                body["invitedUserType"] = ExpressionConverter.ConvertO(bodyinvitedUserType);
-                bodypropCount++;
-            }
+                if (invitedUserMessageInfoObjectpropCount > 0)
+                {
+                    body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
+                    bodypropCount++;
+                }
 
-            if (bodyinviteRedirectUrl != null)
-            {
-                body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(bodyinviteRedirectUrl);
-                bodypropCount++;
-            }
+                if (bodyinvitedUserType != null)
+                {
+                    body["invitedUserType"] = ExpressionConverter.ConvertO(bodyinvitedUserType);
+                    bodypropCount++;
+                }
 
-            if (bodyresetRedemption != null)
-            {
-                body["resetRedemption"] = ExpressionConverter.ConvertO(bodyresetRedemption);
-                bodypropCount++;
-            }
+                if (bodyinviteRedirectUrl != null)
+                {
+                    body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(bodyinviteRedirectUrl);
+                    bodypropCount++;
+                }
 
-            if (bodysendInvitationMessage != null)
-            {
-                body["sendInvitationMessage"] = ExpressionConverter.ConvertO(bodysendInvitationMessage);
-                bodypropCount++;
-            }
+                if (bodyresetRedemption != null)
+                {
+                    body["resetRedemption"] = ExpressionConverter.ConvertO(bodyresetRedemption);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysendInvitationMessage != null)
+                {
+                    body["sendInvitationMessage"] = ExpressionConverter.ConvertO(bodysendInvitationMessage);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateInvitationResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateInvitationResponse>(callPayload);
+            });
         }
     }
 

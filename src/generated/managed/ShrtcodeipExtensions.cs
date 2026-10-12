@@ -4,31 +4,53 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ShrtcodeipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
-        public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink(Expression<Func<string>> url)
+        [WorkflowExpressionFactory(nameof(__BuildShortenLink))]
+        public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink([WorkflowExpression] Func<string> url)
         {
-            var apiCallPath = "/shorten";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ShortenLinkResponse> __BuildShortenLink(WorkflowExpression<string> url)
+        {
+            WorkflowExpression.Validate(url, nameof(url), required: true);
+            return new DeferredBodyAction<ShortenLinkResponse>(() =>
+            {
+                var apiCallPath = "/shorten";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
-        public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink(Expression<Func<string>> code)
+        [WorkflowExpressionFactory(nameof(__BuildGettingInformationLink))]
+        public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink([WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GettingInformationLinkResponse> __BuildGettingInformationLink(WorkflowExpression<string> code)
+        {
+            WorkflowExpression.Validate(code, nameof(code), required: true);
+            return new DeferredBodyAction<GettingInformationLinkResponse>(() =>
+            {
+                var apiCallPath = "/info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
+            });
         }
     }
 

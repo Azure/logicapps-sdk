@@ -4,24 +4,36 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WeatherforecastipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weatherforecastip")]
-        public IBodyWorkflowAction<CityResponse> City(Expression<Func<string>> q = null, Expression<Func<string>> appid = null)
+        [WorkflowExpressionFactory(nameof(__BuildCity))]
+        public IBodyWorkflowAction<CityResponse> City([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> appid = null)
         {
-            var apiCallPath = "/data/2.5/weather";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (appid != null)
-                callPayload.Queries["appid"] = ExpressionConverter.Convert(appid);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CityResponse> __BuildCity(WorkflowExpression<string> q = null, WorkflowExpression<string> appid = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(appid, nameof(appid), required: false);
+            return new DeferredBodyAction<CityResponse>(() =>
+            {
+                var apiCallPath = "/data/2.5/weather";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (appid != null)
+                    callPayload.Queries["appid"] = ExpressionConverter.Convert(appid);
+                return new ApiConnectionAction<CityResponse>(callPayload);
+            });
         }
     }
 

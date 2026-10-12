@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmail();
 
-            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => new EmailContent
+            var compose = WorkflowActions.BuiltIn.Compose(input: () => new
             {
                 Subject = trigger.TriggerBody.Value[0].Subject,
                 Body = trigger.TriggerBody.Value[0].Body,
                 From = trigger.TriggerBody.Value[0].From,
                 ReceivedTime = trigger.TriggerBody.Value[0].ReceivedTime
-            }.ToString()).WithName("ComposeEmailContent");
+            }).WithName("ComposeEmailContent");
 
             trigger.Then(compose);
 

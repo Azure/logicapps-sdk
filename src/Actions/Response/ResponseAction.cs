@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
         /// </summary>
-        public HttpStatusCode StatusCode { get; }
+        public object StatusCode { get; }
 
         /// <summary>
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; }
+        public object Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="headers">The response headers.</param>
         /// <param name="schema">The JSON schema of the response.</param>
         internal ResponseAction(
-            HttpStatusCode statusCode = HttpStatusCode.OK, 
+            object statusCode = null,
             object responseBody = null, 
-            Dictionary<string, string> headers = null, 
+            object headers = null,
             JToken schema = null)
         {
-            this.StatusCode = statusCode;
+            this.StatusCode = statusCode ?? HttpStatusCode.OK;
             this.ResponseBody = responseBody;
             this.Headers = headers;
             this.Schema = schema;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.Response,
                 Inputs = new ResponseActionInput
                 {
-                    StatusCode = (int)this.StatusCode,
+                    StatusCode = this.StatusCode is HttpStatusCode code ? (int)code : this.StatusCode,
                     Headers = this.Headers,
                     Body = this.ResponseBody?.ToJToken(),
                     Schema = this.Schema,
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="responseBody">The response body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
         /// <param name="schema">The JSON schema of the response (optional).</param>
-        internal ResponseAction(HttpStatusCode statusCode = HttpStatusCode.OK, object responseBody = null, Dictionary<string, string> headers = null, JToken schema = null)
+        internal ResponseAction(object statusCode = null, object responseBody = null, object headers = null, JToken schema = null)
             : base(statusCode, responseBody, headers, schema)
         {
         }

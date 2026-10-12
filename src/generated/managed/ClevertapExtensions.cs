@@ -4,29 +4,40 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ClevertapActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
-        public IWorkflowAction UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
-        {
-            var apiCallPath = "/1/upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["d"] = ExpressionConverter.ConvertO(bodyd);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
+        [WorkflowExpressionFactory(nameof(__BuildUploadProfiles))]
+        public IWorkflowAction UploadProfiles([WorkflowExpression] Func<bodydInputItem[]> bodyd)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUploadProfiles(WorkflowExpression<bodydInputItem[]> bodyd)
+        {
+            WorkflowExpression.Validate(bodyd, nameof(bodyd), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/1/upload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["d"] = ExpressionConverter.ConvertO(bodyd);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

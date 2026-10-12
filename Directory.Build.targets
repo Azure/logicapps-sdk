@@ -1,0 +1,10 @@
+<Project>
+  <Target Name="BuildRepositoryWorkflowCompiler" BeforeTargets="CompileWorkflowExpressions" Condition="'$(WorkflowRepositoryConsumer)' == 'true'">
+    <MSBuild Projects="$(MSBuildThisFileDirectory)src\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="Build" Properties="Configuration=$(Configuration)" RemoveProperties="TargetFramework">
+      <Output TaskParameter="TargetOutputs" ItemName="_RepositoryWorkflowCompiler" />
+    </MSBuild>
+    <PropertyGroup><WorkflowCompilerPath>@(_RepositoryWorkflowCompiler)</WorkflowCompilerPath></PropertyGroup>
+  </Target>
+  <Import Project="src\buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" Condition="'$(WorkflowRepositoryConsumer)' == 'true'" />
+</Project>

@@ -4,23 +4,35 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbstractipgeolocatioActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractipgeolocatio")]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> ipAddress, Expression<Func<string>> fields = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnalyze))]
+        public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<string> ipAddress, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip_address"] = ExpressionConverter.Convert(ipAddress);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyze(WorkflowExpression<string> ipAddress, WorkflowExpression<string> fields = null)
+        {
+            WorkflowExpression.Validate(ipAddress, nameof(ipAddress), required: true);
+            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ip_address"] = ExpressionConverter.Convert(ipAddress);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            });
         }
     }
 

@@ -4,853 +4,1168 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CascadeActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals(Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllGoals))]
+        public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/goals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetAllGoalsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllGoalsResponse> __BuildGetAllGoals(WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetAllGoalsResponse>(() =>
+            {
+                var apiCallPath = "/goals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetAllGoalsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<bodygoalisPrivateInput>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateGoal))]
+        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> bodygoalroleId = null, [WorkflowExpression] Func<int> bodygoalcreatorId = null, [WorkflowExpression] Func<bodygoalstatusInput> bodygoalstatus = null, [WorkflowExpression] Func<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, [WorkflowExpression] Func<bodygoaltargetFlowInput> bodygoaltargetFlow = null, [WorkflowExpression] Func<string> bodygoalaction = null, [WorkflowExpression] Func<string> bodygoaldetails = null, [WorkflowExpression] Func<double> bodygoalinitial = null, [WorkflowExpression] Func<double> bodygoalprogress = null, [WorkflowExpression] Func<double> bodygoaltarget = null, [WorkflowExpression] Func<string> bodygoalstartTime = null, [WorkflowExpression] Func<string> bodygoalendTime = null, [WorkflowExpression] Func<bodygoalweightIdInput> bodygoalweightId = null, [WorkflowExpression] Func<bodygoalisPrivateInput> bodygoalisPrivate = null, [WorkflowExpression] Func<bodygoaltrackingTypeInput> bodygoaltrackingType = null, [WorkflowExpression] Func<int> bodygoalentityTemplateId = null, [WorkflowExpression] Func<int[]> bodygoaldirectFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedFromIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedToIds = null)
         {
-            var apiCallPath = "/goals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var goalObject = new JObject();
-            var goalObjectpropCount = 0;
-            if (bodygoalroleId != null)
-            {
-                goalObject["role_id"] = ExpressionConverter.ConvertO(bodygoalroleId);
-                goalObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodygoalcreatorId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateGoalResponse> __BuildCreateGoal(WorkflowExpression<string> instance, WorkflowExpression<int> bodygoalroleId = null, WorkflowExpression<int> bodygoalcreatorId = null, WorkflowExpression<bodygoalstatusInput> bodygoalstatus = null, WorkflowExpression<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, WorkflowExpression<bodygoaltargetFlowInput> bodygoaltargetFlow = null, WorkflowExpression<string> bodygoalaction = null, WorkflowExpression<string> bodygoaldetails = null, WorkflowExpression<double> bodygoalinitial = null, WorkflowExpression<double> bodygoalprogress = null, WorkflowExpression<double> bodygoaltarget = null, WorkflowExpression<string> bodygoalstartTime = null, WorkflowExpression<string> bodygoalendTime = null, WorkflowExpression<bodygoalweightIdInput> bodygoalweightId = null, WorkflowExpression<bodygoalisPrivateInput> bodygoalisPrivate = null, WorkflowExpression<bodygoaltrackingTypeInput> bodygoaltrackingType = null, WorkflowExpression<int> bodygoalentityTemplateId = null, WorkflowExpression<int[]> bodygoaldirectFocusAreaIds = null, WorkflowExpression<int[]> bodygoalalignedFromIds = null, WorkflowExpression<int[]> bodygoalalignedToIds = null)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodygoalroleId, nameof(bodygoalroleId), required: false);
+            WorkflowExpression.Validate(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
+            WorkflowExpression.Validate(bodygoalstatus, nameof(bodygoalstatus), required: false);
+            WorkflowExpression.Validate(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
+            WorkflowExpression.Validate(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
+            WorkflowExpression.Validate(bodygoalaction, nameof(bodygoalaction), required: false);
+            WorkflowExpression.Validate(bodygoaldetails, nameof(bodygoaldetails), required: false);
+            WorkflowExpression.Validate(bodygoalinitial, nameof(bodygoalinitial), required: false);
+            WorkflowExpression.Validate(bodygoalprogress, nameof(bodygoalprogress), required: false);
+            WorkflowExpression.Validate(bodygoaltarget, nameof(bodygoaltarget), required: false);
+            WorkflowExpression.Validate(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
+            WorkflowExpression.Validate(bodygoalendTime, nameof(bodygoalendTime), required: false);
+            WorkflowExpression.Validate(bodygoalweightId, nameof(bodygoalweightId), required: false);
+            WorkflowExpression.Validate(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
+            WorkflowExpression.Validate(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
+            WorkflowExpression.Validate(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
+            WorkflowExpression.Validate(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
+            WorkflowExpression.Validate(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
+            WorkflowExpression.Validate(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            return new DeferredBodyAction<CreateGoalResponse>(() =>
             {
-                goalObject["creator_id"] = ExpressionConverter.ConvertO(bodygoalcreatorId);
-                goalObjectpropCount++;
-            }
+                var apiCallPath = "/goals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var goalObject = new JObject();
+                var goalObjectpropCount = 0;
+                if (bodygoalroleId != null)
+                {
+                    goalObject["role_id"] = ExpressionConverter.ConvertO(bodygoalroleId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalstatus != null)
-            {
-                goalObject["status"] = ExpressionConverter.ConvertO(bodygoalstatus);
-                goalObjectpropCount++;
-            }
+                if (bodygoalcreatorId != null)
+                {
+                    goalObject["creator_id"] = ExpressionConverter.ConvertO(bodygoalcreatorId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalcompletionCriteria != null)
-            {
-                goalObject["completion_criteria"] = ExpressionConverter.ConvertO(bodygoalcompletionCriteria);
-                goalObjectpropCount++;
-            }
+                if (bodygoalstatus != null)
+                {
+                    goalObject["status"] = ExpressionConverter.ConvertO(bodygoalstatus);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaltargetFlow != null)
-            {
-                goalObject["target_flow"] = ExpressionConverter.ConvertO(bodygoaltargetFlow);
-                goalObjectpropCount++;
-            }
+                if (bodygoalcompletionCriteria != null)
+                {
+                    goalObject["completion_criteria"] = ExpressionConverter.ConvertO(bodygoalcompletionCriteria);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalaction != null)
-            {
-                goalObject["action"] = ExpressionConverter.ConvertO(bodygoalaction);
-                goalObjectpropCount++;
-            }
+                if (bodygoaltargetFlow != null)
+                {
+                    goalObject["target_flow"] = ExpressionConverter.ConvertO(bodygoaltargetFlow);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaldetails != null)
-            {
-                goalObject["details"] = ExpressionConverter.ConvertO(bodygoaldetails);
-                goalObjectpropCount++;
-            }
+                if (bodygoalaction != null)
+                {
+                    goalObject["action"] = ExpressionConverter.ConvertO(bodygoalaction);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalinitial != null)
-            {
-                goalObject["initial"] = ExpressionConverter.ConvertO(bodygoalinitial);
-                goalObjectpropCount++;
-            }
+                if (bodygoaldetails != null)
+                {
+                    goalObject["details"] = ExpressionConverter.ConvertO(bodygoaldetails);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalprogress != null)
-            {
-                goalObject["progress"] = ExpressionConverter.ConvertO(bodygoalprogress);
-                goalObjectpropCount++;
-            }
+                if (bodygoalinitial != null)
+                {
+                    goalObject["initial"] = ExpressionConverter.ConvertO(bodygoalinitial);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaltarget != null)
-            {
-                goalObject["target"] = ExpressionConverter.ConvertO(bodygoaltarget);
-                goalObjectpropCount++;
-            }
+                if (bodygoalprogress != null)
+                {
+                    goalObject["progress"] = ExpressionConverter.ConvertO(bodygoalprogress);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalstartTime != null)
-            {
-                goalObject["start_time"] = ExpressionConverter.ConvertO(bodygoalstartTime);
-                goalObjectpropCount++;
-            }
+                if (bodygoaltarget != null)
+                {
+                    goalObject["target"] = ExpressionConverter.ConvertO(bodygoaltarget);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalendTime != null)
-            {
-                goalObject["end_time"] = ExpressionConverter.ConvertO(bodygoalendTime);
-                goalObjectpropCount++;
-            }
+                if (bodygoalstartTime != null)
+                {
+                    goalObject["start_time"] = ExpressionConverter.ConvertO(bodygoalstartTime);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalweightId != null)
-            {
-                goalObject["weight_id"] = ExpressionConverter.ConvertO(bodygoalweightId);
-                goalObjectpropCount++;
-            }
+                if (bodygoalendTime != null)
+                {
+                    goalObject["end_time"] = ExpressionConverter.ConvertO(bodygoalendTime);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalisPrivate != null)
-            {
-                goalObject["is_private"] = ExpressionConverter.ConvertO(bodygoalisPrivate);
-                goalObjectpropCount++;
-            }
+                if (bodygoalweightId != null)
+                {
+                    goalObject["weight_id"] = ExpressionConverter.ConvertO(bodygoalweightId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaltrackingType != null)
-            {
-                goalObject["tracking_type"] = ExpressionConverter.ConvertO(bodygoaltrackingType);
-                goalObjectpropCount++;
-            }
+                if (bodygoalisPrivate != null)
+                {
+                    goalObject["is_private"] = ExpressionConverter.ConvertO(bodygoalisPrivate);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalentityTemplateId != null)
-            {
-                goalObject["entity_template_id"] = ExpressionConverter.ConvertO(bodygoalentityTemplateId);
-                goalObjectpropCount++;
-            }
+                if (bodygoaltrackingType != null)
+                {
+                    goalObject["tracking_type"] = ExpressionConverter.ConvertO(bodygoaltrackingType);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaldirectFocusAreaIds != null)
-            {
-                goalObject["direct_focus_area_ids"] = ExpressionConverter.ConvertO(bodygoaldirectFocusAreaIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoalentityTemplateId != null)
+                {
+                    goalObject["entity_template_id"] = ExpressionConverter.ConvertO(bodygoalentityTemplateId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalalignedFromIds != null)
-            {
-                goalObject["aligned_from_ids"] = ExpressionConverter.ConvertO(bodygoalalignedFromIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoaldirectFocusAreaIds != null)
+                {
+                    goalObject["direct_focus_area_ids"] = ExpressionConverter.ConvertO(bodygoaldirectFocusAreaIds);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalalignedToIds != null)
-            {
-                goalObject["aligned_to_ids"] = ExpressionConverter.ConvertO(bodygoalalignedToIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoalalignedFromIds != null)
+                {
+                    goalObject["aligned_from_ids"] = ExpressionConverter.ConvertO(bodygoalalignedFromIds);
+                    goalObjectpropCount++;
+                }
 
-            if (goalObjectpropCount > 0)
-            {
-                body["goal"] = goalObject;
-                bodypropCount++;
-            }
+                if (bodygoalalignedToIds != null)
+                {
+                    goalObject["aligned_to_ids"] = ExpressionConverter.ConvertO(bodygoalalignedToIds);
+                    goalObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (goalObjectpropCount > 0)
+                {
+                    body["goal"] = goalObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateGoalResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateGoalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetSingleGoal))]
+        public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetSingleGoalResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSingleGoalResponse> __BuildGetSingleGoal(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetSingleGoalResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetSingleGoalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteGoal))]
+        public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<DeleteGoalResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteGoalResponse> __BuildDeleteGoal(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<DeleteGoalResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<DeleteGoalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<int>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalinheritedFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateGoal))]
+        public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> bodygoalroleId = null, [WorkflowExpression] Func<int> bodygoalcreatorId = null, [WorkflowExpression] Func<bodygoalstatusInput> bodygoalstatus = null, [WorkflowExpression] Func<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, [WorkflowExpression] Func<bodygoaltargetFlowInput> bodygoaltargetFlow = null, [WorkflowExpression] Func<string> bodygoalaction = null, [WorkflowExpression] Func<string> bodygoaldetails = null, [WorkflowExpression] Func<double> bodygoalinitial = null, [WorkflowExpression] Func<double> bodygoalprogress = null, [WorkflowExpression] Func<double> bodygoaltarget = null, [WorkflowExpression] Func<string> bodygoalstartTime = null, [WorkflowExpression] Func<string> bodygoalendTime = null, [WorkflowExpression] Func<bodygoalweightIdInput> bodygoalweightId = null, [WorkflowExpression] Func<int> bodygoalisPrivate = null, [WorkflowExpression] Func<bodygoaltrackingTypeInput> bodygoaltrackingType = null, [WorkflowExpression] Func<int> bodygoalentityTemplateId = null, [WorkflowExpression] Func<int[]> bodygoaldirectFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalinheritedFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedFromIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedToIds = null)
         {
-            var apiCallPath = String.Format("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var goalObject = new JObject();
-            var goalObjectpropCount = 0;
-            if (bodygoalroleId != null)
-            {
-                goalObject["role_id"] = ExpressionConverter.ConvertO(bodygoalroleId);
-                goalObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodygoalcreatorId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateGoalResponse> __BuildUpdateGoal(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<int> bodygoalroleId = null, WorkflowExpression<int> bodygoalcreatorId = null, WorkflowExpression<bodygoalstatusInput> bodygoalstatus = null, WorkflowExpression<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, WorkflowExpression<bodygoaltargetFlowInput> bodygoaltargetFlow = null, WorkflowExpression<string> bodygoalaction = null, WorkflowExpression<string> bodygoaldetails = null, WorkflowExpression<double> bodygoalinitial = null, WorkflowExpression<double> bodygoalprogress = null, WorkflowExpression<double> bodygoaltarget = null, WorkflowExpression<string> bodygoalstartTime = null, WorkflowExpression<string> bodygoalendTime = null, WorkflowExpression<bodygoalweightIdInput> bodygoalweightId = null, WorkflowExpression<int> bodygoalisPrivate = null, WorkflowExpression<bodygoaltrackingTypeInput> bodygoaltrackingType = null, WorkflowExpression<int> bodygoalentityTemplateId = null, WorkflowExpression<int[]> bodygoaldirectFocusAreaIds = null, WorkflowExpression<int[]> bodygoalinheritedFocusAreaIds = null, WorkflowExpression<int[]> bodygoalalignedFromIds = null, WorkflowExpression<int[]> bodygoalalignedToIds = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodygoalroleId, nameof(bodygoalroleId), required: false);
+            WorkflowExpression.Validate(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
+            WorkflowExpression.Validate(bodygoalstatus, nameof(bodygoalstatus), required: false);
+            WorkflowExpression.Validate(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
+            WorkflowExpression.Validate(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
+            WorkflowExpression.Validate(bodygoalaction, nameof(bodygoalaction), required: false);
+            WorkflowExpression.Validate(bodygoaldetails, nameof(bodygoaldetails), required: false);
+            WorkflowExpression.Validate(bodygoalinitial, nameof(bodygoalinitial), required: false);
+            WorkflowExpression.Validate(bodygoalprogress, nameof(bodygoalprogress), required: false);
+            WorkflowExpression.Validate(bodygoaltarget, nameof(bodygoaltarget), required: false);
+            WorkflowExpression.Validate(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
+            WorkflowExpression.Validate(bodygoalendTime, nameof(bodygoalendTime), required: false);
+            WorkflowExpression.Validate(bodygoalweightId, nameof(bodygoalweightId), required: false);
+            WorkflowExpression.Validate(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
+            WorkflowExpression.Validate(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
+            WorkflowExpression.Validate(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
+            WorkflowExpression.Validate(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
+            WorkflowExpression.Validate(bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
+            WorkflowExpression.Validate(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
+            WorkflowExpression.Validate(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            return new DeferredBodyAction<UpdateGoalResponse>(() =>
             {
-                goalObject["creator_id"] = ExpressionConverter.ConvertO(bodygoalcreatorId);
-                goalObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var goalObject = new JObject();
+                var goalObjectpropCount = 0;
+                if (bodygoalroleId != null)
+                {
+                    goalObject["role_id"] = ExpressionConverter.ConvertO(bodygoalroleId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalstatus != null)
-            {
-                goalObject["status"] = ExpressionConverter.ConvertO(bodygoalstatus);
-                goalObjectpropCount++;
-            }
+                if (bodygoalcreatorId != null)
+                {
+                    goalObject["creator_id"] = ExpressionConverter.ConvertO(bodygoalcreatorId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalcompletionCriteria != null)
-            {
-                goalObject["completion_criteria"] = ExpressionConverter.ConvertO(bodygoalcompletionCriteria);
-                goalObjectpropCount++;
-            }
+                if (bodygoalstatus != null)
+                {
+                    goalObject["status"] = ExpressionConverter.ConvertO(bodygoalstatus);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaltargetFlow != null)
-            {
-                goalObject["target_flow"] = ExpressionConverter.ConvertO(bodygoaltargetFlow);
-                goalObjectpropCount++;
-            }
+                if (bodygoalcompletionCriteria != null)
+                {
+                    goalObject["completion_criteria"] = ExpressionConverter.ConvertO(bodygoalcompletionCriteria);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalaction != null)
-            {
-                goalObject["action"] = ExpressionConverter.ConvertO(bodygoalaction);
-                goalObjectpropCount++;
-            }
+                if (bodygoaltargetFlow != null)
+                {
+                    goalObject["target_flow"] = ExpressionConverter.ConvertO(bodygoaltargetFlow);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaldetails != null)
-            {
-                goalObject["details"] = ExpressionConverter.ConvertO(bodygoaldetails);
-                goalObjectpropCount++;
-            }
+                if (bodygoalaction != null)
+                {
+                    goalObject["action"] = ExpressionConverter.ConvertO(bodygoalaction);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalinitial != null)
-            {
-                goalObject["initial"] = ExpressionConverter.ConvertO(bodygoalinitial);
-                goalObjectpropCount++;
-            }
+                if (bodygoaldetails != null)
+                {
+                    goalObject["details"] = ExpressionConverter.ConvertO(bodygoaldetails);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalprogress != null)
-            {
-                goalObject["progress"] = ExpressionConverter.ConvertO(bodygoalprogress);
-                goalObjectpropCount++;
-            }
+                if (bodygoalinitial != null)
+                {
+                    goalObject["initial"] = ExpressionConverter.ConvertO(bodygoalinitial);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaltarget != null)
-            {
-                goalObject["target"] = ExpressionConverter.ConvertO(bodygoaltarget);
-                goalObjectpropCount++;
-            }
+                if (bodygoalprogress != null)
+                {
+                    goalObject["progress"] = ExpressionConverter.ConvertO(bodygoalprogress);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalstartTime != null)
-            {
-                goalObject["start_time"] = ExpressionConverter.ConvertO(bodygoalstartTime);
-                goalObjectpropCount++;
-            }
+                if (bodygoaltarget != null)
+                {
+                    goalObject["target"] = ExpressionConverter.ConvertO(bodygoaltarget);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalendTime != null)
-            {
-                goalObject["end_time"] = ExpressionConverter.ConvertO(bodygoalendTime);
-                goalObjectpropCount++;
-            }
+                if (bodygoalstartTime != null)
+                {
+                    goalObject["start_time"] = ExpressionConverter.ConvertO(bodygoalstartTime);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalweightId != null)
-            {
-                goalObject["weight_id"] = ExpressionConverter.ConvertO(bodygoalweightId);
-                goalObjectpropCount++;
-            }
+                if (bodygoalendTime != null)
+                {
+                    goalObject["end_time"] = ExpressionConverter.ConvertO(bodygoalendTime);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalisPrivate != null)
-            {
-                goalObject["is_private"] = ExpressionConverter.ConvertO(bodygoalisPrivate);
-                goalObjectpropCount++;
-            }
+                if (bodygoalweightId != null)
+                {
+                    goalObject["weight_id"] = ExpressionConverter.ConvertO(bodygoalweightId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaltrackingType != null)
-            {
-                goalObject["tracking_type"] = ExpressionConverter.ConvertO(bodygoaltrackingType);
-                goalObjectpropCount++;
-            }
+                if (bodygoalisPrivate != null)
+                {
+                    goalObject["is_private"] = ExpressionConverter.ConvertO(bodygoalisPrivate);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalentityTemplateId != null)
-            {
-                goalObject["entity_template_id"] = ExpressionConverter.ConvertO(bodygoalentityTemplateId);
-                goalObjectpropCount++;
-            }
+                if (bodygoaltrackingType != null)
+                {
+                    goalObject["tracking_type"] = ExpressionConverter.ConvertO(bodygoaltrackingType);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoaldirectFocusAreaIds != null)
-            {
-                goalObject["direct_focus_area_ids"] = ExpressionConverter.ConvertO(bodygoaldirectFocusAreaIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoalentityTemplateId != null)
+                {
+                    goalObject["entity_template_id"] = ExpressionConverter.ConvertO(bodygoalentityTemplateId);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalinheritedFocusAreaIds != null)
-            {
-                goalObject["inherited_focus_area_ids"] = ExpressionConverter.ConvertO(bodygoalinheritedFocusAreaIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoaldirectFocusAreaIds != null)
+                {
+                    goalObject["direct_focus_area_ids"] = ExpressionConverter.ConvertO(bodygoaldirectFocusAreaIds);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalalignedFromIds != null)
-            {
-                goalObject["aligned_from_ids"] = ExpressionConverter.ConvertO(bodygoalalignedFromIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoalinheritedFocusAreaIds != null)
+                {
+                    goalObject["inherited_focus_area_ids"] = ExpressionConverter.ConvertO(bodygoalinheritedFocusAreaIds);
+                    goalObjectpropCount++;
+                }
 
-            if (bodygoalalignedToIds != null)
-            {
-                goalObject["aligned_to_ids"] = ExpressionConverter.ConvertO(bodygoalalignedToIds);
-                goalObjectpropCount++;
-            }
+                if (bodygoalalignedFromIds != null)
+                {
+                    goalObject["aligned_from_ids"] = ExpressionConverter.ConvertO(bodygoalalignedFromIds);
+                    goalObjectpropCount++;
+                }
 
-            if (goalObjectpropCount > 0)
-            {
-                body["goal"] = goalObject;
-                bodypropCount++;
-            }
+                if (bodygoalalignedToIds != null)
+                {
+                    goalObject["aligned_to_ids"] = ExpressionConverter.ConvertO(bodygoalalignedToIds);
+                    goalObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (goalObjectpropCount > 0)
+                {
+                    body["goal"] = goalObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateGoalResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateGoalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks(Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllRisks))]
+        public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/issues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetAllRisksResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllRisksResponse> __BuildGetAllRisks(WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetAllRisksResponse>(() =>
+            {
+                var apiCallPath = "/issues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetAllRisksResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateRiskResponse> CreateRisk(Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<int>> bodyissuegoalId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRisk))]
+        public IBodyWorkflowAction<CreateRiskResponse> CreateRisk([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyissueissue = null, [WorkflowExpression] Func<bodyissueisCriticalInput> bodyissueisCritical = null, [WorkflowExpression] Func<bodyissueisResolvedInput> bodyissueisResolved = null, [WorkflowExpression] Func<int> bodyissueroleId = null, [WorkflowExpression] Func<int> bodyissuegoalId = null, [WorkflowExpression] Func<string> bodyissuedueDate = null, [WorkflowExpression] Func<int> bodyissueentityTemplateId = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011281053 = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011296755 = null)
         {
-            var apiCallPath = "/issues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (bodyissueissue != null)
-            {
-                issueObject["issue"] = ExpressionConverter.ConvertO(bodyissueissue);
-                issueObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyissueisCritical != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateRiskResponse> __BuildCreateRisk(WorkflowExpression<string> instance, WorkflowExpression<string> bodyissueissue = null, WorkflowExpression<bodyissueisCriticalInput> bodyissueisCritical = null, WorkflowExpression<bodyissueisResolvedInput> bodyissueisResolved = null, WorkflowExpression<int> bodyissueroleId = null, WorkflowExpression<int> bodyissuegoalId = null, WorkflowExpression<string> bodyissuedueDate = null, WorkflowExpression<int> bodyissueentityTemplateId = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011281053 = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011296755 = null)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodyissueissue, nameof(bodyissueissue), required: false);
+            WorkflowExpression.Validate(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
+            WorkflowExpression.Validate(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
+            WorkflowExpression.Validate(bodyissueroleId, nameof(bodyissueroleId), required: false);
+            WorkflowExpression.Validate(bodyissuegoalId, nameof(bodyissuegoalId), required: false);
+            WorkflowExpression.Validate(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
+            WorkflowExpression.Validate(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
+            WorkflowExpression.Validate(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
+            WorkflowExpression.Validate(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            return new DeferredBodyAction<CreateRiskResponse>(() =>
             {
-                issueObject["is_critical"] = ExpressionConverter.ConvertO(bodyissueisCritical);
-                issueObjectpropCount++;
-            }
+                var apiCallPath = "/issues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (bodyissueissue != null)
+                {
+                    issueObject["issue"] = ExpressionConverter.ConvertO(bodyissueissue);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissueisResolved != null)
-            {
-                issueObject["is_resolved"] = ExpressionConverter.ConvertO(bodyissueisResolved);
-                issueObjectpropCount++;
-            }
+                if (bodyissueisCritical != null)
+                {
+                    issueObject["is_critical"] = ExpressionConverter.ConvertO(bodyissueisCritical);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissueroleId != null)
-            {
-                issueObject["role_id"] = ExpressionConverter.ConvertO(bodyissueroleId);
-                issueObjectpropCount++;
-            }
+                if (bodyissueisResolved != null)
+                {
+                    issueObject["is_resolved"] = ExpressionConverter.ConvertO(bodyissueisResolved);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissuegoalId != null)
-            {
-                issueObject["goal_id"] = ExpressionConverter.ConvertO(bodyissuegoalId);
-                issueObjectpropCount++;
-            }
+                if (bodyissueroleId != null)
+                {
+                    issueObject["role_id"] = ExpressionConverter.ConvertO(bodyissueroleId);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissuedueDate != null)
-            {
-                issueObject["due_date"] = ExpressionConverter.ConvertO(bodyissuedueDate);
-                issueObjectpropCount++;
-            }
+                if (bodyissuegoalId != null)
+                {
+                    issueObject["goal_id"] = ExpressionConverter.ConvertO(bodyissuegoalId);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissueentityTemplateId != null)
-            {
-                issueObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyissueentityTemplateId);
-                issueObjectpropCount++;
-            }
+                if (bodyissuedueDate != null)
+                {
+                    issueObject["due_date"] = ExpressionConverter.ConvertO(bodyissuedueDate);
+                    issueObjectpropCount++;
+                }
 
-            var customAttributesObject = new JObject();
-            var customAttributesObjectpropCount = 0;
-            if (bodyissuecustomAttributescA1573011281053 != null)
-            {
-                customAttributesObject["CA1573011281053"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011281053);
-                customAttributesObjectpropCount++;
-            }
+                if (bodyissueentityTemplateId != null)
+                {
+                    issueObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyissueentityTemplateId);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissuecustomAttributescA1573011296755 != null)
-            {
-                customAttributesObject["CA1573011296755"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011296755);
-                customAttributesObjectpropCount++;
-            }
+                var customAttributesObject = new JObject();
+                var customAttributesObjectpropCount = 0;
+                if (bodyissuecustomAttributescA1573011281053 != null)
+                {
+                    customAttributesObject["CA1573011281053"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011281053);
+                    customAttributesObjectpropCount++;
+                }
 
-            if (customAttributesObjectpropCount > 0)
-            {
-                issueObject["custom_attributes"] = customAttributesObject;
-                issueObjectpropCount++;
-            }
+                if (bodyissuecustomAttributescA1573011296755 != null)
+                {
+                    customAttributesObject["CA1573011296755"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011296755);
+                    customAttributesObjectpropCount++;
+                }
 
-            if (issueObjectpropCount > 0)
-            {
-                body["issue"] = issueObject;
-                bodypropCount++;
-            }
+                if (customAttributesObjectpropCount > 0)
+                {
+                    issueObject["custom_attributes"] = customAttributesObject;
+                    issueObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (issueObjectpropCount > 0)
+                {
+                    body["issue"] = issueObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateRiskResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateRiskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetSingleRisk))]
+        public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetSingleRiskResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSingleRiskResponse> __BuildGetSingleRisk(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetSingleRiskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetSingleRiskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteRisk))]
+        public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<DeleteRiskResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteRiskResponse> __BuildDeleteRisk(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<DeleteRiskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<DeleteRiskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateRisk))]
+        public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyissueissue = null, [WorkflowExpression] Func<bodyissueisCriticalInput> bodyissueisCritical = null, [WorkflowExpression] Func<bodyissueisResolvedInput> bodyissueisResolved = null, [WorkflowExpression] Func<int> bodyissueroleId = null, [WorkflowExpression] Func<string> bodyissuedueDate = null, [WorkflowExpression] Func<int> bodyissueentityTemplateId = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011281053 = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011296755 = null)
         {
-            var apiCallPath = String.Format("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (bodyissueissue != null)
-            {
-                issueObject["issue"] = ExpressionConverter.ConvertO(bodyissueissue);
-                issueObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyissueisCritical != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateRiskResponse> __BuildUpdateRisk(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<string> bodyissueissue = null, WorkflowExpression<bodyissueisCriticalInput> bodyissueisCritical = null, WorkflowExpression<bodyissueisResolvedInput> bodyissueisResolved = null, WorkflowExpression<int> bodyissueroleId = null, WorkflowExpression<string> bodyissuedueDate = null, WorkflowExpression<int> bodyissueentityTemplateId = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011281053 = null, WorkflowExpression<int> bodyissuecustomAttributescA1573011296755 = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodyissueissue, nameof(bodyissueissue), required: false);
+            WorkflowExpression.Validate(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
+            WorkflowExpression.Validate(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
+            WorkflowExpression.Validate(bodyissueroleId, nameof(bodyissueroleId), required: false);
+            WorkflowExpression.Validate(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
+            WorkflowExpression.Validate(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
+            WorkflowExpression.Validate(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
+            WorkflowExpression.Validate(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            return new DeferredBodyAction<UpdateRiskResponse>(() =>
             {
-                issueObject["is_critical"] = ExpressionConverter.ConvertO(bodyissueisCritical);
-                issueObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (bodyissueissue != null)
+                {
+                    issueObject["issue"] = ExpressionConverter.ConvertO(bodyissueissue);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissueisResolved != null)
-            {
-                issueObject["is_resolved"] = ExpressionConverter.ConvertO(bodyissueisResolved);
-                issueObjectpropCount++;
-            }
+                if (bodyissueisCritical != null)
+                {
+                    issueObject["is_critical"] = ExpressionConverter.ConvertO(bodyissueisCritical);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissueroleId != null)
-            {
-                issueObject["role_id"] = ExpressionConverter.ConvertO(bodyissueroleId);
-                issueObjectpropCount++;
-            }
+                if (bodyissueisResolved != null)
+                {
+                    issueObject["is_resolved"] = ExpressionConverter.ConvertO(bodyissueisResolved);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissuedueDate != null)
-            {
-                issueObject["due_date"] = ExpressionConverter.ConvertO(bodyissuedueDate);
-                issueObjectpropCount++;
-            }
+                if (bodyissueroleId != null)
+                {
+                    issueObject["role_id"] = ExpressionConverter.ConvertO(bodyissueroleId);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissueentityTemplateId != null)
-            {
-                issueObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyissueentityTemplateId);
-                issueObjectpropCount++;
-            }
+                if (bodyissuedueDate != null)
+                {
+                    issueObject["due_date"] = ExpressionConverter.ConvertO(bodyissuedueDate);
+                    issueObjectpropCount++;
+                }
 
-            var customAttributesObject = new JObject();
-            var customAttributesObjectpropCount = 0;
-            if (bodyissuecustomAttributescA1573011281053 != null)
-            {
-                customAttributesObject["CA1573011281053"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011281053);
-                customAttributesObjectpropCount++;
-            }
+                if (bodyissueentityTemplateId != null)
+                {
+                    issueObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyissueentityTemplateId);
+                    issueObjectpropCount++;
+                }
 
-            if (bodyissuecustomAttributescA1573011296755 != null)
-            {
-                customAttributesObject["CA1573011296755"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011296755);
-                customAttributesObjectpropCount++;
-            }
+                var customAttributesObject = new JObject();
+                var customAttributesObjectpropCount = 0;
+                if (bodyissuecustomAttributescA1573011281053 != null)
+                {
+                    customAttributesObject["CA1573011281053"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011281053);
+                    customAttributesObjectpropCount++;
+                }
 
-            if (customAttributesObjectpropCount > 0)
-            {
-                issueObject["custom_attributes"] = customAttributesObject;
-                issueObjectpropCount++;
-            }
+                if (bodyissuecustomAttributescA1573011296755 != null)
+                {
+                    customAttributesObject["CA1573011296755"] = ExpressionConverter.ConvertO(bodyissuecustomAttributescA1573011296755);
+                    customAttributesObjectpropCount++;
+                }
 
-            if (issueObjectpropCount > 0)
-            {
-                body["issue"] = issueObject;
-                bodypropCount++;
-            }
+                if (customAttributesObjectpropCount > 0)
+                {
+                    issueObject["custom_attributes"] = customAttributesObject;
+                    issueObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (issueObjectpropCount > 0)
+                {
+                    body["issue"] = issueObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateRiskResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateRiskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks(Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllTasks))]
+        public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetAllTasksResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllTasksResponse> __BuildGetAllTasks(WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetAllTasksResponse>(() =>
+            {
+                var apiCallPath = "/tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetAllTasksResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodytasktask = null, [WorkflowExpression] Func<string> bodytaskcomment = null, [WorkflowExpression] Func<bodytaskisCompleteInput> bodytaskisComplete = null, [WorkflowExpression] Func<int> bodytaskroleId = null, [WorkflowExpression] Func<int> bodytaskgoalId = null, [WorkflowExpression] Func<string> bodytaskstartDate = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<bodytaskweightIdInput> bodytaskweightId = null, [WorkflowExpression] Func<int> bodytaskentityTemplateId = null)
         {
-            var apiCallPath = "/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodytasktask != null)
-            {
-                taskObject["task"] = ExpressionConverter.ConvertO(bodytasktask);
-                taskObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodytaskcomment != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> instance, WorkflowExpression<string> bodytasktask = null, WorkflowExpression<string> bodytaskcomment = null, WorkflowExpression<bodytaskisCompleteInput> bodytaskisComplete = null, WorkflowExpression<int> bodytaskroleId = null, WorkflowExpression<int> bodytaskgoalId = null, WorkflowExpression<string> bodytaskstartDate = null, WorkflowExpression<string> bodytaskdueDate = null, WorkflowExpression<bodytaskweightIdInput> bodytaskweightId = null, WorkflowExpression<int> bodytaskentityTemplateId = null)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodytasktask, nameof(bodytasktask), required: false);
+            WorkflowExpression.Validate(bodytaskcomment, nameof(bodytaskcomment), required: false);
+            WorkflowExpression.Validate(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
+            WorkflowExpression.Validate(bodytaskroleId, nameof(bodytaskroleId), required: false);
+            WorkflowExpression.Validate(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
+            WorkflowExpression.Validate(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
+            WorkflowExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            WorkflowExpression.Validate(bodytaskweightId, nameof(bodytaskweightId), required: false);
+            WorkflowExpression.Validate(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                taskObject["comment"] = ExpressionConverter.ConvertO(bodytaskcomment);
-                taskObjectpropCount++;
-            }
+                var apiCallPath = "/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodytasktask != null)
+                {
+                    taskObject["task"] = ExpressionConverter.ConvertO(bodytasktask);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskisComplete != null)
-            {
-                taskObject["is_complete"] = ExpressionConverter.ConvertO(bodytaskisComplete);
-                taskObjectpropCount++;
-            }
+                if (bodytaskcomment != null)
+                {
+                    taskObject["comment"] = ExpressionConverter.ConvertO(bodytaskcomment);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskroleId != null)
-            {
-                taskObject["role_id"] = ExpressionConverter.ConvertO(bodytaskroleId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskisComplete != null)
+                {
+                    taskObject["is_complete"] = ExpressionConverter.ConvertO(bodytaskisComplete);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskgoalId != null)
-            {
-                taskObject["goal_id"] = ExpressionConverter.ConvertO(bodytaskgoalId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskroleId != null)
+                {
+                    taskObject["role_id"] = ExpressionConverter.ConvertO(bodytaskroleId);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskstartDate != null)
-            {
-                taskObject["start_date"] = ExpressionConverter.ConvertO(bodytaskstartDate);
-                taskObjectpropCount++;
-            }
+                if (bodytaskgoalId != null)
+                {
+                    taskObject["goal_id"] = ExpressionConverter.ConvertO(bodytaskgoalId);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskdueDate != null)
-            {
-                taskObject["due_date"] = ExpressionConverter.ConvertO(bodytaskdueDate);
-                taskObjectpropCount++;
-            }
+                if (bodytaskstartDate != null)
+                {
+                    taskObject["start_date"] = ExpressionConverter.ConvertO(bodytaskstartDate);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskweightId != null)
-            {
-                taskObject["weight_id"] = ExpressionConverter.ConvertO(bodytaskweightId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskdueDate != null)
+                {
+                    taskObject["due_date"] = ExpressionConverter.ConvertO(bodytaskdueDate);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskentityTemplateId != null)
-            {
-                taskObject["entity_template_id"] = ExpressionConverter.ConvertO(bodytaskentityTemplateId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskweightId != null)
+                {
+                    taskObject["weight_id"] = ExpressionConverter.ConvertO(bodytaskweightId);
+                    taskObjectpropCount++;
+                }
 
-            if (taskObjectpropCount > 0)
-            {
-                body["task"] = taskObject;
-                bodypropCount++;
-            }
+                if (bodytaskentityTemplateId != null)
+                {
+                    taskObject["entity_template_id"] = ExpressionConverter.ConvertO(bodytaskentityTemplateId);
+                    taskObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (taskObjectpropCount > 0)
+                {
+                    body["task"] = taskObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetSingleTask))]
+        public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetSingleTaskResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSingleTaskResponse> __BuildGetSingleTask(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetSingleTaskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetSingleTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteTask))]
+        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteTaskResponse> __BuildDeleteTask(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<DeleteTaskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateTask))]
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodytasktask = null, [WorkflowExpression] Func<string> bodytaskcomment = null, [WorkflowExpression] Func<bodytaskisCompleteInput> bodytaskisComplete = null, [WorkflowExpression] Func<int> bodytaskroleId = null, [WorkflowExpression] Func<int> bodytaskgoalId = null, [WorkflowExpression] Func<string> bodytaskstartDate = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<bodytaskweightIdInput> bodytaskweightId = null, [WorkflowExpression] Func<int> bodytaskentityTemplateId = null)
         {
-            var apiCallPath = String.Format("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodytasktask != null)
-            {
-                taskObject["task"] = ExpressionConverter.ConvertO(bodytasktask);
-                taskObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodytaskcomment != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateTaskResponse> __BuildUpdateTask(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<string> bodytasktask = null, WorkflowExpression<string> bodytaskcomment = null, WorkflowExpression<bodytaskisCompleteInput> bodytaskisComplete = null, WorkflowExpression<int> bodytaskroleId = null, WorkflowExpression<int> bodytaskgoalId = null, WorkflowExpression<string> bodytaskstartDate = null, WorkflowExpression<string> bodytaskdueDate = null, WorkflowExpression<bodytaskweightIdInput> bodytaskweightId = null, WorkflowExpression<int> bodytaskentityTemplateId = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodytasktask, nameof(bodytasktask), required: false);
+            WorkflowExpression.Validate(bodytaskcomment, nameof(bodytaskcomment), required: false);
+            WorkflowExpression.Validate(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
+            WorkflowExpression.Validate(bodytaskroleId, nameof(bodytaskroleId), required: false);
+            WorkflowExpression.Validate(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
+            WorkflowExpression.Validate(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
+            WorkflowExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            WorkflowExpression.Validate(bodytaskweightId, nameof(bodytaskweightId), required: false);
+            WorkflowExpression.Validate(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
-                taskObject["comment"] = ExpressionConverter.ConvertO(bodytaskcomment);
-                taskObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodytasktask != null)
+                {
+                    taskObject["task"] = ExpressionConverter.ConvertO(bodytasktask);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskisComplete != null)
-            {
-                taskObject["is_complete"] = ExpressionConverter.ConvertO(bodytaskisComplete);
-                taskObjectpropCount++;
-            }
+                if (bodytaskcomment != null)
+                {
+                    taskObject["comment"] = ExpressionConverter.ConvertO(bodytaskcomment);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskroleId != null)
-            {
-                taskObject["role_id"] = ExpressionConverter.ConvertO(bodytaskroleId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskisComplete != null)
+                {
+                    taskObject["is_complete"] = ExpressionConverter.ConvertO(bodytaskisComplete);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskgoalId != null)
-            {
-                taskObject["goal_id"] = ExpressionConverter.ConvertO(bodytaskgoalId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskroleId != null)
+                {
+                    taskObject["role_id"] = ExpressionConverter.ConvertO(bodytaskroleId);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskstartDate != null)
-            {
-                taskObject["start_date"] = ExpressionConverter.ConvertO(bodytaskstartDate);
-                taskObjectpropCount++;
-            }
+                if (bodytaskgoalId != null)
+                {
+                    taskObject["goal_id"] = ExpressionConverter.ConvertO(bodytaskgoalId);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskdueDate != null)
-            {
-                taskObject["due_date"] = ExpressionConverter.ConvertO(bodytaskdueDate);
-                taskObjectpropCount++;
-            }
+                if (bodytaskstartDate != null)
+                {
+                    taskObject["start_date"] = ExpressionConverter.ConvertO(bodytaskstartDate);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskweightId != null)
-            {
-                taskObject["weight_id"] = ExpressionConverter.ConvertO(bodytaskweightId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskdueDate != null)
+                {
+                    taskObject["due_date"] = ExpressionConverter.ConvertO(bodytaskdueDate);
+                    taskObjectpropCount++;
+                }
 
-            if (bodytaskentityTemplateId != null)
-            {
-                taskObject["entity_template_id"] = ExpressionConverter.ConvertO(bodytaskentityTemplateId);
-                taskObjectpropCount++;
-            }
+                if (bodytaskweightId != null)
+                {
+                    taskObject["weight_id"] = ExpressionConverter.ConvertO(bodytaskweightId);
+                    taskObjectpropCount++;
+                }
 
-            if (taskObjectpropCount > 0)
-            {
-                body["task"] = taskObject;
-                bodypropCount++;
-            }
+                if (bodytaskentityTemplateId != null)
+                {
+                    taskObject["entity_template_id"] = ExpressionConverter.ConvertO(bodytaskentityTemplateId);
+                    taskObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (taskObjectpropCount > 0)
+                {
+                    body["task"] = taskObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates(Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllUpdates))]
+        public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/updates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetAllUpdatesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllUpdatesResponse> __BuildGetAllUpdates(WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetAllUpdatesResponse>(() =>
+            {
+                var apiCallPath = "/updates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetAllUpdatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateUpdate))]
+        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyupdatecomment = null, [WorkflowExpression] Func<int> bodyupdategoalId = null, [WorkflowExpression] Func<int> bodyupdateentityTemplateId = null)
         {
-            var apiCallPath = "/updates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var updateObject = new JObject();
-            var updateObjectpropCount = 0;
-            if (bodyupdatecomment != null)
-            {
-                updateObject["comment"] = ExpressionConverter.ConvertO(bodyupdatecomment);
-                updateObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyupdategoalId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateUpdateResponse> __BuildCreateUpdate(WorkflowExpression<string> instance, WorkflowExpression<string> bodyupdatecomment = null, WorkflowExpression<int> bodyupdategoalId = null, WorkflowExpression<int> bodyupdateentityTemplateId = null)
+        {
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            WorkflowExpression.Validate(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
+            WorkflowExpression.Validate(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            return new DeferredBodyAction<CreateUpdateResponse>(() =>
             {
-                updateObject["goal_id"] = ExpressionConverter.ConvertO(bodyupdategoalId);
-                updateObjectpropCount++;
-            }
+                var apiCallPath = "/updates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var updateObject = new JObject();
+                var updateObjectpropCount = 0;
+                if (bodyupdatecomment != null)
+                {
+                    updateObject["comment"] = ExpressionConverter.ConvertO(bodyupdatecomment);
+                    updateObjectpropCount++;
+                }
 
-            if (bodyupdateentityTemplateId != null)
-            {
-                updateObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyupdateentityTemplateId);
-                updateObjectpropCount++;
-            }
+                if (bodyupdategoalId != null)
+                {
+                    updateObject["goal_id"] = ExpressionConverter.ConvertO(bodyupdategoalId);
+                    updateObjectpropCount++;
+                }
 
-            if (updateObjectpropCount > 0)
-            {
-                body["update"] = updateObject;
-                bodypropCount++;
-            }
+                if (bodyupdateentityTemplateId != null)
+                {
+                    updateObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyupdateentityTemplateId);
+                    updateObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (updateObjectpropCount > 0)
+                {
+                    body["update"] = updateObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildGetSingleUpdate))]
+        public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<GetSingleUpdateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSingleUpdateResponse> __BuildGetSingleUpdate(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<GetSingleUpdateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<GetSingleUpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteUpdate))]
+        public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = String.Format("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            return new ApiConnectionAction<DeleteUpdateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteUpdateResponse> __BuildDeleteUpdate(WorkflowExpression<string> id, WorkflowExpression<string> instance)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            return new DeferredBodyAction<DeleteUpdateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                return new ApiConnectionAction<DeleteUpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<string>> bodyupdatecreatedAt = null, Expression<Func<string>> bodyupdateupdatedAt = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdatedeleted = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateUpdate))]
+        public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyupdatecomment = null, [WorkflowExpression] Func<string> bodyupdatecreatedAt = null, [WorkflowExpression] Func<string> bodyupdateupdatedAt = null, [WorkflowExpression] Func<int> bodyupdategoalId = null, [WorkflowExpression] Func<int> bodyupdatedeleted = null, [WorkflowExpression] Func<int> bodyupdateentityTemplateId = null)
         {
-            var apiCallPath = String.Format("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var updateObject = new JObject();
-            var updateObjectpropCount = 0;
-            if (bodyupdatecomment != null)
-            {
-                updateObject["comment"] = ExpressionConverter.ConvertO(bodyupdatecomment);
-                updateObjectpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyupdatecreatedAt != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateUpdateResponse> __BuildUpdateUpdate(WorkflowExpression<string> id, WorkflowExpression<string> instance, WorkflowExpression<string> bodyupdatecomment = null, WorkflowExpression<string> bodyupdatecreatedAt = null, WorkflowExpression<string> bodyupdateupdatedAt = null, WorkflowExpression<int> bodyupdategoalId = null, WorkflowExpression<int> bodyupdatedeleted = null, WorkflowExpression<int> bodyupdateentityTemplateId = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(instance, nameof(instance), required: true);
+            WorkflowExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            WorkflowExpression.Validate(bodyupdatecreatedAt, nameof(bodyupdatecreatedAt), required: false);
+            WorkflowExpression.Validate(bodyupdateupdatedAt, nameof(bodyupdateupdatedAt), required: false);
+            WorkflowExpression.Validate(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
+            WorkflowExpression.Validate(bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
+            WorkflowExpression.Validate(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            return new DeferredBodyAction<UpdateUpdateResponse>(() =>
             {
-                updateObject["created_at"] = ExpressionConverter.ConvertO(bodyupdatecreatedAt);
-                updateObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = ExpressionConverter.Convert(instance);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var updateObject = new JObject();
+                var updateObjectpropCount = 0;
+                if (bodyupdatecomment != null)
+                {
+                    updateObject["comment"] = ExpressionConverter.ConvertO(bodyupdatecomment);
+                    updateObjectpropCount++;
+                }
 
-            if (bodyupdateupdatedAt != null)
-            {
-                updateObject["updated_at"] = ExpressionConverter.ConvertO(bodyupdateupdatedAt);
-                updateObjectpropCount++;
-            }
+                if (bodyupdatecreatedAt != null)
+                {
+                    updateObject["created_at"] = ExpressionConverter.ConvertO(bodyupdatecreatedAt);
+                    updateObjectpropCount++;
+                }
 
-            if (bodyupdategoalId != null)
-            {
-                updateObject["goal_id"] = ExpressionConverter.ConvertO(bodyupdategoalId);
-                updateObjectpropCount++;
-            }
+                if (bodyupdateupdatedAt != null)
+                {
+                    updateObject["updated_at"] = ExpressionConverter.ConvertO(bodyupdateupdatedAt);
+                    updateObjectpropCount++;
+                }
 
-            if (bodyupdatedeleted != null)
-            {
-                updateObject["deleted"] = ExpressionConverter.ConvertO(bodyupdatedeleted);
-                updateObjectpropCount++;
-            }
+                if (bodyupdategoalId != null)
+                {
+                    updateObject["goal_id"] = ExpressionConverter.ConvertO(bodyupdategoalId);
+                    updateObjectpropCount++;
+                }
 
-            if (bodyupdateentityTemplateId != null)
-            {
-                updateObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyupdateentityTemplateId);
-                updateObjectpropCount++;
-            }
+                if (bodyupdatedeleted != null)
+                {
+                    updateObject["deleted"] = ExpressionConverter.ConvertO(bodyupdatedeleted);
+                    updateObjectpropCount++;
+                }
 
-            if (updateObjectpropCount > 0)
-            {
-                body["update"] = updateObject;
-                bodypropCount++;
-            }
+                if (bodyupdateentityTemplateId != null)
+                {
+                    updateObject["entity_template_id"] = ExpressionConverter.ConvertO(bodyupdateentityTemplateId);
+                    updateObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (updateObjectpropCount > 0)
+                {
+                    body["update"] = updateObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateUpdateResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateUpdateResponse>(callPayload);
+            });
         }
     }
 
@@ -1041,6 +1356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int[] TaskIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalstatusInput
     {
         APPRO,
@@ -1048,6 +1364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         ARCHI
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalcompletionCriteriaInput
     {
         [EnumMember(Value = "TARGET-REACHED")]
@@ -1056,6 +1373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         TARGETDEADLINEREACHED
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoaltargetFlowInput
     {
         OVER,
@@ -1063,6 +1381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         NONE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalweightIdInput
     {
         [EnumMember(Value = "1")]
@@ -1075,6 +1394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalisPrivateInput
     {
         [EnumMember(Value = "0")]
@@ -1083,6 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoaltrackingTypeInput
     {
         MANUAL,
@@ -1383,6 +1704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int CA1573011296755 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyissueisCriticalInput
     {
         [EnumMember(Value = "0")]
@@ -1391,6 +1713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyissueisResolvedInput
     {
         [EnumMember(Value = "0")]
@@ -1591,6 +1914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int EntityTemplateId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateTaskResponseTasksTypeWeightIdType
     {
         [EnumMember(Value = "1")]
@@ -1603,6 +1927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskisCompleteInput
     {
         [EnumMember(Value = "0")]
@@ -1611,6 +1936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskweightIdInput
     {
         [EnumMember(Value = "1")]
