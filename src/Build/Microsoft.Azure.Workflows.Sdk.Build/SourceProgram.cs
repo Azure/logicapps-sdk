@@ -58,10 +58,10 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
             return customPath;
         }
 
-        if (node is ExpressionSyntax expression && TryWorkflowReference(expression, out var bindingFactorySource))
+        if (node is ExpressionSyntax expression && TryWorkflowReference(expression, out var bindingFactory))
             return SourceValueReader.Read(
                 model.GetTypeInfo(expression).Type!,
-                bindingBuilder.Bind(bindingFactorySource)).WithTriviaFrom(node);
+                bindingBuilder.Bind(bindingFactory)).WithTriviaFrom(node);
 
         if (node is MemberAccessExpressionSyntax { Expression: ThisExpressionSyntax or BaseExpressionSyntax } instanceMember &&
             model.GetSymbolInfo(instanceMember).Symbol is ISymbol instanceSymbol)
@@ -164,12 +164,12 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
 
     public override SyntaxNode? VisitCastExpression(CastExpressionSyntax node)
     {
-        if (TryWorkflowReference(node.Expression, out var bindingFactorySource))
+        if (TryWorkflowReference(node.Expression, out var bindingFactory))
         {
             var sourceType = model.GetTypeInfo(node.Expression).Type;
             var target = model.GetTypeInfo(node.Type).Type!;
             if (sourceType?.SpecialType == SpecialType.System_Object || sourceType?.ToDisplayString() == "Newtonsoft.Json.Linq.JToken")
-                return SourceValueReader.Read(target, bindingBuilder.Bind(bindingFactorySource)).WithTriviaFrom(node);
+                return SourceValueReader.Read(target, bindingBuilder.Bind(bindingFactory)).WithTriviaFrom(node);
         }
 
         return base.VisitCastExpression(node);
@@ -181,46 +181,48 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         return rewritten.WithExpression(SyntaxFactory.ParenthesizedExpression(rewritten.Expression));
     }
 
-    private bool TryWorkflowReference(ExpressionSyntax expression, out string bindingFactorySource)
+    private bool TryWorkflowReference(ExpressionSyntax expression, out SourceBindingFactory bindingFactory)
     {
-        bindingFactorySource = "";
+        bindingFactory = null!;
         if (expression is IdentifierNameSyntax && model.GetSymbolInfo(expression).Symbol is IParameterSymbol item && !Local(item))
         {
             var parent = item.DeclaringSyntaxReferences.FirstOrDefault()?.GetSyntax().Ancestors().OfType<LambdaExpressionSyntax>().FirstOrDefault();
             if (parent?.Parent is ArgumentSyntax { Parent.Parent: InvocationExpressionSyntax call } &&
                 model.GetSymbolInfo(call).Symbol is IMethodSymbol { Name: "ForEach", ContainingAssembly.Name: Sdk })
             {
-                bindingFactorySource = $"{Prefix}WorkflowExpressionBinding.Item({expression})";
+                bindingFactory = new SourceBindingFactory(SourceBindingKind.Item, expression);
                 return true;
             }
         }
 
         if (expression is not MemberAccessExpressionSyntax member || model.GetSymbolInfo(member).Symbol is not IPropertySymbol property) return false;
         var receiver = model.GetTypeInfo(member.Expression).Type;
-        var function = property.Name switch
+        var bindingKind = property.Name switch
         {
-            "Output" when Implements(receiver, "IOutputWorkflowAction") => "Output",
-            "Body" when Implements(receiver, "IBodyWorkflowAction") => "Body",
-            "TriggerOutput" when Implements(receiver, "IOutputWorkflowTrigger") => "Trigger",
-            "TriggerBody" when Implements(receiver, "IBodyWorkflowTrigger") => "Trigger",
-            "Value" when Implements(receiver, "IVariableWorkflowAction") => "Variable",
-            _ => null,
+            "Output" when Implements(receiver, "IOutputWorkflowAction") => SourceBindingKind.Output,
+            "Body" when Implements(receiver, "IBodyWorkflowAction") => SourceBindingKind.Body,
+            "TriggerOutput" when Implements(receiver, "IOutputWorkflowTrigger") => SourceBindingKind.TriggerOutput,
+            "TriggerBody" when Implements(receiver, "IBodyWorkflowTrigger") => SourceBindingKind.TriggerBody,
+            "Value" when Implements(receiver, "IVariableWorkflowAction") => SourceBindingKind.Variable,
+            _ => (SourceBindingKind?)null,
         };
 
-        if (function != null)
+        if (bindingKind != null)
         {
             var handle = model.GetSymbolInfo(member.Expression).Symbol;
             if (handle is not (ILocalSymbol or IParameterSymbol or IFieldSymbol) || Local(handle))
                 throw Error("Workflow handles must be locals, parameters or fields outside the value lambda.", member.Expression);
-            bindingFactorySource = $"{Prefix}WorkflowExpressionBinding.{function}({member.Expression}" +
-                (function == "Trigger" ? ", " + (property.Name == "TriggerBody" ? "true" : "false") : "") + ")";
+            bindingFactory = new SourceBindingFactory(bindingKind.Value, member.Expression);
             return true;
         }
 
         if (member.Expression is MemberAccessExpressionSyntax { Name.Identifier.ValueText: "Parameters" } parameters &&
             Implements(model.GetTypeInfo(parameters.Expression).Type, "IAgentToolContext"))
         {
-            bindingFactorySource = $"{Prefix}WorkflowExpressionBinding.AgentParameter({parameters.Expression}, {Quote(property.Name)})";
+            bindingFactory = new SourceBindingFactory(
+                SourceBindingKind.AgentParameter,
+                parameters.Expression,
+                property.Name);
             return true;
         }
 

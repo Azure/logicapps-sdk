@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static ExpressionCompiler;
 
-internal delegate bool WorkflowReferenceResolver(ExpressionSyntax expression, out string bindingFactorySource);
+internal delegate bool WorkflowReferenceResolver(ExpressionSyntax expression, out SourceBindingFactory bindingFactory);
 
 internal readonly record struct JsonPathSegment(string Key, bool ConditionalReceiver);
 
@@ -19,29 +19,33 @@ internal sealed class CustomOutputPathRewriter(
     internal bool TryRewrite(ExpressionSyntax expression, out ExpressionSyntax replacement)
     {
         var segments = new List<JsonPathSegment>();
-        var bindingFactorySource = "";
-        if (!Collect(expression, segments, ref bindingFactorySource, conditionalReceiver: false) ||
-            bindingFactorySource.Length == 0 ||
+        SourceBindingFactory? bindingFactory = null;
+        if (!Collect(expression, segments, ref bindingFactory, conditionalReceiver: false) ||
+            bindingFactory == null ||
             segments.Count == 0)
         {
             replacement = null!;
             return false;
         }
 
-        replacement = Read(model.GetTypeInfo(expression).Type!, bindingFactorySource, segments).WithTriviaFrom(expression);
+        replacement = Read(model.GetTypeInfo(expression).Type!, bindingFactory, segments).WithTriviaFrom(expression);
         return true;
     }
 
     private bool Collect(
         ExpressionSyntax expression,
         List<JsonPathSegment> segments,
-        ref string bindingFactorySource,
+        ref SourceBindingFactory? bindingFactory,
         bool conditionalReceiver)
     {
         if (expression is MemberAccessExpressionSyntax member)
         {
-            if (resolveWorkflowReference(member, out bindingFactorySource)) return true;
-            if (!Collect(member.Expression, segments, ref bindingFactorySource, conditionalReceiver) ||
+            if (resolveWorkflowReference(member, out var resolvedBindingFactory))
+            {
+                bindingFactory = resolvedBindingFactory;
+                return true;
+            }
+            if (!Collect(member.Expression, segments, ref bindingFactory, conditionalReceiver) ||
                 model.GetSymbolInfo(member).Symbol is not IPropertySymbol property ||
                 !IsCustomPathProperty(property))
                 return false;
@@ -61,8 +65,8 @@ internal sealed class CustomOutputPathRewriter(
 
         if (expression is ConditionalAccessExpressionSyntax conditional)
         {
-            return Collect(conditional.Expression, segments, ref bindingFactorySource, conditionalReceiver) &&
-                Collect(conditional.WhenNotNull, segments, ref bindingFactorySource, conditionalReceiver: true);
+            return Collect(conditional.Expression, segments, ref bindingFactory, conditionalReceiver) &&
+                Collect(conditional.WhenNotNull, segments, ref bindingFactory, conditionalReceiver: true);
         }
 
         return false;
@@ -70,10 +74,10 @@ internal sealed class CustomOutputPathRewriter(
 
     private ExpressionSyntax Read(
         ITypeSymbol type,
-        string bindingFactorySource,
+        SourceBindingFactory bindingFactory,
         List<JsonPathSegment> segments)
     {
-        var root = bindingBuilder.Bind(bindingFactorySource);
+        var root = bindingBuilder.Bind(bindingFactory);
         if (!segments.Any(segment => segment.ConditionalReceiver))
         {
             var source = root + string.Concat(segments.Select(segment => "[" + Quote(segment.Key) + "]"));

@@ -17,7 +17,31 @@ internal sealed class SourceBindingBuilder(LambdaExpressionSyntax lambda)
     internal IReadOnlyDictionary<string, string> BindingFactorySourcesByPlaceholder => bindingFactorySourcesByPlaceholder;
     internal IReadOnlyList<string> Declarations => declarations;
 
-    internal string Bind(string bindingFactorySource)
+    internal string Bind(SourceBindingFactory bindingFactory)
+    {
+        var receiver = bindingFactory.Receiver.ToString();
+        var bindingFactorySource = bindingFactory.Kind switch
+        {
+            SourceBindingKind.Output =>
+                $"{Prefix}WorkflowExpressionBinding.Output({receiver})",
+            SourceBindingKind.Body =>
+                $"{Prefix}WorkflowExpressionBinding.Body({receiver})",
+            SourceBindingKind.TriggerOutput =>
+                $"{Prefix}WorkflowExpressionBinding.Trigger({receiver}, false)",
+            SourceBindingKind.TriggerBody =>
+                $"{Prefix}WorkflowExpressionBinding.Trigger({receiver}, true)",
+            SourceBindingKind.Variable =>
+                $"{Prefix}WorkflowExpressionBinding.Variable({receiver})",
+            SourceBindingKind.Item =>
+                $"{Prefix}WorkflowExpressionBinding.Item({receiver})",
+            SourceBindingKind.AgentParameter =>
+                $"{Prefix}WorkflowExpressionBinding.AgentParameter({receiver}, {Quote(bindingFactory.Argument!)})",
+            _ => throw new ArgumentOutOfRangeException(nameof(bindingFactory)),
+        };
+        return BindFactorySource(bindingFactorySource);
+    }
+
+    private string BindFactorySource(string bindingFactorySource)
     {
         var name = Unique("__binding");
         bindingFactorySourcesByPlaceholder.Add(name, bindingFactorySource);
@@ -34,7 +58,7 @@ internal sealed class SourceBindingBuilder(LambdaExpressionSyntax lambda)
         {
             name = Unique("__capture");
             captureNamesBySymbol.Add(symbol, name);
-            var slot = Bind($"{Prefix}WorkflowExpressionBinding.Capture<{TypeName(type)}>({source})");
+            var slot = BindFactorySource($"{Prefix}WorkflowExpressionBinding.Capture<{TypeName(type)}>({source})");
             declarations.Add(
                 $"{(type.SpecialType is >= SpecialType.System_Boolean and <= SpecialType.System_String || type.TypeKind == TypeKind.Enum ? "const " : "")}" +
                 $"{TypeName(type)} {name} = {slot};");
